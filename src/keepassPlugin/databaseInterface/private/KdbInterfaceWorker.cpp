@@ -1,0 +1,627 @@
+/***************************************************************************
+**
+** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** All rights reserved.
+**
+** This file is part of KeepassMe.
+**
+** KeepassMe is free software: you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation, either version 2 of the License, or
+** (at your option) any later version.
+**
+** KeepassMe is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with KeepassMe.  If not, see <http://www.gnu.org/licenses/>.
+**
+***************************************************************************/
+
+#include <QFile>
+#include <QFileInfo>
+#include <QDir>
+#include <QDebug>
+#include "KdbInterfaceWorker.h"
+#include "../KdbListModel.h"
+#include "../KdbGroup.h"
+#include "crypto/yarrow.h"
+
+using namespace kpxPrivate;
+using namespace kpxPublic;
+
+// KeepassX internal stuff
+KpxConfig *config;
+QString  AppDir;
+QString HomeDir;
+QString DataDir;
+QPixmap* EntryIcons;
+IIconTheme* IconLoader;
+// End of KeepassX internal stuff
+
+KdbInterfaceWorker::KdbInterfaceWorker(QObject *parent)
+    : QObject(parent),
+      m_kdb3Database(NULL),
+      m_setting_showUserNamePasswordsInListView(false)
+{
+    initKdbDatabase();
+}
+
+KdbInterfaceWorker::~KdbInterfaceWorker()
+{
+    qDebug("Destructor KdbInterfaceWorker");
+    delete m_kdb3Database;
+    delete config;
+    SecString::deleteSessionKey();
+
+}
+
+void KdbInterfaceWorker::initKdbDatabase()
+{
+    qDebug("init Yarrow");
+    initYarrow();
+    qDebug("generate session key");
+    SecString::generateSessionKey();
+
+    // init config
+    config = new KpxConfig("keepassx-config.ini");
+}
+
+void KdbInterfaceWorker::slot_preCheckFilePaths(QString dbFile, QString keyFile)
+{
+    if (dbFile != "" && QFile::exists(dbFile)) {
+        if (keyFile == "" || QFile::exists(keyFile)) {
+            // database file is present and key file is either not needed or also present
+            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_OK);
+        } else {
+            // key file is not present
+            // check and create parent directory if it does not exists
+            if (QDir(QFileInfo(dbFile).path()).mkpath(QFileInfo(keyFile).path())) {
+                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_ERROR);
+            } else {
+                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_CREATION_ERROR);
+            }
+        }
+    } else {
+        // database file is not present
+        // check and create parent directory if it does not exists
+        if (QDir(QFileInfo(dbFile).path()).mkpath(QFileInfo(dbFile).path())) {
+            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_DB_PATH_ERROR);
+        } else {
+            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_DB_PATH_CREATION_ERROR);
+        }
+    }
+}
+
+#define OPEN_DB_CLEANUP \
+    delete m_kdb3Database; \
+    m_kdb3Database = NULL; \
+    return;
+
+void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
+{
+    qDebug() << "KdbInterfaceWorker::slot_openDatabase()";
+    // check if there is an already opened database and close it
+    if (m_kdb3Database) {
+        if (!m_kdb3Database->close()) {
+            // send signal with error
+            emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+            qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+            OPEN_DB_CLEANUP
+        }
+        delete m_kdb3Database;
+        m_kdb3Database = NULL;
+    }
+
+    // create database object
+    m_kdb3Database = new Kdb3Database();
+
+    // set master password to decrypt database
+    if (!m_kdb3Database->setPasswordKey(password)) {
+        // send signal with error
+        emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+        OPEN_DB_CLEANUP
+    }
+    // set key file to decrypt database if user has provided one
+    if (!keyfile.isEmpty()) {
+        if (!m_kdb3Database->setFileKey(keyfile)) {
+            // send signal with error
+            emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_SETKEYFILE_ERROR, m_kdb3Database->getError());
+            qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+            OPEN_DB_CLEANUP
+        }
+    }
+    // open database
+    if (!m_kdb3Database->load(filePath, readonly)) {
+        // send signal with error
+        emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_LOAD_ERROR, m_kdb3Database->getError());
+        qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+        OPEN_DB_CLEANUP
+    }
+
+// TODO create .lock file
+
+    // database was opened successful
+    emit databaseOpened(kpxPublic::KdbDatabase::RE_OK, "");
+}
+
+void KdbInterfaceWorker::slot_closeDatabase()
+{
+    // check if database is already closed
+    if (!m_kdb3Database) {
+        emit databaseClosed(kpxPublic::KdbDatabase::RE_DB_ALREADY_CLOSED, "");
+        return;
+    }
+    // close database
+    if (!m_kdb3Database->close()) {
+        emit databaseClosed(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+        qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+        delete m_kdb3Database;
+        m_kdb3Database = NULL;
+        return;
+    }
+    delete m_kdb3Database;
+    m_kdb3Database = NULL;
+
+// TODO delete .lock file
+
+    // database was opened successful
+    emit databaseClosed(kpxPublic::KdbDatabase::RE_OK, "");
+}
+
+void KdbInterfaceWorker::slot_createNewDatabase(QString filePath,QString password, QString keyfile, int cryptAlgorithm)
+{
+    // check if there is an already opened database and close it
+    if (m_kdb3Database) {
+        if (!m_kdb3Database->close()) {
+            // send signal with error
+            emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+            qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+            delete m_kdb3Database;
+            m_kdb3Database = NULL;
+            return;
+        }
+        delete m_kdb3Database;
+        m_kdb3Database = NULL;
+    }
+
+    // create database object
+    m_kdb3Database = new Kdb3Database();
+
+    m_kdb3Database->create();
+    if (!m_kdb3Database->changeFile(filePath)) {
+        // send signal with error
+        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_FILE_ERROR, m_kdb3Database->getError());
+        qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+        delete m_kdb3Database;
+        m_kdb3Database = NULL;
+        return;
+    }
+    m_kdb3Database->setCryptAlgorithm(CryptAlgorithm(cryptAlgorithm));
+    if (!m_kdb3Database->setPasswordKey(password)) {
+        // send signal with error
+        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+        delete m_kdb3Database;
+        m_kdb3Database = NULL;
+        return;
+    }
+    if (!keyfile.isEmpty()) {
+        if (!m_kdb3Database->setFileKey(keyfile)) {
+            // send signal with error
+            emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_SETKEYFILE_ERROR, m_kdb3Database->getError());
+            qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+            delete m_kdb3Database;
+            m_kdb3Database = NULL;
+            return;
+        }
+    }
+    m_kdb3Database->generateMasterKey();
+    // a new database needs at least one group, so create backup group
+    if (!m_kdb3Database->backupGroup(true)) {
+        // send signal with error
+        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_CREATE_BACKUPGROUP_ERROR, m_kdb3Database->getError());
+        qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+        delete m_kdb3Database;
+        m_kdb3Database = NULL;
+        return;
+    }
+    if (!m_kdb3Database->save()) {
+        // send signal with error
+        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
+        qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
+        delete m_kdb3Database;
+        m_kdb3Database = NULL;
+        return;
+    }
+
+// TODO create .lock file
+
+    // send signal with success code
+    emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_OK, "");
+}
+
+void KdbInterfaceWorker::slot_changePassword(QString password)
+{
+    qDebug() << "KdbInterfaceWorker::slot_changePassword";
+    if (!m_kdb3Database->setPasswordKey(password)) {
+        // send signal with error
+        emit passwordChanged(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        return;
+    }
+    m_kdb3Database->generateMasterKey();
+    // save database
+    if (!m_kdb3Database->save()) {
+        // send signal with error
+        emit passwordChanged(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
+        return;
+    }
+    emit passwordChanged(kpxPublic::KdbDatabase::RE_OK, "");
+}
+
+void KdbInterfaceWorker::slot_loadMasterGroups()
+{
+    for (int i = 0; i < m_kdb3Database->groups().count(); i++) {
+        IGroupHandle* masterGroup = m_kdb3Database->groups().at(i);
+        if (masterGroup->isValid()) {
+            qDebug("Group %d: %s", i, CSTR(masterGroup->title()));
+            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
+
+            int item_level = masterGroup->level();
+            int level = 0;
+            if (item_level == level && masterGroup->title() != "Backup") {
+                int numberOfSubgroups = masterGroup->children().count();
+                int numberOfEntries = m_kdb3Database->entries(masterGroup).count();
+                emit addItemToListModel(masterGroup->title(),                           // group name
+                                        QString("Subgroups: %1 | Entries: %2")
+                                        .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
+                                        int(masterGroup),                               // item id
+                                        kpxPublic::KdbListModel::GROUP,                 // item type
+                                        0);                                             // list model of root group
+                // save modelId and master group
+                m_groups_modelId.insertMulti(0, int(masterGroup));
+            }
+        }
+    }
+    emit masterGroupsLoaded(kpxPublic::KdbListModel::RE_OK);
+}
+
+void KdbInterfaceWorker::slot_loadGroupsAndEntries(int groupId)
+{
+    qDebug("start KdbListModel::slot_loadGroupsAndEntries");
+    // load sub groups and entries
+    IGroupHandle* group = (IGroupHandle*)(groupId);
+    QList<IGroupHandle*> subGroups(group->children());
+    for (int i = 0; i < subGroups.count(); i++) {
+        IGroupHandle* subGroup = subGroups.at(i);
+        if (subGroup->isValid()) {
+            qDebug("Entry %d: %s", i, CSTR(subGroup->title()));
+            int numberOfSubgroups = subGroup->children().count();
+            int numberOfEntries = m_kdb3Database->entries(subGroup).count();
+            emit addItemToListModel(subGroup->title(),                              // group name
+                                    QString("Subgroups: %1 | Entries: %2")
+                                    .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
+                                    int(subGroup),                                  // item id
+                                    kpxPublic::KdbListModel::GROUP,                 // item type
+                                    groupId);                                       // list model gets groupId as its unique ID
+            // save modelId and group
+            m_groups_modelId.insertMulti(groupId, int(subGroup));
+        }
+    }
+
+    QList<IEntryHandle*> entries = m_kdb3Database->entries(group);
+    for (int i = 0; i < entries.count(); i++) {
+        IEntryHandle* entry = entries.at(i);
+        if (entry->isValid()) {
+            emit addItemToListModel(entry->title(),                     // group name
+                                    getUserAndPassword(entry),          // subtitle
+                                    int(entry),                         // item id
+                                    kpxPublic::KdbListModel::ENTRY,     // item type
+                                    groupId);                           // list model gets groupId as its unique ID
+            // save modelId and entry
+            m_entries_modelId.insertMulti(groupId, int(entry));
+        }
+    }
+    emit groupsAndEntriesLoaded(kpxPublic::KdbListModel::RE_OK);
+}
+
+void KdbInterfaceWorker::slot_loadEntry(int entryId)
+{
+    // get entry handler for entryId
+    IEntryHandle* entry = (IEntryHandle*)(entryId);
+    // decrypt password which is usually stored encrypted in memory
+    SecString password = entry->password();
+    password.unlock();
+    // send signal with all entry data
+    emit entryLoaded(entry->title(),
+                     entry->url(),
+                     entry->username(),
+                     password.string(),
+                     entry->comment(),
+                     entry->binaryDesc(),
+                     entry->creation().toString(),
+                     entry->lastMod().toString(),
+                     entry->lastAccess().toString(),
+                     entry->expire().toString(),
+                     entry->binarySize(),
+                     entry->friendlySize()
+                     );
+    // encrypt password in memory again
+    password.lock();
+}
+
+void KdbInterfaceWorker::slot_loadGroup(int groupId)
+{
+    // get group handler for groupId
+    IGroupHandle* group = (IGroupHandle*)(groupId);
+    emit groupLoaded(group->title());
+}
+
+void KdbInterfaceWorker::slot_saveGroup(int groupId, QString title)
+{
+    qDebug("slot_saveGroup() groupID: %d", groupId);
+    Q_ASSERT(groupId != 0); // master group cannot be changed or saved
+
+    //  save changes on group details to database
+    IGroupHandle* group = (IGroupHandle*)(groupId);
+    group->setTitle(title);
+    if (!m_kdb3Database->save()) {
+        emit groupSaved(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        return;
+    }
+
+    // update all list models which contain the changed group
+    QList<int> modelIds = m_groups_modelId.keys(groupId);
+    int numberOfSubgroups = group->children().count();
+    int numberOfEntries = m_kdb3Database->entries(group).count();
+    for (int i = 0; i < modelIds.count(); i++) {
+        emit updateItemInListModel(title,                                           // update group name
+                                   QString("Subgroups: %1 | Entries: %2")
+                                   .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
+                                   groupId,                                         // identifier for group item in list model
+                                   modelIds[i]);                                    // identifier for list model
+    }
+    // signal to QML
+    emit groupSaved(kpxPublic::KdbGroup::RE_OK);
+}
+
+void KdbInterfaceWorker::slot_unregisterListModel(int modelId)
+{
+    // delete all groups and entries which are associated with given modelId
+    m_groups_modelId.remove(modelId);
+    m_entries_modelId.remove(modelId);
+}
+
+void KdbInterfaceWorker::slot_createNewGroup(QString title, quint32 iconId, int parentGroupId)
+{
+    qDebug() << "KdbInterfaceWorker::slot_createNewGroup";
+
+    // get parent group handle and identify IDs of list model
+    IGroupHandle* parentGroup;
+    if (parentGroupId == 0) {
+        // this is the indicator for "addGroup" in database to insert new group into root group as a new master group
+        parentGroup = NULL; // set explicitly to NULL, this indicates the root of all master groups
+    } else {
+        // parent group is not the master group
+        parentGroup = (IGroupHandle*)(parentGroupId);
+    }
+    CGroup* groupData = new CGroup(); // ownership will be given to m_kdb3Database object
+    groupData->Title = title;
+    groupData->Image = iconId;
+    IGroupHandle* newGroup = m_kdb3Database->addGroup(groupData, parentGroup);
+    Q_ASSERT(newGroup);
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit newGroupCreated(kpxPublic::KdbGroup::RE_SAVE_ERROR, int(newGroup));
+        return;
+    }
+
+    // update all list model of parent groups where new group was added
+    emit addItemToListModel(title,                              // group name
+                            "Subgroups: 0 | Entries: 0",        // subtitle
+                            int(newGroup),                      // item id
+                            kpxPublic::KdbListModel::GROUP,     // item type
+                            parentGroupId);                     // for distinguishing different models
+    // save modelid and group
+    m_groups_modelId.insertMulti(parentGroupId, int(newGroup));
+
+    // update all grandparent groups subtitle in UI
+    // check if parent group is root group, then we don't need to do anything
+    if (parentGroup != NULL) {
+        updateGrandParentGroupInListModel(parentGroup);
+    }
+
+    // signal to QML
+    emit newGroupCreated(kpxPublic::KdbGroup::RE_OK, int(newGroup));
+}
+
+void KdbInterfaceWorker::slot_saveEntry(int entryId,
+                                        QString title,
+                                        QString url,
+                                        QString username,
+                                        QString password,
+                                        QString comment)
+{
+    //  save changes on entry details to database
+    IEntryHandle* entry = (IEntryHandle*)(entryId);
+
+    entry->setTitle(title);
+    entry->setUrl(url);
+    entry->setUsername(username);
+    SecString s_password;
+    s_password.setString(password);
+    s_password.lock();
+    entry->setPassword(s_password);
+    entry->setComment(comment);
+    // save changes to database and send signal with result
+    if (!m_kdb3Database->save()) {
+        emit entrySaved(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        return;
+    }
+
+    // update entry item in list model
+    QList<int> modelIds = m_entries_modelId.keys(entryId);
+    for (int i = 0; i < modelIds.count(); i++) {
+        emit updateItemInListModel(title,                          // group name
+                                   getUserAndPassword(entry),      // subtitle
+                                   entryId,                        // identifier for item in list model
+                                   modelIds[i]);                   // identifier for list model of master group
+    }
+    // signal to QML
+    emit entrySaved(kpxPublic::KdbGroup::RE_OK);
+}
+
+void KdbInterfaceWorker::slot_createNewEntry(QString title,
+                                             QString url,
+                                             QString username,
+                                             QString password,
+                                             QString comment,
+                                             int parentGroupId)
+{
+    // create new entry in specified group
+    IGroupHandle* parentGroup = (IGroupHandle*)(parentGroupId);
+    IEntryHandle* newEntry = m_kdb3Database->newEntry(parentGroup);
+    // add data to new entry
+    newEntry->setTitle(title);
+    newEntry->setUrl(url);
+    newEntry->setUsername(username);
+    SecString s_password;
+    s_password.setString(password);
+    s_password.lock();
+    newEntry->setPassword(s_password);
+    newEntry->setComment(comment);
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit newEntryCreated(kpxPublic::KdbGroup::RE_SAVE_ERROR, int(newEntry));
+        return;
+    }
+
+    // add entry to list model in order to update UI by sending signal to list models with identifier modelId
+    emit addItemToListModel(title,                          // title
+                            getUserAndPassword(newEntry),   // subtitle
+                            int(newEntry),                  // item id
+                            kpxPublic::KdbListModel::ENTRY, // item type
+                            parentGroupId);                 // id of list model where to put this entry in
+    // save modelId and entry
+    m_entries_modelId.insertMulti(parentGroupId, int(newEntry));
+
+    // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
+    updateGrandParentGroupInListModel(parentGroup);
+    // signal to QML
+    emit newEntryCreated(kpxPublic::KdbGroup::RE_OK, int(newEntry));
+}
+
+void KdbInterfaceWorker::slot_deleteGroup(int groupId)
+{
+    // get group handles
+    IGroupHandle* group = (IGroupHandle*)(groupId);
+    IGroupHandle* parentGroup = group->parent();
+    // delete group from database
+    m_kdb3Database->deleteGroup(group);
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit groupDeleted(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        return;
+    }
+
+    // remove group from all active list models where it might be added
+    emit deleteItemInListModel(groupId);
+
+    // update all grandparent groups subtitle, ie. subgroup counter has to be updated in UI
+    if (parentGroup != NULL) { // if parent group is root group we don't need to do anything
+        updateGrandParentGroupInListModel(parentGroup);
+    }
+    // signal to QML
+    emit groupDeleted(kpxPublic::KdbGroup::RE_OK);
+}
+
+void KdbInterfaceWorker::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
+{
+    qDebug() << "KdbInterfaceWorker::updateGrandParentGroupInListModel";
+
+    IGroupHandle* grandParentGroup = parentGroup->parent();
+    int numberOfSubgroups = parentGroup->children().count();
+    int numberOfEntries = m_kdb3Database->entries(parentGroup).count();
+    emit updateItemInListModel(parentGroup->title(),                                // group name
+                               QString("Subgroups: %1 | Entries: %2")
+                               .arg(numberOfSubgroups).arg(numberOfEntries),        // subtitle
+                               int(parentGroup),                                    // identifier for group item in list model
+                               int(grandParentGroup));                              // identifier for list model
+    qDebug() << "KdbInterfaceWorker::updateGrandParentGroupInListModel end";
+}
+
+void KdbInterfaceWorker::slot_deleteEntry(int entryId)
+{
+    qDebug() << "KdbInterfaceWorker::slot_deleteEntry - entryId: " << entryId;
+
+    // get handles
+    IEntryHandle* entry = (IEntryHandle*)(entryId);
+    Q_ASSERT(entry);
+    IGroupHandle* parentGroup = entry->group();
+
+    qDebug() << "KdbInterfaceWorker::slot_deleteEntry got parent group";
+
+    // delete entry from database
+    m_kdb3Database->deleteEntry(entry);
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit entryDeleted(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        return;
+    }
+
+    // remove entry from all active list models where it might be added
+    emit deleteItemInListModel(entryId);
+    // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
+    updateGrandParentGroupInListModel(parentGroup);
+    // signal to QML
+    emit entryDeleted(kpxPublic::KdbGroup::RE_OK);
+}
+
+void KdbInterfaceWorker::slot_searchEntries(QString searchString, int rootGroupId)
+{
+    // get group handle
+    IGroupHandle* rootGroup = (IGroupHandle*)(rootGroupId);
+    // search for entries in database
+    // rootGroup is the groups from which search is performed recursively in the (sub-)tree of the database
+    QList<IEntryHandle*> entries = m_kdb3Database->search(rootGroup,    // root group
+                                                          searchString, // search string
+                                                          false,        // is case sensitive
+                                                          false,        // is regular expression
+                                                          true,         // recursive search
+                                                          NULL);        // fields to search
+    // update list model with found entries
+    for (int i = 0; i < entries.count(); i++) {
+        IEntryHandle* entry = entries.at(i);
+        if (entry->isValid()) {
+            emit addItemToListModel(entry->title(),                     // entry name
+                                    getUserAndPassword(entry),          // subtitle
+                                    int(entry),                         // item id
+                                    kpxPublic::KdbListModel::ENTRY,     // item type
+                                    -1);                                // specifying model where entry should be added (search list model gets -1)
+            // save modelId and entry
+            m_entries_modelId.insertMulti(-1, int(entry));
+        }
+    }
+    // signal to QML
+    emit searchEntriesCompleted(kpxPublic::KdbListModel::RE_OK);
+}
+
+inline QString KdbInterfaceWorker::getUserAndPassword(IEntryHandle* entry)
+{
+    if (m_setting_showUserNamePasswordsInListView) {
+        SecString password = entry->password();
+        password.unlock();
+        return QString("%1 | %2").arg(entry->username()).arg(password.string());
+        password.lock();
+    } else {
+        return "Entry";
+    }
+}
+
+void KdbInterfaceWorker::slot_setting_showUserNamePasswordsInListView(bool value)
+{
+    m_setting_showUserNamePasswordsInListView = value;
+}
