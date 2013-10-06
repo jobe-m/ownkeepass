@@ -44,9 +44,9 @@ Page {
         }
 
         ViewPlaceholder {
-            enabled: listView.count == 0
+            enabled: listView.count === 0
             text: "No content"
-            hintText: loadMasterGroups ? "Pull down to add password groups" : "Pull down to add password groups or entries"
+            hintText: loadMasterGroups ? "Pull down to add password groups" : "Pull down to add password groups and entries"
         }
 
         PullDownMenu {
@@ -58,14 +58,14 @@ Page {
             MenuItem {
                 text: "New Password Group"
                 onClicked: pageStack.push(Qt.resolvedUrl("EditGroupDetailsPage.qml").toString(),
-                                          { createNewGroup: true, parentGroupId: groupId })
+                                          { "createNewGroup": true, "parentGroupId": groupId })
             }
             MenuItem {
                 enabled: !loadMasterGroups
                 visible: !loadMasterGroups
                 text: "New Password Entry"
                 onClicked: pageStack.push(Qt.resolvedUrl("EditEntryDetailsPage.qml").toString(),
-                                          { createNewEntry: true, parentGroupId: groupId })
+                                          { "createNewEntry": true, "parentGroupId": groupId })
             }
         }
 

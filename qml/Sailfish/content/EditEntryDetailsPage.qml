@@ -36,6 +36,7 @@ Page {
     property bool createNewEntry: false
 
     function __saveChanges() {
+        console.log("Save entry: " + entryTitle.text + ", " + entryPassword.text)
         if (createNewEntry) {
             // create new group in database, save and update list model data
             kdbEntry.createNewEntry(entryTitle.text,
@@ -52,6 +53,7 @@ Page {
                                    entryPassword.text,
                                    entryComment.text)
         }
+        pageStack.pop()
     }
 
     SilicaFlickable {
@@ -128,14 +130,14 @@ Page {
                 falseCondition: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
                 trueButtonText: "Create"
                 falseButtonText: "Save"
-                onClicked: __saveChanges()
+                onButtonClicked: __saveChanges()
             }
         }
     }
 
     KdbEntry {
         id: kdbEntry
-        entryId: editEntryDetailsPage.entryId
+        entryId: entryId
         onEntryDataLoaded: {
 //            console.log("title: " + title)
 //            console.log("url: " + url)
@@ -149,11 +151,12 @@ Page {
 //            console.log("expire: " + expire)
 //            console.log("binarySize: " + binarySize)
 //            console.log("friendlySize: " + friendlySize)
-            entryTitle.editText = title;
-            entryUrl.editText = url;
-            entryUsername.editText = username;
-            entryPassword.editText = password;
-            entryComment.editText = comment;
+            entryTitle.text = title;
+            entryUrl.text = url;
+            entryUsername.text = username;
+            entryPassword.text = password;
+            entryVerifyPassword.text = password;
+            entryComment.text = comment;
         }
         onEntryDataSaved: { // returns result
 // TODO check save result

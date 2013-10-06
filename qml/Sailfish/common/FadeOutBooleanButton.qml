@@ -33,7 +33,7 @@ Button {
     property string trueButtonText: ""
     property string falseButtonText: ""
 
-    signal clicked
+    signal buttonClicked
 
     anchors.horizontalCenter: parent.horizontalCenter
     // button is not accessible if user has not yet entered any text on "create new group" or
@@ -41,7 +41,7 @@ Button {
     enabled: condition ? trueCondition : falseCondition
     opacity: condition ? (trueCondition ? 1.0 : 0.2) : (falseCondition ? 1.0 : 0.2)
     text: condition ? trueButtonText : falseButtonText
-    onClicked: clicked()
+    onClicked: buttonClicked()
 
     Behavior on opacity { NumberAnimation { duration: 200 } }
 }
