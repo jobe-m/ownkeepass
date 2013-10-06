@@ -4,13 +4,13 @@ ownKeepass
 What is this?
 -------------
 
-ownKeepass is a password safe application for the Sailfish platform. You can use it to store your passwords for webpages, PINs, TANs and any other data that should be kept secret on your Jolla Smartphone. The database where that data is stored is encrypted using a master password. ownKeepass can read and write Keepass database files version 1. The database code is actually taken from [KeepassX project][1]. The code base of KeepassX 0.4.3 is quite stable and well tested by a lot of people. But because its developer is not working any more actively on that code I decided to put it in a new repository and write a QML wrapper around the Keepass database interface class. The QWidget code was thrown away and the UI part is now based on QML.
+ownKeepass is a password safe application for the Sailfish platform. You can use it to store your passwords for webpages, PINs, TANs and any other data that should be kept secret on your Jolla Smartphone. The database where that data is stored is encrypted using a master password. ownKeepass can read and write Keepass database files version 1. The database code is actually taken from [KeepassX project][1]. The code base of KeepassX v0.4.3 is quite stable and well tested by a lot of people. But because its developer is not working any more actively on that code I decided to put it in a new repository and write a QML wrapper around the Keepass database interface class. The QWidget code was thrown away and the UI part is now based on QML.
 However please note that the application is not yet usable for end users in any form. See also the TODO section below.
 
 Why?
 ----
 
-I started to work on ownKeepass beginning of 2012 when QML started to get usable from development point of view for the Nokia N9. Writing a QML UI for the stable KeepassX 0.4.3 version was just born out of the idea to take my favourite password safe application to new Qt platforms like the Nokia N9. Although ownKeepass was quite usable for me on my Nokia N9 I never released it for the Nokia N9 due to lack of time to make the application looking good for a wider audience. Later I desided to continue development on the new Sailfish platform which is featuring Qt5 and QML2.
+I started to work on ownKeepass beginning of 2012 when QML started to get usable from development point of view for the Nokia N9. Writing a QML UI for the stable KeepassX 0.4.3 version was just born out of the idea to take my favourite password safe application to new Qt platforms like the Nokia N9. Although ownKeepass was quite usable for me on my Nokia N9 I never released it for the Nokia N9 due to lack of time and motivation (Nokia's desperate situation) to make the application usable for a wider audience. But later I decided to continue development on the new Sailfish OS platform from the finnish Smartphone start-up company Jolla which is featuring Qt5 and QML2.
 
 Some technical notes
 --------------------
@@ -29,7 +29,7 @@ If you want to dig deeper into the code here are some hints to help you getting 
 TODO
 ----
 
-*   Let's to some Qt5 porting and continue development. Adapt current QML source code to use [Sailfish Silica components][2] and make the application working on the comming Jolla Smartphone.
+*   Let's to some Qt5 porting and continue development. Adapt current QML source code to use [Sailfish Silica components][2] and make the application working on the coming Jolla Smartphone.
 
 
 That's it for now. I will update things here when I have some news to share :)
