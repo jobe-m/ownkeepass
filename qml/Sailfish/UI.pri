@@ -32,4 +32,5 @@ qml.files = \
 ##QML_IMPORT_PATH = imports
 
 OTHER_FILES += \
-    qml/Sailfish/common/SilicaListItem.qml
+    qml/Sailfish/common/SilicaListItem.qml \
+    qml/Sailfish/common/FadeOutBooleanButton.qml

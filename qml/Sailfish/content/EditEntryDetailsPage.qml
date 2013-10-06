@@ -1,32 +1,29 @@
 /***************************************************************************
 **
-** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
-** This file is part of KeepassMe.
+** This file is part of ownKeepass.
 **
-** KeepassMe is free software: you can redistribute it and/or modify
+** ownKeepass is free software: you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
 ** the Free Software Foundation, either version 2 of the License, or
 ** (at your option) any later version.
 **
-** KeepassMe is distributed in the hope that it will be useful,
+** ownKeepass is distributed in the hope that it will be useful,
 ** but WITHOUT ANY WARRANTY; without even the implied warranty of
 ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ** GNU General Public License for more details.
 **
 ** You should have received a copy of the GNU General Public License
-** along with KeepassMe.  If not, see <http://www.gnu.org/licenses/>.
+** along with ownKeepass. If not, see <http://www.gnu.org/licenses/>.
 **
 ***************************************************************************/
 
-import QtQuick 1.1
-import com.nokia.meego 1.1
-import "common"
-import "common/Constants.js" as Constants
-
-// plugin is in local imports directory
-import KeepassX 1.0
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import "../common"
+import KeepassPlugin 1.0
 
 Page {
     id: editEntryDetailsPage
@@ -38,11 +35,102 @@ Page {
     property bool parentNeedUpdate: false
     property bool createNewEntry: false
 
-    Component.onCompleted: {
-        if (!createNewEntry) {
-            kdbEntry.loadEntryData()
+    function __saveChanges() {
+        if (createNewEntry) {
+            // create new group in database, save and update list model data
+            kdbEntry.createNewEntry(entryTitle.text,
+                                    entryUrl.text,
+                                    entryUsername.text,
+                                    entryPassword.text,
+                                    entryComment.text,
+                                    parentGroupId)
+        } else {
+            // save changes of existing group to database and update list model data
+            kdbEntry.saveEntryData(entryTitle.text,
+                                   entryUrl.text,
+                                   entryUsername.text,
+                                   entryPassword.text,
+                                   entryComment.text)
         }
-        entryTitle.setFocus()
+    }
+
+    SilicaFlickable {
+        anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: col.height
+
+        // Show a scollbar when the view is flicked, place this over all other content
+        VerticalScrollDecorator {}
+
+        Column {
+            id: col
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            PageHeader {
+                title: createNewEntry ? qsTr("New Password Entry") : qsTr("Edit Password Entry")
+            }
+
+            TextField {
+                id: entryTitle
+                width: parent.width
+                label: "Title"
+                placeholderText: "Set Title"
+                EnterKey.onClicked: parent.focus = true
+            }
+
+            TextField {
+                id: entryUrl
+                width: parent.width
+                label: "Url"
+                placeholderText: "Set Url"
+                EnterKey.onClicked: parent.focus = true
+            }
+
+            TextField {
+                id: entryUsername
+                width: parent.width
+                label: "Username"
+                placeholderText: "Set Username"
+                EnterKey.onClicked: parent.focus = true
+            }
+
+            TextField {
+                id: entryPassword
+                width: parent.width
+                label: "Password"
+                placeholderText: "Set Password"
+                EnterKey.onClicked: parent.focus = true
+            }
+
+            TextField {
+                id: entryVerifyPassword
+                width: parent.width
+                label: "Verify Password"
+                placeholderText: "Verify Password"
+                errorHighlight: entryPassword.text !== text
+                EnterKey.highlighted: !errorHighlight
+                EnterKey.onClicked: parent.focus = true
+            }
+
+            TextField {
+                id: entryComment
+                width: parent.width
+                label: "Comment"
+                placeholderText: "Set Comment"
+                EnterKey.onClicked: parent.focus = true
+            }
+
+            FadeOutBooleanButton {
+                condition: createNewEntry
+                // button should be only enabled when title is set and password is verified
+                trueCondition: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
+                falseCondition: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
+                trueButtonText: "Create"
+                falseButtonText: "Save"
+                onClicked: __saveChanges()
+            }
+        }
     }
 
     KdbEntry {
@@ -79,123 +167,10 @@ Page {
         }
     }
 
-    PageHeader {
-        id: pageHeader
-        enableButtons: true
-        onRejected: pageStack.pop()
-        onAccepted: {
-            console.log("Save clicked")
-            if (entryTitle.getNewText() !== "") {
-                if (editEntryDetailsPage.createNewEntry) {
-                    // create new group in database, save and update list model data
-                    kdbEntry.createNewEntry(entryTitle.getNewText(),
-                                            entryUrl.getNewText(),
-                                            entryUsername.getNewText(),
-                                            entryPassword.getNewText(),
-                                            entryComment.getNewText(),
-                                            editEntryDetailsPage.parentGroupId)
-                } else {
-                    // save changes of existing group to database and update list model data
-                    kdbEntry.saveEntryData(entryTitle.getNewText(),
-                                           entryUrl.getNewText(),
-                                           entryUsername.getNewText(),
-                                           entryPassword.getNewText(),
-                                           entryComment.getNewText())
-                }
-                pageStack.pop()
-            } else {
-                infoDialog.open()
-            }
+    Component.onCompleted: {
+        if (!createNewEntry) {
+            kdbEntry.loadEntryData()
         }
-    }
-
-    Flickable {
-        id: flickable
-        anchors.top: pageHeader.bottom
-        anchors.bottom: parent.bottom
-        width: parent.width
-        flickableDirection: Flickable.VerticalFlick
-        contentHeight: col.height
-        Column {
-            id: col
-            width: parent.width
-            height: children.height
-
-            Item {
-                width: parent.width
-                height: caption.height
-                Label {
-                    id: caption
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-// TODO add to constants
-                    anchors.topMargin: 10
-                    anchors.leftMargin: 24
-                    anchors.rightMargin: 24
-                    elide: Text.ElideRight
-                    platformStyle: LabelStyle {
-                        textColor: theme.inverted ? Constants.COLOR_INVERTED_SECONDARY_FOREGROUND : Constants.COLOR_SECONDARY_FOREGROUND
-                        fontFamily: Constants.FONT_FAMILY
-                        fontPixelSize: Constants.FONT_DEFAULT
-                    }
-                    text: createNewEntry ? qsTr("Create new Keepass Entry") : qsTr("Edit Keepass Entry")
-                }
-            }
-
-            Item { width: parent.width; height: Constants.SPACE_LABEL }
-
-            CaptionTextField {
-                id: entryTitle
-                captionText: "Title:"
-                onReturnKeyClicked: entryUrl.setFocus()
-            }
-
-            Item { width: parent.width; height: Constants.SPACE_LABEL }
-
-            CaptionTextField {
-                id: entryUrl
-                captionText: "Url:"
-                inputMethod: Qt.ImhNoAutoUppercase
-                onReturnKeyClicked: entryUsername.setFocus()
-            }
-
-            Item { width: parent.width; height: Constants.SPACE_LABEL }
-
-            CaptionTextField {
-                id: entryUsername
-                captionText: "Username:"
-                inputMethod: Qt.ImhNoAutoUppercase
-                onReturnKeyClicked: entryPassword.setFocus()
-            }
-
-            Item { width: parent.width; height: Constants.SPACE_LABEL }
-
-
-            CaptionTextField {
-                id: entryPassword
-                captionText: "Password:"
-                inputMethod: Qt.ImhNoAutoUppercase
-                onReturnKeyClicked: entryComment.setFocus()
-            }
-
-            Item { width: parent.width; height: Constants.SPACE_LABEL }
-
-            CaptionTextArea {
-                id: entryComment
-                captionText: "Comment:"
-                onReturnKeyClicked: entryComment.closeKeypad()
-            }
-
-            Item { width: parent.width; height: Constants.SPACE_LABEL }
-        }
-    }
-
-    QueryDialog {
-        id: infoDialog
-        titleText: "Empty title"
-        message: "Please specify a title for your password entry."
-        acceptButtonText: "OK"
-        onAccepted: entryTitle.setFocus()
+        entryTitle.focus = true
     }
 }
