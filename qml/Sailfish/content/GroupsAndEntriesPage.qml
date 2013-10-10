@@ -26,7 +26,7 @@ import "../common"
 import KeepassPlugin 1.0
 
 Page {
-    id: showGroupsAndEntriesPage
+    id: groupsAndEntriesPage
 
     // ID of the keepass group which should be shown
     property int groupId: 0
@@ -57,14 +57,14 @@ Page {
 
             MenuItem {
                 text: "New Password Group"
-                onClicked: pageStack.push(Qt.resolvedUrl("EditGroupDetailsPage.qml").toString(),
+                onClicked: pageStack.push(Qt.resolvedUrl("GroupDetailsPage.qml").toString(),
                                           { "createNewGroup": true, "parentGroupId": groupId })
             }
             MenuItem {
                 enabled: !loadMasterGroups
                 visible: !loadMasterGroups
                 text: "New Password Entry"
-                onClicked: pageStack.push(Qt.resolvedUrl("EditEntryDetailsPage.qml").toString(),
+                onClicked: pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
                                           { "createNewEntry": true, "parentGroupId": groupId })
             }
         }
@@ -98,11 +98,11 @@ Page {
             onClicked: {
                 switch (model.itemType) {
                 case KdbListModel.GROUP:
-                    pageStack.push(Qt.resolvedUrl("ShowGroupsAndEntriesPage.qml").toString(),
+                    pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                    { "pageTitle": model.name, "groupId": model.id })
                     break
                 case KdbListModel.ENTRY:
-                    pageStack.push(Qt.resolvedUrl("ShowEntryDetailsPage.qml").toString(),
+                    pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
                                    { "pageTitle": model.name, "entryId": model.id })
                     break
                 }
@@ -141,11 +141,11 @@ Page {
                         onClicked: {
                             switch (model.itemType) {
                             case KdbListModel.GROUP:
-                                pageStack.push(Qt.resolvedUrl("EditGroupDetailsPage.qml").toString(), {
-                                                   "groupId": model.id })
+                                pageStack.push(Qt.resolvedUrl("GroupDetailsPage.qml").toString(),
+                                               { "groupId": model.id })
                                 break
                             case KdbListModel.ENTRY:
-                                pageStack.push(Qt.resolvedUrl("EditEntryDetailsPage.qml").toString(),
+                                pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
                                                { "entryId": model.id })
                                 break
                             }

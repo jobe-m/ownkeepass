@@ -56,11 +56,11 @@ ListItem {
     onClicked: {
         switch (model.itemType) {
         case KdbListModel.GROUP:
-            pageStack.push(Qt.resolvedUrl("ShowGroupsAndEntriesPage.qml").toString(),
+            pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                            { "pageTitle": model.name, "groupId": model.id })
             break
         case KdbListModel.ENTRY:
-            pageStack.push(Qt.resolvedUrl("ShowEntryDetailsPage.qml").toString(),
+            pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
                            { "pageTitle": model.name, "entryId": model.id })
             break
         }
@@ -99,11 +99,11 @@ ListItem {
                 onClicked: {
                     switch (model.itemType) {
                     case KdbListModel.GROUP:
-                        pageStack.push(Qt.resolvedUrl("EditGroupDetailsPage.qml").toString(), {
+                        pageStack.push(Qt.resolvedUrl("GroupDetailsPage.qml").toString(), {
                                            "groupId": model.id })
                         break
                     case KdbListModel.ENTRY:
-                        pageStack.push(Qt.resolvedUrl("EditEntryDetailsPage.qml").toString(),
+                        pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
                                        { "entryId": model.id })
                         break
                     }

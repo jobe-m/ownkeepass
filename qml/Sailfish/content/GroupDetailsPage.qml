@@ -26,7 +26,7 @@ import "../common"
 import KeepassPlugin 1.0
 
 Page {
-    id: editGroupDetailsPage
+    id: groupDetailsPage
 
     // ID of the keepass entry which should be edited
     property alias groupId: kdbGroup.groupId

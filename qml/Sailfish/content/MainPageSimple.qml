@@ -230,7 +230,7 @@ Page {
             switch (result) {
             case KdbDatabase.RE_OK: {
                 // open database groups main page and replace password page in page stack
-                pageStack.push(Qt.resolvedUrl("ShowGroupsAndEntriesPage.qml").toString(),
+                pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                { pageTitle: "Password groups",
                                  groupId: 0,
                                  loadMasterGroups: true }, false, true);
@@ -278,7 +278,7 @@ Page {
             switch (result) {
             case KdbDatabase.RE_OK: {
                 // open database groups main page and replace password page in page stack
-                pageStack.push(Qt.resolvedUrl("ShowGroupsAndEntriesPage.qml").toString(),
+                pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                { pageTitle: "Password groups",
                                  groupId: 0,
                                  loadMasterGroups: true }, false, true);

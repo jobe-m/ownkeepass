@@ -27,10 +27,3 @@ qml.files = \
     qml/Sailfish/common \
     qml/Sailfish/scripts \
     qml/Sailfish/Main.qml
-
-## Additional import path used to resolve QML modules in Creator's code model
-##QML_IMPORT_PATH = imports
-
-OTHER_FILES += \
-    qml/Sailfish/common/SilicaListItem.qml \
-    qml/Sailfish/common/FadeOutBooleanButton.qml
