@@ -26,14 +26,17 @@ import "../common"
 import KeepassPlugin 1.0
 
 Page {
-    id: editEntryDetailsPage
+    id: entryDetailsPage
 
+    property string pageTitle: ""
     // ID of the keepass entry to be edited
-    property int entryId: 0
+    property alias entryId: kdbEntry.entryId
     // creation of new entry needs parent group ID
     property int parentGroupId: 0
     property bool parentNeedUpdate: false
-    property bool createNewEntry: false
+
+    // internal stuff
+    property bool __changeBackToDefaultState: false
 
     function __saveChanges() {
         console.log("Save entry: " + entryTitle.text + ", " + entryPassword.text)
@@ -53,7 +56,11 @@ Page {
                                    entryPassword.text,
                                    entryComment.text)
         }
-        pageStack.pop()
+        if (__changeBackToDefaultState) {
+            state = ""
+        } else {
+            pageStack.pop()
+        }
     }
 
     SilicaFlickable {
@@ -69,13 +76,35 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
 
-            PageHeader {
-                title: createNewEntry ? qsTr("New Password Entry") : qsTr("Edit Password Entry")
+            KeepassPageHeader {
+                id: pageHeader
+                title: pageTitle
+                subTitle: "ownKeepass"
+            }
+
+            PullDownMenu {
+                MenuItem {
+// TODO write entry settings page
+                    text: qsTr("Entry Settings")
+                    onClicked: pageStack.push(Qt.resolvedUrl("EntrySettingsPage.qml").toString())
+                }
+
+                MenuItem {
+                    text: "Edit Password Entry"
+                    onClicked: {
+                        // change state of page
+                        state = "editEntry"
+                        __changeBackToDefaultState = true
+                    }
+                }
             }
 
             TextField {
                 id: entryTitle
+                enabled: false
+                visible: false
                 width: parent.width
+                readOnly: true
                 label: "Title"
                 placeholderText: "Set Title"
                 EnterKey.onClicked: parent.focus = true
@@ -84,6 +113,7 @@ Page {
             TextField {
                 id: entryUrl
                 width: parent.width
+                readOnly: true
                 label: "Url"
                 placeholderText: "Set Url"
                 EnterKey.onClicked: parent.focus = true
@@ -92,6 +122,7 @@ Page {
             TextField {
                 id: entryUsername
                 width: parent.width
+                readOnly: true
                 label: "Username"
                 placeholderText: "Set Username"
                 EnterKey.onClicked: parent.focus = true
@@ -100,6 +131,7 @@ Page {
             TextField {
                 id: entryPassword
                 width: parent.width
+                readOnly: true
                 label: "Password"
                 placeholderText: "Set Password"
                 EnterKey.onClicked: parent.focus = true
@@ -108,6 +140,7 @@ Page {
             TextField {
                 id: entryVerifyPassword
                 width: parent.width
+                readOnly: true
                 label: "Verify Password"
                 placeholderText: "Verify Password"
                 errorHighlight: entryPassword.text !== text
@@ -118,26 +151,25 @@ Page {
             TextField {
                 id: entryComment
                 width: parent.width
+                readOnly: true
                 label: "Comment"
                 placeholderText: "Set Comment"
                 EnterKey.onClicked: parent.focus = true
             }
 
-            FadeOutBooleanButton {
-                condition: createNewEntry
-                // button should be only enabled when title is set and password is verified
-                trueCondition: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
-                falseCondition: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
-                trueButtonText: "Create"
-                falseButtonText: "Save"
-                onButtonClicked: __saveChanges()
+            Button {
+                id: createOrSaveEntryButton
+                anchors.horizontalCenter: parent.horizontalCenter
+                enabled: false
+                opacity: 0.0
+                Behavior on opacity { NumberAnimation { duration: 200 } }
+                onClicked: __saveChanges()
             }
         }
     }
 
     KdbEntry {
         id: kdbEntry
-        entryId: entryId
         onEntryDataLoaded: {
 //            console.log("title: " + title)
 //            console.log("url: " + url)
@@ -162,18 +194,60 @@ Page {
 // TODO check save result
         }
         onNewEntryCreated: { // returns result, newEntryId
-// TODO problem of empty page shown when ShowEntryDetailsPage is closed
+// TODO problem of empty page shown when EntryDetailsPage is closed
 //            console.log("new entry created: " + newEntryId + " result: " + result)
 //            // after new entry was created from group view open the entry page
-//            pageStack.push(Qt.resolvedUrl("ShowEntryDetailsPage.qml").toString(),
+//            pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
 //                           { entryId: newEntryId })
         }
     }
 
     Component.onCompleted: {
-        if (!createNewEntry) {
+        console.log("Entry Details Page State: " + state)
+        if(state !== "createNewEntry") {
             kdbEntry.loadEntryData()
         }
+
+//        if (!createNewEntry) {
+//            kdbEntry.loadEntryData()
+//        }
         entryTitle.focus = true
     }
+
+    states: [
+        State {
+            name: "createNewEntry"
+            PropertyChanges { target: pageHeader; title: qsTr("New Password Entry") }
+            PropertyChanges { target: entryTitle; readOnly: false; enabled: true; visible: true }
+            PropertyChanges { target: entryUrl; readOnly: false }
+            PropertyChanges { target: entryUsername; readOnly: false }
+            PropertyChanges { target: entryPassword; readOnly: false }
+            PropertyChanges { target: entryVerifyPassword; readOnly: false }
+            PropertyChanges { target: entryComment; readOnly: false }
+            PropertyChanges {
+                target: createOrSaveEntryButton
+                enabled: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
+                opacity: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
+                text: "Create"
+            }
+            StateChangeScript { script: console.log("state = createNewEntry") }
+        },
+        State {
+            name: "editEntry"
+            PropertyChanges { target: pageHeader; title: qsTr("Edit Password Entry") }
+            PropertyChanges { target: entryTitle; readOnly: false; enabled: true; visible: true }
+            PropertyChanges { target: entryUrl; readOnly: false }
+            PropertyChanges { target: entryUsername; readOnly: false }
+            PropertyChanges { target: entryPassword; readOnly: false }
+            PropertyChanges { target: entryVerifyPassword; readOnly: false }
+            PropertyChanges { target: entryComment; readOnly: false }
+            PropertyChanges {
+                target: createOrSaveEntryButton
+                enabled: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
+                opacity: entryTitle.text !== "" && entryPassword.text === entryVerifyPassword.text
+                text: "Save"
+            }
+            StateChangeScript { script: console.log("state = editEntry") }
+        }
+    ]
 }
