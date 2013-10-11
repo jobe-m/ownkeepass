@@ -122,10 +122,10 @@ Page {
         onDatabaseClosed: internal.databaseClosedHandler(result, errorMsg)
     }
 
-    InfoDialogPage {
-        id: infoDialogPage
+    InfoDialog {
+        id: infoDialog
 // Usage:
-//        pageStack.push(infoDialogPage, {
+//        pageStack.push(infoDialog, {
 //                           "headerText": "Info",
 //                           "titleText": "",
 //                           "message": ""
@@ -194,7 +194,7 @@ Page {
                 // in this case database file exists but not key file
                 internal.createNewDatabase = true
                 passwordField.focus = false
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Key File Error",
                                    "message": "Database path is ok, but your key file is not present. Please check ownKeepass Settings for correct path to the key file or leave key file path empty if you don't use a key file with your database."
@@ -204,7 +204,7 @@ Page {
                 console.log("ERROR: Cannot create path directories to database file, check your file permissions")
                 internal.createNewDatabase = true
                 passwordField.focus = false
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Permission Error",
                                    "message": "Cannot create directories for your Keepass database file. Please choose another path."
@@ -213,7 +213,7 @@ Page {
             case KdbDatabase.RE_PRECHECK_KEY_FILE_PATH_CREATION_ERROR: {
                 internal.createNewDatabase = true
                 passwordField.focus = false
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Permission Error",
                                    "message": "Cannot create directories for your key file. Please choose another path."
@@ -237,7 +237,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal Database Error",
                                    "message": "Could not close the previous opened database. Error message: " + errorMsg
@@ -245,7 +245,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_SETPW_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal Password Error",
                                    "message": "The following error occured during opening of database: " + errorMsg
@@ -253,7 +253,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_SETKEYFILE_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal Keyfile Error",
                                    "message": "The following error occured during opening of database: " + errorMsg
@@ -261,7 +261,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_LOAD_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Password Error",
                                    "message": errorMsg + " Please try again."
@@ -287,7 +287,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal Database Error",
                                    "message": "Could not close the previous opened database. Error message: " + errorMsg
@@ -295,7 +295,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_FILE_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal File Error",
                                    "message": "The following error occured during creation of database: " + errorMsg
@@ -303,7 +303,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_SETPW_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal Password Error",
                                    "message": "The following error occured during creation of database: " + errorMsg
@@ -311,7 +311,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_SETKEYFILE_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal Keyfile Error",
                                    "message": "The following error occured during creation of database: " + errorMsg
@@ -319,7 +319,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Internal Database Error",
                                    "message": "Creation of backup group failed with following error: " + errorMsg
@@ -327,7 +327,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_SAVE_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Save Database Error",
                                    "message": "Could not save database with following error: " + errorMsg
@@ -346,7 +346,7 @@ Page {
                 break
             case KdbDatabase.RE_DB_ALREADY_CLOSED: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Database Error",
                                    "message": "Database was already closed. Nothing serious, but please submit a bug report."
@@ -354,7 +354,7 @@ Page {
                 break }
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
-                pageStack.push(infoDialogPage, {
+                pageStack.push(infoDialog, {
                                    "headerText": "Info",
                                    "titleText": "Database Error",
                                    "message": "An error occured on closing your database: " + errorMsg

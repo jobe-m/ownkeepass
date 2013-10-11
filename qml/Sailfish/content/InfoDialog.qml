@@ -25,7 +25,7 @@ import Sailfish.Silica 1.0
 import "../common"
 
 Dialog {
-    id: infoDialogPage
+    id: infoDialog
 
     property alias headerText: dialogHeader.acceptText
     property alias titleText: dialogTitle.text

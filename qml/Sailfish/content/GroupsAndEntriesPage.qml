@@ -57,14 +57,14 @@ Page {
 
             MenuItem {
                 text: "New Password Group"
-                onClicked: pageStack.push(Qt.resolvedUrl("GroupDetailsPage.qml").toString(),
+                onClicked: pageStack.push(Qt.resolvedUrl("EditGroupDetailsDialog.qml").toString(),
                                           { "createNewGroup": true, "parentGroupId": groupId })
             }
             MenuItem {
                 enabled: !loadMasterGroups
                 visible: !loadMasterGroups
                 text: "New Password Entry"
-                onClicked: pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
+                onClicked: pageStack.push(Qt.resolvedUrl("EditEntryDetailsDialog.qml").toString(),
                                           { "createNewEntry": true, "parentGroupId": groupId })
             }
         }
@@ -141,11 +141,11 @@ Page {
                         onClicked: {
                             switch (model.itemType) {
                             case KdbListModel.GROUP:
-                                pageStack.push(Qt.resolvedUrl("GroupDetailsPage.qml").toString(),
+                                pageStack.push(Qt.resolvedUrl("EditGroupDetailsDialog.qml").toString(),
                                                { "groupId": model.id })
                                 break
                             case KdbListModel.ENTRY:
-                                pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
+                                pageStack.push(Qt.resolvedUrl("EditEntryDetailsDialog.qml").toString(),
                                                { "entryId": model.id })
                                 break
                             }
@@ -172,7 +172,6 @@ Page {
     KdbListModel {
         id: kdbListModel
         onGroupsAndEntriesLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
-        onSearchEntriesCompleted: {}
         onMasterGroupsLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage
     }
 
@@ -196,7 +195,7 @@ Page {
     }
 
     function __showLoadErrorPage() {
-        pageStack.push(infoDialogPage, {
+        pageStack.push(infoDialog, {
                            "headerText": "Info",
                            "titleText": "Load Error",
                            "message": "Could not load all items from database. That's strange!"
@@ -204,7 +203,7 @@ Page {
     }
 
     function __showSaveErrorPage() {
-        pageStack.push(infoDialogPage, {
+        pageStack.push(infoDialog, {
                            "headerText": "Info",
                            "titleText": "Save Error",
                            "message": "Could not save your changes to database. That's strange!"

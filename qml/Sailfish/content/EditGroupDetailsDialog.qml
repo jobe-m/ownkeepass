@@ -25,19 +25,19 @@ import Sailfish.Silica 1.0
 import "../common"
 import KeepassPlugin 1.0
 
-Page {
-    id: groupDetailsPage
+Dialog {
+    id: editGroupDetailsDialog
 
+    property bool createNewGroup: false
     // ID of the keepass entry which should be edited
     property alias groupId: kdbGroup.groupId
     // creation of new group needs parent group ID
     property int parentGroupId: 0
-    property bool createNewGroup: false
 
     // internal stuff
     property string __originalGroupName: ""
 
-    function __saveChangesAndClose() {
+    function __saveChanges() {
         console.log("New group title: " + groupTitle.text)
         if (createNewGroup) {
             // create new group in database, save and update list model data
@@ -46,7 +46,6 @@ Page {
             // save changes of existing group to database and update list model data
             kdbGroup.saveGroupData(groupTitle.text)
         }
-        pageStack.pop()
     }
 
     SilicaFlickable {
@@ -62,7 +61,8 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
 
-            PageHeader {
+            DialogHeader {
+                acceptText: "Save"
                 title: createNewGroup ? qsTr("Create new group") : qsTr("Edit group")
             }
 
@@ -76,18 +76,6 @@ Page {
                 label: "Name of group"
                 placeholderText: label
                 EnterKey.onClicked: parent.focus = true
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                // button is not accessible if user has not yet entered any text on "create new group" or
-                // if user has not yet changed the name of the existing group
-                enabled: createNewGroup ? groupTitle.text !== "" : __originalGroupName !== groupTitle.text
-                opacity: createNewGroup ? (groupTitle.text !== "" ? 1.0 : 0.2) : __originalGroupName !== groupTitle.text ? 1.0 : 0.2
-                text: createNewGroup ? "Create" : "Save"
-                onClicked: __saveChangesAndClose()
-
-                Behavior on opacity { NumberAnimation { duration: 200 } }
             }
         }
     }
@@ -109,10 +97,20 @@ Page {
 
     Component.onCompleted: {
         if (!createNewGroup) {
-            console.log("Group ID: " + groupId)
             console.log("Load Data for Group ID: " + kdbGroup.groupId)
             kdbGroup.loadGroupData()
         }
         groupTitle.focus = true
+    }
+
+    onAccepted: {
+        // save changes if anything has really changed
+        if (__originalGroupName !== groupTitle.text) __saveChanges()
+    }
+    onCanceled: {
+        // ask user to really cancel if anything has changed
+        if (__originalGroupName !== groupTitle.text) {
+// TODO create Yes-No Dialog
+        }
     }
 }
