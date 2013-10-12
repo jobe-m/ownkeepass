@@ -80,6 +80,11 @@ Dialog {
                 title: createNewEntry ? "Create Password Entry" : "Edit Password Entry"
             }
 
+            SilicaLabel {
+                text: createNewEntry ? "Create new Password Entry:" :
+                                       "Edit Password Entry:"
+            }
+
             TextField {
                 id: entryTitle
                 width: parent.width
@@ -180,17 +185,20 @@ Dialog {
 
     onAccepted: __saveChanges()
 
-    onCanceled: {
-// TODO check why this is not executed
+    onRejected: {
+        console.log("onReject in EditEntryDetailsDialog")
+// TODO poping of EditEntryDetailsDialog page does not work because it is disrupted by the new Dialog below
+// try to replace the QueryDialog by an RemorsePopup or RemorseItem
         if (__originalEntryTitle !== entryTitle.text || __originalEntryUrl !== entryUrl.text ||
                 __originalEntryUsername !== entryUsername.text || __originalEntryPassword !== entryPassword.text ||
                 __originalEntryComment !== entryComment.text) {
-            var dialog = pageStack.push("QueryDialog.qml", { "headerAcceptText": "Yes",
+            var dialog = pageStack.push("../common/QueryDialog.qml", { "headerAcceptText": "Yes",
                                             "titleText": "Save Changes",
-                                            "message": "Do you want to save your changes on the Password Entry?" })
+                                            "message": "Do you want to save your changes in the Password Entry?" })
             dialog.accepted.connect(function() {
                 __saveChanges()
             })
+            pageStack.pop()
         }
     }
 }

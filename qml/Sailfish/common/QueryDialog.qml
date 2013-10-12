@@ -40,6 +40,7 @@ Dialog {
         VerticalScrollDecorator {}
 
         Column {
+            id: col
             width: parent.width
             spacing: Theme.paddingLarge
 
@@ -58,4 +59,6 @@ Dialog {
             }
         }
     }
+
+    onRejected: console.log("onReject Dialog")
 }
