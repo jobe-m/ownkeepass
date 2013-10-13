@@ -59,6 +59,4 @@ Dialog {
             }
         }
     }
-
-    onRejected: console.log("onReject Dialog")
 }
