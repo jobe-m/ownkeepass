@@ -33,16 +33,6 @@ Page {
     property bool loadMasterGroups: false
     property string pageTitle: qsTr("Groups and entries")
 
-// TESTING
-//    function editCanceledWithoutSaving() {
-//            remorse.execute("", function() { listModel.clear() } )
-//        }
-//
-//    RemorsePopup {
-//        id: remorse
-//    }
-// end
-
     SilicaListView {
         id: listView
         anchors.fill: parent
@@ -74,8 +64,11 @@ Page {
                 enabled: !loadMasterGroups
                 visible: !loadMasterGroups
                 text: "New Password Entry"
-                onClicked: pageStack.push(Qt.resolvedUrl("EditEntryDetailsDialog.qml").toString(),
-                                          { "createNewEntry": true, "parentGroupId": groupId })
+                onClicked: {
+                    console.log("Open EditEntryDetailsDialog to create new entry")
+                    pageStack.push(editEntryDetailsDialogComponent,
+                                   { "createNewEntry": true, "parentGroupId": groupId })
+                }
             }
         }
 
@@ -92,39 +85,89 @@ Page {
             QtObject {
                 id: internal
 
-//                property alias entryTitle: entryTitle.text
+                property Dialog editEntryDetailsDialogRef: null
+
+                // Here are all Kdb entry details which are used to create a new entry, save changes to an
+                // already existing entry and to check if the user has done changes to an entry in the UI and
+                // canceled the edit dialog. In that case a query dialog is shown to let the user save the
+                // entry details if he has canceled the edit dialog unintentionally or because he did not
+                // understand the whole UI paradigma at all...
+                property bool createNewEntry: false
+                property int entryId: 0
+                property int parentGroupId: 0
                 property string originalEntryTitle: ""
                 property string originalEntryUrl: ""
                 property string originalEntryUsername: ""
                 property string originalEntryPassword: ""
                 property string originalEntryComment: ""
+                property string entryTitle: ""
+                property string entryUrl: ""
+                property string entryUsername: ""
+                property string entryPassword: ""
+                property string entryComment: ""
 
-                function saveKdbEntryDetails(createNewEntry, entryId, parentGroupId) {
-                    console.log("Save entry (internal): " + entryTitle.text)
+                function saveKdbEntryDetails() {
+                    console.log("Save entry (internal): " + entryTitle)
+                    // Set entry ID and create or save Kdb Entry
                     kdbEntry.entryId = entryId
                     if (createNewEntry) {
-                        // create new group in database, save and update list model data
-                        kdbEntry.createNewEntry(entryTitle.text,
-                                                entryUrl.text,
-                                                entryUsername.text,
-                                                entryPassword.text,
-                                                entryComment.text,
+                        // create new group in database, save and update list model data in backend
+                        kdbEntry.createNewEntry(entryTitle,
+                                                entryUrl,
+                                                entryUsername,
+                                                entryPassword,
+                                                entryComment,
                                                 parentGroupId)
                     } else {
-                        // save changes of existing group to database and update list model data
-                        kdbEntry.saveEntryData(entryTitle.text,
-                                               entryUrl.text,
-                                               entryUsername.text,
-                                               entryPassword.text,
-                                               entryComment.text)
+                        // save changes of existing group to database and update list model data in backend
+                        kdbEntry.saveEntryData(entryTitle,
+                                               entryUrl,
+                                               entryUsername,
+                                               entryPassword,
+                                               entryComment)
                     }
                 }
 
-                function openQueryDialogForUnsavedChangesComponent() {
-                    pageStack.replace(queryDialogForUnsavedChangesComponent)
+                function checkForUnsavedChanges() {
+                    console.log("Check for unsaved changes")
+                    // check if the user has changed any entry details
+                    if (originalEntryTitle !== entryTitle || originalEntryUrl !== entryUrl ||
+                            originalEntryUsername !== entryUsername || originalEntryPassword !== entryPassword ||
+                            originalEntryComment !== entryComment) {
+                        // open query dialog for unsaved changes
+                        pageStack.replace(queryDialogForUnsavedChangesComponent)
+                    }
+                }
+
+                function loadKdbEntryDetails(title, url, username, password, comment) {
+//                    console.log("binaryDesc: " + binaryDesc)
+//                    console.log("creation: " + creation)
+//                    console.log("lastMod: " + lastMod)
+//                    console.log("lastAccess: " + lastAccess)
+//                    console.log("expire: " + expire)
+//                    console.log("binarySize: " + binarySize)
+//                    console.log("friendlySize: " + friendlySize)
+                    entryTitle    = originalEntryTitle    = title
+                    entryUrl      = originalEntryUrl      = url
+                    entryUsername = originalEntryUsername = username
+                    entryPassword = originalEntryPassword = password
+                    entryComment  = originalEntryComment  = comment
+
+                    // populate entry detail text fields in EditEntryDetailsDialog
+                    if(editEntryDetailsDialogRef) editEntryDetailsDialogRef.setTextFields(title, url, username, password, comment)
+                }
+
+                function setKdbEntryDetails(createNew, eId, parentGId, title, url, username, password, comment) {
+                    createNewEntry = createNew
+                    entryId        = eId
+                    parentGroupId  = parentGId
+                    entryTitle     = title
+                    entryUrl       = url
+                    entryUsername  = username
+                    entryPassword  = password
+                    entryComment   = comment
                 }
             }
-
 
             KdbGroup {
                 id: kdbGroup
@@ -133,37 +176,9 @@ Page {
 
             KdbEntry {
                 id: kdbEntry
-                onEntryDataLoaded: {
-//                    console.log("title: " + title)
-//                    console.log("url: " + url)
-//                    console.log("username: " + username)
-//                    console.log("password: " + password)
-//                    console.log("comment: " + comment)
-//                    console.log("binaryDesc: " + binaryDesc)
-//                    console.log("creation: " + creation)
-//                    console.log("lastMod: " + lastMod)
-//                    console.log("lastAccess: " + lastAccess)
-//                    console.log("expire: " + expire)
-//                    console.log("binarySize: " + binarySize)
-//                    console.log("friendlySize: " + friendlySize)
-                    entryTitle.text = title
-                    internal.originalEntryTitle = title
-                    entryUrl.text = url
-                    internal.originalEntryUrl = url
-                    entryUsername.text = username
-                    internal.originalEntryUsername = username
-                    entryPassword.text = password
-                    internal.originalEntryPassword = password
-                    entryVerifyPassword.text = password
-                    entryComment.text = comment
-                    internal.originalEntryComment = comment
-                }
-                onEntryDataSaved: { // returns result
-// TODO check save result
-                }
-                onNewEntryCreated: { // returns result, newEntryId
-// TODO check save result
-                }
+                onEntryDataLoaded: internal.loadKdbEntryDetails(title, url, username, password, comment)
+                onEntryDataSaved: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+                onNewEntryCreated: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
                 onEntryDeleted: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
             }
 
@@ -172,10 +187,10 @@ Page {
                 ListItem {
                     id: kdbListItem
 
-                    property string text: model.name // ""
-                    property string subText: model.subtitle // ""
+                    property string text: model.name
+                    property string subText: model.subtitle
                     property bool selected: false
-                    property bool groupItem: model.itemType === KdbListModel.GROUP // false
+                    property bool groupItem: model.itemType === KdbListModel.GROUP
 
                     menu: contextMenuComponent
                     contentHeight: col.height
@@ -244,20 +259,12 @@ Page {
                                                        { "groupId": model.id })
                                         break
                                     case KdbListModel.ENTRY:
-                                        //                                pageStack.push(Qt.resolvedUrl("EditEntryDetailsDialog.qml").toString(),
-                                        //                                               { "entryId": model.id })
                                         console.log("Open EditEntryDetailsDialog: " + model.id)
                                         pageStack.push(editEntryDetailsDialogComponent,
                                                        { "entryId": model.id })
                                         break
                                     }
                                 }
-
-
-                                //                        KdbEntry {
-                                //                            id: kdbEntry
-                                //                        }
-
                             }
                             MenuItem {
                                 text: qsTr("Delete")
@@ -287,7 +294,18 @@ Page {
                     property int entryId: 0
                     // creation of new entry needs parent group ID
                     property int parentGroupId: 0
-//                    property bool parentNeedUpdate: false
+
+                    function setTextFields(title, url, username, password, comment) {
+                        entryTitleTextField.text = title
+                        entryUrlTextField.text = url
+                        entryUsernameTextField.text = username
+                        entryPasswordTextField.text = entryVerifyPasswordTextField.text = password
+                        entryCommentTextField.text = comment
+                    }
+
+                    // control page navigation depending if the password is verified
+                    canNavigateForward: entryPasswordTextField.text === entryVerifyPasswordTextField.text
+                    backNavigation: canNavigateForward
 
                     SilicaFlickable {
                         anchors.fill: parent
@@ -303,101 +321,120 @@ Page {
                             spacing: Theme.paddingLarge
 
                             DialogHeader {
-                                acceptText: "Save"
-                                title: createNewEntry ? "Create Password Entry" : "Edit Password Entry"
+                                acceptText: canNavigateForward ? "Save" : "Verify Password!"
+                                title: canNavigateForward ? "Save" : "Verify Password!"
                             }
 
                             SilicaLabel {
-                                text: createNewEntry ? "Create new Password Entry:" :
+                                text: editEntryDetailsDialog.createNewEntry ? "Create new Password Entry:" :
                                                        "Edit Password Entry:"
                             }
 
                             TextField {
-                                id: entryTitle
+                                id: entryTitleTextField
                                 width: parent.width
                                 label: "Title"
                                 placeholderText: "Set Title"
-                                EnterKey.onClicked: parent.focus = true
+                                EnterKey.onClicked: entryUrlTextField.focus = true
                             }
 
                             TextField {
-                                id: entryUrl
+                                id: entryUrlTextField
                                 width: parent.width
                                 label: "Url"
                                 placeholderText: "Set Url"
-                                EnterKey.onClicked: parent.focus = true
+                                EnterKey.onClicked: entryUsernameTextField.focus = true
                             }
 
                             TextField {
-                                id: entryUsername
+                                id: entryUsernameTextField
                                 width: parent.width
                                 label: "Username"
                                 placeholderText: "Set Username"
-                                EnterKey.onClicked: parent.focus = true
+                                EnterKey.onClicked: entryPasswordTextField.focus = true
                             }
 
                             TextField {
-                                id: entryPassword
+                                id: entryPasswordTextField
                                 width: parent.width
+                                echoMode: TextInput.Password
                                 label: "Password"
                                 placeholderText: "Set Password"
-                                EnterKey.onClicked: parent.focus = true
+                                EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
                             }
 
                             TextField {
-                                id: entryVerifyPassword
+                                id: entryVerifyPasswordTextField
                                 width: parent.width
+                                echoMode: TextInput.Password
                                 label: "Verify Password"
                                 placeholderText: "Verify Password"
-                                errorHighlight: entryPassword.text !== text
+                                errorHighlight: entryPasswordTextField.text !== text
                                 EnterKey.highlighted: !errorHighlight
-                                EnterKey.onClicked: parent.focus = true
+                                EnterKey.onClicked: entryCommentTextField.focus = true
                             }
 
-                            TextField {
-                                id: entryComment
+                            TextArea {
+                                id: entryCommentTextField
                                 width: parent.width
                                 label: "Comment"
                                 placeholderText: "Set Comment"
-                                EnterKey.onClicked: parent.focus = true
                             }
                         }
                     }
 
                     Component.onCompleted: {
+                        // set reference in internal object
+                        internal.editEntryDetailsDialogRef = editEntryDetailsDialog
+
                         kdbEntry.entryId = editEntryDetailsDialog.entryId
                         if (!createNewEntry) {
                             kdbEntry.loadEntryData()
                         }
-                        entryTitle.focus = true
+                        entryTitleTextField.focus = true
+                    }
+                    Component.onDestruction: {
+                        // unset again
+                        internal.editEntryDetailsDialogRef = null
                     }
 
-                    onAccepted: internal.saveKdbEntryDetails(editEntryDetailsDialog.createNewEntry,
-                                                               editEntryDetailsDialog.entryId,
-                                                               editEntryDetailsDialog.parentGroupId)
-                    onRejected: internal.openQueryDialogForUnsavedChangesComponent()
+                    // user wants to save new entry data
+                    onAccepted: {
+                        // first save locally Kdb entry details then trigger save to backend
+                        internal.setKdbEntryDetails(createNewEntry,
+                                                    entryId,
+                                                    parentGroupId,
+                                                    entryTitleTextField.text,
+                                                    entryUrlTextField.text,
+                                                    entryUsernameTextField.text,
+                                                    entryPasswordTextField.text,
+                                                    entryCommentTextField.text)
+                        internal.saveKdbEntryDetails()
+                    }
+                    // user has rejected editing entry data, check if there are unsaved details
+                    onRejected: {
+                        // first save locally Kdb entry details then trigger check for unsaved changes
+                        internal.setKdbEntryDetails(createNewEntry,
+                                                    entryId,
+                                                    parentGroupId,
+                                                    entryTitleTextField.text,
+                                                    entryUrlTextField.text,
+                                                    entryUsernameTextField.text,
+                                                    entryPasswordTextField.text,
+                                                    entryCommentTextField.text)
+                        internal.checkForUnsavedChanges()
+                    }
                 }
-
             } // editEntryDetailsDialog
 
             Component {
                 id: queryDialogForUnsavedChangesComponent
                 QueryDialog {
-//                    property alias entryId: kdbEntryForSaving.entryId
-//                    property bool createNewEntry: false
-//                    property int parentGroupId: 0
-//                    property string entryTitle: ""
-//                    property string entryUrl: ""
-//                    property string entryUsername: ""
-//                    property string entryPassword: ""
-//                    property string entryComment: ""
-
-                    canAccept: true
                     headerAcceptText: "Yes"
                     headerTitleText: "Yes"
                     titleText: "Save Changes"
                     message: "Do you want to save your changes in the Password Entry?"
-                    onAccepted: console.log("query dialog accepted :-)")
+                    onAccepted: internal.saveKdbEntryDetails()
                 }
             } // end queryForUnsavedChangesComponent
         } // end kdbLIstItemDelegate
@@ -410,7 +447,6 @@ Page {
     }
 
     Component.onCompleted: {
-//    onPageContainerChanged: {
         if (loadMasterGroups) {
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
@@ -419,18 +455,23 @@ Page {
     }
 
     function __showLoadErrorPage() {
-        pageStack.push(infoDialog, {
-                           "headerText": "Info",
+        console.log("ERROR: Could not load")
+// TODO both error pages below are not shown because of transition in progress stuff...
+        pageStack.replace(Qt.resolvedUrl("../common/QueryDialog.qml").toString(), {
+                           "headerAcceptText": "Info",
+                           "headerTitleText": "Info",
                            "titleText": "Load Error",
                            "message": "Could not load all items from database. That's strange!"
                        })
     }
 
     function __showSaveErrorPage() {
-        pageStack.push(infoDialog, {
-                           "headerText": "Info",
+        console.log("ERROR: Could not save")
+        pageStack.replace(Qt.resolvedUrl("../common/QueryDialog.qml").toString(), {
+                           "headerAcceptText": "Info",
+                           "headerTitleText": "Info",
                            "titleText": "Save Error",
-                           "message": "Could not save your changes to database. That's strange!"
+                           "message": "Could not save your changes to database. Either the location where your Keepass database file is places is write protected or was removed."
                        })
     }
 }
