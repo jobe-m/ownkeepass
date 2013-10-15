@@ -101,9 +101,6 @@ Page {
                   save the entry details if he has canceled the edit dialog unintentionally or because he
                   did not understand the whole UI paradigma at all...
                   */
-                property bool createNewEntry: false
-                property int entryId: 0
-                property int parentGroupId: 0
                 property string originalEntryTitle: ""
                 property string originalEntryUrl: ""
                 property string originalEntryUsername: ""
@@ -115,11 +112,38 @@ Page {
                 property string entryPassword: ""
                 property string entryComment: ""
 
+                /*
+                  Here are the details for Kdb groups. The same applies like for Kdb entries.
+                  */
+                property string originalGroupName: ""
+                property string groupName: ""
+
+                /*
+                  Commonly used for entries and groups manupulation.
+                  */
+                property bool createNewItem: false
+                property int itemId: 0
+                property int parentGroupId: 0
+
+                function saveKdbGroupDetails() {
+                    console.log("Group name: " + groupName)
+                    // Set group ID and create or save Kdb Group
+                    kdbGroup.groupId = itemId
+                    if (createNewItem) {
+                        // create new group in database, save and update list model data in backend
+                        kdbGroup.createNewGroup(groupName,
+                                                parentGroupId)
+                    } else {
+                        // save changes of existing group to database and update list model data in backend
+                        kdbGroup.saveGroupData(groupName)
+                    }
+                }
+
                 function saveKdbEntryDetails() {
                     console.log("Save entry (internal): " + entryTitle)
                     // Set entry ID and create or save Kdb Entry
-                    kdbEntry.entryId = entryId
-                    if (createNewEntry) {
+                    kdbEntry.entryId = itemId
+                    if (createNewItem) {
                         // create new group in database, save and update list model data in backend
                         kdbEntry.createNewEntry(entryTitle,
                                                 entryUrl,
@@ -164,13 +188,15 @@ Page {
 
                     // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
                     // depending on which is currently active
-                    if(editEntryDetailsDialogRef) editEntryDetailsDialogRef.setTextFields(title, url, username, password, comment)
-                    if(showEntryDetailsPageRef) showEntryDetailsPageRef.setTextFields(title, url, username, password, comment)
+                    if(editEntryDetailsDialogRef)
+                        editEntryDetailsDialogRef.setTextFields(title, url, username, password, comment)
+                    if(showEntryDetailsPageRef)
+                        showEntryDetailsPageRef.setTextFields(title, url, username, password, comment)
                 }
 
                 function setKdbEntryDetails(createNew, eId, parentGId, title, url, username, password, comment) {
-                    createNewEntry = createNew
-                    entryId        = eId
+                    createNewItem = createNew
+                    itemId        = eId
                     parentGroupId  = parentGId
                     entryTitle     = title
                     entryUrl       = url
@@ -183,6 +209,13 @@ Page {
             KdbGroup {
                 id: kdbGroup
                 onGroupDeleted: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+                onGroupDataLoaded: {
+// TODO
+                    groupTitle.text = title
+                    __originalGroupName = title
+                 }
+                onGroupDataSaved: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+                onNewGroupCreated: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
             }
 
             KdbEntry {
@@ -429,9 +462,8 @@ Page {
                         entryCommentTextField.text = comment
                     }
 
-                    // control page navigation depending if the password is verified
-                    canNavigateForward: entryPasswordTextField.text === entryVerifyPasswordTextField.text
-                    backNavigation: canNavigateForward
+                    // forbit page navigation if title is not set and password is not verified
+                    canNavigateForward: entryTitleTextField.text !== "" && entryPasswordTextField.text === entryVerifyPasswordTextField.text
 
                     SilicaFlickable {
                         anchors.fill: parent
@@ -447,20 +479,22 @@ Page {
                             spacing: Theme.paddingLarge
 
                             DialogHeader {
-                                acceptText: canNavigateForward ? "Save" : "Verify Password!"
-                                title: canNavigateForward ? "Save" : "Verify Password!"
+                                acceptText: "Save"
+                                title: "Save"
                             }
 
                             SilicaLabel {
                                 text: editEntryDetailsDialog.createNewEntry ? "Create new Password Entry:" :
-                                                       "Edit Password Entry:"
+                                                                              "Edit Password Entry:"
                             }
 
                             TextField {
                                 id: entryTitleTextField
                                 width: parent.width
                                 label: "Title"
-                                placeholderText: "Set Title"
+                                placeholderText: "Set Title (mandatory)"
+                                errorHighlight: text !== ""
+                                EnterKey.highlighted: !errorHighlight
                                 EnterKey.onClicked: entryUrlTextField.focus = true
                             }
 
@@ -539,19 +573,87 @@ Page {
                     }
                     // user has rejected editing entry data, check if there are unsaved details
                     onRejected: {
-                        // first save locally Kdb entry details then trigger check for unsaved changes
-                        internal.setKdbEntryDetails(createNewEntry,
-                                                    entryId,
-                                                    parentGroupId,
-                                                    entryTitleTextField.text,
-                                                    entryUrlTextField.text,
-                                                    entryUsernameTextField.text,
-                                                    entryPasswordTextField.text,
-                                                    entryCommentTextField.text)
-                        internal.checkForUnsavedChanges()
+                        // no need for saving if input fields are invalid
+                        if (canNavigateForward) {
+                            // first save locally Kdb entry details then trigger check for unsaved changes
+                            internal.setKdbEntryDetails(createNewEntry,
+                                                        entryId,
+                                                        parentGroupId,
+                                                        entryTitleTextField.text,
+                                                        entryUrlTextField.text,
+                                                        entryUsernameTextField.text,
+                                                        entryPasswordTextField.text,
+                                                        entryCommentTextField.text)
+                            internal.checkForUnsavedChanges()
+                        }
                     }
                 }
             } // editEntryDetailsDialog
+
+            Component {
+                id: editGroupDetailsDialogComponent
+                Dialog {
+                    id: editGroupDetailsDialog
+
+                    property bool createNewGroup: false
+                    // ID of the keepass entry which should be edited
+                    property int groupId: 0
+                    // creation of new group needs parent group ID
+                    property int parentGroupId: 0
+
+                    // forbit page navigation if name of group is empty
+                    canNavigateForward: groupTitleTextField.text !== ""
+
+                    SilicaFlickable {
+                        anchors.fill: parent
+                        contentWidth: parent.width
+                        contentHeight: col.height
+
+                        // Show a scollbar when the view is flicked, place this over all other content
+                        VerticalScrollDecorator {}
+
+                        Column {
+                            id: col
+                            width: parent.width
+                            spacing: Theme.paddingLarge
+
+                            DialogHeader {
+                                acceptText: "Save"
+                                title: "Save"
+                            }
+
+                            SilicaLabel {
+                                text: editGroupDetailsDialog.createNewGroup ? qsTr("Type in a name for the new group:") :
+                                                                              qsTr("Change name of group:")
+                            }
+
+                            TextField {
+                                id: groupTitleTextField
+                                width: parent.width
+                                label: "Name of group"
+                                placeholderText: "Set name of group"
+                                errorHighlight: text !== ""
+                                EnterKey.highlighted: !errorHighlight
+                                EnterKey.onClicked: parent.focus = true
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+// TODO
+                        if (!editGroupDetailsDialog.createNewGroup) {
+                            console.log("Load Data for Group ID: " + kdbGroup.groupId)
+                            kdbGroup.loadGroupData()
+                        }
+                        groupTitle.focus = true
+                    }
+
+                    onAccepted: {
+                    }
+                    onCanceled: {
+                    }
+                }
+            } // end editGroupDetailsDialogComponent
 
             Component {
                 id: queryDialogForUnsavedChangesComponent
