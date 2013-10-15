@@ -52,11 +52,13 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Database Settings")
+// TODO
                 onClicked: pageStack.push(Qt.resolvedUrl("DatabaseSettingsPage.qml").toString())
             }
 
             MenuItem {
                 text: "New Password Group"
+// TODO
                 onClicked: pageStack.push(Qt.resolvedUrl("EditGroupDetailsDialog.qml").toString(),
                                           { "createNewGroup": true, "parentGroupId": groupId })
             }
@@ -85,13 +87,20 @@ Page {
             QtObject {
                 id: internal
 
+                /*
+                  These are handlers to edit dialo and show page which needs to get the entry details
+                  passed to in order to shown them
+                  */
                 property Dialog editEntryDetailsDialogRef: null
+                property Page showEntryDetailsPageRef: null
 
-                // Here are all Kdb entry details which are used to create a new entry, save changes to an
-                // already existing entry and to check if the user has done changes to an entry in the UI and
-                // canceled the edit dialog. In that case a query dialog is shown to let the user save the
-                // entry details if he has canceled the edit dialog unintentionally or because he did not
-                // understand the whole UI paradigma at all...
+                /*
+                  Here are all Kdb entry details which are used to create a new entry, save changes to an
+                  already existing entry and to check if the user has done changes to an entry in the UI
+                  after he canceled the edit dialog. In that case a query dialog is shown to let the user
+                  save the entry details if he has canceled the edit dialog unintentionally or because he
+                  did not understand the whole UI paradigma at all...
+                  */
                 property bool createNewEntry: false
                 property int entryId: 0
                 property int parentGroupId: 0
@@ -153,8 +162,10 @@ Page {
                     entryPassword = originalEntryPassword = password
                     entryComment  = originalEntryComment  = comment
 
-                    // populate entry detail text fields in EditEntryDetailsDialog
+                    // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
+                    // depending on which is currently active
                     if(editEntryDetailsDialogRef) editEntryDetailsDialogRef.setTextFields(title, url, username, password, comment)
+                    if(showEntryDetailsPageRef) showEntryDetailsPageRef.setTextFields(title, url, username, password, comment)
                 }
 
                 function setKdbEntryDetails(createNew, eId, parentGId, title, url, username, password, comment) {
@@ -209,11 +220,12 @@ Page {
                     onClicked: {
                         switch (model.itemType) {
                         case KdbListModel.GROUP:
+// TODO
                             pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                            { "pageTitle": model.name, "groupId": model.id })
                             break
                         case KdbListModel.ENTRY:
-                            pageStack.push(Qt.resolvedUrl("EntryDetailsPage.qml").toString(),
+                            pageStack.push(showEntryDetailsPageComponent,
                                            { "pageTitle": model.name, "entryId": model.id })
                             break
                         }
@@ -255,6 +267,7 @@ Page {
                                 onClicked: {
                                     switch (model.itemType) {
                                     case KdbListModel.GROUP:
+// TODO
                                         pageStack.push(Qt.resolvedUrl("EditGroupDetailsDialog.qml").toString(),
                                                        { "groupId": model.id })
                                         break
@@ -283,6 +296,119 @@ Page {
                     } // end contextMenuComponent
                 } // end kdbListItem
             } // end kdbListItemComponent
+
+            Component {
+                id: showEntryDetailsPageComponent
+                Page {
+                    id: showEntryDetailsPage
+
+                    property string pageTitle: ""
+                    // ID of the keepass entry to be shown
+                    property int entryId: 0
+
+                    function setTextFields(title, url, username, password, comment) {
+                        pageHeader.title = title
+                        entryUrlTextField.text = url
+                        entryUsernameTextField.text = username
+                        entryPasswordTextField.text = password
+                        entryCommentTextField.text = comment
+                    }
+
+                    SilicaFlickable {
+                        anchors.fill: parent
+                        contentWidth: parent.width
+                        contentHeight: col.height
+
+                        ViewPlaceholder {
+                            enabled: !entryUrlTextField.enabled && !entryUsernameTextField.enabled &&
+                                     !entryPasswordTextField.enabled && !entryCommentTextField.enabled
+                            text: "No content"
+                            hintText: "Pull down to edit Password Entry and add Url, Username, Password and comment"
+                        }
+
+                        // Show a scollbar when the view is flicked, place this over all other content
+                        VerticalScrollDecorator {}
+
+                        Column {
+                            id: col
+                            width: parent.width
+                            spacing: Theme.paddingLarge
+
+                            KeepassPageHeader {
+                                id: pageHeader
+                                title: pageTitle
+                                subTitle: "ownKeepass"
+                            }
+
+                            PullDownMenu {
+                                MenuItem {
+// TODO write entry settings page or "show more details"
+                                    text: qsTr("Entry Settings")
+                                    onClicked: pageStack.push(Qt.resolvedUrl("EntrySettingsPage.qml").toString())
+                                }
+
+                                MenuItem {
+                                    text: "Edit Password Entry"
+                                    onClicked: {
+                                        pageStack.push(editEntryDetailsDialogComponent,
+                                                       { "entryId": showEntryDetailsPage.entryId })
+                                    }
+                                }
+                            }
+
+                            TextField {
+                                id: entryUrlTextField
+                                width: parent.width
+                                enabled: text !== ""
+                                visible: text !== ""
+                                readOnly: true
+                                label: "Url"
+                            }
+
+                            TextField {
+                                id: entryUsernameTextField
+                                width: parent.width
+                                enabled: text !== ""
+                                visible: text !== ""
+                                readOnly: true
+                                label: "Username"
+                            }
+
+                            TextField {
+                                id: entryPasswordTextField
+                                width: parent.width
+                                enabled: text !== ""
+                                visible: text !== ""
+                                readOnly: true
+                                echoMode: TextInput.Password
+                                label: "Password"
+                            }
+
+                            TextArea {
+                                id: entryCommentTextField
+                                width: parent.width
+                                enabled: text !== ""
+                                visible: text !== ""
+                                readOnly: true
+                                label: "Comment"
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        console.log("showEntryDetailsPage" + pageTitle)
+                        // set reference in internal object
+                        internal.showEntryDetailsPageRef = showEntryDetailsPage
+                        // set entry ID and load entry details to show in this page
+                        kdbEntry.entryId = showEntryDetailsPage.entryId
+                        kdbEntry.loadEntryData()
+                    }
+                    Component.onDestruction: {
+                        // unset again
+                        internal.showEntryDetailsPageRef = null
+                    }
+                } // end showEntryDetailsPage
+            } // end showEntryDetailsPageComponent
 
             Component {
                 id: editEntryDetailsDialogComponent
