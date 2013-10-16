@@ -631,7 +631,7 @@ bool Kdb3Database::loadReal(QString filename, bool readOnly, bool differentEncod
 	}
 	
 	if ((crypto_size > 2147483446) || (!crypto_size && NumGroups)){
-        error=tr("Decryption failed.\nThe password is wrong or the file is damaged.");
+        error=tr("Decryption failed. The password is wrong or the file is damaged.");
 		KeyError=true;
 		LOAD_RETURN_CLEANUP
 	}
@@ -658,7 +658,7 @@ bool Kdb3Database::loadReal(QString filename, bool readOnly, bool differentEncod
 			qDebug("Decryption failed. Retrying with UTF-8.");
 			return loadReal(filename, readOnly, true); // second/third try
 		}
-        error=tr("Hash test failed.\nThe password is wrong or the file is damaged.");
+        error=tr("Hash test failed. The password is wrong or the file is damaged.");
 		KeyError=true;
 		LOAD_RETURN_CLEANUP
 	}
