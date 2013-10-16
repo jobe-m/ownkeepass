@@ -45,7 +45,7 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
 
-            KeepassPageHeader {
+            PageHeaderExtended {
                 title: "ownKeepass"
                 subTitle: "Password Safe"
             }

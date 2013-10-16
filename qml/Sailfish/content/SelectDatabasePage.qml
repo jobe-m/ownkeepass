@@ -202,7 +202,7 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
 
-            KeepassPageHeader {
+            PageHeaderExtended {
                 title: createNewDatabase ? qsTr("New database") : qsTr("Open database")
             }
 

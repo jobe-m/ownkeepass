@@ -38,7 +38,7 @@ Page {
         anchors.fill: parent
         model: kdbListModel
 
-        header: KeepassPageHeader {
+        header: PageHeaderExtended {
             title: pageTitle
             subTitle: "ownKeepass"
         }
@@ -399,7 +399,7 @@ Page {
                             width: parent.width
                             spacing: Theme.paddingLarge
 
-                            KeepassPageHeader {
+                            PageHeaderExtended {
                                 id: pageHeader
                                 title: pageTitle
                                 subTitle: "ownKeepass"

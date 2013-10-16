@@ -76,7 +76,7 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
 
-            KeepassPageHeader {
+            PageHeaderExtended {
                 id: pageHeader
                 title: pageTitle
                 subTitle: "ownKeepass"

@@ -87,7 +87,7 @@ Page {
         anchors.fill: parent
         model: fileBrowserListModel
 
-        header: KeepassPageHeader {
+        header: PageHeaderExtended {
             title: "File Browser"
             subTitle: "/sdcard/"
         }
