@@ -29,6 +29,15 @@ import KeepassPlugin 1.0
 Page {
     id: page
 
+    // Show an info box for 10 seconds on top of screen
+    function showinfo(title, message) {
+        infoBanner.execute(title, message)
+    }
+
+    InfoPopup {
+        id: infoBanner
+    }
+
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -120,16 +129,6 @@ Page {
         onDatabaseOpened: internal.databaseOpenedHandler(result, errorMsg)
         onNewDatabaseCreated: internal.newDatabaseCreatedHandler(result, errorMsg)
         onDatabaseClosed: internal.databaseClosedHandler(result, errorMsg)
-    }
-
-    InfoDialog {
-        id: infoDialog
-// Usage:
-//        pageStack.push(infoDialog, {
-//                           "headerText": "Info",
-//                           "titleText": "",
-//                           "message": ""
-//                       })
     }
 
     Component.onCompleted: {
@@ -261,11 +260,12 @@ Page {
                 break }
             case KdbDatabase.RE_DB_LOAD_ERROR: {
                 // show error to the user
-                pageStack.push(infoDialog, {
-                                   "headerText": "Info",
-                                   "titleText": "Password Error",
-                                   "message": errorMsg + " Please try again."
-                               })
+                showinfo("Password Error", errorMsg + " Please try again.")
+//                pageStack.push(infoDialog, {
+//                                   "headerText": "Info",
+//                                   "titleText": "Password Error",
+//                                   "message": errorMsg + " Please try again."
+//                               })
                 break }
             default:
                 console.log("ERROR: unknown result on databaseOpened")
