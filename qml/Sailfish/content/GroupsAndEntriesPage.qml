@@ -58,8 +58,7 @@ Page {
 
             MenuItem {
                 text: "New Password Group"
-// TODO
-                onClicked: pageStack.push(Qt.resolvedUrl("EditGroupDetailsDialog.qml").toString(),
+                onClicked: pageStack.push(editGroupDetailsDialogComponent,
                                           { "createNewGroup": true, "parentGroupId": groupId })
             }
             MenuItem {
@@ -88,10 +87,11 @@ Page {
                 id: internal
 
                 /*
-                  These are handlers to edit dialo and show page which needs to get the entry details
-                  passed to in order to shown them
+                  These are handlers to edit entry and group dialogs and show entry page which needs to
+                  get the entry resp. group details passed to in order to shown them
                   */
                 property Dialog editEntryDetailsDialogRef: null
+                property Dialog editGroupDetailsDialogRef: null
                 property Page showEntryDetailsPageRef: null
 
                 /*
@@ -106,20 +106,24 @@ Page {
                 property string originalEntryUsername: ""
                 property string originalEntryPassword: ""
                 property string originalEntryComment: ""
+// TODO                property int originalEntryImageId: 0
                 property string entryTitle: ""
                 property string entryUrl: ""
                 property string entryUsername: ""
                 property string entryPassword: ""
                 property string entryComment: ""
+// TODO                property int entryImageId: 0
 
                 /*
                   Here are the details for Kdb groups. The same applies like for Kdb entries.
                   */
                 property string originalGroupName: ""
+// TODO                property int originalGroupImageId: 0
                 property string groupName: ""
+// TODO                property int groupImageId: 0
 
                 /*
-                  Commonly used for entries and groups manupulation.
+                  Commonly used for manipulation and creation of entries and groups.
                   */
                 property bool createNewItem: false
                 property int itemId: 0
@@ -140,7 +144,6 @@ Page {
                 }
 
                 function saveKdbEntryDetails() {
-                    console.log("Save entry (internal): " + entryTitle)
                     // Set entry ID and create or save Kdb Entry
                     kdbEntry.entryId = itemId
                     if (createNewItem) {
@@ -161,14 +164,21 @@ Page {
                     }
                 }
 
-                function checkForUnsavedChanges() {
-                    console.log("Check for unsaved changes")
+                function checkForUnsavedKdbEntryChanges() {
                     // check if the user has changed any entry details
                     if (originalEntryTitle !== entryTitle || originalEntryUrl !== entryUrl ||
                             originalEntryUsername !== entryUsername || originalEntryPassword !== entryPassword ||
                             originalEntryComment !== entryComment) {
                         // open query dialog for unsaved changes
-                        pageStack.replace(queryDialogForUnsavedChangesComponent)
+                        pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                          { "isEntry": true })
+                    }
+                }
+
+                function checkForUnsavedKdbGroupChanges() {
+                    if (originalGroupName !== groupName) {
+                        pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                          { "isEntry": false })
                     }
                 }
 
@@ -194,26 +204,35 @@ Page {
                         showEntryDetailsPageRef.setTextFields(title, url, username, password, comment)
                 }
 
-                function setKdbEntryDetails(createNew, eId, parentGId, title, url, username, password, comment) {
-                    createNewItem = createNew
-                    itemId        = eId
-                    parentGroupId  = parentGId
-                    entryTitle     = title
-                    entryUrl       = url
-                    entryUsername  = username
-                    entryPassword  = password
-                    entryComment   = comment
+                function loadKdbGroupDetails(name) {
+                    groupName = originalGroupName = name
+                    // Populate group detail text fields in editGroupDetailsDialog
+                    if(editGroupDetailsDialogRef)
+                        editGroupDetailsDialogRef.setTextFields(name)
+                }
+
+                function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment) {
+                    createNewItem = createNewEntry
+                    itemId        = entryId
+                    parentGroupId = parentGrId
+                    entryTitle    = title
+                    entryUrl      = url
+                    entryUsername = username
+                    entryPassword = password
+                    entryComment  = comment
+                }
+
+                function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name) {
+                    createNewItem = createNewGroup
+                    itemId        = groupId
+                    parentGroupId = parentGrId
+                    groupName     = name
                 }
             }
 
             KdbGroup {
                 id: kdbGroup
-                onGroupDeleted: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
-                onGroupDataLoaded: {
-// TODO
-                    groupTitle.text = title
-                    __originalGroupName = title
-                 }
+                onGroupDataLoaded: internal.loadKdbGroupDetails(title)
                 onGroupDataSaved: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
                 onNewGroupCreated: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
             }
@@ -223,6 +242,21 @@ Page {
                 onEntryDataLoaded: internal.loadKdbEntryDetails(title, url, username, password, comment)
                 onEntryDataSaved: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
                 onNewEntryCreated: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+            }
+
+            /*
+              We need separate objects for deletion because of the 5 seconds guard period where
+              the user can undo the delete operation, i.e. the deletion is delayed and the user
+              might open another item which would then be deleted if we don't use separate
+              objects here
+              */
+            KdbGroup {
+                id: kdbGroupForDeletion
+                onGroupDeleted: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+            }
+
+            KdbEntry {
+                id: kdbEntryForDeletion
                 onEntryDeleted: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
             }
 
@@ -240,20 +274,19 @@ Page {
                     contentHeight: col.height
                     width: parent ? parent.width : screen.width
 
-                    function __removeGroup() {
-                        kdbGroup.groupId = model.id
-                        remorseAction("Deleting group", function() { kdbGroup.deleteGroup() })
+                    function listItemRemoveGroup() {
+                        kdbGroupForDeletion.groupId = model.id
+                        remorseAction("Deleting group", function() { kdbGroupForDeletion.deleteGroup() })
                     }
-                    function __removeEntry() {
-                        kdbEntry.entryId = model.id
-                        remorseAction("Deleting entry", function() { kdbEntry.deleteEntry() })
+                    function listItemRemoveEntry() {
+                        kdbEntryForDeletion.entryId = model.id
+                        remorseAction("Deleting entry", function() { kdbEntryForDeletion.deleteEntry() })
                     }
 
                     ListView.onRemove: animateRemoval()
                     onClicked: {
                         switch (model.itemType) {
                         case KdbListModel.GROUP:
-// TODO
                             pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                            { "pageTitle": model.name, "groupId": model.id })
                             break
@@ -277,6 +310,7 @@ Page {
                             horizontalAlignment: Text.AlignLeft
                             font.pixelSize: Theme.fontSizeMedium
                             color: kdbListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
                         }
 
                         Label {
@@ -300,12 +334,10 @@ Page {
                                 onClicked: {
                                     switch (model.itemType) {
                                     case KdbListModel.GROUP:
-// TODO
-                                        pageStack.push(Qt.resolvedUrl("EditGroupDetailsDialog.qml").toString(),
+                                        pageStack.push(editGroupDetailsDialogComponent,
                                                        { "groupId": model.id })
                                         break
                                     case KdbListModel.ENTRY:
-                                        console.log("Open EditEntryDetailsDialog: " + model.id)
                                         pageStack.push(editEntryDetailsDialogComponent,
                                                        { "entryId": model.id })
                                         break
@@ -317,10 +349,10 @@ Page {
                                 onClicked: {
                                     switch (model.itemType) {
                                     case KdbListModel.GROUP:
-                                        __removeGroup()
+                                        listItemRemoveGroup()
                                         break
                                     case KdbListModel.ENTRY:
-                                        __removeEntry()
+                                        listItemRemoveEntry()
                                         break
                                     }
                                 }
@@ -493,7 +525,7 @@ Page {
                                 width: parent.width
                                 label: "Title"
                                 placeholderText: "Set Title (mandatory)"
-                                errorHighlight: text !== ""
+                                errorHighlight: text === ""
                                 EnterKey.highlighted: !errorHighlight
                                 EnterKey.onClicked: entryUrlTextField.focus = true
                             }
@@ -584,7 +616,7 @@ Page {
                                                         entryUsernameTextField.text,
                                                         entryPasswordTextField.text,
                                                         entryCommentTextField.text)
-                            internal.checkForUnsavedChanges()
+                            internal.checkForUnsavedKdbEntryChanges()
                         }
                     }
                 }
@@ -600,6 +632,10 @@ Page {
                     property int groupId: 0
                     // creation of new group needs parent group ID
                     property int parentGroupId: 0
+
+                    function setTextFields(name) {
+                        groupTitleTextField.text = name
+                    }
 
                     // forbit page navigation if name of group is empty
                     canNavigateForward: groupTitleTextField.text !== ""
@@ -632,7 +668,7 @@ Page {
                                 width: parent.width
                                 label: "Name of group"
                                 placeholderText: "Set name of group"
-                                errorHighlight: text !== ""
+                                errorHighlight: text === ""
                                 EnterKey.highlighted: !errorHighlight
                                 EnterKey.onClicked: parent.focus = true
                             }
@@ -640,17 +676,39 @@ Page {
                     }
 
                     Component.onCompleted: {
-// TODO
-                        if (!editGroupDetailsDialog.createNewGroup) {
-                            console.log("Load Data for Group ID: " + kdbGroup.groupId)
+                        // set reference in internal object
+                        internal.editGroupDetailsDialogRef = editGroupDetailsDialog
+
+                        kdbGroup.groupId = editGroupDetailsDialog.groupId
+                        if (!createNewGroup) {
                             kdbGroup.loadGroupData()
                         }
-                        groupTitle.focus = true
+                        groupTitleTextField.focus = true
                     }
-
+                    Component.onDestruction: {
+                        // unset again
+                        internal.editGroupDetailsDialogRef = null
+                    }
+                    // user wants to save new entry data
                     onAccepted: {
+                        // first save locally Kdb entry details then trigger save to backend
+                        internal.setKdbGroupDetails(createNewGroup,
+                                                    groupId,
+                                                    parentGroupId,
+                                                    groupTitleTextField.text)
+                        internal.saveKdbGroupDetails()
                     }
-                    onCanceled: {
+                    // user has rejected editing entry data, check if there are unsaved details
+                    onRejected: {
+                        // no need for saving if input fields are invalid
+                        if (canNavigateForward) {
+                            // first save locally Kdb entry details then trigger check for unsaved changes
+                            internal.setKdbGroupDetails(createNewGroup,
+                                                        groupId,
+                                                        parentGroupId,
+                                                        groupTitleTextField.text)
+                            internal.checkForUnsavedKdbGroupChanges()
+                        }
                     }
                 }
             } // end editGroupDetailsDialogComponent
@@ -658,11 +716,14 @@ Page {
             Component {
                 id: queryDialogForUnsavedChangesComponent
                 QueryDialog {
+                    property bool isEntry: true
                     headerAcceptText: "Yes"
                     headerTitleText: "Yes"
-                    titleText: "Save Changes"
-                    message: "Do you want to save your changes in the Password Entry?"
-                    onAccepted: internal.saveKdbEntryDetails()
+                    titleText: "Unsaved Changes"
+                    message: isEntry ? "Do you want to save changes to the Password Entry?" :
+                                       "Do you want to save changes to the Password Group?"
+                    onAccepted: isEntry ? internal.saveKdbEntryDetails() :
+                                          internal.saveKdbGroupDetails()
                 }
             } // end queryForUnsavedChangesComponent
         } // end kdbLIstItemDelegate
