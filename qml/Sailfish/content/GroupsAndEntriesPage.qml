@@ -53,7 +53,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Database Settings")
-// TODO
+// TODO implement database settings page with password change, encryption type, hash rounds, etc.
                 onClicked: pageStack.push(Qt.resolvedUrl("DatabaseSettingsPage.qml").toString())
             }
 
@@ -234,7 +234,7 @@ Page {
             KdbGroup {
                 id: kdbGroup
                 onGroupDataLoaded: internal.loadKdbGroupDetails(title)
-                onGroupDataSaved: /*if (result === KdbGroup.RE_SAVE_ERROR)*/ __showSaveErrorPage()
+                onGroupDataSaved: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
                 onNewGroupCreated: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
             }
 
@@ -408,9 +408,9 @@ Page {
 
                             PullDownMenu {
                                 MenuItem {
-// TODO write entry settings page or "show more details"
-                                    text: qsTr("Entry Settings")
-                                    onClicked: pageStack.push(Qt.resolvedUrl("EntrySettingsPage.qml").toString())
+                                    text: qsTr("Show more Details")
+// TODO implement "show more details" with a new state in showKdbEntryDetailsPage and dialog
+                                    onClicked: {}
                                 }
 
                                 MenuItem {
@@ -496,7 +496,8 @@ Page {
                     }
 
                     // forbit page navigation if title is not set and password is not verified
-                    canNavigateForward: entryTitleTextField.text !== "" && entryPasswordTextField.text === entryVerifyPasswordTextField.text
+                    canNavigateForward: entryTitleTextField.text !== "" &&
+                                        entryPasswordTextField.text === entryVerifyPasswordTextField.text
 
                     SilicaFlickable {
                         anchors.fill: parent
@@ -747,11 +748,11 @@ Page {
 
     function __showLoadErrorPage() {
         console.log("ERROR: Could not load")
-        Global.env.infoPopup.show("Load Error", "Could not load all items from database. That's strange!")
+        Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 10000)
     }
 
     function __showSaveErrorPage() {
         console.log("ERROR: Could not save")
-        Global.env.infoPopup.show("Save Error", "Could not save your changes to database. Either the location where your Keepass database file is places is write protected or was removed.")
+        Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 15000)
     }
 }

@@ -1,29 +1,30 @@
 .pragma library
+.import QtQuick 2.0 as QQ
 
 /***************************************************************************
 **
-** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
-** This file is part of KeepassM.
+** This file is part of ownKeepass.
 **
-** KeepassM is free software: you can redistribute it and/or modify
+** ownKeepass is free software: you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
 ** the Free Software Foundation, either version 2 of the License, or
 ** (at your option) any later version.
 **
-** KeepassM is distributed in the hope that it will be useful,
+** ownKeepass is distributed in the hope that it will be useful,
 ** but WITHOUT ANY WARRANTY; without even the implied warranty of
 ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ** GNU General Public License for more details.
 **
 ** You should have received a copy of the GNU General Public License
-** along with KeepassM.  If not, see <http://www.gnu.org/licenses/>.
+** along with ownKeepass. If not, see <http://www.gnu.org/licenses/>.
 **
 ***************************************************************************/
 
 var constants = {
-
+    textFieldAlignment: QQ.Text.AlignRight
 }
 
 var env = {
@@ -42,7 +43,6 @@ var config = {
     // user preferences
     showEmptyEntries: false,
     maxNumberOfRecents: 2,
-
 
     // Array objects holding recent opened keepass databases.
     // The full path to the database and keyfile must be set.

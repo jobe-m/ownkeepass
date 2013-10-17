@@ -55,7 +55,7 @@ Page {
                       "KeepassX 0.4.3 on Windows/MacOS/Linux. Please note that it cannot open Keepass version 2 " +
                       "database files. If you share your Keepass database with a desktop system it is " +
                       "recommended that you use KeepassX 0.4.3. By doing so you archive maximum compatibility " +
-                      "since the database code of KeepassMe is based on KeepassX 0.4.3." +
+                      "since the database code of ownKeepass is based on KeepassX 0.4.3." +
                       "\n\n" +
                       "Settings:\n\n" +
                       "The default location for you Keepass database file is \"/user/home/MyDocs/notes.kdb\". " +
