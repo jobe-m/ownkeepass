@@ -50,66 +50,6 @@ Page {
                 subTitle: "Password Safe"
             }
 
-            SectionHeader {
-                text: internal.createNewDatabase ? "Create new Password Safe" : "Open Password Safe"
-            }
-
-            SilicaLabel {
-                text: internal.createNewDatabase ? "Type in a master password for locking your Keepass Password Safe:" :
-                                            "Type in master password for unlocking your Keepass Password Safe:"
-            }
-
-            TextField {
-                id: passwordField
-                width: parent.width
-                inputMethodHints: Qt.ImhNoPredictiveText
-                echoMode: TextInput.Password
-                label: "Password"
-                placeholderText: "Enter password"
-                text: "qwertz"
-                EnterKey.enabled: text !== ""
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: {
-                    if (internal.createNewDatabase)
-                        confirmPasswordField.focus = true
-                    else
-                        internal.openKeepassDatabase(passwordField.text, internal.createNewDatabase)
-                }
-            }
-
-            TextField {
-                id: confirmPasswordField
-                width: parent.width
-                inputMethodHints: Qt.ImhNoPredictiveText
-                echoMode: TextInput.Password
-                enabled: internal.createNewDatabase && passwordField.text || text
-                visible: internal.createNewDatabase
-                errorHighlight: passwordField.text !== text
-                label: "Confirm Password"
-                placeholderText: label
-                text: "qwertz"
-                opacity: enabled ? 1 : 0.5
-                Behavior on opacity { NumberAnimation { } }
-                EnterKey.enabled: text !== ""
-                EnterKey.highlighted: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: {
-                    if (errorHighlight)
-                        passwordField.focus = true
-                    else
-                        internal.openKeepassDatabase(confirmPasswordField.text, internal.createNewDatabase)
-                }
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                enabled: internal.createNewDatabase ? passwordField.text !== "" && !confirmPasswordField.errorHighlight : passwordField.text !== ""
-                opacity: internal.createNewDatabase ? passwordField.text !== "" && !confirmPasswordField.errorHighlight ? 1.0 : 0.2 : passwordField.text !== "" ? 1.0 : 0.2
-                text: internal.createNewDatabase ? "Create" : "Open"
-                onClicked: internal.openKeepassDatabase(passwordField.text, internal.createNewDatabase)
-
-                Behavior on opacity { NumberAnimation { duration: 200 } }
-            }
         }
     }
 
@@ -123,20 +63,29 @@ Page {
     }
 
     Component.onCompleted: {
-        kdbDatabase.preCheck(keepassSettings.databasePath, keepassSettings.keyFilePath)
+        if (keepassSettings.loadDefault) {
+            internal.databasePath = keepassSettings.defaultDatabasePath
+            internal.keyFilePath  = keepassSettings.defaultKeyFilePath
+        } else {
+            // check if some other recently opened database is set as default
+// TODO
+
+        }
+        kdbDatabase.preCheck(internal.databasePath, internal.keyFilePath)
     }
 
+// TODO create real settings object
     QtObject {
         id: keepassSettings
-// TODO create real settings object
-        property string databasePath: "/home/nemo/Documents/notes.kdb"
-        property string keyFilePath: ""
+        // default database and key file paths used in simple mode to create one database easily
+        property bool loadDefault: true
+        property string defaultDatabasePath: "/home/nemo/Documents/notes.kdb"
+        property string defaultKeyFilePath: ""
         // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultEncryption: 0
+        // Other user settings
         // LockTime: min = 5, max = 300 seconds, default = 30
         property int locktime: 30
-        // ShowEmptyEntries, default = true
-        property bool showEmptyEntries: true
         // ShowUserPasswordInListView, default = false
         property bool showUserPasswordInListView: false
     }
@@ -145,57 +94,60 @@ Page {
     QtObject {
         id: internal
         property bool createNewDatabase: true
-        property string databaseFilePath: ""
+        property string databasePath: ""
         property string keyFilePath: ""
 
         function openKeepassDatabase(password, createNewDatabase) {
-            // reset password fields
-            passwordField.text = ""
-            confirmPasswordField.text = ""
             if (createNewDatabase) {
                 // create new Keepass database
                 console.log("Password: '" + password + "'")
-                kdbDatabase.create(keepassSettings.databasePath, keepassSettings.keyFilePath, password, keepassSettings.defaultEncryption)
+                kdbDatabase.create(databasePath, keyFilePath, password, keepassSettings.defaultEncryption)
             } else {
                 // open existing Keepass database
                 console.log("Password: '" + password + "'")
-                kdbDatabase.open(keepassSettings.databasePath, keepassSettings.keyFilePath, password, false)
+                kdbDatabase.open(databasePath, keyFilePath, password, false)
             }
         }
 
         function preCheckDoneHandler(result) {
+            var dialog
             console.log("onPreCheckDone: " + result)
 //            settings_databasePath.save()
 //            settings_keyFilePath.save()
-
             switch (result) {
             case KdbDatabase.RE_OK: {
-                // files exists so activate password field
-                internal.createNewDatabase = false
-// TODO WORKAROUND - uncomment following in final version, on emulator the keyboard is wrongly displayed on startup
-//                passwordField.focus = true
+                // files exists so open query password dialog
+                createNewDatabase = false
+                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
+                            dialog.accepted.connect(function() {
+                                openKeepassDatabase(dialog.password, createNewDatabase)
+                                // delete password once used
+                                dialog.password = ""
+                            })
                 break; }
             case KdbDatabase.RE_PRECHECK_DB_PATH_ERROR: {
                 // in this case the database file does not exists so let the user create a new keepass database
-                internal.createNewDatabase = true
-                passwordField.focus = true
+                createNewDatabase = true
+                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
+                            dialog.accepted.connect(function() {
+                                openKeepassDatabase(dialog.password, createNewDatabase)
+                                // delete password once used
+                                dialog.password = ""
+                            })
                 break; }
             case KdbDatabase.RE_PRECHECK_KEY_FILE_PATH_ERROR: {
                 // in this case database file exists but not key file
-                internal.createNewDatabase = true
-                passwordField.focus = false
-                Global.env.infoPopup.show("Key File Error", "Database path is ok, but your key file is not present. Please check ownKeepass Settings for correct path to the key file or leave key file path empty if you don't use a key file with your database.")
+                createNewDatabase = true
+                Global.env.infoPopup.show("Key File Error", "Database path is ok, but your key file is not present. Please check ownKeepass Settings for correct path to the key file or leave key file path empty if you don't use a key file with your database.", 30000)
                 break; }
             case KdbDatabase.RE_PRECHECK_DB_PATH_CREATION_ERROR: {
                 console.log("ERROR: Cannot create path directories to database file, check your file permissions")
-                internal.createNewDatabase = true
-                passwordField.focus = false
-                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your Keepass database file. Please choose another path.")
+                createNewDatabase = true
+                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your Keepass database file. Please choose another path.", 30000)
                 break; }
             case KdbDatabase.RE_PRECHECK_KEY_FILE_PATH_CREATION_ERROR: {
-                internal.createNewDatabase = true
-                passwordField.focus = false
-                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your key file. Please choose another path.")
+                createNewDatabase = true
+                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your key file. Please choose another path.", 30000)
                 break; }
             default: {
                 console.log("ERROR: unknown result on onPreCheckDone")
@@ -204,6 +156,7 @@ Page {
         }
 
         function databaseOpenedHandler(result, errorMsg) {
+            var dialog
             console.log("onDatabaseOpened: " + result)
             switch (result) {
             case KdbDatabase.RE_OK: {
@@ -228,6 +181,12 @@ Page {
             case KdbDatabase.RE_DB_LOAD_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Password Error", errorMsg + " Please try again.")
+                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
+                            dialog.accepted.connect(function() {
+                                openKeepassDatabase(dialog.password, createNewDatabase)
+                                // delete password once used
+                                dialog.password = ""
+                            })
                 break }
             default:
                 console.log("ERROR: unknown result on databaseOpened")

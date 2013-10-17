@@ -738,7 +738,7 @@ Page {
     }
 
     Component.onCompleted: {
-        Global.env.infoPopup.show("Debug", "Ein einfach nur langer text um diesen Popup mal zu testen. So mal sehen was als nächstes passiert.")
+        Global.env.infoPopup.show("Debug", "Ein einfach nur langer text um diesen Popup mal zu testen. So mal sehen was als nächstes passiert.", 1000)
         if (loadMasterGroups) {
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
