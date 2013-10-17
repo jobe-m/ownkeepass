@@ -23,10 +23,17 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "content"
+import "common"
+import "scripts/Global.js" as Global
 
 ApplicationWindow
 {
     initialPage: initialPage
+
+    // Place info popup outside of page stack so that it is shown over all UI elements
+    InfoPopup {
+        id: infoPopup
+    }
 
     Component {
         id: initialPage
@@ -34,6 +41,10 @@ ApplicationWindow
     }
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+
+    Component.onCompleted: {
+        Global.env.setInfoPopup(infoPopup)
+    }
 }
 
 

@@ -23,6 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
+import "../scripts/Global.js" as Global
 import KeepassPlugin 1.0
 
 Page {
@@ -233,7 +234,7 @@ Page {
             KdbGroup {
                 id: kdbGroup
                 onGroupDataLoaded: internal.loadKdbGroupDetails(title)
-                onGroupDataSaved: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+                onGroupDataSaved: /*if (result === KdbGroup.RE_SAVE_ERROR)*/ __showSaveErrorPage()
                 onNewGroupCreated: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
             }
 
@@ -736,6 +737,7 @@ Page {
     }
 
     Component.onCompleted: {
+        Global.env.infoPopup.show("Debug", "Ein einfach nur langer text um diesen Popup mal zu testen. So mal sehen was als nächstes passiert.")
         if (loadMasterGroups) {
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
@@ -745,22 +747,11 @@ Page {
 
     function __showLoadErrorPage() {
         console.log("ERROR: Could not load")
-// TODO both error pages below are not shown because of transition in progress stuff...
-        pageStack.replace(Qt.resolvedUrl("../common/QueryDialog.qml").toString(), {
-                           "headerAcceptText": "Info",
-                           "headerTitleText": "Info",
-                           "titleText": "Load Error",
-                           "message": "Could not load all items from database. That's strange!"
-                       })
+        Global.env.infoPopup.show("Load Error", "Could not load all items from database. That's strange!")
     }
 
     function __showSaveErrorPage() {
         console.log("ERROR: Could not save")
-        pageStack.replace(Qt.resolvedUrl("../common/QueryDialog.qml").toString(), {
-                           "headerAcceptText": "Info",
-                           "headerTitleText": "Info",
-                           "titleText": "Save Error",
-                           "message": "Could not save your changes to database. Either the location where your Keepass database file is places is write protected or was removed."
-                       })
+        Global.env.infoPopup.show("Save Error", "Could not save your changes to database. Either the location where your Keepass database file is places is write protected or was removed.")
     }
 }

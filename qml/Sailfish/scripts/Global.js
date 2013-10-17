@@ -27,20 +27,14 @@ var constants = {
 }
 
 var env = {
-    jsondb: undefined,
-    kdbDatabase: undefined,
+    infoPopup: undefined,
 
-    setJsonDb: function(obj) {
-        this.jsondb = obj
-    },
-
-    setKdbDatabase: function(obj) {
-        this.kdbDatabase = obj
+    setInfoPopup: function(obj) {
+        this.infoPopup = obj
     },
 
     reset: function() {
-        this.jsondb = undefined
-        this.kdbDatabase = undefined
+        this.infoPopup = undefined
     }
 }
 
