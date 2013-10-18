@@ -62,16 +62,8 @@ Page {
         onDatabaseClosed: internal.databaseClosedHandler(result, errorMsg)
     }
 
-    Component.onCompleted: {
-        if (keepassSettings.loadDefault) {
-            internal.databasePath = keepassSettings.defaultDatabasePath
-            internal.keyFilePath  = keepassSettings.defaultKeyFilePath
-        } else {
-            // check if some other recently opened database is set as default
-// TODO
-
-        }
-        kdbDatabase.preCheck(internal.databasePath, internal.keyFilePath)
+    onStatusChanged: {
+        if (status === PageStatus.Active) internal.init()
     }
 
 // TODO create real settings object
@@ -96,17 +88,29 @@ Page {
         property bool createNewDatabase: true
         property string databasePath: ""
         property string keyFilePath: ""
+        property Page masterGroupsPage
 
         function openKeepassDatabase(password, createNewDatabase) {
+            if (password === "") console.log("ERROR: Password is empty")
             if (createNewDatabase) {
                 // create new Keepass database
-                console.log("Password: '" + password + "'")
                 kdbDatabase.create(databasePath, keyFilePath, password, keepassSettings.defaultEncryption)
             } else {
                 // open existing Keepass database
-                console.log("Password: '" + password + "'")
                 kdbDatabase.open(databasePath, keyFilePath, password, false)
             }
+        }
+
+        function init() {
+            if (keepassSettings.loadDefault) {
+                databasePath = keepassSettings.defaultDatabasePath
+                keyFilePath  = keepassSettings.defaultKeyFilePath
+            } else {
+                // check if some other recently opened database is set as default
+// TODO
+
+            }
+            kdbDatabase.preCheck(databasePath, keyFilePath)
         }
 
         function preCheckDoneHandler(result) {
@@ -123,6 +127,7 @@ Page {
                                 openKeepassDatabase(dialog.password, createNewDatabase)
                                 // delete password once used
                                 dialog.password = ""
+                                masterGroupsPage = dialog.acceptDestinationInstance
                             })
                 break; }
             case KdbDatabase.RE_PRECHECK_DB_PATH_ERROR: {
@@ -133,6 +138,7 @@ Page {
                                 openKeepassDatabase(dialog.password, createNewDatabase)
                                 // delete password once used
                                 dialog.password = ""
+                                masterGroupsPage = dialog.acceptDestinationInstance
                             })
                 break; }
             case KdbDatabase.RE_PRECHECK_KEY_FILE_PATH_ERROR: {
@@ -159,13 +165,10 @@ Page {
             var dialog
             console.log("onDatabaseOpened: " + result)
             switch (result) {
-            case KdbDatabase.RE_OK: {
-                // open database groups main page and replace password page in page stack
-                pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                               { pageTitle: "Password groups",
-                                 groupId: 0,
-                                 loadMasterGroups: true }, false, true);
-                break }
+            case KdbDatabase.RE_OK:
+                // init master groups page
+                masterGroupsPage.init()
+                break
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
                 Global.env.infoPopup.show("Internal Database Error", "Could not close the previous opened database. Error message: " + errorMsg)
@@ -178,16 +181,11 @@ Page {
                 // show error to the user
                 Global.env.infoPopup.show("Internal Keyfile Error", "The following error occured during opening of database: " + errorMsg)
                 break }
-            case KdbDatabase.RE_DB_LOAD_ERROR: {
+            case KdbDatabase.RE_DB_LOAD_ERROR:
                 // show error to the user
                 Global.env.infoPopup.show("Password Error", errorMsg + " Please try again.")
-                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
-                            dialog.accepted.connect(function() {
-                                openKeepassDatabase(dialog.password, createNewDatabase)
-                                // delete password once used
-                                dialog.password = ""
-                            })
-                break }
+                masterGroupsPage.closeOnError()
+                break
             default:
                 console.log("ERROR: unknown result on databaseOpened")
                 break

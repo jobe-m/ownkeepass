@@ -32,7 +32,10 @@ BackgroundItem {
     function show(title, message, timeout) {
         infoPopup.title = title
         infoPopup.message = message
-        if (timeout !== undefined) _timeout = timeout
+        if (timeout !== undefined)
+            _timeout = timeout
+        else
+            _timeout = 5000 // set default
         countdown.restart()
         state = "active"
     }

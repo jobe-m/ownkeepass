@@ -29,10 +29,36 @@ import KeepassPlugin 1.0
 Page {
     id: groupsAndEntriesPage
 
+    property bool initOnPageConstruction: true
     // ID of the keepass group which should be shown
     property int groupId: 0
     property bool loadMasterGroups: false
     property string pageTitle: qsTr("Groups and entries")
+
+    function init() {
+        if (loadMasterGroups) {
+            kdbListModel.loadMasterGroupsFromDatabase()
+        } else {
+            kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)
+        }
+    }
+
+    function closeOnError() {
+        __closeOnError = true
+        if (status === PageStatus.active) pageStack.pop()
+    }
+
+    // private properties and funtions
+    property bool __closeOnError: false
+    function __showLoadErrorPage() {
+        console.log("ERROR: Could not load")
+        Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 10000)
+    }
+
+    function __showSaveErrorPage() {
+        console.log("ERROR: Could not save")
+        Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 15000)
+    }
 
     SilicaListView {
         id: listView
@@ -737,22 +763,10 @@ Page {
         onMasterGroupsLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage
     }
 
-    Component.onCompleted: {
-        Global.env.infoPopup.show("Debug", "Ein einfach nur langer text um diesen Popup mal zu testen. So mal sehen was als nächstes passiert.", 1000)
-        if (loadMasterGroups) {
-            kdbListModel.loadMasterGroupsFromDatabase()
-        } else {
-            kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)
-        }
+    onStatusChanged: {
+        console.log("status: " + status)
+        if (__closeOnError && status === PageStatus.active) pageStack.pop()
     }
 
-    function __showLoadErrorPage() {
-        console.log("ERROR: Could not load")
-        Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 10000)
-    }
-
-    function __showSaveErrorPage() {
-        console.log("ERROR: Could not save")
-        Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 15000)
-    }
+    Component.onCompleted: if (initOnPageConstruction) init()
 }

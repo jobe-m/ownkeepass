@@ -30,6 +30,13 @@ Dialog {
     property bool createNewDatabase: true
     property string password: ""
 
+    acceptDestination: Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString()
+    acceptDestinationProperties: { "initOnPageConstruction": false,
+                                   "pageTitle": "Password groups",
+                                   "groupId": 0,
+                                   "loadMasterGroups": true }
+    acceptDestinationAction: PageStackAction.Replace
+
     canNavigateForward: createNewDatabase ?
                             passwordField.text !== "" && !confirmPasswordField.errorHighlight :
                             passwordField.text !== ""
@@ -75,10 +82,12 @@ Dialog {
                 EnterKey.enabled: text !== ""
                 EnterKey.highlighted: text !== ""
                 EnterKey.onClicked: {
-                    if (createNewDatabase)
+                    if (createNewDatabase) {
                         confirmPasswordField.focus = true
-                    else
+                    } else {
                         accept()
+                        close()
+                    }
                 }
             }
 
@@ -96,16 +105,21 @@ Dialog {
                 text: "qwertz"
                 EnterKey.enabled: passwordField.text !== "" && !errorHighlight
                 EnterKey.highlighted: !errorHighlight
-                EnterKey.onClicked: accept()
+                EnterKey.onClicked: {
+                    accept()
+                    close()
+                }
             }
         }
     }
 
+    Component.onCompleted: passwordField.focus = true
+
     onDone: {
         if (result === DialogResult.Accepted) {
             password = passwordField.text
-            passwordField.text = ""
-            confirmPasswordField.text = ""
+            passwordField.text = "blabla"
+            confirmPasswordField.text = "blabla"
         }
     }
 }
