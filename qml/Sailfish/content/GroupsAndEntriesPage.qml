@@ -45,7 +45,7 @@ Page {
 
     function closeOnError() {
         __closeOnError = true
-        if (status === PageStatus.active) pageStack.pop()
+        if (status === PageStatus.Active) pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
     }
 
     // private properties and funtions
@@ -764,8 +764,7 @@ Page {
     }
 
     onStatusChanged: {
-        console.log("status: " + status)
-        if (__closeOnError && status === PageStatus.active) pageStack.pop()
+        if (__closeOnError && status === PageStatus.Active) pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
     }
 
     Component.onCompleted: if (initOnPageConstruction) init()

@@ -27,7 +27,7 @@ import "../scripts/Global.js" as Global
 import KeepassPlugin 1.0
 
 Page {
-    id: page
+    id: mainPage
 
     SilicaFlickable {
         anchors.fill: parent
@@ -171,15 +171,18 @@ Page {
                 break
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
-                Global.env.infoPopup.show("Internal Database Error", "Could not close the previous opened database. Error message: " + errorMsg)
+                Global.env.infoPopup.show("Internal Database Error", "Could not close the previous opened database. Please try again. Error message: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_SETPW_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Internal Password Error", "The following error occured during opening of database: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_SETKEYFILE_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Internal Keyfile Error", "The following error occured during opening of database: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_LOAD_ERROR:
                 // show error to the user
@@ -193,40 +196,48 @@ Page {
         }
 
         function newDatabaseCreatedHandler(result, errorMsg) {
+            var page
             console.log("onNewDatabaseCreated: " + result)
             switch (result) {
             case KdbDatabase.RE_OK: {
                 // open database groups main page and replace password page in page stack
-                pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                page = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                { pageTitle: "Password groups",
                                  groupId: 0,
                                  loadMasterGroups: true }, false, true);
+                masterGroupsPage = page
                 // database is now created
                 internal.createNewDatabase = false
                 break }
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
-                Global.env.infoPopup.show("Internal Database Error", "Could not close the previous opened database. Error message: " + errorMsg)
+                Global.env.infoPopup.show("Internal Database Error", "Could not close the previous opened database. Please try again. Error message: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_FILE_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Internal File Error", "The following error occured during creation of database: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_SETPW_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Internal Password Error", "The following error occured during creation of database: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_SETKEYFILE_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Internal Keyfile Error", "The following error occured during creation of database: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Internal Database Error", "Creation of backup group failed with following error: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_SAVE_ERROR: {
                 // show error to the user
                 Global.env.infoPopup.show("Save Database Error", "Could not save database with following error: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             default:
                 console.log("ERROR: unknown result on databaseCreated")
@@ -242,10 +253,12 @@ Page {
             case KdbDatabase.RE_DB_ALREADY_CLOSED: {
                 // show error to the user
                 Global.env.infoPopup.show("Database Error", "Database was already closed. Nothing serious, but please submit a bug report.")
+                masterGroupsPage.closeOnError()
                 break }
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
                 Global.env.infoPopup.show("Database Error", "An error occured on closing your database: " + errorMsg)
+                masterGroupsPage.closeOnError()
                 break }
             default:
                 console.log("ERROR: unknown result on databaseClosed")
