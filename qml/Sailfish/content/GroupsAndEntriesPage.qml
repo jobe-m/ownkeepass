@@ -466,14 +466,72 @@ Page {
                                 label: "Username"
                             }
 
-                            TextField {
-                                id: entryPasswordTextField
+//                            Row {
+//                                width: parent.width
+//                                spacing: Theme.paddingSmall
+
+                            Item {
+                                enabled: entryPasswordTextField.text !== ""
+                                visible: entryPasswordTextField.text !== ""
                                 width: parent.width
-                                enabled: text !== ""
-                                visible: text !== ""
-                                readOnly: true
-                                echoMode: TextInput.Password
-                                label: "Password"
+                                height: entryPasswordTextField.height
+
+                                TextField {
+                                    id: entryPasswordTextField
+//                                    width: parent.width
+                                    anchors.left: parent.left
+                                    anchors.right: showPasswordButton.left
+//                                    enabled: text !== ""
+//                                    visible: text !== ""
+                                    readOnly: true
+                                    echoMode: TextInput.Password
+                                    label: "Password"
+//                                    background: Component {
+//                                        Item {
+//                                            anchors.fill: parent
+
+//                                            IconButton {
+//                                                id: ambienceButton
+//                                                anchors {
+//                                                    right: parent.right
+//                                                    rightMargin: Theme.paddingLarge
+//                                                }
+//                                                width: icon.width
+//                                                height: parent.height
+//                                                icon.source: "image://theme/icon-m-ambience"
+
+//                                                enabled: true
+
+//                                                opacity: entryPasswordTextField.text.length > 0 ? 1 : 0
+//                                                Behavior on opacity {
+//                                                    FadeAnimation {}
+//                                                }
+
+//                                                onClicked: {
+//                                                    if (entryPasswordTextField.echoMode === TextInput.Normal)
+//                                                        entryPasswordTextField.echoMode = TextInput.Password
+//                                                    else
+//                                                        entryPasswordTextField.echoMode = TextInput.Normal
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+                                }
+
+                                IconButton {
+                                    id: showPasswordButton
+                                    width: icon.width
+                                    anchors.right: parent.right
+                                    anchors.rightMargin: Theme.paddingLarge
+                                    icon.source: "image://theme/icon-m-ambience"
+                                    highlighted: entryPasswordTextField.echoMode === TextInput.Normal
+                                    onClicked: {
+                                        if (entryPasswordTextField.echoMode === TextInput.Normal)
+                                            entryPasswordTextField.echoMode = TextInput.Password
+                                        else
+                                            entryPasswordTextField.echoMode = TextInput.Normal
+                                    }
+                                }
                             }
 
                             TextArea {
