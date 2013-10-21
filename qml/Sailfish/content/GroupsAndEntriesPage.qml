@@ -595,13 +595,38 @@ Page {
                                 EnterKey.onClicked: entryPasswordTextField.focus = true
                             }
 
-                            TextField {
-                                id: entryPasswordTextField
+                            Item {
                                 width: parent.width
-                                echoMode: TextInput.Password
-                                label: "Password"
-                                placeholderText: "Set Password"
-                                EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
+                                height: entryPasswordTextField.height
+
+                                TextField {
+                                    id: entryPasswordTextField
+                                    anchors.left: parent.left
+                                    anchors.right: showPasswordButton.left
+                                    echoMode: TextInput.Password
+                                    label: "Password"
+                                    placeholderText: "Set Password"
+                                    EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
+                                }
+
+                                IconButton {
+                                    id: showPasswordButton
+                                    width: icon.width
+                                    anchors.right: parent.right
+                                    anchors.rightMargin: Theme.paddingLarge
+                                    icon.source: "image://theme/icon-m-ambience"
+                                    highlighted: entryPasswordTextField.echoMode === TextInput.Normal
+                                    onClicked: {
+                                        entryPasswordTextField.forceActiveFocus()
+                                        if (entryPasswordTextField.echoMode === TextInput.Normal) {
+                                            entryPasswordTextField.echoMode =
+                                                    entryVerifyPasswordTextField.echoMode = TextInput.Password
+                                        } else {
+                                            entryPasswordTextField.echoMode =
+                                                    entryVerifyPasswordTextField.echoMode = TextInput.Normal
+                                        }
+                                    }
+                                }
                             }
 
                             TextField {
