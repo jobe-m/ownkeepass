@@ -298,7 +298,7 @@ Page {
                     property bool groupItem: model.itemType === KdbListModel.GROUP
 
                     menu: contextMenuComponent
-                    contentHeight: col.height
+                    contentHeight: Theme.itemSizeMedium // col.height
                     width: parent ? parent.width : screen.width
 
                     function listItemRemoveGroup() {
@@ -324,30 +324,55 @@ Page {
                         }
                     }
 
-                    Column {
-                        id: col
-                        width: parent.width
-                        height: children.height
-                        spacing: Theme.paddingSmall
+                    Image {
+                        x: Theme.paddingLarge
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 81 //Theme.iconSizeMedium
+                        height: 81 //Theme.iconSizeMedium
+                        source: "../icons/_0.png"
+                        fillMode: Image.PreserveAspectFit
+                        asynchronous: true
+//                        Tracer {}
+                    }
 
-                        Label {
-                            x: Theme.paddingLarge
-                            width: parent.width - Theme.paddingLarge * 2
-                            text: kdbListItem.text
-                            horizontalAlignment: Text.AlignLeft
-                            font.pixelSize: Theme.fontSizeMedium
-                            color: kdbListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                            truncationMode: TruncationMode.Fade
-                        }
+                    Rectangle {
+                        id: itemIcon
+                        x: Theme.paddingLarge
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 81
+                        height: 81
+                        radius: 20
+                        color: "white"
+                        opacity: 0.1
+                    }
 
-                        Label {
-                            x: Theme.paddingLarge
-                            width: parent.width - Theme.paddingLarge * 2
-                            text: kdbListItem.subText
-                            horizontalAlignment: Text.AlignLeft
-                            font.pixelSize: Theme.fontSizeExtraSmall
-                            color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
-                        }
+                    Label {
+                        id: itemTitle
+                        anchors.left: itemIcon.right
+                        anchors.leftMargin: Theme.paddingSmall
+                        anchors.top: parent.top
+                        anchors.topMargin: Theme.paddingMedium
+                        width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
+                        text: kdbListItem.text
+                        horizontalAlignment: Text.AlignLeft
+                        font.pixelSize: Theme.fontSizeMedium
+                        color: kdbListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        truncationMode: TruncationMode.Fade
+//                        Tracer {}
+                    }
+
+                    Label {
+                        anchors.left: itemIcon.right
+                        anchors.leftMargin: Theme.paddingSmall
+                        anchors.top: itemTitle.bottom
+                        anchors.topMargin: Theme.paddingSmall / 2
+                        width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
+                        text: kdbListItem.subText
+                        horizontalAlignment: Text.AlignLeft
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
+                        opacity: kdbListItem.highlighted ? 1.0 : 0.5
+//                        Tracer {}
                     }
 
                     Component {

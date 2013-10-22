@@ -27,3 +27,6 @@ qml.files = \
     qml/Sailfish/common \
     qml/Sailfish/scripts \
     qml/Sailfish/Main.qml
+
+icons.files += \
+    qml/common/icons
