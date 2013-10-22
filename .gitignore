@@ -1,4 +1,5 @@
 Makefile
+*.user.*
 *.user
 debugfiles.list
 debuglinks.list
