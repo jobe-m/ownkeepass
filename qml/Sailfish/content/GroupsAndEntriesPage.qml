@@ -72,7 +72,7 @@ Page {
 
         ViewPlaceholder {
             enabled: listView.count === 0
-            text: "No content"
+            text: "Group is empty"
             hintText: loadMasterGroups ? "Pull down to add password groups" : "Pull down to add password groups and entries"
         }
 

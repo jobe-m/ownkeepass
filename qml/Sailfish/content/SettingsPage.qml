@@ -48,18 +48,37 @@ Page {
                 text: "Settings"
             }
 
-            SilicaLabel {
-                text: "This is the path where new Keepass Password Safe files will be stored:"
-            }
 
-            TextField {
-                id: defaultFilePath
+// TODO We have currently only simple mode
+//            TextSwitch {
+//                id: simpleMode
+//                enabled: false
+//                text: "Use Simple Mode"
+//                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
+//                             " If you switch this off you get a list of recently opened Keepass database files instead."
+//            }
+
+            Column {
                 width: parent.width
-                label: "Default file path"
-                placeholderText: label
-                text: "/home/user/myDocs/"
-//                horizontalAlignment: textAlignment
-                EnterKey.onClicked: parent.focus = true
+
+                TextField {
+                    id: defaultDatabaseFilePath
+                    width: parent.width
+                    label: "Default database file path"
+                    placeholderText: label
+                    text: "/home/user/myDocs/"
+                    EnterKey.onClicked: parent.focus = true
+                }
+
+                SilicaLabel {
+// TODO We have currently only simple mode
+//                    text: simpleMode.checked ?
+//                              "This is the name and path of default Keepass database file" :
+//                              "This is the path where new Keepass Password Safe files will be stored"
+                    text: "This is the name and path of default Keepass database file"
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                }
             }
 
             SectionHeader {
@@ -68,18 +87,31 @@ Page {
 
             TextSwitch {
                 id: useKeyFile
-                text: "Create key file"
+                text: "Create Key File"
                 description: "Switch this on if you want to create a key file together with a new Keepass Password Safe file"
+            }
+
+            TextField {
+                id: defaultKeyFilePath
+                enabled: useKeyFile.checked
+                opacity: useKeyFile.checked ? 1.0 : 0.0
+                height: useKeyFile.checked ? implicitHeight : 0
+                width: parent.width
+                label: "Default key file path"
+                placeholderText: label
+                text: ""
+                EnterKey.onClicked: parent.focus = true
+                Behavior on opacity { NumberAnimation { duration: 500 } }
+                Behavior on height { NumberAnimation { duration: 500 } }
             }
 
             Column {
                 width: parent.width
-//                spacing: Theme.paddingSmall / 2
 
                 ComboBox {
-                    id: usedEncryption
+                    id: defaultEncryption
                     width: settingsPage.width
-                    label: "Default encryption in use:"
+                    label: "Default Encryption in use:"
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
                         MenuItem { text: "Twofish" }
@@ -89,6 +121,7 @@ Page {
                 SilicaLabel {
                     text: "Choose encryption which will be used as default for a new Keepass Password Safe file"
                     font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
                 }
             }
 
@@ -98,35 +131,59 @@ Page {
 
             Slider {
                 id: inactivityLockTime
-                value: 30
-                minimumValue: 5
-                maximumValue: 300
-                stepSize: 5
+                value: 3
+                minimumValue: 0
+                maximumValue: 10
+                stepSize: 1
                 width: parent.width - Theme.paddingLarge * 2
                 anchors.horizontalCenter: parent.horizontalCenter
-                valueText: value.toFixed(0)
-                label: "Inactivity lock time (seconds)"
-            }
-
-            TextSwitch {
-                id: hideEmptyEntries
-                text: "Hide empty Password entries"
+                valueText: calculateInactivityTime(value)
+                label: "Inactivity Lock Time"
+                /*
+                  0 = immediately
+                  1 = 5 seconds
+                  2 = 10 seconds
+                  3 = 30 seconds
+                  4 = 1 minute
+                  5 = 2 minutes
+                  6 = 5 minutes
+                  7 = 10 minutes
+                  8 = 30 minutes
+                  9 = 60 minutes
+                  10 = unlimited
+                  */
+                function calculateInactivityTime(value) {
+                    switch (value) {
+                    case 0:
+                        return "Immediately"
+                    case 1:
+                        return "5 Seconds"
+                    case 2:
+                        return "10 Seconds"
+                    case 3:
+                        return "30 Seconds"
+                    case 4:
+                        return "1 Minute"
+                    case 5:
+                        return "2 Minutes"
+                    case 6:
+                        return "5 Minutes"
+                    case 7:
+                        return "10 Minutes"
+                    case 8:
+                        return "30 Minutes"
+                    case 9:
+                        return "60 Minutes"
+                    case 10:
+                        return "Unlimited"
+                    }
+                }
             }
 
             TextSwitch {
                 id: extendedListView
-                text: "Extended list view"
-                description: "If you switch this on the username and passwords are shown in the entries of the list view"
-            }
-
-            SectionHeader {
-                text: "File Browser"
-            }
-
-            TextSwitch {
-                id: showOnlyKeepassFiles
-                text: "Show only related files"
-                description: "Switch this on to see only files with file extention .kdb and .key"
+                text: "Extended List View"
+                description: "If you switch this on username and password are shown below entry title in list views"
             }
         }
     }

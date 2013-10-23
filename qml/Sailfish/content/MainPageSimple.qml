@@ -71,6 +71,7 @@ Page {
 // TODO create real settings object
     QtObject {
         id: keepassSettings
+        property bool simpleMode: true
         // default database and key file paths used in simple mode to create one database easily
         property bool loadDefault: true
         property string defaultDatabasePath: "/home/nemo/Documents/notes.kdb"
