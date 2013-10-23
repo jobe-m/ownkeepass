@@ -62,6 +62,8 @@ Page {
         onDatabaseClosed: internal.databaseClosedHandler(result, errorMsg)
     }
 
+    Component.onCompleted: Global.env.setKeepassSettings(keepassSettings)
+
     onStatusChanged: {
         if (status === PageStatus.Active) internal.init()
     }
@@ -79,7 +81,7 @@ Page {
         // LockTime: min = 5, max = 300 seconds, default = 30
         property int locktime: 30
         // ShowUserPasswordInListView, default = false
-        property bool showUserPasswordInListView: false
+        property bool showUserNamePasswordInListView: false
     }
 
     // internal stuff

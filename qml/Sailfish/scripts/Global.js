@@ -29,13 +29,19 @@ var constants = {
 
 var env = {
     infoPopup: undefined,
+    keepassSettings: undefined,
 
     setInfoPopup: function(obj) {
         this.infoPopup = obj
     },
 
+    setKeepassSettings: function(obj) {
+        this.keepassSettings = obj
+    },
+
     reset: function() {
         this.infoPopup = undefined
+        this.keepassSettings = undefined
     }
 }
 

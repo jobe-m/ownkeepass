@@ -8,5 +8,7 @@ Rectangle {
         anchors.fill: parent
         border.color: "red"
         border.width: 1
+        color: "transparent"
+        opacity: 1.0
     }
 }

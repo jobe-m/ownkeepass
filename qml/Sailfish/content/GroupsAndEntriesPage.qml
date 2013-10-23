@@ -298,7 +298,7 @@ Page {
                     property bool groupItem: model.itemType === KdbListModel.GROUP
 
                     menu: contextMenuComponent
-                    contentHeight: Theme.itemSizeMedium // col.height
+                    contentHeight: Theme.itemSizeMedium
                     width: parent ? parent.width : screen.width
 
                     function listItemRemoveGroup() {
@@ -332,7 +332,6 @@ Page {
                         source: "../icons/_0.png"
                         fillMode: Image.PreserveAspectFit
                         asynchronous: true
-//                        Tracer {}
                     }
 
                     Rectangle {
@@ -346,33 +345,40 @@ Page {
                         opacity: 0.1
                     }
 
-                    Label {
-                        id: itemTitle
+                    Item {
                         anchors.left: itemIcon.right
                         anchors.leftMargin: Theme.paddingSmall
-                        anchors.top: parent.top
-                        anchors.topMargin: Theme.paddingMedium
+                        anchors.verticalCenter: parent.verticalCenter
                         width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
-                        text: kdbListItem.text
-                        horizontalAlignment: Text.AlignLeft
-                        font.pixelSize: Theme.fontSizeMedium
-                        color: kdbListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                        truncationMode: TruncationMode.Fade
-//                        Tracer {}
-                    }
+                        height: model.itemType === KdbListModel.ENTRY && !Global.env.keepassSettings.showUserNamePasswordInListView ?
+                                    itemTitle.height :
+                                    itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
 
-                    Label {
-                        anchors.left: itemIcon.right
-                        anchors.leftMargin: Theme.paddingSmall
-                        anchors.top: itemTitle.bottom
-                        anchors.topMargin: Theme.paddingSmall / 2
-                        width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
-                        text: kdbListItem.subText
-                        horizontalAlignment: Text.AlignLeft
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
-                        opacity: kdbListItem.highlighted ? 1.0 : 0.5
-//                        Tracer {}
+                        Label {
+                            id: itemTitle
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            width: parent.width
+                            text: kdbListItem.text
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: Theme.fontSizeMedium
+                            color: kdbListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
+                        }
+
+                        Label {
+                            id: itemDescription
+                            enabled: model.itemType === KdbListModel.GROUP || Global.env.keepassSettings.showUserNamePasswordInListView
+                            visible: enabled
+                            anchors.left: parent.left
+                            anchors.top: itemTitle.bottom
+                            anchors.topMargin: Theme.paddingSmall / 2
+                            width: parent.width
+                            text: kdbListItem.subText
+                            horizontalAlignment: Text.AlignLeft
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
+                        }
                     }
 
                     Component {
@@ -480,6 +486,7 @@ Page {
                                 visible: text !== ""
                                 readOnly: true
                                 label: "Url"
+                                color: Theme.primaryColor
                             }
 
                             TextField {
@@ -489,6 +496,7 @@ Page {
                                 visible: text !== ""
                                 readOnly: true
                                 label: "Username"
+                                color: Theme.primaryColor
                             }
 
                             Item {
@@ -504,6 +512,7 @@ Page {
                                     readOnly: true
                                     echoMode: TextInput.Password
                                     label: "Password"
+                                    color: Theme.primaryColor
                                 }
 
                                 IconButton {
@@ -529,6 +538,7 @@ Page {
                                 visible: text !== ""
                                 readOnly: true
                                 label: "Comment"
+                                color: Theme.primaryColor
                             }
                         }
                     }
