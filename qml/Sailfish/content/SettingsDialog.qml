@@ -22,10 +22,11 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../scripts/Global.js" as Global
 import "../common"
 
-Page {
-    id: settingsPage
+Dialog {
+    id: settingsDialog
 
     SilicaFlickable {
         anchors.fill: parent
@@ -40,10 +41,11 @@ Page {
             width: parent.width
             spacing: Theme.paddingLarge
 
-            PageHeaderExtended {
-                title: "ownKeepass"
-                subTitle: "Password Safe"
+            DialogHeader {
+                acceptText: "Save"
+                title: "Save"
             }
+
             SectionHeader {
                 text: "Settings"
             }
@@ -52,11 +54,15 @@ Page {
 // TODO We have currently only simple mode
 //            TextSwitch {
 //                id: simpleMode
-//                enabled: false
+//                checked: Global.env.keepassSettings.simpleMode
 //                text: "Use Simple Mode"
 //                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
 //                             " If you switch this off you get a list of recently opened Keepass database files instead."
 //            }
+
+            SectionHeader {
+                text: "Keepass Database"
+            }
 
             Column {
                 width: parent.width
@@ -66,27 +72,22 @@ Page {
                     width: parent.width
                     label: "Default database file path"
                     placeholderText: label
-                    text: "/home/user/myDocs/"
+                    text: Global.env.keepassSettings.defaultDatabasePath
                     EnterKey.onClicked: parent.focus = true
                 }
 
                 SilicaLabel {
-// TODO We have currently only simple mode
-//                    text: simpleMode.checked ?
-//                              "This is the name and path of default Keepass database file" :
-//                              "This is the path where new Keepass Password Safe files will be stored"
-                    text: "This is the name and path of default Keepass database file"
+                    text: Global.env.keepassSettings.simpleMode ?
+                              "This is the name and path of default Keepass database file" :
+                              "This is the path where new Keepass Password Safe files will be stored"
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }
             }
 
-            SectionHeader {
-                text: "Keepass Database"
-            }
-
             TextSwitch {
                 id: useKeyFile
+                checked: Global.env.keepassSettings.defaultKeyFilePath !== ""
                 text: "Create Key File"
                 description: "Switch this on if you want to create a key file together with a new Keepass Password Safe file"
             }
@@ -99,7 +100,7 @@ Page {
                 width: parent.width
                 label: "Default key file path"
                 placeholderText: label
-                text: ""
+                text: Global.env.keepassSettings.defaultKeyFilePath
                 EnterKey.onClicked: parent.focus = true
                 Behavior on opacity { NumberAnimation { duration: 500 } }
                 Behavior on height { NumberAnimation { duration: 500 } }
@@ -110,8 +111,9 @@ Page {
 
                 ComboBox {
                     id: defaultEncryption
-                    width: settingsPage.width
+                    width: settingsDialog.width
                     label: "Default Encryption in use:"
+                    currentIndex: Global.env.keepassSettings.defaultEncryption
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
                         MenuItem { text: "Twofish" }
@@ -131,7 +133,7 @@ Page {
 
             Slider {
                 id: inactivityLockTime
-                value: 3
+                value: Global.env.keepassSettings.locktime
                 minimumValue: 0
                 maximumValue: 10
                 stepSize: 1
@@ -182,9 +184,22 @@ Page {
 
             TextSwitch {
                 id: extendedListView
+                checked: Global.env.keepassSettings.showUserNamePasswordInListView
                 text: "Extended List View"
                 description: "If you switch this on username and password are shown below entry title in list views"
             }
         }
+    }
+
+    onAccepted: {
+//        Global.env.keepassSettings.simpleMode = simpleMode.checked
+        Global.env.keepassSettings.defaultDatabasePath = defaultDatabaseFilePath.text
+        if (useKeyFile.checked)
+            Global.env.keepassSettings.defaultKeyFilePath = defaultKeyFilePath.text
+        else
+            Global.env.keepassSettings.defaultKeyFilePath = ""
+        Global.env.keepassSettings.defaultEncryption = defaultEncryption.currentIndex
+        Global.env.keepassSettings.locktime = inactivityLockTime.value
+        Global.env.keepassSettings.showUserNamePasswordInListView = extendedListView.checked
     }
 }

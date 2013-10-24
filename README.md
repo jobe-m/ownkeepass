@@ -42,7 +42,7 @@ TODO
 *   Add some more fancy UI elements like icons for Keepass groups and entries, etc.
 *   Post some screenshots :D
 
-That's it for now. I will update things here when I have some news to share :)
+That's it for now. I will update things here when I have more news to share :)
 
 23-Oct-2013
 

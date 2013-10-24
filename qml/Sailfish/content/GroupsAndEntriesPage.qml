@@ -80,7 +80,7 @@ Page {
             MenuItem {
                 text: qsTr("Database Settings")
 // TODO implement database settings page with password change, encryption type, hash rounds, etc.
-                onClicked: pageStack.push(Qt.resolvedUrl("DatabaseSettingsPage.qml").toString())
+                onClicked: pageStack.push(Qt.resolvedUrl("DatabaseSettingsDialog.qml").toString())
             }
 
             MenuItem {

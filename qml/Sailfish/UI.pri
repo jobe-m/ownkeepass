@@ -30,3 +30,6 @@ qml.files = \
 
 icons.files += \
     qml/common/icons
+
+OTHER_FILES += \
+    qml/Sailfish/content/SettingsDialog.qml

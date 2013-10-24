@@ -68,19 +68,19 @@ Page {
         if (status === PageStatus.Active) internal.init()
     }
 
-// TODO create real settings object
+// TODO load settings from LocalStorage
     QtObject {
         id: keepassSettings
         property bool simpleMode: true
         // default database and key file paths used in simple mode to create one database easily
-        property bool loadDefault: true
+        property bool loadDefault: true // if (simpleMode === true) this is ignored resp. always true
         property string defaultDatabasePath: "/home/nemo/Documents/notes.kdb"
         property string defaultKeyFilePath: ""
         // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultEncryption: 0
         // Other user settings
-        // LockTime: min = 5, max = 300 seconds, default = 30
-        property int locktime: 30
+        // LockTime: min = 0, max = 10, default = 3
+        property int locktime: 3
         // ShowUserPasswordInListView, default = false
         property bool showUserNamePasswordInListView: false
     }
@@ -109,7 +109,7 @@ Page {
                 databasePath = keepassSettings.defaultDatabasePath
                 keyFilePath  = keepassSettings.defaultKeyFilePath
             } else {
-                // check if some other recently opened database is set as default
+                // check if some other recently opened database is set as default = !simpleMode
 // TODO
 
             }

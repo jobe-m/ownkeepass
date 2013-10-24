@@ -86,7 +86,7 @@ Page {
                 MenuItem {
 // TODO write entry settings page
                     text: qsTr("Entry Settings")
-                    onClicked: pageStack.push(Qt.resolvedUrl("EntrySettingsPage.qml").toString())
+                    onClicked: pageStack.push(Qt.resolvedUrl("EntrySettingsDialog.qml").toString())
                 }
 
                 MenuItem {
