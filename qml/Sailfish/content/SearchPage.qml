@@ -20,6 +20,8 @@
 **
 ***************************************************************************/
 
+// TODO adapt to Sailfish Silica
+
 import QtQuick 1.1
 import com.nokia.meego 1.1
 import "common"

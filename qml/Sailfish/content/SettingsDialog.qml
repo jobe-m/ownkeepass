@@ -47,7 +47,7 @@ Dialog {
             }
 
             SectionHeader {
-                text: "Settings"
+                text: "Keepass Settings"
             }
 
 
@@ -61,7 +61,7 @@ Dialog {
 //            }
 
             SectionHeader {
-                text: "Keepass Database"
+                text: "Database"
             }
 
             Column {
