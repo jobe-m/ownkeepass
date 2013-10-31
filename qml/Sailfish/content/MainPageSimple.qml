@@ -21,6 +21,7 @@
 ***************************************************************************/
 
 import QtQuick 2.0
+import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
@@ -68,7 +69,6 @@ Page {
         if (status === PageStatus.Active) internal.init()
     }
 
-// TODO load settings from LocalStorage
     QtObject {
         id: keepassSettings
         property bool simpleMode: true
@@ -78,11 +78,87 @@ Page {
         property string defaultKeyFilePath: ""
         // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultEncryption: 0
+        property int defaultEncryptionRounds: 50000
         // Other user settings
         // LockTime: min = 0, max = 10, default = 3
         property int locktime: 3
         // ShowUserPasswordInListView, default = false
         property bool showUserNamePasswordInListView: false
+
+        function loadSettings() {
+            var settingsDb = LocalStorage.openDatabaseSync("ownKeepassSettings", "1.00", "Application settings for ownKeepass", 100000)
+            settingsDb.transaction(
+                        function(tx) {
+                            // Create the database if it doesn't already exist
+                            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(version INTEGER PRIMARY KEY, simpleMode BOOLEAN, loadDefault BOOLEAN, defaultDatabasePath TEXT, defaultKeyFilePath TEXT, defaultEncryption INTEGER, defaultEncryptionRounds INTEGER, locktime INTEGER, showUserNamePasswordInListView BOOLEAN)')
+                            var settings = tx.executeSql('SELECT * FROM Settings')
+                            if (settings.rows.length === 0) {
+                                // Add default values for settings if it does not exist
+                                tx.executeSql('INSERT INTO Settings VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                                              ['100', '1', '1', '/home/nemo/Documents/notes.kdb', '', '0', '50000', '3', '0'])
+                                settings = tx.executeSql('SELECT * FROM Settings')
+                            }
+
+                            // Show all added data
+                            for(var i = 0; i < settings.rows.length; i++) {
+                                console.log("Settings " + i + ": " + settings.rows.item(i).version + ", " +
+                                            settings.rows.item(i).simpleMode + ", " +
+                                            settings.rows.item(i).loadDefault + ", " +
+                                            settings.rows.item(i).defaultDatabasePath + ", " +
+                                            settings.rows.item(i).defaultKeyFilePath + ", " +
+                                            settings.rows.item(i).defaultEncryption + ", " +
+                                            settings.rows.item(i).defaultEncryptionRounds + ", " +
+                                            settings.rows.item(i).locktime + ", " +
+                                            settings.rows.item(i).showUserNamePasswordInListView)
+                            }
+                            simpleMode = settings.rows.item(0).simpleMode === 0 ? false : true
+                            loadDefault = settings.rows.item(0).loadDefault === 0 ? false : true
+                            defaultDatabasePath = settings.rows.item(0).defaultDatabasePath
+                            defaultKeyFilePath = settings.rows.item(0).defaultKeyFilePath
+                            defaultEncryption = settings.rows.item(0).defaultEncryption
+                            defaultEncryptionRounds  = settings.rows.item(0).defaultEncryptionRounds
+                            locktime = settings.rows.item(0).locktime
+                            showUserNamePasswordInListView = settings.rows.item(0).showUserNamePasswordInListView === 0 ? false : true
+                        }
+                        )
+        }
+
+        function saveSettings() {
+            var settingsDb = LocalStorage.openDatabaseSync("ownKeepassSettings", "1.00", "Application settings for ownKeepass", 100000)
+            settingsDb.transaction(
+                        function(tx) {
+                            // Create the database if it doesn't already exist
+                            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(version INTEGER PRIMARY KEY, simpleMode BOOLEAN, loadDefault BOOLEAN, defaultDatabasePath TEXT, defaultKeyFilePath TEXT, defaultEncryption INTEGER, defaultEncryptionRounds INTEGER, locktime INTEGER, showUserNamePasswordInListView BOOLEAN)')
+                            // Save values for all settings
+                            tx.executeSql('REPLACE INTO Settings VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                                          ['100',
+                                           simpleMode ? 1 : 0,
+                                           loadDefault ? 1 : 0,
+                                           defaultDatabasePath,
+                                           defaultKeyFilePath,
+                                           defaultEncryption,
+                                           defaultEncryptionRounds,
+                                           locktime,
+                                           showUserNamePasswordInListView ? 1 : 0])
+
+                            // Show all added data
+                            var settings = tx.executeSql('SELECT * FROM Settings')
+                            for(var i = 0; i < settings.rows.length; i++) {
+                                console.log("Settings " + i + ": " + settings.rows.item(i).version + ", " +
+                                            settings.rows.item(i).simpleMode + ", " +
+                                            settings.rows.item(i).loadDefault + ", " +
+                                            settings.rows.item(i).defaultDatabasePath + ", " +
+                                            settings.rows.item(i).defaultKeyFilePath + ", " +
+                                            settings.rows.item(i).defaultEncryption + ", " +
+                                            settings.rows.item(i).defaultEncryptionRounds + ", " +
+                                            settings.rows.item(i).locktime + ", " +
+                                            settings.rows.item(i).showUserNamePasswordInListView)
+                            }
+                        }
+                        )
+        }
+
+                        Component.onCompleted: loadSettings()
     }
 
     // internal stuff

@@ -201,5 +201,6 @@ Dialog {
         Global.env.keepassSettings.defaultEncryption = defaultEncryption.currentIndex
         Global.env.keepassSettings.locktime = inactivityLockTime.value
         Global.env.keepassSettings.showUserNamePasswordInListView = extendedListView.checked
+        Global.env.keepassSettings.saveSettings()
     }
 }
