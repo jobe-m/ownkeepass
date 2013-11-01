@@ -59,10 +59,10 @@ Dialog {
 //                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
 //                             " If you switch this off you get a list of recently opened Keepass database files instead."
 //            }
-
-            SectionHeader {
-                text: "Database"
-            }
+//
+//            SectionHeader {
+//                text: "Database"
+//            }
 
             Column {
                 width: parent.width
@@ -70,6 +70,7 @@ Dialog {
                 TextField {
                     id: defaultDatabaseFilePath
                     width: parent.width
+                    inputMethodHints: Qt.ImhUrlCharactersOnly
                     label: "Default database file path"
                     placeholderText: label
                     text: Global.env.keepassSettings.defaultDatabasePath
@@ -98,6 +99,7 @@ Dialog {
                 opacity: useKeyFile.checked ? 1.0 : 0.0
                 height: useKeyFile.checked ? implicitHeight : 0
                 width: parent.width
+                inputMethodHints: Qt.ImhUrlCharactersOnly
                 label: "Default key file path"
                 placeholderText: label
                 text: Global.env.keepassSettings.defaultKeyFilePath
@@ -122,6 +124,27 @@ Dialog {
 
                 SilicaLabel {
                     text: "Choose encryption which will be used as default for a new Keepass Password Safe file"
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                }
+            }
+
+            Column {
+                width: parent.width
+
+                TextField {
+                    id: defaultKeyTransfRounds
+                    width: parent.width
+                    inputMethodHints: Qt.ImhFormattedNumbersOnly
+                    validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                    label: "Default Key Transformation Rounds"
+                    placeholderText: label
+                    text: Global.env.keepassSettings.defaultKeyTransfRounds
+                    EnterKey.onClicked: parent.focus = true
+                }
+
+                SilicaLabel {
+                    text: "Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks"
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }
@@ -199,6 +222,7 @@ Dialog {
         else
             Global.env.keepassSettings.defaultKeyFilePath = ""
         Global.env.keepassSettings.defaultEncryption = defaultEncryption.currentIndex
+        Global.env.keepassSettings.defaultKeyTransfRounds = Number(defaultKeyTransfRounds.text)
         Global.env.keepassSettings.locktime = inactivityLockTime.value
         Global.env.keepassSettings.showUserNamePasswordInListView = extendedListView.checked
         Global.env.keepassSettings.saveSettings()

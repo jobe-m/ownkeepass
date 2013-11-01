@@ -78,7 +78,7 @@ Page {
         property string defaultKeyFilePath: ""
         // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultEncryption: 0
-        property int defaultEncryptionRounds: 50000
+        property int defaultKeyTransfRounds: 50000
         // Other user settings
         // LockTime: min = 0, max = 10, default = 3
         property int locktime: 3
@@ -90,7 +90,7 @@ Page {
             settingsDb.transaction(
                         function(tx) {
                             // Create the database if it doesn't already exist
-                            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(version INTEGER PRIMARY KEY, simpleMode BOOLEAN, loadDefault BOOLEAN, defaultDatabasePath TEXT, defaultKeyFilePath TEXT, defaultEncryption INTEGER, defaultEncryptionRounds INTEGER, locktime INTEGER, showUserNamePasswordInListView BOOLEAN)')
+                            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(version INTEGER PRIMARY KEY, simpleMode BOOLEAN, loadDefault BOOLEAN, defaultDatabasePath TEXT, defaultKeyFilePath TEXT, defaultEncryption INTEGER, defaultKeyTransfRounds INTEGER, locktime INTEGER, showUserNamePasswordInListView BOOLEAN)')
                             var settings = tx.executeSql('SELECT * FROM Settings')
                             if (settings.rows.length === 0) {
                                 // Add default values for settings if it does not exist
@@ -107,7 +107,7 @@ Page {
                                             settings.rows.item(i).defaultDatabasePath + ", " +
                                             settings.rows.item(i).defaultKeyFilePath + ", " +
                                             settings.rows.item(i).defaultEncryption + ", " +
-                                            settings.rows.item(i).defaultEncryptionRounds + ", " +
+                                            settings.rows.item(i).defaultKeyTransfRounds + ", " +
                                             settings.rows.item(i).locktime + ", " +
                                             settings.rows.item(i).showUserNamePasswordInListView)
                             }
@@ -116,7 +116,7 @@ Page {
                             defaultDatabasePath = settings.rows.item(0).defaultDatabasePath
                             defaultKeyFilePath = settings.rows.item(0).defaultKeyFilePath
                             defaultEncryption = settings.rows.item(0).defaultEncryption
-                            defaultEncryptionRounds  = settings.rows.item(0).defaultEncryptionRounds
+                            defaultKeyTransfRounds  = settings.rows.item(0).defaultKeyTransfRounds
                             locktime = settings.rows.item(0).locktime
                             showUserNamePasswordInListView = settings.rows.item(0).showUserNamePasswordInListView === 0 ? false : true
                         }
@@ -128,7 +128,7 @@ Page {
             settingsDb.transaction(
                         function(tx) {
                             // Create the database if it doesn't already exist
-                            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(version INTEGER PRIMARY KEY, simpleMode BOOLEAN, loadDefault BOOLEAN, defaultDatabasePath TEXT, defaultKeyFilePath TEXT, defaultEncryption INTEGER, defaultEncryptionRounds INTEGER, locktime INTEGER, showUserNamePasswordInListView BOOLEAN)')
+                            tx.executeSql('CREATE TABLE IF NOT EXISTS Settings(version INTEGER PRIMARY KEY, simpleMode BOOLEAN, loadDefault BOOLEAN, defaultDatabasePath TEXT, defaultKeyFilePath TEXT, defaultEncryption INTEGER, defaultKeyTransfRounds INTEGER, locktime INTEGER, showUserNamePasswordInListView BOOLEAN)')
                             // Save values for all settings
                             tx.executeSql('REPLACE INTO Settings VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
                                           ['100',
@@ -137,7 +137,7 @@ Page {
                                            defaultDatabasePath,
                                            defaultKeyFilePath,
                                            defaultEncryption,
-                                           defaultEncryptionRounds,
+                                           defaultKeyTransfRounds,
                                            locktime,
                                            showUserNamePasswordInListView ? 1 : 0])
 
@@ -150,7 +150,7 @@ Page {
                                             settings.rows.item(i).defaultDatabasePath + ", " +
                                             settings.rows.item(i).defaultKeyFilePath + ", " +
                                             settings.rows.item(i).defaultEncryption + ", " +
-                                            settings.rows.item(i).defaultEncryptionRounds + ", " +
+                                            settings.rows.item(i).defaultKeyTransfRounds + ", " +
                                             settings.rows.item(i).locktime + ", " +
                                             settings.rows.item(i).showUserNamePasswordInListView)
                             }

@@ -617,6 +617,7 @@ Page {
                             TextField {
                                 id: entryUrlTextField
                                 width: parent.width
+                                inputMethodHints: Qt.ImhUrlCharactersOnly
                                 label: "Url"
                                 placeholderText: "Set Url"
                                 EnterKey.onClicked: entryUsernameTextField.focus = true
