@@ -36,6 +36,7 @@ extern KdbInterface* databaseInterface;
 
 KdbDatabase::KdbDatabase(QObject *parent):
     QObject(parent),
+    KeyTransfRounds(parent),
     m_showUserNamePasswordsInListView(false)
 {
     // connect signals and slots to global KdbInterface class

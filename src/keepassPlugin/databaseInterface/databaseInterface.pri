@@ -27,7 +27,7 @@ INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
 
 SOURCES += \
-    src/keepassPlugin/databaseInterface/private/KdbInterface.cpp \
+#    src/keepassPlugin/databaseInterface/private/KdbInterface.cpp \
     src/keepassPlugin/databaseInterface/private/KdbInterfaceWorker.cpp \
     src/keepassPlugin/databaseInterface/KdbDatabase.cpp \
     src/keepassPlugin/databaseInterface/KdbListModel.cpp \
@@ -35,9 +35,13 @@ SOURCES += \
     src/keepassPlugin/databaseInterface/KdbGroup.cpp
 
 HEADERS += \
-    src/keepassPlugin/databaseInterface/private/KdbInterface.h \
-    src/keepassPlugin/databaseInterface/private/KdbInterfaceWorker.h \
-    src/keepassPlugin/databaseInterface/KdbDatabase.h \
-    src/keepassPlugin/databaseInterface/KdbListModel.h \
-    src/keepassPlugin/databaseInterface/KdbEntry.h \
-    src/keepassPlugin/databaseInterface/KdbGroup.h
+#    src/keepassPlugin/databaseInterface/private/KdbInterface.h \
+#    src/keepassPlugin/databaseInterface/private/KdbInterfaceWorker.h \
+#    src/keepassPlugin/databaseInterface/private/KeyTransfRounds.h \
+    src/keepassPlugin/databaseInterface/private/*.h \
+#    src/keepassPlugin/databaseInterface/KdbDatabase.h \
+#    src/keepassPlugin/databaseInterface/KdbListModel.h \
+#    src/keepassPlugin/databaseInterface/KdbEntry.h \
+#    src/keepassPlugin/databaseInterface/KdbGroup.h
+    src/keepassPlugin/databaseInterface/*.h \
+    src/keepassPlugin/databaseInterface/private/PropertyInterface.h

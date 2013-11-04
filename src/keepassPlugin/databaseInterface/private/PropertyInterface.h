@@ -20,50 +20,33 @@
 **
 ***************************************************************************/
 
-#ifndef KDBINTERFACE_H
-#define KDBINTERFACE_H
+#ifndef PROPERTYINTERFACE_H
+#define PROPERTYINTERFACE_H
 
 #include <QObject>
-#include <QThread>
-
 #include "KdbInterfaceWorker.h"
 
 namespace kpxPrivate {
 
-// Keepass database access implemented as singleton within a backend thread
-class KdbInterface : public QObject
+// Interface for integer property passing to backend database
+class IntPropertyInterface : public QObject
 {
     Q_OBJECT
 
 public:
-    virtual ~KdbInterface()
-    {
-        if (m_workerThread.isRunning()) {
-            m_workerThread.quit();
-            m_workerThread.wait();
-            m_workerThread.terminate();
-        }
-    }
-
-    // singleton access to internal database worker
-    static KdbInterfaceWorker* getWorker() { return &(m_self->m_worker); }
-private:
-    KdbInterface(QObject* parent = 0)
+    IntPropertyInterface(KdbInterfaceWorker* dbWorker, QObject* parent = 0)
         : QObject(parent),
-          m_workerThread(),
-          m_worker() // worker has got no parent because it must be moved to another thread.
-    {
+          m_dbWorker(dbWorker) {}
 
-        m_worker.moveToThread(&m_workerThread);
-        m_workerThread.start();
-    }
+signals:
+    void sendSignal(int value);
 
-private:
-    static KdbInterface* m_self = new KdbInterface();
-    QThread m_workerThread;
-    KdbInterfaceWorker m_worker;
+public slots:
+    virtual void slot(int value) = 0;
 
+protected:
+    KdbInterfaceWorker* m_dbWorker;
 };
-
 }
-#endif // KDBINTERFACE_H
+
+#endif // PROPERTYINTERFACE_H
