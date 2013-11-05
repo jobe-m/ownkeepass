@@ -25,12 +25,10 @@
 
 #include <QObject>
 #include <QFile>
-#include "private/KdbInterface.h"
-#include "private/KeyTransfRounds.h"
 
 namespace kpxPublic {
 
-class KdbDatabase : public KeyTransfRounds, public QObject
+class KdbDatabase : public QObject
 {
     Q_OBJECT
 
@@ -40,12 +38,11 @@ public:
     Q_PROPERTY(bool showUserNamePasswordsInListView
                READ getShowUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView
                STORED true SCRIPTABLE true)
-    Q_PROPERTY(int cryptAlgorithm READ getCryptAlgorithm WRITE setCryptAlgorithm)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
     Q_INVOKABLE void preCheck(const QString& dbFilePath, const QString &keyFilePath);
     Q_INVOKABLE void open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
-    Q_INVOKABLE void create(const QString& dbFilePath, const QString &keyFilePath, const QString& password);
+    Q_INVOKABLE void create(const QString& dbFilePath, const QString &keyFilePath, const QString& password, int cryptAlgorithm);
     Q_INVOKABLE void close();
     Q_INVOKABLE void changePassword(const QString& password);
 

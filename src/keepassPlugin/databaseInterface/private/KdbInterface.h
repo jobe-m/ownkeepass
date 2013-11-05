@@ -30,36 +30,18 @@
 
 namespace kpxPrivate {
 
-// Keepass database access implemented as singleton within a backend thread
 class KdbInterface : public QObject
 {
     Q_OBJECT
 
 public:
-    virtual ~KdbInterface()
-    {
-        if (m_workerThread.isRunning()) {
-            m_workerThread.quit();
-            m_workerThread.wait();
-            m_workerThread.terminate();
-        }
-    }
+    KdbInterface(QObject* parent = 0);
+    virtual ~KdbInterface();
 
-    // singleton access to internal database worker
-    static KdbInterfaceWorker* getWorker() { return &(m_self->m_worker); }
-private:
-    KdbInterface(QObject* parent = 0)
-        : QObject(parent),
-          m_workerThread(),
-          m_worker() // worker has got no parent because it must be moved to another thread.
-    {
-
-        m_worker.moveToThread(&m_workerThread);
-        m_workerThread.start();
-    }
+    // access to internal worker needed to connect to its slots
+    KdbInterfaceWorker* worker() { return &m_worker; }
 
 private:
-    static KdbInterface* m_self = new KdbInterface();
     QThread m_workerThread;
     KdbInterfaceWorker m_worker;
 
