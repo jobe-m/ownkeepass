@@ -26,7 +26,6 @@ include(src/Sailfish/main.pri)
 # the sources of the keepass QML plugins
 include(src/keepassPlugin/kdb3database/kdb3database.pri)
 include(src/keepassPlugin/databaseInterface/databaseInterface.pri)
-#include(src/settingsPlugin/settingsPlugin.pri)
 
 # the QML sources for the application
 include(qml/Sailfish/UI.pri)

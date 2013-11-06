@@ -35,16 +35,21 @@ class KdbInterface : public QObject
     Q_OBJECT
 
 public:
-    KdbInterface(QObject* parent = 0);
     virtual ~KdbInterface();
 
+    static KdbInterface* getInstance();
+
     // access to internal worker needed to connect to its slots
-    KdbInterfaceWorker* worker() { return &m_worker; }
+    KdbInterfaceWorker* getWorker() { return &m_worker; }
 
 private:
+    // Prevent object creation, it will be created as singleton object
+    KdbInterface(QObject* parent = 0);
+    Q_DISABLE_COPY(KdbInterface)
+
     QThread m_workerThread;
     KdbInterfaceWorker m_worker;
-
+    static KdbInterface* m_Instance;
 };
 
 }

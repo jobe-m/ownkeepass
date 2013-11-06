@@ -32,20 +32,11 @@
 #include "KdbGroup.h"
 #include "private/KdbInterface.h"
 
-// TODO handle this as singleton object
-// This is the global available interface class to the Keepass database
-// It is used by KdbDatabase, KdbListModel, KdbGroup and KdbEntry classes to access data of the Keepass database
-kpxPrivate::KdbInterface* databaseInterface;
-
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(Sailfish::createApplication(argc, argv));
-    app.data()->setOrganizationName("Marko Koschak");
+    app.data()->setOrganizationName("jobe-m");
     app.data()->setApplicationName("ownKeepass");
-
-// TODO handle this as singleton object
-    // create global Keepass database interface object
-    databaseInterface = new kpxPrivate::KdbInterface();
 
     // @uri KeepassPlugin
     const char* uri("KeepassPlugin");

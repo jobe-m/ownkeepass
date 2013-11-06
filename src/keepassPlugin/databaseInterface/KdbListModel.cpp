@@ -27,44 +27,40 @@
 using namespace kpxPublic;
 using namespace kpxPrivate;
 
-// reference to global interface of Keepass database
-extern KdbInterface* databaseInterface;
-
 KdbListModel::KdbListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     m_registered = false;
 
     // connect signals to backend
-    Q_ASSERT(databaseInterface);
     bool ret = connect(this, SIGNAL(loadMasterGroups()),
-                       databaseInterface->worker(), SLOT(slot_loadMasterGroups()));
+                       KdbInterface::getInstance()->getWorker(), SLOT(slot_loadMasterGroups()));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(loadGroupsAndEntries(int)),
-                  databaseInterface->worker(), SLOT(slot_loadGroupsAndEntries(int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_loadGroupsAndEntries(int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(groupsAndEntriesLoaded(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(groupsAndEntriesLoaded(int)),
                   this, SIGNAL(groupsAndEntriesLoaded(int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(addItemToListModel(QString, QString, int, int, int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(addItemToListModel(QString, QString, int, int, int)),
                   this, SLOT(slot_addItemToListModel(QString, QString, int, int, int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(unregisterFromKdbInterface(int)),
-                  databaseInterface->worker(), SLOT(slot_unregisterListModel(int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_unregisterListModel(int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(updateItemInListModel(QString,QString,int,int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(updateItemInListModel(QString,QString,int,int)),
                   this, SLOT(slot_updateItemInListModel(QString,QString,int,int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(masterGroupsLoaded(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(masterGroupsLoaded(int)),
                   this, SIGNAL(masterGroupsLoaded(int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(deleteItemInListModel(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(deleteItemInListModel(int)),
                   this, SLOT(slot_deleteItem(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(searchEntries(QString,int)),
-                  databaseInterface->worker(), SLOT(slot_searchEntries(QString,int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_searchEntries(QString,int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(searchEntriesCompleted(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(searchEntriesCompleted(int)),
                   this, SIGNAL(searchEntriesCompleted(int)));
     Q_ASSERT(ret);
 }

@@ -24,38 +24,35 @@
 #include "private/KdbInterface.h"
 
 using namespace kpxPublic;
-
-// reference to global interface of Keepass database
-extern kpxPrivate::KdbInterface* databaseInterface;
+using namespace kpxPrivate;
 
 KdbGroup::KdbGroup(QObject *parent)
     : QObject(parent)
 {
     // connect signals to backend
-    Q_ASSERT(databaseInterface);
     bool ret = connect(this, SIGNAL(loadGroupFromKdbDatabase(int)),
-                       databaseInterface->worker(), SLOT(slot_loadGroup(int)));
+                       KdbInterface::getInstance()->getWorker(), SLOT(slot_loadGroup(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(saveGroupToKdbDatabase(int, QString)),
-                  databaseInterface->worker(), SLOT(slot_saveGroup(int, QString)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_saveGroup(int, QString)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(groupLoaded(QString)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(groupLoaded(QString)),
                   this, SIGNAL(groupDataLoaded(QString)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(groupSaved(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(groupSaved(int)),
                   this, SIGNAL(groupDataSaved(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(createNewGroupInKdbDatabase(QString,quint32,int)),
-                  databaseInterface->worker(), SLOT(slot_createNewGroup(QString,quint32,int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewGroup(QString,quint32,int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(newGroupCreated(int, int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newGroupCreated(int, int)),
                   this, SIGNAL(newGroupCreated(int, int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(groupDeleted(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(groupDeleted(int)),
                   this, SIGNAL(groupDeleted(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(deleteGroupFromKdbDatabase(int)),
-                  databaseInterface->worker(), SLOT(slot_deleteGroup(int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_deleteGroup(int)));
     Q_ASSERT(ret);
 }
 

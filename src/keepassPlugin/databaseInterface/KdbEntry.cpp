@@ -24,37 +24,34 @@
 #include "private/KdbInterface.h"
 
 using namespace kpxPublic;
-
-// reference to global interface of Keepass database
-extern kpxPrivate::KdbInterface* databaseInterface;
+using namespace kpxPrivate;
 
 KdbEntry::KdbEntry(QObject *parent)
     : QObject(parent)
 {
     // connect signals to backend
-    Q_ASSERT(databaseInterface);
     bool ret = connect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
-                       databaseInterface->worker(), SLOT(slot_loadEntry(int)));
+                       KdbInterface::getInstance()->getWorker(), SLOT(slot_loadEntry(int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(entryLoaded(QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entryLoaded(QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
                   this, SIGNAL(entryDataLoaded(QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(saveEntrytoKdbDatabase(int,QString,QString,QString,QString,QString)),
-                  databaseInterface->worker(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
-                  databaseInterface->worker(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(entrySaved(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entrySaved(int)),
                   this, SIGNAL(entryDataSaved(int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(entryDeleted(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entryDeleted(int)),
                   this, SIGNAL(entryDeleted(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(deleteEntryFromKdbDatabase(int)),
-                  databaseInterface->worker(), SLOT(slot_deleteEntry(int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_deleteEntry(int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(newEntryCreated(int, int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newEntryCreated(int, int)),
                   this, SIGNAL(newEntryCreated(int, int)));
     Q_ASSERT(ret);
 }

@@ -24,12 +24,15 @@
 
 using namespace kpxPrivate;
 
+// Global static pointer used to ensure a single instance of the class
+// It is used by KdbDatabase, KdbListModel, KdbGroup and KdbEntry classes to access data of the Keepass database
+KdbInterface* KdbInterface::m_Instance = new KdbInterface;
+
 KdbInterface::KdbInterface(QObject *parent)
     : QObject(parent),
       m_workerThread(),
       m_worker() // worker has got no parent because it must be moved to another thread.
 {
-
     m_worker.moveToThread(&m_workerThread);
     m_workerThread.start();
 }
@@ -41,4 +44,11 @@ KdbInterface::~KdbInterface()
         m_workerThread.wait();
         m_workerThread.terminate();
     }
+}
+
+KdbInterface* KdbInterface::getInstance()
+{
+//    if (NULL == m_Instance) new KdbInterface;
+    Q_ASSERT(m_Instance);
+    return m_Instance;
 }

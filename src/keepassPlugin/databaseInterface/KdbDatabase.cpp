@@ -26,51 +26,48 @@
 #include "KdbDatabase.h"
 #include "KdbListModel.h"
 #include "private/KdbInterface.h"
+//#include "private/KdbInterfaceWorker.h"
 
 using namespace std;
 using namespace kpxPublic;
 using namespace kpxPrivate;
-
-// reference to global interface of Keepass database
-extern KdbInterface* databaseInterface;
 
 KdbDatabase::KdbDatabase(QObject *parent):
     QObject(parent),
     m_showUserNamePasswordsInListView(false)
 {
     // connect signals and slots to global KdbInterface class
-    Q_ASSERT(databaseInterface);
     bool ret = connect(this, SIGNAL(preCheckFilePaths(QString,QString)),
-                       databaseInterface->worker(), SLOT(slot_preCheckFilePaths(QString,QString)));
+                       KdbInterface::getInstance()->getWorker(), SLOT(slot_preCheckFilePaths(QString,QString)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(preCheckFilePathsDone(int)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(preCheckFilePathsDone(int)),
                   this, SIGNAL(preCheckDone(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(openDatabase(QString,QString,QString,bool)),
-                  databaseInterface->worker(), SLOT(slot_openDatabase(QString,QString,QString,bool)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_openDatabase(QString,QString,QString,bool)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(databaseOpened(int,QString)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseOpened(int,QString)),
                   this, SIGNAL(databaseOpened(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(createNewDatabase(QString,QString,QString,int)),
-                  databaseInterface->worker(), SLOT(slot_createNewDatabase(QString,QString,QString,int)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewDatabase(QString,QString,QString,int)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(newDatabaseCreated(int,QString)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newDatabaseCreated(int,QString)),
                   this, SIGNAL(newDatabaseCreated(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(closeDatabase()),
-                  databaseInterface->worker(), SLOT(slot_closeDatabase()));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_closeDatabase()));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(databaseClosed(int,QString)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseClosed(int,QString)),
                   this, SIGNAL(databaseClosed(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(setting_showUserNamePasswordsInListView(bool)),
-                  databaseInterface->worker(), SLOT(slot_setting_showUserNamePasswordsInListView(bool)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_setting_showUserNamePasswordsInListView(bool)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(changeDatabasePassword(QString)),
-                  databaseInterface->worker(), SLOT(slot_changePassword(QString)));
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_changePassword(QString)));
     Q_ASSERT(ret);
-    ret = connect(databaseInterface->worker(), SIGNAL(passwordChanged(int,QString)),
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(passwordChanged(int,QString)),
                   this, SIGNAL(databasePasswordChanged(int,QString)));
     Q_ASSERT(ret);
 }
