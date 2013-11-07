@@ -146,6 +146,10 @@ void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, Q
 
     // database was opened successful
     emit databaseOpened(kpxPublic::KdbDatabase::RE_OK, "");
+
+    // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
+    emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
+    emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
 }
 
 void KdbInterfaceWorker::slot_closeDatabase()
@@ -172,7 +176,7 @@ void KdbInterfaceWorker::slot_closeDatabase()
     emit databaseClosed(kpxPublic::KdbDatabase::RE_OK, "");
 }
 
-void KdbInterfaceWorker::slot_createNewDatabase(QString filePath,QString password, QString keyfile, int cryptAlgorithm)
+void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
 {
     // check if there is an already opened database and close it
     if (m_kdb3Database) {
@@ -201,6 +205,7 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath,QString passwor
         return;
     }
     m_kdb3Database->setCryptAlgorithm(CryptAlgorithm(cryptAlgorithm));
+    m_kdb3Database->setKeyTransfRounds(keyTransfRounds);
     if (!m_kdb3Database->setPasswordKey(password)) {
         // send signal with error
         emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
@@ -624,4 +629,18 @@ inline QString KdbInterfaceWorker::getUserAndPassword(IEntryHandle* entry)
 void KdbInterfaceWorker::slot_setting_showUserNamePasswordsInListView(bool value)
 {
     m_setting_showUserNamePasswordsInListView = value;
+}
+
+void KdbInterfaceWorker::slot_changeKeyTransfRounds(int value)
+{
+    // set key transformation rounds in database and emit changed signal
+    m_kdb3Database->setKeyTransfRounds(value);
+    emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
+}
+
+void KdbInterfaceWorker::slot_changeCryptAlgorithm(int value)
+{
+    // set crypto algorithm in database and emit changed signal
+    m_kdb3Database->setCryptAlgorithm(CryptAlgorithm(value));
+    emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
 }

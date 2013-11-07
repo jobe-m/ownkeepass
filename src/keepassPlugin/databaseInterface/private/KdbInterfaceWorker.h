@@ -47,6 +47,8 @@ signals:
     void newDatabaseCreated(int result, QString msg);
     void databaseClosed(int result, QString msg);
     void passwordChanged(int result, QString msg);
+    void databaseKeyTransfRoundsChanged(int value);
+    void databaseCryptAlgorithmChanged(int value);
 
     // signals to KdbListModel object
     void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId);
@@ -85,9 +87,11 @@ public slots:
     // signals from KdbDatabase object
     void slot_preCheckFilePaths(QString dbFile, QString keyFile);
     void slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
-    void slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm);
+    void slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
     void slot_closeDatabase();
     void slot_changePassword(QString password);
+    void slot_changeKeyTransfRounds(int value);
+    void slot_changeCryptAlgorithm(int value);
     void slot_setting_showUserNamePasswordsInListView(bool value);
 
     // signal from KdbListModel object
