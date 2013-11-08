@@ -79,8 +79,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Database Settings")
-// TODO implement database settings page with password change, encryption type, hash rounds, etc.
-                onClicked: pageStack.push(Qt.resolvedUrl("DatabaseSettingsDialog.qml").toString())
+                onClicked: pageStack.push(editDatabaseSettingsDialogComponent)
             }
 
             MenuItem {
@@ -693,6 +692,92 @@ Page {
                     }
                 }
             } // end editGroupDetailsDialogComponent
+
+            Component {
+                id: editDatabaseSettingsDialogComponent
+                Dialog {
+                    id: editDatabaseSettingsDialog
+
+                    SilicaFlickable {
+                        anchors.fill: parent
+                        contentWidth: parent.width
+                        contentHeight: col.height
+
+                        VerticalScrollDecorator {}
+
+                        Column {
+                            id: col
+                            width: parent.width
+                            spacing: Theme.paddingLarge
+
+                            DialogHeader {
+                                acceptText: "Save"
+                                title: "Save"
+                            }
+
+                            SectionHeader {
+                                text: "Database Settings"
+                            }
+
+                            TextField {
+                                id: databaseMasterPassword
+                                width: parent.width
+                                inputMethodHints: Qt.ImhNoPredictiveText
+                                echoMode: TextInput.Password
+                                label: "Master Password"
+                                placeholderText: "Change Master Password"
+                                EnterKey.enabled: text !== ""
+                                EnterKey.highlighted: text !== ""
+                                EnterKey.onClicked: {
+                                    confirmDatabaseMasterPassword.focus = true
+                                }
+                            }
+
+                            TextField {
+                                id: confirmDatabaseMasterPassword
+                                enabled: databaseMasterPassword.text !== ""
+                                opacity: databaseMasterPassword.text !== "" ? 1.0 : 0.0
+                                height: databaseMasterPassword.text !== "" ? implicitHeight : 0
+                                width: parent.width
+                                inputMethodHints: Qt.ImhNoPredictiveText
+                                echoMode: TextInput.Password
+                                errorHighlight: databaseMasterPassword.text !== text
+                                label: !errorHighlight ? "Master Password confirmed" : "Confirm Master Password"
+                                placeholderText: "Confirm Master Password"
+                                EnterKey.enabled: databaseMasterPassword.text !== "" && !errorHighlight
+                                EnterKey.highlighted: databaseMasterPassword.text !== "" && !errorHighlight
+                                EnterKey.onClicked: {
+                                    parent.focus = true
+                                }
+                                Behavior on opacity { NumberAnimation { duration: 500 } }
+                                Behavior on height { NumberAnimation { duration: 500 } }
+                            }
+
+                            ComboBox {
+                                id: databaseCryptAlgorithm
+                                width: parent.width
+                                label: "Encryption in use:"
+                                currentIndex: 0
+                                menu: ContextMenu {
+                                    MenuItem { text: "AES/Rijndael" }
+                                    MenuItem { text: "Twofish" }
+                                }
+                            }
+
+                            TextField {
+                                id: databaseKeyTransfRounds
+                                width: parent.width
+                                inputMethodHints: Qt.ImhFormattedNumbersOnly
+                                validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                                label: "Key Transformation Rounds"
+                                placeholderText: label
+                                text: "50000"
+                                EnterKey.onClicked: parent.focus = true
+                            }
+                        }
+                    }
+                }
+            }
 
             Component {
                 id: queryDialogForUnsavedChangesComponent
