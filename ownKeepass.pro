@@ -35,5 +35,6 @@ include(src/Sailfish/sailfishapplication/sailfishapplication.pri)
 
 OTHER_FILES += \
     README.md \
+    LICENSE \
     rpm/ownKeepass.yaml \
     rpm/ownKeepass.spec
