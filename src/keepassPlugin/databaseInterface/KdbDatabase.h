@@ -64,7 +64,6 @@ public:
         RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
         RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
         RE_PRECHECK_KEY_FILE_PATH_CREATION_ERROR,   // path to key file could not be created
-        RE_DB_SETKEYTRANSFROUNDS_FAILED,            // KeyTransfRounds could not be set in database
 
         RE_LAST
     };
@@ -103,16 +102,19 @@ signals:
     void databasePasswordChanged(int result, QString errorMsg);
     void keyTransfRoundsChanged();
     void cryptAlgorithmChanged();
+    void errorOccured(int result);
 
 private slots:
     // signals from KdbInterface backend thread
     void slot_databaseKeyTransfRoundsChanged(int value) {
+        qDebug("slot_databaseKeyTransfRoundsChanged(%d)", value);
         if (value != m_keyTransfRounds) {
             m_keyTransfRounds = value;
             emit keyTransfRoundsChanged();
         }
     }
     void slot_databaseCryptAlgorithmChanged(int value) {
+        qDebug("slot_databaseCryptAlgorithmChanged(%d)", value);
         if (value != m_cryptAlgorithm) {
             m_cryptAlgorithm = value;
             emit cryptAlgorithmChanged();

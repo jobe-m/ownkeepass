@@ -1,5 +1,4 @@
 .pragma library
-.import QtQuick 2.0 as QQ
 
 /***************************************************************************
 **
@@ -23,13 +22,14 @@
 **
 ***************************************************************************/
 
-var constants = {
-    textFieldAlignment: QQ.Text.AlignRight
-}
-
 var env = {
+    kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
+
+    setKdbDatabase: function(obj) {
+        this.kdbDatabase = obj
+    },
 
     setInfoPopup: function(obj) {
         this.infoPopup = obj
@@ -40,6 +40,7 @@ var env = {
     },
 
     reset: function() {
+        this.kdbDatabase = undefined
         this.infoPopup = undefined
         this.keepassSettings = undefined
     }
@@ -47,7 +48,6 @@ var env = {
 
 var config = {
     // user preferences
-    showEmptyEntries: false,
     maxNumberOfRecents: 2,
 
     // Array objects holding recent opened keepass databases.

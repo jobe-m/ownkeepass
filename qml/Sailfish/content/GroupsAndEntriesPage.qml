@@ -151,11 +151,23 @@ Page {
 // TODO                property int groupImageId: 0
 
                 /*
+                  Data used to save database settings values in KdbDatabase object.
+                  */
+                property string databaseMasterPassword: ""
+                property int databaseCryptAlgorithm: 0
+                property int databaseKeyTransfRounds: 0
+
+                /*
                   Commonly used for manipulation and creation of entries and groups.
                   */
                 property bool createNewItem: false
                 property int itemId: 0
                 property int parentGroupId: 0
+
+                // some constants
+                readonly property int c_queryForEntry: 1
+                readonly property int c_queryForGroup: 2
+                readonly property int c_queryForDatabaseSettings: 3
 
                 function saveKdbGroupDetails() {
                     console.log("Group name: " + groupName)
@@ -199,14 +211,14 @@ Page {
                             originalEntryComment !== entryComment) {
                         // open query dialog for unsaved changes
                         pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                          { "isEntry": true })
+                                          { "type": c_queryForEntry })
                     }
                 }
 
                 function checkForUnsavedKdbGroupChanges() {
                     if (originalGroupName !== groupName) {
                         pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                          { "isEntry": false })
+                                          { "type": c_queryForGroup })
                     }
                 }
 
@@ -255,6 +267,32 @@ Page {
                     itemId        = groupId
                     parentGroupId = parentGrId
                     groupName     = name
+                }
+
+                function setDatabaseSettings(masterPassword, cryptAlgorithm, keyTransfRounds) {
+                    databaseMasterPassword  = masterPassword
+                    databaseCryptAlgorithm  = cryptAlgorithm
+                    databaseKeyTransfRounds = keyTransfRounds
+                }
+
+                function checkForUnsavedDatabaseSettingsChanges() {
+                    // check if user gave a new master password or if encryption type or key transformation rounds have changed
+                    if (databaseMasterPassword !== "" ||
+                            databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm ||
+                            databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
+                        pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                          { "type": c_queryForDatabaseSettings })
+                    }
+                }
+
+                function saveDatabaseSettings() {
+                    if (databaseMasterPassword !== "")
+                        Global.env.kdbDatabase.changePassword(databaseMasterPassword)
+                    databaseMasterPassword = ""
+                    if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm)
+                        Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
+                    if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds)
+                        Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
                 }
             }
 
@@ -698,6 +736,9 @@ Page {
                 Dialog {
                     id: editDatabaseSettingsDialog
 
+                    // forbit page navigation if master password is not confirmed
+                    canNavigateForward: !confirmDatabaseMasterPassword.errorHighlight
+
                     SilicaFlickable {
                         anchors.fill: parent
                         contentWidth: parent.width
@@ -771,25 +812,54 @@ Page {
                                 validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
                                 label: "Key Transformation Rounds"
                                 placeholderText: label
-                                text: "50000"
+                                text: Global.env.kdbDatabase.keyTransfRounds
                                 EnterKey.onClicked: parent.focus = true
                             }
                         }
+                    } // SilicaFlickable
+
+                    // user wants to save new Settings
+                    onAccepted: {
+                        // first save locally database settings then trigger saving
+                        internal.setDatabaseSettings(databaseMasterPassword.text,
+                                                     databaseCryptAlgorithm.currentIndex,
+                                                     Number(databaseKeyTransfRounds.text))
+                        internal.saveDatabaseSettings()
                     }
-                }
+                    // user has rejected changing database settings, check if there are unsaved details
+                    onRejected: {
+                        // no need for saving if input field for master password is invalid
+                        if (canNavigateForward) {
+                            // first save locally database settings then trigger check for unsaved changes
+                            internal.setDatabaseSettings(databaseMasterPassword.text,
+                                                         databaseCryptAlgorithm.currentIndex,
+                                                         Number(databaseKeyTransfRounds.text))
+                            internal.checkForUnsavedDatabaseSettingsChanges()
+                        }
+                    }
+                } // Dialog
             }
 
             Component {
                 id: queryDialogForUnsavedChangesComponent
                 QueryDialog {
-                    property bool isEntry: true
+                    property int type: 0
                     headerAcceptText: "Yes"
                     headerTitleText: "Yes"
                     titleText: "Unsaved Changes"
-                    message: isEntry ? "Do you want to save changes to the Password Entry?" :
-                                       "Do you want to save changes to the Password Group?"
-                    onAccepted: isEntry ? internal.saveKdbEntryDetails() :
-                                          internal.saveKdbGroupDetails()
+                    message: type === internal.c_queryForEntry ?
+                                 "Do you want to save changes to the Password Entry?" :
+                                 type == internal.c_queryForGroup ?
+                                     "Do you want to save changes to the Password Group?" :
+                                     type === internal.c_queryForDatabaseSettings ?
+                                         "Do you want to save changes to Database Settings?" : ""
+
+                    onAccepted:  type === internal.c_queryForEntry ?
+                                     internal.saveKdbEntryDetails() :
+                                     type == internal.c_queryForGroup ?
+                                          internal.saveKdbGroupDetails() :
+                                         type === internal.c_queryForDatabaseSettings ?
+                                             internal.saveDatabaseSettings() : console.log("ERROR in query for unsaved changes")
                 }
             } // end queryForUnsavedChangesComponent
         } // end kdbLIstItemDelegate

@@ -49,6 +49,7 @@ signals:
     void passwordChanged(int result, QString msg);
     void databaseKeyTransfRoundsChanged(int value);
     void databaseCryptAlgorithmChanged(int value);
+    void databaseErrorOccured(int result);
 
     // signals to KdbListModel object
     void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId);

@@ -46,8 +46,7 @@ That's it for now. I will update things here when I have more news to share :)
 
 23-Oct-2013
 
-Copyright 2013 Marko Koschak
-Licensed under GPLv2. See LICENSE for more info.
+Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
 [1]: http://www.keepassx.org                                           "KeepassX project homepage"
 [2]: https://sailfishos.org/sailfish-silica/sailfish-silica-all.html   "QtQuick Components for Sailfish"

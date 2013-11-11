@@ -56,14 +56,16 @@ Page {
 
     KdbDatabase {
         id: kdbDatabase
-        showUserNamePasswordsInListView: true
         onPreCheckDone: internal.preCheckDoneHandler(result)
         onDatabaseOpened: internal.databaseOpenedHandler(result, errorMsg)
         onNewDatabaseCreated: internal.newDatabaseCreatedHandler(result, errorMsg)
         onDatabaseClosed: internal.databaseClosedHandler(result, errorMsg)
     }
 
-    Component.onCompleted: Global.env.setKeepassSettings(keepassSettings)
+    Component.onCompleted: {
+        Global.env.setKdbDatabase(kdbDatabase)
+        Global.env.setKeepassSettings(keepassSettings)
+    }
 
     onStatusChanged: {
         if (status === PageStatus.Active) internal.init()
@@ -172,8 +174,11 @@ Page {
         function openKeepassDatabase(password, createNewDatabase) {
             if (password === "") console.log("ERROR: Password is empty")
             if (createNewDatabase) {
+                // set default values for encryption and key transformation rounds
+                kdbDatabase.keyTransfRounds = keepassSettings.defaultKeyTransfRounds
+                kdbDatabase.cryptAlgorithm = keepassSettings.defaultEncryption
                 // create new Keepass database
-                kdbDatabase.create(databasePath, keyFilePath, password, keepassSettings.defaultEncryption)
+                kdbDatabase.create(databasePath, keyFilePath, password)
             } else {
                 // open existing Keepass database
                 kdbDatabase.open(databasePath, keyFilePath, password, false)
@@ -181,6 +186,9 @@ Page {
         }
 
         function init() {
+            // load settings into kdbDatabase
+            kdbDatabase.showUserNamePasswordsInListView = keepassSettings.showUserNamePasswordInListView
+
             if (keepassSettings.loadDefault) {
                 databasePath = keepassSettings.defaultDatabasePath
                 keyFilePath  = keepassSettings.defaultKeyFilePath
@@ -195,8 +203,6 @@ Page {
         function preCheckDoneHandler(result) {
             var dialog
             console.log("onPreCheckDone: " + result)
-//            settings_databasePath.save()
-//            settings_keyFilePath.save()
             switch (result) {
             case KdbDatabase.RE_OK: {
                 // files exists so open query password dialog

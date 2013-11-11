@@ -633,14 +633,31 @@ void KdbInterfaceWorker::slot_setting_showUserNamePasswordsInListView(bool value
 
 void KdbInterfaceWorker::slot_changeKeyTransfRounds(int value)
 {
+    // do nothing if no database is opened database
+    if (!m_kdb3Database) return;
+
     // set key transformation rounds in database and emit changed signal
     m_kdb3Database->setKeyTransfRounds(value);
+    m_kdb3Database->generateMasterKey();
     emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit databaseErrorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR);
+        return;
+    }
 }
 
 void KdbInterfaceWorker::slot_changeCryptAlgorithm(int value)
 {
+    // do nothing if no database is opened database
+    if (!m_kdb3Database) return;
+
     // set crypto algorithm in database and emit changed signal
     m_kdb3Database->setCryptAlgorithm(CryptAlgorithm(value));
     emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit databaseErrorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR);
+        return;
+    }
 }

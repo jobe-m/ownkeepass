@@ -70,6 +70,8 @@ KdbDatabase::KdbDatabase(QObject *parent):
                      KdbInterface::getInstance()->getWorker(), SLOT(slot_changeCryptAlgorithm(int))));
     Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseCryptAlgorithmChanged(int)),
                      this, SLOT(slot_databaseCryptAlgorithmChanged(int))));
+    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseErrorOccured(int)),
+                     this, SIGNAL(errorOccured(int))));
 }
 
 void KdbDatabase::preCheck(const QString& dbFilePath, const QString &keyFilePath)
