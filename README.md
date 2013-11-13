@@ -4,8 +4,7 @@ ownKeepass
 What is this?
 -------------
 
-ownKeepass is a Password Safe application for the Sailfish platform. You can use it to store your passwords for webpages, PINs, TANs and any other data that should be kept secret on your Jolla Smartphone. The database where that data is stored is encrypted using a master password. ownKeepass can read and write Keepass database files version 1. The database code is actually taken from [KeepassX project][1]. The code base of KeepassX v0.4.3 is quite stable and well tested by a lot of people. But because its developer is not working any more actively on that code I decided to put it in a new repository and write a QML wrapper around the Keepass database interface class. The QWidget code was thrown away and the UI part is now based on QML.
-However please note that the application is not yet ready to be used on Sailfish. The sources are currently work in progress. Please have a look at Features and TODO below for more details.
+ownKeepass is a Password Safe application for the Sailfish platform. You can use it to store your passwords for webpages, PINs, TANs and any other data that should be kept secret on your Jolla Smartphone. The database where that data is stored is encrypted using a master password. ownKeepass can read and write Keepass database files version 1. The database code is actually taken from [KeepassX project][1]. The code base of KeepassX v0.4.3 is quite stable and well tested by a lot of people. But because its developer is not working any more actively on that code I decided to put it in a new repository and write a QML wrapper around the Keepass database interface class. The QWidget code was thrown away and the UI part is now based on QML. The sources are currently work in progress but the app is already usable. So if you are interested to try the app you can download the sources and compile it for the emulator running on a desktop PC :)
 
 Why?
 ----
@@ -31,20 +30,22 @@ Features (already working)
 
 *   Load and save (automatically in background) kdb database file
 *   Create, modify and delete Keepass groups and entries
-*   One predefined default keepass file is loaded on application start
-*   Database settings can be already altered in the UI
+*   One default keepass file is loaded on application start
+*   Default keepass file can be changed in the keepass application settings
+*   Database settings adjustable like master password, encryption algorithm and key transformation rounds
 
 TODO
 ----
 
 *   Port Keepass backend from Qt4 (N9 version) to Qt5 [Done]
-*   Adapt old N9 QML source code to use [Sailfish Silica components][2] and bring the application up on the Sailfish emulator with all features from the N9 version [currently progressing well]
+*   Adapt old N9 QML source code to use [Sailfish Silica components][2] and bring the application up on the Sailfish emulator with all features from the N9 version [Done]
+*   Implement search functionality [currently ongoing]
 *   Add some more fancy UI elements like icons for Keepass groups and entries, etc.
 *   Post some screenshots :D
 
 That's it for now. I will update things here when I have more news to share :)
 
-23-Oct-2013
+12-Nov-2013
 
 Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
