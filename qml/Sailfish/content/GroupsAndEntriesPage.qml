@@ -143,7 +143,7 @@ Page {
 // TODO                property int entryImageId: 0
 
                 /*
-                  Here are the details for Kdb groups. The same applies like for Kdb entries.
+                  Here are the details for Kdb groups. The same applies like for Kdb entries
                   */
                 property string originalGroupName: ""
 // TODO                property int originalGroupImageId: 0
@@ -151,14 +151,25 @@ Page {
 // TODO                property int groupImageId: 0
 
                 /*
-                  Data used to save database settings values in KdbDatabase object.
+                  Data used to save database setting values in KdbDatabase object
                   */
                 property string databaseMasterPassword: ""
                 property int databaseCryptAlgorithm: 0
                 property int databaseKeyTransfRounds: 0
 
                 /*
-                  Commonly used for manipulation and creation of entries and groups.
+                  Data used to save keepass default setting values
+                  */
+                property string defaultDatabaseFilePath
+                property string defaultKeyFilePath
+                property int defaultCryptAlgorithm
+                property int defaultKeyTransfRounds
+                property int inactivityLockTime
+                property bool showUserNamePasswordInListView
+
+
+                /*
+                  Commonly used for manipulation and creation of entries and groups
                   */
                 property bool createNewItem: false
                 property int itemId: 0
@@ -168,6 +179,7 @@ Page {
                 readonly property int c_queryForEntry: 1
                 readonly property int c_queryForGroup: 2
                 readonly property int c_queryForDatabaseSettings: 3
+                readonly property int c_queryForKeepassSettings: 4
 
                 function saveKdbGroupDetails() {
                     console.log("Group name: " + groupName)
@@ -293,6 +305,38 @@ Page {
                         Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
                     if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds)
                         Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
+                }
+
+                function setKeepassSettings(aDefaultDatabaseFilePath, aDefaultKeyFilePath, aDefaultCryptAlgorithm,
+                                            aDefaultKeyTransfRounds, aInactivityLockTime, aShowUserNamePasswordInListView) {
+                    defaultDatabaseFilePath = aDefaultDatabaseFilePath
+                    defaultKeyFilePath = aDefaultKeyFilePath
+                    defaultCryptAlgorithm = aDefaultCryptAlgorithm
+                    defaultKeyTransfRounds = aDefaultKeyTransfRounds
+                    inactivityLockTime = aInactivityLockTime
+                    showUserNamePasswordInListView = aShowUserNamePasswordInListView
+                }
+
+                function checkForUnsavedKeepassSettingsChanges() {
+                    if (Global.env.keepassSettings.defaultDatabasePath !== defaultDatabaseFilePath ||
+                            Global.env.keepassSettings.defaultKeyFilePath !== defaultKeyFilePath ||
+                            Global.env.keepassSettings.defaultEncryption !== defaultCryptAlgorithm ||
+                            Global.env.keepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
+                            Global.env.keepassSettings.locktime !== inactivityLockTime ||
+                            Global.env.keepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView) {
+                        pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                          { "type": c_queryForKeepassSettings})
+                    }
+                }
+
+                function saveKeepassSettings() {
+                    Global.env.keepassSettings.defaultDatabasePath = defaultDatabaseFilePath
+                    Global.env.keepassSettings.defaultKeyFilePath = defaultKeyFilePath
+                    Global.env.keepassSettings.defaultEncryption = defaultCryptAlgorithm
+                    Global.env.keepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
+                    Global.env.keepassSettings.locktime = inactivityLockTime
+                    Global.env.keepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
+                    Global.env.keepassSettings.saveSettings()
                 }
             }
 
@@ -841,6 +885,233 @@ Page {
             }
 
             Component {
+                id: settingsDialogComponent
+                Dialog {
+                    id: settingsDialog
+
+                    // forbit page navigation if master password is not confirmed
+                    canNavigateForward: !defaultDatabaseFilePath.errorHighlight
+
+                    SilicaFlickable {
+                        anchors.fill: parent
+                        contentWidth: parent.width
+                        contentHeight: col.height
+
+                        // Show a scollbar when the view is flicked, place this over all other content
+                        VerticalScrollDecorator {}
+
+                        Column {
+                            id: col
+                            width: parent.width
+                            spacing: Theme.paddingLarge
+
+                            DialogHeader {
+                                acceptText: "Save"
+                                title: "Save"
+                            }
+
+                            SectionHeader {
+                                text: "Keepass Settings"
+                            }
+
+// TODO We have currently only simple mode
+//                            TextSwitch {
+//                                id: simpleMode
+//                                checked: Global.env.keepassSettings.simpleMode
+//                                text: "Use Simple Mode"
+//                                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
+//                                             " If you switch this off you get a list of recently opened Keepass database files instead."
+//                            }
+
+//                            SectionHeader {
+//                                text: "Database"
+//                            }
+
+                            Column {
+                                width: parent.width
+
+                                TextField {
+                                    id: defaultDatabaseFilePath
+                                    width: parent.width
+                                    inputMethodHints: Qt.ImhUrlCharactersOnly
+                                    label: "Default database file path"
+                                    placeholderText: label
+                                    errorHighlight: text === ""
+                                    text: Global.env.keepassSettings.defaultDatabasePath
+                                    EnterKey.onClicked: parent.focus = true
+                                }
+
+                                SilicaLabel {
+                                    text: Global.env.keepassSettings.simpleMode ?
+                                              "This is the name and path of default Keepass database file" :
+                                              "This is the path where new Keepass Password Safe files will be stored"
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    color: Theme.secondaryColor
+                                }
+                            }
+
+                            TextSwitch {
+                                id: useKeyFile
+                                checked: Global.env.keepassSettings.defaultKeyFilePath !== ""
+                                text: "Create Key File"
+                                description: "Switch this on if you want to create a key file together with a new Keepass Password Safe file"
+                            }
+
+                            TextField {
+                                id: defaultKeyFilePath
+                                enabled: useKeyFile.checked
+                                opacity: useKeyFile.checked ? 1.0 : 0.0
+                                height: useKeyFile.checked ? implicitHeight : 0
+                                width: parent.width
+                                inputMethodHints: Qt.ImhUrlCharactersOnly
+                                label: "Default key file path"
+                                placeholderText: label
+                                text: Global.env.keepassSettings.defaultKeyFilePath
+                                EnterKey.onClicked: parent.focus = true
+                                Behavior on opacity { NumberAnimation { duration: 500 } }
+                                Behavior on height { NumberAnimation { duration: 500 } }
+                            }
+
+                            Column {
+                                width: parent.width
+
+                                ComboBox {
+                                    id: defaultEncryption
+                                    width: settingsDialog.width
+                                    label: "Default Encryption in use:"
+                                    currentIndex: Global.env.keepassSettings.defaultEncryption
+                                    menu: ContextMenu {
+                                        MenuItem { text: "AES/Rijndael" }
+                                        MenuItem { text: "Twofish" }
+                                    }
+                                }
+
+                                SilicaLabel {
+                                    text: "Choose encryption which will be used as default for a new Keepass Password Safe file"
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    color: Theme.secondaryColor
+                                }
+                            }
+
+                            Column {
+                                width: parent.width
+
+                                TextField {
+                                    id: defaultKeyTransfRounds
+                                    width: parent.width
+                                    inputMethodHints: Qt.ImhFormattedNumbersOnly
+                                    validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                                    label: "Default Key Transformation Rounds"
+                                    placeholderText: label
+                                    text: Global.env.keepassSettings.defaultKeyTransfRounds
+                                    EnterKey.onClicked: parent.focus = true
+                                }
+
+                                SilicaLabel {
+                                    text: "Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks"
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    color: Theme.secondaryColor
+                                }
+                            }
+
+                            SectionHeader {
+                                text: "UI Settings"
+                            }
+
+                            Slider {
+                                id: inactivityLockTime
+                                value: Global.env.keepassSettings.locktime
+                                minimumValue: 0
+                                maximumValue: 10
+                                stepSize: 1
+                                width: parent.width - Theme.paddingLarge * 2
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                valueText: calculateInactivityTime(value)
+                                label: "Inactivity Lock Time"
+                                /*
+                                  0 = immediately
+                                  1 = 5 seconds
+                                  2 = 10 seconds
+                                  3 = 30 seconds
+                                  4 = 1 minute
+                                  5 = 2 minutes
+                                  6 = 5 minutes
+                                  7 = 10 minutes
+                                  8 = 30 minutes
+                                  9 = 60 minutes
+                                  10 = unlimited
+                                  */
+                                function calculateInactivityTime(value) {
+                                    switch (value) {
+                                    case 0:
+                                        return "Immediately"
+                                    case 1:
+                                        return "5 Seconds"
+                                    case 2:
+                                        return "10 Seconds"
+                                    case 3:
+                                        return "30 Seconds"
+                                    case 4:
+                                        return "1 Minute"
+                                    case 5:
+                                        return "2 Minutes"
+                                    case 6:
+                                        return "5 Minutes"
+                                    case 7:
+                                        return "10 Minutes"
+                                    case 8:
+                                        return "30 Minutes"
+                                    case 9:
+                                        return "60 Minutes"
+                                    case 10:
+                                        return "Unlimited"
+                                    }
+                                }
+                            }
+
+                            TextSwitch {
+                                id: extendedListView
+                                checked: Global.env.keepassSettings.showUserNamePasswordInListView
+                                text: "Extended List View"
+                                description: "If you switch this on username and password are shown below entry title in list views"
+                            }
+                        }
+                    }
+
+                    onAccepted: {
+                        // first save locally database settings then trigger saving
+                        var defaultKeyFilePathTemp = ""
+                        if (useKeyFile.checked)
+                            defaultKeyFilePathTemp = defaultKeyFilePath.text
+                        internal.setKeepassSettings(defaultDatabaseFilePath.text,
+                                                    defaultKeyFilePathTemp,
+                                                    defaultEncryption.currentIndex,
+                                                    Number(defaultKeyTransfRounds.text),
+                                                    inactivityLockTime.value,
+                                                    extendedListView.checked)
+                        internal.saveKeepassSettings()
+                    }
+
+                    onRejected: {
+                        // no need for saving if input field for master password is invalid
+                        if (canNavigateForward) {
+                            // first save locally database settings then trigger check for unsaved changes
+                            var defaultKeyFilePathTemp = ""
+                            if (useKeyFile.checked)
+                                defaultKeyFilePathTemp = defaultKeyFilePath.text
+                            internal.setKeepassSettings(defaultDatabaseFilePath.text,
+                                                        defaultKeyFilePathTemp,
+                                                        defaultEncryption.currentIndex,
+                                                        Number(defaultKeyTransfRounds.text),
+                                                        inactivityLockTime.value,
+                                                        extendedListView.checked)
+                            internal.checkForUnsavedKeepassSettingsChanges()
+                        }
+                    }
+                }
+            }
+
+            Component {
                 id: queryDialogForUnsavedChangesComponent
                 QueryDialog {
                     property int type: 0
@@ -849,17 +1120,21 @@ Page {
                     titleText: "Unsaved Changes"
                     message: type === internal.c_queryForEntry ?
                                  "Do you want to save changes to the Password Entry?" :
-                                 type == internal.c_queryForGroup ?
+                                 type === internal.c_queryForGroup ?
                                      "Do you want to save changes to the Password Group?" :
                                      type === internal.c_queryForDatabaseSettings ?
-                                         "Do you want to save changes to Database Settings?" : ""
+                                         "Do you want to save changes to Database Settings?" :
+                                         type === internal.c_queryForKeepassSettings ?
+                                             "Do you want to save changed settings values?" : ""
 
                     onAccepted:  type === internal.c_queryForEntry ?
                                      internal.saveKdbEntryDetails() :
-                                     type == internal.c_queryForGroup ?
-                                          internal.saveKdbGroupDetails() :
+                                     type === internal.c_queryForGroup ?
+                                         internal.saveKdbGroupDetails() :
                                          type === internal.c_queryForDatabaseSettings ?
-                                             internal.saveDatabaseSettings() : console.log("ERROR in query for unsaved changes")
+                                             internal.saveDatabaseSettings() :
+                                             type === internal.c_queryForKeepassSettings ?
+                                                 internal.saveKeepassSettings() : console.log("ERROR in query for unsaved changes")
                 }
             } // end queryForUnsavedChangesComponent
         } // end kdbLIstItemDelegate

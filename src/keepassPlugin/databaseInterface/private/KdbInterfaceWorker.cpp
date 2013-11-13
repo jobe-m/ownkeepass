@@ -252,6 +252,7 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString passwo
 void KdbInterfaceWorker::slot_changePassword(QString password)
 {
     qDebug() << "KdbInterfaceWorker::slot_changePassword";
+    Q_ASSERT(m_kdb3Database);
     if (!m_kdb3Database->setPasswordKey(password)) {
         // send signal with error
         emit passwordChanged(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
@@ -269,6 +270,7 @@ void KdbInterfaceWorker::slot_changePassword(QString password)
 
 void KdbInterfaceWorker::slot_loadMasterGroups()
 {
+    Q_ASSERT(m_kdb3Database);
     for (int i = 0; i < m_kdb3Database->groups().count(); i++) {
         IGroupHandle* masterGroup = m_kdb3Database->groups().at(i);
         if (masterGroup->isValid()) {
@@ -297,6 +299,7 @@ void KdbInterfaceWorker::slot_loadMasterGroups()
 void KdbInterfaceWorker::slot_loadGroupsAndEntries(int groupId)
 {
     qDebug("start KdbListModel::slot_loadGroupsAndEntries");
+    Q_ASSERT(m_kdb3Database);
     // load sub groups and entries
     IGroupHandle* group = (IGroupHandle*)(groupId);
     QList<IGroupHandle*> subGroups(group->children());
@@ -368,6 +371,7 @@ void KdbInterfaceWorker::slot_loadGroup(int groupId)
 void KdbInterfaceWorker::slot_saveGroup(int groupId, QString title)
 {
     qDebug("slot_saveGroup() groupID: %d", groupId);
+    Q_ASSERT(m_kdb3Database);
     Q_ASSERT(groupId != 0); // master group cannot be changed or saved
 
     //  save changes on group details to database
@@ -403,6 +407,7 @@ void KdbInterfaceWorker::slot_unregisterListModel(int modelId)
 void KdbInterfaceWorker::slot_createNewGroup(QString title, quint32 iconId, int parentGroupId)
 {
     qDebug() << "KdbInterfaceWorker::slot_createNewGroup";
+    Q_ASSERT(m_kdb3Database);
 
     // get parent group handle and identify IDs of list model
     IGroupHandle* parentGroup;
@@ -450,6 +455,7 @@ void KdbInterfaceWorker::slot_saveEntry(int entryId,
                                         QString password,
                                         QString comment)
 {
+    Q_ASSERT(m_kdb3Database);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)(entryId);
 
@@ -488,6 +494,7 @@ void KdbInterfaceWorker::slot_createNewEntry(QString title,
 {
     // create new entry in specified group
     IGroupHandle* parentGroup = (IGroupHandle*)(parentGroupId);
+    Q_ASSERT(m_kdb3Database);
     IEntryHandle* newEntry = m_kdb3Database->newEntry(parentGroup);
     // add data to new entry
     newEntry->setTitle(title);
@@ -525,6 +532,7 @@ void KdbInterfaceWorker::slot_deleteGroup(int groupId)
     IGroupHandle* group = (IGroupHandle*)(groupId);
     IGroupHandle* parentGroup = group->parent();
     // delete group from database
+    Q_ASSERT(m_kdb3Database);
     m_kdb3Database->deleteGroup(group);
     // save changes to database
     if (!m_kdb3Database->save()) {
@@ -549,6 +557,7 @@ void KdbInterfaceWorker::updateGrandParentGroupInListModel(IGroupHandle* parentG
 
     IGroupHandle* grandParentGroup = parentGroup->parent();
     int numberOfSubgroups = parentGroup->children().count();
+    Q_ASSERT(m_kdb3Database);
     int numberOfEntries = m_kdb3Database->entries(parentGroup).count();
     emit updateItemInListModel(parentGroup->title(),                                // group name
                                QString("Subgroups: %1 | Entries: %2")
@@ -569,6 +578,7 @@ void KdbInterfaceWorker::slot_deleteEntry(int entryId)
 
     qDebug() << "KdbInterfaceWorker::slot_deleteEntry got parent group";
 
+    Q_ASSERT(m_kdb3Database);
     // delete entry from database
     m_kdb3Database->deleteEntry(entry);
     // save changes to database
@@ -591,6 +601,7 @@ void KdbInterfaceWorker::slot_searchEntries(QString searchString, int rootGroupI
     IGroupHandle* rootGroup = (IGroupHandle*)(rootGroupId);
     // search for entries in database
     // rootGroup is the groups from which search is performed recursively in the (sub-)tree of the database
+    Q_ASSERT(m_kdb3Database);
     QList<IEntryHandle*> entries = m_kdb3Database->search(rootGroup,    // root group
                                                           searchString, // search string
                                                           false,        // is case sensitive

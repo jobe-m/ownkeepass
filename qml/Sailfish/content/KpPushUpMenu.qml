@@ -34,7 +34,7 @@ PushUpMenu {
     }
     MenuItem {
         text: "Settings"
-        onClicked: pageStack.push(Qt.resolvedUrl("SettingsDialog.qml"))
+        onClicked: pageStack.push(settingsDialogComponent)
     }
 }
 
