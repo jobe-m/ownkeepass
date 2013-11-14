@@ -23,9 +23,14 @@
 ***************************************************************************/
 
 var env = {
+    mainPage: undefined,
     kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
+
+    setMainPage: function(obj) {
+        this.mainPage = obj
+    },
 
     setKdbDatabase: function(obj) {
         this.kdbDatabase = obj
@@ -40,6 +45,7 @@ var env = {
     },
 
     reset: function() {
+        this.mainPage = undefined
         this.kdbDatabase = undefined
         this.infoPopup = undefined
         this.keepassSettings = undefined

@@ -30,6 +30,16 @@ import KeepassPlugin 1.0
 Page {
     id: mainPage
 
+    // Components accessible through Global mainPage object
+    property Component kdbListItemComponent: kdbListItemComponent
+    property Component showEntryDetailsPageComponent: showEntryDetailsPageComponent
+    property Component editEntryDetailsDialogComponent: editEntryDetailsDialogComponent
+    property Component editGroupDetailsDialogComponent: editGroupDetailsDialogComponent
+    property Component editDatabaseSettingsDialogComponent: editDatabaseSettingsDialogComponent
+    property Component settingsDialogComponent: settingsDialogComponent
+    property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
+
+
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -63,6 +73,7 @@ Page {
     }
 
     Component.onCompleted: {
+        Global.env.setMainPage(mainPage)
         Global.env.setKdbDatabase(kdbDatabase)
         Global.env.setKeepassSettings(keepassSettings)
     }
@@ -287,9 +298,10 @@ Page {
             case KdbDatabase.RE_OK: {
                 // open database groups main page and replace password page in page stack
                 page = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                               { pageTitle: "Password groups",
-                                 groupId: 0,
-                                 loadMasterGroups: true }, false, true);
+                               { "pageTitle": "Password groups",
+                                 "groupId": 0,
+                                 "loadMasterGroups": true,
+                                 "mainPage": mainPage }, false, true);
                 masterGroupsPage = page
                 // database is now created
                 internal.createNewDatabase = false
@@ -351,6 +363,1035 @@ Page {
             }
         }
     }
+
+// TODO merge this internal object with above one
+    QtObject {
+        id: kdbListItemInternal
+
+        /*
+          These are handlers to edit entry and group dialogs and show entry page which needs to
+          get the entry resp. group details passed to in order to shown them
+          */
+        property Dialog editEntryDetailsDialogRef: null
+        property Dialog editGroupDetailsDialogRef: null
+        property Page showEntryDetailsPageRef: null
+
+        /*
+          Here are all Kdb entry details which are used to create a new entry, save changes to an
+          already existing entry and to check if the user has done changes to an entry in the UI
+          after he canceled the edit dialog. In that case a query dialog is shown to let the user
+          save the entry details if he has canceled the edit dialog unintentionally or because he
+          did not understand the whole UI paradigma at all...
+          */
+        property string originalEntryTitle: ""
+        property string originalEntryUrl: ""
+        property string originalEntryUsername: ""
+        property string originalEntryPassword: ""
+        property string originalEntryComment: ""
+// TODO                property int originalEntryImageId: 0
+        property string entryTitle: ""
+        property string entryUrl: ""
+        property string entryUsername: ""
+        property string entryPassword: ""
+        property string entryComment: ""
+// TODO                property int entryImageId: 0
+
+        /*
+          Here are the details for Kdb groups. The same applies like for Kdb entries
+          */
+        property string originalGroupName: ""
+// TODO                property int originalGroupImageId: 0
+        property string groupName: ""
+// TODO                property int groupImageId: 0
+
+        /*
+          Data used to save database setting values in KdbDatabase object
+          */
+        property string databaseMasterPassword: ""
+        property int databaseCryptAlgorithm: 0
+        property int databaseKeyTransfRounds: 0
+
+        /*
+          Data used to save keepass default setting values
+          */
+        property string defaultDatabaseFilePath
+        property string defaultKeyFilePath
+        property int defaultCryptAlgorithm
+        property int defaultKeyTransfRounds
+        property int inactivityLockTime
+        property bool showUserNamePasswordInListView
+
+
+        /*
+          Commonly used for manipulation and creation of entries and groups
+          */
+        property bool createNewItem: false
+        property int itemId: 0
+        property int parentGroupId: 0
+
+        // some constants
+        readonly property int c_queryForEntry: 1
+        readonly property int c_queryForGroup: 2
+        readonly property int c_queryForDatabaseSettings: 3
+        readonly property int c_queryForKeepassSettings: 4
+
+        function saveKdbGroupDetails() {
+            console.log("Group name: " + groupName)
+            // Set group ID and create or save Kdb Group
+            kdbGroup.groupId = itemId
+            if (createNewItem) {
+                // create new group in database, save and update list model data in backend
+                kdbGroup.createNewGroup(groupName,
+                                        parentGroupId)
+            } else {
+                // save changes of existing group to database and update list model data in backend
+                kdbGroup.saveGroupData(groupName)
+            }
+        }
+
+        function saveKdbEntryDetails() {
+            // Set entry ID and create or save Kdb Entry
+            kdbEntry.entryId = itemId
+            if (createNewItem) {
+                // create new group in database, save and update list model data in backend
+                kdbEntry.createNewEntry(entryTitle,
+                                        entryUrl,
+                                        entryUsername,
+                                        entryPassword,
+                                        entryComment,
+                                        parentGroupId)
+            } else {
+                // save changes of existing group to database and update list model data in backend
+                kdbEntry.saveEntryData(entryTitle,
+                                       entryUrl,
+                                       entryUsername,
+                                       entryPassword,
+                                       entryComment)
+            }
+        }
+
+        function checkForUnsavedKdbEntryChanges() {
+            // check if the user has changed any entry details
+            if (originalEntryTitle !== entryTitle || originalEntryUrl !== entryUrl ||
+                    originalEntryUsername !== entryUsername || originalEntryPassword !== entryPassword ||
+                    originalEntryComment !== entryComment) {
+                // open query dialog for unsaved changes
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "type": c_queryForEntry })
+            }
+        }
+
+        function checkForUnsavedKdbGroupChanges() {
+            if (originalGroupName !== groupName) {
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "type": c_queryForGroup })
+            }
+        }
+
+        function loadKdbEntryDetails(title, url, username, password, comment) {
+//                    console.log("binaryDesc: " + binaryDesc)
+//                    console.log("creation: " + creation)
+//                    console.log("lastMod: " + lastMod)
+//                    console.log("lastAccess: " + lastAccess)
+//                    console.log("expire: " + expire)
+//                    console.log("binarySize: " + binarySize)
+//                    console.log("friendlySize: " + friendlySize)
+            entryTitle    = originalEntryTitle    = title
+            entryUrl      = originalEntryUrl      = url
+            entryUsername = originalEntryUsername = username
+            entryPassword = originalEntryPassword = password
+            entryComment  = originalEntryComment  = comment
+
+            // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
+            // depending on which is currently active
+            if(editEntryDetailsDialogRef)
+                editEntryDetailsDialogRef.setTextFields(title, url, username, password, comment)
+            if(showEntryDetailsPageRef)
+                showEntryDetailsPageRef.setTextFields(title, url, username, password, comment)
+        }
+
+        function loadKdbGroupDetails(name) {
+            groupName = originalGroupName = name
+            // Populate group detail text fields in editGroupDetailsDialog
+            if(editGroupDetailsDialogRef)
+                editGroupDetailsDialogRef.setTextFields(name)
+        }
+
+        function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment) {
+            createNewItem = createNewEntry
+            itemId        = entryId
+            parentGroupId = parentGrId
+            entryTitle    = title
+            entryUrl      = url
+            entryUsername = username
+            entryPassword = password
+            entryComment  = comment
+        }
+
+        function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name) {
+            createNewItem = createNewGroup
+            itemId        = groupId
+            parentGroupId = parentGrId
+            groupName     = name
+        }
+
+        function setDatabaseSettings(masterPassword, cryptAlgorithm, keyTransfRounds) {
+            databaseMasterPassword  = masterPassword
+            databaseCryptAlgorithm  = cryptAlgorithm
+            databaseKeyTransfRounds = keyTransfRounds
+        }
+
+        function checkForUnsavedDatabaseSettingsChanges() {
+            // check if user gave a new master password or if encryption type or key transformation rounds have changed
+            if (databaseMasterPassword !== "" ||
+                    databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm ||
+                    databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "type": c_queryForDatabaseSettings })
+            }
+        }
+
+        function saveDatabaseSettings() {
+            if (databaseMasterPassword !== "")
+                Global.env.kdbDatabase.changePassword(databaseMasterPassword)
+            databaseMasterPassword = ""
+            if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm)
+                Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
+            if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds)
+                Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
+        }
+
+        function setKeepassSettings(aDefaultDatabaseFilePath, aDefaultKeyFilePath, aDefaultCryptAlgorithm,
+                                    aDefaultKeyTransfRounds, aInactivityLockTime, aShowUserNamePasswordInListView) {
+            defaultDatabaseFilePath = aDefaultDatabaseFilePath
+            defaultKeyFilePath = aDefaultKeyFilePath
+            defaultCryptAlgorithm = aDefaultCryptAlgorithm
+            defaultKeyTransfRounds = aDefaultKeyTransfRounds
+            inactivityLockTime = aInactivityLockTime
+            showUserNamePasswordInListView = aShowUserNamePasswordInListView
+        }
+
+        function checkForUnsavedKeepassSettingsChanges() {
+            if (Global.env.keepassSettings.defaultDatabasePath !== defaultDatabaseFilePath ||
+                    Global.env.keepassSettings.defaultKeyFilePath !== defaultKeyFilePath ||
+                    Global.env.keepassSettings.defaultEncryption !== defaultCryptAlgorithm ||
+                    Global.env.keepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
+                    Global.env.keepassSettings.locktime !== inactivityLockTime ||
+                    Global.env.keepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView) {
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "type": c_queryForKeepassSettings})
+            }
+        }
+
+        function saveKeepassSettings() {
+            Global.env.keepassSettings.defaultDatabasePath = defaultDatabaseFilePath
+            Global.env.keepassSettings.defaultKeyFilePath = defaultKeyFilePath
+            Global.env.keepassSettings.defaultEncryption = defaultCryptAlgorithm
+            Global.env.keepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
+            Global.env.keepassSettings.locktime = inactivityLockTime
+            Global.env.keepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
+            Global.env.keepassSettings.saveSettings()
+        }
+    }
+
+    KdbGroup {
+        id: kdbGroup
+        onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title)
+        onGroupDataSaved: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+        onNewGroupCreated: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+    }
+
+    KdbEntry {
+        id: kdbEntry
+        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(title, url, username, password, comment)
+        onEntryDataSaved: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+        onNewEntryCreated: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+    }
+
+    /*
+      We need separate objects for deletion because of the 5 seconds guard period where
+      the user can undo the delete operation, i.e. the deletion is delayed and the user
+      might open another item which would then be deleted if we don't use separate
+      objects here
+      */
+    KdbGroup {
+        id: kdbGroupForDeletion
+        onGroupDeleted: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+    }
+
+    KdbEntry {
+        id: kdbEntryForDeletion
+        onEntryDeleted: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+    }
+
+    Component {
+        id: kdbListItemComponent
+        ListItem {
+            id: kdbListItem
+
+            property string text: model.name
+            property string subText: model.subtitle
+            property bool selected: false
+            property bool groupItem: model.itemType === KdbListModel.GROUP
+
+            menu: contextMenuComponent
+            contentHeight: Theme.itemSizeMedium
+            width: parent ? parent.width : screen.width
+
+            function listItemRemoveGroup() {
+                kdbGroupForDeletion.groupId = model.id
+                remorseAction("Deleting group", function() { kdbGroupForDeletion.deleteGroup() })
+            }
+            function listItemRemoveEntry() {
+                kdbEntryForDeletion.entryId = model.id
+                remorseAction("Deleting entry", function() { kdbEntryForDeletion.deleteEntry() })
+            }
+
+            ListView.onRemove: animateRemoval()
+            onClicked: {
+                switch (model.itemType) {
+                case KdbListModel.GROUP:
+                    pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                                   { "pageTitle": model.name, "groupId": model.id })
+                    break
+                case KdbListModel.ENTRY:
+                    pageStack.push(showEntryDetailsPageComponent,
+                                   { "pageTitle": model.name, "entryId": model.id })
+                    break
+                }
+            }
+
+            Image {
+                x: Theme.paddingLarge
+                anchors.verticalCenter: parent.verticalCenter
+                width: 81 //Theme.iconSizeMedium
+                height: 81 //Theme.iconSizeMedium
+                source: "../icons/_0.png"
+                fillMode: Image.PreserveAspectFit
+                asynchronous: true
+            }
+
+            Rectangle {
+                id: itemIcon
+                x: Theme.paddingLarge
+                anchors.verticalCenter: parent.verticalCenter
+                width: 81
+                height: 81
+                radius: 20
+                color: "white"
+                opacity: 0.1
+            }
+
+            Item {
+                anchors.left: itemIcon.right
+                anchors.leftMargin: Theme.paddingSmall
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
+                height: model.itemType === KdbListModel.ENTRY && !Global.env.keepassSettings.showUserNamePasswordInListView ?
+                            itemTitle.height :
+                            itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
+
+                Label {
+                    id: itemTitle
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    width: parent.width
+                    text: kdbListItem.text
+                    horizontalAlignment: Text.AlignLeft
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: kdbListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    truncationMode: TruncationMode.Fade
+                }
+
+                Label {
+                    id: itemDescription
+                    enabled: model.itemType === KdbListModel.GROUP || Global.env.keepassSettings.showUserNamePasswordInListView
+                    visible: enabled
+                    anchors.left: parent.left
+                    anchors.top: itemTitle.bottom
+                    anchors.topMargin: Theme.paddingSmall / 2
+                    width: parent.width
+                    text: kdbListItem.subText
+                    horizontalAlignment: Text.AlignLeft
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
+                }
+            }
+
+            Component {
+                id: contextMenuComponent
+                ContextMenu {
+                    id: contextMenu
+                    property int itemTypeFromModel: 0
+                    property int itemIdFromModel: 0
+                    MenuItem {
+                        text: qsTr("Edit")
+                        onClicked: {
+                            switch (model.itemType) {
+                            case KdbListModel.GROUP:
+                                pageStack.push(editGroupDetailsDialogComponent,
+                                               { "groupId": model.id })
+                                break
+                            case KdbListModel.ENTRY:
+                                pageStack.push(editEntryDetailsDialogComponent,
+                                               { "entryId": model.id })
+                                break
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Delete")
+                        onClicked: {
+                            switch (model.itemType) {
+                            case KdbListModel.GROUP:
+                                listItemRemoveGroup()
+                                break
+                            case KdbListModel.ENTRY:
+                                listItemRemoveEntry()
+                                break
+                            }
+                        }
+                    }
+                }
+            } // end contextMenuComponent
+        } // end kdbListItem
+    } // end kdbListItemComponent
+
+    Component {
+        id: showEntryDetailsPageComponent
+        ShowEntryDetailsPage {
+            id: showEntryDetailsPage
+        }
+    }
+
+    Component {
+        id: editEntryDetailsDialogComponent
+        Dialog {
+            id: editEntryDetailsDialog
+
+            property bool createNewEntry: false
+            // ID of the keepass entry to be edited
+            property int entryId: 0
+            // creation of new entry needs parent group ID
+            property int parentGroupId: 0
+
+            function setTextFields(title, url, username, password, comment) {
+                entryTitleTextField.text = title
+                entryUrlTextField.text = url
+                entryUsernameTextField.text = username
+                entryPasswordTextField.text = entryVerifyPasswordTextField.text = password
+                entryCommentTextField.text = comment
+            }
+
+            // forbit page navigation if title is not set and password is not verified
+            canNavigateForward: entryTitleTextField.text !== "" &&
+                                entryPasswordTextField.text === entryVerifyPasswordTextField.text
+
+            SilicaFlickable {
+                anchors.fill: parent
+                contentWidth: parent.width
+                contentHeight: col.height
+
+                // Show a scollbar when the view is flicked, place this over all other content
+                VerticalScrollDecorator {}
+
+                Column {
+                    id: col
+                    width: parent.width
+                    spacing: Theme.paddingLarge
+
+                    DialogHeader {
+                        acceptText: "Save"
+                        title: "Save"
+                    }
+
+                    SilicaLabel {
+                        text: editEntryDetailsDialog.createNewEntry ? "Create new Password Entry:" :
+                                                                      "Edit Password Entry:"
+                    }
+
+                    TextField {
+                        id: entryTitleTextField
+                        width: parent.width
+                        label: "Title"
+                        placeholderText: "Set Title (mandatory)"
+                        errorHighlight: text === ""
+                        EnterKey.highlighted: !errorHighlight
+                        EnterKey.onClicked: entryUrlTextField.focus = true
+                    }
+
+                    TextField {
+                        id: entryUrlTextField
+                        width: parent.width
+                        inputMethodHints: Qt.ImhUrlCharactersOnly
+                        label: "Url"
+                        placeholderText: "Set Url"
+                        EnterKey.onClicked: entryUsernameTextField.focus = true
+                    }
+
+                    TextField {
+                        id: entryUsernameTextField
+                        width: parent.width
+                        label: "Username"
+                        placeholderText: "Set Username"
+                        EnterKey.onClicked: entryPasswordTextField.focus = true
+                    }
+
+                    Item {
+                        width: parent.width
+                        height: entryPasswordTextField.height
+
+                        TextField {
+                            id: entryPasswordTextField
+                            anchors.left: parent.left
+                            anchors.right: showPasswordButton.left
+                            echoMode: TextInput.Password
+                            label: "Password"
+                            placeholderText: "Set Password"
+                            EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
+                        }
+
+                        IconButton {
+                            id: showPasswordButton
+                            width: icon.width
+                            anchors.right: parent.right
+                            anchors.rightMargin: Theme.paddingLarge
+                            icon.source: "image://theme/icon-m-ambience"
+                            highlighted: entryPasswordTextField.echoMode === TextInput.Normal
+                            onClicked: {
+                                entryPasswordTextField.forceActiveFocus()
+                                if (entryPasswordTextField.echoMode === TextInput.Normal) {
+                                    entryPasswordTextField.echoMode =
+                                            entryVerifyPasswordTextField.echoMode = TextInput.Password
+                                } else {
+                                    entryPasswordTextField.echoMode =
+                                            entryVerifyPasswordTextField.echoMode = TextInput.Normal
+                                }
+                            }
+                        }
+                    }
+
+                    TextField {
+                        id: entryVerifyPasswordTextField
+                        width: parent.width
+                        echoMode: TextInput.Password
+                        label: "Verify Password"
+                        placeholderText: "Verify Password"
+                        errorHighlight: entryPasswordTextField.text !== text
+                        EnterKey.highlighted: !errorHighlight
+                        EnterKey.onClicked: entryCommentTextField.focus = true
+                    }
+
+                    TextArea {
+                        id: entryCommentTextField
+                        width: parent.width
+                        label: "Comment"
+                        placeholderText: "Set Comment"
+                    }
+                }
+            }
+
+            Component.onCompleted: {
+                // set reference in kdbListItemInternal object
+                kdbListItemInternal.editEntryDetailsDialogRef = editEntryDetailsDialog
+
+                kdbEntry.entryId = editEntryDetailsDialog.entryId
+                if (!createNewEntry) {
+                    kdbEntry.loadEntryData()
+                }
+                entryTitleTextField.focus = true
+            }
+            Component.onDestruction: {
+                // unset again
+                kdbListItemInternal.editEntryDetailsDialogRef = null
+            }
+
+            // user wants to save new entry data
+            onAccepted: {
+                // first save locally Kdb entry details then trigger save to backend
+                kdbListItemInternal.setKdbEntryDetails(createNewEntry,
+                                            entryId,
+                                            parentGroupId,
+                                            entryTitleTextField.text,
+                                            entryUrlTextField.text,
+                                            entryUsernameTextField.text,
+                                            entryPasswordTextField.text,
+                                            entryCommentTextField.text)
+                kdbListItemInternal.saveKdbEntryDetails()
+            }
+            // user has rejected editing entry data, check if there are unsaved details
+            onRejected: {
+                // no need for saving if input fields are invalid
+                if (canNavigateForward) {
+                    // first save locally Kdb entry details then trigger check for unsaved changes
+                    kdbListItemInternal.setKdbEntryDetails(createNewEntry,
+                                                entryId,
+                                                parentGroupId,
+                                                entryTitleTextField.text,
+                                                entryUrlTextField.text,
+                                                entryUsernameTextField.text,
+                                                entryPasswordTextField.text,
+                                                entryCommentTextField.text)
+                    kdbListItemInternal.checkForUnsavedKdbEntryChanges()
+                }
+            }
+        }
+    } // editEntryDetailsDialog
+
+    Component {
+        id: editGroupDetailsDialogComponent
+        Dialog {
+            id: editGroupDetailsDialog
+
+            property bool createNewGroup: false
+            // ID of the keepass entry which should be edited
+            property int groupId: 0
+            // creation of new group needs parent group ID
+            property int parentGroupId: 0
+
+            function setTextFields(name) {
+                groupTitleTextField.text = name
+            }
+
+            // forbit page navigation if name of group is empty
+            canNavigateForward: groupTitleTextField.text !== ""
+
+            SilicaFlickable {
+                anchors.fill: parent
+                contentWidth: parent.width
+                contentHeight: col.height
+
+                // Show a scollbar when the view is flicked, place this over all other content
+                VerticalScrollDecorator {}
+
+                Column {
+                    id: col
+                    width: parent.width
+                    spacing: Theme.paddingLarge
+
+                    DialogHeader {
+                        acceptText: "Save"
+                        title: "Save"
+                    }
+
+                    SilicaLabel {
+                        text: editGroupDetailsDialog.createNewGroup ? qsTr("Type in a name for the new group:") :
+                                                                      qsTr("Change name of group:")
+                    }
+
+                    TextField {
+                        id: groupTitleTextField
+                        width: parent.width
+                        label: "Name of group"
+                        placeholderText: "Set name of group"
+                        errorHighlight: text === ""
+                        EnterKey.highlighted: !errorHighlight
+                        EnterKey.onClicked: parent.focus = true
+                    }
+                }
+            }
+
+            Component.onCompleted: {
+                // set reference in kdbListItemInternal object
+                kdbListItemInternal.editGroupDetailsDialogRef = editGroupDetailsDialog
+
+                kdbGroup.groupId = editGroupDetailsDialog.groupId
+                if (!createNewGroup) {
+                    kdbGroup.loadGroupData()
+                }
+                groupTitleTextField.focus = true
+            }
+            Component.onDestruction: {
+                // unset again
+                kdbListItemInternal.editGroupDetailsDialogRef = null
+            }
+            // user wants to save new entry data
+            onAccepted: {
+                // first save locally Kdb entry details then trigger save to backend
+                kdbListItemInternal.setKdbGroupDetails(createNewGroup,
+                                            groupId,
+                                            parentGroupId,
+                                            groupTitleTextField.text)
+                kdbListItemInternal.saveKdbGroupDetails()
+            }
+            // user has rejected editing entry data, check if there are unsaved details
+            onRejected: {
+                // no need for saving if input fields are invalid
+                if (canNavigateForward) {
+                    // first save locally Kdb entry details then trigger check for unsaved changes
+                    kdbListItemInternal.setKdbGroupDetails(createNewGroup,
+                                                groupId,
+                                                parentGroupId,
+                                                groupTitleTextField.text)
+                    kdbListItemInternal.checkForUnsavedKdbGroupChanges()
+                }
+            }
+        }
+    } // end editGroupDetailsDialogComponent
+
+    Component {
+        id: editDatabaseSettingsDialogComponent
+        Dialog {
+            id: editDatabaseSettingsDialog
+
+            // forbit page navigation if master password is not confirmed
+            canNavigateForward: !confirmDatabaseMasterPassword.errorHighlight
+
+            SilicaFlickable {
+                anchors.fill: parent
+                contentWidth: parent.width
+                contentHeight: col.height
+
+                VerticalScrollDecorator {}
+
+                Column {
+                    id: col
+                    width: parent.width
+                    spacing: Theme.paddingLarge
+
+                    DialogHeader {
+                        acceptText: "Save"
+                        title: "Save"
+                    }
+
+                    SectionHeader {
+                        text: "Database Settings"
+                    }
+
+                    TextField {
+                        id: databaseMasterPassword
+                        width: parent.width
+                        inputMethodHints: Qt.ImhNoPredictiveText
+                        echoMode: TextInput.Password
+                        label: "Master Password"
+                        placeholderText: "Change Master Password"
+                        EnterKey.enabled: text !== ""
+                        EnterKey.highlighted: text !== ""
+                        EnterKey.onClicked: {
+                            confirmDatabaseMasterPassword.focus = true
+                        }
+                    }
+
+                    TextField {
+                        id: confirmDatabaseMasterPassword
+                        enabled: databaseMasterPassword.text !== ""
+                        opacity: databaseMasterPassword.text !== "" ? 1.0 : 0.0
+                        height: databaseMasterPassword.text !== "" ? implicitHeight : 0
+                        width: parent.width
+                        inputMethodHints: Qt.ImhNoPredictiveText
+                        echoMode: TextInput.Password
+                        errorHighlight: databaseMasterPassword.text !== text
+                        label: !errorHighlight ? "Master Password confirmed" : "Confirm Master Password"
+                        placeholderText: "Confirm Master Password"
+                        EnterKey.enabled: databaseMasterPassword.text !== "" && !errorHighlight
+                        EnterKey.highlighted: databaseMasterPassword.text !== "" && !errorHighlight
+                        EnterKey.onClicked: {
+                            parent.focus = true
+                        }
+                        Behavior on opacity { NumberAnimation { duration: 500 } }
+                        Behavior on height { NumberAnimation { duration: 500 } }
+                    }
+
+                    ComboBox {
+                        id: databaseCryptAlgorithm
+                        width: parent.width
+                        label: "Encryption in use:"
+                        currentIndex: 0
+                        menu: ContextMenu {
+                            MenuItem { text: "AES/Rijndael" }
+                            MenuItem { text: "Twofish" }
+                        }
+                    }
+
+                    TextField {
+                        id: databaseKeyTransfRounds
+                        width: parent.width
+                        inputMethodHints: Qt.ImhFormattedNumbersOnly
+                        validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                        label: "Key Transformation Rounds"
+                        placeholderText: label
+                        text: Global.env.kdbDatabase.keyTransfRounds
+                        EnterKey.onClicked: parent.focus = true
+                    }
+                }
+            } // SilicaFlickable
+
+            // user wants to save new Settings
+            onAccepted: {
+                // first save locally database settings then trigger saving
+                kdbListItemInternal.setDatabaseSettings(databaseMasterPassword.text,
+                                             databaseCryptAlgorithm.currentIndex,
+                                             Number(databaseKeyTransfRounds.text))
+                kdbListItemInternal.saveDatabaseSettings()
+            }
+            // user has rejected changing database settings, check if there are unsaved details
+            onRejected: {
+                // no need for saving if input field for master password is invalid
+                if (canNavigateForward) {
+                    // first save locally database settings then trigger check for unsaved changes
+                    kdbListItemInternal.setDatabaseSettings(databaseMasterPassword.text,
+                                                 databaseCryptAlgorithm.currentIndex,
+                                                 Number(databaseKeyTransfRounds.text))
+                    kdbListItemInternal.checkForUnsavedDatabaseSettingsChanges()
+                }
+            }
+        } // Dialog
+    }
+
+    Component {
+        id: settingsDialogComponent
+        Dialog {
+            id: settingsDialog
+
+            // forbit page navigation if master password is not confirmed
+            canNavigateForward: !defaultDatabaseFilePath.errorHighlight
+
+            SilicaFlickable {
+                anchors.fill: parent
+                contentWidth: parent.width
+                contentHeight: col.height
+
+                // Show a scollbar when the view is flicked, place this over all other content
+                VerticalScrollDecorator {}
+
+                Column {
+                    id: col
+                    width: parent.width
+                    spacing: Theme.paddingLarge
+
+                    DialogHeader {
+                        acceptText: "Save"
+                        title: "Save"
+                    }
+
+                    SectionHeader {
+                        text: "Keepass Settings"
+                    }
+
+// TODO We have currently only simple mode
+//                            TextSwitch {
+//                                id: simpleMode
+//                                checked: Global.env.keepassSettings.simpleMode
+//                                text: "Use Simple Mode"
+//                                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
+//                                             " If you switch this off you get a list of recently opened Keepass database files instead."
+//                            }
+
+//                            SectionHeader {
+//                                text: "Database"
+//                            }
+
+                    Column {
+                        width: parent.width
+
+                        TextField {
+                            id: defaultDatabaseFilePath
+                            width: parent.width
+                            inputMethodHints: Qt.ImhUrlCharactersOnly
+                            label: "Default database file path"
+                            placeholderText: label
+                            errorHighlight: text === ""
+                            text: Global.env.keepassSettings.defaultDatabasePath
+                            EnterKey.onClicked: parent.focus = true
+                        }
+
+                        SilicaLabel {
+                            text: Global.env.keepassSettings.simpleMode ?
+                                      "This is the name and path of default Keepass database file" :
+                                      "This is the path where new Keepass Password Safe files will be stored"
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.secondaryColor
+                        }
+                    }
+
+                    TextSwitch {
+                        id: useKeyFile
+                        checked: Global.env.keepassSettings.defaultKeyFilePath !== ""
+                        text: "Create Key File"
+                        description: "Switch this on if you want to create a key file together with a new Keepass Password Safe file"
+                    }
+
+                    TextField {
+                        id: defaultKeyFilePath
+                        enabled: useKeyFile.checked
+                        opacity: useKeyFile.checked ? 1.0 : 0.0
+                        height: useKeyFile.checked ? implicitHeight : 0
+                        width: parent.width
+                        inputMethodHints: Qt.ImhUrlCharactersOnly
+                        label: "Default key file path"
+                        placeholderText: label
+                        text: Global.env.keepassSettings.defaultKeyFilePath
+                        EnterKey.onClicked: parent.focus = true
+                        Behavior on opacity { NumberAnimation { duration: 500 } }
+                        Behavior on height { NumberAnimation { duration: 500 } }
+                    }
+
+                    Column {
+                        width: parent.width
+
+                        ComboBox {
+                            id: defaultEncryption
+                            width: settingsDialog.width
+                            label: "Default Encryption in use:"
+                            currentIndex: Global.env.keepassSettings.defaultEncryption
+                            menu: ContextMenu {
+                                MenuItem { text: "AES/Rijndael" }
+                                MenuItem { text: "Twofish" }
+                            }
+                        }
+
+                        SilicaLabel {
+                            text: "Choose encryption which will be used as default for a new Keepass Password Safe file"
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.secondaryColor
+                        }
+                    }
+
+                    Column {
+                        width: parent.width
+
+                        TextField {
+                            id: defaultKeyTransfRounds
+                            width: parent.width
+                            inputMethodHints: Qt.ImhFormattedNumbersOnly
+                            validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                            label: "Default Key Transformation Rounds"
+                            placeholderText: label
+                            text: Global.env.keepassSettings.defaultKeyTransfRounds
+                            EnterKey.onClicked: parent.focus = true
+                        }
+
+                        SilicaLabel {
+                            text: "Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks"
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.secondaryColor
+                        }
+                    }
+
+                    SectionHeader {
+                        text: "UI Settings"
+                    }
+
+                    Slider {
+                        id: inactivityLockTime
+                        value: Global.env.keepassSettings.locktime
+                        minimumValue: 0
+                        maximumValue: 10
+                        stepSize: 1
+                        width: parent.width - Theme.paddingLarge * 2
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        valueText: calculateInactivityTime(value)
+                        label: "Inactivity Lock Time"
+                        /*
+                          0 = immediately
+                          1 = 5 seconds
+                          2 = 10 seconds
+                          3 = 30 seconds
+                          4 = 1 minute
+                          5 = 2 minutes
+                          6 = 5 minutes
+                          7 = 10 minutes
+                          8 = 30 minutes
+                          9 = 60 minutes
+                          10 = unlimited
+                          */
+                        function calculateInactivityTime(value) {
+                            switch (value) {
+                            case 0:
+                                return "Immediately"
+                            case 1:
+                                return "5 Seconds"
+                            case 2:
+                                return "10 Seconds"
+                            case 3:
+                                return "30 Seconds"
+                            case 4:
+                                return "1 Minute"
+                            case 5:
+                                return "2 Minutes"
+                            case 6:
+                                return "5 Minutes"
+                            case 7:
+                                return "10 Minutes"
+                            case 8:
+                                return "30 Minutes"
+                            case 9:
+                                return "60 Minutes"
+                            case 10:
+                                return "Unlimited"
+                            }
+                        }
+                    }
+
+                    TextSwitch {
+                        id: extendedListView
+                        checked: Global.env.keepassSettings.showUserNamePasswordInListView
+                        text: "Extended List View"
+                        description: "If you switch this on username and password are shown below entry title in list views"
+                    }
+                }
+            }
+
+            onAccepted: {
+                // first save locally database settings then trigger saving
+                var defaultKeyFilePathTemp = ""
+                if (useKeyFile.checked)
+                    defaultKeyFilePathTemp = defaultKeyFilePath.text
+                kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
+                                            defaultKeyFilePathTemp,
+                                            defaultEncryption.currentIndex,
+                                            Number(defaultKeyTransfRounds.text),
+                                            inactivityLockTime.value,
+                                            extendedListView.checked)
+                kdbListItemInternal.saveKeepassSettings()
+            }
+
+            onRejected: {
+                // no need for saving if input field for master password is invalid
+                if (canNavigateForward) {
+                    // first save locally database settings then trigger check for unsaved changes
+                    var defaultKeyFilePathTemp = ""
+                    if (useKeyFile.checked)
+                        defaultKeyFilePathTemp = defaultKeyFilePath.text
+                    kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
+                                                defaultKeyFilePathTemp,
+                                                defaultEncryption.currentIndex,
+                                                Number(defaultKeyTransfRounds.text),
+                                                inactivityLockTime.value,
+                                                extendedListView.checked)
+                    kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
+                }
+            }
+        }
+    }
+
+    Component {
+        id: queryDialogForUnsavedChangesComponent
+        QueryDialog {
+            property int type: 0
+            headerAcceptText: "Yes"
+            headerTitleText: "Yes"
+            titleText: "Unsaved Changes"
+            message: type === kdbListItemInternal.c_queryForEntry ?
+                         "Do you want to save changes to the Password Entry?" :
+                         type === kdbListItemInternal.c_queryForGroup ?
+                             "Do you want to save changes to the Password Group?" :
+                             type === kdbListItemInternal.c_queryForDatabaseSettings ?
+                                 "Do you want to save changes to Database Settings?" :
+                                 type === kdbListItemInternal.c_queryForKeepassSettings ?
+                                     "Do you want to save changed settings values?" : ""
+
+            onAccepted:  type === kdbListItemInternal.c_queryForEntry ?
+                             kdbListItemInternal.saveKdbEntryDetails() :
+                             type === kdbListItemInternal.c_queryForGroup ?
+                                 kdbListItemInternal.saveKdbGroupDetails() :
+                                 type === kdbListItemInternal.c_queryForDatabaseSettings ?
+                                     kdbListItemInternal.saveDatabaseSettings() :
+                                     type === kdbListItemInternal.c_queryForKeepassSettings ?
+                                         kdbListItemInternal.saveKeepassSettings() : console.log("ERROR in query for unsaved changes")
+        }
+    } // end queryForUnsavedChangesComponent
+
 }
 
 

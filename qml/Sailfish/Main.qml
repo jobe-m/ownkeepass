@@ -37,7 +37,8 @@ ApplicationWindow
 
     Component {
         id: initialPage
-        MainPageSimple {}
+        MainPageSimple {
+        }
     }
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")

@@ -147,14 +147,14 @@ Page {
 
     Component.onCompleted: {
         console.log("showEntryDetailsPage" + pageTitle)
-        // set reference in internal object
-        internal.showEntryDetailsPageRef = showEntryDetailsPage
+        // set reference in kdbListItemInternal object
+        kdbListItemInternal.showEntryDetailsPageRef = showEntryDetailsPage
         // set entry ID and load entry details to show in this page
         kdbEntry.entryId = showEntryDetailsPage.entryId
         kdbEntry.loadEntryData()
     }
     Component.onDestruction: {
         // unset again
-        internal.showEntryDetailsPageRef = null
+        kdbListItemInternal.showEntryDetailsPageRef = null
     }
 }
