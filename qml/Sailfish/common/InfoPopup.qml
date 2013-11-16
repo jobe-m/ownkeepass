@@ -26,17 +26,19 @@ import Sailfish.Silica 1.0
 BackgroundItem {
     id: infoPopup
 
+    property bool enableTimeout: false
     property alias title: titleLabel.text
     property alias message: messageLabel.text
 
-    function show(title, message, timeout) {
+    function show(title, message, timeout, enableTimeout) {
         infoPopup.title = title
         infoPopup.message = message
+        infoPopup.enableTimeout = enableTimeout
         if (timeout !== undefined)
             _timeout = timeout
         else
             _timeout = 5000 // set default
-        countdown.restart()
+        if (infoPopup.enableTimeout) countdown.restart()
         state = "active"
     }
     function cancel() {
@@ -45,7 +47,7 @@ BackgroundItem {
     }
 
     function _close() {
-        countdown.stop()
+        if (enableTimeout) countdown.stop()
         state = ""
     }
 

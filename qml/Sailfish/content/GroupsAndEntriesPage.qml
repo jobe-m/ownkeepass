@@ -58,12 +58,12 @@ Page {
     property bool __closeOnError: false
     function __showLoadErrorPage() {
         console.log("ERROR: Could not load")
-        Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 10000)
+        Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 0, false)
     }
 
     function __showSaveErrorPage() {
         console.log("ERROR: Could not save")
-        Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 15000)
+        Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
     }
 
     SilicaListView {
