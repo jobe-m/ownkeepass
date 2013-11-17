@@ -88,11 +88,22 @@ BackgroundItem {
         color: Theme.highlightBackgroundColor
     }
 
+    Image {
+        id: infoPopupIcon
+        x: Theme.paddingSmall
+        y: Theme.paddingLarge
+        width: 48
+        height: 36
+        source: "image://theme/icon-system-warning"
+        fillMode: Image.PreserveAspectFit
+    }
+
+
     Column {
         id: column
-        x: Theme.paddingLarge
+        x: Theme.paddingSmall + infoPopupIcon.width + Theme.paddingMedium
         y: Theme.paddingMedium
-        width: parent.width - Theme.paddingLarge * 2
+        width: parent.width - Theme.paddingLarge - Theme.paddingSmall - infoPopupIcon.width - Theme.paddingMedium
         height: children.height
         Label {
             id: titleLabel
