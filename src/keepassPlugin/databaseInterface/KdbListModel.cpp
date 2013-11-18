@@ -137,12 +137,28 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, i
 
 void KdbListModel::loadMasterGroupsFromDatabase()
 {
+    // make list view empty and unregister if necessary
+    if (!isEmpty()) {
+        clear();
+    }
+    if (m_registered) {
+        emit unregisterFromKdbInterface(m_modelId);
+        m_registered = false;
+    }
     // send signal to global interface of keepass database to get master groups
     emit loadMasterGroups();
 }
 
 void KdbListModel::loadGroupsAndEntriesFromDatabase(int groupId)
 {
+    // make list view empty and unregister if necessary
+    if (!isEmpty()) {
+        clear();
+    }
+    if (m_registered) {
+        emit unregisterFromKdbInterface(m_modelId);
+        m_registered = false;
+    }
     // send signal to global interface of keepass database to get entries and subgroups
     emit loadGroupsAndEntries(groupId);
 }
@@ -202,15 +218,15 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
 {
     qDebug("KdbListModel::searchEntriesInKdbDatabase()");
 
-    // make list view empty
+    // make list view empty and unregister if necessary
     if (!isEmpty()) {
-        if (!m_registered) {
-            emit unregisterFromKdbInterface(m_modelId);
-        }
         clear();
     }
+    if (m_registered) {
+        emit unregisterFromKdbInterface(m_modelId);
+    }
 
-    // list model for searching is -1 per default, so set it here
+    // list model for searching is -1 per default, so set it here already
     m_modelId = -1;
     m_registered = true;
 

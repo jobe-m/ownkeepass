@@ -657,7 +657,13 @@ Page {
                 remorseAction("Deleting entry", function() { kdbEntryForDeletion.deleteEntry() })
             }
 
-            ListView.onRemove: animateRemoval()
+            ListView.onAdd: AddAnimation {
+                target: kdbListItem
+            }
+            ListView.onRemove: RemoveAnimation {
+                target: kdbListItem
+            }
+//            ListView.onRemove: animateRemoval()
             onClicked: {
                 switch (model.itemType) {
                 case KdbListModel.GROUP:

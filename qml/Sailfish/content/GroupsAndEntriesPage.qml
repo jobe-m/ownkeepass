@@ -30,10 +30,10 @@ Page {
     id: groupsAndEntriesPage
 
     /*
-      Because this page is preloaded when the QueryPasswordDialog is shown, but without password the
+      Because this page is preloaded when the Query Password Dialog is shown, but without password the
       database cannot be opened and therefore within this page it will give an error if we load groups
       from the KdbListModel on startup. So the init() function is invoked later when the database could
-      the opened successfully.
+      be opened successfully.
      */
     property bool initOnPageConstruction: true
     // ID of the keepass group which should be shown
@@ -56,6 +56,7 @@ Page {
 
     // private properties and funtions
     property bool __closeOnError: false
+//    property string searchString: ""
     function __showLoadErrorPage() {
         console.log("ERROR: Could not load")
         Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 0, false)
@@ -66,20 +67,59 @@ Page {
         Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
     }
 
+//    onSearchStringChanged: {
+//        // prevent newly added list delegates from stealing focus
+////        listView.currentIndex = -1
+//        kdbListModel.searchEntriesInKdbDatabase(searchString)
+//    }
+
+    Column {
+        id: headerContainer
+        width: parent.width
+
+        PageHeaderExtended {
+            title: pageTitle
+            subTitle: "ownKeepass"
+        }
+
+        SearchField {
+            id: searchField
+            width: parent.width
+            height: 0
+            enabled: false
+            opacity: 0.0
+            placeholderText: "Search"
+
+//            Binding {
+//                target: groupsAndEntriesPage
+//                property: "searchString"
+//                value: searchField.text.toLowerCase().trim()
+//            }
+            onTextChanged: {
+                kdbListModel.searchEntriesInKdbDatabase(searchField.text)
+            }
+
+            Behavior on height { NumberAnimation {} }
+            Behavior on opacity { FadeAnimation {} }
+        }
+    }
+
     SilicaListView {
         id: listView
         anchors.fill: parent
         model: kdbListModel
 
-        header: PageHeaderExtended {
-            title: pageTitle
-            subTitle: "ownKeepass"
-        }
-
         ViewPlaceholder {
             enabled: listView.count === 0
             text: "Group is empty"
             hintText: loadMasterGroups ? "Pull down to add password groups" : "Pull down to add password groups and entries"
+        }
+
+        header: Item {
+            id: header
+            width: headerContainer.width
+            height: headerContainer.height
+            Component.onCompleted: headerContainer.parent = header
         }
 
         PullDownMenu {
@@ -103,11 +143,40 @@ Page {
                                    { "createNewEntry": true, "parentGroupId": groupId })
                 }
             }
+            MenuItem {
+                id: menuItemSearch
+                text: "Search"
+                onClicked: {
+                    if (searchField.enabled) {
+                        // Disable search functionality
+                        menuItemSearch.text = "Search"
+                        searchField.enabled = false
+                        searchField.height = 0
+                        searchField.opacity = 0.0
+                        // populate listmodel with group
+                        init()
+                    } else {
+                        // Enable search functionality
+                        menuItemSearch.text = "Hide Search"
+                        searchField.enabled = true
+                        searchField.height = searchField.implicitHeight
+                        searchField.opacity = 1.0
+                        // prevent newly added list delegates from stealing focus
+                        listView.currentIndex = -1
+                        // initialise listmodel for search
+                        kdbListModel.searchEntriesInKdbDatabase("")
+                        searchField.forceActiveFocus()
+                    }
+                }
+            }
         }
 
         KpPushUpMenu {}
 
         VerticalScrollDecorator {}
+
+        currentIndex: -1
+
 
         delegate: Global.env.mainPage.kdbListItemComponent
     }
