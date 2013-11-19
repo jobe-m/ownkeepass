@@ -39,12 +39,14 @@ Page {
     // ID of the keepass group which should be shown
     property int groupId: 0
     property bool loadMasterGroups: false
-    property string pageTitle: qsTr("Groups and entries")
+    property string pageTitle: "Password Groups"
 
     function init() {
         if (loadMasterGroups) {
+            groupsAndEntriesPage.state = "LoadMasterGroups"
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
+            groupsAndEntriesPage.state = "LoadGroupsAndEntries"
             kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)
         }
     }
@@ -56,7 +58,7 @@ Page {
 
     // private properties and funtions
     property bool __closeOnError: false
-//    property string searchString: ""
+    property string __saveState: state
     function __showLoadErrorPage() {
         console.log("ERROR: Could not load")
         Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 0, false)
@@ -67,18 +69,13 @@ Page {
         Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
     }
 
-//    onSearchStringChanged: {
-//        // prevent newly added list delegates from stealing focus
-////        listView.currentIndex = -1
-//        kdbListModel.searchEntriesInKdbDatabase(searchString)
-//    }
-
     Column {
         id: headerContainer
         width: parent.width
+        height: children.height
 
         PageHeaderExtended {
-            title: pageTitle
+            id: pageHeader
             subTitle: "ownKeepass"
         }
 
@@ -90,11 +87,6 @@ Page {
             opacity: 0.0
             placeholderText: "Search"
 
-//            Binding {
-//                target: groupsAndEntriesPage
-//                property: "searchString"
-//                value: searchField.text.toLowerCase().trim()
-//            }
             onTextChanged: {
                 kdbListModel.searchEntriesInKdbDatabase(searchField.text)
             }
@@ -106,13 +98,17 @@ Page {
 
     SilicaListView {
         id: listView
+        currentIndex: -1
+        onCurrentIndexChanged: {
+            console.log("currentIndex changed: " + currentIndex)
+        }
+
         anchors.fill: parent
         model: kdbListModel
 
         ViewPlaceholder {
-            enabled: listView.count === 0
+            id: viewPlaceholder
             text: "Group is empty"
-            hintText: loadMasterGroups ? "Pull down to add password groups" : "Pull down to add password groups and entries"
         }
 
         header: Item {
@@ -124,18 +120,19 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                id: databaseSettingsMenuItem
                 text: qsTr("Database Settings")
                 onClicked: pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
             }
 
             MenuItem {
+                id: newPasswordGroupsMenuItem
                 text: "New Password Group"
                 onClicked: pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
                                           { "createNewGroup": true, "parentGroupId": groupId })
             }
             MenuItem {
-                enabled: !loadMasterGroups
-                visible: !loadMasterGroups
+                id: newPasswordEntryMenuItem
                 text: "New Password Entry"
                 onClicked: {
                     console.log("Open EditEntryDetailsDialog to create new entry")
@@ -144,26 +141,22 @@ Page {
                 }
             }
             MenuItem {
-                id: menuItemSearch
+                id: searchMenuItem
                 text: "Search"
                 onClicked: {
                     if (searchField.enabled) {
                         // Disable search functionality
-                        menuItemSearch.text = "Search"
-                        searchField.enabled = false
-                        searchField.height = 0
-                        searchField.opacity = 0.0
+                        groupsAndEntriesPage.state = groupsAndEntriesPage.__saveState
                         // populate listmodel with group
                         init()
                     } else {
                         // Enable search functionality
-                        menuItemSearch.text = "Hide Search"
-                        searchField.enabled = true
-                        searchField.height = searchField.implicitHeight
-                        searchField.opacity = 1.0
+                        groupsAndEntriesPage.__saveState = groupsAndEntriesPage.state
+                        groupsAndEntriesPage.state = "Search"
                         // prevent newly added list delegates from stealing focus
                         listView.currentIndex = -1
                         // initialise listmodel for search
+                        kdbListModel.searchRootGroupId = groupsAndEntriesPage.groupId
                         kdbListModel.searchEntriesInKdbDatabase("")
                         searchField.forceActiveFocus()
                     }
@@ -175,9 +168,6 @@ Page {
 
         VerticalScrollDecorator {}
 
-        currentIndex: -1
-
-
         delegate: Global.env.mainPage.kdbListItemComponent
     }
 
@@ -186,6 +176,52 @@ Page {
         onGroupsAndEntriesLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
         onMasterGroupsLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage
     }
+
+    state: "Loading"
+
+    states: [
+        State {
+            name: "Loading"
+            PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: searchMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: viewPlaceholder; enabled: false }
+        },
+        State {
+            name: "LoadMasterGroups"
+            PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true; visible: true }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: searchMenuItem; enabled: true; visible: true; text: "Search" }
+            PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
+            PropertyChanges { target: viewPlaceholder; enabled: listView.count === 0;
+                hintText: "Pull down to add password groups" }
+        },
+        State {
+            name: "LoadGroupsAndEntries"
+            PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true; visible: true }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: true; visible: true }
+            PropertyChanges { target: searchMenuItem; enabled: true; visible: true; text: "Search" }
+            PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
+            PropertyChanges { target: viewPlaceholder;  enabled: listView.count === 0;
+                hintText: "Pull down to add password groups and entries" }
+        },
+        State {
+            name: "Search"
+            PropertyChanges { target: pageHeader; title: "Search for Entries" }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: searchMenuItem; enabled: true; visible: true; text: "End Search" }
+            PropertyChanges { target: searchField; enabled: true; height: searchField.implicitHeight; opacity: 1.0 }
+            PropertyChanges { target: viewPlaceholder; enabled: false }
+        }
+    ]
 
     onStatusChanged: {
         if (__closeOnError && status === PageStatus.Active) pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
