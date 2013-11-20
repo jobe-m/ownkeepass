@@ -30,10 +30,10 @@ Page {
     id: groupsAndEntriesPage
 
     /*
-      Because this page is preloaded when the Query Password Dialog is shown, but without password the
+      This page is preloaded when the Query Password Dialog is shown. But without password the
       database cannot be opened and therefore within this page it will give an error if we load groups
       from the KdbListModel on startup. So the init() function is invoked later when the database could
-      be opened successfully.
+      be opened successfully with the master password.
      */
     property bool initOnPageConstruction: true
     // ID of the keepass group which should be shown
@@ -69,23 +69,44 @@ Page {
         Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
     }
 
-    Column {
-        id: headerContainer
+    Item {
+        id: headerBox
+        property int neutralPos: 0
+        y: 0 - listView.contentY + neutralPos
+        z: 1
         width: parent.width
-        height: children.height
+        height: pageHeader.height + searchField.height
+
+        Component.onCompleted: {
+            neutralPos = listView.contentY
+        }
 
         PageHeaderExtended {
             id: pageHeader
+            anchors.top: parent.top
+            anchors.left: parent.left
+            width: parent.width
             subTitle: "ownKeepass"
         }
 
         SearchField {
             id: searchField
+            anchors.top: pageHeader.bottom
+            anchors.left: parent.left
             width: parent.width
             height: 0
             enabled: false
             opacity: 0.0
             placeholderText: "Search"
+
+            onHeightChanged: {
+                // recalculate neutral position when search field appears and disappears
+                if (height === implicitHeight) {
+                    parent.neutralPos -= implicitHeight
+                } else if (height === 0) {
+                    parent.neutralPos += implicitHeight
+                }
+            }
 
             onTextChanged: {
                 kdbListModel.searchEntriesInKdbDatabase(searchField.text)
@@ -99,10 +120,6 @@ Page {
     SilicaListView {
         id: listView
         currentIndex: -1
-        onCurrentIndexChanged: {
-            console.log("currentIndex changed: " + currentIndex)
-        }
-
         anchors.fill: parent
         model: kdbListModel
 
@@ -112,10 +129,10 @@ Page {
         }
 
         header: Item {
-            id: header
-            width: headerContainer.width
-            height: headerContainer.height
-            Component.onCompleted: headerContainer.parent = header
+            // This is just a placeholder for the header box. To avoid the
+            // list view resetting the input box everytime the model resets,
+            // the search entry is defined outside the list view.
+            height: headerBox.height
         }
 
         PullDownMenu {
@@ -147,14 +164,12 @@ Page {
                     if (searchField.enabled) {
                         // Disable search functionality
                         groupsAndEntriesPage.state = groupsAndEntriesPage.__saveState
-                        // populate listmodel with group
+                        // populate listmodel with group data
                         init()
                     } else {
                         // Enable search functionality
                         groupsAndEntriesPage.__saveState = groupsAndEntriesPage.state
                         groupsAndEntriesPage.state = "Search"
-                        // prevent newly added list delegates from stealing focus
-                        listView.currentIndex = -1
                         // initialise listmodel for search
                         kdbListModel.searchRootGroupId = groupsAndEntriesPage.groupId
                         kdbListModel.searchEntriesInKdbDatabase("")
@@ -195,7 +210,7 @@ Page {
             PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
             PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true; visible: true }
             PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }
-            PropertyChanges { target: searchMenuItem; enabled: true; visible: true; text: "Search" }
+            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; visible: true; text: "Search" }
             PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
             PropertyChanges { target: viewPlaceholder; enabled: listView.count === 0;
                 hintText: "Pull down to add password groups" }
@@ -206,14 +221,16 @@ Page {
             PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
             PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true; visible: true }
             PropertyChanges { target: newPasswordEntryMenuItem; enabled: true; visible: true }
-            PropertyChanges { target: searchMenuItem; enabled: true; visible: true; text: "Search" }
+            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; visible: true; text: "Search" }
             PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
             PropertyChanges { target: viewPlaceholder;  enabled: listView.count === 0;
-                hintText: "Pull down to add password groups and entries" }
+                hintText: "Pull down to add password groups or entries" }
         },
         State {
             name: "Search"
-            PropertyChanges { target: pageHeader; title: "Search for Entries" }
+            PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.groupId === 0 ?
+                                                             "Search in all Groups" :
+                                                             "Search in " + groupsAndEntriesPage.pageTitle}
             PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
             PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false; visible: false }
             PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }

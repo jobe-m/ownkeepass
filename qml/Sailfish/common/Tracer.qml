@@ -6,7 +6,7 @@ Rectangle {
     opacity: 0.3
     Rectangle {
         anchors.fill: parent
-        border.color: "red"
+        border.color: parent.color
         border.width: 1
         color: "transparent"
         opacity: 1.0
