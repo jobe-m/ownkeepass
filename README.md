@@ -33,19 +33,23 @@ Features (already working)
 *   One default keepass file is loaded on application start
 *   Default keepass file can be changed in the keepass application settings
 *   Database settings adjustable like master password, encryption algorithm and key transformation rounds
+*   Search keepass entries in whole database
 
 TODO
 ----
 
 *   Port Keepass backend from Qt4 (N9 version) to Qt5 [Done]
 *   Adapt old N9 QML source code to use [Sailfish Silica components][2] and bring the application up on the Sailfish emulator with all features from the N9 version [Done]
-*   Implement search functionality [currently ongoing]
-*   Add some more fancy UI elements like icons for Keepass groups and entries, etc.
-*   Post some screenshots :D
+*   Implement search functionality [Done]
+*   Add some more fancy UI elements like icons for Keepass groups and entries, cover page, application icon, etc. [currently ongoing]
+*   Add copy'n'paste username and password funktionality to Cover Page
+*   Post some screenshots and publish review on my homepage tisno.de :D
+*   Implement locking of database after some time of inactivity
+*   Prepare for first Release on Jolla Harbor :)
 
-That's it for now. I will update things here when I have more news to share :)
+That's it for now. Can't wait until I get my Jolla phone :)
 
-12-Nov-2013
+20-Nov-2013
 
 Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
