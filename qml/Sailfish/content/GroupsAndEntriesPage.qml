@@ -123,6 +123,15 @@ Page {
         anchors.fill: parent
         model: kdbListModel
 
+        ViewSearchPlaceholder {
+            id: searchNoEntriesFoundPlaceholder
+            text: "No Entries found"
+
+            onClicked: {
+                searchField.forceActiveFocus()
+            }
+        }
+
         ViewPlaceholder {
             id: viewPlaceholder
             text: "Group is empty"
@@ -138,18 +147,21 @@ Page {
         PullDownMenu {
             MenuItem {
                 id: databaseSettingsMenuItem
+                visible: enabled
                 text: qsTr("Database Settings")
                 onClicked: pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
             }
 
             MenuItem {
                 id: newPasswordGroupsMenuItem
+                visible: enabled
                 text: "New Password Group"
                 onClicked: pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
                                           { "createNewGroup": true, "parentGroupId": groupId })
             }
             MenuItem {
                 id: newPasswordEntryMenuItem
+                visible: enabled
                 text: "New Password Entry"
                 onClicked: {
                     console.log("Open EditEntryDetailsDialog to create new entry")
@@ -159,6 +171,7 @@ Page {
             }
             MenuItem {
                 id: searchMenuItem
+                visible: enabled
                 text: "Search"
                 onClicked: {
                     if (searchField.enabled) {
@@ -198,45 +211,49 @@ Page {
         State {
             name: "Loading"
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: false; visible: false }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false; visible: false }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }
-            PropertyChanges { target: searchMenuItem; enabled: false; visible: false }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: false }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false }
+            PropertyChanges { target: searchMenuItem; enabled: false }
             PropertyChanges { target: viewPlaceholder; enabled: false }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
         },
         State {
             name: "LoadMasterGroups"
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true; visible: true }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }
-            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; visible: true; text: "Search" }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: true }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false }
+            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; text: "Search" }
             PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
             PropertyChanges { target: viewPlaceholder; enabled: listView.count === 0;
                 hintText: "Pull down to add password groups" }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
         },
         State {
             name: "LoadGroupsAndEntries"
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true; visible: true }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: true; visible: true }
-            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; visible: true; text: "Search" }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: true }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: true }
+            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; text: "Search" }
             PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
             PropertyChanges { target: viewPlaceholder;  enabled: listView.count === 0;
                 hintText: "Pull down to add password groups or entries" }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
         },
         State {
             name: "Search"
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.groupId === 0 ?
                                                              "Search in all Groups" :
                                                              "Search in " + groupsAndEntriesPage.pageTitle}
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: true; visible: true }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false; visible: false }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false; visible: false }
-            PropertyChanges { target: searchMenuItem; enabled: true; visible: true; text: "End Search" }
+            PropertyChanges { target: databaseSettingsMenuItem; enabled: true }
+            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false }
+            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false }
+            PropertyChanges { target: searchMenuItem; enabled: true; text: "End Search" }
             PropertyChanges { target: searchField; enabled: true; height: searchField.implicitHeight; opacity: 1.0 }
             PropertyChanges { target: viewPlaceholder; enabled: false }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: listView.count === 0 }
         }
     ]
 
