@@ -28,9 +28,15 @@ import "scripts/Global.js" as Global
 
 ApplicationWindow
 {
+    id: applicationWindow
+
+    // For accessing main page to further pass application activity status
+    property MainPageSimple mainPageRef: null
+
     initialPage: initialPage
 
-    // Place info popup outside of page stack so that it is shown over all UI elements
+    // Place info popup outside of page stack so that it is shown over all
+    // application UI elements
     InfoPopup {
         id: infoPopup
     }
@@ -38,10 +44,21 @@ ApplicationWindow
     Component {
         id: initialPage
         MainPageSimple {
+            id: mainPage
+            Component.onCompleted: applicationWindow.mainPageRef = mainPage
         }
     }
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+
+    onApplicationActiveChanged: {
+        // Application goes into background or returns to active focus again
+        if (applicationActive) {
+            mainPageRef.inactivityTimerStop()
+        } else {
+            mainPageRef.inactivityTimerStart()
+        }
+    }
 
     Component.onCompleted: {
         Global.env.setInfoPopup(infoPopup)

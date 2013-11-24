@@ -39,6 +39,29 @@ Page {
     property Component settingsDialogComponent: settingsDialogComponent
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
 
+    function inactivityTimerStart() {
+        // first check if the user has set timer to unlimited
+        // meaning the app should never lock
+        if (!inactivityTimer.unlimited) {
+            inactivityTimer.restart()
+        }
+    }
+
+    function inactivityTimerStop() {
+        inactivityTimer.stop()
+    }
+
+    Timer {
+        id: inactivityTimer
+
+        property bool unlimited: false
+
+        triggeredOnStart: false
+        onTriggered: {
+            console.log("Inactivity timer: Goto main page")
+            pageStack.pop(mainPage)
+        }
+    }
 
     SilicaFlickable {
         anchors.fill: parent
@@ -97,6 +120,48 @@ Page {
         Component.onCompleted: {
             initDatabase()
             loadSettings()
+        }
+
+        onLocktimeChanged: {
+            // convert setting into amount of microseconds and set in inactivityTimer
+            var interval
+                switch (locktime) {
+                case 0:
+                    interval = Global.constants._1microsecond
+                    break
+                case 1:
+                    interval = Global.constants._5seconds
+                    break
+                case 2:
+                    interval = Global.constants._10seconds
+                    break
+                case 3:
+                    interval = Global.constants._30seconds
+                    break
+                case 4:
+                    interval = Global.constants._1minute
+                    break
+                case 5:
+                    interval = Global.constants._2minutes
+                    break
+                case 6:
+                    interval = Global.constants._5minutes
+                    break
+                case 7:
+                    interval = Global.constants._10minutes
+                    break
+                case 8:
+                    interval = Global.constants._30minutes
+                    break
+                case 9:
+                    interval = Global.constants._60minutes
+                    break
+                case 10:
+                    inactivityTimer.unlimited = true
+                    return
+                }
+                inactivityTimer.unlimited = false
+                inactivityTimer.interval = interval
         }
 
         // Initialize tables we need if they haven't been created yet

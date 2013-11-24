@@ -22,6 +22,19 @@
 **
 ***************************************************************************/
 
+var constants = {
+    _1microsecond: 1,
+    _5seconds: 5 * 1000,
+    _10seconds: 10 * 1000,
+    _30seconds: 30 * 1000,
+    _1minute: 60 * 1000,
+    _2minutes: 2 * 60 * 1000,
+    _5minutes: 5 * 60 * 1000,
+    _10minutes: 10 * 60 * 1000,
+    _30minutes: 30 * 60 * 1000,
+    _60minutes: 60 * 60 * 1000
+}
+
 var env = {
     mainPage: undefined,
     kdbDatabase: undefined,
