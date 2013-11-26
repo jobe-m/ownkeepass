@@ -79,8 +79,7 @@ var config = {
     recentKeyFilePaths: undefined,
 
     // initialize arrays
-    initArrays:
-    function() {
+    initArrays: function() {
         this.recentDatabaseNames = []
         this.recentDatabasePaths = []
         this.recentDatabaseFilePaths = []
@@ -88,8 +87,7 @@ var config = {
     },
 
     // return amount of recently opened database
-    getNumberOfRecents:
-    function() {
+    getNumberOfRecents: function() {
         // check if all lengths are equal otherwise clean everything up
         var length = this.recentDatabaseNames.length
         if ((this.recentDatabasePaths.length === length) &&
@@ -103,8 +101,7 @@ var config = {
     },
 
     //
-    addNewRecent:
-    function(database, keyFile) {
+    addNewRecent: function(database, keyFile) {
         // check if input is valid
         if (database === undefined) {
             console.log("Database undefined in addNewRecent()")

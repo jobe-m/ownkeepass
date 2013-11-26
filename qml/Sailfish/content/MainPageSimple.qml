@@ -747,7 +747,7 @@ Page {
                 anchors.verticalCenter: parent.verticalCenter
                 width: 81 //Theme.iconSizeMedium
                 height: 81 //Theme.iconSizeMedium
-                source: "../icons/_0.png"
+                source: "../entryicons/_0.png"
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
             }

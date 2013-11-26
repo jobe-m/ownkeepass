@@ -95,6 +95,7 @@ Item {
             if (parentItem.maximumFlickVelocity && !parentItem.hasOwnProperty('__silica_hidden_flickable')) {
                 flickable = parentItem
                 parent = parentItem.contentItem
+                return
             }
             parentItem = parentItem.parent
         }
