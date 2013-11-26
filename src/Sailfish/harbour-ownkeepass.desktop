@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ownKeepass
+Icon=icon-launcher-gallery
+Exec=invoker --type=silica-qt5 -s /usr/bin/harbour-ownkeepass
+Comment=ownKeepass Password Safe
+
+
+Name[en_GB]=ownKeepass

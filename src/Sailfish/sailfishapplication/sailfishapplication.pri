@@ -10,13 +10,14 @@ target.path = $$TARGETPATH
 DEPLOYMENT_PATH = /usr/share/$$TARGET
 qml.path = $$DEPLOYMENT_PATH
 icons.path = $$DEPLOYMENT_PATH
+appicon.path = /usr/share/icons/hicolor/86x86/apps
 desktop.path = /usr/share/applications
 
 contains(CONFIG, desktop) {
     DEFINES *= DESKTOP
 }
 
-INSTALLS += target qml desktop icons
+INSTALLS += target qml desktop icons appicon
 
 DEFINES += DEPLOYMENT_PATH=\"\\\"\"$${DEPLOYMENT_PATH}/\"\\\"\"
 

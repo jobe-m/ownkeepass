@@ -29,4 +29,7 @@ qml.files = \
     qml/Sailfish/Main.qml
 
 icons.files += \
-    qml/common/icons
+    qml/common/images/entryicons
+
+appicon.files += \
+    qml/common/images/harbour-ownkeepass.png

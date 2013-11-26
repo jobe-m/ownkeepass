@@ -21,7 +21,7 @@
 #***************************************************************************
 
 # The name of your app
-TARGET = ownKeepass
+TARGET = harbour-ownkeepass
 
 # C++ sources
 SOURCES += src/Sailfish/main.cpp
@@ -30,4 +30,4 @@ SOURCES += src/Sailfish/main.cpp
 HEADERS +=
 
 # The .desktop file
-desktop.files = src/Sailfish/ownKeepass.desktop
+desktop.files = src/Sailfish/harbour-ownkeepass.desktop

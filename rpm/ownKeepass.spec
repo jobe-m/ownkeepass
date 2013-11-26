@@ -65,5 +65,7 @@ rm -rf %{buildroot}
 /usr/share/ownKeepass
 /usr/share/applications
 /usr/bin/ownKeepass
+/usr/share/harbour-ownkeepass
+/usr/share/icons/hicolor/86x86/apps
 # >> files
 # << files
