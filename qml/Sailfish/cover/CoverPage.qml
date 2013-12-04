@@ -22,14 +22,169 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../scripts/Global.js" as Global
 
 CoverBackground {
+    property int coverState: Global.constants.databaseClosed
+
+    property alias entryTitle: entryLabel.text
+    property alias url: urlLabel.text
+    property alias username: usernameLabel.text
+    property alias password: passwordLabel.text
+
+//    property alias url: showEntryCover.url
+//    property alias username: showEntryCover.username
+//    property alias password: showEntryCover.password
+
     CoverPlaceholder {
+        enabled: coverState === Global.constants.databaseClosed
+        visible: enabled
         text: "Database locked"
-// TODO only for testing in emulator
-//        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
-        icon.source: "/opt/sdk/ownKeepass/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
+
+    CoverPlaceholder {
+        enabled: coverState === Global.constants.databaseOpened
+        visible: enabled
+        text: "Database opened"
+        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+    }
+
+    Item {
+//        id: showEntryCover
+        enabled: coverState === Global.constants.databaseEntryOpened
+        visible: enabled
+
+        anchors.fill: parent
+
+//        Image {
+//            id: image
+//            y: Theme.paddingMedium
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            opacity: 0.4
+//            source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+//        }
+
+        Column {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: image.bottom
+            anchors.bottom: parent.bottom
+            anchors.topMargin: Theme.paddingSmall
+            anchors.bottomMargin: Theme.paddingSmall
+            width: parent.width - 2 * Theme.paddingSmall
+            spacing: 0 //Theme.paddingSmall
+
+            Label {
+                width: parent.width
+                color: Theme.secondaryColor
+                opacity: 0.6
+                horizontalAlignment: Text.AlignHCenter
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeTiny
+                text: "ownKeepass"
+            }
+
+            Label {
+                id: entryLabel
+                width: parent.width
+                color: Theme.primaryColor
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+//                enabled: false
+//                visible: enabled
+                width: parent.width
+                color: Theme.secondaryColor
+                opacity: 0.6
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeTiny
+                text: urlLabel.text !== "" ? "Url" : "No url"
+            }
+
+            Label {
+                id: urlLabel
+                enabled: text !== ""
+                visible: enabled
+                width: parent.width
+                color: Theme.primaryColor
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+//                enabled: usernameLabel.text !== ""
+//                visible: enabled
+                width: parent.width
+                color: Theme.secondaryColor
+                opacity: 0.6
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeTiny
+                text: usernameLabel.text !== "" ? "Username" : "No username"
+            }
+
+            Label {
+                id: usernameLabel
+                enabled: text !== ""
+                visible: enabled
+                width: parent.width
+                color: Theme.primaryColor
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+//                enabled: passwordLabel.text !== ""
+//                visible: enabled
+                width: parent.width
+                color: Theme.secondaryColor
+                opacity: 0.6
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeTiny
+                text: passwordLabel.text !== "" ? "Password" : "No password"
+            }
+
+            Label {
+                id: passwordLabel
+                enabled: text !== ""
+                visible: enabled
+                width: parent.width
+                color: Theme.primaryColor
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeSmall
+            }
+        }
+    }
+
+
+
+//        Label {
+//            id: label
+//            anchors.centerIn: parent
+//            width: parent.width - 2*Theme.paddingMedium
+//            height: width
+//            color: Theme.secondaryColor
+//            horizontalAlignment: Text.AlignHCenter
+//            verticalAlignment: Text.AlignVCenter
+//            wrapMode: Text.Wrap
+//            fontSizeMode: Text.Fit
+//        }
+//    }
 
 //    Label {
 //        id: label

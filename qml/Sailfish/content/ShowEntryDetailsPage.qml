@@ -23,6 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
+import "../scripts/Global.js" as Global
 
 Page {
     id: showEntryDetailsPage
@@ -37,6 +38,13 @@ Page {
         entryUsernameTextField.text = username
         entryPasswordTextField.text = password
         entryCommentTextField.text = comment
+
+        // set also cover
+        applicationWindow.cover.coverState = Global.constants.databaseEntryOpened
+        applicationWindow.cover.entryTitle = title
+        applicationWindow.cover.url = url
+        applicationWindow.cover.username = username
+        applicationWindow.cover.password = password
     }
 
     SilicaFlickable {

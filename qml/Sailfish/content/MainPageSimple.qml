@@ -30,7 +30,7 @@ import KeepassPlugin 1.0
 Page {
     id: mainPage
 
-    // Components accessible through Global mainPage object
+    // Components accessible through root mainPage object from all subpages
     property Component kdbListItemComponent: kdbListItemComponent
     property Component showEntryDetailsPageComponent: showEntryDetailsPageComponent
     property Component editEntryDetailsDialogComponent: editEntryDetailsDialogComponent
@@ -58,7 +58,7 @@ Page {
 
         triggeredOnStart: false
         onTriggered: {
-            console.log("Inactivity timer: Goto main page")
+            // Inactivity timer hit, now go back to main page
             pageStack.pop(mainPage)
         }
     }
@@ -83,7 +83,6 @@ Page {
                 title: "ownKeepass"
                 subTitle: "Password Safe"
             }
-
         }
     }
 
@@ -96,13 +95,20 @@ Page {
     }
 
     Component.onCompleted: {
+        // init some global variables
         Global.env.setMainPage(mainPage)
         Global.env.setKdbDatabase(kdbDatabase)
         Global.env.setKeepassSettings(keepassSettings)
     }
 
     onStatusChanged: {
-        if (status === PageStatus.Active) internal.init()
+        if (status === PageStatus.Active) {
+            // If this page gets active the database is definitely closed and needs to be opened again
+            // so set cover page state accordingly
+            applicationWindow.cover.coverState = Global.constants.databaseClosed
+            // now also check default database path if file exists
+            internal.init()
+        }
     }
 
     QtObject {
@@ -280,7 +286,7 @@ Page {
                 keyFilePath  = keepassSettings.defaultKeyFilePath
             } else {
                 // check if some other recently opened database is set as default = !simpleMode
-// TODO
+// TODO for next release ;)
 
             }
             kdbDatabase.preCheck(databasePath, keyFilePath)
@@ -296,7 +302,7 @@ Page {
                 dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
                             dialog.accepted.connect(function() {
                                 openKeepassDatabase(dialog.password, createNewDatabase)
-                                // delete password once used
+                                // delete password once it was used
                                 dialog.password = ""
                                 masterGroupsPage = dialog.acceptDestinationInstance
                             })
@@ -337,8 +343,9 @@ Page {
             console.log("onDatabaseOpened: " + result)
             switch (result) {
             case KdbDatabase.RE_OK:
-                // init master groups page
+                // Yeah, database could be opened successfully, now init master groups page and cover page
                 masterGroupsPage.init()
+                applicationWindow.cover.coverState = Global.constants.databaseOpened
                 break
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
@@ -728,7 +735,7 @@ Page {
             ListView.onRemove: RemoveAnimation {
                 target: kdbListItem
             }
-//            ListView.onRemove: animateRemoval()
+
             onClicked: {
                 switch (model.itemType) {
                 case KdbListModel.GROUP:

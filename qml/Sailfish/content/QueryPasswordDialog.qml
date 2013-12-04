@@ -23,6 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
+import "../scripts/Global.js" as Global
 
 Dialog {
     id: queryPasswordDialog
@@ -79,8 +80,8 @@ Dialog {
                 echoMode: TextInput.Password
                 label: "Password"
                 placeholderText: "Enter password"
-// TODO remove, only here for faster testing with predefined database file
-                text: "qwertz"
+                // Development mode here for faster testing with predefined database file
+                text: Global.developmentMode ? "qwertz" : ""
                 EnterKey.enabled: text !== ""
                 EnterKey.highlighted: text !== ""
                 EnterKey.onClicked: {
@@ -103,8 +104,8 @@ Dialog {
                 errorHighlight: passwordField.text !== text
                 label: "Confirm Password"
                 placeholderText: label
-// TODO remove, only here for faster testing with predefined database file
-                text: "qwertz"
+                // Development mode here for faster testing with predefined database file
+                text: Global.developmentMode ? "qwertz" : ""
                 EnterKey.enabled: passwordField.text !== "" && !errorHighlight
                 EnterKey.highlighted: !errorHighlight
                 EnterKey.onClicked: {

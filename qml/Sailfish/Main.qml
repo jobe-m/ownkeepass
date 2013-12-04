@@ -23,6 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "content"
+import "cover"
 import "common"
 import "scripts/Global.js" as Global
 
@@ -30,10 +31,11 @@ ApplicationWindow
 {
     id: applicationWindow
 
-    // For accessing main page to further pass application activity status
+    // For accessing main page to pass further application activity status
     property MainPageSimple mainPageRef: null
 
-    initialPage: initialPage
+    initialPage: mainPageContainer
+    cover: coverPage //Containe
 
     // Place info popup outside of page stack so that it is shown over all
     // application UI elements
@@ -42,14 +44,16 @@ ApplicationWindow
     }
 
     Component {
-        id: initialPage
+        id: mainPageContainer
         MainPageSimple {
             id: mainPage
             Component.onCompleted: applicationWindow.mainPageRef = mainPage
         }
     }
 
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    CoverPage {
+        id: coverPage
+    }
 
     onApplicationActiveChanged: {
         // Application goes into background or returns to active focus again

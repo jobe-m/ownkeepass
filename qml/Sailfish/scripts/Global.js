@@ -22,6 +22,10 @@
 **
 ***************************************************************************/
 
+// enable (1) / disable (0) development mode
+// This sets some paths for SDK usage (/opt/sdk/...) and a default database password for testing
+var developmentMode = 1
+
 var constants = {
     _1microsecond: 1,
     _5seconds: 5 * 1000,
@@ -32,7 +36,12 @@ var constants = {
     _5minutes: 5 * 60 * 1000,
     _10minutes: 10 * 60 * 1000,
     _30minutes: 30 * 60 * 1000,
-    _60minutes: 60 * 60 * 1000
+    _60minutes: 60 * 60 * 1000,
+
+    // For cover page handling
+    databaseClosed: 0,
+    databaseOpened: 1,
+    databaseEntryOpened: 2
 }
 
 var env = {
@@ -40,6 +49,7 @@ var env = {
     kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
+    coverPage: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
@@ -57,11 +67,16 @@ var env = {
         this.keepassSettings = obj
     },
 
+    setCoverPage: function(obj) {
+        this.coverPage = obj
+    },
+
     reset: function() {
         this.mainPage = undefined
         this.kdbDatabase = undefined
         this.infoPopup = undefined
         this.keepassSettings = undefined
+        this.coverPage = undefined
     }
 }
 
