@@ -41,10 +41,10 @@ TODO
 *   Port Keepass backend from Qt4 (N9 version) to Qt5 [Done]
 *   Adapt old N9 QML source code to use [Sailfish Silica components][2] and bring the application up on the Sailfish emulator with all features from the N9 version [Done]
 *   Implement search functionality [Done]
+*   Implement locking of database after some time of inactivity [Done]
 *   Add some more fancy UI elements like icons for Keepass groups and entries, cover page, application icon, etc. [currently ongoing]
 *   Add copy'n'paste username and password funktionality to Cover Page
 *   Post some screenshots and publish review on my homepage tisno.de :D
-*   Implement locking of database after some time of inactivity
 *   Prepare for first Release on Jolla Harbor :)
 
 That's it for now. Can't wait until I get my Jolla phone :)

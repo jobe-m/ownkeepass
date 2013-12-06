@@ -258,7 +258,12 @@ Page {
     ]
 
     onStatusChanged: {
-        if (__closeOnError && status === PageStatus.Active) pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
+        if (__closeOnError && status === PageStatus.Active) {
+            pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
+//        } else if((status === PageStatus.Active) && (Global.env.databaseState !== Global.constants.databaseClosed)) {
+        } else if (status === PageStatus.Active) {
+            applicationWindow.cover.coverState = Global.constants.databaseOpened
+        }
     }
 
     Component.onCompleted: {

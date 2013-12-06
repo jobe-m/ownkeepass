@@ -49,7 +49,7 @@ var env = {
     kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
-    coverPage: undefined,
+//    databaseState: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
@@ -65,18 +65,10 @@ var env = {
 
     setKeepassSettings: function(obj) {
         this.keepassSettings = obj
-    },
+//    },
 
-    setCoverPage: function(obj) {
-        this.coverPage = obj
-    },
-
-    reset: function() {
-        this.mainPage = undefined
-        this.kdbDatabase = undefined
-        this.infoPopup = undefined
-        this.keepassSettings = undefined
-        this.coverPage = undefined
+//    setDatabaseState: function(obj) {
+//        this.databaseState = obj
     }
 }
 

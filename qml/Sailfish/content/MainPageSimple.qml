@@ -51,6 +51,11 @@ Page {
         inactivityTimer.stop()
     }
 
+    function lockDatabase() {
+        // By going back to main page database will be locked
+        pageStack.pop(mainPage)
+    }
+
     Timer {
         id: inactivityTimer
 
@@ -58,8 +63,8 @@ Page {
 
         triggeredOnStart: false
         onTriggered: {
-            // Inactivity timer hit, now go back to main page
-            pageStack.pop(mainPage)
+            // Inactivity timer hit
+            lockDatabase()
         }
     }
 
@@ -345,7 +350,7 @@ Page {
             case KdbDatabase.RE_OK:
                 // Yeah, database could be opened successfully, now init master groups page and cover page
                 masterGroupsPage.init()
-                applicationWindow.cover.coverState = Global.constants.databaseOpened
+                Global.env.setDatabaseState(Global.constants.databaseOpened)
                 break
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user

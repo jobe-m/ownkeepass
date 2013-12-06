@@ -53,6 +53,7 @@ ApplicationWindow
 
     CoverPage {
         id: coverPage
+        onDatabaseLocked: applicationWindow.mainPageRef.lockDatabase()
     }
 
     onApplicationActiveChanged: {

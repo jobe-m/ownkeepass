@@ -26,15 +26,14 @@ import "../scripts/Global.js" as Global
 
 CoverBackground {
     property int coverState: Global.constants.databaseClosed
+//    // For accessing main page in order to lock database
+//    property Page mainPageRef: null
 
-    property alias entryTitle: entryLabel.text
-    property alias url: urlLabel.text
-    property alias username: usernameLabel.text
-    property alias password: passwordLabel.text
+    property alias entryTitle: entryTitleLabel.text
+    property alias username: entryUsernameLabel.text
+    property alias password: entryPasswordLabel.text
 
-//    property alias url: showEntryCover.url
-//    property alias username: showEntryCover.username
-//    property alias password: showEntryCover.password
+    signal databaseLocked()
 
     CoverPlaceholder {
         enabled: coverState === Global.constants.databaseClosed
@@ -51,158 +50,137 @@ CoverBackground {
     }
 
     Item {
-//        id: showEntryCover
         enabled: coverState === Global.constants.databaseEntryOpened
         visible: enabled
 
         anchors.fill: parent
 
-//        Image {
-//            id: image
-//            y: Theme.paddingMedium
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            opacity: 0.4
-//            source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
-//        }
-
-        Column {
+        Label {
+            id: appName
+            y: Theme.paddingMedium
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: image.bottom
-            anchors.bottom: parent.bottom
-            anchors.topMargin: Theme.paddingSmall
-            anchors.bottomMargin: Theme.paddingSmall
             width: parent.width - 2 * Theme.paddingSmall
-            spacing: 0 //Theme.paddingSmall
+            color: Theme.secondaryColor
+            opacity: 0.6
+            horizontalAlignment: Text.AlignHCenter
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSizeTiny
+            text: "ownKeepass"
+        }
 
-            Label {
-                width: parent.width
-                color: Theme.secondaryColor
-                opacity: 0.6
-                horizontalAlignment: Text.AlignHCenter
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeTiny
-                text: "ownKeepass"
-            }
+        Label {
+            id: entryTitleLabel
+            anchors.top: appName.bottom
+            anchors.topMargin: -Theme.paddingSmall
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width - 2 * Theme.paddingSmall
+            color: Theme.primaryColor
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.NoWrap
+            elide: Text.ElideRight
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSizeSmall
+        }
 
-            Label {
-                id: entryLabel
-                width: parent.width
-                color: Theme.primaryColor
-                horizontalAlignment: Text.AlignHCenter
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeSmall
-            }
+        Item {
+            anchors.top: entryTitleLabel.bottom
+            width: parent.width
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 3 * Theme.paddingLarge
 
-            Label {
-//                enabled: false
-//                visible: enabled
-                width: parent.width
-                color: Theme.secondaryColor
-                opacity: 0.6
-                horizontalAlignment: Text.AlignLeft
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeTiny
-                text: urlLabel.text !== "" ? "Url" : "No url"
-            }
+            Column {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width - 2 * Theme.paddingSmall
+                spacing: 0
 
-            Label {
-                id: urlLabel
-                enabled: text !== ""
-                visible: enabled
-                width: parent.width
-                color: Theme.primaryColor
-                horizontalAlignment: Text.AlignLeft
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeSmall
-            }
+                Label {
+                    width: parent.width
+                    color: Theme.secondaryColor
+                    opacity: 0.6
+                    horizontalAlignment: Text.AlignLeft
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSizeTiny
+                    text: entryUsernameLabel.text !== "" ? "Username" : "No username"
+                }
 
-            Label {
-//                enabled: usernameLabel.text !== ""
-//                visible: enabled
-                width: parent.width
-                color: Theme.secondaryColor
-                opacity: 0.6
-                horizontalAlignment: Text.AlignLeft
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeTiny
-                text: usernameLabel.text !== "" ? "Username" : "No username"
-            }
+                Label {
+                    id: entryUsernameLabel
+                    enabled: text !== ""
+                    visible: enabled
+                    width: parent.width
+                    color: Theme.primaryColor
+                    horizontalAlignment: Text.AlignLeft
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSizeSmall
+                }
 
-            Label {
-                id: usernameLabel
-                enabled: text !== ""
-                visible: enabled
-                width: parent.width
-                color: Theme.primaryColor
-                horizontalAlignment: Text.AlignLeft
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeSmall
-            }
+                Label {
+                    width: parent.width
+                    color: Theme.secondaryColor
+                    opacity: 0.6
+                    horizontalAlignment: Text.AlignLeft
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSizeTiny
+                    text: entryPasswordLabel.text !== "" ? "Password" : "No password"
+                }
 
-            Label {
-//                enabled: passwordLabel.text !== ""
-//                visible: enabled
-                width: parent.width
-                color: Theme.secondaryColor
-                opacity: 0.6
-                horizontalAlignment: Text.AlignLeft
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeTiny
-                text: passwordLabel.text !== "" ? "Password" : "No password"
-            }
-
-            Label {
-                id: passwordLabel
-                enabled: text !== ""
-                visible: enabled
-                width: parent.width
-                color: Theme.primaryColor
-                horizontalAlignment: Text.AlignLeft
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.family: Theme.fontFamily
-                font.pixelSize: Theme.fontSizeSmall
+                Label {
+                    id: entryPasswordLabel
+                    enabled: text !== ""
+                    visible: enabled
+                    width: parent.width
+                    color: Theme.primaryColor
+                    horizontalAlignment: Text.AlignLeft
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSizeSmall
+                }
             }
         }
     }
 
+    // Cover action on opened database
+    CoverActionList {
+        enabled: coverState === Global.constants.databaseOpened
+        iconBackground: false
 
+        CoverAction {
+// TODO
+            iconSource: "image://theme/icon-cover-next"
+            onTriggered: {
+                // locking database
+//                Global.env.setDatabaseState(Global.constants.databaseClosed)
+//                coverState = Global.constants.databaseClosed
+                databaseLocked()
+            }
+        }
+    }
 
-//        Label {
-//            id: label
-//            anchors.centerIn: parent
-//            width: parent.width - 2*Theme.paddingMedium
-//            height: width
-//            color: Theme.secondaryColor
-//            horizontalAlignment: Text.AlignHCenter
-//            verticalAlignment: Text.AlignVCenter
-//            wrapMode: Text.Wrap
-//            fontSizeMode: Text.Fit
-//        }
-//    }
-
-//    Label {
-//        id: label
-//        anchors.centerIn: parent
-//        text: "ownKeepass"
-//    }
-    
-//    CoverActionList {
-//        id: coverAction
+    // Cover action for entry
+    CoverActionList {
+        enabled: coverState === Global.constants.databaseEntryOpened
+        iconBackground: false
         
-//        CoverAction {
-//            iconSource: "image://theme/icon-cover-next"
-//        }
+        CoverAction {
+// TODO
+            iconSource: "image://theme/icon-cover-next"
+            onTriggered: {
+                // locking database
+//                Global.env.setDatabaseState(Global.constants.databaseClosed)
+//                coverState = Global.constants.databaseClosed
+                databaseLocked()
+            }
+        }
         
-//        CoverAction {
-//            iconSource: "image://theme/icon-cover-pause"
-//        }
-//    }
+        CoverAction {
+// TODO
+            iconSource: "image://theme/icon-cover-pause"
+        }
+    }
 }
 
 

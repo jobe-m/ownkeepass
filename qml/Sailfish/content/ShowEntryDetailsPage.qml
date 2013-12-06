@@ -40,9 +40,7 @@ Page {
         entryCommentTextField.text = comment
 
         // set also cover
-        applicationWindow.cover.coverState = Global.constants.databaseEntryOpened
         applicationWindow.cover.entryTitle = title
-        applicationWindow.cover.url = url
         applicationWindow.cover.username = username
         applicationWindow.cover.password = password
     }
@@ -164,5 +162,14 @@ Page {
     Component.onDestruction: {
         // unset again
         kdbListItemInternal.showEntryDetailsPageRef = null
+        // reset cover state to database opened
+    }
+
+    onStatusChanged: {
+        // if page gets active set cover state
+//        if ((status === PageStatus.Active) && (Global.env.databaseState !== Global.constants.databaseClosed)) {
+        if (status === PageStatus.Active) {
+            applicationWindow.cover.coverState = Global.constants.databaseEntryOpened
+        }
     }
 }
