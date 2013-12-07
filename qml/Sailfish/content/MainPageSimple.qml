@@ -350,7 +350,6 @@ Page {
             case KdbDatabase.RE_OK:
                 // Yeah, database could be opened successfully, now init master groups page and cover page
                 masterGroupsPage.init()
-                Global.env.setDatabaseState(Global.constants.databaseOpened)
                 break
             case KdbDatabase.RE_DB_CLOSE_FAILED: {
                 // show error to the user
@@ -868,12 +867,35 @@ Page {
             // creation of new entry needs parent group ID
             property int parentGroupId: 0
 
+            // The following properties are used to check if text of any entry detail was changed. If so,
+            // set cover page accordingly to signal the user unsaved changes
+            property string origTitle: ""
+            property string origUrl: ""
+            property string origUsername: ""
+            property string origPassword: ""
+            property string origComment: ""
+            property bool titleChanged: false
+            property bool urlChanged: false
+            property bool usernameChanged: false
+            property bool passwordChanged: false
+            property bool commentChanged: false
+
             function setTextFields(title, url, username, password, comment) {
-                entryTitleTextField.text = title
-                entryUrlTextField.text = url
-                entryUsernameTextField.text = username
-                entryPasswordTextField.text = entryVerifyPasswordTextField.text = password
-                entryCommentTextField.text = comment
+                entryTitleTextField.text = origTitle = title
+                entryUrlTextField.text = origUrl = url
+                entryUsernameTextField.text = origUsername = username
+                entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = password
+                entryCommentTextField.text = origComment = comment
+            }
+
+            // This function should be called when any text is changed to check if the
+            // cover page state needs to be updated
+            function updateCoverState() {
+                if (titleChanged || urlChanged || usernameChanged || passwordChanged || commentChanged) {
+                    applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
+                } else {
+                    applicationWindow.cover.coverState = Global.constants.databaseEntryOpened
+                }
             }
 
             // forbit page navigation if title is not set and password is not verified
@@ -907,10 +929,16 @@ Page {
                         id: entryTitleTextField
                         width: parent.width
                         label: "Title"
+                        text: ""
                         placeholderText: "Set Title (mandatory)"
                         errorHighlight: text === ""
                         EnterKey.highlighted: !errorHighlight
                         EnterKey.onClicked: entryUrlTextField.focus = true
+                        onTextChanged: {
+                            editEntryDetailsDialog.titleChanged =
+                                    (editEntryDetailsDialog.origTitle !== text ? true : false)
+                            editEntryDetailsDialog.updateCoverState()
+                        }
                     }
 
                     TextField {
@@ -918,16 +946,29 @@ Page {
                         width: parent.width
                         inputMethodHints: Qt.ImhUrlCharactersOnly
                         label: "Url"
+                        text: ""
                         placeholderText: "Set Url"
                         EnterKey.onClicked: entryUsernameTextField.focus = true
+                        onTextChanged: {
+                            console.log("url updated: " + text)
+                            editEntryDetailsDialog.urlChanged =
+                                    (editEntryDetailsDialog.origUrl !== text ? true : false)
+                            editEntryDetailsDialog.updateCoverState()
+                        }
                     }
 
                     TextField {
                         id: entryUsernameTextField
                         width: parent.width
                         label: "Username"
+                        text: ""
                         placeholderText: "Set Username"
                         EnterKey.onClicked: entryPasswordTextField.focus = true
+                        onTextChanged: {
+                            editEntryDetailsDialog.usernameChanged =
+                                    (editEntryDetailsDialog.origUsername !== text ? true : false)
+                            editEntryDetailsDialog.updateCoverState()
+                        }
                     }
 
                     Item {
@@ -940,8 +981,14 @@ Page {
                             anchors.right: showPasswordButton.left
                             echoMode: TextInput.Password
                             label: "Password"
+                            text: ""
                             placeholderText: "Set Password"
                             EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
+                            onTextChanged: {
+                                editEntryDetailsDialog.passwordChanged =
+                                        (editEntryDetailsDialog.origPassword !== text ? true : false)
+                                editEntryDetailsDialog.updateCoverState()
+                            }
                         }
 
                         IconButton {
@@ -969,6 +1016,7 @@ Page {
                         width: parent.width
                         echoMode: TextInput.Password
                         label: "Verify Password"
+                        text: ""
                         placeholderText: "Verify Password"
                         errorHighlight: entryPasswordTextField.text !== text
                         EnterKey.highlighted: !errorHighlight
@@ -979,7 +1027,13 @@ Page {
                         id: entryCommentTextField
                         width: parent.width
                         label: "Comment"
+                        text: ""
                         placeholderText: "Set Comment"
+                        onTextChanged: {
+                            editEntryDetailsDialog.commentChanged =
+                                    (editEntryDetailsDialog.origComment !== text ? true : false)
+                            editEntryDetailsDialog.updateCoverState()
+                        }
                     }
                 }
             }
@@ -1042,8 +1096,12 @@ Page {
             // creation of new group needs parent group ID
             property int parentGroupId: 0
 
+            // The following properties are used to check if text of any entry detail was changed. If so,
+            // set cover page accordingly to signal the user unsaved changes
+            property string origGroupTitle: ""
+
             function setTextFields(name) {
-                groupTitleTextField.text = name
+                groupTitleTextField.text = origGroupTitle = name
             }
 
             // forbit page navigation if name of group is empty
@@ -1076,10 +1134,18 @@ Page {
                         id: groupTitleTextField
                         width: parent.width
                         label: "Name of group"
+                        text: ""
                         placeholderText: "Set name of group"
                         errorHighlight: text === ""
                         EnterKey.highlighted: !errorHighlight
                         EnterKey.onClicked: parent.focus = true
+                        onTextChanged: {
+                            if (editEntryDetailsDialog.origGroupTitle !== text) {
+                                applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
+                            } else {
+                                applicationWindow.cover.coverState = Global.constants.databaseOpened
+                            }
+                        }
                     }
                 }
             }
@@ -1127,6 +1193,25 @@ Page {
         Dialog {
             id: editDatabaseSettingsDialog
 
+            // save cover state because database settings page can be opened from various
+            // pages like list view or edit dialogs, which have different cover states
+            property int saveCoverState: 0
+            property bool masterPasswordChanged: false
+            property bool cryptAlgorithmChanged: false
+            property bool keyTransfRoundsChanged: false
+
+            function updateCoverState() {
+                if (masterPasswordChanged || cryptAlgorithmChanged || keyTransfRoundsChanged) {
+                    applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
+                } else if (editDatabaseSettingsDialog.saveCoverState !== applicationWindow.cover.coverState) {
+                    // save initial state
+                    editDatabaseSettingsDialog.saveCoverState = applicationWindow.cover.coverState
+                } else {
+                    applicationWindow.cover.coverState = editDatabaseSettingsDialog.saveCoverState
+                }
+
+            }
+
             // forbit page navigation if master password is not confirmed
             canNavigateForward: !confirmDatabaseMasterPassword.errorHighlight
 
@@ -1157,11 +1242,17 @@ Page {
                         inputMethodHints: Qt.ImhNoPredictiveText
                         echoMode: TextInput.Password
                         label: "Master Password"
+                        text: ""
                         placeholderText: "Change Master Password"
                         EnterKey.enabled: text !== ""
                         EnterKey.highlighted: text !== ""
                         EnterKey.onClicked: {
                             confirmDatabaseMasterPassword.focus = true
+                        }
+                        onTextChanged: {
+                            editDatabaseSettingsDialog.masterPasswordChanged =
+                                    (text !== "" ? true : false)
+                            editDatabaseSettingsDialog.updateCoverState()
                         }
                     }
 
@@ -1175,6 +1266,7 @@ Page {
                         echoMode: TextInput.Password
                         errorHighlight: databaseMasterPassword.text !== text
                         label: !errorHighlight ? "Master Password confirmed" : "Confirm Master Password"
+                        text: ""
                         placeholderText: "Confirm Master Password"
                         EnterKey.enabled: databaseMasterPassword.text !== "" && !errorHighlight
                         EnterKey.highlighted: databaseMasterPassword.text !== "" && !errorHighlight
@@ -1189,10 +1281,15 @@ Page {
                         id: databaseCryptAlgorithm
                         width: parent.width
                         label: "Encryption in use:"
-                        currentIndex: 0
+                        currentIndex: Global.env.kdbDatabase.cryptAlgorithm
                         menu: ContextMenu {
                             MenuItem { text: "AES/Rijndael" }
                             MenuItem { text: "Twofish" }
+                        }
+                        onCurrentIndexChanged: {
+                            editDatabaseSettingsDialog.cryptAlgorithmChanged =
+                                    (currentIndex !== Global.env.kdbDatabase.cryptAlgorithm ? true : false)
+                            editDatabaseSettingsDialog.updateCoverState()
                         }
                     }
 
@@ -1205,6 +1302,11 @@ Page {
                         placeholderText: label
                         text: Global.env.kdbDatabase.keyTransfRounds
                         EnterKey.onClicked: parent.focus = true
+                        onTextChanged: {
+                            editDatabaseSettingsDialog.keyTransfRoundsChanged =
+                                    (text !== Global.env.kdbDatabase.keyTransfRounds ? true : false)
+                            editDatabaseSettingsDialog.updateCoverState()
+                        }
                     }
                 }
             } // SilicaFlickable
@@ -1235,6 +1337,8 @@ Page {
         id: settingsDialogComponent
         Dialog {
             id: settingsDialog
+
+// TODO implement update cover page
 
             // forbit page navigation if master password is not confirmed
             canNavigateForward: !defaultDatabaseFilePath.errorHighlight

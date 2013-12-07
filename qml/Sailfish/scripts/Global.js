@@ -41,7 +41,8 @@ var constants = {
     // For cover page handling
     databaseClosed: 0,
     databaseOpened: 1,
-    databaseEntryOpened: 2
+    databaseEntryOpened: 2,
+    databaseUnsavedChanges: 3
 }
 
 var env = {
@@ -49,7 +50,6 @@ var env = {
     kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
-//    databaseState: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
@@ -65,10 +65,6 @@ var env = {
 
     setKeepassSettings: function(obj) {
         this.keepassSettings = obj
-//    },
-
-//    setDatabaseState: function(obj) {
-//        this.databaseState = obj
     }
 }
 

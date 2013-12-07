@@ -35,7 +35,7 @@ ApplicationWindow
     property MainPageSimple mainPageRef: null
 
     initialPage: mainPageContainer
-    cover: coverPage //Containe
+    cover: coverPage
 
     // Place info popup outside of page stack so that it is shown over all
     // application UI elements
@@ -53,7 +53,7 @@ ApplicationWindow
 
     CoverPage {
         id: coverPage
-        onDatabaseLocked: applicationWindow.mainPageRef.lockDatabase()
+        onLockDatabase: applicationWindow.mainPageRef.lockDatabase()
     }
 
     onApplicationActiveChanged: {

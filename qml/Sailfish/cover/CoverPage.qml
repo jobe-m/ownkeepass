@@ -26,14 +26,12 @@ import "../scripts/Global.js" as Global
 
 CoverBackground {
     property int coverState: Global.constants.databaseClosed
-//    // For accessing main page in order to lock database
-//    property Page mainPageRef: null
 
     property alias entryTitle: entryTitleLabel.text
     property alias username: entryUsernameLabel.text
     property alias password: entryPasswordLabel.text
 
-    signal databaseLocked()
+    signal lockDatabase()
 
     CoverPlaceholder {
         enabled: coverState === Global.constants.databaseClosed
@@ -46,6 +44,13 @@ CoverBackground {
         enabled: coverState === Global.constants.databaseOpened
         visible: enabled
         text: "Database opened"
+        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+    }
+
+    CoverPlaceholder {
+        enabled: coverState === Global.constants.databaseUnsavedChanges
+        visible: enabled
+        text: "Warning! Unsaved changes"
         icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
@@ -152,10 +157,8 @@ CoverBackground {
 // TODO
             iconSource: "image://theme/icon-cover-next"
             onTriggered: {
-                // locking database
-//                Global.env.setDatabaseState(Global.constants.databaseClosed)
-//                coverState = Global.constants.databaseClosed
-                databaseLocked()
+                // emit signal to lock database
+                lockDatabase()
             }
         }
     }
@@ -169,10 +172,8 @@ CoverBackground {
 // TODO
             iconSource: "image://theme/icon-cover-next"
             onTriggered: {
-                // locking database
-//                Global.env.setDatabaseState(Global.constants.databaseClosed)
-//                coverState = Global.constants.databaseClosed
-                databaseLocked()
+                // emit signal to lock database
+                lockDatabase()
             }
         }
         
