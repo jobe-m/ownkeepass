@@ -112,10 +112,10 @@ Dialog {
                 width: parent.width
 
                 ComboBox {
-                    id: defaultEncryption
+                    id: defaultCryptAlgorithm
                     width: settingsDialog.width
                     label: "Default Encryption in use:"
-                    currentIndex: Global.env.keepassSettings.defaultEncryption
+                    currentIndex: Global.env.keepassSettings.defaultCryptAlgorithm
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
                         MenuItem { text: "Twofish" }
@@ -206,7 +206,7 @@ Dialog {
             }
 
             TextSwitch {
-                id: extendedListView
+                id: showUserNamePasswordInListView
                 checked: Global.env.keepassSettings.showUserNamePasswordInListView
                 text: "Extended List View"
                 description: "If you switch this on username and password are shown below entry title in list views"
@@ -221,10 +221,10 @@ Dialog {
             Global.env.keepassSettings.defaultKeyFilePath = defaultKeyFilePath.text
         else
             Global.env.keepassSettings.defaultKeyFilePath = ""
-        Global.env.keepassSettings.defaultEncryption = defaultEncryption.currentIndex
+        Global.env.keepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm.currentIndex
         Global.env.keepassSettings.defaultKeyTransfRounds = Number(defaultKeyTransfRounds.text)
         Global.env.keepassSettings.locktime = inactivityLockTime.value
-        Global.env.keepassSettings.showUserNamePasswordInListView = extendedListView.checked
+        Global.env.keepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView.checked
         Global.env.keepassSettings.saveSettings()
     }
 }

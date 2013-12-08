@@ -123,7 +123,7 @@ Page {
         // default database and key file paths used in simple mode to create one database easily
         property string defaultDatabasePath: "/home/nemo/Documents/notes.kdb"
         property string defaultKeyFilePath: ""
-        property int defaultEncryption: 0  // Default encryption: AES/Rijndael = 0, Twofish = 1
+        property int defaultCryptAlgorithm: 0  // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultKeyTransfRounds: 50000
         property int locktime: 3  // min = 0, max = 10, default = 3
         property bool showUserNamePasswordInListView: false  // default = false
@@ -237,8 +237,8 @@ Page {
             defaultDatabasePath = value !== "UNKNOWN" ? value : defaultDatabasePath
             value = getSetting("defaultKeyFilePath")
             defaultKeyFilePath = value !== "UNKNOWN" ? value : defaultKeyFilePath
-            value = getSetting("defaultEncryption")
-            defaultEncryption = value !== "UNKNOWN" ? Number(value) : defaultEncryption
+            value = getSetting("defaultCryptAlgorithm")
+            defaultCryptAlgorithm = value !== "UNKNOWN" ? Number(value) : defaultCryptAlgorithm
             value = getSetting("defaultKeyTransfRounds")
             defaultKeyTransfRounds = value !== "UNKNOWN" ? Number(value) : defaultKeyTransfRounds
             value = getSetting("locktime")
@@ -253,7 +253,7 @@ Page {
             setSetting("loadDefault", loadDefault ? "true" : "false")
             setSetting("defaultDatabasePath", defaultDatabasePath)
             setSetting("defaultKeyFilePath", defaultKeyFilePath)
-            setSetting("defaultEncryption", String(defaultEncryption))
+            setSetting("defaultCryptAlgorithm", String(defaultCryptAlgorithm))
             setSetting("defaultKeyTransfRounds", String(defaultKeyTransfRounds))
             setSetting("locktime", String(locktime))
             setSetting("showUserNamePasswordInListView", showUserNamePasswordInListView ? "true": "false")
@@ -273,7 +273,7 @@ Page {
             if (createNewDatabase) {
                 // set default values for encryption and key transformation rounds
                 kdbDatabase.keyTransfRounds = keepassSettings.defaultKeyTransfRounds
-                kdbDatabase.cryptAlgorithm = keepassSettings.defaultEncryption
+                kdbDatabase.cryptAlgorithm = keepassSettings.defaultCryptAlgorithm
                 // create new Keepass database
                 kdbDatabase.create(databasePath, keyFilePath, password)
             } else {
@@ -660,7 +660,7 @@ Page {
         function checkForUnsavedKeepassSettingsChanges() {
             if (Global.env.keepassSettings.defaultDatabasePath !== defaultDatabaseFilePath ||
                     Global.env.keepassSettings.defaultKeyFilePath !== defaultKeyFilePath ||
-                    Global.env.keepassSettings.defaultEncryption !== defaultCryptAlgorithm ||
+                    Global.env.keepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
                     Global.env.keepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     Global.env.keepassSettings.locktime !== inactivityLockTime ||
                     Global.env.keepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView) {
@@ -672,7 +672,7 @@ Page {
         function saveKeepassSettings() {
             Global.env.keepassSettings.defaultDatabasePath = defaultDatabaseFilePath
             Global.env.keepassSettings.defaultKeyFilePath = defaultKeyFilePath
-            Global.env.keepassSettings.defaultEncryption = defaultCryptAlgorithm
+            Global.env.keepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm
             Global.env.keepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             Global.env.keepassSettings.locktime = inactivityLockTime
             Global.env.keepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
@@ -1140,7 +1140,7 @@ Page {
                         EnterKey.highlighted: !errorHighlight
                         EnterKey.onClicked: parent.focus = true
                         onTextChanged: {
-                            if (editEntryDetailsDialog.origGroupTitle !== text) {
+                            if (editGroupDetailsDialog.origGroupTitle !== text) {
                                 applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
                             } else {
                                 applicationWindow.cover.coverState = Global.constants.databaseOpened
@@ -1195,21 +1195,19 @@ Page {
 
             // save cover state because database settings page can be opened from various
             // pages like list view or edit dialogs, which have different cover states
-            property int saveCoverState: 0
+            property int saveCoverState: -1
             property bool masterPasswordChanged: false
             property bool cryptAlgorithmChanged: false
             property bool keyTransfRoundsChanged: false
 
             function updateCoverState() {
+                if (saveCoverState === -1) // save initial state
+                    editDatabaseSettingsDialog.saveCoverState = applicationWindow.cover.coverState
                 if (masterPasswordChanged || cryptAlgorithmChanged || keyTransfRoundsChanged) {
                     applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
-                } else if (editDatabaseSettingsDialog.saveCoverState !== applicationWindow.cover.coverState) {
-                    // save initial state
-                    editDatabaseSettingsDialog.saveCoverState = applicationWindow.cover.coverState
                 } else {
                     applicationWindow.cover.coverState = editDatabaseSettingsDialog.saveCoverState
                 }
-
             }
 
             // forbit page navigation if master password is not confirmed
@@ -1338,7 +1336,27 @@ Page {
         Dialog {
             id: settingsDialog
 
-// TODO implement update cover page
+            // save cover state because database settings page can be opened from various
+            // pages like list view or edit dialogs, which have different cover states
+            property int saveCoverState: -1
+            property bool defaultDatabaseFilePathChanged: false
+            property bool defaultKeyFilePathChanged: false
+            property bool defaultCryptAlgorithmChanged: false
+            property bool defaultKeyTransfRoundsChanged: false
+            property bool inactivityLockTimeChanged: false
+            property bool showUserNamePasswordInListViewChanged: false
+
+            function updateCoverState() {
+                if (saveCoverState === -1) // save initial state
+                    settingsDialog.saveCoverState = applicationWindow.cover.coverState
+                if (defaultDatabaseFilePathChanged || defaultKeyFilePathChanged ||
+                        defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
+                        inactivityLockTimeChanged || showUserNamePasswordInListViewChanged) {
+                    applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
+                } else {
+                    applicationWindow.cover.coverState = settingsDialog.saveCoverState
+                }
+            }
 
             // forbit page navigation if master password is not confirmed
             canNavigateForward: !defaultDatabaseFilePath.errorHighlight
@@ -1390,6 +1408,11 @@ Page {
                             errorHighlight: text === ""
                             text: Global.env.keepassSettings.defaultDatabasePath
                             EnterKey.onClicked: parent.focus = true
+                            onTextChanged: {
+                                settingsDialog.defaultDatabaseFilePathChanged =
+                                        (text !== Global.env.keepassSettings.defaultDatabasePath ? true : false)
+                                settingsDialog.updateCoverState()
+                            }
                         }
 
                         SilicaLabel {
@@ -1419,6 +1442,11 @@ Page {
                         placeholderText: label
                         text: Global.env.keepassSettings.defaultKeyFilePath
                         EnterKey.onClicked: parent.focus = true
+                        onTextChanged: {
+                            settingsDialog.defaultKeyFilePathChanged =
+                                    (text !== Global.env.keepassSettings.defaultKeyFilePath ? true : false)
+                            settingsDialog.updateCoverState()
+                        }
                         Behavior on opacity { NumberAnimation { duration: 500 } }
                         Behavior on height { NumberAnimation { duration: 500 } }
                     }
@@ -1427,13 +1455,18 @@ Page {
                         width: parent.width
 
                         ComboBox {
-                            id: defaultEncryption
+                            id: defaultCryptAlgorithm
                             width: settingsDialog.width
                             label: "Default Encryption in use:"
-                            currentIndex: Global.env.keepassSettings.defaultEncryption
+                            currentIndex: Global.env.keepassSettings.defaultCryptAlgorithm
                             menu: ContextMenu {
                                 MenuItem { text: "AES/Rijndael" }
                                 MenuItem { text: "Twofish" }
+                            }
+                            onCurrentIndexChanged: {
+                                settingsDialog.defaultCryptAlgorithmChanged =
+                                        (currentIndex !== Global.env.keepassSettings.defaultCryptAlgorithm ? true : false)
+                                settingsDialog.updateCoverState()
                             }
                         }
 
@@ -1456,6 +1489,11 @@ Page {
                             placeholderText: label
                             text: Global.env.keepassSettings.defaultKeyTransfRounds
                             EnterKey.onClicked: parent.focus = true
+                            onTextChanged: {
+                                settingsDialog.defaultKeyTransfRoundsChanged =
+                                        (Number(text) !== Global.env.keepassSettings.defaultKeyTransfRounds ? true : false)
+                                settingsDialog.updateCoverState()
+                            }
                         }
 
                         SilicaLabel {
@@ -1518,13 +1556,23 @@ Page {
                                 return "Unlimited"
                             }
                         }
+                        onValueChanged: {
+                            settingsDialog.inactivityLockTimeChanged =
+                                    (value !== Global.env.keepassSettings.locktime ? true : false)
+                            settingsDialog.updateCoverState()
+                        }
                     }
 
                     TextSwitch {
-                        id: extendedListView
+                        id: showUserNamePasswordInListView
                         checked: Global.env.keepassSettings.showUserNamePasswordInListView
                         text: "Extended List View"
                         description: "If you switch this on username and password are shown below entry title in list views"
+                        onCheckedChanged: {
+                            settingsDialog.showUserNamePasswordInListViewChanged =
+                                    (checked !== Global.env.keepassSettings.showUserNamePasswordInListView ? true : false)
+                            settingsDialog.updateCoverState()
+                        }
                     }
                 }
             }
@@ -1536,10 +1584,10 @@ Page {
                     defaultKeyFilePathTemp = defaultKeyFilePath.text
                 kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
                                             defaultKeyFilePathTemp,
-                                            defaultEncryption.currentIndex,
+                                            defaultCryptAlgorithm.currentIndex,
                                             Number(defaultKeyTransfRounds.text),
                                             inactivityLockTime.value,
-                                            extendedListView.checked)
+                                            showUserNamePasswordInListView.checked)
                 kdbListItemInternal.saveKeepassSettings()
             }
 
@@ -1552,10 +1600,10 @@ Page {
                         defaultKeyFilePathTemp = defaultKeyFilePath.text
                     kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
                                                 defaultKeyFilePathTemp,
-                                                defaultEncryption.currentIndex,
+                                                defaultCryptAlgorithm.currentIndex,
                                                 Number(defaultKeyTransfRounds.text),
                                                 inactivityLockTime.value,
-                                                extendedListView.checked)
+                                                showUserNamePasswordInListView.checked)
                     kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
                 }
             }
