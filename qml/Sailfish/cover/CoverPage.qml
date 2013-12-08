@@ -25,6 +25,7 @@ import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 
 CoverBackground {
+    id: coverPage
     property int coverState: Global.constants.databaseClosed
 
     property alias entryTitle: entryTitleLabel.text
@@ -154,7 +155,7 @@ CoverBackground {
         iconBackground: false
 
         CoverAction {
-// TODO
+// TODO update icon
             iconSource: "image://theme/icon-cover-next"
             onTriggered: {
                 // emit signal to lock database
@@ -169,7 +170,7 @@ CoverBackground {
         iconBackground: false
         
         CoverAction {
-// TODO
+// TODO update icon
             iconSource: "image://theme/icon-cover-next"
             onTriggered: {
                 // emit signal to lock database
@@ -178,10 +179,36 @@ CoverBackground {
         }
         
         CoverAction {
-// TODO
+            property int clipboardState: Global.constants.clipboardUnused
+// TODO updatge icon
             iconSource: "image://theme/icon-cover-pause"
+            onTriggered: {
+                // copy entry detail into clipboard, round robin -> username, password, empty clipboard
+                switch (clipboardState) {
+                case Global.constants.clipboardUnused:
+                    systemClipboard.text = coverPage.username
+                    clipboardState = Global.constants.clipboardUsernameDropped
+// TODO updatge icon
+                    break
+                case Global.constants.clipboardUsernameDropped:
+                    systemClipboard.text = coverPage.password
+                    clipboardState = Global.constants.clipboardPasswordDropped
+// TODO updatge icon
+                    break
+                case Global.constants.clipboardPasswordDropped:
+                    systemClipboard.text = ""
+                    clipboardState = Global.constants.clipboardUnused
+// TODO updatge icon
+                    break
+                }
+            }
         }
     }
+
+// TODO uncomment when clipboard is functional in SDK
+//    Clipboard {
+//        id: systemClipboard
+//    }
 }
 
 

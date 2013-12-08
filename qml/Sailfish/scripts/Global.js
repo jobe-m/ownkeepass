@@ -42,7 +42,12 @@ var constants = {
     databaseClosed: 0,
     databaseOpened: 1,
     databaseEntryOpened: 2,
-    databaseUnsavedChanges: 3
+    databaseUnsavedChanges: 3,
+
+    // For clipboard handling
+    clipboardUnused: 0,
+    clipboardUsernameDropped: 1,
+    clipboardPasswordDropped: 2
 }
 
 var env = {
