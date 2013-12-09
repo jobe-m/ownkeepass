@@ -47,7 +47,7 @@ Dialog {
         contentWidth: parent.width
         contentHeight: col.height
 
-        KpPushUpMenu {}
+        ApplicationMenu {}
 
         VerticalScrollDecorator {}
 

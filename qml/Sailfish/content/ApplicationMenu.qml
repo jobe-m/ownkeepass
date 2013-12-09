@@ -25,6 +25,8 @@ import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 
 PushUpMenu {
+    id: applicationMenu
+
     MenuItem {
         text: "About"
         onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
@@ -35,7 +37,7 @@ PushUpMenu {
     }
     MenuItem {
         text: "Settings"
-        onClicked: pageStack.push(Global.env.mainPage.settingsDialogComponent)
+        onClicked: pageStack.push(Global.env.mainPage.editSettingsDialogComponent)
     }
 }
 

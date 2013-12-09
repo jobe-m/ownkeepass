@@ -144,55 +144,11 @@ Page {
             height: headerBox.height
         }
 
-        PullDownMenu {
-            MenuItem {
-                id: databaseSettingsMenuItem
-                visible: enabled
-                text: qsTr("Database Settings")
-                onClicked: pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
-            }
-
-            MenuItem {
-                id: newPasswordGroupsMenuItem
-                visible: enabled
-                text: "New Password Group"
-                onClicked: pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
-                                          { "createNewGroup": true, "parentGroupId": groupId })
-            }
-            MenuItem {
-                id: newPasswordEntryMenuItem
-                visible: enabled
-                text: "New Password Entry"
-                onClicked: {
-                    console.log("Open EditEntryDetailsDialog to create new entry")
-                    pageStack.push(Global.env.mainPage.editEntryDetailsDialogComponent,
-                                   { "createNewEntry": true, "parentGroupId": groupId })
-                }
-            }
-            MenuItem {
-                id: searchMenuItem
-                visible: enabled
-                text: "Search"
-                onClicked: {
-                    if (searchField.enabled) {
-                        // Disable search functionality
-                        groupsAndEntriesPage.state = groupsAndEntriesPage.__saveState
-                        // populate listmodel with group data
-                        init()
-                    } else {
-                        // Enable search functionality
-                        groupsAndEntriesPage.__saveState = groupsAndEntriesPage.state
-                        groupsAndEntriesPage.state = "Search"
-                        // initialise listmodel for search
-                        kdbListModel.searchRootGroupId = groupsAndEntriesPage.groupId
-                        kdbListModel.searchEntriesInKdbDatabase("")
-                        searchField.forceActiveFocus()
-                    }
-                }
-            }
+        DatabaseMenu {
+            id: databaseMenu
         }
 
-        KpPushUpMenu {}
+        ApplicationMenu {}
 
         VerticalScrollDecorator {}
 
@@ -211,20 +167,20 @@ Page {
         State {
             name: "Loading"
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: false }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false }
-            PropertyChanges { target: searchMenuItem; enabled: false }
+            PropertyChanges { target: databaseMenu.databaseSettingsMenuItem; enabled: false }
+            PropertyChanges { target: databaseMenu.newPasswordGroupsMenuItem; enabled: false }
+            PropertyChanges { target: databaseMenu.newPasswordEntryMenuItem; enabled: false }
+            PropertyChanges { target: databaseMenu.searchMenuItem; enabled: false }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
         },
         State {
             name: "LoadMasterGroups"
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: true }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false }
-            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; text: "Search" }
+            PropertyChanges { target: databaseMenu.databaseSettingsMenuItem; enabled: true }
+            PropertyChanges { target: databaseMenu.newPasswordGroupsMenuItem; enabled: true }
+            PropertyChanges { target: databaseMenu.newPasswordEntryMenuItem; enabled: false }
+            PropertyChanges { target: databaseMenu.searchMenuItem; enabled: !kdbListModel.isEmpty; text: "Search" }
             PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
             PropertyChanges { target: viewPlaceholder; enabled: listView.count === 0;
                 hintText: "Pull down to add password groups" }
@@ -233,10 +189,10 @@ Page {
         State {
             name: "LoadGroupsAndEntries"
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.pageTitle }
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: true }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: true }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: true }
-            PropertyChanges { target: searchMenuItem; enabled: !kdbListModel.isEmpty; text: "Search" }
+            PropertyChanges { target: databaseMenu.databaseSettingsMenuItem; enabled: true }
+            PropertyChanges { target: databaseMenu.newPasswordGroupsMenuItem; enabled: true }
+            PropertyChanges { target: databaseMenu.newPasswordEntryMenuItem; enabled: true }
+            PropertyChanges { target: databaseMenu.searchMenuItem; enabled: !kdbListModel.isEmpty; text: "Search" }
             PropertyChanges { target: searchField; enabled: false; height: 0; opacity: 0.0 }
             PropertyChanges { target: viewPlaceholder;  enabled: listView.count === 0;
                 hintText: "Pull down to add password groups or entries" }
@@ -247,10 +203,10 @@ Page {
             PropertyChanges { target: pageHeader; title: groupsAndEntriesPage.groupId === 0 ?
                                                              "Search in all Groups" :
                                                              "Search in " + groupsAndEntriesPage.pageTitle}
-            PropertyChanges { target: databaseSettingsMenuItem; enabled: true }
-            PropertyChanges { target: newPasswordGroupsMenuItem; enabled: false }
-            PropertyChanges { target: newPasswordEntryMenuItem; enabled: false }
-            PropertyChanges { target: searchMenuItem; enabled: true; text: "End Search" }
+            PropertyChanges { target: databaseMenu.databaseSettingsMenuItem; enabled: true }
+            PropertyChanges { target: databaseMenu.newPasswordGroupsMenuItem; enabled: false }
+            PropertyChanges { target: databaseMenu.newPasswordEntryMenuItem; enabled: false }
+            PropertyChanges { target: databaseMenu.searchMenuItem; enabled: true; text: "End Search" }
             PropertyChanges { target: searchField; enabled: true; height: searchField.implicitHeight; opacity: 1.0 }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: listView.count === 0 }
@@ -260,7 +216,6 @@ Page {
     onStatusChanged: {
         if (__closeOnError && status === PageStatus.Active) {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
-//        } else if((status === PageStatus.Active) && (Global.env.databaseState !== Global.constants.databaseClosed)) {
         } else if (status === PageStatus.Active) {
             applicationWindow.cover.coverState = Global.constants.databaseOpened
         }

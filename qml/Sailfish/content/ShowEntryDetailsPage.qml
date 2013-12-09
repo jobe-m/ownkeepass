@@ -87,6 +87,8 @@ Page {
                 }
             }
 
+            ApplicationMenu {}
+
             TextField {
                 id: entryUrlTextField
                 width: parent.width

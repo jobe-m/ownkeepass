@@ -26,7 +26,32 @@ import "../scripts/Global.js" as Global
 import "../common"
 
 Dialog {
-    id: settingsDialog
+    id: editSettingsDialog
+
+    // save cover state because database settings page can be opened from various
+    // pages like list view or edit dialogs, which have different cover states
+    property int saveCoverState: -1
+    property bool defaultDatabaseFilePathChanged: false
+    property bool defaultKeyFilePathChanged: false
+    property bool defaultCryptAlgorithmChanged: false
+    property bool defaultKeyTransfRoundsChanged: false
+    property bool inactivityLockTimeChanged: false
+    property bool showUserNamePasswordInListViewChanged: false
+
+    function updateCoverState() {
+        if (saveCoverState === -1) // save initial state
+            editSettingsDialog.saveCoverState = applicationWindow.cover.coverState
+        if (defaultDatabaseFilePathChanged || defaultKeyFilePathChanged ||
+                defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
+                inactivityLockTimeChanged || showUserNamePasswordInListViewChanged) {
+            applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
+        } else {
+            applicationWindow.cover.coverState = editSettingsDialog.saveCoverState
+        }
+    }
+
+    // forbit page navigation if master password is not confirmed
+    canNavigateForward: !defaultDatabaseFilePath.errorHighlight
 
     SilicaFlickable {
         anchors.fill: parent
@@ -50,19 +75,18 @@ Dialog {
                 text: "Keepass Settings"
             }
 
-
 // TODO We have currently only simple mode
-//            TextSwitch {
-//                id: simpleMode
-//                checked: Global.env.keepassSettings.simpleMode
-//                text: "Use Simple Mode"
-//                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
-//                             " If you switch this off you get a list of recently opened Keepass database files instead."
-//            }
-//
-//            SectionHeader {
-//                text: "Database"
-//            }
+//                            TextSwitch {
+//                                id: simpleMode
+//                                checked: Global.env.keepassSettings.simpleMode
+//                                text: "Use Simple Mode"
+//                                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
+//                                             " If you switch this off you get a list of recently opened Keepass database files instead."
+//                            }
+
+//                            SectionHeader {
+//                                text: "Database"
+//                            }
 
             Column {
                 width: parent.width
@@ -73,8 +97,14 @@ Dialog {
                     inputMethodHints: Qt.ImhUrlCharactersOnly
                     label: "Default database file path"
                     placeholderText: label
+                    errorHighlight: text === ""
                     text: Global.env.keepassSettings.defaultDatabasePath
                     EnterKey.onClicked: parent.focus = true
+                    onTextChanged: {
+                        editSettingsDialog.defaultDatabaseFilePathChanged =
+                                (text !== Global.env.keepassSettings.defaultDatabasePath ? true : false)
+                        editSettingsDialog.updateCoverState()
+                    }
                 }
 
                 SilicaLabel {
@@ -104,6 +134,11 @@ Dialog {
                 placeholderText: label
                 text: Global.env.keepassSettings.defaultKeyFilePath
                 EnterKey.onClicked: parent.focus = true
+                onTextChanged: {
+                    editSettingsDialog.defaultKeyFilePathChanged =
+                            (text !== Global.env.keepassSettings.defaultKeyFilePath ? true : false)
+                    editSettingsDialog.updateCoverState()
+                }
                 Behavior on opacity { NumberAnimation { duration: 500 } }
                 Behavior on height { NumberAnimation { duration: 500 } }
             }
@@ -113,12 +148,17 @@ Dialog {
 
                 ComboBox {
                     id: defaultCryptAlgorithm
-                    width: settingsDialog.width
+                    width: editSettingsDialog.width
                     label: "Default Encryption in use:"
                     currentIndex: Global.env.keepassSettings.defaultCryptAlgorithm
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
                         MenuItem { text: "Twofish" }
+                    }
+                    onCurrentIndexChanged: {
+                        editSettingsDialog.defaultCryptAlgorithmChanged =
+                                (currentIndex !== Global.env.keepassSettings.defaultCryptAlgorithm ? true : false)
+                        editSettingsDialog.updateCoverState()
                     }
                 }
 
@@ -141,6 +181,11 @@ Dialog {
                     placeholderText: label
                     text: Global.env.keepassSettings.defaultKeyTransfRounds
                     EnterKey.onClicked: parent.focus = true
+                    onTextChanged: {
+                        editSettingsDialog.defaultKeyTransfRoundsChanged =
+                                (Number(text) !== Global.env.keepassSettings.defaultKeyTransfRounds ? true : false)
+                        editSettingsDialog.updateCoverState()
+                    }
                 }
 
                 SilicaLabel {
@@ -203,6 +248,11 @@ Dialog {
                         return "Unlimited"
                     }
                 }
+                onValueChanged: {
+                    editSettingsDialog.inactivityLockTimeChanged =
+                            (value !== Global.env.keepassSettings.locktime ? true : false)
+                    editSettingsDialog.updateCoverState()
+                }
             }
 
             TextSwitch {
@@ -210,21 +260,43 @@ Dialog {
                 checked: Global.env.keepassSettings.showUserNamePasswordInListView
                 text: "Extended List View"
                 description: "If you switch this on username and password are shown below entry title in list views"
+                onCheckedChanged: {
+                    editSettingsDialog.showUserNamePasswordInListViewChanged =
+                            (checked !== Global.env.keepassSettings.showUserNamePasswordInListView ? true : false)
+                    editSettingsDialog.updateCoverState()
+                }
             }
         }
     }
 
     onAccepted: {
-//        Global.env.keepassSettings.simpleMode = simpleMode.checked
-        Global.env.keepassSettings.defaultDatabasePath = defaultDatabaseFilePath.text
+        // first save locally database settings then trigger saving
+        var defaultKeyFilePathTemp = ""
         if (useKeyFile.checked)
-            Global.env.keepassSettings.defaultKeyFilePath = defaultKeyFilePath.text
-        else
-            Global.env.keepassSettings.defaultKeyFilePath = ""
-        Global.env.keepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm.currentIndex
-        Global.env.keepassSettings.defaultKeyTransfRounds = Number(defaultKeyTransfRounds.text)
-        Global.env.keepassSettings.locktime = inactivityLockTime.value
-        Global.env.keepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView.checked
-        Global.env.keepassSettings.saveSettings()
+            defaultKeyFilePathTemp = defaultKeyFilePath.text
+        kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
+                                    defaultKeyFilePathTemp,
+                                    defaultCryptAlgorithm.currentIndex,
+                                    Number(defaultKeyTransfRounds.text),
+                                    inactivityLockTime.value,
+                                    showUserNamePasswordInListView.checked)
+        kdbListItemInternal.saveKeepassSettings()
+    }
+
+    onRejected: {
+        // no need for saving if input field for master password is invalid
+        if (canNavigateForward) {
+            // first save locally database settings then trigger check for unsaved changes
+            var defaultKeyFilePathTemp = ""
+            if (useKeyFile.checked)
+                defaultKeyFilePathTemp = defaultKeyFilePath.text
+            kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
+                                        defaultKeyFilePathTemp,
+                                        defaultCryptAlgorithm.currentIndex,
+                                        Number(defaultKeyTransfRounds.text),
+                                        inactivityLockTime.value,
+                                        showUserNamePasswordInListView.checked)
+            kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
+        }
     }
 }
