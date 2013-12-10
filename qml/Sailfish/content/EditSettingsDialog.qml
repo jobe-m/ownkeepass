@@ -95,7 +95,7 @@ Dialog {
                     id: defaultDatabaseFilePath
                     width: parent.width
                     inputMethodHints: Qt.ImhUrlCharactersOnly
-                    label: "Default database file path"
+                    label: "Keepass database file path"
                     placeholderText: label
                     errorHighlight: text === ""
                     text: Global.env.keepassSettings.defaultDatabasePath
@@ -109,8 +109,8 @@ Dialog {
 
                 SilicaLabel {
                     text: Global.env.keepassSettings.simpleMode ?
-                              "This is the name and path of default Keepass database file" :
-                              "This is the path where new Keepass Password Safe files will be stored"
+                              "This is the name and path of your Keepass database file" :
+                              "This is the path where new Keepass database files will be stored"
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }
@@ -119,8 +119,8 @@ Dialog {
             TextSwitch {
                 id: useKeyFile
                 checked: Global.env.keepassSettings.defaultKeyFilePath !== ""
-                text: "Create Key File"
-                description: "Switch this on if you want to create a key file together with a new Keepass Password Safe file"
+                text: "Use Key File"
+                description: "Switch this on to use a key file together with a master password when you create a new Keepass database"
             }
 
             TextField {
@@ -163,7 +163,7 @@ Dialog {
                 }
 
                 SilicaLabel {
-                    text: "Choose encryption which will be used as default for a new Keepass Password Safe file"
+                    text: "This is the encryption which will be used as default for a new Keepass database"
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }
