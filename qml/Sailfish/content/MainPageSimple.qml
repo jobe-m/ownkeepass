@@ -21,7 +21,6 @@
 ***************************************************************************/
 
 import QtQuick 2.0
-import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
@@ -51,6 +50,49 @@ Page {
         inactivityTimer.stop()
     }
 
+    function updateInactivityTimer(locktime)
+    {
+        // convert setting into amount of microseconds and set in inactivityTimer
+        var interval
+            switch (locktime) {
+            case 0:
+                interval = Global.constants._1microsecond
+                break
+            case 1:
+                interval = Global.constants._5seconds
+                break
+            case 2:
+                interval = Global.constants._10seconds
+                break
+            case 3:
+                interval = Global.constants._30seconds
+                break
+            case 4:
+                interval = Global.constants._1minute
+                break
+            case 5:
+                interval = Global.constants._2minutes
+                break
+            case 6:
+                interval = Global.constants._5minutes
+                break
+            case 7:
+                interval = Global.constants._10minutes
+                break
+            case 8:
+                interval = Global.constants._30minutes
+                break
+            case 9:
+                interval = Global.constants._60minutes
+                break
+            case 10:
+                inactivityTimer.unlimited = true
+                return
+            }
+            inactivityTimer.unlimited = false
+            inactivityTimer.interval = interval
+    }
+
     function lockDatabase() {
         // By going back to main page database will be locked
         pageStack.pop(mainPage)
@@ -61,6 +103,7 @@ Page {
 
         property bool unlimited: false
 
+        interval: Global.constants._30seconds // default value
         triggeredOnStart: false
         onTriggered: {
             // Inactivity timer hit
@@ -103,7 +146,6 @@ Page {
         // init some global variables
         Global.env.setMainPage(mainPage)
         Global.env.setKdbDatabase(kdbDatabase)
-        Global.env.setKeepassSettings(keepassSettings)
     }
 
     onStatusChanged: {
@@ -113,150 +155,6 @@ Page {
             applicationWindow.cover.coverState = Global.constants.databaseClosed
             // now also check default database path if file exists
             internal.init()
-        }
-    }
-
-    QtObject {
-        id: keepassSettings
-        property bool simpleMode: true
-        property bool loadDefault: true // if (simpleMode === true) this is ignored resp. always true
-        // default database and key file paths used in simple mode to create one database easily
-        property string defaultDatabasePath: "/home/nemo/Documents/notes.kdb"
-        property string defaultKeyFilePath: ""
-        property int defaultCryptAlgorithm: 0  // Default encryption: AES/Rijndael = 0, Twofish = 1
-        property int defaultKeyTransfRounds: 50000
-        property int locktime: 3  // min = 0, max = 10, default = 3
-        property bool showUserNamePasswordInListView: false  // default = false
-
-        Component.onCompleted: {
-            initDatabase()
-            loadSettings()
-        }
-
-        onLocktimeChanged: {
-            // convert setting into amount of microseconds and set in inactivityTimer
-            var interval
-                switch (locktime) {
-                case 0:
-                    interval = Global.constants._1microsecond
-                    break
-                case 1:
-                    interval = Global.constants._5seconds
-                    break
-                case 2:
-                    interval = Global.constants._10seconds
-                    break
-                case 3:
-                    interval = Global.constants._30seconds
-                    break
-                case 4:
-                    interval = Global.constants._1minute
-                    break
-                case 5:
-                    interval = Global.constants._2minutes
-                    break
-                case 6:
-                    interval = Global.constants._5minutes
-                    break
-                case 7:
-                    interval = Global.constants._10minutes
-                    break
-                case 8:
-                    interval = Global.constants._30minutes
-                    break
-                case 9:
-                    interval = Global.constants._60minutes
-                    break
-                case 10:
-                    inactivityTimer.unlimited = true
-                    return
-                }
-                inactivityTimer.unlimited = false
-                inactivityTimer.interval = interval
-        }
-
-        // Initialize tables we need if they haven't been created yet
-        function initDatabase() {
-            var db = getDatabase();
-            db.transaction(function(tx) {
-                // Create the settings table if it doesn't already exist
-                // If the table exists, this is skipped
-                tx.executeSql('CREATE TABLE IF NOT EXISTS settings(setting TEXT UNIQUE, value TEXT)');
-            })
-        }
-
-        // for internal use
-        function getDatabase() {
-             return LocalStorage.openDatabaseSync("ownKeepassSettings", "1.0", "Application settings for ownKeepass", 100000);
-        }
-
-        /*
-          This function is used to retrieve a setting from database
-          The function returns “Unknown” if the setting was not found in the database
-          */
-        function getSetting(setting) {
-            var db = getDatabase()
-            var res = "UNKNOWN"
-            db.transaction(function(tx) {
-                var rs = tx.executeSql('SELECT value FROM settings WHERE setting=?;', [setting])
-                if (rs.rows.length > 0) {
-                    res = rs.rows.item(0).value
-                }
-            })
-            return res
-        }
-
-        /*
-          This function is used to write a setting into the database
-          setting: string representing the setting name
-          value: string representing the value of the setting
-          The function returns “OK” if it was successful, or “Error” if it wasn't
-          */
-        function setSetting(setting, value) {
-            var db = getDatabase()
-            var res = ""
-            db.transaction(function(tx) {
-                var rs = tx.executeSql('INSERT OR REPLACE INTO settings VALUES (?,?);', [setting,value]);
-                if (rs.rowsAffected > 0) {
-                    res = "OK"
-                } else {
-                    console.log("ERROR: Cannot save setting - " + setting)
-                    res = "ERROR"
-                }
-            })
-            return res
-        }
-
-
-        function loadSettings() {
-            var value = getSetting("simpleMode")
-            simpleMode = value !== "UNKNOWN" ? (value === "true" ? true : false) : simpleMode
-            value = getSetting("loadDefault")
-            loadDefault = value !== "UNKNOWN" ? (value === "true" ? true : false) : loadDefault
-            value = getSetting("defaultDatabasePath")
-            defaultDatabasePath = value !== "UNKNOWN" ? value : defaultDatabasePath
-            value = getSetting("defaultKeyFilePath")
-            defaultKeyFilePath = value !== "UNKNOWN" ? value : defaultKeyFilePath
-            value = getSetting("defaultCryptAlgorithm")
-            defaultCryptAlgorithm = value !== "UNKNOWN" ? Number(value) : defaultCryptAlgorithm
-            value = getSetting("defaultKeyTransfRounds")
-            defaultKeyTransfRounds = value !== "UNKNOWN" ? Number(value) : defaultKeyTransfRounds
-            value = getSetting("locktime")
-            locktime = value !== "UNKNOWN" ? Number(value) : locktime
-            value = getSetting("showUserNamePasswordInListView")
-            showUserNamePasswordInListView = value !== "UNKNOWN" ? (value === "true" ? true : false) : showUserNamePasswordInListView
-        }
-
-        function saveSettings() {
-            // save settings as strings in SQL database
-            setSetting("simpleMode", simpleMode ? "true" : "false")
-            setSetting("loadDefault", loadDefault ? "true" : "false")
-            setSetting("defaultDatabasePath", defaultDatabasePath)
-            setSetting("defaultKeyFilePath", defaultKeyFilePath)
-            setSetting("defaultCryptAlgorithm", String(defaultCryptAlgorithm))
-            setSetting("defaultKeyTransfRounds", String(defaultKeyTransfRounds))
-            setSetting("locktime", String(locktime))
-            setSetting("showUserNamePasswordInListView", showUserNamePasswordInListView ? "true": "false")
         }
     }
 
@@ -272,8 +170,8 @@ Page {
             if (password === "") console.log("ERROR: Password is empty")
             if (createNewDatabase) {
                 // set default values for encryption and key transformation rounds
-                kdbDatabase.keyTransfRounds = keepassSettings.defaultKeyTransfRounds
-                kdbDatabase.cryptAlgorithm = keepassSettings.defaultCryptAlgorithm
+                kdbDatabase.keyTransfRounds = Global.env.keepassSettings.defaultKeyTransfRounds
+                kdbDatabase.cryptAlgorithm = Global.env.keepassSettings.defaultCryptAlgorithm
                 // create new Keepass database
                 kdbDatabase.create(databasePath, keyFilePath, password)
             } else {
@@ -284,11 +182,11 @@ Page {
 
         function init() {
             // load settings into kdbDatabase
-            kdbDatabase.showUserNamePasswordsInListView = keepassSettings.showUserNamePasswordInListView
+            kdbDatabase.showUserNamePasswordsInListView = Global.env.keepassSettings.showUserNamePasswordInListView
 
-            if (keepassSettings.loadDefault) {
-                databasePath = keepassSettings.defaultDatabasePath
-                keyFilePath  = keepassSettings.defaultKeyFilePath
+            if (Global.env.keepassSettings.loadDefault) {
+                databasePath = Global.env.keepassSettings.defaultDatabasePath
+                keyFilePath  = Global.env.keepassSettings.defaultKeyFilePath
             } else {
                 // check if some other recently opened database is set as default = !simpleMode
 // TODO for next release ;)
@@ -506,7 +404,9 @@ Page {
         property int defaultKeyTransfRounds
         property int inactivityLockTime
         property bool showUserNamePasswordInListView
-
+        property bool showUserNamePasswordOnCover
+        property bool lockDatabaseFromCover
+        property bool copyNpasteFromCover
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -648,13 +548,17 @@ Page {
         }
 
         function setKeepassSettings(aDefaultDatabaseFilePath, aDefaultKeyFilePath, aDefaultCryptAlgorithm,
-                                    aDefaultKeyTransfRounds, aInactivityLockTime, aShowUserNamePasswordInListView) {
+                                    aDefaultKeyTransfRounds, aInactivityLockTime, aShowUserNamePasswordInListView,
+                                    aShowUserNamePasswordOnCover, aLockDatabaseFromCover, aCopyNpasteFromCover) {
             defaultDatabaseFilePath = aDefaultDatabaseFilePath
             defaultKeyFilePath = aDefaultKeyFilePath
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
             showUserNamePasswordInListView = aShowUserNamePasswordInListView
+            showUserNamePasswordOnCover = aShowUserNamePasswordOnCover
+            lockDatabaseFromCover = aLockDatabaseFromCover
+            copyNpasteFromCover = aCopyNpasteFromCover
         }
 
         function checkForUnsavedKeepassSettingsChanges() {
@@ -663,7 +567,10 @@ Page {
                     Global.env.keepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
                     Global.env.keepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     Global.env.keepassSettings.locktime !== inactivityLockTime ||
-                    Global.env.keepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView) {
+                    Global.env.keepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView ||
+                    Global.env.keepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
+                    Global.env.keepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
+                    Global.env.keepassSettings.copyNpasteFromCover !== copyNpasteFromCover) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "type": c_queryForKeepassSettings})
             }
@@ -676,6 +583,9 @@ Page {
             Global.env.keepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             Global.env.keepassSettings.locktime = inactivityLockTime
             Global.env.keepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
+            Global.env.keepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover
+            Global.env.keepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
+            Global.env.keepassSettings.copyNpasteFromCover = copyNpasteFromCover
             Global.env.keepassSettings.saveSettings()
         }
     }

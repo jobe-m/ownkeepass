@@ -37,13 +37,18 @@ Dialog {
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
     property bool showUserNamePasswordInListViewChanged: false
+    property bool showUserNamePasswordOnCoverChanged: false
+    property bool lockDatabaseFromCoverChanged: false
+    property bool copyNpasteFromCoverChanged: false
 
     function updateCoverState() {
         if (saveCoverState === -1) // save initial state
             editSettingsDialog.saveCoverState = applicationWindow.cover.coverState
         if (defaultDatabaseFilePathChanged || defaultKeyFilePathChanged ||
                 defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
-                inactivityLockTimeChanged || showUserNamePasswordInListViewChanged) {
+                inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
+                showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
+                copyNpasteFromCoverChanged) {
             applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
         } else {
             applicationWindow.cover.coverState = editSettingsDialog.saveCoverState
@@ -266,6 +271,46 @@ Dialog {
                     editSettingsDialog.updateCoverState()
                 }
             }
+
+            SectionHeader {
+                text: "Cover Settings"
+            }
+
+            TextSwitch {
+                id: showUserNamePasswordOnCover
+                checked: Global.env.keepassSettings.showUserNamePasswordOnCover
+                text: "Show Username and Password"
+                description: "Switching this on will show username and password of the currently opened Keepass entry on the cover"
+                onCheckedChanged: {
+                    editSettingsDialog.showUserNamePasswordOnCoverChanged =
+                            (checked !== Global.env.keepassSettings.showUserNamePasswordOnCover ? true : false)
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
+            TextSwitch {
+                id: lockDatabaseFromCover
+                checked: Global.env.keepassSettings.lockDatabaseFromCover
+                text: "Lock Database from Cover"
+                description: "This lets you lock the database with the left cover action"
+                onCheckedChanged: {
+                    editSettingsDialog.lockDatabaseFromCoverChanged =
+                            (checked !== Global.env.keepassSettings.lockDatabaseFromCover ? true : false)
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
+            TextSwitch {
+                id: copyNpasteFromCover
+                checked: Global.env.keepassSettings.copyNpasteFromCover
+                text: "Copy'n'paste from Cover"
+                description: "Enable this to copy username and password into clipboard from cover"
+                onCheckedChanged: {
+                    editSettingsDialog.copyNpasteFromCoverChanged =
+                            (checked !== Global.env.keepassSettings.copyNpasteFromCover ? true : false)
+                    editSettingsDialog.updateCoverState()
+                }
+            }
         }
     }
 
@@ -275,11 +320,14 @@ Dialog {
         if (useKeyFile.checked)
             defaultKeyFilePathTemp = defaultKeyFilePath.text
         kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
-                                    defaultKeyFilePathTemp,
-                                    defaultCryptAlgorithm.currentIndex,
-                                    Number(defaultKeyTransfRounds.text),
-                                    inactivityLockTime.value,
-                                    showUserNamePasswordInListView.checked)
+                                               defaultKeyFilePathTemp,
+                                               defaultCryptAlgorithm.currentIndex,
+                                               Number(defaultKeyTransfRounds.text),
+                                               inactivityLockTime.value,
+                                               showUserNamePasswordInListView.checked,
+                                               showUserNamePasswordOnCover.checked,
+                                               lockDatabaseFromCover.checked,
+                                               copyNpasteFromCover.checked)
         kdbListItemInternal.saveKeepassSettings()
     }
 
@@ -291,11 +339,14 @@ Dialog {
             if (useKeyFile.checked)
                 defaultKeyFilePathTemp = defaultKeyFilePath.text
             kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
-                                        defaultKeyFilePathTemp,
-                                        defaultCryptAlgorithm.currentIndex,
-                                        Number(defaultKeyTransfRounds.text),
-                                        inactivityLockTime.value,
-                                        showUserNamePasswordInListView.checked)
+                                                   defaultKeyFilePathTemp,
+                                                   defaultCryptAlgorithm.currentIndex,
+                                                   Number(defaultKeyTransfRounds.text),
+                                                   inactivityLockTime.value,
+                                                   showUserNamePasswordInListView.checked,
+                                                   showUserNamePasswordOnCover.checked,
+                                                   lockDatabaseFromCover.checked,
+                                                   copyNpasteFromCover.checked)
             kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
         }
     }

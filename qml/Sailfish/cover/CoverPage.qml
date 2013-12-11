@@ -26,8 +26,9 @@ import "../scripts/Global.js" as Global
 
 CoverBackground {
     id: coverPage
-    property int coverState: Global.constants.databaseClosed
 
+    property int coverState: Global.constants.databaseClosed
+    property QtObject keepassSettings: null
     property alias entryTitle: entryTitleLabel.text
     property alias username: entryUsernameLabel.text
     property alias password: entryPasswordLabel.text
@@ -51,12 +52,19 @@ CoverBackground {
     CoverPlaceholder {
         enabled: coverState === Global.constants.databaseUnsavedChanges
         visible: enabled
-        text: "Warning! Unsaved changes"
+        text: "There are unsaved changes"
+        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+    }
+
+    CoverPlaceholder {
+        enabled: !keepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
+        visible: enabled
+        text: entryTitle + " entry opened"
         icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
     Item {
-        enabled: coverState === Global.constants.databaseEntryOpened
+        enabled: keepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
         visible: enabled
 
         anchors.fill: parent
@@ -149,9 +157,9 @@ CoverBackground {
         }
     }
 
-    // Cover action on opened database
+    // Lock database cover action on opened database
     CoverActionList {
-        enabled: coverState === Global.constants.databaseOpened
+        enabled: keepassSettings.lockDatabaseFromCover && ((coverState === Global.constants.databaseOpened) || (!keepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)))
         iconBackground: false
 
         CoverAction {
@@ -164,11 +172,11 @@ CoverBackground {
         }
     }
 
-    // Cover action for entry
+    // Lock database and copy'n'paste cover action for entry
     CoverActionList {
-        enabled: coverState === Global.constants.databaseEntryOpened
+        enabled: keepassSettings.lockDatabaseFromCover && keepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
         iconBackground: false
-        
+
         CoverAction {
 // TODO update icon
             iconSource: "image://theme/icon-cover-next"
@@ -177,7 +185,7 @@ CoverBackground {
                 lockDatabase()
             }
         }
-        
+
         CoverAction {
             property int clipboardState: Global.constants.clipboardUnused
 // TODO updatge icon
@@ -186,17 +194,49 @@ CoverBackground {
                 // copy entry detail into clipboard, round robin -> username, password, empty clipboard
                 switch (clipboardState) {
                 case Global.constants.clipboardUnused:
-                    systemClipboard.text = coverPage.username
+//                    systemClipboard.text = coverPage.username
                     clipboardState = Global.constants.clipboardUsernameDropped
 // TODO updatge icon
                     break
                 case Global.constants.clipboardUsernameDropped:
-                    systemClipboard.text = coverPage.password
+//                    systemClipboard.text = coverPage.password
                     clipboardState = Global.constants.clipboardPasswordDropped
 // TODO updatge icon
                     break
                 case Global.constants.clipboardPasswordDropped:
-                    systemClipboard.text = ""
+//                    systemClipboard.text = ""
+                    clipboardState = Global.constants.clipboardUnused
+// TODO updatge icon
+                    break
+                }
+            }
+        }
+    }
+
+    // Copy'n'paste cover action for entry
+    CoverActionList {
+        enabled: !keepassSettings.lockDatabaseFromCover && keepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
+        iconBackground: false
+
+        CoverAction {
+            property int clipboardState: Global.constants.clipboardUnused
+// TODO updatge icon
+            iconSource: "image://theme/icon-cover-pause"
+            onTriggered: {
+                // copy entry detail into clipboard, round robin -> username, password, empty clipboard
+                switch (clipboardState) {
+                case Global.constants.clipboardUnused:
+//                    systemClipboard.text = coverPage.username
+                    clipboardState = Global.constants.clipboardUsernameDropped
+// TODO updatge icon
+                    break
+                case Global.constants.clipboardUsernameDropped:
+//                    systemClipboard.text = coverPage.password
+                    clipboardState = Global.constants.clipboardPasswordDropped
+// TODO updatge icon
+                    break
+                case Global.constants.clipboardPasswordDropped:
+//                    systemClipboard.text = ""
                     clipboardState = Global.constants.clipboardUnused
 // TODO updatge icon
                     break
