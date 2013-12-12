@@ -164,7 +164,7 @@ CoverBackground {
 
         CoverAction {
 // TODO update icon
-            iconSource: "image://theme/icon-cover-next"
+            iconSource: "../covericons/locker.png"
             onTriggered: {
                 // emit signal to lock database
                 lockDatabase()
