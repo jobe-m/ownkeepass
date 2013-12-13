@@ -35,6 +35,25 @@ CoverBackground {
 
     signal lockDatabase()
 
+    // internal
+    function copyToClipboard() {
+        // copy entry detail into clipboard, round robin -> username, password, empty clipboard
+        switch (clipboardState) {
+        case Global.constants.clipboardUnused:
+//            systemClipboard.text = coverPage.username
+            clipboardState = Global.constants.clipboardUsernameDropped
+            break
+        case Global.constants.clipboardUsernameDropped:
+//            systemClipboard.text = coverPage.password
+            clipboardState = Global.constants.clipboardPasswordDropped
+            break
+        case Global.constants.clipboardPasswordDropped:
+//            systemClipboard.text = ""
+            clipboardState = Global.constants.clipboardUnused
+            break
+        }
+    }
+
     CoverPlaceholder {
         enabled: coverState === Global.constants.databaseClosed
         visible: enabled
@@ -163,7 +182,6 @@ CoverBackground {
         iconBackground: false
 
         CoverAction {
-// TODO update icon
             iconSource: "../covericons/locker.png"
             onTriggered: {
                 // emit signal to lock database
@@ -178,8 +196,7 @@ CoverBackground {
         iconBackground: false
 
         CoverAction {
-// TODO update icon
-            iconSource: "image://theme/icon-cover-next"
+            iconSource: "../covericons/locker.png"
             onTriggered: {
                 // emit signal to lock database
                 lockDatabase()
@@ -188,28 +205,8 @@ CoverBackground {
 
         CoverAction {
             property int clipboardState: Global.constants.clipboardUnused
-// TODO updatge icon
-            iconSource: "image://theme/icon-cover-pause"
-            onTriggered: {
-                // copy entry detail into clipboard, round robin -> username, password, empty clipboard
-                switch (clipboardState) {
-                case Global.constants.clipboardUnused:
-//                    systemClipboard.text = coverPage.username
-                    clipboardState = Global.constants.clipboardUsernameDropped
-// TODO updatge icon
-                    break
-                case Global.constants.clipboardUsernameDropped:
-//                    systemClipboard.text = coverPage.password
-                    clipboardState = Global.constants.clipboardPasswordDropped
-// TODO updatge icon
-                    break
-                case Global.constants.clipboardPasswordDropped:
-//                    systemClipboard.text = ""
-                    clipboardState = Global.constants.clipboardUnused
-// TODO updatge icon
-                    break
-                }
-            }
+            iconSource: "../covericons/copy.png"
+            onTriggered: copyToClipboard()
         }
     }
 
@@ -220,28 +217,8 @@ CoverBackground {
 
         CoverAction {
             property int clipboardState: Global.constants.clipboardUnused
-// TODO updatge icon
-            iconSource: "image://theme/icon-cover-pause"
-            onTriggered: {
-                // copy entry detail into clipboard, round robin -> username, password, empty clipboard
-                switch (clipboardState) {
-                case Global.constants.clipboardUnused:
-//                    systemClipboard.text = coverPage.username
-                    clipboardState = Global.constants.clipboardUsernameDropped
-// TODO updatge icon
-                    break
-                case Global.constants.clipboardUsernameDropped:
-//                    systemClipboard.text = coverPage.password
-                    clipboardState = Global.constants.clipboardPasswordDropped
-// TODO updatge icon
-                    break
-                case Global.constants.clipboardPasswordDropped:
-//                    systemClipboard.text = ""
-                    clipboardState = Global.constants.clipboardUnused
-// TODO updatge icon
-                    break
-                }
-            }
+            iconSource: "../covericons/copy.png"
+            onTriggered: copyToClipboard()
         }
     }
 
