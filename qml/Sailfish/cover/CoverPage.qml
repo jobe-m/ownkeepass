@@ -36,22 +36,35 @@ CoverBackground {
     signal lockDatabase()
 
     // internal
+    property int clipboardState: Global.constants.clipboardUnused
     function copyToClipboard() {
         // copy entry detail into clipboard, round robin -> username, password, empty clipboard
         switch (clipboardState) {
         case Global.constants.clipboardUnused:
+            infoText.text = "Username copied into clipboard"
+            infoText.opacity = 1.0
 //            systemClipboard.text = coverPage.username
             clipboardState = Global.constants.clipboardUsernameDropped
             break
         case Global.constants.clipboardUsernameDropped:
+            infoText.text = "Password copied into clipboard"
+            infoText.opacity = 1.0
 //            systemClipboard.text = coverPage.password
             clipboardState = Global.constants.clipboardPasswordDropped
             break
         case Global.constants.clipboardPasswordDropped:
+            infoText.text = "Clipboard empty"
+            infoText.opacity = 1.0
 //            systemClipboard.text = ""
             clipboardState = Global.constants.clipboardUnused
             break
         }
+    }
+
+    CoverPlaceholder {
+        id: infoText
+        opacity: 0.0
+        Behavior on opacity { NumberAnimation { duration: 500 } }
     }
 
     CoverPlaceholder {
@@ -204,7 +217,6 @@ CoverBackground {
         }
 
         CoverAction {
-            property int clipboardState: Global.constants.clipboardUnused
             iconSource: "../covericons/copy.png"
             onTriggered: copyToClipboard()
         }
@@ -216,7 +228,6 @@ CoverBackground {
         iconBackground: false
 
         CoverAction {
-            property int clipboardState: Global.constants.clipboardUnused
             iconSource: "../covericons/copy.png"
             onTriggered: copyToClipboard()
         }
