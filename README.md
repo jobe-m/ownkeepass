@@ -34,6 +34,7 @@ Features (already working)
 *   Default keepass file can be changed in the keepass application settings
 *   Database settings adjustable like master password, encryption algorithm and key transformation rounds
 *   Search keepass entries in whole database
+*   Copy username and password from within cover page and use cover page to peak from other apps to look up username and password
 
 TODO
 ----
@@ -42,14 +43,15 @@ TODO
 *   Adapt old N9 QML source code to use [Sailfish Silica components][2] and bring the application up on the Sailfish emulator with all features from the N9 version [Done]
 *   Implement search functionality [Done]
 *   Implement locking of database after some time of inactivity [Done]
-*   Add some more fancy UI elements like icons for Keepass groups and entries, cover page, application icon, etc. [currently ongoing]
-*   Add copy'n'paste username and password funktionality to Cover Page
+*   Add some more fancy UI elements like icons for Keepass groups and entries, cover page, application icon, etc. [Done]
+*   Add copy'n'paste username and password funktionality to Cover Page [Done]
+*   Add help pages and do some cleanup in the UI [Currently ongoing]
 *   Post some screenshots and publish review on my homepage tisno.de :D
 *   Prepare for first Release on Jolla Harbor :)
 
 That's it for now. Can't wait until I get my Jolla phone :)
 
-20-Nov-2013
+17-Dec-2013
 
 Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
