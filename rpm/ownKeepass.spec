@@ -23,12 +23,12 @@ Group:      Utils
 License:    LGPL 2
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  ownKeepass.yaml
-Requires:   sailfishsilica-qt5
 Requires:   mapplauncherd-booster-silica-qt5
-BuildRequires:  pkgconfig(qdeclarative5-boostable)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Qml)
+Requires:   sailfishsilica-qt5
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(qdeclarative5-boostable)
 
 %description
 ownKeepass is a password safe application for the Sailfish platform. You can use it to store your passwords for webpages, PINs, TANs and any other data that should be kept secret on your Jolla Smartphone. The database where that data is stored is encrypted using a master password.
@@ -61,11 +61,11 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/usr/bin
-/usr/share/ownKeepass
-/usr/share/applications
-/usr/bin/ownKeepass
-/usr/share/harbour-ownkeepass
 /usr/share/icons/hicolor/86x86/apps
+/usr/share/harbour-ownkeepass
+/usr/bin/ownKeepass
+/usr/share/applications
+/usr/share/ownKeepass
+/usr/bin
 # >> files
 # << files

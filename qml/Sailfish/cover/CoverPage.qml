@@ -41,24 +41,55 @@ CoverBackground {
         // copy entry detail into clipboard, round robin -> username, password, empty clipboard
         switch (clipboardState) {
         case Global.constants.clipboardUnused:
-            infoText.text = "Username copied into clipboard"
-            infoText.opacity = 1.0
+            infoTextView.text = "Username copied into clipboard"
+            entryDetailsView.opacity = 0.0
+            infoTextView.opacity = 1.0
+            infoTextTimer.restart()
 //            systemClipboard.text = coverPage.username
             clipboardState = Global.constants.clipboardUsernameDropped
             break
         case Global.constants.clipboardUsernameDropped:
-            infoText.text = "Password copied into clipboard"
-            infoText.opacity = 1.0
+            infoTextView.text = "Password copied into clipboard"
+            entryDetailsView.opacity = 0.0
+            infoTextView.opacity = 1.0
+            infoTextTimer.restart()
 //            systemClipboard.text = coverPage.password
             clipboardState = Global.constants.clipboardPasswordDropped
             break
         case Global.constants.clipboardPasswordDropped:
-            infoText.text = "Clipboard empty"
-            infoText.opacity = 1.0
+            infoTextView.text = "Clipboard empty"
+            entryDetailsView.opacity = 0.0
+            infoTextView.opacity = 1.0
+            infoTextTimer.restart()
 //            systemClipboard.text = ""
             clipboardState = Global.constants.clipboardUnused
             break
         }
+    }
+
+    Timer {
+        id: infoTextTimer
+        repeat: false
+        interval: 2000
+        onTriggered: {
+            infoTextFadeOut.start()
+            entryDetailsFadeIn.start()
+        }
+    }
+
+    NumberAnimation {
+        id: infoTextFadeOut
+        target: infoTextView
+        property: "opacity"
+        duration: 500
+        to: 0.0
+    }
+    NumberAnimation {
+        id: entryDetailsFadeIn
+        target: entryDetailsView
+        property: "opacity"
+        duration: 500
+        to: 1.0
     }
 
     CoverPlaceholder {
@@ -129,6 +160,7 @@ CoverBackground {
         }
 
         Item {
+            id: entryDetailsView
             anchors.top: entryTitleLabel.bottom
             width: parent.width
             anchors.bottom: parent.bottom
@@ -185,6 +217,28 @@ CoverBackground {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeSmall
                 }
+            }
+        }
+
+        Item {
+            id: infoTextView
+            property alias text: infoTextLabel.text
+            opacity: 0.0
+            anchors.top: entryTitleLabel.bottom
+            width: parent.width
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 3 * Theme.paddingLarge
+
+            Label {
+                id: infoTextLabel
+                anchors.centerIn: parent
+                width: parent.width - 2 * Theme.paddingLarge
+                height: width
+                color: Theme.secondaryColor
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.Wrap
+                fontSizeMode: Text.Fit
             }
         }
     }
