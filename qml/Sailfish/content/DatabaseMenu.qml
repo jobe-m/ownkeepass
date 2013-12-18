@@ -72,7 +72,7 @@ PullDownMenu {
                 groupsAndEntriesPage.state = "Search"
                 // initialise listmodel for search
                 kdbListModel.searchRootGroupId = groupsAndEntriesPage.groupId
-                kdbListModel.searchEntriesInKdbDatabase("")
+                kdbListModel.clearListModel()
                 searchField.forceActiveFocus()
             }
         }

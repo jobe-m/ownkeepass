@@ -109,7 +109,11 @@ Page {
             }
 
             onTextChanged: {
-                kdbListModel.searchEntriesInKdbDatabase(searchField.text)
+                if (text !== "") {
+                    kdbListModel.searchEntriesInKdbDatabase(searchField.text)
+                } else {
+                    kdbListModel.clearListModel()
+                }
             }
 
             Behavior on height { NumberAnimation {} }
