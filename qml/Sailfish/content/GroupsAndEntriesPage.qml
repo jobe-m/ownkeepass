@@ -42,6 +42,9 @@ Page {
     property string pageTitle: "Password Groups"
 
     function init() {
+        // "Loading" state is initially active when database is currently opening from QueryPasswordDialog.
+        // Depending how long it takes to calculate the master key by doing keyTransfomationRounds the init
+        // function is called with a significant delay. During that time the busy indicator is shown.
         if (loadMasterGroups) {
             groupsAndEntriesPage.state = "LoadMasterGroups"
             kdbListModel.loadMasterGroupsFromDatabase()
@@ -136,6 +139,36 @@ Page {
             }
         }
 
+        Item {
+            anchors.fill: parent
+
+            Column {
+                anchors.centerIn: parent
+                width: parent.width
+                spacing: Theme.paddingLarge
+
+                SilicaLabel {
+                    horizontalAlignment: Text.AlignHCenter
+                    enabled: busyIndicator.running
+                    visible: busyIndicator.running
+                    text: "Decrypting Keepass Database"
+                    color: Theme.secondaryHighlightColor
+                    font.pixelSize: Theme.fontSizeExtraLarge
+                    Behavior on opacity { FadeAnimation {} }
+                }
+
+                BusyIndicator {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    id: busyIndicator
+                    enabled: running
+                    visible: running
+                    running: false
+                    size: BusyIndicatorSize.Large
+                    Behavior on opacity { FadeAnimation {} }
+                }
+            }
+        }
+
         ViewPlaceholder {
             id: viewPlaceholder
             text: "Group is empty"
@@ -177,6 +210,7 @@ Page {
             PropertyChanges { target: databaseMenu.searchMenuItem; enabled: false }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
+            PropertyChanges { target: busyIndicator; running: true }
         },
         State {
             name: "LoadMasterGroups"
@@ -189,6 +223,7 @@ Page {
             PropertyChanges { target: viewPlaceholder; enabled: listView.count === 0;
                 hintText: "Pull down to add password groups" }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
+            PropertyChanges { target: busyIndicator; running: false }
         },
         State {
             name: "LoadGroupsAndEntries"
@@ -201,6 +236,7 @@ Page {
             PropertyChanges { target: viewPlaceholder;  enabled: listView.count === 0;
                 hintText: "Pull down to add password groups or entries" }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
+            PropertyChanges { target: busyIndicator; running: false }
         },
         State {
             name: "Search"
@@ -214,6 +250,7 @@ Page {
             PropertyChanges { target: searchField; enabled: true; height: searchField.implicitHeight; opacity: 1.0 }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: listView.count === 0 }
+            PropertyChanges { target: busyIndicator; running: false }
         }
     ]
 
