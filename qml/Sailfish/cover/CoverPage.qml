@@ -45,7 +45,7 @@ CoverBackground {
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()
-//            systemClipboard.text = coverPage.username
+            Clipboard.text = coverPage.username
             clipboardState = Global.constants.clipboardUsernameDropped
             break
         case Global.constants.clipboardUsernameDropped:
@@ -53,7 +53,7 @@ CoverBackground {
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()
-//            systemClipboard.text = coverPage.password
+            Clipboard.text = coverPage.password
             clipboardState = Global.constants.clipboardPasswordDropped
             break
         case Global.constants.clipboardPasswordDropped:
@@ -61,7 +61,7 @@ CoverBackground {
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()
-//            systemClipboard.text = ""
+            Clipboard.text = ""
             clipboardState = Global.constants.clipboardUnused
             break
         }
@@ -286,11 +286,6 @@ CoverBackground {
             onTriggered: copyToClipboard()
         }
     }
-
-// TODO uncomment when clipboard is functional in SDK
-//    Clipboard {
-//        id: systemClipboard
-//    }
 }
 
 
