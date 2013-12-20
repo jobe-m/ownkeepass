@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../common"
 import "../scripts/Global.js" as Global
 
 CoverBackground {
@@ -92,34 +93,28 @@ CoverBackground {
         to: 1.0
     }
 
-    CoverPlaceholder {
-        id: infoText
-        opacity: 0.0
-        Behavior on opacity { NumberAnimation { duration: 500 } }
-    }
-
-    CoverPlaceholder {
+    SilicaCoverPlaceholder {
         enabled: coverState === Global.constants.databaseClosed
         visible: enabled
         text: "Database locked"
         icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
-    CoverPlaceholder {
+    SilicaCoverPlaceholder {
         enabled: coverState === Global.constants.databaseOpened
         visible: enabled
         text: "Database opened"
         icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
-    CoverPlaceholder {
+    SilicaCoverPlaceholder {
         enabled: coverState === Global.constants.databaseUnsavedChanges
         visible: enabled
         text: "There are unsaved changes"
         icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
-    CoverPlaceholder {
+    SilicaCoverPlaceholder {
         enabled: !keepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
         visible: enabled
         text: entryTitle + " entry opened"
@@ -239,6 +234,7 @@ CoverBackground {
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
                 fontSizeMode: Text.Fit
+                font.family: Theme.fontFamily
             }
         }
     }
