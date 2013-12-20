@@ -110,7 +110,7 @@ CoverBackground {
     SilicaCoverPlaceholder {
         enabled: coverState === Global.constants.databaseUnsavedChanges
         visible: enabled
-        text: "There are unsaved changes"
+        text: "You have some unsaved changes"
         icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 

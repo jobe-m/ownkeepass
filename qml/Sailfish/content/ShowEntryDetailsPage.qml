@@ -34,10 +34,10 @@ Page {
 
     function setTextFields(title, url, username, password, comment) {
         pageHeader.title = title
-        entryUrlTextField.text = url
-        entryUsernameTextField.text = username
+        entryUrlTextArea.text = url
+        entryUsernameTextArea.text = username
         entryPasswordTextField.text = password
-        entryCommentTextField.text = comment
+        entryCommentTextArea.text = comment
 
         // set also cover
         applicationWindow.cover.entryTitle = title
@@ -51,8 +51,8 @@ Page {
         contentHeight: col.height
 
         ViewPlaceholder {
-            enabled: !entryUrlTextField.enabled && !entryUsernameTextField.enabled &&
-                     !entryPasswordTextField.enabled && !entryCommentTextField.enabled
+            enabled: !entryUrlTextArea.enabled && !entryUsernameTextArea.enabled &&
+                     !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
             text: "No content"
             hintText: "Pull down to edit Password Entry and add Url, Username, Password and comment"
         }
@@ -72,11 +72,11 @@ Page {
             }
 
             PullDownMenu {
-                MenuItem {
-                    text: qsTr("Show more Details")
-// TODO implement "show more details"
-                    onClicked: {}
-                }
+// Will be implemented in a later release :)
+//                MenuItem {
+//                    text: qsTr("Show more Details")
+//                    onClicked: {}
+//                }
 
                 MenuItem {
                     text: "Edit Password Entry"
@@ -89,8 +89,8 @@ Page {
 
             ApplicationMenu {}
 
-            TextField {
-                id: entryUrlTextField
+            TextArea {
+                id: entryUrlTextArea
                 width: parent.width
                 enabled: text !== ""
                 visible: text !== ""
@@ -99,8 +99,8 @@ Page {
                 color: Theme.primaryColor
             }
 
-            TextField {
-                id: entryUsernameTextField
+            TextArea {
+                id: entryUsernameTextArea
                 width: parent.width
                 enabled: text !== ""
                 visible: text !== ""
@@ -113,16 +113,30 @@ Page {
                 enabled: entryPasswordTextField.text !== ""
                 visible: entryPasswordTextField.text !== ""
                 width: parent.width
-                height: entryPasswordTextField.height
+                height: Math.max(entryPasswordTextField.height, entryPasswordTextArea.height)
 
                 TextField {
                     id: entryPasswordTextField
                     anchors.left: parent.left
                     anchors.right: showPasswordButton.left
+                    opacity: 1.0
                     readOnly: true
                     echoMode: TextInput.Password
                     label: "Password"
                     color: Theme.primaryColor
+                    Behavior on opacity { FadeAnimation {} }
+                }
+
+                TextArea {
+                    id: entryPasswordTextArea
+                    anchors.left: parent.left
+                    anchors.right: showPasswordButton.left
+                    opacity: 0.0
+                    readOnly: true
+                    label: "Password"
+                    text: entryPasswordTextField.text
+                    color: Theme.primaryColor
+                    Behavior on opacity { FadeAnimation {} }
                 }
 
                 IconButton {
@@ -131,18 +145,21 @@ Page {
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge
                     icon.source: "image://theme/icon-m-ambience"
-                    highlighted: entryPasswordTextField.echoMode === TextInput.Normal
+                    highlighted: entryPasswordTextField.opacity === 0.0
                     onClicked: {
-                        if (entryPasswordTextField.echoMode === TextInput.Normal)
-                            entryPasswordTextField.echoMode = TextInput.Password
-                        else
-                            entryPasswordTextField.echoMode = TextInput.Normal
+                        if (entryPasswordTextField.opacity === 1.0) {
+                            entryPasswordTextArea.opacity = 1.0
+                            entryPasswordTextField.opacity = 0.0
+                        } else {
+                            entryPasswordTextArea.opacity = 0.0
+                            entryPasswordTextField.opacity = 1.0
+                        }
                     }
                 }
             }
 
             TextArea {
-                id: entryCommentTextField
+                id: entryCommentTextArea
                 width: parent.width
                 enabled: text !== ""
                 visible: text !== ""
@@ -169,7 +186,6 @@ Page {
 
     onStatusChanged: {
         // if page gets active set cover state
-//        if ((status === PageStatus.Active) && (Global.env.databaseState !== Global.constants.databaseClosed)) {
         if (status === PageStatus.Active) {
             applicationWindow.cover.coverState = Global.constants.databaseEntryOpened
         }
