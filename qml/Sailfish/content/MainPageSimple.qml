@@ -39,58 +39,17 @@ Page {
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
 
     function inactivityTimerStart() {
-        // first check if the user has set timer to unlimited
+        var inactivityTime = Global.env.keepassSettings.getInactivityTime()
+        // Check if the user has not set timer to unlimited
         // meaning the app should never lock
-        if (!inactivityTimer.unlimited) {
+        if (inactivityTime <= Global.constants._60minutes) {
+            inactivityTimer.interval = inactivityTime
             inactivityTimer.restart()
         }
     }
 
     function inactivityTimerStop() {
         inactivityTimer.stop()
-    }
-
-    function updateInactivityTimer(locktime)
-    {
-        // convert setting into amount of microseconds and set in inactivityTimer
-        var interval
-            switch (locktime) {
-            case 0:
-                interval = Global.constants._1microsecond
-                break
-            case 1:
-                interval = Global.constants._5seconds
-                break
-            case 2:
-                interval = Global.constants._10seconds
-                break
-            case 3:
-                interval = Global.constants._30seconds
-                break
-            case 4:
-                interval = Global.constants._1minute
-                break
-            case 5:
-                interval = Global.constants._2minutes
-                break
-            case 6:
-                interval = Global.constants._5minutes
-                break
-            case 7:
-                interval = Global.constants._10minutes
-                break
-            case 8:
-                interval = Global.constants._30minutes
-                break
-            case 9:
-                interval = Global.constants._60minutes
-                break
-            case 10:
-                inactivityTimer.unlimited = true
-                return
-            }
-            inactivityTimer.unlimited = false
-            inactivityTimer.interval = interval
     }
 
     function lockDatabase() {
@@ -100,9 +59,8 @@ Page {
 
     Timer {
         id: inactivityTimer
-
-        property bool unlimited: false
-
+        running: false
+        repeat: false
         interval: Global.constants._30seconds // default value
         triggeredOnStart: false
         onTriggered: {
