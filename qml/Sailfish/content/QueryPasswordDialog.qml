@@ -47,7 +47,10 @@ Dialog {
         contentWidth: parent.width
         contentHeight: col.height
 
-        ApplicationMenu {}
+        ApplicationMenu {
+            // no settings in menu because user could change path to database and app would not recognize it in this state
+            disableSettingsItem: true
+        }
 
         VerticalScrollDecorator {}
 

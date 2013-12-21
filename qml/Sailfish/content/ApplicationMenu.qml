@@ -27,6 +27,8 @@ import "../scripts/Global.js" as Global
 PushUpMenu {
     id: applicationMenu
 
+    property bool disableSettingsItem: false
+
     MenuItem {
         text: "About"
         onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
@@ -36,6 +38,8 @@ PushUpMenu {
         onClicked: pageStack.push(Qt.resolvedUrl("HelpPage.qml"))
     }
     MenuItem {
+        enabled: !disableSettingsItem
+        visible: enabled
         text: "Settings"
         onClicked: pageStack.push(Global.env.mainPage.editSettingsDialogComponent)
     }

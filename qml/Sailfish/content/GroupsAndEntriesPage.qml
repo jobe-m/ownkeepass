@@ -158,8 +158,8 @@ Page {
                 }
 
                 BusyIndicator {
-                    anchors.horizontalCenter: parent.horizontalCenter
                     id: busyIndicator
+                    anchors.horizontalCenter: parent.horizontalCenter
                     enabled: running
                     visible: running
                     running: false

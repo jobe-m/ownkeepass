@@ -89,6 +89,35 @@ Page {
                 title: "ownKeepass"
                 subTitle: "Password Safe"
             }
+
+            BusyIndicator {
+                id: preCheckBusyIndicator
+                anchors.horizontalCenter: parent.horizontalCenter
+                enabled: running
+                visible: running
+                running: true
+                size: BusyIndicatorSize.Small
+            }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                enabled: !preCheckBusyIndicator.running
+                opacity: enabled ? 1.0 : 0.0
+                text: internal.createNewDatabase ? "Create new Database" : "Open Database"
+                Behavior on opacity { FadeAnimation {} }
+                onClicked: {
+                    var dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": internal.createNewDatabase})
+                    dialog.accepted.connect(function() {
+                        internal.openKeepassDatabase(dialog.password, internal.createNewDatabase)
+                        // delete password once it was used
+                        dialog.password = ""
+                        // Get handler to masterGroups page, it is needed to init the view once the database
+                        // could be opened with given password and/or key file
+                        internal.masterGroupsPage = dialog.acceptDestinationInstance
+                    })
+
+                }
+            }
         }
     }
 
@@ -154,30 +183,34 @@ Page {
         }
 
         function preCheckDoneHandler(result) {
-            var dialog
+//            var dialog
             console.log("onPreCheckDone: " + result)
             switch (result) {
             case KdbDatabase.RE_OK: {
                 // files exists so open query password dialog
                 createNewDatabase = false
-                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
-                            dialog.accepted.connect(function() {
-                                openKeepassDatabase(dialog.password, createNewDatabase)
-                                // delete password once it was used
-                                dialog.password = ""
-                                masterGroupsPage = dialog.acceptDestinationInstance
-                            })
+                // stop BusyIndicator so that button is shown
+                preCheckBusyIndicator.running = false
+//                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
+//                            dialog.accepted.connect(function() {
+//                                openKeepassDatabase(dialog.password, createNewDatabase)
+//                                // delete password once it was used
+//                                dialog.password = ""
+//                                masterGroupsPage = dialog.acceptDestinationInstance
+//                            })
                 break; }
             case KdbDatabase.RE_PRECHECK_DB_PATH_ERROR: {
                 // in this case the database file does not exists so let the user create a new keepass database
                 createNewDatabase = true
-                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
-                            dialog.accepted.connect(function() {
-                                openKeepassDatabase(dialog.password, createNewDatabase)
-                                // delete password once used
-                                dialog.password = ""
-                                masterGroupsPage = dialog.acceptDestinationInstance
-                            })
+                // stop BusyIndicator so that button is shown
+                preCheckBusyIndicator.running = false
+//                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
+//                            dialog.accepted.connect(function() {
+//                                openKeepassDatabase(dialog.password, createNewDatabase)
+//                                // delete password once used
+//                                dialog.password = ""
+//                                masterGroupsPage = dialog.acceptDestinationInstance
+//                            })
                 break; }
             case KdbDatabase.RE_PRECHECK_KEY_FILE_PATH_ERROR: {
                 // in this case database file exists but not key file
@@ -185,16 +218,15 @@ Page {
                 Global.env.infoPopup.show("Key File Error", "Database path is ok, but your key file is not present. Please check ownKeepass Settings for correct path to the key file or leave key file path empty if you don't use a key file with your database.", 0, false)
                 break; }
             case KdbDatabase.RE_PRECHECK_DB_PATH_CREATION_ERROR: {
-                console.log("ERROR: Cannot create path directories to database file, check your file permissions")
                 createNewDatabase = true
-                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your Keepass database file. Please choose another path.", 0, false)
+                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your Keepass database file. Please choose another path in ownKeepass Settings.", 0, false)
                 break; }
             case KdbDatabase.RE_PRECHECK_KEY_FILE_PATH_CREATION_ERROR: {
                 createNewDatabase = true
-                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your key file. Please choose another path.", 0, false)
+                Global.env.infoPopup.show("Permission Error", "Cannot create directories for your key file. Please choose another path in ownKeepass Settings.", 0, false)
                 break; }
             default: {
-                console.log("ERROR: unknown result on onPreCheckDone")
+                Global.env.infoPopup.show("Unknown Error", "Sorry something went wrong. No idea. Maybe reboot your phone and try again.", 0, false)
                 break; }
             }
         }
