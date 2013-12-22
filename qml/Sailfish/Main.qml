@@ -65,7 +65,9 @@ ApplicationWindow
         id: keepassSettings
         // here are default values set if the settings were not yet saved in the SQLite database
         property bool simpleMode: true
-        property bool loadDefault: true // if (simpleMode === true) this is ignored resp. always true
+        // If (simpleMode === true) this just opens the query password dialog
+        // Later (in non simple mode) this will open the database out of recently opened databases where the user has ckecked "Open per default"
+        property bool loadDefault: false
         // default database and key file paths used in simple mode to create one database easily
         property string defaultDatabasePath: "/home/nemo/Documents/notes.kdb"
         property string defaultKeyFilePath: ""

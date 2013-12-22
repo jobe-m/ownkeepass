@@ -116,6 +116,16 @@ Dialog {
                     close()
                 }
             }
+
+            TextSwitch {
+                text: "Open per default"
+                checked: Global.env.keepassSettings.loadDefault
+                onCheckedChanged: {
+                    // save into keepass settings object and LS database
+                    Global.env.keepassSettings.loadDefault = checked
+                    Global.env.keepassSettings.setSetting("loadDefault", checked ? "true" : "false")
+                }
+            }
         }
     }
 

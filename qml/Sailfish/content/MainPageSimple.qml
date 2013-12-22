@@ -183,7 +183,6 @@ Page {
         }
 
         function preCheckDoneHandler(result) {
-//            var dialog
             console.log("onPreCheckDone: " + result)
             switch (result) {
             case KdbDatabase.RE_OK: {
@@ -191,26 +190,22 @@ Page {
                 createNewDatabase = false
                 // stop BusyIndicator so that button is shown
                 preCheckBusyIndicator.running = false
-//                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
-//                            dialog.accepted.connect(function() {
-//                                openKeepassDatabase(dialog.password, createNewDatabase)
-//                                // delete password once it was used
-//                                dialog.password = ""
-//                                masterGroupsPage = dialog.acceptDestinationInstance
-//                            })
+                // If user wants database to be automatically opened on start do it now...
+                if (Global.env.keepassSettings.loadDefault) {
+                    var dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
+                    dialog.accepted.connect(function() {
+                        openKeepassDatabase(dialog.password, createNewDatabase)
+                        // delete password once it was used
+                        dialog.password = ""
+                        masterGroupsPage = dialog.acceptDestinationInstance
+                    })
+                }
                 break; }
             case KdbDatabase.RE_PRECHECK_DB_PATH_ERROR: {
                 // in this case the database file does not exists so let the user create a new keepass database
                 createNewDatabase = true
                 // stop BusyIndicator so that button is shown
                 preCheckBusyIndicator.running = false
-//                dialog = pageStack.push("QueryPasswordDialog.qml", {"createNewDatabase": createNewDatabase})
-//                            dialog.accepted.connect(function() {
-//                                openKeepassDatabase(dialog.password, createNewDatabase)
-//                                // delete password once used
-//                                dialog.password = ""
-//                                masterGroupsPage = dialog.acceptDestinationInstance
-//                            })
                 break; }
             case KdbDatabase.RE_PRECHECK_KEY_FILE_PATH_ERROR: {
                 // in this case database file exists but not key file
