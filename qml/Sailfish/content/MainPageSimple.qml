@@ -96,7 +96,7 @@ Page {
                 enabled: running
                 visible: running
                 running: true
-                size: BusyIndicatorSize.Small
+                size: BusyIndicatorSize.Medium
             }
 
             Button {
@@ -177,7 +177,6 @@ Page {
             } else {
                 // check if some other recently opened database is set as default = !simpleMode
 // TODO for next release ;)
-
             }
             kdbDatabase.preCheck(databasePath, keyFilePath)
         }
