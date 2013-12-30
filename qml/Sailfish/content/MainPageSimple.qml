@@ -170,11 +170,8 @@ Page {
         function init() {
             // load settings into kdbDatabase
             kdbDatabase.showUserNamePasswordsInListView = Global.env.keepassSettings.showUserNamePasswordInListView
-
             databasePath = Global.env.keepassSettings.defaultDatabasePath
             keyFilePath  = Global.env.keepassSettings.defaultKeyFilePath
-
-            console.log("Precheck: " + databasePath + " - " + keyFilePath)
             kdbDatabase.preCheck(databasePath, keyFilePath)
         }
 
@@ -261,13 +258,8 @@ Page {
             console.log("onNewDatabaseCreated: " + result)
             switch (result) {
             case KdbDatabase.RE_OK: {
-                // open database groups main page and replace password page in page stack
-                page = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                               { "pageTitle": "Password groups",
-                                 "groupId": 0,
-                                 "loadMasterGroups": true,
-                                 "mainPage": mainPage }, false, true);
-                masterGroupsPage = page
+                // Yeah, database could be opened successfully, now init master groups page and cover page
+                masterGroupsPage.init()
                 // database is now created
                 internal.createNewDatabase = false
                 break }
