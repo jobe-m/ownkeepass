@@ -92,6 +92,21 @@ signals:
                                      int parentgroupId);
     void deleteEntryFromKdbDatabase(int entryId);
 
+public slots:
+    void slot_entryDataLoaded(int entryId,
+                              QString title,
+                              QString url,
+                              QString username,
+                              QString password,
+                              QString comment,
+                              QString binaryDesc,
+                              QString creation,
+                              QString lastMod,
+                              QString lastAccess,
+                              QString expire,
+                              quint32 binarySize,
+                              QString friendlySize
+                              );
 public:
     KdbEntry(QObject *parent = 0);
     virtual ~KdbEntry() {}

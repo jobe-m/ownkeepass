@@ -60,7 +60,8 @@ signals:
     void searchEntriesCompleted(int result);
 
     // signal to KdbEntry object
-    void entryLoaded(QString title,
+    void entryLoaded(int entryId,
+                     QString title,
                      QString url,
                      QString username,
                      QString password,

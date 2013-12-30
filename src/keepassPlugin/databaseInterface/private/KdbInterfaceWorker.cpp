@@ -349,8 +349,10 @@ void KdbInterfaceWorker::slot_loadEntry(int entryId)
     // decrypt password which is usually stored encrypted in memory
     SecString password = entry->password();
     password.unlock();
-    // send signal with all entry data
-    emit entryLoaded(entry->title(),
+    // send signal with all entry data to all connected entry objects
+    // each object will check with entryId if the updated data is interesting to it
+    emit entryLoaded(entryId,
+                     entry->title(),
                      entry->url(),
                      entry->username(),
                      password.string(),
@@ -462,6 +464,7 @@ void KdbInterfaceWorker::slot_saveEntry(int entryId,
                                         QString comment)
 {
     Q_ASSERT(m_kdb3Database);
+    Q_ASSERT(entryId);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)(entryId);
 
@@ -489,6 +492,25 @@ void KdbInterfaceWorker::slot_saveEntry(int entryId,
     }
     // signal to QML
     emit entrySaved(kpxPublic::KdbGroup::RE_OK);
+    // update all entry objects, there might be two instances open
+    // decrypt password which is usually stored encrypted in memory
+    s_password = entry->password();
+    s_password.unlock();
+    emit entryLoaded(entryId,
+                     entry->title(),
+                     entry->url(),
+                     entry->username(),
+                     s_password.string(),
+                     entry->comment(),
+                     entry->binaryDesc(),
+                     entry->creation().toString(),
+                     entry->lastMod().toString(),
+                     entry->lastAccess().toString(),
+                     entry->expire().toString(),
+                     entry->binarySize(),
+                     entry->friendlySize()
+                     );
+    s_password.lock();
 }
 
 void KdbInterfaceWorker::slot_createNewEntry(QString title,
@@ -534,6 +556,7 @@ void KdbInterfaceWorker::slot_createNewEntry(QString title,
 
 void KdbInterfaceWorker::slot_deleteGroup(int groupId)
 {
+    Q_ASSERT(groupId);
     // get group handles
     IGroupHandle* group = (IGroupHandle*)(groupId);
     IGroupHandle* parentGroup = group->parent();
