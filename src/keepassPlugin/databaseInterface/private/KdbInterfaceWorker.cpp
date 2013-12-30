@@ -24,6 +24,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QDebug>
+
 #include "KdbInterfaceWorker.h"
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
@@ -71,24 +72,29 @@ void KdbInterfaceWorker::initKdbDatabase()
 
 void KdbInterfaceWorker::slot_preCheckFilePaths(QString dbFile, QString keyFile)
 {
+    qDebug() << "KdbInterfaceWorker::slot_preCheckFilePaths() - " << dbFile << " - " << keyFile;
+    // Check if database file exists
     if (dbFile != "" && QFile::exists(dbFile)) {
+        // Database file exists
         if (keyFile == "" || QFile::exists(keyFile)) {
-            // database file is present and key file is either not needed or also present
+            // Database file is present and key file is either not needed or also present
             emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_OK);
         } else {
-            // key file is not present
-            // check and create parent directory if it does not exists
-            if (QDir(QFileInfo(dbFile).path()).mkpath(QFileInfo(keyFile).path())) {
-                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_ERROR);
-            } else {
-                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_CREATION_ERROR);
-            }
+            // Key file is not present
+            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_ERROR);
         }
     } else {
-        // database file is not present
-        // check and create parent directory if it does not exists
+        // Database file is not present
+        // Create parent directory if it does not exists
+        qDebug() << "Db file path: " << QFileInfo(dbFile).path();
         if (QDir(QFileInfo(dbFile).path()).mkpath(QFileInfo(dbFile).path())) {
-            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_DB_PATH_ERROR);
+            if (keyFile == "" || QFile::exists(keyFile)) {
+                // Database paht is present and key file is either not needed or also present
+                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_DB_PATH_ERROR);
+            } else {
+                // Key file is not present
+                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_ERROR);
+            }
         } else {
             emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_DB_PATH_CREATION_ERROR);
         }

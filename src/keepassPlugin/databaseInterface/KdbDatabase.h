@@ -63,7 +63,6 @@ public:
         RE_PRECHECK_DB_PATH_ERROR,                  // database file does not exists on precheck
         RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
         RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
-        RE_PRECHECK_KEY_FILE_PATH_CREATION_ERROR,   // path to key file could not be created
 
         RE_LAST
     };

@@ -171,13 +171,10 @@ Page {
             // load settings into kdbDatabase
             kdbDatabase.showUserNamePasswordsInListView = Global.env.keepassSettings.showUserNamePasswordInListView
 
-            if (Global.env.keepassSettings.loadDefault) {
-                databasePath = Global.env.keepassSettings.defaultDatabasePath
-                keyFilePath  = Global.env.keepassSettings.defaultKeyFilePath
-            } else {
-                // check if some other recently opened database is set as default = !simpleMode
-// TODO for next release ;)
-            }
+            databasePath = Global.env.keepassSettings.defaultDatabasePath
+            keyFilePath  = Global.env.keepassSettings.defaultKeyFilePath
+
+            console.log("Precheck: " + databasePath + " - " + keyFilePath)
             kdbDatabase.preCheck(databasePath, keyFilePath)
         }
 
