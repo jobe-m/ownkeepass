@@ -25,6 +25,9 @@
 #endif
 
 #include <QDebug>
+#include <QGuiApplication>
+#include <QScopedPointer>
+#include <QtQml>
 #include <sailfishapp.h>
 
 #include "KdbDatabase.h"
@@ -35,7 +38,7 @@
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    // SailfishApp::main() will display "qml/template.qml", if you need more
+    // SailfishApp::main() will display "qml/harbour-ownkeepass.qml", if you need more
     // control over initialization, you can use:
     //
     //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
