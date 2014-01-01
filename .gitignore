@@ -1,13 +1,2 @@
-Makefile
 *.user.*
 *.user
-debugfiles.list
-debuglinks.list
-debugsources.list
-documentation.list
-moc
-obj
-*~
-*.autosave
-RPMS
-harbour-ownkeepass

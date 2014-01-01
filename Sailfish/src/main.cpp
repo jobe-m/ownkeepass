@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 - 2014 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -20,11 +20,12 @@
 **
 ***************************************************************************/
 
-#include <QGuiApplication>
-#include <QQuickView>
-#include <QtQml/qqml.h>
+#ifdef QT_QML_DEBUG
+#include <QtQuick>
+#endif
 
-#include "sailfishapplication.h"
+#include <QDebug>
+#include <sailfishapp.h>
 
 #include "KdbDatabase.h"
 #include "KdbListModel.h"
@@ -34,9 +35,18 @@
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    QScopedPointer<QGuiApplication> app(Sailfish::createApplication(argc, argv));
+    // SailfishApp::main() will display "qml/template.qml", if you need more
+    // control over initialization, you can use:
+    //
+    //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
+    //   - SailfishApp::createView() to get a new QQuickView * instance
+    //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
+    //
+    // To display the view, call "show()" (will show fullscreen on device).
+
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app.data()->setOrganizationName("jobe-m");
-    app.data()->setApplicationName("ownKeepass");
+    app.data()->setApplicationName("harbour-ownKeepass");
 
     // @uri KeepassPlugin
     const char* uri("KeepassPlugin");
@@ -46,8 +56,5 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
 
-    QScopedPointer<QQuickView> view(Sailfish::createView("Main.qml"));
-    Sailfish::showView(view.data());
-    
-    return app->exec();
+    return SailfishApp::main(argc, argv);
 }

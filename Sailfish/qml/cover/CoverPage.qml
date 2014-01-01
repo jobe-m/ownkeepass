@@ -97,28 +97,28 @@ CoverBackground {
         enabled: coverState === Global.constants.databaseClosed
         visible: enabled
         text: "Database locked"
-        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
     SilicaCoverPlaceholder {
         enabled: coverState === Global.constants.databaseOpened
         visible: enabled
         text: "Database opened"
-        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
     SilicaCoverPlaceholder {
         enabled: coverState === Global.constants.databaseUnsavedChanges
         visible: enabled
         text: "You have some unsaved changes"
-        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
     SilicaCoverPlaceholder {
         enabled: !keepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
         visible: enabled
         text: entryTitle + " entry opened"
-        icon.source: (Global.developmentMode === 1 ? "/opt/sdk/ownKeepass" : "") + "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
     Item {
@@ -245,7 +245,7 @@ CoverBackground {
         iconBackground: false
 
         CoverAction {
-            iconSource: "../covericons/locker.png"
+            iconSource: "../../covericons/locker.png"
             onTriggered: {
                 // emit signal to lock database
                 lockDatabase()
@@ -259,7 +259,7 @@ CoverBackground {
         iconBackground: false
 
         CoverAction {
-            iconSource: "../covericons/locker.png"
+            iconSource: "../../covericons/locker.png"
             onTriggered: {
                 // emit signal to lock database
                 lockDatabase()
@@ -267,7 +267,7 @@ CoverBackground {
         }
 
         CoverAction {
-            iconSource: "../covericons/copy.png"
+            iconSource: "../../covericons/copy.png"
             onTriggered: copyToClipboard()
         }
     }
@@ -278,7 +278,7 @@ CoverBackground {
         iconBackground: false
 
         CoverAction {
-            iconSource: "../covericons/copy.png"
+            iconSource: "../../covericons/copy.png"
             onTriggered: copyToClipboard()
         }
     }

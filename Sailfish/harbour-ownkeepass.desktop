@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-ownkeepass
+Exec=harbour-ownkeepass
+Name=ownKeepass
+Comment=ownKeepass Password Safe

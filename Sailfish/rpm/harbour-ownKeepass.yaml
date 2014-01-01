@@ -1,0 +1,25 @@
+Name: harbour-ownKeepass
+Summary: A password safe application
+Version: 0.9
+Release: 1
+Group: Qt/Qt
+License: LGPL 2
+Sources:
+- '%{name}-%{version}.tar.bz2'
+Description: |-
+  ownKeepass is a password safe application for the Sailfish OS platform. You can use it to store your passwords for webpages, PINs, TANs and any other data that should be kept secret on your Jolla Smartphone. The database where that data is stored is encrypted using a master password.
+Configure: none
+Builder: qtc5
+PkgConfigBR:
+- sailfishapp >= 0.0.10
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
+Requires:
+- sailfishsilica-qt5 >= 0.10.9
+Files:
+- /usr/share/icons/hicolor/86x86/apps
+- /usr/share/applications
+- /usr/share/harbour-ownkeepass
+- /usr/bin
+PkgBR: []

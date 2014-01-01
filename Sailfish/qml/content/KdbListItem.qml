@@ -69,9 +69,10 @@ ListItem {
     Image {
         x: Theme.paddingLarge
         anchors.verticalCenter: parent.verticalCenter
+// TODO add final icon here
         width: 81 //Theme.iconSizeMedium
         height: 81 //Theme.iconSizeMedium
-        source: "../entryicons/_0.png"
+        source: "../../entryicons/_0.png"
         fillMode: Image.PreserveAspectFit
         asynchronous: true
     }

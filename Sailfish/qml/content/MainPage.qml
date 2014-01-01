@@ -20,6 +20,8 @@
 **
 ***************************************************************************/
 
+// TODO This page will be used in "non-simple mode" which is not yet implemented
+
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
