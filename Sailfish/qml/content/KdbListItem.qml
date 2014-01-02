@@ -66,26 +66,25 @@ ListItem {
         }
     }
 
-    Image {
-        x: Theme.paddingLarge
-        anchors.verticalCenter: parent.verticalCenter
-// TODO add final icon here
-        width: 81 //Theme.iconSizeMedium
-        height: 81 //Theme.iconSizeMedium
-        source: "../../entryicons/_0.png"
-        fillMode: Image.PreserveAspectFit
-        asynchronous: true
-    }
-
     Rectangle {
         id: itemIcon
         x: Theme.paddingLarge
         anchors.verticalCenter: parent.verticalCenter
-        width: 81
-        height: 81
-        radius: 20
+        width: 80
+        height: 80
+        radius: 15
         color: "white"
         opacity: 0.1
+    }
+
+    Image {
+        x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
+        anchors.verticalCenter: parent.verticalCenter
+        width: Theme.iconSizeMedium
+        height: Theme.iconSizeMedium
+        source: model.itemType === KdbListModel.ENTRY ? "../../entryicons/_0.png" : "../../entryicons/_49.png"
+        fillMode: Image.PreserveAspectFit
+        asynchronous: true
     }
 
     Item {

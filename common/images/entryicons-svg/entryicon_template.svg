@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   inkscape:export-filename="/home/jobe/Development/Sailfish-devel/ownKeepass/qml/common/images/covericons/locker.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="entryicon_template.svg"
+   style="enable-background:new">
+  <defs
+     id="defs2987" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#787878"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="10.890625"
+     inkscape:cx="32"
+     inkscape:cy="32"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:snap-grids="false"
+     inkscape:showpageshadow="true"
+     showborder="true"
+     borderlayer="true"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:object-nodes="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-global="true"
+     inkscape:snap-nodes="true"
+     inkscape:object-paths="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="876"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:snap-to-guides="true"
+     inkscape:snap-page="true" />
+  <metadata
+     id="metadata2990">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Background"
+     style="display:inline"
+     transform="translate(0,-32)">
+    <rect
+       style="fill:#4995a9;fill-opacity:1"
+       id="rect3884"
+       width="64.1642"
+       height="64.3284"
+       x="-0.16420364"
+       y="32" />
+  </g>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(0,16)"
+     style="display:inline">
+    <rect
+       style="fill:#ffffff;display:none"
+       id="rect3772"
+       width="64.367813"
+       height="46.305416"
+       x="15.763547"
+       y="-7.336617" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path3848"
+       sodipodi:cx="45.930168"
+       sodipodi:cy="19.58477"
+       sodipodi:rx="12.050644"
+       sodipodi:ry="10.948871"
+       d="m 57.980812,19.58477 a 12.050644,10.948871 0 1 1 -24.101288,0 12.050644,10.948871 0 1 1 24.101288,0 z"
+       transform="matrix(1,0,0,1.1216034,2.6167112,-22.431392)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#00384f;fill-opacity:0.56470588;stroke:none"
+       id="path3853"
+       sodipodi:cx="33.698708"
+       sodipodi:cy="16.573889"
+       sodipodi:rx="11.294118"
+       sodipodi:ry="10.97274"
+       d="m 44.992826,16.573889 a 11.294118,10.97274 0 1 1 -22.588236,0 11.294118,10.97274 0 1 1 22.588236,0 z"
+       transform="matrix(1.1219512,0,0,1.0920502,-18.158379,-18.443851)" />
+  </g>
+</svg>
