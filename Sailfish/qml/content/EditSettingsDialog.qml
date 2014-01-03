@@ -55,8 +55,8 @@ Dialog {
         }
     }
 
-    // forbit page navigation if master password is not confirmed
-    canNavigateForward: !defaultDatabaseFilePath.errorHighlight
+    // forbit page navigation if path to keepass database and key file (if used) is not set
+    canNavigateForward: !defaultDatabaseFilePath.errorHighlight && (useKeyFile.checked ? !defaultKeyFilePath.errorHighlight : true)
 
     SilicaFlickable {
         anchors.fill: parent
@@ -76,8 +76,14 @@ Dialog {
                 title: "Save"
             }
 
-            SectionHeader {
+            SilicaLabel {
+                font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
                 text: "Keepass Settings"
+            }
+
+            SilicaLabel {
+                text: "Change default settings of your ownKeepass application here"
             }
 
 // TODO We have currently only simple mode
@@ -95,13 +101,22 @@ Dialog {
 
             Column {
                 width: parent.width
+                spacing: 0
+
+                SilicaLabel {
+                    text: Global.env.keepassSettings.simpleMode ?
+                              "This is the name and path of your Keepass database file:" :
+                              "This is the path where new Keepass database files will be stored:"
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                }
 
                 TextField {
                     id: defaultDatabaseFilePath
                     width: parent.width
                     inputMethodHints: Qt.ImhUrlCharactersOnly
                     label: "Keepass database file path"
-                    placeholderText: label
+                    placeholderText: "Set Keepass database file path"
                     errorHighlight: text === ""
                     text: Global.env.keepassSettings.defaultDatabasePath
                     EnterKey.onClicked: parent.focus = true
@@ -111,21 +126,15 @@ Dialog {
                         editSettingsDialog.updateCoverState()
                     }
                 }
-
-                SilicaLabel {
-                    text: Global.env.keepassSettings.simpleMode ?
-                              "This is the name and path of your Keepass database file" :
-                              "This is the path where new Keepass database files will be stored"
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                }
             }
 
             TextSwitch {
                 id: useKeyFile
                 checked: Global.env.keepassSettings.defaultKeyFilePath !== ""
                 text: "Use Key File"
-                description: "Switch this on to use a key file together with a master password when you create a new Keepass database"
+                description: Global.env.keepassSettings.simpleMode ?
+                                 "Switch this on to use a key file together with a master password for your Keepass database" :
+                                 "Switch this on to use a key file together with a master password when creating a new Keepass database"
             }
 
             TextField {
@@ -135,8 +144,9 @@ Dialog {
                 height: useKeyFile.checked ? implicitHeight : 0
                 width: parent.width
                 inputMethodHints: Qt.ImhUrlCharactersOnly
-                label: "Default key file path"
-                placeholderText: label
+                label: "Path and filename of key file"
+                placeholderText: "Set path and filename of key file"
+                errorHighlight: text === ""
                 text: Global.env.keepassSettings.defaultKeyFilePath
                 EnterKey.onClicked: parent.focus = true
                 onTextChanged: {
@@ -150,11 +160,18 @@ Dialog {
 
             Column {
                 width: parent.width
+                spacing: 0
+
+                SilicaLabel {
+                    text: "This is the encryption which will be used as default when creating a new Keepass database:"
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                }
 
                 ComboBox {
                     id: defaultCryptAlgorithm
                     width: editSettingsDialog.width
-                    label: "Default Encryption in use:"
+                    label: "Default Encryption:"
                     currentIndex: Global.env.keepassSettings.defaultCryptAlgorithm
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
@@ -166,16 +183,11 @@ Dialog {
                         editSettingsDialog.updateCoverState()
                     }
                 }
-
-                SilicaLabel {
-                    text: "This is the encryption which will be used as default for a new Keepass database"
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                }
             }
 
             Column {
                 width: parent.width
+                spacing: 0
 
                 TextField {
                     id: defaultKeyTransfRounds

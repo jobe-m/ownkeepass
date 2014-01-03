@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../common"
 import "../scripts/Global.js" as Global
 
 Dialog {
@@ -64,27 +65,44 @@ Dialog {
                 title: "Save"
             }
 
-            SectionHeader {
+            SilicaLabel {
+                font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
                 text: "Database Settings"
             }
 
-            TextField {
-                id: databaseMasterPassword
+            SilicaLabel {
+                text: "Change settings of your currently opened Keepass database here"
+            }
+
+            Column {
                 width: parent.width
-                inputMethodHints: Qt.ImhNoPredictiveText
-                echoMode: TextInput.Password
-                label: "Master Password"
-                text: ""
-                placeholderText: "Change Master Password"
-                EnterKey.enabled: text !== ""
-                EnterKey.highlighted: text !== ""
-                EnterKey.onClicked: {
-                    confirmDatabaseMasterPassword.focus = true
+                spacing: 0
+
+                SilicaLabel {
+                    text: "Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!"
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
                 }
-                onTextChanged: {
-                    editDatabaseSettingsDialog.masterPasswordChanged =
-                            (text !== "" ? true : false)
-                    editDatabaseSettingsDialog.updateCoverState()
+
+                TextField {
+                    id: databaseMasterPassword
+                    width: parent.width
+                    inputMethodHints: Qt.ImhNoPredictiveText
+                    echoMode: TextInput.Password
+                    label: "Master Password"
+                    text: ""
+                    placeholderText: "Change Master Password"
+                    EnterKey.enabled: text !== ""
+                    EnterKey.highlighted: text !== ""
+                    EnterKey.onClicked: {
+                        confirmDatabaseMasterPassword.focus = true
+                    }
+                    onTextChanged: {
+                        editDatabaseSettingsDialog.masterPasswordChanged =
+                                (text !== "" ? true : false)
+                        editDatabaseSettingsDialog.updateCoverState()
+                    }
                 }
             }
 
@@ -112,7 +130,7 @@ Dialog {
             ComboBox {
                 id: databaseCryptAlgorithm
                 width: parent.width
-                label: "Encryption in use:"
+                label: "Encryption currently in use:"
                 currentIndex: Global.env.kdbDatabase.cryptAlgorithm
                 menu: ContextMenu {
                     MenuItem { text: "AES/Rijndael" }
@@ -125,19 +143,30 @@ Dialog {
                 }
             }
 
-            TextField {
-                id: databaseKeyTransfRounds
+            Column {
                 width: parent.width
-                inputMethodHints: Qt.ImhFormattedNumbersOnly
-                validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
-                label: "Key Transformation Rounds"
-                placeholderText: label
-                text: Global.env.kdbDatabase.keyTransfRounds
-                EnterKey.onClicked: parent.focus = true
-                onTextChanged: {
-                    editDatabaseSettingsDialog.keyTransfRoundsChanged =
-                            (text !== Global.env.kdbDatabase.keyTransfRounds ? true : false)
-                    editDatabaseSettingsDialog.updateCoverState()
+                spacing: 0
+
+                TextField {
+                    id: databaseKeyTransfRounds
+                    width: parent.width
+                    inputMethodHints: Qt.ImhFormattedNumbersOnly
+                    validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                    label: "Key Transformation Rounds"
+                    placeholderText: label
+                    text: Global.env.kdbDatabase.keyTransfRounds
+                    EnterKey.onClicked: parent.focus = true
+                    onTextChanged: {
+                        editDatabaseSettingsDialog.keyTransfRoundsChanged =
+                                (text !== Global.env.kdbDatabase.keyTransfRounds ? true : false)
+                        editDatabaseSettingsDialog.updateCoverState()
+                    }
+                }
+
+                SilicaLabel {
+                    text: "Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks"
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
                 }
             }
         }
