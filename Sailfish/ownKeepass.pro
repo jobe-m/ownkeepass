@@ -37,7 +37,8 @@ TARGET = harbour-ownkeepass
 # adding common qml and image files for the app
 common_qml_and_image_files.files += \
     ../common/images/entryicons \
-    ../common/images/covericons
+    ../common/images/covericons \
+    ../common/images/wallicons
 common_qml_and_image_files.path = /usr/share/$${TARGET}
 INSTALLS += common_qml_and_image_files
 

@@ -54,7 +54,7 @@ Page {
             enabled: !entryUrlTextArea.enabled && !entryUsernameTextArea.enabled &&
                      !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
             text: "No content"
-            hintText: "Pull down to edit Password Entry and add Url, Username, Password and comment"
+            hintText: "Pull down to add Url, Username, Password and Comment"
         }
 
         // Show a scollbar when the view is flicked, place this over all other content

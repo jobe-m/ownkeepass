@@ -85,6 +85,7 @@ ListItem {
         source: model.itemType === KdbListModel.ENTRY ? "../../entryicons/_0.png" : "../../entryicons/_49.png"
         fillMode: Image.PreserveAspectFit
         asynchronous: true
+        opacity: kdbListItem.highlighted ? 0.5 : 1.0
     }
 
     Item {

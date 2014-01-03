@@ -90,6 +90,14 @@ Page {
                 subTitle: "Password Safe"
             }
 
+            Image {
+                width: 492
+                height: 492
+                source: "../../wallicons/mainpage.png"
+                anchors.horizontalCenter: parent.horizontalCenter
+//                Tracer {}
+            }
+
             BusyIndicator {
                 id: preCheckBusyIndicator
                 anchors.horizontalCenter: parent.horizontalCenter
