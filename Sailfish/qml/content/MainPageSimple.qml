@@ -93,7 +93,7 @@ Page {
             Image {
                 width: 492
                 height: 492
-                source: "../../wallicons/mainpage.png"
+                source: "../../wallicons/wall-ownKeys.png"
                 anchors.horizontalCenter: parent.horizontalCenter
 //                Tracer {}
             }
