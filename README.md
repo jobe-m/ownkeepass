@@ -45,8 +45,9 @@ TODO
 *   Implement locking of database after some time of inactivity [Done]
 *   Add some more fancy UI elements like icons for Keepass groups and entries, cover page, application icon, etc. [Done]
 *   Add copy'n'paste username and password funktionality to Cover Page [Done]
+*   Post some screenshots [Done]
 *   Add help pages and do some cleanup in the UI [Currently ongoing]
-*   Post some screenshots and publish review on my homepage tisno.de :D
+*   Publish review on my homepage tisno.de :D
 *   Prepare for first Release on Jolla Harbor :)
 
 That's it for now. Can't wait until I get my Jolla phone :)
@@ -57,3 +58,13 @@ Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
 [1]: http://www.keepassx.org                                           "KeepassX project homepage"
 [2]: https://sailfishos.org/sailfish-silica/sailfish-silica-all.html   "QtQuick Components for Sailfish"
+
+Screenshots
+-----------
+
+![ownKeepass main page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_MainPage.jpg)
+![ownKeepass query master password](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_QueryMasterPassword.jpg)
+![ownKeepass group view](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_GroupView.jpg)
+![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_SearchPage.jpg)
+![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_ShowEntryPage.jpg)
+![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_DatabaseSettings.jpg)
