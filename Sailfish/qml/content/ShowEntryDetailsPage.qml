@@ -143,7 +143,6 @@ Page {
 
                 IconButton {
                     id: showPasswordButton
-//                    width: icon.width
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge
                     anchors.verticalCenter: parent.verticalCenter

@@ -160,11 +160,9 @@ Dialog {
 
                 IconButton {
                     id: showPasswordButton
-                    width: icon.width
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge
-                    icon.source: "image://theme/icon-m-ambience"
-                    highlighted: entryPasswordTextField.echoMode === TextInput.Normal
+                    icon.source: entryPasswordTextField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
                     onClicked: {
                         entryPasswordTextField.forceActiveFocus()
                         if (entryPasswordTextField.echoMode === TextInput.Normal) {
