@@ -119,6 +119,7 @@ Page {
                     id: entryPasswordTextField
                     anchors.left: parent.left
                     anchors.right: showPasswordButton.left
+                    anchors.verticalCenter: parent.verticalCenter
                     opacity: 1.0
                     readOnly: true
                     echoMode: TextInput.Password
@@ -131,6 +132,7 @@ Page {
                     id: entryPasswordTextArea
                     anchors.left: parent.left
                     anchors.right: showPasswordButton.left
+                    anchors.verticalCenter: parent.verticalCenter
                     opacity: 0.0
                     readOnly: true
                     label: "Password"
@@ -141,11 +143,11 @@ Page {
 
                 IconButton {
                     id: showPasswordButton
-                    width: icon.width
+//                    width: icon.width
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge
-                    icon.source: "image://theme/icon-m-ambience"
-                    highlighted: entryPasswordTextField.opacity === 0.0
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: entryPasswordTextArea.opacity === 1.0 ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
                     onClicked: {
                         if (entryPasswordTextField.opacity === 1.0) {
                             entryPasswordTextArea.opacity = 1.0
