@@ -72,7 +72,7 @@ ListItem {
         anchors.verticalCenter: parent.verticalCenter
         width: 80
         height: 80
-        radius: 15
+        radius: 5
         color: "white"
         opacity: 0.1
     }
