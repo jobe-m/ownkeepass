@@ -25,8 +25,28 @@ import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
 
-CoverBackground {
+Cover {
     id: coverPage
+    anchors.centerIn: parent
+    width: Theme.coverSizeLarge.width
+    height: Theme.coverSizeLarge.height
+
+    Rectangle {
+        anchors.fill: parent
+        color: Theme.rgba(Theme.highlightColor, 0.2)
+
+        Image {
+            id: coverBackgroundImage
+            enabled: coverState === Global.constants.databaseEntryOpened
+            visible: enabled
+            width: parent.width * 0.85
+            height: width
+            anchors.top: parent.top
+            anchors.right: parent.right
+            source: "../../wallicons/cover-cloud.png"
+            opacity: 0.1
+        }
+    }
 
     property int coverState: Global.constants.databaseClosed
     property QtObject keepassSettings: null

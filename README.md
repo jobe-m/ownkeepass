@@ -68,4 +68,4 @@ Screenshots
 ![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_SearchPage.jpg)
 ![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_ShowEntryPage.jpg)
 ![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_DatabaseSettings.jpg)
-![ownKeepass cover page](https://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_Cover.jpg)
+![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_Cover.jpg)
