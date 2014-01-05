@@ -43,13 +43,21 @@ Page {
                 title: "ownKeepass"
                 subTitle: "Password Safe"
             }
-            SectionHeader {
+
+            SilicaLabel {
+                font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
                 text: "About"
             }
 
+            Image {
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+            }
+
             SilicaLabel {
-                text: "Version 1.0.0\n" +
-                      "Copyright (C) 2013 Marko Koschak <marko.koschak@tisno.de>\n\n" +
+                text: "Version 0.9.1 beta\n" +
+                      "Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)\n\n" +
                       "ownKeepass is a password safe for the Sailfish OS platform.\n" +
                       "Source code is available at: https://github.com/jobe-m/ownkeepass\n\n" +
                       "License:\n" +
