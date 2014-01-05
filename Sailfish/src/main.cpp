@@ -36,7 +36,7 @@
 #include "KdbGroup.h"
 #include "private/KdbInterface.h"
 
-Q_DECL_EXPORT int main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     // SailfishApp::main() will display "qml/harbour-ownkeepass.qml", if you need more
     // control over initialization, you can use:
@@ -49,10 +49,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app.data()->setOrganizationName("jobe-m");
-    app.data()->setApplicationName("harbour-ownKeepass");
+    app.data()->setApplicationName("harbour-ownkeepass");
 
-    // @uri KeepassPlugin
-    const char* uri("KeepassPlugin");
+    // @uri harbour.ownkeepass.KeepassXPlugin
+    const char* uri("harbour.ownkeepass.KeepassXPlugin");
     // make the following classes available in QML
     qmlRegisterType<kpxPublic::KdbDatabase>(uri, 1, 0, "KdbDatabase");
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");

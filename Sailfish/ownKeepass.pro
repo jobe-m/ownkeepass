@@ -51,8 +51,6 @@ SOURCES += src/main.cpp
 OTHER_FILES += \
     ../README.md \
     ../LICENSE \
-    rpm/harbour-ownKeepass.yaml \
-    rpm/harbour-ownKeepass.spec \
     harbour-ownkeepass.desktop \
     qml/harbour-ownkeepass.qml \
     qml/common/ViewSearchPlaceholder.qml \
@@ -80,4 +78,6 @@ OTHER_FILES += \
     qml/content/AboutPage.qml \
     qml/cover/CoverPage.qml \
     qml/scripts/Global.js \
-    qml/common/SilicaViewPlaceholder.qml
+    qml/common/SilicaViewPlaceholder.qml \
+    rpm/harbour-ownkeepass.spec \
+    rpm/harbour-ownkeepass.yaml

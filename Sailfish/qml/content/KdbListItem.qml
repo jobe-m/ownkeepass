@@ -23,7 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
-import KeepassPlugin 1.0
+import harbour.ownkeepass.KeepassXPlugin 1.0
 
 ListItem {
     id: kdbListItem
