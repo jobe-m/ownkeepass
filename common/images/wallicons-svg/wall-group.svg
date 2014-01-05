@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   inkscape:export-filename="/home/jobe/Development/SailfishOS-devel/ownKeepass/common/images/wallicons/wall-group.png"
+   inkscape:export-xdpi="382.5"
+   inkscape:export-ydpi="382.5"
+   sodipodi:docname="wall-group.svg"
+   style="enable-background:new">
+  <defs
+     id="defs2987" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#787878"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="10.890625"
+     inkscape:cx="32"
+     inkscape:cy="32"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:snap-grids="false"
+     inkscape:showpageshadow="true"
+     showborder="true"
+     borderlayer="true"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-global="false"
+     inkscape:snap-nodes="true"
+     inkscape:object-paths="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="876"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:snap-to-guides="false"
+     inkscape:snap-page="false" />
+  <metadata
+     id="metadata2990">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Background"
+     style="display:inline"
+     transform="translate(0,-32)">
+    <rect
+       style="fill:#0c6176;fill-opacity:1"
+       id="rect3884"
+       width="64.1642"
+       height="64.3284"
+       x="-0.16420364"
+       y="32" />
+  </g>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(0,16)"
+     style="display:inline">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.60000001999999997"
+       d="m 6.0203028,-7.7560975 c 0,0 7.0372832,-0.083186 9.7584182,0 2.721135,0.083186 3.16161,0.9409229 4.904035,2.348782 1.742425,1.4078591 2.795051,2.7582019 4.723714,2.7932553 1.928664,0.035053 16.134679,0 24.097346,0 1.656555,0 3.486222,1.5994152 3.477535,3.4720179 L 52.818897,35.876619 c -0.0087,1.872603 -2.160016,3.380196 -3.816572,3.380196 l -43.6247769,0 c -1.6565562,0 -3.0819956,-1.507568 -3.0819956,-3.380196 l 0,-40.2525207 c 0,-1.8726285 2.0308143,-3.3801958 3.7247503,-3.3801958 z"
+       id="rect4635"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="szzzcsssssss" />
+    <rect
+       style="fill:#ffffff;display:none"
+       id="rect3772"
+       width="64.367813"
+       height="46.305416"
+       x="15.763547"
+       y="-7.336617" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;stroke-width:0.50775597;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4625"
+       width="51.832733"
+       height="38.824081"
+       x="11.30197"
+       y="1.7547764"
+       ry="4.3558731"
+       transform="matrix(1,0,-0.24436488,0.96968335,0,0)" />
+  </g>
+</svg>

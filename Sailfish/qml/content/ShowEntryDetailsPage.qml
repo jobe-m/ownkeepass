@@ -50,9 +50,10 @@ Page {
         contentWidth: parent.width
         contentHeight: col.height
 
-        ViewPlaceholder {
+        SilicaViewPlaceholder {
             enabled: !entryUrlTextArea.enabled && !entryUsernameTextArea.enabled &&
                      !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
+            image.source: "../../wallicons/wall-key.png"
             text: "No content"
             hintText: "Pull down to add Url, Username, Password and Comment"
         }

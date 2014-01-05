@@ -169,8 +169,9 @@ Page {
             }
         }
 
-        ViewPlaceholder {
+        SilicaViewPlaceholder {
             id: viewPlaceholder
+            image.source: "../../wallicons/wall-group.png"
             text: "Group is empty"
         }
 
