@@ -43,39 +43,43 @@ Page {
                 title: "ownKeepass"
                 subTitle: "Password Safe"
             }
-            SectionHeader {
+
+            SilicaLabel {
+                font.pixelSize: Theme.fontSizeLarge
+                font.bold: true
                 text: "Help"
             }
 
             SilicaLabel {
-                text: "ownKeepass is a password safe application where you can store your passwords or other " +
-                      "secret data like PIN or TAN numbers. All data is encrypted and can only be " +
-                      "accessed by knowing the master password of the password safe. " +
-                      "ownKeepass can open Keepass database files compatible with Keepass version 1 on Windows or " +
-                      "KeepassX 0.4.3 on Windows/MacOS/Linux. Please note that it cannot open Keepass version 2 " +
-                      "database files. If you share your Keepass database with a desktop system it is " +
-                      "recommended that you use KeepassX 0.4.3. By doing so you archive maximum compatibility " +
-                      "since the database code of ownKeepass is based on KeepassX 0.4.3." +
-                      "\n\n" +
-                      "Settings:\n\n" +
-                      "The default location for you Keepass database file is \"/user/home/MyDocs/notes.kdb\". " +
-                      "You can change it in the Application Settings at \"Path to Keepass database file\".\n" +
-                      "If you want to use a key file together with your Keepass database file add a valid path and file name " +
-                      "into \"Path to Keepass key file (optional)\", e.g. \"/user/home/MyDocs/keyfile\". " +
-                      "" +
-                      "\n\n" +
-                      "Password Groups:\n\n" +
-                      "" +
-                      "" +
-                      "\n\n" +
-                      "Password Entries:\n\n" +
-                      "" +
-                      "" +
-                      "\n\n" +
-                      "Search:\n\n" +
-                      "" +
-                      "" +
-                      "\n"            }
+                text: "ownKeepass is a password safe application where you can store your passwords or other \
+secret data like PIN or TAN numbers. All data is encrypted and can only be \
+accessed by knowing the master password of the password safe. \
+ownKeepass can open Keepass database files compatible with Keepass version 1 on Windows or \
+KeepassX 0.4.3 on Windows/MacOS/Linux. Please note that it cannot open Keepass version 2 \
+database files. If you share your Keepass database with a desktop system it is \
+recommended that you use KeepassX 0.4.3. By doing so you archive maximum compatibility \
+since the database code of ownKeepass is based on KeepassX 0.4.3.\
+\n\n\
+Settings:\n\n\
+The default location for you Keepass database file is \"/user/home/MyDocs/notes.kdb\". \
+You can change it in the Application Settings at \"Path to Keepass database file\".\n\
+If you want to use a key file together with your Keepass database file add a valid path and file name \
+into \"Path to Keepass key file (optional)\", e.g. \"/user/home/MyDocs/keyfile\". \
+\
+\n\n\
+Password Groups:\n\n\
+\
+\
+\n\n\
+Password Entries:\n\n\
+\
+\
+\n\n\
+Search:\n\n\
+\
+\
+\n"
+            }
         }
     }
 }

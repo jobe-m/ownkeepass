@@ -118,7 +118,7 @@ Dialog {
             }
 
             TextSwitch {
-                text: "Open per default"
+                text: "Open as default"
                 checked: Global.env.keepassSettings.loadDefault
                 onCheckedChanged: {
                     // save into keepass settings object and LS database

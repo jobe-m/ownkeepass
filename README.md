@@ -46,7 +46,8 @@ TODO
 *   Add some more fancy UI elements like icons for Keepass groups and entries, cover page, application icon, etc. [Done]
 *   Add copy'n'paste username and password funktionality to Cover Page [Done]
 *   Post some screenshots [Done]
-*   Add help pages and do some cleanup in the UI [Currently ongoing]
+*   Do some cleanup in the UI [Done]
+*   Add help pages [Currently ongoing]
 *   Publish review on my homepage tisno.de :D
 *   Prepare for first Release on Jolla Harbor :)
 
