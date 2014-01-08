@@ -51,34 +51,22 @@ Page {
             }
 
             SilicaLabel {
-                text: "ownKeepass is a password safe application where you can store your passwords or other \
-secret data like PIN or TAN numbers. All data is encrypted and can only be \
-accessed by knowing the master password of the password safe. \
-ownKeepass can open Keepass database files compatible with Keepass version 1 on Windows or \
-KeepassX 0.4.3 on Windows/MacOS/Linux. Please note that it cannot open Keepass version 2 \
-database files. If you share your Keepass database with a desktop system it is \
-recommended that you use KeepassX 0.4.3. By doing so you archive maximum compatibility \
-since the database code of ownKeepass is based on KeepassX 0.4.3.\
-\n\n\
-Settings:\n\n\
-The default location for you Keepass database file is \"/user/home/MyDocs/notes.kdb\". \
-You can change it in the Application Settings at \"Path to Keepass database file\".\n\
-If you want to use a key file together with your Keepass database file add a valid path and file name \
-into \"Path to Keepass key file (optional)\", e.g. \"/user/home/MyDocs/keyfile\". \
+                text: "ownKeepass is a password safe application with the purpose to \
+store login information like username and password for web pages, credit card numbers, \
+PINs, TANs and other bits of information which should be kept secret. All that information \
+is saved in a database file which is encrypted and stored locally on the phone. To open \
+the database you need to know the master password of the database. The used database \
+format is compatible to Keepass version 1. That means you can use Keepass on your desktop \
+system to decrypt and open that database file, too.<br><br>\
 \
-\n\n\
-Password Groups:\n\n\
+Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is \
+planned for a future release of ownKeepass.<br><br>\
+\
+Some words about Keepass database security\
+The database code in ownKeepass is based on the KeepassX project.\
 \
 \
-\n\n\
-Password Entries:\n\n\
-\
-\
-\n\n\
-Search:\n\n\
-\
-\
-\n"
+"
             }
         }
     }
