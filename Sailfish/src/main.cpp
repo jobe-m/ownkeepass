@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
-    app.data()->setOrganizationName("jobe-m");
+    app.data()->setOrganizationName("tisno.de");
     app.data()->setApplicationName("harbour-ownkeepass");
 
     // @uri harbour.ownkeepass.KeepassXPlugin
