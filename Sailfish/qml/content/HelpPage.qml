@@ -26,6 +26,10 @@ import "../common"
 
 Page {
     id: page
+
+    // set to default help text showing on main page
+    state: "MainPage"
+
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -51,6 +55,16 @@ Page {
             }
 
             SilicaLabel {
+                id: helpText
+            }
+        }
+    }
+
+    states: [
+        State {
+            name: "MainPage"
+            PropertyChanges {
+                target: helpText
                 text: "ownKeepass is a password safe application with the purpose to \
 protect sensible data like passwords for web pages, credit card numbers, \
 PINs, TANs and other bits of information which should be kept secret. All that information \
@@ -112,6 +126,13 @@ of ownKeepass:<br>\
 [4] <a href=\"http://www.keepass.info/download.html\">www.keepass.info/download.html</a><br><br>\
 "
             }
+        },
+        State {
+            name: "QueryPasswordPage"
+            PropertyChanges {
+                target: helpText
+                text: ""
+            }
         }
-    }
+    ]
 }
