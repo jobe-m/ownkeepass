@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     app.data()->setApplicationName("harbour-ownkeepass");
 
     // @uri harbour.ownkeepass.KeepassXPlugin
-    const char* uri("harbour.ownkeepass.KeepassXPlugin");
+    const char* uri("harbour.ownKeepass");
     // make the following classes available in QML
     qmlRegisterType<kpxPublic::KdbDatabase>(uri, 1, 0, "KdbDatabase");
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
