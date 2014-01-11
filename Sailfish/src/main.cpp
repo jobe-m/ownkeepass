@@ -26,7 +26,9 @@
 
 #include <QDebug>
 #include <QGuiApplication>
+#include <QQuickView>
 #include <QScopedPointer>
+#include <QStandardPaths>
 #include <QtQml>
 #include <sailfishapp.h>
 
@@ -48,16 +50,26 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
-    app.data()->setOrganizationName("tisno.de");
-    app.data()->setApplicationName("harbour-ownkeepass");
+    QScopedPointer<QQuickView> view(SailfishApp::createView());
+    app->setOrganizationName("tisno.de");
+    app->setApplicationName("harbour-ownkeepass");
 
-    // @uri harbour.ownkeepass.KeepassXPlugin
-    const char* uri("harbour.ownKeepass");
+    // @uri harbour.ownkeepass
+    const char* uri("harbour.ownkeepass");
     // make the following classes available in QML
     qmlRegisterType<kpxPublic::KdbDatabase>(uri, 1, 0, "KdbDatabase");
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
 
-    return SailfishApp::main(argc, argv);
+    // These are the predefined locations where the user can save the Keepass database and key file
+    const QString jollaPhoneDocumentsPath(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]);
+    const QString sdCardPath("/run/user/100000/media/sdcard");
+    const QString androidStoragePath("/data/sdcard");
+    view->rootContext()->setContextProperty("jollaPhoneDocumentsPath", jollaPhoneDocumentsPath);
+    view->rootContext()->setContextProperty("sdCardPath", sdCardPath);
+    view->rootContext()->setContextProperty("androidStoragePath", androidStoragePath);
+    view->setSource(SailfishApp::pathTo("qml/main.qml"));
+    view->show();
+    return app->exec();
 }

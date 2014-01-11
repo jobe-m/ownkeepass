@@ -69,7 +69,7 @@ ApplicationWindow
         // Later (in non simple mode) this will open the database out of recently opened databases where the user has ckecked "Open per default"
         property bool loadDefault: false
         // default database and key file paths used in simple mode to create one database easily
-        property string defaultDatabasePath: "/ownkeepass/notes.kdb"
+        property string defaultDatabasePath: jollaPhoneDocumentsPath + "/ownkeepass/notes.kdb"
         property string defaultKeyFilePath: ""
         property int defaultCryptAlgorithm: 0  // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultKeyTransfRounds: 50000
@@ -80,6 +80,7 @@ ApplicationWindow
         property bool copyNpasteFromCover: true
 
         Component.onCompleted: {
+            console.log("Predefined locations: " + jollaPhoneDocumentsPath + " " + sdCardPath + " " + androidStoragePath)
             Global.env.setKeepassSettings(keepassSettings)
             initDatabase()
             loadSettings()
