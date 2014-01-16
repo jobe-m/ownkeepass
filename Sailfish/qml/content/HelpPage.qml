@@ -65,6 +65,7 @@ Page {
             name: "MainPage"
             PropertyChanges {
                 target: helpText
+                linkColor: Theme.highlightColor
                 text: "ownKeepass is a password safe application with the purpose to \
 protect sensible data like passwords for web pages, credit card numbers, \
 PINs, TANs and other bits of information which should be kept secret. All that information \
@@ -111,11 +112,11 @@ harder for an attacker to crack your Keepass database because the key file conte
 impossible to guess.<br><br>\
 \
 <b>What to expect in future versions of ownKeepass</b><br>\
-I don't want to put it in store yet but here is a list of features you might see in future versions \
+I don't want to set it in stone yet but here is a list of features you might see in future versions \
 of ownKeepass:<br>\
 <ul>\
 <li>Build-in sync of database file with a WebDAV server like ownCloud</li>\
-<li>If feasible auto-type of username and passwords into web pages</li>\
+<li>If feasible auto-type of username and passwords into web page</li>\
 <li>Support for Keepass version 2.x database files</li>\
 </ul>\
 \

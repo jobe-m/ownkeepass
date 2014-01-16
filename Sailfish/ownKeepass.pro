@@ -45,8 +45,17 @@ INSTALLS += common_qml_and_image_files
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
 
+INCLUDEPATH += ../common/src/settings
+
 # C++ sources
-SOURCES += src/main.cpp
+SOURCES += src/main.cpp \
+    src/OwnKeepassHelper.cpp \
+    ../common/src/settings/setting.cpp
+
+# C++ headers
+HEADERS += \
+    src/OwnKeepassHelper.h \
+    ../common/src/settings/setting.h
 
 OTHER_FILES += \
     ../README.md \
@@ -61,8 +70,6 @@ OTHER_FILES += \
     qml/content/ShowEntryDetailsPage.qml \
     qml/content/SelectDatabasePage.qml \
     qml/content/QueryPasswordDialog.qml \
-    qml/content/MainPageSimple.qml \
-    qml/content/MainPage.qml \
     qml/content/KdbListItem.qml \
     qml/content/HelpPage.qml \
     qml/content/GroupsAndEntriesPage.qml \
@@ -78,6 +85,8 @@ OTHER_FILES += \
     qml/scripts/Global.js \
     qml/common/SilicaViewPlaceholder.qml \
     rpm/harbour-ownkeepass.yaml \
-    qml/main.qml \
     harbour-ownkeepass.desktop \
-    rpm/harbour-ownkeepass.spec
+    rpm/harbour-ownkeepass.spec \
+    qml/Main.qml \
+    qml/content/MainPageObsolete.qml \
+    qml/content/MainPage.qml

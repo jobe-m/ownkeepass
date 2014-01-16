@@ -31,8 +31,6 @@ Dialog {
     // save cover state because database settings page can be opened from various
     // pages like list view or edit dialogs, which have different cover states
     property int saveCoverState: -1
-    property bool defaultDatabaseFilePathChanged: false
-    property bool defaultKeyFilePathChanged: false
     property bool defaultCryptAlgorithmChanged: false
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
@@ -44,7 +42,7 @@ Dialog {
     function updateCoverState() {
         if (saveCoverState === -1) // save initial state
             editSettingsDialog.saveCoverState = applicationWindow.cover.coverState
-        if (defaultDatabaseFilePathChanged || defaultKeyFilePathChanged ||
+        if (
                 defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
@@ -54,9 +52,6 @@ Dialog {
             applicationWindow.cover.coverState = editSettingsDialog.saveCoverState
         }
     }
-
-    // forbit page navigation if path to keepass database and key file (if used) is not set
-    canNavigateForward: !defaultDatabaseFilePath.errorHighlight && (useKeyFile.checked ? !defaultKeyFilePath.errorHighlight : true)
 
     SilicaFlickable {
         anchors.fill: parent
@@ -79,83 +74,11 @@ Dialog {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "Keepass Settings"
+                text: "ownKeepass Settings"
             }
 
             SilicaLabel {
-                text: "Change default settings of your ownKeepass application here"
-            }
-
-// TODO We have currently only simple mode
-//                            TextSwitch {
-//                                id: simpleMode
-//                                checked: Global.env.keepassSettings.simpleMode
-//                                text: "Use Simple Mode"
-//                                description: "In simple mode below default Keepass database is automatically loaded on application start. " +
-//                                             " If you switch this off you get a list of recently opened Keepass database files instead."
-//                            }
-
-//                            SectionHeader {
-//                                text: "Database"
-//                            }
-
-            Column {
-                width: parent.width
-                spacing: 0
-
-                SilicaLabel {
-                    text: Global.env.keepassSettings.simpleMode ?
-                              "This is the name and path of your Keepass database file:" :
-                              "This is the path where new Keepass database files will be stored:"
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                }
-
-                TextField {
-                    id: defaultDatabaseFilePath
-                    width: parent.width
-                    inputMethodHints: Qt.ImhUrlCharactersOnly
-                    label: "Keepass database file path"
-                    placeholderText: "Set Keepass database file path"
-                    errorHighlight: text === ""
-                    text: Global.env.keepassSettings.defaultDatabasePath
-                    EnterKey.onClicked: parent.focus = true
-                    onTextChanged: {
-                        editSettingsDialog.defaultDatabaseFilePathChanged =
-                                (text !== Global.env.keepassSettings.defaultDatabasePath ? true : false)
-                        editSettingsDialog.updateCoverState()
-                    }
-                }
-            }
-
-            TextSwitch {
-                id: useKeyFile
-                checked: Global.env.keepassSettings.defaultKeyFilePath !== ""
-                text: "Use Key File"
-                description: Global.env.keepassSettings.simpleMode ?
-                                 "Switch this on to use a key file together with a master password for your Keepass database" :
-                                 "Switch this on to use a key file together with a master password when creating a new Keepass database"
-            }
-
-            TextField {
-                id: defaultKeyFilePath
-                enabled: useKeyFile.checked
-                opacity: useKeyFile.checked ? 1.0 : 0.0
-                height: useKeyFile.checked ? implicitHeight : 0
-                width: parent.width
-                inputMethodHints: Qt.ImhUrlCharactersOnly
-                label: "Path and filename of key file"
-                placeholderText: "Set path and filename of key file"
-                errorHighlight: text === ""
-                text: Global.env.keepassSettings.defaultKeyFilePath
-                EnterKey.onClicked: parent.focus = true
-                onTextChanged: {
-                    editSettingsDialog.defaultKeyFilePathChanged =
-                            (text !== Global.env.keepassSettings.defaultKeyFilePath ? true : false)
-                    editSettingsDialog.updateCoverState()
-                }
-                Behavior on opacity { NumberAnimation { duration: 500 } }
-                Behavior on height { NumberAnimation { duration: 500 } }
+                text: "Change default settings of your ownKeepass Application here"
             }
 
             Column {
@@ -327,39 +250,28 @@ Dialog {
     }
 
     onAccepted: {
-        // first save locally database settings then trigger saving
-        var defaultKeyFilePathTemp = ""
-        if (useKeyFile.checked)
-            defaultKeyFilePathTemp = defaultKeyFilePath.text
-        kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
-                                               defaultKeyFilePathTemp,
-                                               defaultCryptAlgorithm.currentIndex,
-                                               Number(defaultKeyTransfRounds.text),
-                                               inactivityLockTime.value,
-                                               showUserNamePasswordInListView.checked,
-                                               showUserNamePasswordOnCover.checked,
-                                               lockDatabaseFromCover.checked,
-                                               copyNpasteFromCover.checked)
+        // First save locally ownKeepass settings then trigger saving
+        kdbListItemInternal.setKeepassSettings(
+                    defaultCryptAlgorithm.currentIndex,
+                    Number(defaultKeyTransfRounds.text),
+                    inactivityLockTime.value,
+                    showUserNamePasswordInListView.checked,
+                    showUserNamePasswordOnCover.checked,
+                    lockDatabaseFromCover.checked,
+                    copyNpasteFromCover.checked)
         kdbListItemInternal.saveKeepassSettings()
     }
 
     onRejected: {
-        // no need for saving if input field for master password is invalid
-        if (canNavigateForward) {
-            // first save locally database settings then trigger check for unsaved changes
-            var defaultKeyFilePathTemp = ""
-            if (useKeyFile.checked)
-                defaultKeyFilePathTemp = defaultKeyFilePath.text
-            kdbListItemInternal.setKeepassSettings(defaultDatabaseFilePath.text,
-                                                   defaultKeyFilePathTemp,
-                                                   defaultCryptAlgorithm.currentIndex,
-                                                   Number(defaultKeyTransfRounds.text),
-                                                   inactivityLockTime.value,
-                                                   showUserNamePasswordInListView.checked,
-                                                   showUserNamePasswordOnCover.checked,
-                                                   lockDatabaseFromCover.checked,
-                                                   copyNpasteFromCover.checked)
-            kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
-        }
+        // Save ownKeepass settings to check for unsaved changes
+        kdbListItemInternal.setKeepassSettings(
+                    defaultCryptAlgorithm.currentIndex,
+                    Number(defaultKeyTransfRounds.text),
+                    inactivityLockTime.value,
+                    showUserNamePasswordInListView.checked,
+                    showUserNamePasswordOnCover.checked,
+                    lockDatabaseFromCover.checked,
+                    copyNpasteFromCover.checked)
+        kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }

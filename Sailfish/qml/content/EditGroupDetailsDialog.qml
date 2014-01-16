@@ -76,7 +76,10 @@ Dialog {
                 placeholderText: "Set name of group"
                 errorHighlight: text === ""
                 EnterKey.highlighted: !errorHighlight
-                EnterKey.onClicked: parent.focus = true
+                EnterKey.onClicked: {
+                    accept()
+                    close()
+                }
                 onTextChanged: {
                     if (editGroupDetailsDialog.origGroupTitle !== text) {
                         applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges

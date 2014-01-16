@@ -57,6 +57,7 @@ Page {
 
             SilicaLabel {
                 textFormat: Text.StyledText
+                linkColor: Theme.highlightColor
                 text: "Version 0.9.1 beta<br>\
 Copyright (C) 2013-2014 Marko Koschak \
 &lt;<a href=\"mailto:marko.koschak@tisno.de?subject=ownKeepass%20comment\">marko.koschak@tisno.de</a>&gt;<br><br>\
@@ -80,6 +81,7 @@ https://www.tisno.de/index.php/open-source/169-ownkeepass-for-sailfishos</a><br>
 
             SilicaLabel {
                 textFormat: Text.StyledText
+                linkColor: Theme.highlightColor
                 text: "This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.<br><br>\
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details: <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>.<br><br>\
 <b>ownKeepass includes source code from other projects:</b><br><br>\
@@ -125,7 +127,7 @@ GPLv2<br><br>\
 Yarrow pseudo-randomness generator:<br>\
 Copyright (C) 2007 Tarek Saidi<br>\
 Copyright (C) 2001 Niels Müler<br>\
-GPLv2"
+GPLv2<br>"
                 onLinkActivated: {
                     console.log(link + " link activated")
                     Qt.openUrlExternally(link)
