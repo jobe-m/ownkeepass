@@ -4,7 +4,7 @@ ownKeepass
 Status
 ------
 
-Beta release 0.9.2 available for early testers for the Jolla Phone here [1]
+Beta release 0.9.2 available for early testers for the Jolla Phone [here] [1]
 
 I am currently working on to bugs (#25, #26) and finishing the help pages (#6). Afte that the App goes to Jolla Harbour.
 
@@ -16,7 +16,7 @@ protect sensible data like passwords for web pages, credit card numbers,
 PINs, TANs and other bits of information which should be kept secret. All that information
 is saved in a database file which is encrypted and stored locally on your phone. To open
 the database you need to know the master password of the database. The used database
-format is compatible to Keepass version 1.x. That means you can use Keepass [2] on your desktop
+format is compatible to Keepass version 1.x. That means you can use [Keepass] [2] on your desktop
 system to decrypt and open that database file, too.
 
 Please note that currently ownKeepass cannot load or save Keepass version 2.x databases. This is
@@ -30,7 +30,7 @@ I started to work on this project beginning of 2012 when QML started to get usab
 Some words about Keepass database security
 ------------------------------------------
 
-The database code in ownKeepass is based on the KeepassX project [3] and as such conains a lot of
+The database code in ownKeepass is based on the [KeepassX project] [3] and as such conains a lot of
 security related features. It uses proven encryption algorithms like Advanced Encryption Standard
 (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing
 algorithm and in-memory encryption of all passwords. Furthermore it protects the master
@@ -40,16 +40,16 @@ adjusted in database settings. Anyway that all just adds additional security to 
 you should be aware of:
 
 *   Always use a long enough and difficult to guess master password.
-*   Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [4]: "If a bad guy can persuade you to run his program on your computer, it's not your computer anymore".
+*   Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the [10 Immutable Laws of Security] [4]: "If a bad guy can persuade you to run his program on your computer, it's not your computer anymore".
 
 Sharing Keepass database between your jolla phone and your desktop PC
 ---------------------------------------------------------------------
 
 The Keepass database file format is perfect to share your password safe between different
 systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass
-implementations available for those platforms. Have a look at the Keepass download page [5] to get the classic Keepass 1.x
+implementations available for those platforms. Have a look at the [Keepass download page] [5] to get the classic Keepass 1.x
 version for the desktop PC. There is also a list of alternative Keepass implementations on that page.
-I would also like to point you to KeepassX version 0.4.3 [3] which is also
+I would also like to point you to [KeepassX version 0.4.3] [3] which is also
 compatible with Keepass version 1.x.
 You can share your Keepass database file via SD card or via a cloud service like Dropbox.
 When using a cloud server I would recommend to use a key file in addition to the master password.
@@ -93,7 +93,6 @@ of ownKeepass:
 *   If feasible auto-type of username and passwords into web page
 *   Support for Keepass version 2.x database files
 
-
 That's it so far.
 
 16-Jan-2014
@@ -105,3 +104,14 @@ Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 [3]: http://www.keepassx.org                                           "KeepassX project homepage"
 [4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
+
+Screenshots
+-----------
+
+![ownKeepass main page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_MainPage.jpg)
+![ownKeepass query master password](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_QueryMasterPassword.jpg)
+![ownKeepass group view](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_GroupView.jpg)
+![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_SearchPage.jpg)
+![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_ShowEntryPage.jpg)
+![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_DatabaseSettings.jpg)
+![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_Cover.jpg)
