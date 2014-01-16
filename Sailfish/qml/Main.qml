@@ -69,7 +69,7 @@ ApplicationWindow
         // This is used to check if settings from some older ownKeepass version are available
         // If yes they might need to be merged into new version
         property string previousVersion: ""
-        property string version: "0.9.1"
+        property string version: "0.9.2"
 
         // Load as default
         // false: do not auto load last opened database
