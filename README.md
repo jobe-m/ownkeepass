@@ -6,7 +6,11 @@ Status
 
 Beta release 0.9.2 available for early testers for the Jolla Phone [here] [1]
 
-I am currently working on to bugs (#25, #26) and finishing the help pages (#6). Afte that the App goes to Jolla Harbour.
+Current limitations/bugs for release 1.0.0:
+*   Recent database list on main page not saved on app closure; Clicking on item in recent database list does not have any effect; Automatic opening of a database not yet working (switch below password field on Opening database page) (BUG #25)
+*   Not all help pages have meaningful content (REQ #6)
+*   Release build does not work on device (emulator not checked) (BUG #27)
+*   Keepass database cannot be opened with key file only password is working currently (BUG #26)
 
 What is this?
 -------------
