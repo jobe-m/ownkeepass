@@ -42,7 +42,6 @@ public:
                STORED true SCRIPTABLE true)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
-    Q_INVOKABLE void preCheck(const QString& dbFilePath, const QString &keyFilePath);
     Q_INVOKABLE void open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
     Q_INVOKABLE void create(const QString& dbFilePath, const QString &keyFilePath, const QString& password);
     Q_INVOKABLE void close();
@@ -55,6 +54,7 @@ public:
         RE_DB_ALREADY_CLOSED,                       // database already closed, no harm
         RE_DB_CLOSE_FAILED,                         // database closing failed
         RE_DB_FILE_ERROR,                           // file path error for new database
+        RE_DB_SETKEY_ERROR,                         // error setting key (consisting of password and/or keyfile
         RE_DB_SETPW_ERROR,                          // error setting password for database
         RE_DB_SETKEYFILE_ERROR,                     // error setting key file for database
         RE_DB_LOAD_ERROR,                           // error during loading and reading from database
@@ -84,7 +84,6 @@ public:
 
 signals:
     // signals to KdbInterface backend thread
-    void preCheckFilePaths(QString dbFile, QString keyFile);
     void openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
     void createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
     void closeDatabase();
@@ -94,14 +93,13 @@ signals:
     void setting_showUserNamePasswordsInListView(bool value);
 
     // signals to QML
-    void preCheckDone(int result);
-    void databaseOpened(int result, QString errorMsg);
-    void newDatabaseCreated(int result, QString errorMsg);
-    void databaseClosed(int result, QString errorMsg);
-    void databasePasswordChanged(int result, QString errorMsg);
+    void databaseOpened();
+    void newDatabaseCreated();
+    void databaseClosed();
+    void databasePasswordChanged();
     void keyTransfRoundsChanged();
     void cryptAlgorithmChanged();
-    void errorOccured(int result);
+    void errorOccured(int result, QString errorMsg);
 
 private slots:
     // signals from KdbInterface backend thread

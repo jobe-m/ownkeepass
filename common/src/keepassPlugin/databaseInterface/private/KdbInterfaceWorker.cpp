@@ -70,37 +70,6 @@ void KdbInterfaceWorker::initKdbDatabase()
     config = new KpxConfig("keepassx-config.ini");
 }
 
-void KdbInterfaceWorker::slot_preCheckFilePaths(QString dbFile, QString keyFile)
-{
-    qDebug() << "KdbInterfaceWorker::slot_preCheckFilePaths() - " << dbFile << " - " << keyFile;
-    // Check if database file exists
-    if (dbFile != "" && QFile::exists(dbFile)) {
-        // Database file exists
-        if (keyFile == "" || QFile::exists(keyFile)) {
-            // Database file is present and key file is either not needed or also present
-            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_OK);
-        } else {
-            // Key file is not present
-            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_ERROR);
-        }
-    } else {
-        // Database file is not present
-        // Create parent directory if it does not exists
-        qDebug() << "Db file path: " << QFileInfo(dbFile).path();
-        if (QDir(QFileInfo(dbFile).path()).mkpath(QFileInfo(dbFile).path())) {
-            if (keyFile == "" || QFile::exists(keyFile)) {
-                // Database paht is present and key file is either not needed or also present
-                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_DB_PATH_ERROR);
-            } else {
-                // Key file is not present
-                emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_KEY_FILE_PATH_ERROR);
-            }
-        } else {
-            emit preCheckFilePathsDone(kpxPublic::KdbDatabase::RE_PRECHECK_DB_PATH_CREATION_ERROR);
-        }
-    }
-}
-
 #define OPEN_DB_CLEANUP \
     delete m_kdb3Database; \
     m_kdb3Database = NULL; \
@@ -108,12 +77,12 @@ void KdbInterfaceWorker::slot_preCheckFilePaths(QString dbFile, QString keyFile)
 
 void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
 {
-    qDebug() << "KdbInterfaceWorker::slot_openDatabase()";
+//    qDebug() << "KdbInterfaceWorker::slot_openDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
     // check if there is an already opened database and close it
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
             // send signal with error
-            emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+            emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
             qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
             OPEN_DB_CLEANUP
         }
@@ -124,26 +93,19 @@ void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, Q
     // create database object
     m_kdb3Database = new Kdb3Database();
 
-    // set master password to decrypt database
-    if (!m_kdb3Database->setPasswordKey(password)) {
+    // set master password and key file to decrypt database
+    if (!m_kdb3Database->setKey(password, keyfile)) {
         // send signal with error
-        emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SETKEY_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         OPEN_DB_CLEANUP
     }
-    // set key file to decrypt database if user has provided one
-    if (!keyfile.isEmpty()) {
-        if (!m_kdb3Database->setFileKey(keyfile)) {
-            // send signal with error
-            emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_SETKEYFILE_ERROR, m_kdb3Database->getError());
-            qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
-            OPEN_DB_CLEANUP
-        }
-    }
+// TODO check if needed
+//    m_kdb3Database->generateMasterKey();
     // open database
     if (!m_kdb3Database->load(filePath, readonly)) {
         // send signal with error
-        emit databaseOpened(kpxPublic::KdbDatabase::RE_DB_LOAD_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_LOAD_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         OPEN_DB_CLEANUP
     }
@@ -151,7 +113,7 @@ void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, Q
 // TODO create .lock file
 
     // database was opened successful
-    emit databaseOpened(kpxPublic::KdbDatabase::RE_OK, "");
+    emit databaseOpened();
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
@@ -162,12 +124,12 @@ void KdbInterfaceWorker::slot_closeDatabase()
 {
     // check if database is already closed
     if (!m_kdb3Database) {
-        emit databaseClosed(kpxPublic::KdbDatabase::RE_DB_ALREADY_CLOSED, "");
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_ALREADY_CLOSED, "");
         return;
     }
     // close database
     if (!m_kdb3Database->close()) {
-        emit databaseClosed(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -179,16 +141,17 @@ void KdbInterfaceWorker::slot_closeDatabase()
 // TODO delete .lock file
 
     // database was opened successful
-    emit databaseClosed(kpxPublic::KdbDatabase::RE_OK, "");
+    emit databaseClosed();
 }
 
 void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
 {
+//    qDebug() << "KdbInterfaceWorker::slot_createNewDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
     // check if there is an already opened database and close it
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
             // send signal with error
-            emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+            emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
             qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
             delete m_kdb3Database;
             m_kdb3Database = NULL;
@@ -204,7 +167,7 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString passwo
     m_kdb3Database->create();
     if (!m_kdb3Database->changeFile(filePath)) {
         // send signal with error
-        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_FILE_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_FILE_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -212,29 +175,19 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString passwo
     }
     m_kdb3Database->setCryptAlgorithm(CryptAlgorithm(cryptAlgorithm));
     m_kdb3Database->setKeyTransfRounds(keyTransfRounds);
-    if (!m_kdb3Database->setPasswordKey(password)) {
+    if (!m_kdb3Database->setKey(password, keyfile)) {
         // send signal with error
-        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SETKEY_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
         return;
     }
-    if (!keyfile.isEmpty()) {
-        if (!m_kdb3Database->setFileKey(keyfile)) {
-            // send signal with error
-            emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_SETKEYFILE_ERROR, m_kdb3Database->getError());
-            qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
-            delete m_kdb3Database;
-            m_kdb3Database = NULL;
-            return;
-        }
-    }
     m_kdb3Database->generateMasterKey();
     // a new database needs at least one group, so create backup group
     if (!m_kdb3Database->backupGroup(true)) {
         // send signal with error
-        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_CREATE_BACKUPGROUP_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CREATE_BACKUPGROUP_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -242,7 +195,7 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString passwo
     }
     if (!m_kdb3Database->save()) {
         // send signal with error
-        emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -252,7 +205,7 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString passwo
 // TODO create .lock file
 
     // send signal with success code
-    emit newDatabaseCreated(kpxPublic::KdbDatabase::RE_OK, "");
+    emit newDatabaseCreated();
 }
 
 void KdbInterfaceWorker::slot_changePassword(QString password)
@@ -261,17 +214,17 @@ void KdbInterfaceWorker::slot_changePassword(QString password)
     Q_ASSERT(m_kdb3Database);
     if (!m_kdb3Database->setPasswordKey(password)) {
         // send signal with error
-        emit passwordChanged(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
         return;
     }
     m_kdb3Database->generateMasterKey();
     // save database
     if (!m_kdb3Database->save()) {
         // send signal with error
-        emit passwordChanged(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
         return;
     }
-    emit passwordChanged(kpxPublic::KdbDatabase::RE_OK, "");
+    emit passwordChanged();
 }
 
 void KdbInterfaceWorker::slot_loadMasterGroups()
@@ -682,7 +635,7 @@ void KdbInterfaceWorker::slot_changeKeyTransfRounds(int value)
     emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit databaseErrorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR);
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, "");
         return;
     }
 }
@@ -697,7 +650,7 @@ void KdbInterfaceWorker::slot_changeCryptAlgorithm(int value)
     emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit databaseErrorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR);
+        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, "");
         return;
     }
 }

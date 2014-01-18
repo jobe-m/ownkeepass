@@ -658,7 +658,7 @@ bool Kdb3Database::loadReal(QString filename, bool readOnly, bool differentEncod
 			qDebug("Decryption failed. Retrying with UTF-8.");
 			return loadReal(filename, readOnly, true); // second/third try
 		}
-        error=tr("Hash test failed. The password is wrong or the file is damaged.");
+        error=tr("Hash test failed. The password is wrong or the key file is damaged.");
 		KeyError=true;
 		LOAD_RETURN_CLEANUP
 	}

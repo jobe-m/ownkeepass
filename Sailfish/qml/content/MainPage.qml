@@ -147,8 +147,7 @@ Page {
                                                 {
                                                     "state": "OpenNewDatabase",
                                                     "dbFileLocation": 0,
-//TODO ->
-                                                    "dbFilePath": "ownkeepass/notes.kdb", // only for testing will be removed to ""
+                                                    "dbFilePath": "",
                                                     "useKeyFile": false,
                                                     "keyFileLocation": 0,
                                                     "keyFilePath": "",
@@ -264,9 +263,11 @@ Page {
 
     KdbDatabase {
         id: kdbDatabase
-        onDatabaseOpened: internal.databaseOpenedHandler(result, errorMsg)
-        onNewDatabaseCreated: internal.newDatabaseCreatedHandler(result, errorMsg)
-        onDatabaseClosed: internal.databaseClosedHandler(result, errorMsg)
+        onDatabaseOpened: internal.databaseOpenedHandler()
+        onNewDatabaseCreated: internal.newDatabaseCreatedHandler()
+        onDatabaseClosed: internal.databaseClosedHandler()
+        onDatabasePasswordChanged: internal.databasePasswordChangedHandler()
+        onErrorOccured: internal.errorHandler(result, errorMsg)
     }
 
     Component.onCompleted: {
@@ -343,9 +344,8 @@ Page {
                         masterGroupsPage.closeOnError()
                     }
                 } else {
-                    // Database file already exists, ask user if it should be overwritten
-// TODO
-                    Global.env.infoPopup.show("TODO ;)", "Ask user if he wants to overwrite existing database file. Please specify another database file in the mean time.", 0, false)
+                    // Database file already exists
+                    Global.env.infoPopup.show("Database File already exists", "Please specify another path or name for your Keepass database.", 0, false)
                     masterGroupsPage.closeOnError()
                 }
             } else {
@@ -354,16 +354,6 @@ Page {
                     if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
                         kdbDatabase.open(completeDbFilePath, completeKeyFilePath, password, false)
-
-                        // update recent database list
-                        Global.config.addNewRecent(dbFileLocation,
-                                                   databasePath,
-                                                   useKeyFile,
-                                                   keyFileLocation,
-                                                   keyFilePath)
-                        recentDatabasesRepeater.model = Global.config.getNumberOfRecents()
-// TODO
-//                        Global.env.keepassSettings.saveRecentDatabaseList()
                     } else {
                         // Key file should be used but does not exist
                         Global.env.infoPopup.show("Key File Error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
@@ -409,101 +399,75 @@ Page {
             kdbDatabase.showUserNamePasswordsInListView = Global.env.keepassSettings.showUserNamePasswordInListView
         }
 
-        function databaseOpenedHandler(result, errorMsg) {
-            var dialog
-            console.log("onDatabaseOpened: " + result)
+        function databaseOpenedHandler() {
+            // Yeah, database opened successfully, now init master groups page and cover page
+            masterGroupsPage.init()
+            // update recent database list
+            Global.config.addNewRecent(dbFileLocation,
+                                       databasePath,
+                                       useKeyFile,
+                                       keyFileLocation,
+                                       keyFilePath)
+            recentDatabasesRepeater.model = Global.config.getNumberOfRecents()
+// TODO
+//            Global.env.keepassSettings.saveRecentDatabaseList()
+        }
+
+        function newDatabaseCreatedHandler() {
+            // Yeah, database created successfully, now init master groups page and cover page
+            masterGroupsPage.init()
+        }
+
+        function databaseClosedHandler() {
+            console.log("Database closed")
+        }
+
+        function databasePasswordChangedHandler() {
+            console.log("Database password changed successfully")
+        }
+
+        function errorHandler(result, errorMsg) {
+            console.log("Database Error occured: " + result)
+            // show error to the user
             switch (result) {
-            case KdbDatabase.RE_OK:
-                // Yeah, database opened successfully, now init master groups page and cover page
-                masterGroupsPage.init()
-                break
-            case KdbDatabase.RE_DB_CLOSE_FAILED: {
-                // show error to the user
+            case KdbDatabase.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show("Internal Database Error", "Could not close the previous opened database. Please try again. Error message: " + errorMsg, 0, false)
                 masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_SETPW_ERROR: {
-                // show error to the user
-                Global.env.infoPopup.show("Internal Password Error", "The following error occured during opening of database: " + errorMsg, 0, false)
+                break
+            case KdbDatabase.RE_DB_SETKEY_ERROR:
+                Global.env.infoPopup.show("Internal Key Error", "The following error occured during opening of database: " + errorMsg, 0, false)
                 masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_SETKEYFILE_ERROR: {
-                // show error to the user
+                break
+            case KdbDatabase.RE_DB_SETKEYFILE_ERROR:
                 Global.env.infoPopup.show("Internal Keyfile Error", "The following error occured during opening of database: " + errorMsg, 0, false)
                 masterGroupsPage.closeOnError()
-                break }
+                break
             case KdbDatabase.RE_DB_LOAD_ERROR:
-                // show error to the user
-                Global.env.infoPopup.show("Password Error", errorMsg + " Please try again.", 0, false)
+                Global.env.infoPopup.show("Error loading Database", errorMsg + " Please try again.", 0, false)
                 masterGroupsPage.closeOnError()
                 break
-            default:
-                console.log("ERROR: unknown result on databaseOpened")
-                break
-            }
-        }
-
-        function newDatabaseCreatedHandler(result, errorMsg) {
-            var page
-            console.log("onNewDatabaseCreated: " + result)
-            switch (result) {
-            case KdbDatabase.RE_OK: {
-                // Yeah, database created successfully, now init master groups page and cover page
-                masterGroupsPage.init()
-                break }
-            case KdbDatabase.RE_DB_CLOSE_FAILED: {
-                // show error to the user
-                Global.env.infoPopup.show("Internal Database Error", "Could not close the previous opened database. Please try again. Error message: " + errorMsg, 0, false)
-                masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_FILE_ERROR: {
-                // show error to the user
+            case KdbDatabase.RE_DB_FILE_ERROR:
                 Global.env.infoPopup.show("Internal File Error", "The following error occured during creation of database: " + errorMsg, 0, false)
                 masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_SETPW_ERROR: {
-                // show error to the user
-                Global.env.infoPopup.show("Internal Password Error", "The following error occured during creation of database: " + errorMsg, 0, false)
-                masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_SETKEYFILE_ERROR: {
-                // show error to the user
-                Global.env.infoPopup.show("Internal Keyfile Error", "The following error occured during creation of database: " + errorMsg, 0, false)
-                masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR: {
-                // show error to the user
+                break
+            case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR:
                 Global.env.infoPopup.show("Internal Database Error", "Creation of backup group failed with following error: " + errorMsg, 0, false)
                 masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_SAVE_ERROR: {
-                // show error to the user
+                break
+            case KdbDatabase.RE_DB_SAVE_ERROR:
                 Global.env.infoPopup.show("Save Database Error", "Could not save database with following error: " + errorMsg, 0, false)
                 masterGroupsPage.closeOnError()
-                break }
-            default:
-                console.log("ERROR: unknown result on databaseCreated")
                 break
-            }
-        }
-
-        function databaseClosedHandler(result, errorMsg) {
-            switch (result) {
-            case KdbDatabase.RE_OK:
-                console.log("Database closed")
-                break
-            case KdbDatabase.RE_DB_ALREADY_CLOSED: {
-                // show error to the user
+            case KdbDatabase.RE_DB_ALREADY_CLOSED:
                 Global.env.infoPopup.show("Database Error", "Database was already closed. Nothing serious, but please submit a bug report.", 0, false)
                 masterGroupsPage.closeOnError()
-                break }
-            case KdbDatabase.RE_DB_CLOSE_FAILED: {
-                // show error to the user
+                break
+            case KdbDatabase.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show("Database Error", "An error occured on closing your database: " + errorMsg, 0, false)
                 masterGroupsPage.closeOnError()
-                break }
+                break
             default:
-                console.log("ERROR: unknown result on databaseClosed")
+                console.log("ERROR: unknown result on database error occured")
                 break
             }
         }

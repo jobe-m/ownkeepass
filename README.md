@@ -4,13 +4,16 @@ ownKeepass
 Status
 ------
 
-Beta release 0.9.3 available for early testers for the Jolla Phone [here] [1]
+Beta release 0.9.4 available for early testers for the Jolla Phone [here] [1]
 
 Current limitations/bugs:
-*   Recent database list on main page not saved on app closure; Automatic opening of a database not yet working (switch below password field on Opening database page) (BUG #25)
+*   Recent database list on main page not saved on app closure
+*   Recent database list not properly updated after opening an entry differend than the top most
+*   Automatic opening of a database not yet working (switch below password field on Opening database page)
 *   Not all help pages have meaningful content (REQ #6)
 *   Release build does not work on device (emulator not checked) (BUG #27)
-*   Keepass database cannot be opened with key file only password is working currently (BUG #26)
+
+I am currently preparing release 1.0 of ownKeepass for submission to Jolla Harbour. The status can be looked up [here] [6].
 
 What is this?
 -------------
@@ -108,6 +111,7 @@ Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 [3]: http://www.keepassx.org                                           "KeepassX project homepage"
 [4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
+[6]: https://github.com/jobe-m/ownkeepass/issues?milestone=1&state=open "Status of ownKeepass release 1.0"
 
 Screenshots
 -----------
