@@ -70,19 +70,6 @@ ApplicationWindow
         // If yes they might need to be merged into new version
         property string previousVersion: ""
         property string version: "0.9.2"
-
-        // Load as default
-        // false: do not auto load last opened database
-        // true: load last database on startup automatically
-        property bool loadLastDb: false
-
-        // recent list of opened databases
-        property string dbFileLocation: "0"
-        property string dbFilePath: ""
-        property string usekeyFile: "false"
-        property string keyFileLocation: "0"
-        property string keyFilePath: ""
-
         // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultCryptAlgorithm: 0
         property int defaultKeyTransfRounds: 50000
@@ -91,6 +78,20 @@ ApplicationWindow
         property bool showUserNamePasswordOnCover: true
         property bool lockDatabaseFromCover: true
         property bool copyNpasteFromCover: true
+
+        // Load as default
+        // false: do not auto load last opened database
+        // true: load last database on startup automatically
+        property bool loadLastDb: false
+
+// TODO this is not needed as the array from Global.config will be directly saved to settings.ini file
+        // recent list of opened databases
+//        property string dbFileLocation: "0"
+//        property string dbFilePath: ""
+//        property string usekeyFile: "false"
+//        property string keyFileLocation: "0"
+//        property string keyFilePath: ""
+
 
         Component.onCompleted: {
             Global.env.setKeepassSettings(keepassSettings)
@@ -158,74 +159,42 @@ ApplicationWindow
 //        }
 
         /*
-          This function is used to retrieve a setting from database
-          The function returns “Unknown” if the setting was not found in the database
+          This function is used to retrieve a setting from settings.ini file
+          The function returns default value if the setting was not found
           */
         function getSetting(setting, defaultValue) {
-//        function getSetting(setting) {
             return settings.getValue("main/" + setting, defaultValue);
-//            var db = getDatabase()
-//            var res = "UNKNOWN"
-//            db.transaction(function(tx) {
-//                var rs = tx.executeSql('SELECT value FROM settings WHERE setting=?;', [setting])
-//                if (rs.rows.length > 0) {
-//                    res = rs.rows.item(0).value
-//                }
-//            })
-//            return res
         }
 
         /*
-          This function is used to write a setting into the database.
+          This function is used to write a setting into settings.ini file
           setting: string representing the setting name
           value: string representing the value of the setting
-          The function returns “OK” if it was successful, or “Error” if it wasn't
           */
         function setSetting(setting, value) {
             settings.setValue("main/" + setting, value);
-//            var db = getDatabase()
-//            var res = ""
-//            db.transaction(function(tx) {
-//                var rs = tx.executeSql('INSERT OR REPLACE INTO settings VALUES (?,?);', [setting,value]);
-//                if (rs.rowsAffected > 0) {
-//                    res = "OK"
-//                } else {
-//                    console.log("ERROR: Cannot save setting - " + setting)
-//                    res = "ERROR"
-//                }
-//            })
-//            return res
         }
 
         function loadRecentDatabases() {
             loadLastDb = getSetting("loadLastDb", loadLastDb)
-            dbFileLocation = getSetting("dbFileLocation", dbFileLocation)
-            dbFilePath = getSetting("dbFilePath", dbFilePath)
-            usekeyFile = getSetting("usekeyFile", usekeyFile)
-            keyFileLocation = getSetting("keyFileLocation", keyFileLocation)
-            keyFilePath = getSetting("keyFilePath", keyFilePath)
-//            var value = getSetting("loadLastDb")
-//            loadLastDb = value !== "UNKNOWN" ? (value === "true" ? true : false) : loadLastDb
-//            value = getSetting("dbFileLocation")
-//            dbFileLocation = value !== "UNKNOWN" ? value : dbFileLocation
-//            value = getSetting("dbFilePath")
-//            dbFilePath = value !== "UNKNOWN" ? value : dbFilePath
-//            value = getSetting("usekeyFile")
-//            usekeyFile = value !== "UNKNOWN" ? value : usekeyFile
-//            value = getSetting("keyFileLocation")
-//            keyFileLocation = value !== "UNKNOWN" ? value : keyFileLocation
-//            value = getSetting("keyFilePath")
-//            keyFilePath = value !== "UNKNOWN" ? value : keyFilePath
+// TODO save arrays from Global.config
+
+//            dbFileLocation = getSetting("dbFileLocation", dbFileLocation)
+//            dbFilePath = getSetting("dbFilePath", dbFilePath)
+//            usekeyFile = getSetting("usekeyFile", usekeyFile)
+//            keyFileLocation = getSetting("keyFileLocation", keyFileLocation)
+//            keyFilePath = getSetting("keyFilePath", keyFilePath)
         }
 
         function saveRecentDatabases() {
             setSetting("loadLastDb", loadLastDb ? "true": "false")
-            setSetting("dbFileLocation", dbFileLocation)
-            setSetting("dbFilePath", dbFilePath)
-            setSetting("usekeyFile", usekeyFile)
-            setSetting("keyFileLocation", keyFileLocation)
-            setSetting("keyFilePath", keyFilePath)
+// TODO load arrays into Global.config
 
+//            setSetting("dbFileLocation", dbFileLocation)
+//            setSetting("dbFilePath", dbFilePath)
+//            setSetting("usekeyFile", usekeyFile)
+//            setSetting("keyFileLocation", keyFileLocation)
+//            setSetting("keyFilePath", keyFilePath)
         }
 
         function loadSettings() {
@@ -240,22 +209,6 @@ ApplicationWindow
             showUserNamePasswordOnCover = getSetting("showUserNamePasswordOnCover", showUserNamePasswordOnCover)
             lockDatabaseFromCover = getSetting("lockDatabaseFromCover", lockDatabaseFromCover)
             copyNpasteFromCover = getSetting("copyNpasteFromCover", copyNpasteFromCover)
-//            var value = getSetting("version")
-//            previousVersion = value !== "UNKNOWN" ? value : previousVersion
-//            value = getSetting("defaultCryptAlgorithm")
-//            defaultCryptAlgorithm = value !== "UNKNOWN" ? Number(value) : defaultCryptAlgorithm
-//            value = getSetting("defaultKeyTransfRounds")
-//            defaultKeyTransfRounds = value !== "UNKNOWN" ? Number(value) : defaultKeyTransfRounds
-//            value = getSetting("locktime")
-//            locktime = value !== "UNKNOWN" ? Number(value) : locktime
-//            value = getSetting("showUserNamePasswordInListView")
-//            showUserNamePasswordInListView = value !== "UNKNOWN" ? (value === "true" ? true : false) : showUserNamePasswordInListView
-//            value = getSetting("showUserNamePasswordOnCover")
-//            showUserNamePasswordOnCover = value !== "UNKNOWN" ? (value === "true" ? true : false) : showUserNamePasswordOnCover
-//            value = getSetting("lockDatabaseFromCover")
-//            lockDatabaseFromCover = value !== "UNKNOWN" ? (value === "true" ? true : false) : lockDatabaseFromCover
-//            value = getSetting("copyNpasteFromCover")
-//            copyNpasteFromCover = value !== "UNKNOWN" ? (value === "true" ? true : false) : copyNpasteFromCover
         }
 
         function saveSettings() {

@@ -122,6 +122,18 @@ var config = {
         }
     },
 
+    deleteDbFromRecentList: function(index) {
+        if (index >= this.getNumberOfRecents()) {
+            this.recentDbNamesUI.splice(index, 1)
+            this.recentDbPathsUI.splice(index, 1)
+            this.recentDbLocations.splice(index, 1)
+            this.recentDbFilePaths.splice(index, 1)
+            this.recentUseKeyFiles.splice(index, 1)
+            this.recentKeyFileLocations.splice(index, 1)
+            this.recentKeyFilePaths.splice(index, 1)
+        }
+    },
+
     //
     addNewRecent: function(databaseLocation, database, useKeyFile, keyFileLocation, keyFile) {
         // check if input is valid

@@ -49,12 +49,6 @@ Dialog {
                                    "loadMasterGroups": true }
     acceptDestinationAction: PageStackAction.Replace
 
-    canNavigateForward: (state === "CreateNewDatabase") || (state === "OpenNewDatabase") ?
-                            passwordField.text !== "" &&
-                            !confirmPasswordField.errorHighlight &&
-                            dbFilePath !== "" && (useKeyFile ? keyFilePath !== "" : true ) :
-                            passwordField.text !== ""
-
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -169,10 +163,9 @@ Dialog {
                 width: parent.width
                 inputMethodHints: Qt.ImhNoPredictiveText
                 echoMode: TextInput.Password
+                errorHighlight: text === ""
                 label: "Password"
                 placeholderText: "Enter password"
-                // Development mode here for faster testing with predefined database file
-//                text: Global.developmentMode === 1 ? "qwertz" : ""
                 EnterKey.enabled: text !== ""
                 EnterKey.highlighted: text !== ""
                 EnterKey.onClicked: {
@@ -213,16 +206,6 @@ Dialog {
 
     Component.onCompleted: if (state === "OpenRecentDatabase") passwordField.focus = true
 
-//    onDone: {
-//        if (result === DialogResult.Accepted) {
-//            password = passwordField.text
-//            // Delete password after passing further
-//            // Don't set empty string because otherwise canNavigateForward will blink the screen
-//            passwordField.text = "blabla"
-//            confirmPasswordField.text = "blabla"
-//        }
-//    }
-
     states: [
         State {
             name: "CreateNewDatabase"
@@ -232,6 +215,11 @@ Dialog {
             PropertyChanges { target: keyFileColumn; enabled: true }
             PropertyChanges { target: passwordTitle; text: "Type in a master password for locking your new Keepass Password Safe:" }
             PropertyChanges { target: confirmPasswordField; enabled: true }
+            PropertyChanges { target: queryPasswordDialog
+                canNavigateForward: !passwordField.errorHighlight &&
+                                    !confirmPasswordField.errorHighlight &&
+                                    !dbFilePathField.errorHighlight && (useKeyFile ? !keyFilePathField.errorHighlight : true )
+            }
         },
         State {
             name: "OpenNewDatabase"
@@ -241,6 +229,10 @@ Dialog {
             PropertyChanges { target: keyFileColumn; enabled: true }
             PropertyChanges { target: passwordTitle; text: "Type in master password for unlocking your Keepass Password Safe:" }
             PropertyChanges { target: confirmPasswordField; enabled: false }
+            PropertyChanges { target: queryPasswordDialog
+                canNavigateForward: !passwordField.errorHighlight &&
+                                    !dbFilePathField.errorHighlight && (useKeyFile ? !keyFilePathField.errorHighlight : true )
+            }
         },
         State {
             name: "OpenRecentDatabase"
@@ -250,6 +242,7 @@ Dialog {
             PropertyChanges { target: keyFileColumn; enabled: false }
             PropertyChanges { target: passwordTitle; text: "Type in master password for unlocking your Keepass Password Safe:" }
             PropertyChanges { target: confirmPasswordField; enabled: false }
+            PropertyChanges { target: queryPasswordDialog; canNavigateForward: passwordField.text !== "" }
         }
     ]
 }
