@@ -30,22 +30,30 @@ KdbEntry::KdbEntry(QObject *parent)
     : QObject(parent)
 {
     // connect signals to backend
-    Q_ASSERT(connect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_loadEntry(int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
-                     this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString))));
-    Q_ASSERT(connect(this, SIGNAL(saveEntrytoKdbDatabase(int,QString,QString,QString,QString,QString)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString))));
-    Q_ASSERT(connect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entrySaved(int)),
-                     this, SIGNAL(entryDataSaved(int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entryDeleted(int)),
-                     this, SIGNAL(entryDeleted(int))));
-    Q_ASSERT(connect(this, SIGNAL(deleteEntryFromKdbDatabase(int)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_deleteEntry(int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newEntryCreated(int, int)),
-                     this, SIGNAL(newEntryCreated(int, int))));
+    bool ret = connect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
+                     KdbInterface::getInstance()->getWorker(), SLOT(slot_loadEntry(int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
+                     this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(saveEntrytoKdbDatabase(int,QString,QString,QString,QString,QString)),
+                     KdbInterface::getInstance()->getWorker(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
+                     KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entrySaved(int)),
+                     this, SIGNAL(entryDataSaved(int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(entryDeleted(int)),
+                     this, SIGNAL(entryDeleted(int)));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(deleteEntryFromKdbDatabase(int)),
+                     KdbInterface::getInstance()->getWorker(), SLOT(slot_deleteEntry(int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newEntryCreated(int, int)),
+                     this, SIGNAL(newEntryCreated(int, int)));
+    Q_ASSERT(ret);
 }
 
 void KdbEntry::loadEntryData()

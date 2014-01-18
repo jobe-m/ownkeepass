@@ -40,34 +40,48 @@ KdbDatabase::KdbDatabase(QObject *parent):
     m_showUserNamePasswordsInListView(false)
 {
     // connect signals and slots to global KdbInterface class
-    Q_ASSERT(connect(this, SIGNAL(openDatabase(QString,QString,QString,bool)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_openDatabase(QString,QString,QString,bool))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseOpened()),
-                  this, SIGNAL(databaseOpened())));
-    Q_ASSERT(connect(this, SIGNAL(createNewDatabase(QString,QString,QString,int,int)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewDatabase(QString,QString,QString,int,int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newDatabaseCreated()),
-                  this, SIGNAL(newDatabaseCreated())));
-    Q_ASSERT(connect(this, SIGNAL(closeDatabase()),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_closeDatabase())));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseClosed()),
-                  this, SIGNAL(databaseClosed())));
-    Q_ASSERT(connect(this, SIGNAL(setting_showUserNamePasswordsInListView(bool)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_setting_showUserNamePasswordsInListView(bool))));
-    Q_ASSERT(connect(this, SIGNAL(changeDatabasePassword(QString)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_changePassword(QString))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(passwordChanged()),
-                  this, SIGNAL(databasePasswordChanged())));
-    Q_ASSERT(connect(this, SIGNAL(changeDatabaseKeyTransfRounds(int)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_changeKeyTransfRounds(int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseKeyTransfRoundsChanged(int)),
-                     this, SLOT(slot_databaseKeyTransfRoundsChanged(int))));
-    Q_ASSERT(connect(this, SIGNAL(changeDatabaseCryptAlgorithm(int)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_changeCryptAlgorithm(int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseCryptAlgorithmChanged(int)),
-                     this, SLOT(slot_databaseCryptAlgorithmChanged(int))));
-    Q_ASSERT(connect(KdbInterface::getInstance()->getWorker(), SIGNAL(errorOccured(int,QString)),
-                     this, SIGNAL(errorOccured(int,QString))));
+    bool ret = connect(this, SIGNAL(openDatabase(QString,QString,QString,bool)),
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_openDatabase(QString,QString,QString,bool)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseOpened()),
+                  this, SIGNAL(databaseOpened()));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(createNewDatabase(QString,QString,QString,int,int)),
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewDatabase(QString,QString,QString,int,int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newDatabaseCreated()),
+                  this, SIGNAL(newDatabaseCreated()));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(closeDatabase()),
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_closeDatabase()));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseClosed()),
+                  this, SIGNAL(databaseClosed()));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(setting_showUserNamePasswordsInListView(bool)),
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_setting_showUserNamePasswordsInListView(bool)));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(changeDatabasePassword(QString)),
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_changePassword(QString)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(passwordChanged()),
+                  this, SIGNAL(databasePasswordChanged()));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(changeDatabaseKeyTransfRounds(int)),
+                     KdbInterface::getInstance()->getWorker(), SLOT(slot_changeKeyTransfRounds(int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseKeyTransfRoundsChanged(int)),
+                     this, SLOT(slot_databaseKeyTransfRoundsChanged(int)));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(changeDatabaseCryptAlgorithm(int)),
+                     KdbInterface::getInstance()->getWorker(), SLOT(slot_changeCryptAlgorithm(int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseCryptAlgorithmChanged(int)),
+                     this, SLOT(slot_databaseCryptAlgorithmChanged(int)));
+    Q_ASSERT(ret);
+    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(errorOccured(int,QString)),
+                     this, SIGNAL(errorOccured(int,QString)));
+    Q_ASSERT(ret);
 }
 
 void KdbDatabase::open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly)

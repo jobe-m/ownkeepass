@@ -69,7 +69,7 @@ ApplicationWindow
         // This is used to check if settings from some older ownKeepass version are available
         // If yes they might need to be merged into new version
         property string previousVersion: ""
-        property string version: "0.9.2"
+        property string version: "0.9.5"
         // Default encryption: AES/Rijndael = 0, Twofish = 1
         property int defaultCryptAlgorithm: 0
         property int defaultKeyTransfRounds: 50000
