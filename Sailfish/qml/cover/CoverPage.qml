@@ -49,7 +49,6 @@ Cover {
     }
 
     property int coverState: Global.constants.databaseClosed
-    property QtObject keepassSettings: null
     property alias entryTitle: entryTitleLabel.text
     property alias username: entryUsernameLabel.text
     property alias password: entryPasswordLabel.text
@@ -135,14 +134,14 @@ Cover {
     }
 
     SilicaCoverPlaceholder {
-        enabled: !keepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
+        enabled: !OwnKeepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
         visible: enabled
         text: entryTitle + " entry opened"
         icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
     }
 
     Item {
-        enabled: keepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
+        enabled: OwnKeepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
         visible: enabled
 
         anchors.fill: parent
@@ -261,7 +260,7 @@ Cover {
 
     // Lock database cover action on opened database
     CoverActionList {
-        enabled: keepassSettings.lockDatabaseFromCover && ((coverState === Global.constants.databaseOpened) || (!keepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)))
+        enabled: OwnKeepassSettings.lockDatabaseFromCover && ((coverState === Global.constants.databaseOpened) || (!OwnKeepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)))
         iconBackground: false
 
         CoverAction {
@@ -275,7 +274,7 @@ Cover {
 
     // Lock database and copy'n'paste cover action for entry
     CoverActionList {
-        enabled: keepassSettings.lockDatabaseFromCover && keepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
+        enabled: OwnKeepassSettings.lockDatabaseFromCover && OwnKeepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
         iconBackground: false
 
         CoverAction {
@@ -294,7 +293,7 @@ Cover {
 
     // Copy'n'paste cover action for entry
     CoverActionList {
-        enabled: !keepassSettings.lockDatabaseFromCover && keepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
+        enabled: !OwnKeepassSettings.lockDatabaseFromCover && OwnKeepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
         iconBackground: false
 
         CoverAction {

@@ -39,7 +39,7 @@ Page {
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
 
     function inactivityTimerStart() {
-        var inactivityTime = Global.env.keepassSettings.getInactivityTime()
+        var inactivityTime = Global.getInactivityTime(OwnKeepassSettings.locktime)
         // Check if the user has not set timer to unlimited
         // meaning the app should never lock
         if (inactivityTime <= Global.constants._60minutes) {
@@ -69,10 +69,16 @@ Page {
         }
     }
 
-    SilicaFlickable {
+    SilicaListView {
+        id: listView
+        currentIndex: -1
         anchors.fill: parent
-        contentWidth: parent.width
-        contentHeight: col.height
+        model: recentDatabaseListModel
+
+        header: PageHeaderExtended {
+            title: "ownKeepass"
+            subTitle: "Password Safe"
+        }
 
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
@@ -80,15 +86,14 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         ApplicationMenu {}
 
+//        DatabaseMenu {
+//            id: databaseMenu
+//        }
+
         Column {
             id: col
             width: parent.width
             spacing: 0 // Theme.paddingLarge
-
-            PageHeaderExtended {
-                title: "ownKeepass"
-                subTitle: "Password Safe"
-            }
 
             Image {
                 width: 492
@@ -101,18 +106,12 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Create new database"
                 onClicked: {
-                    // If ownKeepass was opened the very first time give the user a predefined database file path and name
-                    if (Global.config.getNumberOfRecents() === 0) {
-                        internal.databasePath = "ownkeepass/notes.kdb"
-                    } else {
-                        internal.databasePath = ""
-                    }
-
                     var dialog = pageStack.push("QueryPasswordDialog.qml",
                                                 {
                                                     "state": "CreateNewDatabase",
                                                     "dbFileLocation": 0,
-                                                    "dbFilePath": internal.databasePath,
+                                                    // If ownKeepass was opened the very first time give the user a predefined database file path and name
+                                                    "dbFilePath": recentDatabaseListModel.isEmpty ? "ownkeepass/notes.kdb" : "",
                                                     "useKeyFile": false,
                                                     "keyFileLocation": 0,
                                                     "keyFilePath": "",
@@ -130,7 +129,7 @@ Page {
                         internal.useKeyFile = dialog.useKeyFile
                         internal.keyFileLocation = dialog.keyFileLocation
                         internal.keyFilePath = dialog.keyFilePath
-                        Global.env.keepassSettings.loadLastDb = dialog.loadAsDefault
+                        OwnKeepassSettings.loadLastDb = dialog.loadAsDefault
                         internal.masterPassword = dialog.password
 
                         var createNewDatabase = true
@@ -165,7 +164,7 @@ Page {
                         internal.useKeyFile = dialog.useKeyFile
                         internal.keyFileLocation = dialog.keyFileLocation
                         internal.keyFilePath = dialog.keyFilePath
-                        Global.env.keepassSettings.loadLastDb = dialog.loadAsDefault
+                        OwnKeepassSettings.loadLastDb = dialog.loadAsDefault
                         internal.masterPassword = dialog.password
 
                         var createNewDatabase = false
@@ -175,90 +174,84 @@ Page {
             }
 
             SectionHeader {
-                enabled: recentDatabasesRepeater.model !== 0
-                visible: recentDatabasesRepeater.model !== 0
+                enabled: !recentDatabaseListModel.isEmpty
+                visible: enabled
                 text: "Recent databases"
             }
+        }
 
-            Repeater {
-                id: recentDatabasesRepeater
+        delegate: ListItem {
+            id: listItem
+            contentHeight: Theme.itemSizeMedium // two line delegate
+
+            Column {
                 width: parent.width
-                model: 0
+                height: children.height
+                spacing: Theme.paddingSmall
 
-                Column {
-                    width: parent.width
-                    height: children.height
-                    ListItem {
-                        id: listItem
-                        contentHeight: Theme.itemSizeMedium // two line delegate
+                Label {
+                    id: firstLabel
+                    x: Theme.paddingLarge
+                    width: parent.width - Theme.paddingLarge * 2
+                    horizontalAlignment: Text.AlignLeft
+                    text: model.uiName
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                }
 
-                        Column {
-                            width: parent.width
-                            height: children.height
-                            spacing: Theme.paddingSmall
-
-                            Label {
-                                id: firstLabel
-                                x: Theme.paddingLarge
-                                width: parent.width - Theme.paddingLarge * 2
-                                horizontalAlignment: Text.AlignLeft
-                                text: Global.config.recentDbNamesUI[index]
-                                font.pixelSize: Theme.fontSizeMedium
-                                color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                            }
-
-                            Label {
-                                id: secondLabel
-                                x: Theme.paddingLarge
-                                width: parent.width - Theme.paddingLarge * 2
-                                horizontalAlignment: Text.AlignLeft
-                                text: internal.getLocationName(Global.config.recentDbLocations[index]) + ": " +
-                                      Global.config.recentDbPathsUI[index]
-                                font.pixelSize: Theme.fontSizeExtraSmall
-                                color: listItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
-                            }
-                        }
-//                        Tracer {}
-
-                        onClicked: {
-                            internal.recentlyOpenedDatabaseNo = index
-                            var dialog = pageStack.push("QueryPasswordDialog.qml",
-                                                        {
-                                                            "state": "OpenRecentDatabase",
-                                                            "dbFileLocation": Global.config.recentDbLocations[index],
-                                                            "dbFilePath": Global.config.recentDbFilePaths[index],
-                                                            "useKeyFile":Global.config.recentUseKeyFiles[index],
-                                                            "keyFileLocation": Global.config.recentKeyFileLocations[index],
-                                                            "keyFilePath": Global.config.recentKeyFilePaths[index],
-                                                            "loadAsDefault": Global.env.keepassSettings.loadLastDb,
-                                                            // Development mode here for faster testing with predefined database file
-                                                            "password": Global.developmentMode === 1 ? "qwertz" : ""
-                                                        })
-                            dialog.rejected.connect(function() {
-                                console.log("cancel open of recent database")
-                                internal.recentlyOpenedDatabaseNo = -1
-                            })
-                            dialog.accepted.connect(function() {
-                                // Get handler to masterGroups page, it is needed to init the view once the database
-                                // could be opened with given password and/or key file
-                                internal.masterGroupsPage = dialog.acceptDestinationInstance
-                                // take over details from QueryPasswordDialog
-                                internal.dbFileLocation = dialog.dbFileLocation
-                                internal.databasePath =  dialog.dbFilePath
-                                internal.useKeyFile = dialog.useKeyFile
-                                internal.keyFileLocation = dialog.keyFileLocation
-                                internal.keyFilePath = dialog.keyFilePath
-                                Global.env.keepassSettings.loadLastDb = dialog.loadAsDefault
-                                internal.masterPassword = dialog.password
-
-                                var createNewDatabase = false
-                                internal.openKeepassDatabase(dialog.password, createNewDatabase)
-                            })
-                        }
-                    }
+                Label {
+                    id: secondLabel
+                    x: Theme.paddingLarge
+                    width: parent.width - Theme.paddingLarge * 2
+                    horizontalAlignment: Text.AlignLeft
+                    text: model.uiPath
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: listItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
                 }
             }
+//                        Tracer {}
+
+            onClicked: {
+                console.log("Clicked on recent DB no: " + index)
+                internal.recentlyOpenedDatabaseNo = index
+                var dialog = pageStack.push("QueryPasswordDialog.qml",
+                                            {
+                                                "state": "OpenRecentDatabase",
+                                                "dbFileLocation": model.databaseLocation,
+                                                "dbFilePath": model.databaseFilePath,
+                                                "useKeyFile": model.useKeyFile,
+                                                "keyFileLocation": model.keyFileLocation,
+                                                "keyFilePath": model.keyFilePath,
+                                                "loadAsDefault": OwnKeepassSettings.loadLastDb,
+                                                // Development mode here for faster testing with predefined database file
+                                                "password": Global.developmentMode === 1 ? "qwertz" : ""
+                                            })
+                dialog.rejected.connect(function() {
+                    console.log("cancel open of recent database")
+                    internal.recentlyOpenedDatabaseNo = -1
+                })
+                dialog.accepted.connect(function() {
+                    // Get handler to masterGroups page, it is needed to init the view once the database
+                    // could be opened with given password and/or key file
+                    internal.masterGroupsPage = dialog.acceptDestinationInstance
+                    // take over details from QueryPasswordDialog
+                    internal.dbFileLocation = dialog.dbFileLocation
+                    internal.databasePath =  dialog.dbFilePath
+                    internal.useKeyFile = dialog.useKeyFile
+                    internal.keyFileLocation = dialog.keyFileLocation
+                    internal.keyFilePath = dialog.keyFilePath
+                    OwnKeepassSettings.loadLastDb = dialog.loadAsDefault
+                    internal.masterPassword = dialog.password
+
+                    var createNewDatabase = false
+                    internal.openKeepassDatabase(dialog.password, createNewDatabase)
+                })
+            }
         }
+    }
+
+    RecentDatabaseListModel {
+        id: recentDatabaseListModel
     }
 
     KdbDatabase {
@@ -291,8 +284,8 @@ Page {
         id: internal
         property string masterPassword: ""
         property bool overWriteDbfileCheck: false
-        // These values which will be used on creation and opening of database
-        // If creation of database and opening succeeds these values will be stored in recent database list and in settings.ini
+        // These values will be used on creation and opening of database
+        // If creation of database and opening succeeds these values will be stored in settings.ini
         property int dbFileLocation: 0
         property string databasePath: ""
         property bool useKeyFile: false
@@ -314,13 +307,13 @@ Page {
 
             if (createNewDatabase) {
                 // Check if database file already exists and if key file is present if it should be used
-                if (!ownKeepassHelper.fileExists(completeDbFilePath)) {
-                    if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
+                if (!OwnKeepassHelper.fileExists(completeDbFilePath)) {
+                    if (!useKeyFile || OwnKeepassHelper.fileExists(completeKeyFilePath)) {
                         // Ok, now check if path to file exists if not create it
-                        if (ownKeepassHelper.createFilePathIfNotExist(completeDbFilePath)) {
+                        if (OwnKeepassHelper.createFilePathIfNotExist(completeDbFilePath)) {
                             // set default values for encryption and key transformation rounds
-                            kdbDatabase.keyTransfRounds = Global.env.keepassSettings.defaultKeyTransfRounds
-                            kdbDatabase.cryptAlgorithm = Global.env.keepassSettings.defaultCryptAlgorithm
+                            kdbDatabase.keyTransfRounds = OwnKeepassSettings.defaultKeyTransfRounds
+                            kdbDatabase.cryptAlgorithm = OwnKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
                             kdbDatabase.create(completeDbFilePath, completeKeyFilePath, password, true)
 
@@ -331,7 +324,7 @@ Page {
                                                        keyFileLocation,
                                                        keyFilePath)
 // TODO
-//                            Global.env.keepassSettings.saveRecentDatabaseList()
+//                            OwnKeepassSettings.saveRecentDatabaseList()
                             recentDatabasesRepeater.model = Global.config.getNumberOfRecents()
                         } else {
                             // Path to new database file could not be created
@@ -350,8 +343,8 @@ Page {
                 }
             } else {
                 // Check if database exists and if key file exists in case it should be used
-                if (ownKeepassHelper.fileExists(completeDbFilePath)) {
-                    if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
+                if (OwnKeepassHelper.fileExists(completeDbFilePath)) {
+                    if (!useKeyFile || OwnKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
                         kdbDatabase.open(completeDbFilePath, completeKeyFilePath, password, false)
                     } else {
@@ -396,7 +389,7 @@ Page {
 
         function init() {
             // load settings into kdbDatabase
-            kdbDatabase.showUserNamePasswordsInListView = Global.env.keepassSettings.showUserNamePasswordInListView
+            kdbDatabase.showUserNamePasswordsInListView = OwnKeepassSettings.showUserNamePasswordInListView
         }
 
         function databaseOpenedHandler() {
@@ -410,7 +403,7 @@ Page {
                                        keyFilePath)
             recentDatabasesRepeater.model = Global.config.getNumberOfRecents()
 // TODO
-//            Global.env.keepassSettings.saveRecentDatabaseList()
+//            OwnKeepassSettings.saveRecentDatabaseList()
         }
 
         function newDatabaseCreatedHandler() {
@@ -691,31 +684,27 @@ Page {
 
         function checkForUnsavedKeepassSettingsChanges() {
             if (
-//                    Global.env.keepassSettings.defaultDatabasePath !== defaultDatabaseFilePath ||
-//                    Global.env.keepassSettings.defaultKeyFilePath !== defaultKeyFilePath ||
-                    Global.env.keepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
-                    Global.env.keepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
-                    Global.env.keepassSettings.locktime !== inactivityLockTime ||
-                    Global.env.keepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView ||
-                    Global.env.keepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
-                    Global.env.keepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
-                    Global.env.keepassSettings.copyNpasteFromCover !== copyNpasteFromCover) {
+                    OwnKeepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
+                    OwnKeepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
+                    OwnKeepassSettings.locktime !== inactivityLockTime ||
+                    OwnKeepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView ||
+                    OwnKeepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
+                    OwnKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
+                    OwnKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "type": c_queryForKeepassSettings})
             }
         }
 
         function saveKeepassSettings() {
-//            Global.env.keepassSettings.defaultDatabasePath = defaultDatabaseFilePath
-//            Global.env.keepassSettings.defaultKeyFilePath = defaultKeyFilePath
-            Global.env.keepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm
-            Global.env.keepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
-            Global.env.keepassSettings.locktime = inactivityLockTime
-            Global.env.keepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
-            Global.env.keepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover
-            Global.env.keepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
-            Global.env.keepassSettings.copyNpasteFromCover = copyNpasteFromCover
-            Global.env.keepassSettings.saveSettings()
+            OwnKeepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm
+            OwnKeepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
+            OwnKeepassSettings.locktime = inactivityLockTime
+            OwnKeepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
+            OwnKeepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover
+            OwnKeepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
+            OwnKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
+            OwnKeepassSettings.saveSettings()
         }
     }
 

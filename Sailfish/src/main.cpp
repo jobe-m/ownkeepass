@@ -39,7 +39,8 @@
 #include "KdbGroup.h"
 #include "private/KdbInterface.h"
 #include "OwnKeepassHelper.h"
-#include "setting.h"
+#include "OwnKeepassSettings.h"
+#include "RecentDatabaseListModel.h"
 
 int main(int argc, char *argv[])
 {
@@ -69,24 +70,24 @@ int main(int argc, char *argv[])
     // @uri harbour.ownkeepass
     const char* uri("harbour.ownkeepass");
     // make the following classes available in QML
+// TODO make KdbDatabase a context property
     qmlRegisterType<kpxPublic::KdbDatabase>(uri, 1, 0, "KdbDatabase");
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
 
-    // Setup helper class as context object and make it accessible in QML
-    QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());
-    view->rootContext()->setContextProperty("ownKeepassHelper", helper.data());
-
-    // Make them available in QML
+    // Make some simple properties available in QML
     view->rootContext()->setContextProperty("jollaPhoneDocumentsPath", jollaPhoneDocumentsPath);
     view->rootContext()->setContextProperty("sdCardPath", sdCardPath);
     view->rootContext()->setContextProperty("androidStoragePath", androidStoragePath);
 
-    // Setup settings class
-    Settings settings(settingsFilePath);
-    view->rootContext()->setContextProperty("settings", &settings);
-    qDebug("Path to settings file:  %s", CSTR(settingsFilePath));
+    // Setup some class as context properties and make them accessible in QML
+    QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());
+    view->rootContext()->setContextProperty("OwnKeepassHelper", helper.data());
+    QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath));
+    view->rootContext()->setContextProperty("OwnKeepassSettings", okpSettings.data());
+    QScopedPointer<settingsPublic::RecentDatabaseListModel> recentDbListModel(new settingsPublic::RecentDatabaseListModel());
+    view->rootContext()->setContextProperty("RecentDatabaseListModel", recentDbListModel.data());
 
     // Set main QML file and go ahead
     view->setSource(SailfishApp::pathTo("qml/Main.qml"));

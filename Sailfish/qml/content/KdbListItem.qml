@@ -22,7 +22,6 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../scripts/Global.js" as Global
 import harbour.ownkeepass 1.0
 
 ListItem {
@@ -93,7 +92,7 @@ ListItem {
         anchors.leftMargin: Theme.paddingSmall
         anchors.verticalCenter: parent.verticalCenter
         width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
-        height: model.itemType === KdbListModel.ENTRY && !Global.env.keepassSettings.showUserNamePasswordInListView ?
+        height: model.itemType === KdbListModel.ENTRY && !OwnKeepassSettings.showUserNamePasswordInListView ?
                     itemTitle.height :
                     itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
 
@@ -111,7 +110,7 @@ ListItem {
 
         Label {
             id: itemDescription
-            enabled: model.itemType === KdbListModel.GROUP || Global.env.keepassSettings.showUserNamePasswordInListView
+            enabled: model.itemType === KdbListModel.GROUP || OwnKeepassSettings.showUserNamePasswordInListView
             visible: enabled
             anchors.left: parent.left
             anchors.top: itemTitle.bottom

@@ -50,12 +50,16 @@ INCLUDEPATH += ../common/src/settings
 # C++ sources
 SOURCES += src/main.cpp \
     src/OwnKeepassHelper.cpp \
-    ../common/src/settings/setting.cpp
+    ../common/src/settings/setting.cpp \
+    ../common/src/settings/RecentDatabaseListModel.cpp \
+    ../common/src/settings/OwnKeepassSettings.cpp
 
 # C++ headers
 HEADERS += \
     src/OwnKeepassHelper.h \
-    ../common/src/settings/setting.h
+    ../common/src/settings/setting.h \
+    ../common/src/settings/RecentDatabaseListModel.h \
+    ../common/src/settings/OwnKeepassSettings.h
 
 OTHER_FILES += \
     ../README.md \

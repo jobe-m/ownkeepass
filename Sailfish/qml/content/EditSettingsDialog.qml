@@ -95,14 +95,14 @@ Dialog {
                     id: defaultCryptAlgorithm
                     width: editSettingsDialog.width
                     label: "Default Encryption:"
-                    currentIndex: Global.env.keepassSettings.defaultCryptAlgorithm
+                    currentIndex: OwnKeepassSettings.defaultCryptAlgorithm
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
                         MenuItem { text: "Twofish" }
                     }
                     onCurrentIndexChanged: {
                         editSettingsDialog.defaultCryptAlgorithmChanged =
-                                (currentIndex !== Global.env.keepassSettings.defaultCryptAlgorithm ? true : false)
+                                (currentIndex !== OwnKeepassSettings.defaultCryptAlgorithm ? true : false)
                         editSettingsDialog.updateCoverState()
                     }
                 }
@@ -119,11 +119,11 @@ Dialog {
                     validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
                     label: "Default Key Transformation Rounds"
                     placeholderText: label
-                    text: Global.env.keepassSettings.defaultKeyTransfRounds
+                    text: OwnKeepassSettings.defaultKeyTransfRounds
                     EnterKey.onClicked: parent.focus = true
                     onTextChanged: {
                         editSettingsDialog.defaultKeyTransfRoundsChanged =
-                                (Number(text) !== Global.env.keepassSettings.defaultKeyTransfRounds ? true : false)
+                                (Number(text) !== OwnKeepassSettings.defaultKeyTransfRounds ? true : false)
                         editSettingsDialog.updateCoverState()
                     }
                 }
@@ -141,7 +141,7 @@ Dialog {
 
             Slider {
                 id: inactivityLockTime
-                value: Global.env.keepassSettings.locktime
+                value: OwnKeepassSettings.locktime
                 minimumValue: 0
                 maximumValue: 10
                 stepSize: 1
@@ -190,19 +190,19 @@ Dialog {
                 }
                 onValueChanged: {
                     editSettingsDialog.inactivityLockTimeChanged =
-                            (value !== Global.env.keepassSettings.locktime ? true : false)
+                            (value !== OwnKeepassSettings.locktime ? true : false)
                     editSettingsDialog.updateCoverState()
                 }
             }
 
             TextSwitch {
                 id: showUserNamePasswordInListView
-                checked: Global.env.keepassSettings.showUserNamePasswordInListView
+                checked: OwnKeepassSettings.showUserNamePasswordInListView
                 text: "Extended List View"
                 description: "If you switch this on username and password are shown below entry title in list views"
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordInListViewChanged =
-                            (checked !== Global.env.keepassSettings.showUserNamePasswordInListView ? true : false)
+                            (checked !== OwnKeepassSettings.showUserNamePasswordInListView ? true : false)
                     editSettingsDialog.updateCoverState()
                 }
             }
@@ -213,36 +213,36 @@ Dialog {
 
             TextSwitch {
                 id: showUserNamePasswordOnCover
-                checked: Global.env.keepassSettings.showUserNamePasswordOnCover
+                checked: OwnKeepassSettings.showUserNamePasswordOnCover
                 text: "Show Username and Password"
                 description: "Switching this on will show username and password of the currently opened Keepass entry on the cover"
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordOnCoverChanged =
-                            (checked !== Global.env.keepassSettings.showUserNamePasswordOnCover ? true : false)
+                            (checked !== OwnKeepassSettings.showUserNamePasswordOnCover ? true : false)
                     editSettingsDialog.updateCoverState()
                 }
             }
 
             TextSwitch {
                 id: lockDatabaseFromCover
-                checked: Global.env.keepassSettings.lockDatabaseFromCover
+                checked: OwnKeepassSettings.lockDatabaseFromCover
                 text: "Lock Database from Cover"
                 description: "This lets you lock the database with the left cover action"
                 onCheckedChanged: {
                     editSettingsDialog.lockDatabaseFromCoverChanged =
-                            (checked !== Global.env.keepassSettings.lockDatabaseFromCover ? true : false)
+                            (checked !== OwnKeepassSettings.lockDatabaseFromCover ? true : false)
                     editSettingsDialog.updateCoverState()
                 }
             }
 
             TextSwitch {
                 id: copyNpasteFromCover
-                checked: Global.env.keepassSettings.copyNpasteFromCover
+                checked: OwnKeepassSettings.copyNpasteFromCover
                 text: "Copy'n'paste from Cover"
                 description: "Enable this to copy username and password into clipboard from cover"
                 onCheckedChanged: {
                     editSettingsDialog.copyNpasteFromCoverChanged =
-                            (checked !== Global.env.keepassSettings.copyNpasteFromCover ? true : false)
+                            (checked !== OwnKeepassSettings.copyNpasteFromCover ? true : false)
                     editSettingsDialog.updateCoverState()
                 }
             }
