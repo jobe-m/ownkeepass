@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
     QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath));
     view->rootContext()->setContextProperty("OwnKeepassSettings", okpSettings.data());
     QScopedPointer<settingsPublic::RecentDatabaseListModel> recentDbListModel(new settingsPublic::RecentDatabaseListModel());
-    view->rootContext()->setContextProperty("RecentDatabaseListModel", recentDbListModel.data());
+    view->rootContext()->setContextProperty("recentDatabaseListModel", recentDbListModel.data());
 
     // Set main QML file and go ahead
     view->setSource(SailfishApp::pathTo("qml/Main.qml"));

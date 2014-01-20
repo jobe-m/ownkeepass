@@ -79,8 +79,14 @@ public:
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY modelDataChanged)
 
 public:
-    Q_INVOKABLE void loadRecentDatabaseList();
-    Q_INVOKABLE void clearListModel();
+    Q_INVOKABLE void deleteItem(int index);
+    Q_INVOKABLE void addRecent(QString uiName,
+                               QString uiPath,
+                               int dbLocation,
+                               QString dbFilePath,
+                               bool useKeyFile,
+                               int keyFileLocation,
+                               QString keyFilePath);
 
 public:
     RecentDatabaseListModel(QObject *parent = 0);
@@ -92,7 +98,7 @@ public:
     bool isEmpty();
 
     // Overwrite function to set role names
-    virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
+    virtual QHash<int, QByteArray> roleNames() const { return DatabaseItem::createRoles(); }
 signals:
     // signals to interface worker object
     void requestLoadRecentDatabaseList();
@@ -102,6 +108,10 @@ signals:
 
     // signal for property
     void modelDataChanged();
+
+private:
+    void loadRecentDatabaseList();
+    void saveRecentDatabaseList();
 
 private:
     QList<DatabaseItem> m_items;

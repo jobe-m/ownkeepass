@@ -75,11 +75,6 @@ Page {
         anchors.fill: parent
         model: recentDatabaseListModel
 
-        header: PageHeaderExtended {
-            title: "ownKeepass"
-            subTitle: "Password Safe"
-        }
-
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
@@ -90,10 +85,14 @@ Page {
 //            id: databaseMenu
 //        }
 
-        Column {
-            id: col
+        header: Column {
             width: parent.width
             spacing: 0 // Theme.paddingLarge
+
+            PageHeaderExtended {
+                title: "ownKeepass"
+                subTitle: "Password Safe"
+            }
 
             Image {
                 width: 492
@@ -187,6 +186,7 @@ Page {
             Column {
                 width: parent.width
                 height: children.height
+                anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.paddingSmall
 
                 Label {
@@ -248,10 +248,6 @@ Page {
                 })
             }
         }
-    }
-
-    RecentDatabaseListModel {
-        id: recentDatabaseListModel
     }
 
     KdbDatabase {
@@ -316,16 +312,6 @@ Page {
                             kdbDatabase.cryptAlgorithm = OwnKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
                             kdbDatabase.create(completeDbFilePath, completeKeyFilePath, password, true)
-
-                            // update recent database list
-                            Global.config.addNewRecent(dbFileLocation,
-                                                       databasePath,
-                                                       useKeyFile,
-                                                       keyFileLocation,
-                                                       keyFilePath)
-// TODO
-//                            OwnKeepassSettings.saveRecentDatabaseList()
-                            recentDatabasesRepeater.model = Global.config.getNumberOfRecents()
                         } else {
                             // Path to new database file could not be created
                             Global.env.infoPopup.show("Permission Error", "Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'.", 0, false)
@@ -354,9 +340,6 @@ Page {
                     }
                 } else {
                     // Database file does not exist
-                    // Check if we need to delete it from the recent database array
-                    Global.config.deleteDbFromRecentList(internal.recentlyOpenedDatabaseNo)
-
                     Global.env.infoPopup.show("Database File Error", "Database file does not exist. Please check path to database file again.", 0, false)
                     masterGroupsPage.closeOnError()
                 }
@@ -367,11 +350,13 @@ Page {
         function getLocationName(value) {
             switch (value) {
             case 0:
-                return "Jolla Documents"
+                return "Documents: "
             case 1:
-                return "SD Card"
+                return "SD Card: "
             case 2:
-                return "Android Storage"
+                return "Android Storage: "
+            case 3:
+                return "Sailbox: "
             }
         }
 
@@ -384,6 +369,8 @@ Page {
                 return sdCardPath
             case 2:
                 return androidStoragePath
+//            case 3:
+//                return sailboxPath
             }
         }
 
@@ -392,23 +379,29 @@ Page {
             kdbDatabase.showUserNamePasswordsInListView = OwnKeepassSettings.showUserNamePasswordInListView
         }
 
+        function updateRecentDatabaseListModel() {
+            // update recent database list
+            var uiName = internal.databasePath.substring(internal.databasePath.lastIndexOf("/") + 1, internal.databasePath.length)
+            var uiPath = getLocationName(internal.dbFileLocation) + internal.databasePath.substring(0, internal.databasePath.lastIndexOf("/") + 1)
+            recentDatabaseListModel.addRecent(uiName,
+                                              uiPath,
+                                              internal.dbFileLocation,
+                                              internal.databasePath,
+                                              internal.useKeyFile,
+                                              internal.keyFileLocation,
+                                              internal.keyFilePath)
+        }
+
         function databaseOpenedHandler() {
             // Yeah, database opened successfully, now init master groups page and cover page
             masterGroupsPage.init()
-            // update recent database list
-            Global.config.addNewRecent(dbFileLocation,
-                                       databasePath,
-                                       useKeyFile,
-                                       keyFileLocation,
-                                       keyFilePath)
-            recentDatabasesRepeater.model = Global.config.getNumberOfRecents()
-// TODO
-//            OwnKeepassSettings.saveRecentDatabaseList()
+            updateRecentDatabaseListModel()
         }
 
         function newDatabaseCreatedHandler() {
             // Yeah, database created successfully, now init master groups page and cover page
             masterGroupsPage.init()
+            updateRecentDatabaseListModel()
         }
 
         function databaseClosedHandler() {
