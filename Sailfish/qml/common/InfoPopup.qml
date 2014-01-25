@@ -23,7 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-BackgroundItem {
+MouseArea {
     id: infoPopup
 
     property bool enableTimeout: false
@@ -58,7 +58,7 @@ BackgroundItem {
     opacity: 0.0
     visible: false
     width: parent ? parent.width : Screen.width
-    height: column.height + Theme.paddingMedium * 2
+    height: column.height + Theme.paddingMedium * 2 + colorShadow.height
     z: 1
 
     onClicked: cancel()
@@ -84,8 +84,27 @@ BackgroundItem {
     ]
 
     Rectangle {
-        anchors.fill: parent
+        id: infoPopupBackground
+        anchors.top: parent.top
+        width: parent.width
+        height: column.height + Theme.paddingMedium * 2
         color: Theme.highlightBackgroundColor
+    }
+
+    Rectangle {
+        id: colorShadow
+        anchors.top: infoPopupBackground.bottom
+        width: parent.width
+        height: column.height
+        color: Theme.highlightBackgroundColor
+    }
+
+    OpacityRampEffect {
+        sourceItem: colorShadow
+        slope: 0.5
+        offset: 0.0
+        clampFactor: -0.5
+        direction: 2 // TtB
     }
 
     Image {
@@ -98,7 +117,6 @@ BackgroundItem {
         fillMode: Image.PreserveAspectFit
     }
 
-
     Column {
         id: column
         x: Theme.paddingSmall + infoPopupIcon.width + Theme.paddingMedium
@@ -110,10 +128,10 @@ BackgroundItem {
             width: parent.width
             horizontalAlignment: Text.AlignLeft
             font.family: Theme.fontFamilyHeading
-            font.pixelSize: Theme.fontSizeMedium
-            font.bold: true
-            color: "white"
-            truncationMode: TruncationMode.Fade
+            font.pixelSize: Theme.fontSizeLarge //Medium
+            color: "black"
+            opacity: 0.6
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
         Label {
             id: messageLabel
@@ -121,8 +139,8 @@ BackgroundItem {
             horizontalAlignment: Text.AlignLeft
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSizeExtraSmall
-            font.bold: true
-            color: "white"
+            color: "black"
+            opacity: 0.5
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
     }
