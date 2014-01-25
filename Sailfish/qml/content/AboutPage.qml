@@ -58,9 +58,15 @@ Page {
             SilicaLabel {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
-                text: "Version " + OwnKeepassSettings.version + " beta<br>\
-Copyright (C) 2013-2014 Marko Koschak &lt;marko.koschak@tisno.de&gt;<br><br>\
-ownKeepass is a password safe for the Sailfish OS platform.<br>\
+                horizontalAlignment: Text.AlignHCenter
+                text: "Version " + OwnKeepassSettings.version + " (beta)<br>\
+Copyright (C) 2013-2014 Marko Koschak &lt;marko.koschak@tisno.de&gt;<br>"
+            }
+
+            SilicaLabel {
+                textFormat: Text.StyledText
+                linkColor: Theme.highlightColor
+                text: "ownKeepass is a password safe for the Sailfish OS platform.<br>\
 Source code is available at: <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br>\
 If you think you found a bug please report it also on github. Thanks :)<br>\
 If you have comments, suggestions, ideas about ownKeepass or just want to say thank you please go here: \
