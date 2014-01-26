@@ -58,6 +58,29 @@ Page {
             hintText: "Pull down to add Url, Username, Password and Comment"
         }
 
+        PullDownMenu {
+// Will be implemented in a later release :)
+//                MenuItem {
+//                    text: qsTr("Show more Details")
+//                    onClicked: {}
+//                }
+
+            MenuItem {
+                text: "Edit Password Entry"
+                onClicked: {
+                    pageStack.push(editEntryDetailsDialogComponent,
+                                   { "entryId": showEntryDetailsPage.entryId })
+                }
+            }
+
+            MenuLabel {
+                enabled: text !== ""
+                text: Global.databaseUiName
+            }
+        }
+
+        ApplicationMenu {}
+
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
@@ -71,24 +94,6 @@ Page {
                 title: pageTitle
                 subTitle: "ownKeepass"
             }
-
-            PullDownMenu {
-// Will be implemented in a later release :)
-//                MenuItem {
-//                    text: qsTr("Show more Details")
-//                    onClicked: {}
-//                }
-
-                MenuItem {
-                    text: "Edit Password Entry"
-                    onClicked: {
-                        pageStack.push(editEntryDetailsDialogComponent,
-                                       { "entryId": showEntryDetailsPage.entryId })
-                    }
-                }
-            }
-
-            ApplicationMenu {}
 
             TextArea {
                 id: entryUrlTextArea

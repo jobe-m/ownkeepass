@@ -74,6 +74,15 @@ Dialog {
         contentWidth: parent.width
         contentHeight: col.height
 
+        PullDownMenu {
+            MenuLabel {
+                enabled: text !== ""
+                text: Global.databaseUiName
+            }
+        }
+
+        ApplicationMenu {}
+
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
