@@ -26,7 +26,7 @@
 #include <QAbstractListModel>
 #include <QStringList>
 
-namespace settingsPublic {
+namespace settingsPrivate {
 
 static const int baseRole = Qt::UserRole + 1;
 
@@ -89,7 +89,7 @@ public:
                                QString keyFilePath);
 
 public:
-    RecentDatabaseListModel(QObject *parent = 0);
+    RecentDatabaseListModel(int lengthOfListModel, QObject *parent = 0);
     virtual ~RecentDatabaseListModel();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
@@ -100,21 +100,12 @@ public:
     // Overwrite function to set role names
     virtual QHash<int, QByteArray> roleNames() const { return DatabaseItem::createRoles(); }
 signals:
-    // signals to interface worker object
-    void requestLoadRecentDatabaseList();
-
-    // signals to QML
-    void recentDatabaseListLoaded(int result);
-
     // signal for property
     void modelDataChanged();
 
 private:
-    void loadRecentDatabaseList();
-    void saveRecentDatabaseList();
-
-private:
     QList<DatabaseItem> m_items;
+    int m_lengthOfListModel;
 };
 
 // inline implementations

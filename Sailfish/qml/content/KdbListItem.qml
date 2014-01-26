@@ -92,7 +92,7 @@ ListItem {
         anchors.leftMargin: Theme.paddingSmall
         anchors.verticalCenter: parent.verticalCenter
         width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
-        height: model.itemType === KdbListModel.ENTRY && !OwnKeepassSettings.showUserNamePasswordInListView ?
+        height: model.itemType === KdbListModel.ENTRY && !ownKeepassSettings.showUserNamePasswordInListView ?
                     itemTitle.height :
                     itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
 
@@ -110,7 +110,7 @@ ListItem {
 
         Label {
             id: itemDescription
-            enabled: model.itemType === KdbListModel.GROUP || OwnKeepassSettings.showUserNamePasswordInListView
+            enabled: model.itemType === KdbListModel.GROUP || ownKeepassSettings.showUserNamePasswordInListView
             visible: enabled
             anchors.left: parent.left
             anchors.top: itemTitle.bottom

@@ -59,7 +59,7 @@ Page {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version " + OwnKeepassSettings.version + " (beta)<br>\
+                text: "Version " + ownKeepassSettings.version + " (beta)<br>\
 Copyright (C) 2013-2014 Marko Koschak &lt;marko.koschak@tisno.de&gt;<br>"
             }
 

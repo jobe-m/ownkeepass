@@ -95,6 +95,7 @@ Dialog {
             TextField {
                 id: entryTitleTextField
                 width: parent.width
+                inputMethodHints: Qt.ImhSensitiveData
                 label: "Title"
                 text: ""
                 placeholderText: "Set Title (mandatory)"
@@ -106,27 +107,29 @@ Dialog {
                             (editEntryDetailsDialog.origTitle !== text ? true : false)
                     editEntryDetailsDialog.updateCoverState()
                 }
+                focusOutBehavior: -1 // This doesn't let the eye button steal focus
             }
 
             TextField {
                 id: entryUrlTextField
                 width: parent.width
-                inputMethodHints: Qt.ImhUrlCharactersOnly
+                inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhSensitiveData
                 label: "Url"
                 text: ""
                 placeholderText: "Set Url"
                 EnterKey.onClicked: entryUsernameTextField.focus = true
                 onTextChanged: {
-                    console.log("url updated: " + text)
                     editEntryDetailsDialog.urlChanged =
                             (editEntryDetailsDialog.origUrl !== text ? true : false)
                     editEntryDetailsDialog.updateCoverState()
                 }
+                focusOutBehavior: -1
             }
 
             TextField {
                 id: entryUsernameTextField
                 width: parent.width
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData
                 label: "Username"
                 text: ""
                 placeholderText: "Set Username"
@@ -136,6 +139,7 @@ Dialog {
                             (editEntryDetailsDialog.origUsername !== text ? true : false)
                     editEntryDetailsDialog.updateCoverState()
                 }
+                focusOutBehavior: -1
             }
 
             Item {
@@ -144,8 +148,10 @@ Dialog {
 
                 TextField {
                     id: entryPasswordTextField
+                    anchors.top: parent.top
                     anchors.left: parent.left
                     anchors.right: showPasswordButton.left
+                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
                     label: "Password"
                     text: ""
@@ -156,15 +162,16 @@ Dialog {
                                 (editEntryDetailsDialog.origPassword !== text ? true : false)
                         editEntryDetailsDialog.updateCoverState()
                     }
+                    focusOutBehavior: -1
                 }
 
                 IconButton {
                     id: showPasswordButton
+                    anchors.top: parent.top
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge
                     icon.source: entryPasswordTextField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
                     onClicked: {
-                        entryPasswordTextField.forceActiveFocus()
                         if (entryPasswordTextField.echoMode === TextInput.Normal) {
                             entryPasswordTextField.echoMode =
                                     entryVerifyPasswordTextField.echoMode = TextInput.Password
@@ -179,6 +186,7 @@ Dialog {
             TextField {
                 id: entryVerifyPasswordTextField
                 width: parent.width
+                inputMethodHints: Qt.ImhSensitiveData
                 echoMode: TextInput.Password
                 label: "Verify Password"
                 text: ""
@@ -186,6 +194,7 @@ Dialog {
                 errorHighlight: entryPasswordTextField.text !== text
                 EnterKey.highlighted: !errorHighlight
                 EnterKey.onClicked: entryCommentTextField.focus = true
+                focusOutBehavior: -1
             }
 
             TextArea {
@@ -199,6 +208,7 @@ Dialog {
                             (editEntryDetailsDialog.origComment !== text ? true : false)
                     editEntryDetailsDialog.updateCoverState()
                 }
+                focusOutBehavior: -1
             }
         }
     }

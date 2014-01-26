@@ -38,7 +38,7 @@ Dialog {
     property alias useKeyFile: useKeyFileSwitch.checked
     property alias keyFileLocation: keyFileLocationComboBox.currentIndex
     property alias keyFilePath: keyFilePathField.text
-    property alias loadAsDefault: loadAsDefaultSwitch.checked
+    property alias loadLastDb: openAutomaticallySwitch.checked
     // Password is only going out and will be passed to kdbDatabase object open the database
     property alias password: passwordField.text
 
@@ -91,9 +91,10 @@ Dialog {
                     label: "Database location:"
                     currentIndex: 0
                     menu: ContextMenu {
-                        MenuItem { text: "Documents on Phone" }
-                        MenuItem { text: "SD Card" }
-                        MenuItem { text: "Android Storage" }
+                        MenuItem { text: "Documents on phone" }
+                        MenuItem { text: "SD card" }
+                        MenuItem { text: "Android storage" }
+                        MenuItem { text: "Dropbox local storage" }
                     }
                 }
 
@@ -136,9 +137,9 @@ Dialog {
                         label: "Key File location:"
                         currentIndex: 0
                         menu: ContextMenu {
-                            MenuItem { text: "Documents on Phone" }
-                            MenuItem { text: "SD Card" }
-                            MenuItem { text: "Android Storage" }
+                            MenuItem { text: "Documents on phone" }
+                            MenuItem { text: "SD card" }
+                            MenuItem { text: "Android storage" }
                         }
                     }
 
@@ -172,6 +173,7 @@ Dialog {
                     if (state === "CreateNewDatabase") {
                         confirmPasswordField.focus = true
                     } else {
+                        parent.focus = true
                         accept()
                         close()
                     }
@@ -192,19 +194,18 @@ Dialog {
                 EnterKey.enabled: passwordField.text !== "" && !errorHighlight
                 EnterKey.highlighted: !errorHighlight
                 EnterKey.onClicked: {
+                    parent.focus = true
                     accept()
                     close()
                 }
             }
 
             TextSwitch {
-                id: loadAsDefaultSwitch
+                id: openAutomaticallySwitch
                 text: "Open automatically"
             }
         }
     }
-
-    Component.onCompleted: if (state === "OpenRecentDatabase") passwordField.focus = true
 
     states: [
         State {
@@ -220,6 +221,7 @@ Dialog {
                                     !confirmPasswordField.errorHighlight &&
                                     !dbFilePathField.errorHighlight && (useKeyFile ? !keyFilePathField.errorHighlight : true )
             }
+            PropertyChanges { target: passwordField; focus: false }
         },
         State {
             name: "OpenNewDatabase"
@@ -233,6 +235,7 @@ Dialog {
                 canNavigateForward: !passwordField.errorHighlight &&
                                     !dbFilePathField.errorHighlight && (useKeyFile ? !keyFilePathField.errorHighlight : true )
             }
+            PropertyChanges { target: passwordField; focus: false }
         },
         State {
             name: "OpenRecentDatabase"
@@ -243,6 +246,7 @@ Dialog {
             PropertyChanges { target: passwordTitle; text: "Type in master password for unlocking your Keepass Password Safe:" }
             PropertyChanges { target: confirmPasswordField; enabled: false }
             PropertyChanges { target: queryPasswordDialog; canNavigateForward: passwordField.text !== "" }
+            PropertyChanges { target: passwordField; focus: true }
         }
     ]
 }

@@ -79,38 +79,38 @@ function getInactivityTime(value)
     var interval
     switch (value) {
     case 0:
-        interval = Global.constants._1microsecond
+        interval = constants._1microsecond
         break
     case 1:
-        interval = Global.constants._5seconds
+        interval = constants._5seconds
         break
     case 2:
-        interval = Global.constants._10seconds
+        interval = constants._10seconds
         break
     case 3:
-        interval = Global.constants._30seconds
+        interval = constants._30seconds
         break
     case 4:
-        interval = Global.constants._1minute
+        interval = constants._1minute
         break
     case 5:
-        interval = Global.constants._2minutes
+        interval = constants._2minutes
         break
     case 6:
-        interval = Global.constants._5minutes
+        interval = constants._5minutes
         break
     case 7:
-        interval = Global.constants._10minutes
+        interval = constants._10minutes
         break
     case 8:
-        interval = Global.constants._30minutes
+        interval = constants._30minutes
         break
     case 9:
-        interval = Global.constants._60minutes
+        interval = constants._60minutes
         break
     case 10:
         // set unlimited value just more than 60 minutes
-        interval = Global.constants._60minutes + 100
+        interval = constants._60minutes + 100
     }
     return interval
 }

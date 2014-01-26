@@ -100,7 +100,7 @@ Dialog {
                     }
                     onTextChanged: {
                         editDatabaseSettingsDialog.masterPasswordChanged =
-                                (text !== "" ? true : false)
+                                databaseMasterPassword.text !== ""
                         editDatabaseSettingsDialog.updateCoverState()
                     }
                 }
@@ -138,7 +138,7 @@ Dialog {
                 }
                 onCurrentIndexChanged: {
                     editDatabaseSettingsDialog.cryptAlgorithmChanged =
-                            (currentIndex !== Global.env.kdbDatabase.cryptAlgorithm ? true : false)
+                            databaseCryptAlgorithm.currentIndex !== Global.env.kdbDatabase.cryptAlgorithm
                     editDatabaseSettingsDialog.updateCoverState()
                 }
             }
@@ -158,7 +158,7 @@ Dialog {
                     EnterKey.onClicked: parent.focus = true
                     onTextChanged: {
                         editDatabaseSettingsDialog.keyTransfRoundsChanged =
-                                (text !== Global.env.kdbDatabase.keyTransfRounds ? true : false)
+                                Number(databaseKeyTransfRounds.text) !== Global.env.kdbDatabase.keyTransfRounds
                         editDatabaseSettingsDialog.updateCoverState()
                     }
                 }

@@ -23,21 +23,17 @@
 #include <QDebug>
 #include "RecentDatabaseListModel.h"
 
-using namespace settingsPublic;
+using namespace settingsPrivate;
 
-RecentDatabaseListModel::RecentDatabaseListModel(QObject *parent)
-    : QAbstractListModel(parent)
-{
-    // connect signals to backend
-//    bool ret = connect(this, SIGNAL(loadMasterGroups()),
-//                       KdbInterface::getInstance()->getWorker(), SLOT(slot_loadMasterGroups()));
-//    Q_ASSERT(ret);
-}
+RecentDatabaseListModel::RecentDatabaseListModel(int lengthOfListModel, QObject *parent)
+    : QAbstractListModel(parent),
+      m_lengthOfListModel(lengthOfListModel)
+{}
 
 RecentDatabaseListModel::~RecentDatabaseListModel()
 {}
 
-/// Function which adds a new item to the data model
+/// Function which adds a new item to the data model at the first position in the list
 void RecentDatabaseListModel::addRecent(QString uiName,
                                         QString uiPath,
                                         int dbLocation,
@@ -46,19 +42,12 @@ void RecentDatabaseListModel::addRecent(QString uiName,
                                         int keyFileLocation,
                                         QString keyFilePath)
 {
-    // Find item in list model and delete it if it exist
-    for (int i = 0; i < m_items.count(); ++i) {
-        if ((m_items[i].m_ui_name == uiName) && (m_items[i].m_ui_path == uiPath)) {
-            deleteItem(i);
-        }
-    }
-    // Insert recent at first position in the list model
+//    qDebug() << "addRecent - added: " << uiName;
+
     DatabaseItem item(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
     beginInsertRows(QModelIndex(), 0, 0);
     m_items.insert(0, item);
     endInsertRows();
-
-    qDebug() << "addRecent - added: " << uiName;
 
     // signal to property to update itself in QML
     emit modelDataChanged();
@@ -95,7 +84,7 @@ void RecentDatabaseListModel::clear()
 
 void RecentDatabaseListModel::deleteItem(int index)
 {
-    qDebug() << "RecentDatabaseListModel::deleteItem (index: " << index << ")";
+//    qDebug() << "RecentDatabaseListModel::deleteItem (index: " << index << ")";
 
     if (index < m_items.count()) {
         // found it, delete it from list model
@@ -105,19 +94,4 @@ void RecentDatabaseListModel::deleteItem(int index)
         // signal to property to update itself in QML
         emit modelDataChanged();
     }
-}
-
-void RecentDatabaseListModel::loadRecentDatabaseList()
-{
-    // make list view empty and unregister if necessary
-    if (!isEmpty()) {
-        clear();
-    }
-    // send signal to settings backend
-    emit requestLoadRecentDatabaseList();
-}
-
-void RecentDatabaseListModel::saveRecentDatabaseList()
-{
-// TODO
 }

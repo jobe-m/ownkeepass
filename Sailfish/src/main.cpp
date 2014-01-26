@@ -44,15 +44,6 @@
 
 int main(int argc, char *argv[])
 {
-    const QString orgName("tisno.de");
-    const QString appName("harbour-ownkeepass");
-    const QString settingsFilePath(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation)[0] +
-                                   "/" + appName + "/settings.ini");
-    // These are the predefined locations where the user can save the Keepass database and key file
-    const QString jollaPhoneDocumentsPath(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]);
-    const QString sdCardPath("/run/user/100000/media/sdcard");
-    const QString androidStoragePath("/data/sdcard");
-
     // SailfishApp::main() will display "qml/harbour-ownkeepass.qml", if you need more
     // control over initialization, you can use:
     //
@@ -62,6 +53,16 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    const QString orgName("tisno.de");
+    const QString appName("harbour-ownkeepass");
+    const QString settingsFilePath(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation)[0] +
+                                   "/" + appName + "/settings.ini");
+    // These are the predefined locations where the user can save the Keepass database and key file
+    const QString jollaPhoneDocumentsPath(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]);
+    const QString sdCardPath("/run/user/100000/media/sdcard");
+    const QString androidStoragePath("/data/sdcard");
+    const QString dropboxLocalStoragePath(QDir::homePath() + "/dropbox");
+
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     app->setOrganizationName(orgName);
@@ -70,7 +71,6 @@ int main(int argc, char *argv[])
     // @uri harbour.ownkeepass
     const char* uri("harbour.ownkeepass");
     // make the following classes available in QML
-// TODO make KdbDatabase a context property
     qmlRegisterType<kpxPublic::KdbDatabase>(uri, 1, 0, "KdbDatabase");
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
@@ -80,14 +80,14 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("jollaPhoneDocumentsPath", jollaPhoneDocumentsPath);
     view->rootContext()->setContextProperty("sdCardPath", sdCardPath);
     view->rootContext()->setContextProperty("androidStoragePath", androidStoragePath);
+    view->rootContext()->setContextProperty("dropboxLocalStoragePath", dropboxLocalStoragePath);
 
     // Setup some class as context properties and make them accessible in QML
     QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());
-    view->rootContext()->setContextProperty("OwnKeepassHelper", helper.data());
+    view->rootContext()->setContextProperty("ownKeepassHelper", helper.data());
     QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath));
-    view->rootContext()->setContextProperty("OwnKeepassSettings", okpSettings.data());
-    QScopedPointer<settingsPublic::RecentDatabaseListModel> recentDbListModel(new settingsPublic::RecentDatabaseListModel());
-    view->rootContext()->setContextProperty("recentDatabaseListModel", recentDbListModel.data());
+    view->rootContext()->setContextProperty("ownKeepassSettings", okpSettings.data());
+    view->rootContext()->setContextProperty("recentDatabaseModel", okpSettings->recentDatabaseModel());
 
     // Set main QML file and go ahead
     view->setSource(SailfishApp::pathTo("qml/Main.qml"));

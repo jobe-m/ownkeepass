@@ -42,8 +42,7 @@ Dialog {
     function updateCoverState() {
         if (saveCoverState === -1) // save initial state
             editSettingsDialog.saveCoverState = applicationWindow.cover.coverState
-        if (
-                defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
+        if (defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged) {
@@ -95,14 +94,14 @@ Dialog {
                     id: defaultCryptAlgorithm
                     width: editSettingsDialog.width
                     label: "Default Encryption:"
-                    currentIndex: OwnKeepassSettings.defaultCryptAlgorithm
+                    currentIndex: ownKeepassSettings.defaultCryptAlgorithm
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
                         MenuItem { text: "Twofish" }
                     }
                     onCurrentIndexChanged: {
                         editSettingsDialog.defaultCryptAlgorithmChanged =
-                                (currentIndex !== OwnKeepassSettings.defaultCryptAlgorithm ? true : false)
+                                defaultCryptAlgorithm.currentIndex !== ownKeepassSettings.defaultCryptAlgorithm
                         editSettingsDialog.updateCoverState()
                     }
                 }
@@ -119,11 +118,11 @@ Dialog {
                     validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
                     label: "Default Key Transformation Rounds"
                     placeholderText: label
-                    text: OwnKeepassSettings.defaultKeyTransfRounds
+                    text: String(ownKeepassSettings.defaultKeyTransfRounds)
                     EnterKey.onClicked: parent.focus = true
                     onTextChanged: {
                         editSettingsDialog.defaultKeyTransfRoundsChanged =
-                                (Number(text) !== OwnKeepassSettings.defaultKeyTransfRounds ? true : false)
+                                Number(defaultKeyTransfRounds.text) !== ownKeepassSettings.defaultKeyTransfRounds
                         editSettingsDialog.updateCoverState()
                     }
                 }
@@ -141,7 +140,7 @@ Dialog {
 
             Slider {
                 id: inactivityLockTime
-                value: OwnKeepassSettings.locktime
+                value: ownKeepassSettings.locktime
                 minimumValue: 0
                 maximumValue: 10
                 stepSize: 1
@@ -189,20 +188,19 @@ Dialog {
                     }
                 }
                 onValueChanged: {
-                    editSettingsDialog.inactivityLockTimeChanged =
-                            (value !== OwnKeepassSettings.locktime ? true : false)
+                    editSettingsDialog.inactivityLockTimeChanged = inactivityLockTime.value !== ownKeepassSettings.locktime
                     editSettingsDialog.updateCoverState()
                 }
             }
 
             TextSwitch {
                 id: showUserNamePasswordInListView
-                checked: OwnKeepassSettings.showUserNamePasswordInListView
+                checked: ownKeepassSettings.showUserNamePasswordInListView
                 text: "Extended List View"
                 description: "If you switch this on username and password are shown below entry title in list views"
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordInListViewChanged =
-                            (checked !== OwnKeepassSettings.showUserNamePasswordInListView ? true : false)
+                            showUserNamePasswordInListView.checked !== ownKeepassSettings.showUserNamePasswordInListView
                     editSettingsDialog.updateCoverState()
                 }
             }
@@ -213,36 +211,36 @@ Dialog {
 
             TextSwitch {
                 id: showUserNamePasswordOnCover
-                checked: OwnKeepassSettings.showUserNamePasswordOnCover
+                checked: ownKeepassSettings.showUserNamePasswordOnCover
                 text: "Show Username and Password"
                 description: "Switching this on will show username and password of the currently opened Keepass entry on the cover"
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordOnCoverChanged =
-                            (checked !== OwnKeepassSettings.showUserNamePasswordOnCover ? true : false)
+                            showUserNamePasswordOnCover.checked !== ownKeepassSettings.showUserNamePasswordOnCover
                     editSettingsDialog.updateCoverState()
                 }
             }
 
             TextSwitch {
                 id: lockDatabaseFromCover
-                checked: OwnKeepassSettings.lockDatabaseFromCover
+                checked: ownKeepassSettings.lockDatabaseFromCover
                 text: "Lock Database from Cover"
                 description: "This lets you lock the database with the left cover action"
                 onCheckedChanged: {
                     editSettingsDialog.lockDatabaseFromCoverChanged =
-                            (checked !== OwnKeepassSettings.lockDatabaseFromCover ? true : false)
+                            lockDatabaseFromCover.checked !== ownKeepassSettings.lockDatabaseFromCover
                     editSettingsDialog.updateCoverState()
                 }
             }
 
             TextSwitch {
                 id: copyNpasteFromCover
-                checked: OwnKeepassSettings.copyNpasteFromCover
+                checked: ownKeepassSettings.copyNpasteFromCover
                 text: "Copy'n'paste from Cover"
                 description: "Enable this to copy username and password into clipboard from cover"
                 onCheckedChanged: {
                     editSettingsDialog.copyNpasteFromCoverChanged =
-                            (checked !== OwnKeepassSettings.copyNpasteFromCover ? true : false)
+                            copyNpasteFromCover.checked !== ownKeepassSettings.copyNpasteFromCover
                     editSettingsDialog.updateCoverState()
                 }
             }
