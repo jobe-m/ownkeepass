@@ -184,6 +184,7 @@ Page {
 
         DatabaseMenu {
             id: databaseMenu
+            menuLabelText: Global.databaseUiName
         }
 
         ApplicationMenu {}

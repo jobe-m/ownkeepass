@@ -156,19 +156,19 @@ Page {
 
     Connections {
         target: ownKeepassSettings
-        onLoadLastDatabase: {
+        onLoadLastDatabase: { // returns: dbLocation, dbFilePath, ...
+            // Set database name in global object for pulley menu on query password page
+            Global.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
             pageStack.push(queryPasswordDialogComponent,
-                           {
-                               "state": "OpenRecentDatabase",
-                               "dbFileLocation": dbLocation,
-                               "dbFilePath": dbFilePath,
-                               "useKeyFile": useKeyFile,
-                               "keyFileLocation": keyFileLocation,
-                               "keyFilePath": keyFilePath,
-                               "loadLastDb": ownKeepassSettings.loadLastDb,
-                               // Development mode here for faster testing with predefined database file
-                               "password": Global.developmentMode === 1 ? "qwertz" : ""
-                           })
+                           { "state": "OpenRecentDatabase",
+                             "dbFileLocation": dbLocation,
+                             "dbFilePath": dbFilePath,
+                             "useKeyFile": useKeyFile,
+                             "keyFileLocation": keyFileLocation,
+                             "keyFilePath": keyFilePath,
+                             "loadLastDb": ownKeepassSettings.loadLastDb,
+                             // Development mode here for faster testing with predefined database file
+                             "password": Global.developmentMode === 1 ? "qwertz" : "" })
         }
     }
 
@@ -271,20 +271,6 @@ Page {
             }
         }
 
-        // Get Name for file location
-        function getLocationName(value) {
-            switch (value) {
-            case 0:
-                return "Documents: "
-            case 1:
-                return "SD Card: "
-            case 2:
-                return "Android Storage: "
-            case 3:
-                return "Dropbox: "
-            }
-        }
-
         // Get phisical path for file location
         function getRootPath(value) {
             switch (value) {
@@ -309,7 +295,7 @@ Page {
         function updateRecentDatabaseListModel() {
             // update recent database list
             var uiName = internal.databasePath.substring(internal.databasePath.lastIndexOf("/") + 1, internal.databasePath.length)
-            var uiPath = getLocationName(internal.dbFileLocation) + internal.databasePath.substring(0, internal.databasePath.lastIndexOf("/") + 1)
+            var uiPath = Global.getLocationName(internal.dbFileLocation) + internal.databasePath.substring(0, internal.databasePath.lastIndexOf("/") + 1)
             ownKeepassSettings.addRecentDatabase(uiName,
                                                  uiPath,
                                                  internal.dbFileLocation,
@@ -317,7 +303,9 @@ Page {
                                                  internal.useKeyFile,
                                                  internal.keyFileLocation,
                                                  internal.keyFilePath)
-            ownKeepassSettings.loadlastDb = internal.loadLastDb
+            ownKeepassSettings.loadLastDb = internal.loadLastDb
+            // Set database name in global object for pulley menu on groups and entries pages
+            Global.databaseUiName = Global.getLocationName(dbFileLocation) + " " + databasePath
         }
 
         function databaseOpenedHandler() {
@@ -712,18 +700,18 @@ Page {
             }
 
             onClicked: {
+                // Set database name in global object for pulley menu on query password page
+                Global.databaseUiName = Global.getLocationName(model.databaseLocation) + " " + model.databaseFilePath
                 pageStack.push(queryPasswordDialogComponent,
-                               {
-                                   "state": "OpenRecentDatabase",
-                                   "dbFileLocation": model.databaseLocation,
-                                   "dbFilePath": model.databaseFilePath,
-                                   "useKeyFile": model.useKeyFile,
-                                   "keyFileLocation": model.keyFileLocation,
-                                   "keyFilePath": model.keyFilePath,
-                                   "loadLastDb": ownKeepassSettings.loadLastDb,
-                                   // Development mode here for faster testing with predefined database file
-                                   "password": Global.developmentMode === 1 ? "qwertz" : ""
-                               })
+                               { "state": "OpenRecentDatabase",
+                                 "dbFileLocation": model.databaseLocation,
+                                 "dbFilePath": model.databaseFilePath,
+                                 "useKeyFile": model.useKeyFile,
+                                 "keyFileLocation": model.keyFileLocation,
+                                 "keyFilePath": model.keyFilePath,
+                                 "loadLastDb": ownKeepassSettings.loadLastDb,
+                                 // Development mode here for faster testing with predefined database file
+                                 "password": Global.developmentMode === 1 ? "qwertz" : "" })
             }
         }
     }

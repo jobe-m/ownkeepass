@@ -25,8 +25,6 @@
 
 using namespace settingsPublic;
 
-const QString OWN_KEEPASS_VERSION("0.9.6");
-
 OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     QObject(parent),
     m_recentDatabaseModel(new settingsPrivate::RecentDatabaseListModel(m_recentDatabaseListLength)),

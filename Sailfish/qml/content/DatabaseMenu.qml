@@ -27,6 +27,7 @@ import "../scripts/Global.js" as Global
 PullDownMenu {
     id: databaseMenu
 
+    property alias menuLabelText: databaseMenuLabel.text
     property MenuItem databaseSettingsMenuItem: databaseSettingsMenuItem
     property MenuItem newPasswordGroupsMenuItem: newPasswordGroupsMenuItem
     property MenuItem newPasswordEntryMenuItem: newPasswordEntryMenuItem
@@ -76,5 +77,10 @@ PullDownMenu {
                 searchField.forceActiveFocus()
             }
         }
+    }
+
+    MenuLabel {
+        id: databaseMenuLabel
+        enabled: text !== ""
     }
 }

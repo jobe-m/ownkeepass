@@ -51,8 +51,15 @@ Dialog {
 
     SilicaFlickable {
         anchors.fill: parent
-        contentWidth: parent.width
+        width: parent.width
         contentHeight: col.height
+
+        PullDownMenu {
+            id: queryPasswordMenu
+            MenuLabel {
+                text: Global.databaseUiName
+            }
+        }
 
         ApplicationMenu {}
 
@@ -170,7 +177,7 @@ Dialog {
                 EnterKey.enabled: text !== ""
                 EnterKey.highlighted: text !== ""
                 EnterKey.onClicked: {
-                    if (state === "CreateNewDatabase") {
+                    if (queryPasswordDialog.state === "CreateNewDatabase") {
                         confirmPasswordField.focus = true
                     } else {
                         parent.focus = true
@@ -222,6 +229,7 @@ Dialog {
                                     !dbFilePathField.errorHighlight && (useKeyFile ? !keyFilePathField.errorHighlight : true )
             }
             PropertyChanges { target: passwordField; focus: false }
+            PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
         },
         State {
             name: "OpenNewDatabase"
@@ -236,6 +244,7 @@ Dialog {
                                     !dbFilePathField.errorHighlight && (useKeyFile ? !keyFilePathField.errorHighlight : true )
             }
             PropertyChanges { target: passwordField; focus: false }
+            PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
         },
         State {
             name: "OpenRecentDatabase"
@@ -247,6 +256,7 @@ Dialog {
             PropertyChanges { target: confirmPasswordField; enabled: false }
             PropertyChanges { target: queryPasswordDialog; canNavigateForward: passwordField.text !== "" }
             PropertyChanges { target: passwordField; focus: true }
+            PropertyChanges { target: queryPasswordMenu; enabled: true; visible: true }
         }
     ]
 }

@@ -186,7 +186,7 @@ Dialog {
             TextField {
                 id: entryVerifyPasswordTextField
                 width: parent.width
-                inputMethodHints: Qt.ImhSensitiveData
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                 echoMode: TextInput.Password
                 label: "Verify Password"
                 text: ""

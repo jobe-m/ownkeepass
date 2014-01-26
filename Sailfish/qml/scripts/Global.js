@@ -25,6 +25,7 @@
 // enable (1) / disable (0) development mode
 // This sets some paths for SDK usage (/opt/sdk/...) and a default database password for testing
 var developmentMode = 0
+var databaseUiName = ""
 
 var constants = {
     _1microsecond: 1,
@@ -70,6 +71,20 @@ var env = {
 
     setKeepassSettings: function(obj) {
         this.keepassSettings = obj
+    }
+}
+
+// Get Name for file location
+function getLocationName(value) {
+    switch (value) {
+    case 0:
+        return "Documents: "
+    case 1:
+        return "SD Card: "
+    case 2:
+        return "Android Storage: "
+    case 3:
+        return "Dropbox: "
     }
 }
 
