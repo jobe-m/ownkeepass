@@ -70,8 +70,7 @@ Copyright (C) 2013-2014 Marko Koschak &lt;marko.koschak@tisno.de&gt;<br>"
 Source code is available at: <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br>\
 If you think you found a bug please report it also on github. Thanks :)<br>\
 If you have comments, suggestions, ideas about ownKeepass or just want to say thank you please go here: \
-<a href=\"http://www.tisno.de/index.php/open-source/169-ownkeepass-for-sailfishos\">\
-https://www.tisno.de/index.php/open-source/169-ownkeepass-for-sailfishos</a><br>"
+<a href=\"https://www.tisno.de/index.php/open-source\">https://www.tisno.de/index.php/open-source</a><br>"
                 onLinkActivated: {
                     console.log(link + " link activated")
                     Qt.openUrlExternally(link)
@@ -87,8 +86,13 @@ https://www.tisno.de/index.php/open-source/169-ownkeepass-for-sailfishos</a><br>
             SilicaLabel {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
-                text: "This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.<br><br>\
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details: <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>.<br><br>\
+                text: "This program is free software: you can redistribute it and/or modify it under the \
+terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of \
+the License, or (at your option) any later version.<br><br>\
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even \
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public \
+License for more details: <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>.<br><br>\
+\
 <b>ownKeepass includes source code from other projects:</b><br><br>\
 \
 KeepassX database code:<br>\

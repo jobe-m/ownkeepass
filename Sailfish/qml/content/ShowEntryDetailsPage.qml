@@ -66,6 +66,33 @@ Page {
 //                }
 
             MenuItem {
+                enabled: entryUrlTextArea.text !== ""
+                visible: enabled
+                text: "Copy Url"
+                onClicked: {
+                    Clipboard.text = entryUrlTextArea.text
+                }
+            }
+
+            MenuItem {
+                enabled: entryUsernameTextArea.text !== ""
+                visible: enabled
+                text: "Copy Username"
+                onClicked: {
+                    Clipboard.text = entryUsernameTextArea.text
+                }
+            }
+
+            MenuItem {
+                enabled: entryPasswordTextField.text !== ""
+                visible: enabled
+                text: "Copy Password"
+                onClicked: {
+                    Clipboard.text = entryPasswordTextField.text
+                }
+            }
+
+            MenuItem {
                 text: "Edit Password Entry"
                 onClicked: {
                     pageStack.push(editEntryDetailsDialogComponent,
