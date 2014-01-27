@@ -4,7 +4,7 @@ ownKeepass
 Status
 ------
 
-Release 0.9.6 (beta) available for early testers for the Jolla Phone [here] [1]
+Release 0.9.7 (beta) available for early testers for the Jolla Phone [here] [1]
 
 Current limitations/bugs:
 *   All help pages have currently the same text (REQ #6)
