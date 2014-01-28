@@ -662,8 +662,8 @@ Page {
                 internal.loadLastDb = loadLastDb
             }
             onRejected: {
-                // save at least the "Open Automatically" setting so that the user can return to the main page
-                ownKeepassSettings.loadLastDb = loadLastDb
+                // Reset "Open Automatically" so that the dialog does not open again
+                ownKeepassSettings.loadLastDb = false
             }
         }
     }
