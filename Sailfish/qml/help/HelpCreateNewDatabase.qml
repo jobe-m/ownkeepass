@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013-2014 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -22,31 +22,12 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../scripts/Global.js" as Global
 
-PushUpMenu {
-    id: applicationMenu
-
-    property bool disableSettingsItem: false
-    property string helpContent: ""
-
-    MenuItem {
-        text: "About"
-        onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-    }
-    MenuItem {
-        enabled: helpContent !== ""
-        visible: enabled
-        text: "Help"
-        onClicked: pageStack.push(Qt.resolvedUrl("../help/HelpPage.qml"), {
-                                      helpPageContent: helpContent
-                                  })
-    }
-    MenuItem {
-        enabled: !disableSettingsItem
-        visible: enabled
-        text: "Settings"
-        onClicked: pageStack.push(Global.env.mainPage.editSettingsDialogComponent)
-    }
+Label {
+    verticalAlignment: Text.AlignVCenter
+    horizontalAlignment: Text.AlignLeft
+    font.pixelSize: Theme.fontSizeSmall
+    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+    linkColor: Theme.highlightColor
+    text: ""
 }
-

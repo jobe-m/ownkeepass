@@ -78,7 +78,9 @@ Page {
         VerticalScrollDecorator {}
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        ApplicationMenu {}
+        ApplicationMenu {
+            helpContent: "MainPage"
+        }
 
         header: Column {
             width: parent.width

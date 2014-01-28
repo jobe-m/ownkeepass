@@ -75,7 +75,7 @@ OTHER_FILES += \
     qml/content/SelectDatabasePage.qml \
     qml/content/QueryPasswordDialog.qml \
     qml/content/KdbListItem.qml \
-    qml/content/HelpPage.qml \
+    qml/help/HelpPage.qml \
     qml/content/GroupsAndEntriesPage.qml \
     qml/content/FileBrowserPage.qml \
     qml/content/EditSettingsDialog.qml \
@@ -93,4 +93,8 @@ OTHER_FILES += \
     rpm/harbour-ownkeepass.spec \
     qml/Main.qml \
     qml/content/MainPageObsolete.qml \
-    qml/content/MainPage.qml
+    qml/content/MainPage.qml \
+    qml/help/HelpMainPage.qml \
+    qml/help/HelpCreateNewDatabase.qml \
+    qml/help/HelpOpenNewDatabase.qml \
+    qml/help/HelpOpenRecentDatabase.qml

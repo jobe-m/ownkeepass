@@ -61,7 +61,9 @@ Dialog {
             }
         }
 
-        ApplicationMenu {}
+        ApplicationMenu {
+            id: queryPasswordDialogAppMenu
+        }
 
         VerticalScrollDecorator {}
 
@@ -230,6 +232,7 @@ Dialog {
             }
             PropertyChanges { target: passwordField; focus: false }
             PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
+            PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "CreateNewDatabase" }
         },
         State {
             name: "OpenNewDatabase"
@@ -245,6 +248,7 @@ Dialog {
             }
             PropertyChanges { target: passwordField; focus: false }
             PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
+            PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenNewDatabase" }
         },
         State {
             name: "OpenRecentDatabase"
@@ -257,6 +261,7 @@ Dialog {
             PropertyChanges { target: queryPasswordDialog; canNavigateForward: passwordField.text !== "" }
             PropertyChanges { target: passwordField; focus: true }
             PropertyChanges { target: queryPasswordMenu; enabled: true; visible: true }
+            PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenRecentDatabase" }
         }
     ]
 }

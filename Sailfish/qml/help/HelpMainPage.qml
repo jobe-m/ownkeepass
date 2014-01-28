@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013-2014 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -22,59 +22,22 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../common"
 
-Page {
-    id: page
-
-    // set to default help text showing on main page
-    state: "MainPage"
-
-    SilicaFlickable {
-        anchors.fill: parent
-        contentWidth: parent.width
-        contentHeight: col.height
-
-        // Show a scollbar when the view is flicked, place this over all other content
-        VerticalScrollDecorator {}
-
-        Column {
-            id: col
-            width: parent.width
-            spacing: Theme.paddingLarge
-
-            PageHeaderExtended {
-                title: "ownKeepass"
-                subTitle: "Password Safe"
-            }
-
-            SilicaLabel {
-                font.pixelSize: Theme.fontSizeLarge
-                font.bold: true
-                text: "Help"
-            }
-
-            SilicaLabel {
-                id: helpText
-            }
-        }
-    }
-
-    states: [
-        State {
-            name: "MainPage"
-            PropertyChanges {
-                target: helpText
-                linkColor: Theme.highlightColor
-                text: "ownKeepass is a password safe application with the purpose to \
+Label {
+    verticalAlignment: Text.AlignVCenter
+    horizontalAlignment: Text.AlignLeft
+    font.pixelSize: Theme.fontSizeSmall
+    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+    linkColor: Theme.highlightColor
+    text: "ownKeepass is a password safe application with the purpose to \
 protect sensible data like passwords for web pages, credit card numbers, \
 PINs, TANs and other bits of information which should be kept secret. All that information \
 is saved in a database file which is encrypted and stored locally on your phone. To open \
 the database you need to know the master password of the database. The used database \
-format is compatible to Keepass version 1.x. That means you can use Keepass [1] on your desktop \
+format is compatible to Keepass version 1. That means you can use Keepass [1] on your desktop \
 system to decrypt and open that database file, too.<br><br>\
 \
-Please note that currently ownKeepass cannot load or save Keepass version 2.x databases. This is \
+Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is \
 planned for a future release of ownKeepass.<br><br>\
 \
 <b>Usage of Help Pages</b><br>\
@@ -99,10 +62,10 @@ computer, it's not your computer anymore\".<br><br>\
 <b>Sharing Keepass database between your jolla phone and your desktop PC</b><br>\
 The Keepass database file format is perfect to share your password safe between different \
 systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass \
-implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1.x \
+implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 \
 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. \
 I would also like to point you to KeepassX version 0.4.3 [2] which is also \
-compatible with Keepass version 1.x.<br>\
+compatible with Keepass version 1.<br>\
 You can share your Keepass database file via SD card or via a cloud service like Dropbox. \
 When using a cloud server I would recommend to use a key file in addition to the master password. \
 The additional key file will be used by ownKeepass to decrypt the database. Store this key file \
@@ -117,7 +80,7 @@ of ownKeepass:<br>\
 <ul>\
 <li>Build-in sync of database file with a WebDAV server like ownCloud</li>\
 <li>If feasible auto-type of username and passwords into web page</li>\
-<li>Support for Keepass version 2.x database files</li>\
+<li>Support for Keepass version 2 database files</li>\
 </ul>\
 \
 <br><br>\
@@ -126,14 +89,4 @@ of ownKeepass:<br>\
 [3] <a href=\"http://technet.microsoft.com/en-us/library/cc722487.aspx\">10 Immutable Laws of Security</a><br>\
 [4] <a href=\"http://www.keepass.info/download.html\">www.keepass.info/download.html</a><br><br>\
 "
-            }
-        },
-        State {
-            name: "QueryPasswordPage"
-            PropertyChanges {
-                target: helpText
-                text: ""
-            }
-        }
-    ]
 }
