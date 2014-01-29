@@ -29,5 +29,16 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: ""
+    text: "
+<b>Master Password</b><br>\
+\
+Type in here the password for opening the database. I you choosed a key file it will be automatically \
+loaded from the path you specified earlier. If you get an error on opening the database and you are sure \
+that your provided password is correct check if the key file is still in the same place when you opened the \
+database the last time successfully.<br><br>\
+\
+<b>Open automatically</b><br>\
+\
+Check this opton if you want that ownKeepass automatically opens the password query dialog again for this \
+database when you start the application the next time.<br><br>"
 }

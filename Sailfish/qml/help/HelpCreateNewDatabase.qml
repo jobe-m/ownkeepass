@@ -29,5 +29,54 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: ""
+    text: "Here you can create a new database where ownKeepass will store your sensitive data.<br><br>\
+\
+<b>Database Location</b><br>\
+\
+First you need to specify where the database file will be stored. Available options are \"Documents on Phone\", \
+\"SD Card\", \"Android Storage\" and \"Dropbox Local Storage\". Take the first option \"Documents on Phone\" if \
+you want the database to be \
+located on the phone or choose \"SD Card\" to place the database on the removable SD Card. You need to have a FAT32 \
+formated SD Card inserted into the phone. There is currently no warning if the SD Card is not present or not correctly \
+recognized. Please make sure the SD Card is properly detected by looking at it in a File Browser. If you want to share \
+the Keepass database with Android Apps you can place it into the \"Android Storage\". The last option \"Sailbox Local \
+Storage\" can be used \
+together with the Dropbox client Sailbox. If you place your database there Sailbox can up- and download the file to \
+the Dropbox online service. Sailbox is available in Jolla Harbour for download.<br><br>\
+\
+Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition \
+to the master password. This key file should not be uploaded to the cloud service.<br>br>\
+\
+<b>Database path and file name</b><br>\
+\
+Please specify in this text field the relative path and file name for your Keepass database file. For example you \
+can type in \"ownkeepass/notes.kdb\". If you have opened ownKeepass the first time you will see that string already \
+pre-filled for your convenience.<br><br>\
+\
+<b>Use Key File</b><br>\
+\
+A key file can be used additionally to a master password to protect the Keepass database. Both are used together to \
+generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key \
+becomes in principle stronger against attacks. You can use for example a random picture as key file.<br><br>\
+\
+<b>Key File Location</b><br>\
+\
+The same as for database location also applies here. Except that the key file location cannot be set to \"Dropbox Local \
+Storage\" in order to protect your security by design.<br><br>\
+\
+<b>Key File Path and File Name</b><br>\
+\
+Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can \
+choose here a picture as a key file.<br><br>\
+\
+<b>Master Password</b><br>\
+\
+Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 \
+characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the \
+\"Confirm Password\" field.<br><br>\
+\
+<b>Open automatically</b><br>\
+\
+Check this option if you want that ownKeepass automatically opens this database again when you start the application the \
+next time. You will be forwarded directly to the password query dialog.<br><br>"
 }
