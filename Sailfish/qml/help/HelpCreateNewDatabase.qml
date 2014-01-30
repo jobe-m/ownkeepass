@@ -39,7 +39,7 @@ you want the database to be \
 located on the phone or choose \"SD Card\" to place the database on the removable SD Card. You need to have a FAT32 \
 formated SD Card inserted into the phone. There is currently no warning if the SD Card is not present or not correctly \
 recognized. Please make sure the SD Card is properly detected by looking at it in a File Browser. If you want to share \
-the Keepass database with Android Apps you can place it into the \"Android Storage\". The last option \"Sailbox Local \
+the Keepass database with Android Apps you can place it into the \"Android Storage\". The last option \"Dropbox Local \
 Storage\" can be used \
 together with the Dropbox client Sailbox. If you place your database there Sailbox can up- and download the file to \
 the Dropbox online service. Sailbox is available in Jolla Harbour for download.<br><br>\

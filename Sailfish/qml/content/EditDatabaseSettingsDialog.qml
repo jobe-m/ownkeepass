@@ -55,6 +55,11 @@ Dialog {
 
         VerticalScrollDecorator {}
 
+        ApplicationMenu {
+            helpContent: "DatabaseSettings"
+            disableSettingsItem: true
+        }
+
         Column {
             id: col
             width: parent.width
