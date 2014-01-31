@@ -28,54 +28,47 @@ PullDownMenu {
     id: databaseMenu
 
     property alias menuLabelText: databaseMenuLabel.text
-    property MenuItem databaseSettingsMenuItem: databaseSettingsMenuItem
-    property MenuItem newPasswordGroupsMenuItem: newPasswordGroupsMenuItem
-    property MenuItem newPasswordEntryMenuItem: newPasswordEntryMenuItem
-    property MenuItem searchMenuItem: searchMenuItem
+    property bool enableDatabaseSettingsMenuItem: false
+    property bool enableNewPasswordGroupsMenuItem: false
+    property bool enableNewPasswordEntryMenuItem: false
+    property bool enableSearchMenuItem: false
+
+    signal searchClicked
 
     MenuItem {
-        id: databaseSettingsMenuItem
+        enabled: enableDatabaseSettingsMenuItem
         visible: enabled
         text: qsTr("Database Settings")
-        onClicked: pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
+        onClicked: {
+            pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
+        }
     }
 
     MenuItem {
-        id: newPasswordGroupsMenuItem
+        enabled: enableNewPasswordGroupsMenuItem
         visible: enabled
         text: "New Password Group"
-        onClicked: pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
-                                  { "createNewGroup": true, "parentGroupId": groupId })
+        onClicked: {
+            pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
+                           { "createNewGroup": true, "parentGroupId": groupId })
+        }
     }
+
     MenuItem {
-        id: newPasswordEntryMenuItem
+        enabled: enableNewPasswordEntryMenuItem
         visible: enabled
         text: "New Password Entry"
         onClicked: {
-            console.log("Open EditEntryDetailsDialog to create new entry")
             pageStack.push(Global.env.mainPage.editEntryDetailsDialogComponent,
                            { "createNewEntry": true, "parentGroupId": groupId })
         }
     }
     MenuItem {
-        id: searchMenuItem
+        enabled: enableSearchMenuItem
         visible: enabled
         text: "Search"
         onClicked: {
-            if (searchField.enabled) {
-                // Disable search functionality
-                groupsAndEntriesPage.state = groupsAndEntriesPage.__saveState
-                // populate listmodel with group data
-                init()
-            } else {
-                // Enable search functionality
-                groupsAndEntriesPage.__saveState = groupsAndEntriesPage.state
-                groupsAndEntriesPage.state = "Search"
-                // initialise listmodel for search
-                kdbListModel.searchRootGroupId = groupsAndEntriesPage.groupId
-                kdbListModel.clearListModel()
-                searchField.forceActiveFocus()
-            }
+            searchClicked()
         }
     }
 

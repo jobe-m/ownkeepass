@@ -98,4 +98,5 @@ OTHER_FILES += \
     qml/help/HelpCreateNewDatabase.qml \
     qml/help/HelpOpenNewDatabase.qml \
     qml/help/HelpOpenRecentDatabase.qml \
-    qml/help/HelpDatabaseSettings.qml
+    qml/help/HelpDatabaseSettings.qml \
+    qml/content/SearchPage.qml

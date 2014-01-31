@@ -49,4 +49,3 @@ PushUpMenu {
         onClicked: pageStack.push(Global.env.mainPage.editSettingsDialogComponent)
     }
 }
-
