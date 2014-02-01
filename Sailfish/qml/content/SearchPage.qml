@@ -88,7 +88,7 @@ Page {
         model: kdbSearchListModel
 
         ViewSearchPlaceholder {
-            id: searchNoEntriesFoundPlaceholder
+            enabled: kdbSearchListModel.isEmpty
             text: "No Entries found"
 
             onClicked: {
