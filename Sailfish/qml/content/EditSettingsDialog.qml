@@ -60,6 +60,11 @@ Dialog {
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
+        ApplicationMenu {
+            helpContent: ""
+            disableSettingsItem: true
+        }
+
         Column {
             id: col
             width: parent.width
