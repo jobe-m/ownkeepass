@@ -51,21 +51,7 @@ OwnKeepassSettings::~OwnKeepassSettings()
     delete m_settings;
 }
 
-void OwnKeepassSettings::saveSettings() {
-    qDebug() << "saveSettings";
-    m_settings->setValue("settings/version", QVariant(m_version));
-    m_settings->setValue("settings/simpleMode", QVariant(m_simpleMode));
-    m_settings->setValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm));
-    m_settings->setValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds));
-    m_settings->setValue("settings/locktime", QVariant(m_locktime));
-    m_settings->setValue("settings/showUserNamePasswordInListView", QVariant(m_showUserNamePasswordInListView));
-    m_settings->setValue("settings/showUserNamePasswordOnCover", QVariant(m_showUserNamePasswordOnCover));
-    m_settings->setValue("settings/lockDatabaseFromCover", QVariant(m_lockDatabaseFromCover));
-    m_settings->setValue("settings/copyNpasteFromCover", QVariant(m_copyNpasteFromCover));
-}
-
 void OwnKeepassSettings::loadSettings() {
-    qDebug() << "loadSettings";
     m_previousVersion                = (m_settings->getValue("settings/version", QVariant(m_version))).toString();
     m_simpleMode                     = (m_settings->getValue("settings/simpleMode", QVariant(m_simpleMode))).toBool();
     m_defaultCryptAlgorithm          = (m_settings->getValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm))).toInt();
@@ -76,10 +62,21 @@ void OwnKeepassSettings::loadSettings() {
     m_lockDatabaseFromCover          = (m_settings->getValue("settings/lockDatabaseFromCover", QVariant(m_lockDatabaseFromCover))).toBool();
     m_copyNpasteFromCover            = (m_settings->getValue("settings/copyNpasteFromCover", QVariant(m_copyNpasteFromCover))).toBool();
 
+    // emit signals for property changes
+    emit simpleModeChanged();
+    emit defaultCryptAlgorithmChanged();
+    emit defaultKeyTransfRoundsChanged();
+    emit locktimeChanged();
+    emit showUserNamePasswordInListViewChanged();
+    emit showUserNamePasswordOnCoverChanged();
+    emit lockDatabaseFromCoverChanged();
+    emit copyNpasteFromCoverChanged();
+
     // Check previous settings file version here and
     // save new settings Format if needed
     if (m_previousVersion != m_version) {
-        saveSettings();
+        // save new version number
+        m_settings->setValue("settings/version", QVariant(m_version));
     }
 
     // load recent database list if we are in expert mode
@@ -156,12 +153,84 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     }
 }
 
+void OwnKeepassSettings::setSimpleMode(const bool value)
+{
+    if (value != m_simpleMode) {
+        m_simpleMode = value;
+        m_settings->setValue("settings/simpleMode", QVariant(m_simpleMode));
+        emit simpleModeChanged();
+    }
+}
+
+void OwnKeepassSettings::setDefaultCryptAlgorithm(const int value)
+{
+    if (value != m_defaultCryptAlgorithm) {
+        m_defaultCryptAlgorithm = value;
+        m_settings->setValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm));
+        emit defaultCryptAlgorithmChanged();
+    }
+}
+
+void OwnKeepassSettings::setDefaultKeyTransfRounds(const int value)
+{
+    if (value != m_defaultKeyTransfRounds) {
+        m_defaultKeyTransfRounds = value;
+        m_settings->setValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds));
+        emit defaultKeyTransfRoundsChanged();
+    }
+}
+
+void OwnKeepassSettings::setLocktime(const int value)
+{
+    if (value != m_locktime) {
+        m_locktime = value;
+        m_settings->setValue("settings/locktime", QVariant(m_locktime));
+        emit locktimeChanged();
+    }
+}
+
+void OwnKeepassSettings::setShowUserNamePasswordInListView(const bool value)
+{
+    if (value != m_showUserNamePasswordInListView) {
+        m_showUserNamePasswordInListView = value;
+        m_settings->setValue("settings/showUserNamePasswordInListView", QVariant(m_showUserNamePasswordInListView));
+        emit showUserNamePasswordInListViewChanged();
+    }
+}
+
+void OwnKeepassSettings::setShowUserNamePasswordOnCover(const bool value)
+{
+    if (value != m_showUserNamePasswordOnCover) {
+        m_showUserNamePasswordOnCover = value;
+        m_settings->setValue("settings/showUserNamePasswordOnCover", QVariant(m_showUserNamePasswordOnCover));
+        emit showUserNamePasswordOnCoverChanged();
+    }
+}
+
+void OwnKeepassSettings::setLockDatabaseFromCover(const bool value)
+{
+    if (value != m_lockDatabaseFromCover) {
+        m_lockDatabaseFromCover = value;
+        m_settings->setValue("settings/lockDatabaseFromCover", QVariant(m_lockDatabaseFromCover));
+        emit lockDatabaseFromCoverChanged();
+    }
+}
+
+void OwnKeepassSettings::setCopyNpasteFromCover(const bool value)
+{
+    if (value != m_copyNpasteFromCover) {
+        m_copyNpasteFromCover = value;
+        m_settings->setValue("settings/copyNpasteFromCover", QVariant(m_copyNpasteFromCover));
+        emit copyNpasteFromCoverChanged();
+    }
+}
+
 void OwnKeepassSettings::setLoadLastDb(bool value)
 {
     if (value != m_loadLastDb) {
         m_loadLastDb = value;
-        // save loadLastDb if it has changed
         m_settings->setValue("main/loadLastDb", QVariant(m_loadLastDb));
+        emit loadLastDbChanged();
     }
 }
 

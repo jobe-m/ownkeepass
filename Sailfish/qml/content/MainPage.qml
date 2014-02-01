@@ -613,7 +613,6 @@ Page {
             ownKeepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover
             ownKeepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
             ownKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
-            ownKeepassSettings.saveSettings()
         }
     }
 

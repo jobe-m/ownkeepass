@@ -37,7 +37,6 @@ class OwnKeepassSettings : public QObject
     Q_OBJECT
 
 public:
-//    Q_PROPERTY(QAbstractListModel* recentDatabaseModel READ recentDatabaseModel NOTIFY recentDatabaseModelChanged)
     Q_PROPERTY(QString version READ version NOTIFY versionChanged)
     Q_PROPERTY(bool simpleMode READ simpleMode WRITE setSimpleMode NOTIFY simpleModeChanged)
     Q_PROPERTY(int defaultCryptAlgorithm READ defaultCryptAlgorithm WRITE setDefaultCryptAlgorithm NOTIFY defaultCryptAlgorithmChanged)
@@ -48,9 +47,6 @@ public:
     Q_PROPERTY(bool lockDatabaseFromCover READ lockDatabaseFromCover WRITE setLockDatabaseFromCover NOTIFY lockDatabaseFromCoverChanged)
     Q_PROPERTY(bool copyNpasteFromCover READ copyNpasteFromCover WRITE setCopyNpasteFromCover NOTIFY copyNpasteFromCoverChanged)
     Q_PROPERTY(bool loadLastDb READ loadLastDb WRITE setLoadLastDb NOTIFY loadLastDbChanged)
-
-    Q_INVOKABLE void saveSettings();
-    Q_INVOKABLE void loadSettings();
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
                                        int dbLocation,
@@ -67,21 +63,21 @@ public:
     QAbstractListModel* recentDatabaseModel() const { return (QAbstractListModel*)m_recentDatabaseModel.data(); }
     QString version() const { return m_version; }
     bool simpleMode() const { return m_simpleMode; }
-    void setSimpleMode(const bool value) { m_simpleMode = value;}
+    void setSimpleMode(const bool value);
     int defaultCryptAlgorithm() const { return m_defaultCryptAlgorithm; }
-    void setDefaultCryptAlgorithm(const int value) { m_defaultCryptAlgorithm = value; }
+    void setDefaultCryptAlgorithm(const int value);
     int defaultKeyTransfRounds() const { return m_defaultKeyTransfRounds; }
-    void setDefaultKeyTransfRounds(const int value) { m_defaultKeyTransfRounds = value; }
+    void setDefaultKeyTransfRounds(const int value);
     int locktime() const { return m_locktime; }
-    void setLocktime(const int value) { m_locktime = value; }
+    void setLocktime(const int value);
     bool showUserNamePasswordInListView() const { return m_showUserNamePasswordInListView; }
-    void setShowUserNamePasswordInListView(const bool value) { m_showUserNamePasswordInListView = value; }
+    void setShowUserNamePasswordInListView(const bool value);
     bool showUserNamePasswordOnCover() const { return m_showUserNamePasswordOnCover; }
-    void setShowUserNamePasswordOnCover(const bool value) { m_showUserNamePasswordOnCover = value; }
+    void setShowUserNamePasswordOnCover(const bool value);
     bool lockDatabaseFromCover() const { return m_lockDatabaseFromCover; }
-    void setLockDatabaseFromCover(const bool value) { m_lockDatabaseFromCover = value; }
+    void setLockDatabaseFromCover(const bool value);
     bool copyNpasteFromCover() const { return m_copyNpasteFromCover; }
-    void setCopyNpasteFromCover(const bool value) { m_copyNpasteFromCover = value; }
+    void setCopyNpasteFromCover(const bool value);
     bool loadLastDb() const { return m_loadLastDb; }
     void setLoadLastDb(const bool value);
 
@@ -103,6 +99,9 @@ signals:
                           bool useKeyFile,
                           int keyFileLocation,
                           QString keyFilePath);
+
+private:
+    void loadSettings();
 
 private:
     QScopedPointer<settingsPrivate::RecentDatabaseListModel> m_recentDatabaseModel;
