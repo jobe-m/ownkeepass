@@ -36,7 +36,7 @@ Item {
     width: (flickable ? flickable.width : screen.width) - 2 * Theme.paddingLarge
     height: mainLabel.height + hintLabel.height
     anchors.horizontalCenter: parent.horizontalCenter
-    enabled: false
+    enabled: true
     opacity: enabled ? 1.0 : 0
 
     onEnabledChanged: {

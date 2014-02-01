@@ -33,6 +33,8 @@ PullDownMenu {
     property bool enableNewPasswordEntryMenuItem: false
     property bool enableSearchMenuItem: false
 
+    signal newPasswordEntryClicked
+    signal newPasswordGroupClicked
     signal searchClicked
 
     MenuItem {
@@ -49,8 +51,7 @@ PullDownMenu {
         visible: enabled
         text: "New Password Group"
         onClicked: {
-            pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
-                           { "createNewGroup": true, "parentGroupId": groupId })
+            newPasswordGroupClicked()
         }
     }
 
@@ -59,8 +60,7 @@ PullDownMenu {
         visible: enabled
         text: "New Password Entry"
         onClicked: {
-            pageStack.push(Global.env.mainPage.editEntryDetailsDialogComponent,
-                           { "createNewEntry": true, "parentGroupId": groupId })
+            newPasswordEntryClicked()
         }
     }
     MenuItem {

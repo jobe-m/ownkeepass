@@ -123,6 +123,16 @@ Page {
             id: databaseMenu
             menuLabelText: Global.databaseUiName
 
+            onNewPasswordGroupClicked: {
+                pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
+                               { "createNewGroup": true, "parentGroupId": groupId })
+            }
+
+            onNewPasswordEntryClicked: {
+                pageStack.push(Global.env.mainPage.editEntryDetailsDialogComponent,
+                               { "createNewEntry": true, "parentGroupId": groupId })
+            }
+
             onSearchClicked: {
                 // open search page
                 pageStack.push(Qt.resolvedUrl("SearchPage.qml").toString(), {
