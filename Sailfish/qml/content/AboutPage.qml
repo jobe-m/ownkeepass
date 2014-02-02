@@ -59,7 +59,7 @@ Page {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: "Version " + ownKeepassSettings.version + " (beta)<br>\
+                text: "Version " + ownKeepassSettings.version + "<br>\
 Copyright (C) 2013-2014 Marko Koschak &lt;marko.koschak@tisno.de&gt;<br>"
             }
 
@@ -70,7 +70,11 @@ Copyright (C) 2013-2014 Marko Koschak &lt;marko.koschak@tisno.de&gt;<br>"
 Source code is available at: <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br>\
 If you think you found a bug please report it also on github. Thanks :)<br>\
 If you have comments, suggestions, ideas about ownKeepass or just want to say thank you please go here: \
-<a href=\"http://www.tisno.de/index.php/open-source\">http://www.tisno.de/index.php/open-source</a><br>"
+<a href=\"http://www.tisno.de/index.php/open-source\">http://www.tisno.de/index.php/open-source</a><br><br>\
+\
+<b>Credits</b><br><br>\
+Petri Mäkijärvi (for good hints and testing)\
+<br>"
                 onLinkActivated: {
                     console.log(link + " link activated")
                     Qt.openUrlExternally(link)

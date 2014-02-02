@@ -208,11 +208,11 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString passwo
     emit newDatabaseCreated();
 }
 
-void KdbInterfaceWorker::slot_changePassword(QString password)
+void KdbInterfaceWorker::slot_changePassKey(QString password, QString keyFile)
 {
-    qDebug() << "KdbInterfaceWorker::slot_changePassword";
+    qDebug() << "KdbInterfaceWorker::slot_changePassKey";
     Q_ASSERT(m_kdb3Database);
-    if (!m_kdb3Database->setPasswordKey(password)) {
+    if (!m_kdb3Database->setKey(password, keyFile)) {
         // send signal with error
         emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
         return;

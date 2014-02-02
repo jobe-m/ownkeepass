@@ -1,9 +1,9 @@
 Name: harbour-ownkeepass
 Summary: A password safe application
-Version: 0.9.7
+Version: 1.0.0
 Release: 1
 Group: Qt/Qt
-License: LGPL 2
+License: GPL v2
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |-

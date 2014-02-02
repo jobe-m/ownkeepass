@@ -239,6 +239,7 @@ Page {
                             kdbDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
                             kdbDatabase.create(completeDbFilePath, completeKeyFilePath, password, true)
+                            kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
                             Global.env.infoPopup.show("Permission Error", "Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'.", 0, false)
@@ -260,6 +261,7 @@ Page {
                     if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
                         kdbDatabase.open(completeDbFilePath, completeKeyFilePath, password, false)
+                        kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
                         Global.env.infoPopup.show("Key File Error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
@@ -423,6 +425,7 @@ Page {
         /*
           Data used to save database setting values in KdbDatabase object
           */
+        property string databaseKeyFile: ""
         property string databaseMasterPassword: ""
         property int databaseCryptAlgorithm: 0
         property int databaseKeyTransfRounds: 0
@@ -571,7 +574,7 @@ Page {
 
         function saveDatabaseSettings() {
             if (databaseMasterPassword !== "")
-                Global.env.kdbDatabase.changePassword(databaseMasterPassword)
+                Global.env.kdbDatabase.changePassword(databaseMasterPassword, databaseKeyFile)
             databaseMasterPassword = ""
             if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm)
                 Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm

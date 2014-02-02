@@ -61,8 +61,8 @@ KdbDatabase::KdbDatabase(QObject *parent):
     ret = connect(this, SIGNAL(setting_showUserNamePasswordsInListView(bool)),
                   KdbInterface::getInstance()->getWorker(), SLOT(slot_setting_showUserNamePasswordsInListView(bool)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(changeDatabasePassword(QString)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_changePassword(QString)));
+    ret = connect(this, SIGNAL(changeDatabasePassword(QString,QString)),
+                  KdbInterface::getInstance()->getWorker(), SLOT(slot_changePassKey(QString,QString)));
     Q_ASSERT(ret);
     ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(passwordChanged()),
                   this, SIGNAL(databasePasswordChanged()));
@@ -103,7 +103,7 @@ void KdbDatabase::close()
     emit closeDatabase();
 }
 
-void KdbDatabase::changePassword(const QString &password)
+void KdbDatabase::changePassword(const QString &password, const QString &keyFile)
 {
-    emit changeDatabasePassword(password);
+    emit changeDatabasePassword(password, keyFile);
 }

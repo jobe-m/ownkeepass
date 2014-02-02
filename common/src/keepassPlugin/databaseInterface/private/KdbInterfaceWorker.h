@@ -89,7 +89,7 @@ public slots:
     void slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
     void slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
     void slot_closeDatabase();
-    void slot_changePassword(QString password);
+    void slot_changePassKey(QString password, QString keyFile);
     void slot_changeKeyTransfRounds(int value);
     void slot_changeCryptAlgorithm(int value);
     void slot_setting_showUserNamePasswordsInListView(bool value);

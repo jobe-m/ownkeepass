@@ -45,7 +45,7 @@ public: // QtQuick 1.1 needs here a public keyword otherwise if does not find th
     Q_INVOKABLE void open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
     Q_INVOKABLE void create(const QString& dbFilePath, const QString &keyFilePath, const QString& password);
     Q_INVOKABLE void close();
-    Q_INVOKABLE void changePassword(const QString& password);
+    Q_INVOKABLE void changePassword(const QString& password, const QString &keyFile);
 
 public:
     enum eResult {
@@ -87,7 +87,7 @@ signals:
     void openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
     void createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
     void closeDatabase();
-    void changeDatabasePassword(QString password);
+    void changeDatabasePassword(QString password, QString keyFile);
     void changeDatabaseKeyTransfRounds(int value);
     void changeDatabaseCryptAlgorithm(int value);
     void setting_showUserNamePasswordsInListView(bool value);

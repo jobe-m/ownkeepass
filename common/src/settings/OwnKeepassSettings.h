@@ -30,7 +30,7 @@
 
 namespace settingsPublic {
 
-const QString OWN_KEEPASS_VERSION("0.9.7");
+const QString OWN_KEEPASS_VERSION("1.0.0");
 
 class OwnKeepassSettings : public QObject
 {

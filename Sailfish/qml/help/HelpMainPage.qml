@@ -40,11 +40,11 @@ system to decrypt and open that database file, too.<br><br>\
 Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is \
 planned for a future release of ownKeepass.<br><br>\
 \
-<b>Usage of Help Pages</b><br>\
+<b>Usage of Help Pages</b><br><br>\
 Each page inside of ownKeepass has its own Help content. So please make use of it and learn \
 about the features offered by ownKeepass especially on the settings pages.<br><br>\
 \
-<b>Some words about Keepass database security</b><br>\
+<b>Some words about Keepass database security</b><br><br>\
 The database code in ownKeepass is based on the KeepassX project [2] and as such conains a lot of \
 security related features. It uses proven encryption algorithms like Advanced Encryption Standard \
 (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing \
@@ -59,7 +59,7 @@ you should be aware of: <br>\
 \"If a bad guy can persuade you to run his program on your \
 computer, it's not your computer anymore\".<br><br>\
 \
-<b>Sharing Keepass database between your jolla phone and your desktop PC</b><br>\
+<b>Sharing Keepass database between your jolla phone and your desktop PC</b><br><br>\
 The Keepass database file format is perfect to share your password safe between different \
 systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass \
 implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 \
@@ -74,7 +74,7 @@ hacks your cloud service he will be left without the key file. By doing so you m
 harder for an attacker to crack your Keepass database because the key file content is usually \
 impossible to guess.<br><br>\
 \
-<b>What to expect in future versions of ownKeepass</b><br>\
+<b>What to expect in future versions of ownKeepass</b><br><br>\
 I don't want to set it in stone yet but here is a list of features you might see in future versions \
 of ownKeepass:<br>\
 <ul>\
