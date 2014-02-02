@@ -4,12 +4,13 @@ ownKeepass
 Status
 ------
 
-Release 0.9.7 (beta) available for early testers for the Jolla Phone [here] [1]
+Release 1.0.0. now available for the Jolla Phone [here] [1] and (hopefully) shortly on Jolla Harbour
 
 Current limitations/bugs:
-*   All help pages have currently the same text (REQ #6)
+*   n/a
 
-I am currently preparing release 1.0 of ownKeepass for submission to Jolla Harbour. The status can be looked up [here] [6].
+Release 1.0 of ownKeepass is ready and submitted to Jolla Harbour. The status of my todo list for
+the next release can be looked up [here] [6]. It needs some cleanup though...
 If you found a bug please report it on the issue page. Thanks :)
 
 What is this?
@@ -108,7 +109,7 @@ Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 [3]: http://www.keepassx.org                                           "KeepassX project homepage"
 [4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
-[6]: https://github.com/jobe-m/ownkeepass/issues?milestone=1&state=open "Status of ownKeepass release 1.0"
+[6]: https://github.com/jobe-m/ownkeepass/issues?milestone=2&state=open "Status of next ownKeepass release 1.1"
 
 Screenshots
 -----------
