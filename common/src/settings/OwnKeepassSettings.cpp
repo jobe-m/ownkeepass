@@ -32,7 +32,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     m_version(OWN_KEEPASS_VERSION),
     m_simpleMode(false),
     m_defaultCryptAlgorithm(0),
-    m_defaultKeyTransfRounds(5000),
+    m_defaultKeyTransfRounds(50000),
     m_locktime(3),
     m_showUserNamePasswordInListView(false),
     m_showUserNamePasswordOnCover(true),
