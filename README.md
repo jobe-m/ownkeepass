@@ -4,13 +4,13 @@ ownKeepass
 Status
 ------
 
-Release 1.0.0. now available for the Jolla Phone [here] [1] and (hopefully) shortly on Jolla Harbour
+Release 1.0.0. now available for the Jolla Phone in Jolla Store!
+And for those of you who want to try the latest version have a look [here] [1]
 
-Current limitations/bugs:
+Current limitations/known bugs:
 *   n/a
 
-Release 1.0 of ownKeepass is ready and submitted to Jolla Harbour. The status of my todo list for
-the next release can be looked up [here] [6]. It needs some cleanup though...
+The status of my todo list for the next release can be looked up [here] [6]. It needs some cleanup though...
 If you found a bug please report it on the issue page. Thanks :)
 
 What is this?
@@ -21,16 +21,23 @@ protect sensible data like passwords for web pages, credit card numbers,
 PINs, TANs and other bits of information which should be kept secret. All that information
 is saved in a database file which is encrypted and stored locally on your phone. To open
 the database you need to know the master password of the database. The used database
-format is compatible to Keepass version 1.x. That means you can use [Keepass] [2] on your desktop
+format is compatible to Keepass version 1. That means you can use [Keepass] [2] on your desktop
 system to decrypt and open that database file, too.
 
-Please note that currently ownKeepass cannot load or save Keepass version 2.x databases. This is
+Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is
 planned for a future release of ownKeepass.
 
 Why?
 ----
 
-I started to work on this project beginning of 2012 when QML started to get usable from development point of view for the Nokia N9. Writing a QML UI for the stable KeepassX 0.4.3 version was just born out of the idea to take my favourite Password Safe application to new Qt platforms like the Nokia N9. Although ownKeepass was quite usable for me on my Nokia N9 I never released it for the Nokia N9 due to lack of time and motivation (Nokia's Qt strategy disruption) to make the application usable for a wider audience. Mid of 2013 I decided to continue development on the new Sailfish OS platform from the finnish Smartphone start-up Jolla. This platform offers Qt5 with QtQuick2 and Wayland which really marks the edge of UI development. This is so much of technical motivation to me to do some great UI stuff with ownKeepass :)
+I started to work on this project beginning of 2012 when QML started to get usable from development point
+of view for the Nokia N9. Writing a QML UI for the stable KeepassX 0.4.3 version was just born out of the
+idea to take my favourite Password Safe application to new Qt platforms like the Nokia N9. Although
+ownKeepass was quite usable for me on my Nokia N9 I never released it for the Nokia N9 due to lack of
+time and motivation (Nokia's Qt strategy disruption) to make the application usable for a wider audience.
+Mid of 2013 I decided to continue development on the new Sailfish OS platform from the finnish Smartphone
+start-up Jolla. This platform offers Qt5 with QtQuick2 and Wayland which really marks the edge of UI
+development. This is so much of technical motivation to me to do some great UI stuff with ownKeepass :)
 
 Some words about Keepass database security
 ------------------------------------------
@@ -45,17 +52,20 @@ adjusted in database settings. Anyway that all just adds additional security to 
 you should be aware of:
 
 *   Always use a long enough and difficult to guess master password.
-*   Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the [10 Immutable Laws of Security] [4]: "If a bad guy can persuade you to run his program on your computer, it's not your computer anymore".
+*   Protect your system from spyware which might be specialized to attack ownKeepass.
+
+The second is law #1 of the [10 Immutable Laws of Security] [4]: "If a bad guy can persuade you to run
+his program on your computer, it's not your computer anymore".
 
 Sharing Keepass database between your jolla phone and your desktop PC
 ---------------------------------------------------------------------
 
 The Keepass database file format is perfect to share your password safe between different
 systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass
-implementations available for those platforms. Have a look at the [Keepass download page] [5] to get the classic Keepass 1.x
+implementations available for those platforms. Have a look at the [Keepass download page] [5] to get the classic Keepass 1
 version for the desktop PC. There is also a list of alternative Keepass implementations on that page.
 I would also like to point you to [KeepassX version 0.4.3] [3] which is also
-compatible with Keepass version 1.x.
+compatible with Keepass version 1.
 You can share your Keepass database file via SD card or via a cloud service like Dropbox.
 When using a cloud server I would recommend to use a key file in addition to the master password.
 The additional key file will be used by ownKeepass to decrypt the database. Store this key file
@@ -67,16 +77,23 @@ impossible to guess.
 Some technical notes for QML hackers
 ------------------------------------
 
-If you want to dig deeper into the code here are some hints to help you getting an overview of the code. The interface for the Keepass database code is split into four classes which are exposed as objects to the QML world:
+If you want to dig deeper into the code here are some hints to help you getting an overview of the code. The interface for
+the Keepass database code is split into four classes which are exposed as objects to the QML world:
 
 *   KdbDatabase:
-    That object enables the QML side to open an existing Keepass database, create a new empty database and close a database.
+    That object enables the QML side to open an existing Keepass database, create a new empty
+    database and close a database.
 *   KdbListModel:
-    That object is used to get a list of Keepass groups and entries for a dedicated Keepass group or the root group from the Keepass database. It also provides the possibility to search for a specific group and entry in the database.
+    That object is used to get a list of Keepass groups and entries for a dedicated Keepass
+    group or the root group from the Keepass database. It also provides the possibility to search
+    for a specific group and entry in the database.
 *   KdbGroup:
-    This object provides the posibility to create a new group or change the name for an existing group in the database.
+    This object provides the posibility to create a new group or change the name for an existing
+    group in the database.
 *   KdbEntry:
-    With the use of that object the QML code can read all properties from a Keepass entry like webpage, username, password, comment, etc. Through this object it is also possible to create new entries and save them in the Keepass database.
+    With the use of that object the QML code can read all properties from a Keepass entry like
+    webpage, username, password, comment, etc. Through this object it is also possible to create
+    new entries and save them in the Keepass database.
 
 Features (already working)
 --------------------------
@@ -86,7 +103,8 @@ Features (already working)
 *   Create new and open existing keepass files from Phone's Documents folder, SD Card or Android Storage
 *   Database settings adjustable like master password, encryption algorithm and key transformation rounds
 *   Search keepass entries in whole database
-*   Copy username and password from within cover page and use cover page to peak from other apps to look up username and password
+*   Copy username and password from within cover page and use cover page to peak from other apps to
+    look up username and password
 
 What to expect in future versions of ownKeepass
 -----------------------------------------------
@@ -96,13 +114,13 @@ of ownKeepass:
 
 *   Build-in sync of database file with a WebDAV server like ownCloud
 *   If feasible auto-type of username and passwords into web page
-*   Support for Keepass version 2.x database files
+*   Support for Keepass version 2 database files
 
 That's it so far.
 
-16-Jan-2014
+5-Feb-2014
 
-Copyright 2013 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
+Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
 [1]: https://www.tisno.de/owncloud/public.php?service=files&t=598987d3cdeba24d83b18a63fce18b08 "Download beta release of ownKeepass for Jolla Phone"
 [2]: http://www.keepass.info                                           "Official Keepass homepage"
