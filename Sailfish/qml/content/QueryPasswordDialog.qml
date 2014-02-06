@@ -49,6 +49,11 @@ Dialog {
                                    "loadMasterGroups": true }
     acceptDestinationAction: PageStackAction.Replace
 
+    function showWarning() {
+        applicationWindow.infoPopupRef.show("Warning", "Please make sure to use a key file for \
+additional security for your Keepass database when storing it online!", 0, false)
+    }
+
     SilicaFlickable {
         anchors.fill: parent
         width: parent.width
@@ -107,14 +112,21 @@ Dialog {
                         MenuItem { text: "Android Dropbox local storage" }
                     }
                     onCurrentIndexChanged: {
+                        // When opening database from dropbox storage show warning if no key file is used
+                        if ((queryPasswordDialog.state === "OpenNewDatabase") &&
+                                (!useKeyFileSwitch.checked) && ((currentIndex === 3) || (currentIndex === 4))) {
+                            showWarning()
+                        }
                         // When creating database on dropbox storage force usage of key file
-                        if ((queryPasswordDialog.state === "CreateNewDatabase") &&
-                                (currentIndex === 3) || (currentIndex === 4)) {
+                        else if ((queryPasswordDialog.state === "CreateNewDatabase") &&
+                                ((currentIndex === 3) || (currentIndex === 4))) {
                             useKeyFileSwitch.enabled = false
                             useKeyFileSwitch.checked = true
                             applicationWindow.infoPopupRef.show("Advice", "You choosed to place your new \
-Keepass database in the Dropbox cloud. Please make sure to use a unique password \
-and enable two-step verification to increase security of your online storage!", 0, false)
+Keepass database in the Dropbox cloud. Please make sure to use a unique password for Dropbox \
+and enable two-step verification to increase security of your online storage! \
+ownKeepass does enforce to use a locally stored key \
+file when storing your Keepass database online.", 0, false)
                         } else {
                             useKeyFileSwitch.enabled = true
                         }
@@ -143,6 +155,14 @@ and enable two-step verification to increase security of your online storage!", 
                     checked: false
                     text: "Use Key File"
                     description: "Switch this on to use a key file together with a master password for your new Keepass Database"
+                    onCheckedChanged: {
+                        // When opening database from dropbox storage show warning if no key file is used
+                        if ((queryPasswordDialog.state === "OpenNewDatabase") &&
+                                (!checked) && ((dbFileLocationComboBox.currentIndex === 3) ||
+                                               (dbFileLocationComboBox.currentIndex === 4))) {
+                            showWarning()
+                        }
+                    }
                 }
 
                 Column {

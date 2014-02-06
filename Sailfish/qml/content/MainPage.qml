@@ -285,7 +285,9 @@ Page {
             case 2:
                 return androidStoragePath
             case 3:
-                return dropboxLocalStoragePath
+                return sailboxLocalStoragePath
+            case 4:
+                return androidDropboxLocalStorage
             }
         }
 
