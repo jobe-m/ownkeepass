@@ -103,7 +103,21 @@ Dialog {
                         MenuItem { text: "Documents on phone" }
                         MenuItem { text: "SD card" }
                         MenuItem { text: "Android storage" }
-                        MenuItem { text: "Dropbox local storage" }
+                        MenuItem { text: "Sailbox local storage" }
+                        MenuItem { text: "Android Dropbox local storage" }
+                    }
+                    onCurrentIndexChanged: {
+                        // When creating database on dropbox storage force usage of key file
+                        if ((queryPasswordDialog.state === "CreateNewDatabase") &&
+                                (currentIndex === 3) || (currentIndex === 4)) {
+                            useKeyFileSwitch.enabled = false
+                            useKeyFileSwitch.checked = true
+                            applicationWindow.infoPopupRef.show("Advice", "You choosed to place your new \
+Keepass database in the Dropbox cloud. Please make sure to use a unique password \
+and enable two-step verification to increase security of your online storage!", 0, false)
+                        } else {
+                            useKeyFileSwitch.enabled = true
+                        }
                     }
                 }
 

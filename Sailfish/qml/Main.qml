@@ -34,6 +34,7 @@ ApplicationWindow
 
     // For accessing main page to pass further application activity status
     property MainPage mainPageRef: null
+    property InfoPopup infoPopupRef: infoPopup
 
     initialPage: mainPageContainer
     cover: coverPage

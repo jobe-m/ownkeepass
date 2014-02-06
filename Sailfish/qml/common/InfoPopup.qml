@@ -128,7 +128,7 @@ MouseArea {
             width: parent.width
             horizontalAlignment: Text.AlignLeft
             font.family: Theme.fontFamilyHeading
-            font.pixelSize: Theme.fontSizeLarge //Medium
+            font.pixelSize: Theme.fontSizeLarge
             color: "black"
             opacity: 0.6
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
