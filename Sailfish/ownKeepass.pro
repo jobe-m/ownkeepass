@@ -24,6 +24,21 @@
 include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 
+isEmpty(VERSION) {
+    GIT_TAG = $$system(git describe --tags --abbrev=0)
+    GIT_VERSION = $$find(GIT_TAG, ^\\d+(\\.\\d+)?(\\.\\d+)?$)
+    isEmpty(GIT_VERSION) {
+        # if you're trying to build this from a tarball, I'm sorry. but being
+        # able to specify the version in just one place (git tags) is a lot less
+        # error-prone and easy.
+        warning("Can't find a valid git tag version, got: $$GIT_TAG")
+        GIT_VERSION = 0.0.0
+    }
+    !isEmpty(GIT_VERSION): VERSION = $$GIT_VERSION
+}
+#CONFIG_SUBST += VERSION
+DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
+
 # The name of the app
 # NOTICE: name defined in TARGET has a corresponding QML filename.
 #         If name defined in TARGET is changed, following needs to be
