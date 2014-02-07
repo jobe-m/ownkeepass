@@ -107,9 +107,9 @@ additional security for your Keepass database when storing it online!", 0, false
                     menu: ContextMenu {
                         MenuItem { text: "Documents on phone" }
                         MenuItem { text: "SD card" }
-                        MenuItem { text: "Android storage" }
+                        MenuItem { enabled: false; visible: false; text: "Android storage" }
                         MenuItem { text: "Sailbox local storage" }
-                        MenuItem { text: "Android Dropbox local storage" }
+//                        MenuItem { text: "Android Dropbox local storage" }
                     }
                     onCurrentIndexChanged: {
                         // When opening database from dropbox storage show warning if no key file is used
@@ -182,7 +182,7 @@ file when storing your Keepass database online.", 0, false)
                         menu: ContextMenu {
                             MenuItem { text: "Documents on phone" }
                             MenuItem { text: "SD card" }
-                            MenuItem { text: "Android storage" }
+//                            MenuItem { text: "Android storage" }
                         }
                     }
 

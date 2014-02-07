@@ -35,14 +35,11 @@ Label {
 \
 Here you specify from where the database file will be opened. To make opening as easy as possible you \
 should place the database file in one of the following locations: \
-\"Documents on Phone\", \"SD Card\", \"Android storage\", \"Sailbox local storage\" or \"\
-Android Dropbox local storage\". If you have trouble \
+\"Documents on Phone\", \"SD Card\" or \"Sailbox local storage\". If you have trouble \
 with ownKeepass not finding the file make sure it is in desired place by looking it up in a File Browser. \
-Documents on Phone is usually ~/Documents, the SD Card is located at /run/user/100000/media/sdcard, the Android storage \
-is at /data/sdcard, the Sailbox local storage you will find at ~/dropbox and Android Dropbox local storage is at \
-/data/sdcard/Android/data/com.dropbox.android/files/scratch. \
-To sync your database with Dropbox you can use Sailbox which is available in Jolla Harbour \
-or Dropbox for Android.<br><br>\
+Documents on Phone is usually /home/nemo/Documents, the SD Card is located at /run/user/100000/media/sdcard \
+and the Sailbox local storage you will find at /home/nemo/dropbox. \
+To sync your database with Dropbox you can use Sailbox which is available in Jolla Harbour.<br><br>\
 \
 Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition \
 to the master password. This key file should not be uploaded to the cloud service.<br><br>\

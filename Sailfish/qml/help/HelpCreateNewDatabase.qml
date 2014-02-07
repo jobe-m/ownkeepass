@@ -34,17 +34,14 @@ Label {
 <b>Database Location</b><br><br>\
 \
 First you need to specify where the database file will be stored. Available options are \"Documents on phone\", \
-\"SD Card\", \"Android storage\", \"Sailbox local storage\" and \"Android Dropbox local storage\". \
+\"SD Card\" and \"Sailbox local storage\". \
 Take the first option \"Documents on phone\" if you want the database to be \
 located on the phone or choose \"SD Card\" to place the database on the removable SD Card. You need to have a FAT32 \
 formated SD Card inserted into the phone. There is currently no warning if the SD Card is not present or not correctly \
-recognized. Please make sure the SD Card is properly detected by looking at it in a File Browser. If you want to share \
-the Keepass database with Android Apps you can place it into the \"Android storage\". The last two options \"Sailbox local \
-storage\" and \"Android Dropbox local storage\" can be used \
-together with Sailbox or the original Dropbox client for Android. \
-If you place your database there Sailbox or Dropbox can up- and download the file to \
-the Dropbox online service. Sailbox is available in Jolla Harbour for download. Dropbox for Android needs to be \
-side-loaded from Google Play store onto your Jolla phone.<br><br>\
+recognized. Please make sure the SD Card is properly detected by looking at it in a File Browser. \
+The third option \"Sailbox local storage\" can be used together with Sailbox. \
+If you place your database there Sailbox can up- and download the file to \
+the Dropbox online service. Sailbox is available in Jolla Harbour for download.<br><br>\
 \
 Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition \
 to the master password. This key file should not be uploaded to the cloud service.<br><br>\
