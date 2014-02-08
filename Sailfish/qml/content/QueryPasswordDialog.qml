@@ -107,19 +107,18 @@ additional security for your Keepass database when storing it online!", 0, false
                     menu: ContextMenu {
                         MenuItem { text: "Documents on phone" }
                         MenuItem { text: "SD card" }
-                        MenuItem { enabled: false; visible: false; text: "Android storage" }
+                        MenuItem { enabled: false; visible: false; text: "Android storage" } // for backwards compatibility this needs to stay here
                         MenuItem { text: "Sailbox local storage" }
-//                        MenuItem { text: "Android Dropbox local storage" }
                     }
                     onCurrentIndexChanged: {
                         // When opening database from dropbox storage show warning if no key file is used
                         if ((queryPasswordDialog.state === "OpenNewDatabase") &&
-                                (!useKeyFileSwitch.checked) && ((currentIndex === 3) || (currentIndex === 4))) {
+                                (!useKeyFileSwitch.checked) && (currentIndex === 3)) {
                             showWarning()
                         }
                         // When creating database on dropbox storage force usage of key file
                         else if ((queryPasswordDialog.state === "CreateNewDatabase") &&
-                                ((currentIndex === 3) || (currentIndex === 4))) {
+                                (currentIndex === 3)) {
                             useKeyFileSwitch.enabled = false
                             useKeyFileSwitch.checked = true
                             applicationWindow.infoPopupRef.show("Advice", "You choosed to place your new \
@@ -140,7 +139,15 @@ file when storing your Keepass database online.", 0, false)
                     label: "Path and name of database file"
                     placeholderText: "Set path and name of database file"
                     errorHighlight: text === ""
-                    EnterKey.onClicked: parent.focus = true
+                    EnterKey.enabled: text.length > 0
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: {
+                        if (useKeyFileSwitch.checked) {
+                            keyFilePathField.focus = true
+                        } else {
+                            passwordField.focus = true
+                        }
+                    }
                 }
             }
 
@@ -158,8 +165,7 @@ file when storing your Keepass database online.", 0, false)
                     onCheckedChanged: {
                         // When opening database from dropbox storage show warning if no key file is used
                         if ((queryPasswordDialog.state === "OpenNewDatabase") &&
-                                (!checked) && ((dbFileLocationComboBox.currentIndex === 3) ||
-                                               (dbFileLocationComboBox.currentIndex === 4))) {
+                                (!checked) && (dbFileLocationComboBox.currentIndex === 3)) {
                             showWarning()
                         }
                     }
@@ -193,7 +199,9 @@ file when storing your Keepass database online.", 0, false)
                         label: "Path and name of key file"
                         placeholderText: "Set path and name of key file"
                         errorHighlight: text === ""
-                        EnterKey.onClicked: parent.focus = true
+                        EnterKey.enabled: text.length > 0
+                        EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                        EnterKey.onClicked: passwordField.focus = true
                     }
                 }
             }
@@ -207,11 +215,14 @@ file when storing your Keepass database online.", 0, false)
                 width: parent.width
                 inputMethodHints: Qt.ImhNoPredictiveText
                 echoMode: TextInput.Password
-                errorHighlight: text === ""
+                errorHighlight: text.length === 0
                 label: "Password"
                 placeholderText: "Enter password"
-                EnterKey.enabled: text !== ""
-                EnterKey.highlighted: text !== ""
+                EnterKey.enabled: !errorHighlight
+                EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
+                EnterKey.iconSource: queryPasswordDialog.state === "CreateNewDatabase" ?
+                                         "image://theme/icon-m-enter-next" :
+                                         "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: {
                     if (queryPasswordDialog.state === "CreateNewDatabase") {
                         confirmPasswordField.focus = true
@@ -234,8 +245,9 @@ file when storing your Keepass database online.", 0, false)
                 placeholderText: label
                 // Development mode here for faster testing with predefined database file
                 text: Global.developmentMode === 1 ? "qwertz" : ""
-                EnterKey.enabled: passwordField.text !== "" && !errorHighlight
+                EnterKey.enabled: !passwordField.errorHighlight && !errorHighlight
                 EnterKey.highlighted: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: {
                     parent.focus = true
                     accept()
