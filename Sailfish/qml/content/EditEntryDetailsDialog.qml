@@ -66,8 +66,7 @@ Dialog {
     }
 
     // forbit page navigation if title is not set and password is not verified
-    canNavigateForward: entryTitleTextField.text !== "" &&
-                        entryPasswordTextField.text === entryVerifyPasswordTextField.text
+    canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight
 
     SilicaFlickable {
         anchors.fill: parent
@@ -108,8 +107,9 @@ Dialog {
                 label: "Title"
                 text: ""
                 placeholderText: "Set Title (mandatory)"
-                errorHighlight: text === ""
-                EnterKey.highlighted: !errorHighlight
+                errorHighlight: text.length === 0
+                EnterKey.enabled: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUrlTextField.focus = true
                 onTextChanged: {
                     editEntryDetailsDialog.titleChanged =
@@ -126,6 +126,7 @@ Dialog {
                 label: "Url"
                 text: ""
                 placeholderText: "Set Url"
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUsernameTextField.focus = true
                 onTextChanged: {
                     editEntryDetailsDialog.urlChanged =
@@ -142,6 +143,7 @@ Dialog {
                 label: "Username"
                 text: ""
                 placeholderText: "Set Username"
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryPasswordTextField.focus = true
                 onTextChanged: {
                     editEntryDetailsDialog.usernameChanged =
@@ -165,6 +167,7 @@ Dialog {
                     label: "Password"
                     text: ""
                     placeholderText: "Set Password"
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
                     onTextChanged: {
                         editEntryDetailsDialog.passwordChanged =
@@ -201,8 +204,15 @@ Dialog {
                 text: ""
                 placeholderText: "Verify Password"
                 errorHighlight: entryPasswordTextField.text !== text
-                EnterKey.highlighted: !errorHighlight
-                EnterKey.onClicked: entryCommentTextField.focus = true
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: {
+                    // if password not yet verified go back to password field
+                    if (entryPasswordTextField.text !== text) {
+                        entryPasswordTextField.focus = true
+                    } else {
+                        entryCommentTextField.focus = true
+                    }
+                }
                 focusOutBehavior: -1
             }
 

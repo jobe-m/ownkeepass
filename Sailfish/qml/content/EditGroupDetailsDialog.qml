@@ -75,7 +75,9 @@ Dialog {
                 text: ""
                 placeholderText: "Set name of group"
                 errorHighlight: text === ""
+                EnterKey.enabled: !errorHighlight
                 EnterKey.highlighted: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: {
                     accept()
                     close()

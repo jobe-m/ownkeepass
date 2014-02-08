@@ -120,10 +120,13 @@ Dialog {
                     id: defaultKeyTransfRounds
                     width: parent.width
                     inputMethodHints: Qt.ImhFormattedNumbersOnly
-                    validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                    validator: RegExpValidator { regExp: /^[0-9]*$/ }
+                    errorHighlight: Number(text) === 0
                     label: "Default Key Transformation Rounds"
                     placeholderText: label
                     text: String(ownKeepassSettings.defaultKeyTransfRounds)
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: parent.focus = true
                     onTextChanged: {
                         editSettingsDialog.defaultKeyTransfRoundsChanged =

@@ -45,8 +45,8 @@ Dialog {
         }
     }
 
-    // forbit page navigation if master password is not confirmed
-    canNavigateForward: !confirmDatabaseMasterPassword.errorHighlight
+    // forbit page navigation if master password is not confirmed and key transformation rounds is zero
+    canNavigateForward: !confirmDatabaseMasterPassword.errorHighlight && !databaseKeyTransfRounds.errorHighlight
 
     SilicaFlickable {
         anchors.fill: parent
@@ -98,8 +98,9 @@ Dialog {
                     label: "Master Password"
                     text: ""
                     placeholderText: "Change Master Password"
-                    EnterKey.enabled: text !== ""
-                    EnterKey.highlighted: text !== ""
+                    EnterKey.enabled: text.length > 0
+                    EnterKey.highlighted: text.length > 0
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: {
                         confirmDatabaseMasterPassword.focus = true
                     }
@@ -123,8 +124,9 @@ Dialog {
                 label: !errorHighlight ? "Master Password confirmed" : "Confirm Master Password"
                 text: ""
                 placeholderText: "Confirm Master Password"
-                EnterKey.enabled: databaseMasterPassword.text !== "" && !errorHighlight
-                EnterKey.highlighted: databaseMasterPassword.text !== "" && !errorHighlight
+                EnterKey.enabled: databaseMasterPassword.text.length > 0 && !errorHighlight
+                EnterKey.highlighted: databaseMasterPassword.text.length > 0 && !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 EnterKey.onClicked: {
                     parent.focus = true
                 }
@@ -156,10 +158,13 @@ Dialog {
                     id: databaseKeyTransfRounds
                     width: parent.width
                     inputMethodHints: Qt.ImhFormattedNumbersOnly
-                    validator: RegExpValidator { regExp: /^[1-9][0-9]*$/ }
+                    validator: RegExpValidator { regExp: /^[0-9]*$/ }
+                    errorHighlight: Number(text) === 0
                     label: "Key Transformation Rounds"
                     placeholderText: label
                     text: Global.env.kdbDatabase.keyTransfRounds
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: parent.focus = true
                     onTextChanged: {
                         editDatabaseSettingsDialog.keyTransfRoundsChanged =
