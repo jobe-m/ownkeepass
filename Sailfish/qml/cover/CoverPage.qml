@@ -44,7 +44,7 @@ Cover {
             anchors.top: parent.top
             anchors.right: parent.right
             source: "../../wallicons/cover-cloud.png"
-            opacity: 0.1
+            opacity: 0.2
         }
     }
 
@@ -152,7 +152,7 @@ Cover {
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width - 2 * Theme.paddingSmall
             color: Theme.secondaryColor
-            opacity: 0.6
+            opacity: 0.7
             horizontalAlignment: Text.AlignHCenter
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSizeTiny
@@ -166,11 +166,17 @@ Cover {
             anchors.horizontalCenter: parent.horizontalCenter
             width: parent.width - 2 * Theme.paddingSmall
             color: Theme.primaryColor
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: implicitWidth > width ? Text.AlignLeft : Text.AlignHCenter
             wrapMode: Text.NoWrap
-            elide: Text.ElideRight
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSizeSmall
+        }
+
+        OpacityRampEffect {
+            enabled: entryTitleLabel.implicitWidth > entryTitleLabel.width
+            sourceItem: entryTitleLabel
+            slope: 2.0
+            offset: 0.5
         }
 
         Item {
@@ -189,7 +195,7 @@ Cover {
                 Label {
                     width: parent.width
                     color: Theme.secondaryColor
-                    opacity: 0.6
+                    opacity: 0.7
                     horizontalAlignment: Text.AlignLeft
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.family: Theme.fontFamily
@@ -207,12 +213,13 @@ Cover {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeSmall
+                    maximumLineCount: 2
                 }
 
                 Label {
                     width: parent.width
                     color: Theme.secondaryColor
-                    opacity: 0.6
+                    opacity: 0.7
                     horizontalAlignment: Text.AlignLeft
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.family: Theme.fontFamily
@@ -230,6 +237,7 @@ Cover {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeSmall
+                    maximumLineCount: 2
                 }
             }
         }
