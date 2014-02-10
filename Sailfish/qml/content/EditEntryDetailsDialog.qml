@@ -59,9 +59,9 @@ Dialog {
     // cover page state needs to be updated
     function updateCoverState() {
         if (titleChanged || urlChanged || usernameChanged || passwordChanged || commentChanged) {
-            applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
+            applicationWindow.cover.state = "UNSAVED_CHANGES"
         } else {
-            applicationWindow.cover.coverState = Global.constants.databaseEntryOpened
+            applicationWindow.cover.state = "ENTRY_VIEW"
         }
     }
 

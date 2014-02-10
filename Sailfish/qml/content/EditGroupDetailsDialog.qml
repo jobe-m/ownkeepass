@@ -83,10 +83,13 @@ Dialog {
                     close()
                 }
                 onTextChanged: {
+                    // set new title name in cover
+                    applicationWindow.cover.groupTitle = text
+                    // update cover state
                     if (editGroupDetailsDialog.origGroupTitle !== text) {
-                        applicationWindow.cover.coverState = Global.constants.databaseUnsavedChanges
+                        applicationWindow.cover.state = "UNSAVED_CHANGES"
                     } else {
-                        applicationWindow.cover.coverState = Global.constants.databaseOpened
+                        applicationWindow.cover.state = "GROUPS_VIEW"
                     }
                 }
             }

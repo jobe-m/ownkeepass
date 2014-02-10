@@ -124,7 +124,9 @@ Page {
     onStatusChanged: {
         // set cover state
         if (status === PageStatus.Active) {
-            applicationWindow.cover.coverState = Global.constants.databaseOpened
+            // set title and state of cover page
+            applicationWindow.cover.groupTitle = searchPage.pageTitle
+            applicationWindow.cover.state = "SEARCH_VIEW"
         }
     }
 

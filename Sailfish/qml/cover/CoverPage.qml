@@ -36,9 +36,6 @@ Cover {
         color: Theme.rgba(Theme.highlightColor, 0.2)
 
         Image {
-            id: coverBackgroundImage
-            enabled: coverState === Global.constants.databaseEntryOpened
-            visible: enabled
             width: parent.width * 0.85
             height: width
             anchors.top: parent.top
@@ -48,15 +45,18 @@ Cover {
         }
     }
 
-    property int coverState: Global.constants.databaseClosed
-    property alias entryTitle: entryTitleLabel.text
-    property alias username: entryUsernameLabel.text
-    property alias password: entryPasswordLabel.text
+    state: "NO_DATABASE_OPENED"
+    property string databaseName: ""
+    property string groupTitle: ""
+    property string entryTitle: ""
+    property string username: ""
+    property string password: ""
 
     signal lockDatabase()
 
     // internal
     property int clipboardState: Global.constants.clipboardUnused
+
     function copyToClipboard() {
         // copy entry detail into clipboard, round robin -> username, password, empty clipboard
         switch (clipboardState) {
@@ -112,38 +112,7 @@ Cover {
         to: 1.0
     }
 
-    SilicaCoverPlaceholder {
-        enabled: coverState === Global.constants.databaseClosed
-        visible: enabled
-        text: "Database locked"
-        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
-    }
-
-    SilicaCoverPlaceholder {
-        enabled: coverState === Global.constants.databaseOpened
-        visible: enabled
-        text: "Database opened"
-        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
-    }
-
-    SilicaCoverPlaceholder {
-        enabled: coverState === Global.constants.databaseUnsavedChanges
-        visible: enabled
-        text: "You have some unsaved changes"
-        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
-    }
-
-    SilicaCoverPlaceholder {
-        enabled: !ownKeepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
-        visible: enabled
-        text: entryTitle + " entry opened"
-        icon.source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
-    }
-
     Item {
-        enabled: ownKeepassSettings.showUserNamePasswordOnCover && (coverState === Global.constants.databaseEntryOpened)
-        visible: enabled
-
         anchors.fill: parent
 
         Label {
@@ -160,7 +129,7 @@ Cover {
         }
 
         Label {
-            id: entryTitleLabel
+            id: coverTitleLabel
             anchors.top: appName.bottom
             anchors.topMargin: -Theme.paddingSmall
             anchors.horizontalCenter: parent.horizontalCenter
@@ -173,15 +142,15 @@ Cover {
         }
 
         OpacityRampEffect {
-            enabled: entryTitleLabel.implicitWidth > entryTitleLabel.width
-            sourceItem: entryTitleLabel
+            enabled: coverTitleLabel.implicitWidth > coverTitleLabel.width
+            sourceItem: coverTitleLabel
             slope: 2.0
             offset: 0.5
         }
 
         Item {
             id: entryDetailsView
-            anchors.top: entryTitleLabel.bottom
+            anchors.top: coverTitleLabel.bottom
             width: parent.width
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 3 * Theme.paddingLarge
@@ -193,6 +162,20 @@ Cover {
                 spacing: 0
 
                 Label {
+                    id: coverTextLabel
+                    enabled: text !== ""
+                    visible: enabled
+                    width: parent.width
+                    color: Theme.secondaryColor
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.Wrap
+                    font.family: Theme.fontFamily
+                    font.pixelSize: Theme.fontSizeSmall
+                }
+
+                Label {
+                    enabled: state === "ENTRY_VIEW"
+                    visible: enabled
                     width: parent.width
                     color: Theme.secondaryColor
                     opacity: 0.7
@@ -214,9 +197,12 @@ Cover {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeSmall
                     maximumLineCount: 2
+                    text: ownKeepassSettings.showUserNamePasswordOnCover ? coverPage.username : ""
                 }
 
                 Label {
+                    enabled: state === "ENTRY_VIEW"
+                    visible: enabled
                     width: parent.width
                     color: Theme.secondaryColor
                     opacity: 0.7
@@ -238,6 +224,7 @@ Cover {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeSmall
                     maximumLineCount: 2
+                    text: ownKeepassSettings.showUserNamePasswordOnCover ? coverPage.password : ""
                 }
             }
         }
@@ -246,7 +233,7 @@ Cover {
             id: infoTextView
             property alias text: infoTextLabel.text
             opacity: 0.0
-            anchors.top: entryTitleLabel.bottom
+            anchors.top: coverTitleLabel.bottom
             width: parent.width
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 3 * Theme.paddingLarge
@@ -260,15 +247,18 @@ Cover {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
-                fontSizeMode: Text.Fit
                 font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeSmall
+//                fontSizeMode: Text.Fit
             }
         }
     }
 
     // Lock database cover action on opened database
     CoverActionList {
-        enabled: ownKeepassSettings.lockDatabaseFromCover && ((coverState === Global.constants.databaseOpened) || (!ownKeepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)))
+        enabled: ownKeepassSettings.lockDatabaseFromCover && (
+                     (state !== "NO_DATABASE_OPENED") || state !== "DATABASE_LOCKED" &&
+                     (!ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")))
         iconBackground: false
 
         CoverAction {
@@ -282,7 +272,8 @@ Cover {
 
     // Lock database and copy'n'paste cover action for entry
     CoverActionList {
-        enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
+        enabled: ownKeepassSettings.lockDatabaseFromCover &&
+                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
         iconBackground: false
 
         CoverAction {
@@ -301,7 +292,8 @@ Cover {
 
     // Copy'n'paste cover action for entry
     CoverActionList {
-        enabled: !ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover && (coverState === Global.constants.databaseEntryOpened)
+        enabled: !ownKeepassSettings.lockDatabaseFromCover &&
+                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
         iconBackground: false
 
         CoverAction {
@@ -309,6 +301,45 @@ Cover {
             onTriggered: copyToClipboard()
         }
     }
+
+    states: [
+        State {
+            name: "NO_DATABASE_OPENED"
+            PropertyChanges { target: coverTitleLabel; text: "" }
+            PropertyChanges { target: coverTextLabel; text: "No database opened" }
+            PropertyChanges { target: coverPage; username: ""; password: "" }
+        },
+        State {
+            name: "DATABASE_LOCKED"
+            PropertyChanges { target: coverTitleLabel; text: coverPage.databaseName }
+            PropertyChanges { target: coverTextLabel; text: "Database locked" }
+            PropertyChanges { target: coverPage; username: ""; password: "" }
+        },
+        State {
+            name: "UNSAVED_CHANGES"
+            PropertyChanges { target: coverTitleLabel; text: coverPage.databaseName }
+            PropertyChanges { target: coverTextLabel; text: "Some unsaved changes pending" }
+            PropertyChanges { target: coverPage; username: ""; password: "" }
+        },
+        State {
+            name: "GROUPS_VIEW"
+            PropertyChanges { target: coverTitleLabel; text: coverPage.groupTitle }
+            PropertyChanges { target: coverTextLabel; text: "Viewing password group" }
+            PropertyChanges { target: coverPage; username: ""; password: "" }
+        },
+        State {
+            name: "SEARCH_VIEW"
+            PropertyChanges { target: coverTitleLabel; text: coverPage.groupTitle }
+            PropertyChanges { target: coverTextLabel; text: "Search for password entries" }
+            PropertyChanges { target: coverPage; username: ""; password: "" }
+        },
+        State {
+            name: "ENTRY_VIEW"
+            PropertyChanges { target: coverTitleLabel; text: coverPage.entryTitle }
+            PropertyChanges { target: coverTextLabel; text: "" }
+            // Username and password will be set from outside
+        }
+    ]
 }
 
 

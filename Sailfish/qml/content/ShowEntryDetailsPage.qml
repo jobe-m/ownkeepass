@@ -59,12 +59,6 @@ Page {
         }
 
         PullDownMenu {
-// Will be implemented in a later release :)
-//                MenuItem {
-//                    text: qsTr("Show more Details")
-//                    onClicked: {}
-//                }
-
             MenuItem {
                 enabled: entryUrlTextArea.text !== ""
                 visible: enabled
@@ -221,7 +215,7 @@ Page {
     onStatusChanged: {
         // if page gets active set cover state
         if (status === PageStatus.Active) {
-            applicationWindow.cover.coverState = Global.constants.databaseEntryOpened
+            applicationWindow.cover.state = "ENTRY_VIEW"
         }
     }
 }

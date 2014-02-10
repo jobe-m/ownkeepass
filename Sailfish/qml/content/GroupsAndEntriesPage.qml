@@ -194,7 +194,9 @@ Page {
         if (__closeOnError && status === PageStatus.Active) {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
-            applicationWindow.cover.coverState = Global.constants.databaseOpened
+            // set group title and state in cover page
+            applicationWindow.cover.groupTitle = groupsAndEntriesPage.pageTitle
+            applicationWindow.cover.state = "GROUPS_VIEW"
         }
     }
 
