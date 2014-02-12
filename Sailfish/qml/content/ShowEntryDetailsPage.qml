@@ -40,7 +40,7 @@ Page {
         entryCommentTextArea.text = comment
 
         // set also cover
-        applicationWindow.cover.entryTitle = title
+        applicationWindow.cover.coverTitle = title
         applicationWindow.cover.username = username
         applicationWindow.cover.password = password
     }

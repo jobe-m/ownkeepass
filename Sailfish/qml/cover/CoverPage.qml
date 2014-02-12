@@ -46,11 +46,9 @@ Cover {
     }
 
     state: "NO_DATABASE_OPENED"
-    property string databaseName: ""
-    property string groupTitle: ""
-    property string entryTitle: ""
-    property string username: ""
-    property string password: ""
+    property alias coverTitle: coverTitleLabel.text
+    property alias username: entryUsernameLabel.text
+    property alias password: entryPasswordLabel.text
 
     signal lockDatabase()
 
@@ -174,7 +172,7 @@ Cover {
                 }
 
                 Label {
-                    enabled: state === "ENTRY_VIEW"
+                    enabled: coverPage.state === "ENTRY_VIEW" && ownKeepassSettings.showUserNamePasswordOnCover
                     visible: enabled
                     width: parent.width
                     color: Theme.secondaryColor
@@ -188,7 +186,7 @@ Cover {
 
                 Label {
                     id: entryUsernameLabel
-                    enabled: text !== ""
+                    enabled: coverPage.state === "ENTRY_VIEW" && ownKeepassSettings.showUserNamePasswordOnCover && text !== ""
                     visible: enabled
                     width: parent.width
                     color: Theme.primaryColor
@@ -197,11 +195,10 @@ Cover {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeSmall
                     maximumLineCount: 2
-                    text: ownKeepassSettings.showUserNamePasswordOnCover ? coverPage.username : ""
                 }
 
                 Label {
-                    enabled: state === "ENTRY_VIEW"
+                    enabled: coverPage.state === "ENTRY_VIEW" && ownKeepassSettings.showUserNamePasswordOnCover
                     visible: enabled
                     width: parent.width
                     color: Theme.secondaryColor
@@ -215,7 +212,7 @@ Cover {
 
                 Label {
                     id: entryPasswordLabel
-                    enabled: text !== ""
+                    enabled: ownKeepassSettings.showUserNamePasswordOnCover && text !== ""
                     visible: enabled
                     width: parent.width
                     color: Theme.primaryColor
@@ -224,7 +221,6 @@ Cover {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeSmall
                     maximumLineCount: 2
-                    text: ownKeepassSettings.showUserNamePasswordOnCover ? coverPage.password : ""
                 }
             }
         }
@@ -249,39 +245,38 @@ Cover {
                 wrapMode: Text.Wrap
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontSizeSmall
-//                fontSizeMode: Text.Fit
             }
         }
     }
 
+    Component.onCompleted: {
+        console.log("cover setting: " + ownKeepassSettings.showUserNamePasswordOnCover)
+    }
+
     // Lock database cover action on opened database
     CoverActionList {
-        enabled: ownKeepassSettings.lockDatabaseFromCover && (
-                     (state !== "NO_DATABASE_OPENED") || state !== "DATABASE_LOCKED" &&
-                     (!ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")))
+        id: actionLockDatabaseOnly
+//        enabled: ownKeepassSettings.lockDatabaseFromCover && (
+//                     (state !== "NO_DATABASE_OPENED") || state !== "DATABASE_LOCKED" &&
+//                     (!ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")))
         iconBackground: false
 
         CoverAction {
             iconSource: "../../covericons/locker.png"
-            onTriggered: {
-                // emit signal to lock database
-                lockDatabase()
-            }
+            onTriggered: lockDatabase()
         }
     }
 
     // Lock database and copy'n'paste cover action for entry
     CoverActionList {
-        enabled: ownKeepassSettings.lockDatabaseFromCover &&
-                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
+        id: actionLockDatabaseAndCopy
+//        enabled: ownKeepassSettings.lockDatabaseFromCover &&
+//                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
         iconBackground: false
 
         CoverAction {
             iconSource: "../../covericons/locker.png"
-            onTriggered: {
-                // emit signal to lock database
-                lockDatabase()
-            }
+            onTriggered: lockDatabase()
         }
 
         CoverAction {
@@ -292,8 +287,9 @@ Cover {
 
     // Copy'n'paste cover action for entry
     CoverActionList {
-        enabled: !ownKeepassSettings.lockDatabaseFromCover &&
-                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
+        id: actionCopyOnly
+//        enabled: !ownKeepassSettings.lockDatabaseFromCover &&
+//                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
         iconBackground: false
 
         CoverAction {
@@ -305,40 +301,41 @@ Cover {
     states: [
         State {
             name: "NO_DATABASE_OPENED"
-            PropertyChanges { target: coverTitleLabel; text: "" }
             PropertyChanges { target: coverTextLabel; text: "No database opened" }
-            PropertyChanges { target: coverPage; username: ""; password: "" }
+        },
+        State {
+            name: "CREATE_NEW_DATABASE"
+            PropertyChanges { target: coverTextLabel; text: "Creating new database" }
+        },
+        State {
+            name: "OPEN_DATABASE"
+            PropertyChanges { target: coverTextLabel; text: "Opening database" }
         },
         State {
             name: "DATABASE_LOCKED"
-            PropertyChanges { target: coverTitleLabel; text: coverPage.databaseName }
-            PropertyChanges { target: coverTextLabel; text: "Database locked" }
-            PropertyChanges { target: coverPage; username: ""; password: "" }
+            PropertyChanges { target: coverTextLabel; text: "Database is locked" }
         },
         State {
             name: "UNSAVED_CHANGES"
-            PropertyChanges { target: coverTitleLabel; text: coverPage.databaseName }
-            PropertyChanges { target: coverTextLabel; text: "Some unsaved changes pending" }
-            PropertyChanges { target: coverPage; username: ""; password: "" }
+            PropertyChanges { target: coverTextLabel; text: "You have unsaved changes pending" }
         },
         State {
             name: "GROUPS_VIEW"
-            PropertyChanges { target: coverTitleLabel; text: coverPage.groupTitle }
-            PropertyChanges { target: coverTextLabel; text: "Viewing password group" }
-            PropertyChanges { target: coverPage; username: ""; password: "" }
+            PropertyChanges { target: coverTextLabel; text: "Viewing password groups or entries" }
         },
         State {
             name: "SEARCH_VIEW"
-            PropertyChanges { target: coverTitleLabel; text: coverPage.groupTitle }
             PropertyChanges { target: coverTextLabel; text: "Search for password entries" }
-            PropertyChanges { target: coverPage; username: ""; password: "" }
         },
         State {
             name: "ENTRY_VIEW"
-            PropertyChanges { target: coverTitleLabel; text: coverPage.entryTitle }
-            PropertyChanges { target: coverTextLabel; text: "" }
-            // Username and password will be set from outside
+            PropertyChanges { target: coverTextLabel
+                text: !ownKeepassSettings.showUserNamePasswordOnCover ? "Username and password are hidden" : "" }
+        },
+        State {
+            name: "EDIT_VIEW"
         }
+
     ]
 }
 

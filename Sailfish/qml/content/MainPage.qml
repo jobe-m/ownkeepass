@@ -159,9 +159,9 @@ Page {
     Connections {
         target: ownKeepassSettings
         onLoadLastDatabase: { // returns: dbLocation, dbFilePath, ...
-            // Get database name and set on cover page
-            applicationWindow.cover.databaseName = dbFilePath.substring(
-                        dbFilePath.lastIndexOf("/") + 1, dbFilePath.length)
+//            // Get database name and set on cover page
+//            applicationWindow.cover.coverTitle = dbFilePath.substring(
+//                        dbFilePath.lastIndexOf("/") + 1, dbFilePath.length)
             // Set database name in global object for pulley menu on query password page
             Global.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
             pageStack.push(queryPasswordDialogComponent,
@@ -315,8 +315,8 @@ Page {
             ownKeepassSettings.loadLastDb = internal.loadLastDb
             // Set database name in global object for pulley menu on groups and entries pages
             Global.databaseUiName = Global.getLocationName(dbFileLocation) + " " + databasePath
-            // Get database name and set on cover page
-            applicationWindow.cover.databaseName = databasePath.substring(
+            // Get database name and set on cover page for create new and open database states
+            applicationWindow.cover.coverTitle = databasePath.substring(
                         databasePath.lastIndexOf("/") + 1, databasePath.length)
         }
 
@@ -712,9 +712,9 @@ Page {
             }
 
             onClicked: {
-                // Get database name and set on cover page
-                applicationWindow.cover.databaseName = model.databaseFilePath.substring(
-                            model.databaseFilePath.lastIndexOf("/") + 1, model.databaseFilePath.length)
+//                // Get database name and set on cover page
+//                applicationWindow.cover.coverTitle = model.databaseFilePath.substring(
+//                            model.databaseFilePath.lastIndexOf("/") + 1, model.databaseFilePath.length)
                 // Set database name in global object for pulley menu on query password page
                 Global.databaseUiName = Global.getLocationName(model.databaseLocation) + " " + model.databaseFilePath
                 pageStack.push(queryPasswordDialogComponent,

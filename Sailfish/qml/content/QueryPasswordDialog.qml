@@ -263,10 +263,10 @@ file when storing your Keepass database online.", 0, false)
     }
 
     Component.onCompleted: {
-        // Get database name and set on cover page
-        applicationWindow.cover.databaseName = queryPasswordDialog.dbFilePath.substring(
-                    queryPasswordDialog.dbFilePath.lastIndexOf("/") + 1, queryPasswordDialog.dbFilePath.length)
-        applicationWindow.cover.state = "DATABASE_LOCKED"
+//        // Get database name and set on cover page
+//        applicationWindow.cover.coverTitle = queryPasswordDialog.dbFilePath.substring(
+//                    queryPasswordDialog.dbFilePath.lastIndexOf("/") + 1, queryPasswordDialog.dbFilePath.length)
+//        applicationWindow.cover.state = "DATABASE_LOCKED"
     }
 
     states: [
@@ -286,6 +286,7 @@ file when storing your Keepass database online.", 0, false)
             PropertyChanges { target: passwordField; focus: false }
             PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "CreateNewDatabase" }
+            PropertyChanges { target: applicationWindow.cover; state: "CREATE_NEW_DATABASE" }
         },
         State {
             name: "OpenNewDatabase"
@@ -302,6 +303,7 @@ file when storing your Keepass database online.", 0, false)
             PropertyChanges { target: passwordField; focus: false }
             PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenNewDatabase" }
+            PropertyChanges { target: applicationWindow.cover; state: "OPEN_DATABASE" }
         },
         State {
             name: "OpenRecentDatabase"
@@ -315,6 +317,10 @@ file when storing your Keepass database online.", 0, false)
             PropertyChanges { target: passwordField; focus: true }
             PropertyChanges { target: queryPasswordMenu; enabled: true; visible: true }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenRecentDatabase" }
+            PropertyChanges { target: applicationWindow.cover; state: "DATABASE_LOCKED"
+                coverTitle: queryPasswordDialog.dbFilePath.substring(
+                                  queryPasswordDialog.dbFilePath.lastIndexOf("/") + 1, queryPasswordDialog.dbFilePath.length)
+            }
         }
     ]
 }

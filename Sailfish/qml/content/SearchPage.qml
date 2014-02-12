@@ -125,7 +125,7 @@ Page {
         // set cover state
         if (status === PageStatus.Active) {
             // set title and state of cover page
-            applicationWindow.cover.groupTitle = searchPage.pageTitle
+            applicationWindow.cover.coverTitle = searchPage.pageTitle
             applicationWindow.cover.state = "SEARCH_VIEW"
         }
     }

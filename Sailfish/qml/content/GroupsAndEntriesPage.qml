@@ -195,7 +195,7 @@ Page {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
             // set group title and state in cover page
-            applicationWindow.cover.groupTitle = groupsAndEntriesPage.pageTitle
+            applicationWindow.cover.coverTitle = groupsAndEntriesPage.pageTitle
             applicationWindow.cover.state = "GROUPS_VIEW"
         }
     }
