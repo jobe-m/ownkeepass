@@ -267,6 +267,19 @@ Cover {
         }
     }
 
+    // Copy'n'paste cover action for entry
+    CoverActionList {
+        id: actionCopyOnly
+//        enabled: !ownKeepassSettings.lockDatabaseFromCover &&
+//                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
+        iconBackground: false
+
+        CoverAction {
+            iconSource: "../../covericons/copy.png"
+            onTriggered: copyToClipboard()
+        }
+    }
+
     // Lock database and copy'n'paste cover action for entry
     CoverActionList {
         id: actionLockDatabaseAndCopy
@@ -285,50 +298,64 @@ Cover {
         }
     }
 
-    // Copy'n'paste cover action for entry
-    CoverActionList {
-        id: actionCopyOnly
-//        enabled: !ownKeepassSettings.lockDatabaseFromCover &&
-//                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
-        iconBackground: false
-
-        CoverAction {
-            iconSource: "../../covericons/copy.png"
-            onTriggered: copyToClipboard()
-        }
-    }
-
     states: [
         State {
             name: "NO_DATABASE_OPENED"
+            PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
+            PropertyChanges { target: actionCopyOnly; enabled: false }
+            PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
             PropertyChanges { target: coverTextLabel; text: "No database opened" }
         },
         State {
             name: "CREATE_NEW_DATABASE"
+            PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
+            PropertyChanges { target: actionCopyOnly; enabled: false }
+            PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
             PropertyChanges { target: coverTextLabel; text: "Creating new database" }
         },
         State {
             name: "OPEN_DATABASE"
+            PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
+            PropertyChanges { target: actionCopyOnly; enabled: false }
+            PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
             PropertyChanges { target: coverTextLabel; text: "Opening database" }
         },
         State {
             name: "DATABASE_LOCKED"
+            PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
+            PropertyChanges { target: actionCopyOnly; enabled: false }
+            PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
             PropertyChanges { target: coverTextLabel; text: "Database is locked" }
         },
         State {
             name: "UNSAVED_CHANGES"
+            PropertyChanges { target: actionLockDatabaseOnly; enabled: ownKeepassSettings.lockDatabaseFromCover }
+            PropertyChanges { target: actionCopyOnly; enabled: false }
+            PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
             PropertyChanges { target: coverTextLabel; text: "You have unsaved changes pending" }
         },
         State {
             name: "GROUPS_VIEW"
+            PropertyChanges { target: actionLockDatabaseOnly; enabled: ownKeepassSettings.lockDatabaseFromCover }
+            PropertyChanges { target: actionCopyOnly; enabled: false }
+            PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
             PropertyChanges { target: coverTextLabel; text: "Viewing password groups or entries" }
         },
         State {
             name: "SEARCH_VIEW"
+            PropertyChanges { target: actionLockDatabaseOnly; enabled: ownKeepassSettings.lockDatabaseFromCover }
+            PropertyChanges { target: actionCopyOnly; enabled: false }
+            PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
             PropertyChanges { target: coverTextLabel; text: "Search for password entries" }
         },
         State {
             name: "ENTRY_VIEW"
+            PropertyChanges { target: actionLockDatabaseOnly
+                enabled: ownKeepassSettings.lockDatabaseFromCover && !ownKeepassSettings.showUserNamePasswordOnCover }
+            PropertyChanges { target: actionCopyOnly
+                enabled: !ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.showUserNamePasswordOnCover }
+            PropertyChanges { target: actionLockDatabaseAndCopy
+                enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.showUserNamePasswordOnCover }
             PropertyChanges { target: coverTextLabel
                 text: !ownKeepassSettings.showUserNamePasswordOnCover ? "Username and password are hidden" : "" }
         },
