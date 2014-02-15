@@ -27,26 +27,9 @@ import "../scripts/Global.js" as Global
 
 Cover {
     id: coverPage
-    anchors.centerIn: parent
-    width: Theme.coverSizeLarge.width
-    height: Theme.coverSizeLarge.height
-
-    Rectangle {
-        anchors.fill: parent
-        color: Theme.rgba(Theme.highlightColor, 0.2)
-
-        Image {
-            width: parent.width * 0.85
-            height: width
-            anchors.top: parent.top
-            anchors.right: parent.right
-            source: "../../wallicons/cover-cloud.png"
-            opacity: 0.2
-        }
-    }
 
     state: "NO_DATABASE_OPENED"
-    property alias coverTitle: coverTitleLabel.text
+    property alias title: coverTitleLabel.text
     property alias username: entryUsernameLabel.text
     property alias password: entryPasswordLabel.text
 
@@ -82,6 +65,24 @@ Cover {
             Clipboard.text = ""
             clipboardState = Global.constants.clipboardUnused
             break
+        }
+    }
+
+    anchors.centerIn: parent
+    width: Theme.coverSizeLarge.width
+    height: Theme.coverSizeLarge.height
+
+    Rectangle {
+        anchors.fill: parent
+        color: Theme.rgba(Theme.highlightColor, 0.2)
+
+        Image {
+            width: parent.width * 0.85
+            height: width
+            anchors.top: parent.top
+            anchors.right: parent.right
+            source: "../../wallicons/cover-cloud.png"
+            opacity: 0.2
         }
     }
 
@@ -212,7 +213,7 @@ Cover {
 
                 Label {
                     id: entryPasswordLabel
-                    enabled: ownKeepassSettings.showUserNamePasswordOnCover && text !== ""
+                    enabled: coverPage.state === "ENTRY_VIEW" && ownKeepassSettings.showUserNamePasswordOnCover && text !== ""
                     visible: enabled
                     width: parent.width
                     color: Theme.primaryColor
@@ -250,15 +251,11 @@ Cover {
     }
 
     Component.onCompleted: {
-        console.log("cover setting: " + ownKeepassSettings.showUserNamePasswordOnCover)
     }
 
     // Lock database cover action on opened database
     CoverActionList {
         id: actionLockDatabaseOnly
-//        enabled: ownKeepassSettings.lockDatabaseFromCover && (
-//                     (state !== "NO_DATABASE_OPENED") || state !== "DATABASE_LOCKED" &&
-//                     (!ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")))
         iconBackground: false
 
         CoverAction {
@@ -270,8 +267,6 @@ Cover {
     // Copy'n'paste cover action for entry
     CoverActionList {
         id: actionCopyOnly
-//        enabled: !ownKeepassSettings.lockDatabaseFromCover &&
-//                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
         iconBackground: false
 
         CoverAction {
@@ -283,8 +278,6 @@ Cover {
     // Lock database and copy'n'paste cover action for entry
     CoverActionList {
         id: actionLockDatabaseAndCopy
-//        enabled: ownKeepassSettings.lockDatabaseFromCover &&
-//                 ownKeepassSettings.copyNpasteFromCover && (state === "ENTRY_VIEW")
         iconBackground: false
 
         CoverAction {
@@ -311,14 +304,14 @@ Cover {
             PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "Creating new database" }
+            PropertyChanges { target: coverTextLabel; text: "Create new database" }
         },
         State {
             name: "OPEN_DATABASE"
             PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "Opening database" }
+            PropertyChanges { target: coverTextLabel; text: "Open database" }
         },
         State {
             name: "DATABASE_LOCKED"
@@ -339,7 +332,7 @@ Cover {
             PropertyChanges { target: actionLockDatabaseOnly; enabled: ownKeepassSettings.lockDatabaseFromCover }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "Viewing password groups or entries" }
+            PropertyChanges { target: coverTextLabel; text: "View password group" }
         },
         State {
             name: "SEARCH_VIEW"
@@ -351,19 +344,13 @@ Cover {
         State {
             name: "ENTRY_VIEW"
             PropertyChanges { target: actionLockDatabaseOnly
-                enabled: ownKeepassSettings.lockDatabaseFromCover && !ownKeepassSettings.showUserNamePasswordOnCover }
+                enabled: ownKeepassSettings.lockDatabaseFromCover && !ownKeepassSettings.copyNpasteFromCover }
             PropertyChanges { target: actionCopyOnly
-                enabled: !ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.showUserNamePasswordOnCover }
+                enabled: !ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover }
             PropertyChanges { target: actionLockDatabaseAndCopy
-                enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.showUserNamePasswordOnCover }
+                enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover }
             PropertyChanges { target: coverTextLabel
                 text: !ownKeepassSettings.showUserNamePasswordOnCover ? "Username and password are hidden" : "" }
-        },
-        State {
-            name: "EDIT_VIEW"
         }
-
     ]
 }
-
-

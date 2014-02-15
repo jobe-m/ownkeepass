@@ -31,6 +31,7 @@ Dialog {
     // save cover state because database settings page can be opened from various
     // pages like list view or edit dialogs, which have different cover states
     property string saveCoverState: ""
+    property string saveCoverTitle: ""
     property bool defaultCryptAlgorithmChanged: false
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
@@ -41,14 +42,18 @@ Dialog {
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
-            editSettingsDialog.saveCoverState = applicationWindow.cover.state
+            saveCoverState = applicationWindow.cover.state
+        if (saveCoverTitle === "") // save initial state
+            saveCoverTitle = applicationWindow.cover.title
         if (defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
+            applicationWindow.cover.title = "Settings"
         } else {
-            applicationWindow.cover.state = editSettingsDialog.saveCoverState
+            applicationWindow.cover.state = saveCoverState
+            applicationWindow.cover.title = saveCoverTitle
         }
     }
 

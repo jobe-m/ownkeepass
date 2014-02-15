@@ -84,7 +84,7 @@ Dialog {
                 }
                 onTextChanged: {
                     // set new title name in cover
-                    applicationWindow.cover.coverTitle = text
+                    applicationWindow.cover.title = text
                     // update cover state
                     if (editGroupDetailsDialog.origGroupTitle !== text) {
                         applicationWindow.cover.state = "UNSAVED_CHANGES"

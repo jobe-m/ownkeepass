@@ -40,7 +40,7 @@ Page {
         entryCommentTextArea.text = comment
 
         // set also cover
-        applicationWindow.cover.coverTitle = title
+        applicationWindow.cover.title = title
         applicationWindow.cover.username = username
         applicationWindow.cover.password = password
     }
@@ -216,6 +216,7 @@ Page {
         // if page gets active set cover state
         if (status === PageStatus.Active) {
             applicationWindow.cover.state = "ENTRY_VIEW"
+            applicationWindow.cover.title = pageHeader.title
         }
     }
 }

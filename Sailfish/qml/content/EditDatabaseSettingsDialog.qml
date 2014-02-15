@@ -31,17 +31,22 @@ Dialog {
     // save cover state because database settings page can be opened from various
     // pages like list view or edit dialogs, which have different cover states
     property string saveCoverState: ""
+    property string saveCoverTitle: ""
     property bool masterPasswordChanged: false
     property bool cryptAlgorithmChanged: false
     property bool keyTransfRoundsChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
-            editDatabaseSettingsDialog.saveCoverState = applicationWindow.cover.state
+            saveCoverState = applicationWindow.cover.state
+        if (saveCoverTitle === "") // save initial state
+            saveCoverTitle = applicationWindow.cover.title
         if (masterPasswordChanged || cryptAlgorithmChanged || keyTransfRoundsChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
+            applicationWindow.cover.title = "Database Settings"
         } else {
-            applicationWindow.cover.state = editDatabaseSettingsDialog.saveCoverState
+            applicationWindow.cover.state = saveCoverState
+            applicationWindow.cover.title = saveCoverTitle
         }
     }
 

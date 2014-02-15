@@ -138,7 +138,9 @@ Page {
                 pageStack.push(Qt.resolvedUrl("SearchPage.qml").toString(), {
                                    "searchGroupId": groupsAndEntriesPage.groupId,
                                    "pageTitle": groupsAndEntriesPage.groupId === 0 ? "Search in all Groups" :
-                                                                                     "Search in " + groupsAndEntriesPage.pageTitle
+                                                                                     "Search in " + groupsAndEntriesPage.pageTitle,
+                                   "coverTitle": groupsAndEntriesPage.groupId === 0 ? "All Groups" :
+                                                                                      groupsAndEntriesPage.pageTitle
                                })
             }
         }
@@ -195,7 +197,7 @@ Page {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
             // set group title and state in cover page
-            applicationWindow.cover.coverTitle = groupsAndEntriesPage.pageTitle
+            applicationWindow.cover.title = groupsAndEntriesPage.pageTitle
             applicationWindow.cover.state = "GROUPS_VIEW"
         }
     }

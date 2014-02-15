@@ -80,7 +80,9 @@ Dialog {
             }
         }
 
-        ApplicationMenu {}
+        ApplicationMenu {
+            disableSettingsItem: true
+        }
 
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}

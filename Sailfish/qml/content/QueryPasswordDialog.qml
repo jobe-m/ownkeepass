@@ -262,13 +262,6 @@ file when storing your Keepass database online.", 0, false)
         }
     }
 
-    Component.onCompleted: {
-//        // Get database name and set on cover page
-//        applicationWindow.cover.coverTitle = queryPasswordDialog.dbFilePath.substring(
-//                    queryPasswordDialog.dbFilePath.lastIndexOf("/") + 1, queryPasswordDialog.dbFilePath.length)
-//        applicationWindow.cover.state = "DATABASE_LOCKED"
-    }
-
     states: [
         State {
             name: "CreateNewDatabase"

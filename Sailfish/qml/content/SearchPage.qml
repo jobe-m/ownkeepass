@@ -32,6 +32,7 @@ Page {
     // ID of the keepass group which should be shown
     property int searchGroupId: 0
     property string pageTitle: "Search"
+    property string coverTitle: ""
 
     Item {
         id: headerBox
@@ -125,7 +126,7 @@ Page {
         // set cover state
         if (status === PageStatus.Active) {
             // set title and state of cover page
-            applicationWindow.cover.coverTitle = searchPage.pageTitle
+            applicationWindow.cover.title = searchPage.coverTitle
             applicationWindow.cover.state = "SEARCH_VIEW"
         }
     }

@@ -159,9 +159,6 @@ Page {
     Connections {
         target: ownKeepassSettings
         onLoadLastDatabase: { // returns: dbLocation, dbFilePath, ...
-//            // Get database name and set on cover page
-//            applicationWindow.cover.coverTitle = dbFilePath.substring(
-//                        dbFilePath.lastIndexOf("/") + 1, dbFilePath.length)
             // Set database name in global object for pulley menu on query password page
             Global.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
             pageStack.push(queryPasswordDialogComponent,
@@ -187,6 +184,7 @@ Page {
         if (status === PageStatus.Active) {
             // If this page gets active the database is definitely closed and needs to be opened again
             // so set cover page state accordingly
+            applicationWindow.cover.title = ""
             applicationWindow.cover.state = "NO_DATABASE_OPENED"
             // now also check database and key file paths if they exists
             internal.init()
@@ -316,7 +314,7 @@ Page {
             // Set database name in global object for pulley menu on groups and entries pages
             Global.databaseUiName = Global.getLocationName(dbFileLocation) + " " + databasePath
             // Get database name and set on cover page for create new and open database states
-            applicationWindow.cover.coverTitle = databasePath.substring(
+            applicationWindow.cover.title = databasePath.substring(
                         databasePath.lastIndexOf("/") + 1, databasePath.length)
         }
 
@@ -712,9 +710,6 @@ Page {
             }
 
             onClicked: {
-//                // Get database name and set on cover page
-//                applicationWindow.cover.coverTitle = model.databaseFilePath.substring(
-//                            model.databaseFilePath.lastIndexOf("/") + 1, model.databaseFilePath.length)
                 // Set database name in global object for pulley menu on query password page
                 Global.databaseUiName = Global.getLocationName(model.databaseLocation) + " " + model.databaseFilePath
                 pageStack.push(queryPasswordDialogComponent,
