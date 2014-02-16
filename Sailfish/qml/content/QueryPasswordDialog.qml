@@ -107,18 +107,25 @@ additional security for your Keepass database when storing it online!", 0, false
                     menu: ContextMenu {
                         MenuItem { text: "Documents on phone" }
                         MenuItem { text: "SD card" }
-                        MenuItem { enabled: false; visible: false; text: "Android storage" } // for backwards compatibility this needs to stay here
+                        MenuItem { text: "Android storage" }
                         MenuItem { text: "Sailbox local storage" }
                     }
                     onCurrentIndexChanged: {
+                        // Warn about usage of Android storage
+                        if (currentIndex === 2) {
+                            applicationWindow.infoPopupRef.show("Warning", "Please be aware that using the \
+Android storage might cause problems due to different file ownership and permissions. If modifications to your \
+Keepass database are not saved make sure the file is writable for user \"nemo\". So if you don't know how to handle \
+file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.", 0, false)
+                        }
                         // When opening database from dropbox storage show warning if no key file is used
-                        if ((queryPasswordDialog.state === "OpenNewDatabase") &&
-                                (!useKeyFileSwitch.checked) && (currentIndex === 3)) {
+                        else if ((queryPasswordDialog.state === "OpenNewDatabase") &&
+                                 (!useKeyFileSwitch.checked) && (currentIndex === 3)) {
                             showWarning()
                         }
                         // When creating database on dropbox storage force usage of key file
                         else if ((queryPasswordDialog.state === "CreateNewDatabase") &&
-                                (currentIndex === 3)) {
+                                 (currentIndex === 3)) {
                             useKeyFileSwitch.enabled = false
                             useKeyFileSwitch.checked = true
                             applicationWindow.infoPopupRef.show("Advice", "You choosed to place your new \
@@ -188,7 +195,7 @@ file when storing your Keepass database online.", 0, false)
                         menu: ContextMenu {
                             MenuItem { text: "Documents on phone" }
                             MenuItem { text: "SD card" }
-//                            MenuItem { text: "Android storage" }
+                            MenuItem { text: "Android storage" }
                         }
                     }
 
