@@ -318,7 +318,7 @@ file when storing your Keepass database online.", 0, false)
             PropertyChanges { target: queryPasswordMenu; enabled: true; visible: true }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenRecentDatabase" }
             PropertyChanges { target: applicationWindow.cover; state: "DATABASE_LOCKED"
-                coverTitle: queryPasswordDialog.dbFilePath.substring(
+                title: queryPasswordDialog.dbFilePath.substring(
                                   queryPasswordDialog.dbFilePath.lastIndexOf("/") + 1, queryPasswordDialog.dbFilePath.length)
             }
         }

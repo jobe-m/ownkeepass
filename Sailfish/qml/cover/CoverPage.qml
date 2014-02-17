@@ -36,14 +36,6 @@ Cover {
     // internal
     property string saveEntryTitle: ""
 
-    onTitleChanged: {
-        // Check if another password entry was opened and reset clipboard state
-        if ((state === "ENTRY_VIEW") && (saveEntryTitle !== title)) {
-            saveEntryTitle = title
-            clipboardState = Global.constants.clipboardUnused
-        }
-    }
-
     signal lockDatabase()
 
     // internal
@@ -362,6 +354,13 @@ Cover {
                 enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover }
             PropertyChanges { target: coverTextLabel
                 text: !ownKeepassSettings.showUserNamePasswordOnCover ? "Username and password are hidden" : "" }
+            StateChangeScript {
+                name: "resetClipboardState"
+                script: {
+                    saveEntryTitle = title
+                    clipboardState = Global.constants.clipboardUnused
+                }
+            }
         }
     ]
 }
