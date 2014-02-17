@@ -33,6 +33,17 @@ Cover {
     property alias username: entryUsernameLabel.text
     property alias password: entryPasswordLabel.text
 
+    // internal
+    property string saveEntryTitle: ""
+
+    onTitleChanged: {
+        // Check if another password entry was opened and reset clipboard state
+        if ((state === "ENTRY_VIEW") && (saveEntryTitle !== title)) {
+            saveEntryTitle = title
+            clipboardState = Global.constants.clipboardUnused
+        }
+    }
+
     signal lockDatabase()
 
     // internal

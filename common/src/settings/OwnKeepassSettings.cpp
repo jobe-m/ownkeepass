@@ -42,6 +42,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
 //    m_settings(new Settings(filePath, parent)),
     m_recentDatabaseListLength(5) // currently not yet changeable
 {
+    qDebug() << "ownKeepass version: " << m_version;
     m_settings = new Settings(filePath, parent);
     loadSettings();
 }
