@@ -29,7 +29,7 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "To open an existing Keepass database you need to provice the following details:<br><br>\
+    text: "To open an existing Keepass database you need to provide the following details:<br><br>\
 \
 <b>Database Location</b><br><br>\
 \
