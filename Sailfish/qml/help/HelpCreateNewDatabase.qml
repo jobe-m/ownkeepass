@@ -29,17 +29,17 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "Here you can create a new database where ownKeepass will store your sensitive data.<br><br>\
+    text: "On this page you can create a new database where ownKeepass will store your sensitive data.<br><br>\
 \
 <b>Database Location</b><br><br>\
 \
 First you need to specify where the database file will be stored. Available options are \"Documents on phone\", \
-\"SD Card\" and \"Sailbox local storage\". \
+\"SD Card\", \"Android storage\" and \"Sailbox local storage\". \
 Take the first option \"Documents on phone\" if you want the database to be \
-located on the phone or choose \"SD Card\" to place the database on the removable SD Card. You need to have a FAT32 \
-formated SD Card inserted into the phone. There is currently no warning if the SD Card is not present or not correctly \
+located on the phone or choose \"SD Card\" to place the database on the removable SD Card. You need to have a formatted \
+SD Card inserted into the phone. There is currently no warning if the SD Card is not present or not correctly \
 recognized. Please make sure the SD Card is properly detected by looking at it in a File Browser. \
-The third option \"Sailbox local storage\" can be used together with Sailbox. \
+If you want to share the Keepass database with Android Apps you can place it into \"Android storage\". However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option \"Sailbox local storage\" can be used together with Sailbox. \
 If you place your database there Sailbox can up- and download the file to \
 the Dropbox online service. Sailbox is available in Jolla Harbour for download.<br><br>\
 \
