@@ -145,7 +145,9 @@ Page {
             }
         }
 
-        ApplicationMenu {}
+        ApplicationMenu {
+            helpContent: groupsAndEntriesPage.groupId === 0 ? "MasterGroupsPage" : ""
+        }
 
         VerticalScrollDecorator {}
 

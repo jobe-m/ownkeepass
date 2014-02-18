@@ -113,4 +113,5 @@ OTHER_FILES += \
     qml/help/HelpOpenRecentDatabase.qml \
     qml/help/HelpDatabaseSettings.qml \
     qml/content/SearchPage.qml \
-    qml/help/HelpSettings.qml
+    qml/help/HelpSettings.qml \
+    qml/help/HelpMasterGroupsPage.qml
