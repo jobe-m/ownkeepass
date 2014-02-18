@@ -4,8 +4,9 @@ ownKeepass
 Status
 ------
 
-Release 1.0.0. now available for the Jolla Phone in Jolla Store!
-And for those of you who want to try the latest version have a look [here] [1]
+Release 1.0 now available for the Jolla Phone in Jolla Store!
+Release 1.0.3 is submitted to Jolla Store.
+For those of you who want to try the latest version have a look [here] [1]
 
 Current limitations/known bugs:
 *   n/a
