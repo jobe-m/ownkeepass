@@ -30,7 +30,7 @@
 
 namespace settingsPublic {
 
-const QString OWN_KEEPASS_VERSION(PROGRAMVERSION);
+const QString OWN_KEEPASS_VERSION(PROGRAMVERSION); // get version from yaml/spec file
 
 class OwnKeepassSettings : public QObject
 {

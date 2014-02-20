@@ -39,7 +39,9 @@ Take the first option \"Documents on phone\" if you want the database to be \
 located on the phone or choose \"SD Card\" to place the database on the removable SD Card. You need to have a formatted \
 SD Card inserted into the phone. There is currently no warning if the SD Card is not present or not correctly \
 recognized. Please make sure the SD Card is properly detected by looking at it in a File Browser. \
-If you want to share the Keepass database with Android Apps you can place it into \"Android storage\". However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option \"Sailbox local storage\" can be used together with Sailbox. \
+If you want to share the Keepass database with Android Apps you can place it into \"Android storage\". \
+However sharing files with the Android world can be annoying due to different file ownership and permissions. \
+Please be aware of that. The last option \"Sailbox local storage\" can be used together with Sailbox. \
 If you place your database there Sailbox can up- and download the file to \
 the Dropbox online service. Sailbox is available in Jolla Harbour for download.<br><br>\
 \
@@ -60,8 +62,8 @@ becomes in principle stronger against attacks. You can use for example a random 
 \
 <b>Key File Location</b><br><br>\
 \
-The same as for database location also applies here. Except that the key file location cannot be set to \"Dropbox Local \
-Storage\" in order to protect your security by design.<br><br>\
+The same as for database location also applies here. Except that the key file location cannot be set to \"Sailbox local \
+storage\" in order to protect your security by design.<br><br>\
 \
 <b>Key File Path and File Name</b><br><br>\
 \

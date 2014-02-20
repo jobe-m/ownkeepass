@@ -79,8 +79,6 @@ function getLocationName(value) {
         return "Android Storage: "
     case 3:
         return "Sailbox: "
-    case 4:
-        return "Android Dropbox:"
     }
 }
 

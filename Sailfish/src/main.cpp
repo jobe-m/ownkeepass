@@ -61,8 +61,7 @@ int main(int argc, char *argv[])
     const QString jollaPhoneDocumentsPath(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]);
     const QString sdCardPath("/run/user/100000/media/sdcard");
     const QString androidStoragePath("/data/sdcard");
-    const QString sailboxLocalStoragePath(QDir::homePath() + "/dropbox");
-    const QString androidDropboxLocalStorage("/data/sdcard/Android/data/com.dropbox.android/files/scratch");
+    const QString sailboxLocalStoragePath(QDir::homePath() + "/Downloads");
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
@@ -82,7 +81,6 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("sdCardPath", sdCardPath);
     view->rootContext()->setContextProperty("androidStoragePath", androidStoragePath);
     view->rootContext()->setContextProperty("sailboxLocalStoragePath", sailboxLocalStoragePath);
-    view->rootContext()->setContextProperty("androidDropboxLocalStorage", androidDropboxLocalStorage);
 
     // Setup some class as context properties and make them accessible in QML
     QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());

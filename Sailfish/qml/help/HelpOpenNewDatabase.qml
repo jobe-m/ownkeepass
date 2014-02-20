@@ -38,7 +38,7 @@ should place the database file in one of the following locations: \
 \"Documents on Phone\", \"SD Card\", \"Android storage\" or \"Sailbox local storage\". If you have trouble \
 with ownKeepass not finding the file make sure it is in desired place by looking it up in a file browser. \
 Documents on Phone is usually \"/home/nemo/Documents\". SD Card is located at \"/run/user/100000/media/sdcard\". Android storage \
-is at \"/data/sdcard\" and Sailbox local storage you will find at \"/home/nemo/dropbox\".<br><br>\
+is at \"/data/sdcard\" and Sailbox local storage you will find at \"/home/nemo/Downloads\".<br><br>\
 \
 Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition \
 to the master password. This key file should not be uploaded to the cloud service.<br><br>\
@@ -55,8 +55,8 @@ options will occure automatically on the page.<br><br>\
 \
 <b>Key File Location</b><br><br>\
 \
-The same as for database location also applies here. Except that the key file cannot be loaded from \"Dropbox Local \
-Storage\" in order to protect your security by design.<br><br>\
+The same as for database location also applies here. Except that the key file cannot be loaded from \"Sailbox local \
+storage\" in order to protect your security by design.<br><br>\
 \
 <b>Key File Path and File Name</b><br><br>\
 \

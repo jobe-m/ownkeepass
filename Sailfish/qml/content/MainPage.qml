@@ -287,8 +287,6 @@ Page {
                 return androidStoragePath
             case 3:
                 return sailboxLocalStoragePath
-            case 4:
-                return androidDropboxLocalStorage
             }
         }
 

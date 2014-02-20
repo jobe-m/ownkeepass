@@ -4,12 +4,14 @@ ownKeepass
 Status
 ------
 
-Release 1.0 now available for the Jolla Phone in Jolla Store!
-Release 1.0.3 is submitted to Jolla Store.
+Release 1.0.3 now available for the Jolla Phone in Jolla Store!
+Release 1.0.4 is submitted to Jolla Store and should be available soon.
+
 For those of you who want to try the latest version have a look [here] [1]
 
 Current limitations/known bugs:
-*   n/a
+*   New version of Sailbox changed download location from /home/nemo/dropbox to /home/nemo/Downloads.
+"Sailbox local storage" is updated to the new location in ownKeepass release 1.0.4
 
 The status of my todo list for the next release can be looked up [here] [6]. It needs some cleanup though...
 If you found a bug please report it on the issue page. Thanks :)
