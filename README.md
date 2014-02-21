@@ -4,8 +4,10 @@ ownKeepass
 Status
 ------
 
+WARNING! Please don't use version 1.0.4 of ownKeepass. I discoverd a bug which will prevent you from opening your Keepass database from "Sailbox local storage". I will fix this soon in verion 1.0.5 WARNING!
+
 Release 1.0.3 now available for the Jolla Phone in Jolla Store!
-Release 1.0.4 is submitted to Jolla Store and should be available soon.
+Release 1.0.4 is submitted to Jolla Store (Submittion will be hopefully rejected, contacted already Jolla Care).
 
 For those of you who want to try the latest version have a look [here] [1]
 
