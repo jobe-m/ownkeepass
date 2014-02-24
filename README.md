@@ -4,16 +4,18 @@ ownKeepass
 Status
 ------
 
-WARNING! Please don't use version 1.0.4 of ownKeepass. I discoverd a bug which will prevent you from opening your Keepass database from "Sailbox local storage". I will fix this soon in verion 1.0.5 WARNING!
-
-Release 1.0.3 now available for the Jolla Phone in Jolla Store!
-Release 1.0.4 is submitted to Jolla Store (Submittion will be hopefully rejected, contacted already Jolla Care).
+Release 1.0.4 is available for the Jolla Phone in Jolla Store!
+Release 1.0.5 is submitted to Jolla Store which
 
 For those of you who want to try the latest version have a look [here] [1]
 
 Current limitations/known bugs:
 *   New version of Sailbox changed download location from /home/nemo/dropbox to /home/nemo/Downloads.
-"Sailbox local storage" is updated to the new location in ownKeepass release 1.0.4
+"Sailbox local storage" is updated to the new location in ownKeepass release 1.0.4 but the
+Keepass database file is still in old location on the phone file system which means that it
+won't open from "recent database" list in ownKeepass. Release 1.0.5 fixes this problem by copying the
+database file into the new location.
+
 
 The status of my todo list for the next release can be looked up [here] [6]. It needs some cleanup though...
 If you found a bug please report it on the issue page. Thanks :)

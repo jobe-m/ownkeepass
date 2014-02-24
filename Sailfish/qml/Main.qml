@@ -61,6 +61,11 @@ ApplicationWindow
         onLockDatabase: mainPageRef.lockDatabase()
     }
 
+    Connections {
+        target: ownKeepassSettings
+        onShowInfoBanner: infoPopup.show(title, message, 0, false)
+    }
+
     Component.onCompleted: {
         // Init recent database file list
         Global.config.initArrays()

@@ -81,8 +81,13 @@ public:
     bool loadLastDb() const { return m_loadLastDb; }
     void setLoadLastDb(const bool value);
 
+    void checkSettingsVersion();
+
 signals:
-    // signal for property
+    // Signal to QML
+    void showInfoBanner(QString title, QString message);
+
+    // Signals for property
     void recentDatabaseModelChanged();
     void versionChanged();
     void simpleModeChanged();

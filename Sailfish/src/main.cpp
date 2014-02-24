@@ -93,5 +93,8 @@ int main(int argc, char *argv[])
     view->setSource(SailfishApp::pathTo("qml/Main.qml"));
     view->show();
 
+    // Check settings version after QML is loaded because it might want to show an info popup in QML
+    okpSettings->checkSettingsVersion();
+
     return app->exec();
 }

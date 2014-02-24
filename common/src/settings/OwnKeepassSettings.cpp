@@ -28,7 +28,7 @@ using namespace settingsPublic;
 OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     QObject(parent),
     m_recentDatabaseModel(new settingsPrivate::RecentDatabaseListModel(m_recentDatabaseListLength)),
-    m_previousVersion("0"),
+    m_previousVersion("1.0.0"),
     m_version(OWN_KEEPASS_VERSION),
     m_simpleMode(false),
     m_defaultCryptAlgorithm(0),
@@ -39,11 +39,11 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     m_lockDatabaseFromCover(true),
     m_copyNpasteFromCover(true),
     m_loadLastDb(false),
-//    m_settings(new Settings(filePath, parent)),
-    m_recentDatabaseListLength(5) // currently not yet changeable
+    m_recentDatabaseListLength(5), // currently not yet changeable
+    m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
-    m_settings = new Settings(filePath, parent);
+//    m_settings = new Settings(filePath, parent);
     loadSettings();
 }
 
@@ -52,8 +52,54 @@ OwnKeepassSettings::~OwnKeepassSettings()
     delete m_settings;
 }
 
+void OwnKeepassSettings::checkSettingsVersion()
+{
+    // Check previous settings file version here and
+    // do legacy updates if needed
+    m_previousVersion = (m_settings->getValue("settings/version", QVariant(m_previousVersion))).toString();
+    if (m_previousVersion != m_version) {
+        // check if no version number was saved, this was a bug until version 1.0.4, from version 1.0.5 the new
+        // version is saved every time the app version increases
+        m_settings->setValue("settings/version", QVariant(m_version));
+
+        QRegExp rx("(\\d+).(\\d+).(\\d+)");
+        if ((rx.indexIn(m_previousVersion)) == -1) {
+            qDebug() << "ERROR: Cannot extract version number.";
+            return;
+        }
+        int major = rx.cap(1).toInt();
+        int minor = rx.cap(2).toInt();
+        int patch = rx.cap(3).toInt();
+
+        // From version 1.0.5 on the Sailbox local storage location changed from /home/nemo/dropbox to
+        // /home/nemo/Downloads, so copy any database to new location
+        if ((major == 1) && (minor == 0) && (patch < 5)) {
+            for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
+                // Check if database file is saved unter sailbox local storage
+                // and move it to new location
+                if (m_recentDatabaseList[i]["dbLocation"].toInt() == 3) {
+                    // Check if database file is still in old location (/home/nemo/dropbox)
+                    QString filename = m_recentDatabaseList[i]["dbFilePath"].toString();
+                    QString oldFile = QDir::homePath() + "/dropbox/" + filename;
+                    QString newFile = QDir::homePath() + "/Downloads/" + filename;
+                    if (QFile::exists(oldFile)) {
+                        // Check if there is already a file in /home/nemo/Downloads with the same name
+                        // If yes, rename it before copying
+                        if (QFile::exists(newFile)) {
+                            QFile::rename(newFile, newFile + ".renamed");
+                        }
+                        // Move file to new location
+                        QFile::rename(oldFile, newFile);
+                        showInfoBanner("ownKeepass update",
+                                       "You have stored at least one Keepass database in \"Sailbox local storage\". Because the Dropbox client Sailbox changed recently its default storage to \"/home/nemo/Downloads\" ownKeepass has moved your database file from \"/home/nemo/dropbox\" to \"/home/nemo/Downloads\". If you haven't yet updated Sailbox please do it now from Jolla Store. This Info is shown only once.");
+                    }
+                }
+            }
+        }
+    }
+}
+
 void OwnKeepassSettings::loadSettings() {
-    m_previousVersion                = (m_settings->getValue("settings/version", QVariant(m_version))).toString();
     m_simpleMode                     = (m_settings->getValue("settings/simpleMode", QVariant(m_simpleMode))).toBool();
     m_defaultCryptAlgorithm          = (m_settings->getValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm))).toInt();
     m_defaultKeyTransfRounds         = (m_settings->getValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds))).toInt();
@@ -72,13 +118,6 @@ void OwnKeepassSettings::loadSettings() {
     emit showUserNamePasswordOnCoverChanged();
     emit lockDatabaseFromCoverChanged();
     emit copyNpasteFromCoverChanged();
-
-    // Check previous settings file version here and
-    // save new settings Format if needed
-    if (m_previousVersion != m_version) {
-        // save new version number
-        m_settings->setValue("settings/version", QVariant(m_version));
-    }
 
     // load recent database list if we are in expert mode
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
