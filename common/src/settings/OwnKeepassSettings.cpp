@@ -91,7 +91,7 @@ void OwnKeepassSettings::checkSettingsVersion()
                         // Move file to new location
                         QFile::rename(oldFile, newFile);
                         showInfoBanner("ownKeepass update",
-                                       "You have stored at least one Keepass database in \"Sailbox local storage\". Because the Dropbox client Sailbox changed recently its default storage to \"/home/nemo/Downloads\" ownKeepass has moved your database file from \"/home/nemo/dropbox\" to \"/home/nemo/Downloads\". If you haven't yet updated Sailbox please do it now from Jolla Store. This Info is shown only once.");
+                                       "You have stored at least one Keepass database in \"Sailbox local storage\". Because the Dropbox client Sailbox changed recently its default storage to \"" + QDir::homePath() + "/Downloads\" ownKeepass has moved your database file from \"" + QDir::homePath() + "/dropbox\" to \"" + QDir::homePath() + "/Downloads\". If you haven't yet updated Sailbox please do it now from Jolla Store. This Info is shown only once.");
                     }
                 }
             }
