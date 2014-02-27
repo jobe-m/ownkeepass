@@ -4,21 +4,24 @@ ownKeepass
 Status
 ------
 
-Release 1.0.4 is available for the Jolla Phone in Jolla Store!
-Release 1.0.5 is submitted to Jolla Store which
+Release 1.0.5 is available for the Jolla Phone in Jolla Store!
 
 For those of you who want to try the latest version have a look [here] [1]
 
 Current limitations/known bugs:
-*   New version of Sailbox changed download location from /home/nemo/dropbox to /home/nemo/Downloads.
-"Sailbox local storage" is updated to the new location in ownKeepass release 1.0.4 but the
-Keepass database file is still in old location on the phone file system which means that it
-won't open from "recent database" list in ownKeepass. Release 1.0.5 fixes this problem by copying the
-database file into the new location.
+*   n/a
 
-
-The status of my todo list for the next release can be looked up [here] [6]. It needs some cleanup though...
 If you found a bug please report it on the issue page. Thanks :)
+
+Roadmap
+-------
+
+I am planning 3 major updates for ownKeepass to happen somewhere the next time.
+*   The first is to extend the current functionality by introducing a password generator and to activate the password expiration feature which can remind you to change a specific password. Both features are already known by KeepassX on the desktop.
+*   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud should happen before integration of Keepass 2 database support.
+*   The third update is about Keepass 2 database support. It has currently the lowest priority because of the parent project [KeepassX 2][3] which is still in alpha phase. I am planning to reuse the database code from it thus will wait a bit longer to let the project mature.
+
+The status of my todo list for the next release can be looked up [here] [6].
 
 What is this?
 -------------
@@ -113,19 +116,9 @@ Features (already working)
 *   Copy username and password from within cover page and use cover page to peak from other apps to
     look up username and password
 
-What to expect in future versions of ownKeepass
------------------------------------------------
-
-I don't want to set it in stone yet but here is a list of features you might see in future versions
-of ownKeepass:
-
-*   Build-in sync of database file with a WebDAV server like ownCloud
-*   If feasible auto-type of username and passwords into web page
-*   Support for Keepass version 2 database files
-
 That's it so far.
 
-5-Feb-2014
+27-Feb-2014
 
 Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
