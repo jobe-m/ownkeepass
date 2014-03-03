@@ -12,7 +12,7 @@
 **
 ** ownKeepass is distributed in the hope that it will be useful,
 ** but WITHOUT ANY WARRANTY; without even the implied warranty of
-** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 ** GNU General Public License for more details.
 **
 ** You should have received a copy of the GNU General Public License
@@ -29,27 +29,32 @@ import harbour.ownkeepass 1.0
 Page {
     id: groupsAndEntriesPage
 
-    /*
-      This page is preloaded when the Query Password Dialog is shown. But without password the
-      database cannot be opened and therefore within this page it will give an error if we load groups
-      from the KdbListModel on startup. So the init() function is invoked later when the database could
-      be opened successfully with the master password.
-     */
+    // This page is preloaded when the Query Password Dialog is shown. But without password the
+    // database cannot be opened and therefore within this page it will give an error if we load groups
+    // from the KdbListModel on startup. So the init() function is invoked later when the database could
+    // be opened successfully with the master password.
     property bool initOnPageConstruction: true
     // ID of the keepass group which should be shown
     property int groupId: 0
     property bool loadMasterGroups: false
-    property string pageTitle: "Password Groups"
+    property string pageTitle: "not initialized"
 
     function init() {
+        groupsAndEntriesPage.state = "SHOW_GROUPS_AND_OR_ENTRIES"
+        loadGroups()
+        // automatically focus search bar on master group page but not on sub-group pages
+        if (loadMasterGroups) {
+            searchField.focus = true
+        }
+    }
+
+    function loadGroups() {
         // "Loading" state is initially active when database is currently opening from QueryPasswordDialog.
         // Depending how long it takes to calculate the master key by doing keyTransfomationRounds the init
         // function is called with a significant delay. During that time the busy indicator is shown.
         if (loadMasterGroups) {
-            groupsAndEntriesPage.state = "LoadMasterGroups"
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
-            groupsAndEntriesPage.state = "LoadGroupsAndEntries"
             kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)
         }
     }
@@ -72,15 +77,98 @@ Page {
         Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
     }
 
+    Rectangle {
+        id: rectState
+        width: 20
+        height: 20
+        anchors.top: parent.top
+        opacity: 0.5
+    }
+
+    Item {
+        id: headerBox
+        property int neutralPos: 0
+        y: 0 - listView.contentY + neutralPos
+        z: 1
+        width: parent.width
+        height: pageHeader.height + searchField.height
+
+        Component.onCompleted: {
+            neutralPos = listView.contentY
+        }
+
+        PageHeaderExtended {
+            id: pageHeader
+            anchors.top: parent.top
+            anchors.left: parent.left
+            width: parent.width
+            subTitle: "ownKeepass"
+        }
+
+        SearchField {
+            id: searchField
+            anchors.top: pageHeader.bottom
+            anchors.left: parent.left
+            width: parent.width
+            opacity: enabled ? 1.0 : 0.0
+            height: enabled ? implicitHeight : 0
+            placeholderText: "Search"
+            EnterKey.iconSource: "image://theme/icon-m-enter-close"
+            EnterKey.onClicked: listView.focus = true
+
+            onHeightChanged: {
+                // recalculate neutral position when search field appears and disappears
+                if (height === implicitHeight) {
+                    parent.neutralPos -= implicitHeight
+                } else if (height === 0) {
+                    parent.neutralPos += implicitHeight
+                }
+            }
+
+            onTextChanged: {
+                if (text.length > 0) {
+                    kdbListModel.searchEntriesInKdbDatabase(searchField.text)
+                } else {
+                    kdbListModel.clearListModel()
+                    // reload original group content when searchfield is empty
+                    loadGroups()
+                }
+            }
+
+            onFocusChanged: {
+                if (focus) {
+                    console.log("Search has focus")
+                    groupsAndEntriesPage.state = "SEARCHING"
+                } else {
+                    console.log("Search lost foucs")
+                    if (text.length === 0) groupsAndEntriesPage.state = "SHOW_GROUPS_AND_OR_ENTRIES"
+                }
+            }
+
+            Behavior on height { NumberAnimation {} }
+            Behavior on opacity { FadeAnimation {} }
+        }
+    }
+
     SilicaListView {
         id: listView
         currentIndex: -1
         anchors.fill: parent
         model: kdbListModel
 
-        header: PageHeaderExtended {
-            title: groupsAndEntriesPage.pageTitle
-            subTitle: "ownKeepass"
+        header: Item {
+            // This is just a placeholder for the header box. To avoid the
+            // list view resetting the input box everytime the model resets,
+            // the search entry is defined outside the list view.
+            height: headerBox.height
+        }
+
+        ViewSearchPlaceholder {
+            id: searchNoEntriesFoundPlaceholder
+            text: "No Entries found"
+            onClicked: {
+                searchField.forceActiveFocus()
+            }
         }
 
         Item {
@@ -117,6 +205,8 @@ Page {
             id: viewPlaceholder
             image.source: "../../wallicons/wall-group.png"
             text: "Group is empty"
+            hintText: loadMasterGroups ? "Pull down to add password groups" :
+                                         "Pull down to add password groups or entries"
         }
 
         DatabaseMenu {
@@ -160,38 +250,55 @@ Page {
         onMasterGroupsLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
     }
 
-    state: "Loading"
+    state: "LOADING"
 
     states: [
         State {
-            name: "Loading"
-            PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: false }
-            PropertyChanges { target: databaseMenu; enableNewPasswordGroupsMenuItem: false }
-            PropertyChanges { target: databaseMenu; enableNewPasswordEntryMenuItem: false }
-            PropertyChanges { target: databaseMenu; enableSearchMenuItem: false }
+            name: "LOADING"
+            PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: false
+                enableNewPasswordGroupsMenuItem: false
+                enableNewPasswordEntryMenuItem: false
+                enableSearchMenuItem: false }
             PropertyChanges { target: viewPlaceholder; enabled: false }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: true }
+
+            PropertyChanges { target: rectState; color: "white" }
         },
         State {
-            name: "LoadMasterGroups"
-            PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true }
-            PropertyChanges { target: databaseMenu; enableNewPasswordGroupsMenuItem: true }
-            PropertyChanges { target: databaseMenu; enableNewPasswordEntryMenuItem: false }
-            PropertyChanges { target: databaseMenu; enableSearchMenuItem: !kdbListModel.isEmpty }
-            PropertyChanges { target: viewPlaceholder; enabled: listView.count === 0;
-                hintText: "Pull down to add password groups" }
+            name: "SHOW_GROUPS_AND_OR_ENTRIES"
+            PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
+                enableNewPasswordGroupsMenuItem: true
+                enableNewPasswordEntryMenuItem: !loadMasterGroups
+                enableSearchMenuItem: !kdbListModel.isEmpty }
+            PropertyChanges { target: viewPlaceholder
+                enabled: listView.count === 0 }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
+            PropertyChanges { target: pageHeader
+                title: loadMasterGroups ? "Password Groups" :
+                                          groupsAndEntriesPage.pageTitle }
+            PropertyChanges { target: searchField; enabled: !kdbListModel.isEmpty }
+
+            PropertyChanges { target: rectState; color: "green" }
         },
         State {
-            name: "LoadGroupsAndEntries"
-            PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true }
-            PropertyChanges { target: databaseMenu; enableNewPasswordGroupsMenuItem: true }
-            PropertyChanges { target: databaseMenu; enableNewPasswordEntryMenuItem: true }
-            PropertyChanges { target: databaseMenu; enableSearchMenuItem: !kdbListModel.isEmpty }
-            PropertyChanges { target: viewPlaceholder;  enabled: listView.count === 0;
-                hintText: "Pull down to add password groups or entries" }
-            PropertyChanges { target: busyIndicator; running: false }
+            name: "SEARCHING"
+            PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
+                enableNewPasswordGroupsMenuItem: true
+                enableNewPasswordEntryMenuItem: !loadMasterGroups
+                enableSearchMenuItem: !kdbListModel.isEmpty }
+            PropertyChanges { target: viewPlaceholder; enabled: false }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder
+                enabled: listView.count === 0 }
+            PropertyChanges { target: pageHeader
+                title: loadMasterGroups ? "Search in all Groups" :
+                                          "Search in " + groupsAndEntriesPage.pageTitle }
+            PropertyChanges { target: searchField; enabled: true }
+
+            PropertyChanges { target: rectState; color: "red" }
         }
+
     ]
 
     onStatusChanged: {
@@ -205,6 +312,8 @@ Page {
     }
 
     Component.onCompleted: {
-        if (initOnPageConstruction) init()
+        if (initOnPageConstruction) {
+            init()
+        }
     }
 }
