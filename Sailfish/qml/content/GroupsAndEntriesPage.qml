@@ -248,7 +248,7 @@ Page {
         onMasterGroupsLoaded: {
             if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
-            if (!isEmpty) {
+            if (ownKeepassSettings.showSearchBar && !isEmpty) {
                 searchField.focus = true
             }
         }
@@ -274,7 +274,7 @@ Page {
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
                 enableNewPasswordEntryMenuItem: !loadMasterGroups
-                enableSearchMenuItem: !kdbListModel.isEmpty }
+                enableSearchMenuItem: !ownKeepassSettings.showSearchBar && !kdbListModel.isEmpty }
             PropertyChanges { target: viewPlaceholder
                 enabled: listView.count === 0 }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
@@ -282,7 +282,8 @@ Page {
             PropertyChanges { target: pageHeader
                 title: loadMasterGroups ? "Password Groups" :
                                           groupsAndEntriesPage.pageTitle }
-            PropertyChanges { target: searchField; enabled: !kdbListModel.isEmpty }
+            PropertyChanges { target: searchField
+                enabled: ownKeepassSettings.showSearchBar && !kdbListModel.isEmpty }
 
             PropertyChanges { target: rectState; color: "green" }
         },
@@ -291,7 +292,7 @@ Page {
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
                 enableNewPasswordEntryMenuItem: !loadMasterGroups
-                enableSearchMenuItem: !kdbListModel.isEmpty }
+                enableSearchMenuItem: false }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder
                 enabled: listView.count === 0 }
@@ -309,6 +310,13 @@ Page {
         if (__closeOnError && status === PageStatus.Active) {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
+//            // check if app setting for search bar was changed and update view
+//            if (ownKeepassSettings.showSearchBar) {
+//                state = "SEARCHING"
+//            } else {
+//            }
+//            state = "SHOW_GROUPS_AND_OR_ENTRIES"
+
             // set group title and state in cover page
             applicationWindow.cover.title = groupsAndEntriesPage.pageTitle
             applicationWindow.cover.state = "GROUPS_VIEW"

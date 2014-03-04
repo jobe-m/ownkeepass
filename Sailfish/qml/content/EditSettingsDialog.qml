@@ -36,6 +36,7 @@ Dialog {
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
     property bool showUserNamePasswordInListViewChanged: false
+    property bool showSearchBarChanged: false
     property bool showUserNamePasswordOnCoverChanged: false
     property bool lockDatabaseFromCoverChanged: false
     property bool copyNpasteFromCoverChanged: false
@@ -47,6 +48,7 @@ Dialog {
             saveCoverTitle = applicationWindow.cover.title
         if (defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
+                showSearchBarChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
@@ -218,6 +220,18 @@ Dialog {
                 }
             }
 
+            TextSwitch {
+                id: showSearchBar
+                checked: ownKeepassSettings.showSearchBar
+                text: "Enable Search Bar"
+                description: "This enables a search bar which is displayed on top of the list view. Otherwise search is accessible from pulley menu."
+                onCheckedChanged: {
+                    editSettingsDialog.showSearchBarChanged =
+                            showSearchBar.checked !== ownKeepassSettings.showSearchBar
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
             SectionHeader {
                 text: "Cover Settings"
             }
@@ -267,6 +281,7 @@ Dialog {
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
                     showUserNamePasswordInListView.checked,
+                    showSearchBar.checked,
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked)
@@ -280,6 +295,7 @@ Dialog {
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
                     showUserNamePasswordInListView.checked,
+                    showSearchBar.checked,
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked)

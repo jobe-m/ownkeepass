@@ -443,6 +443,7 @@ Page {
         property int defaultKeyTransfRounds
         property int inactivityLockTime
         property bool showUserNamePasswordInListView
+        property bool showSearchBar
         property bool showUserNamePasswordOnCover
         property bool lockDatabaseFromCover
         property bool copyNpasteFromCover
@@ -587,12 +588,13 @@ Page {
         }
 
         function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
-                                    aShowUserNamePasswordInListView, aShowUserNamePasswordOnCover,
+                                    aShowUserNamePasswordInListView, aShowSearchBar, aShowUserNamePasswordOnCover,
                                     aLockDatabaseFromCover, aCopyNpasteFromCover) {
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
             showUserNamePasswordInListView = aShowUserNamePasswordInListView
+            showSearchBar = aShowSearchBar
             showUserNamePasswordOnCover = aShowUserNamePasswordOnCover
             lockDatabaseFromCover = aLockDatabaseFromCover
             copyNpasteFromCover = aCopyNpasteFromCover
@@ -604,6 +606,7 @@ Page {
                     ownKeepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     ownKeepassSettings.locktime !== inactivityLockTime ||
                     ownKeepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView ||
+                    ownKeepassSettings.showSearchBar !== showSearchBar ||
                     ownKeepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
                     ownKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
                     ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover) {
@@ -617,6 +620,7 @@ Page {
             ownKeepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             ownKeepassSettings.locktime = inactivityLockTime
             ownKeepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
+            ownKeepassSettings.showSearchBar = showSearchBar
             ownKeepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover
             ownKeepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
             ownKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
@@ -637,12 +641,11 @@ Page {
         onNewEntryCreated: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
     }
 
-    /*
-      We need separate objects for deletion because of the 5 seconds guard period where
-      the user can undo the delete operation, i.e. the deletion is delayed and the user
-      might open another item which would then be deleted if we don't use separate
-      objects here
-      */
+
+    // We need separate objects for deletion because of the 5 seconds guard period where
+    // the user can undo the delete operation, i.e. the deletion is delayed and the user
+    // might open another item which would then be deleted if we don't use separate
+    // objects here
     KdbGroup {
         id: kdbGroupForDeletion
         onGroupDeleted: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
