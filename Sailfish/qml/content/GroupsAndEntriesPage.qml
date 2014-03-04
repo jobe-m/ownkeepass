@@ -42,10 +42,6 @@ Page {
     function init() {
         groupsAndEntriesPage.state = "SHOW_GROUPS_AND_OR_ENTRIES"
         loadGroups()
-        // automatically focus search bar on master group page but not on sub-group pages
-        if (loadMasterGroups) {
-            searchField.focus = true
-        }
     }
 
     function loadGroups() {
@@ -246,8 +242,16 @@ Page {
 
     KdbListModel {
         id: kdbListModel
-        onGroupsAndEntriesLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
-        onMasterGroupsLoaded: if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
+        onGroupsAndEntriesLoaded: {
+            if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
+        }
+        onMasterGroupsLoaded: {
+            if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
+            // automatically focus search bar on master group page but not on sub-group pages
+            if (!isEmpty) {
+                searchField.focus = true
+            }
+        }
     }
 
     state: "LOADING"
