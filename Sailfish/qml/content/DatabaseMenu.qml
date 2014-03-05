@@ -32,15 +32,25 @@ PullDownMenu {
     property bool enableNewPasswordGroupsMenuItem: false
     property bool enableNewPasswordEntryMenuItem: false
     property bool enableSearchMenuItem: false
+    property bool isTextHideSearch: true
 
+    signal searchClicked
     signal newPasswordEntryClicked
     signal newPasswordGroupClicked
-    signal searchClicked
+
+    MenuItem {
+        enabled: enableSearchMenuItem
+        visible: enabled
+        text: isTextHideSearch ? "Hide search" : "Show search"
+        onClicked: {
+            searchClicked()
+        }
+    }
 
     MenuItem {
         enabled: enableDatabaseSettingsMenuItem
         visible: enabled
-        text: qsTr("Database Settings")
+        text: qsTr("Database settings")
         onClicked: {
             pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
         }
@@ -49,7 +59,7 @@ PullDownMenu {
     MenuItem {
         enabled: enableNewPasswordGroupsMenuItem
         visible: enabled
-        text: "New Password Group"
+        text: "New password group"
         onClicked: {
             newPasswordGroupClicked()
         }
@@ -58,17 +68,9 @@ PullDownMenu {
     MenuItem {
         enabled: enableNewPasswordEntryMenuItem
         visible: enabled
-        text: "New Password Entry"
+        text: "New password entry"
         onClicked: {
             newPasswordEntryClicked()
-        }
-    }
-    MenuItem {
-        enabled: enableSearchMenuItem
-        visible: enabled
-        text: "Search"
-        onClicked: {
-            searchClicked()
         }
     }
 

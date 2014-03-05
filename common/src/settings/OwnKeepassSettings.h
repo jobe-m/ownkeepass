@@ -43,6 +43,8 @@ public:
     Q_PROPERTY(int defaultKeyTransfRounds READ defaultKeyTransfRounds WRITE setDefaultKeyTransfRounds NOTIFY defaultKeyTransfRoundsChanged)
     Q_PROPERTY(int locktime READ locktime WRITE setLocktime NOTIFY locktimeChanged)
     Q_PROPERTY(bool showUserNamePasswordInListView READ showUserNamePasswordInListView WRITE setShowUserNamePasswordInListView NOTIFY showUserNamePasswordInListViewChanged)
+    Q_PROPERTY(bool showSearchBar READ showSearchBar WRITE setShowSearchBar NOTIFY showSearchBarChanged)
+    Q_PROPERTY(bool focusSearchBarOnStartup READ focusSearchBarOnStartup WRITE setFocusSearchBarOnStartup NOTIFY focusSearchBarOnStartupChanged)
     Q_PROPERTY(bool showUserNamePasswordOnCover READ showUserNamePasswordOnCover WRITE setShowUserNamePasswordOnCover NOTIFY showUserNamePasswordOnCoverChanged)
     Q_PROPERTY(bool lockDatabaseFromCover READ lockDatabaseFromCover WRITE setLockDatabaseFromCover NOTIFY lockDatabaseFromCoverChanged)
     Q_PROPERTY(bool copyNpasteFromCover READ copyNpasteFromCover WRITE setCopyNpasteFromCover NOTIFY copyNpasteFromCoverChanged)
@@ -72,6 +74,10 @@ public:
     void setLocktime(const int value);
     bool showUserNamePasswordInListView() const { return m_showUserNamePasswordInListView; }
     void setShowUserNamePasswordInListView(const bool value);
+    bool showSearchBar() const { return m_showSearchBar; }
+    void setShowSearchBar(const bool value);
+    bool focusSearchBarOnStartup() const { return m_focusSearchBarOnStartup; }
+    void setFocusSearchBarOnStartup(const bool value);
     bool showUserNamePasswordOnCover() const { return m_showUserNamePasswordOnCover; }
     void setShowUserNamePasswordOnCover(const bool value);
     bool lockDatabaseFromCover() const { return m_lockDatabaseFromCover; }
@@ -95,6 +101,8 @@ signals:
     void defaultKeyTransfRoundsChanged();
     void locktimeChanged();
     void showUserNamePasswordInListViewChanged();
+    void showSearchBarChanged();
+    void focusSearchBarOnStartupChanged();
     void showUserNamePasswordOnCoverChanged();
     void lockDatabaseFromCoverChanged();
     void copyNpasteFromCoverChanged();
@@ -124,6 +132,8 @@ private:
     // false
     // true
     bool m_showUserNamePasswordInListView;
+    bool m_showSearchBar;
+    bool m_focusSearchBarOnStartup;
     bool m_showUserNamePasswordOnCover;
     bool m_lockDatabaseFromCover;
     bool m_copyNpasteFromCover;
