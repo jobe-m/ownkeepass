@@ -35,5 +35,10 @@ password entry you need to create at least one group first.<br><br>\
 \
 You can use main password groups to organize your password entries. For \
 example create groups for \"Online shops\", \"Email Accounts\", \"Social media \
-pages\", etc.<br><br>"
+pages\", etc.<br><br>\
+\
+A search bar can be enabled from pulley menu which is shown on top of the \
+password group list. If you want that the search bar automatically gets focus \
+when you open the Keepass database please open the setting page and check the \
+corresponding switch.<br><br>"
 }
