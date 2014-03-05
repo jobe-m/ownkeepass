@@ -36,7 +36,7 @@ Dialog {
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
     property bool showUserNamePasswordInListViewChanged: false
-    property bool showSearchBarChanged: false
+    property bool focusSearchBarOnStartupChanged: false
     property bool showUserNamePasswordOnCoverChanged: false
     property bool lockDatabaseFromCoverChanged: false
     property bool copyNpasteFromCoverChanged: false
@@ -48,7 +48,7 @@ Dialog {
             saveCoverTitle = applicationWindow.cover.title
         if (defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
-                showSearchBarChanged ||
+                focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
@@ -85,11 +85,11 @@ Dialog {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "ownKeepass Settings"
+                text: "ownKeepass settings"
             }
 
             SilicaLabel {
-                text: "Change default settings of your ownKeepass Application here"
+                text: "Change default settings of your ownKeepass application here"
             }
 
             Column {
@@ -105,7 +105,7 @@ Dialog {
                 ComboBox {
                     id: defaultCryptAlgorithm
                     width: editSettingsDialog.width
-                    label: "Default Encryption:"
+                    label: "Default encryption:"
                     currentIndex: ownKeepassSettings.defaultCryptAlgorithm
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
@@ -129,7 +129,7 @@ Dialog {
                     inputMethodHints: Qt.ImhFormattedNumbersOnly
                     validator: RegExpValidator { regExp: /^[0-9]*$/ }
                     errorHighlight: Number(text) === 0
-                    label: "Default Key Transformation Rounds"
+                    label: "Default key transformation rounds"
                     placeholderText: label
                     text: String(ownKeepassSettings.defaultKeyTransfRounds)
                     EnterKey.enabled: !errorHighlight
@@ -150,7 +150,7 @@ Dialog {
             }
 
             SectionHeader {
-                text: "UI Settings"
+                text: "UI settings"
             }
 
             Slider {
@@ -162,7 +162,7 @@ Dialog {
                 width: parent.width - Theme.paddingLarge * 2
                 anchors.horizontalCenter: parent.horizontalCenter
                 valueText: calculateInactivityTime(value)
-                label: "Inactivity Lock Time"
+                label: "Inactivity lock time"
                 /*
                   0 = immediately
                   1 = 5 seconds
@@ -181,23 +181,23 @@ Dialog {
                     case 0:
                         return "Immediately"
                     case 1:
-                        return "5 Seconds"
+                        return "5 seconds"
                     case 2:
-                        return "10 Seconds"
+                        return "10 seconds"
                     case 3:
-                        return "30 Seconds"
+                        return "30 seconds"
                     case 4:
-                        return "1 Minute"
+                        return "1 minute"
                     case 5:
-                        return "2 Minutes"
+                        return "2 minutes"
                     case 6:
-                        return "5 Minutes"
+                        return "5 minutes"
                     case 7:
-                        return "10 Minutes"
+                        return "10 minutes"
                     case 8:
-                        return "30 Minutes"
+                        return "30 minutes"
                     case 9:
-                        return "60 Minutes"
+                        return "60 minutes"
                     case 10:
                         return "Unlimited"
                     }
@@ -211,7 +211,7 @@ Dialog {
             TextSwitch {
                 id: showUserNamePasswordInListView
                 checked: ownKeepassSettings.showUserNamePasswordInListView
-                text: "Extended List View"
+                text: "Extended list liew"
                 description: "If you switch this on username and password are shown below entry title in list views"
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordInListViewChanged =
@@ -221,25 +221,25 @@ Dialog {
             }
 
             TextSwitch {
-                id: showSearchBar
-                checked: ownKeepassSettings.showSearchBar
-                text: "Enable Search Bar"
-                description: "This enables a search bar which is displayed on top of the list view. Otherwise search is accessible from pulley menu."
+                id: focusSearchBarOnStartup
+                checked: ownKeepassSettings.focusSearchBarOnStartup
+                text: "Focus search bar"
+                description: "If enabled the search bar will be focused on application startup"
                 onCheckedChanged: {
-                    editSettingsDialog.showSearchBarChanged =
-                            showSearchBar.checked !== ownKeepassSettings.showSearchBar
+                    editSettingsDialog.focusSearchBarOnStartupChanged =
+                            focusSearchBarOnStartup.checked !== ownKeepassSettings.focusSearchBarOnStartup
                     editSettingsDialog.updateCoverState()
                 }
             }
 
             SectionHeader {
-                text: "Cover Settings"
+                text: "Cover settings"
             }
 
             TextSwitch {
                 id: showUserNamePasswordOnCover
                 checked: ownKeepassSettings.showUserNamePasswordOnCover
-                text: "Show Username and Password"
+                text: "Show username and password"
                 description: "Switching this on will show username and password of the currently opened Keepass entry on the cover"
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordOnCoverChanged =
@@ -251,7 +251,7 @@ Dialog {
             TextSwitch {
                 id: lockDatabaseFromCover
                 checked: ownKeepassSettings.lockDatabaseFromCover
-                text: "Lock Database from Cover"
+                text: "Lock database from cover"
                 description: "This lets you lock the database with the left cover action"
                 onCheckedChanged: {
                     editSettingsDialog.lockDatabaseFromCoverChanged =
@@ -263,7 +263,7 @@ Dialog {
             TextSwitch {
                 id: copyNpasteFromCover
                 checked: ownKeepassSettings.copyNpasteFromCover
-                text: "Copy'n'paste from Cover"
+                text: "Copy'n'paste from cover"
                 description: "Enable this to copy username and password into clipboard from cover"
                 onCheckedChanged: {
                     editSettingsDialog.copyNpasteFromCoverChanged =
@@ -281,7 +281,7 @@ Dialog {
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
                     showUserNamePasswordInListView.checked,
-                    showSearchBar.checked,
+                    focusSearchBarOnStartup.checked,
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked)
@@ -295,7 +295,7 @@ Dialog {
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
                     showUserNamePasswordInListView.checked,
-                    showSearchBar.checked,
+                    focusSearchBarOnStartup.checked,
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked)

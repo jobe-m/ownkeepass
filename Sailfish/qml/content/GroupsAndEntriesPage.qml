@@ -78,14 +78,6 @@ Page {
         Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
     }
 
-    Rectangle {
-        id: rectState
-        width: 20
-        height: 20
-        anchors.top: parent.top
-        opacity: 0.5
-    }
-
     Item {
         id: headerBox
         property int neutralPos: 0
@@ -261,7 +253,7 @@ Page {
         onMasterGroupsLoaded: {
             if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
-            if (ownKeepassSettings.showSearchBar && !isEmpty) {
+            if (ownKeepassSettings.showSearchBar &&ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true
             }
         }
@@ -279,8 +271,6 @@ Page {
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: true }
-
-            PropertyChanges { target: rectState; color: "white" }
         },
         State {
             name: "SEARCH_BAR_HIDDEN"
@@ -296,8 +286,6 @@ Page {
                 title: loadMasterGroups ? "Password Groups" :
                                           groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: false }
-
-            PropertyChanges { target: rectState; color: "yellow" }
         },
         State {
             name: "SEARCH_BAR_SHOWN"
@@ -314,8 +302,6 @@ Page {
                                           groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
                 enabled: !kdbListModel.isEmpty }
-
-            PropertyChanges { target: rectState; color: "green" }
         },
         State {
             name: "SEARCHING"
@@ -330,10 +316,7 @@ Page {
                 title: loadMasterGroups ? "Search in all Groups" :
                                           "Search in " + groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: true }
-
-            PropertyChanges { target: rectState; color: "red" }
         }
-
     ]
 
     onStatusChanged: {

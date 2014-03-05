@@ -36,6 +36,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     m_locktime(3),
     m_showUserNamePasswordInListView(false),
     m_showSearchBar(true),
+    m_focusSearchBarOnStartup(true),
     m_showUserNamePasswordOnCover(true),
     m_lockDatabaseFromCover(true),
     m_copyNpasteFromCover(true),
@@ -107,6 +108,7 @@ void OwnKeepassSettings::loadSettings() {
     m_locktime                       = (m_settings->getValue("settings/locktime", QVariant(m_locktime))).toInt();
     m_showUserNamePasswordInListView = (m_settings->getValue("settings/showUserNamePasswordInListView", QVariant(m_showUserNamePasswordInListView))).toBool();
     m_showSearchBar                  = (m_settings->getValue("settings/showSearchBar", QVariant(m_showSearchBar))).toBool();
+    m_focusSearchBarOnStartup        = (m_settings->getValue("settings/focusSearchBarOnStartup", QVariant(m_focusSearchBarOnStartup))).toBool();
     m_showUserNamePasswordOnCover    = (m_settings->getValue("settings/showUserNamePasswordOnCover", QVariant(m_showUserNamePasswordOnCover))).toBool();
     m_lockDatabaseFromCover          = (m_settings->getValue("settings/lockDatabaseFromCover", QVariant(m_lockDatabaseFromCover))).toBool();
     m_copyNpasteFromCover            = (m_settings->getValue("settings/copyNpasteFromCover", QVariant(m_copyNpasteFromCover))).toBool();
@@ -245,7 +247,16 @@ void OwnKeepassSettings::setShowSearchBar(const bool value)
     if (value != m_showSearchBar) {
         m_showSearchBar = value;
         m_settings->setValue("settings/showSearchBar", QVariant(m_showSearchBar));
-        emit showSearchBar();
+        emit showSearchBarChanged();
+    }
+}
+
+void OwnKeepassSettings::setFocusSearchBarOnStartup(const bool value)
+{
+    if (value != m_focusSearchBarOnStartup) {
+        m_focusSearchBarOnStartup = value;
+        m_settings->setValue("settings/focusSearchBarOnStartup", QVariant(m_focusSearchBarOnStartup));
+        emit focusSearchBarOnStartupChanged();
     }
 }
 

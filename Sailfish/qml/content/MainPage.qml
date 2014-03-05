@@ -443,7 +443,7 @@ Page {
         property int defaultKeyTransfRounds
         property int inactivityLockTime
         property bool showUserNamePasswordInListView
-        property bool showSearchBar
+        property bool focusSearchBarOnStartup
         property bool showUserNamePasswordOnCover
         property bool lockDatabaseFromCover
         property bool copyNpasteFromCover
@@ -588,13 +588,13 @@ Page {
         }
 
         function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
-                                    aShowUserNamePasswordInListView, aShowSearchBar, aShowUserNamePasswordOnCover,
+                                    aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
                                     aLockDatabaseFromCover, aCopyNpasteFromCover) {
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
             showUserNamePasswordInListView = aShowUserNamePasswordInListView
-            showSearchBar = aShowSearchBar
+            focusSearchBarOnStartup = aFocusSearchBarOnStartup
             showUserNamePasswordOnCover = aShowUserNamePasswordOnCover
             lockDatabaseFromCover = aLockDatabaseFromCover
             copyNpasteFromCover = aCopyNpasteFromCover
@@ -606,7 +606,7 @@ Page {
                     ownKeepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     ownKeepassSettings.locktime !== inactivityLockTime ||
                     ownKeepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView ||
-                    ownKeepassSettings.showSearchBar !== showSearchBar ||
+                    ownKeepassSettings.focusSearchBarOnStartup !== focusSearchBarOnStartup ||
                     ownKeepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
                     ownKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
                     ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover) {
@@ -620,7 +620,7 @@ Page {
             ownKeepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             ownKeepassSettings.locktime = inactivityLockTime
             ownKeepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
-            ownKeepassSettings.showSearchBar = showSearchBar
+            ownKeepassSettings.focusSearchBarOnStartup = focusSearchBarOnStartup
             ownKeepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover
             ownKeepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
             ownKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
