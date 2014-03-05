@@ -40,7 +40,12 @@ Page {
     property string pageTitle: "not initialized"
 
     function init() {
-        groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
+        if (ownKeepassSettings.showSearchBar) {
+            groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
+        } else {
+            groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
+        }
+
         loadGroups()
     }
 
@@ -222,13 +227,19 @@ Page {
             onSearchClicked: {
                 // toggle search bar
                 if (groupsAndEntriesPage.state === "SEARCH_BAR_HIDDEN") {
+                    // hide search bar
                     groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
+                    // save to settings
+                    ownKeepassSettings.showSearchBar = true
                 } else if (groupsAndEntriesPage.state === "SEARCH_BAR_SHOWN" ||
                            groupsAndEntriesPage.state === "SEARCHING") {
-                    // steal focus from search bar so that is not active next time the user
-                    // selects "Show search" from menu, otherwise behaviour is weird
+                    // steal focus from search bar so that is not active next time when the user
+                    // selects "Show search" from pulley menu, otherwise its behaviour is weird
                     listView.focus = true
+                    // show search bar
                     groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
+                    // save to settings
+                    ownKeepassSettings.showSearchBar = false
                 }
             }
         }
@@ -250,7 +261,7 @@ Page {
         onMasterGroupsLoaded: {
             if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
-            if (/*ownKeepassSettings.showSearchBar &&*/ !isEmpty) {
+            if (ownKeepassSettings.showSearchBar && !isEmpty) {
                 searchField.focus = true
             }
         }
@@ -329,12 +340,13 @@ Page {
         if (__closeOnError && status === PageStatus.Active) {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
-//            // check if app setting for search bar was changed and update view
-//            if (ownKeepassSettings.showSearchBar) {
-//                state = "SEARCHING"
-//            } else {
-//            }
-//            state = "SEARCH_BAR_SHOWN"
+            console.log("status changed to active of: " + groupId)
+            // check if page state needs to change because search bar state was changed on a sub-page
+            if (ownKeepassSettings.showSearchBar && state === "SEARCH_BAR_HIDDEN") {
+                state = "SEARCH_BAR_SHOWN"
+            } else if (!ownKeepassSettings.showSearchBar && state !== "SEARCH_BAR_HIDDEN") {
+                state = "SEARCH_BAR_HIDDEN"
+            }
 
             // set group title and state in cover page
             applicationWindow.cover.title = groupsAndEntriesPage.pageTitle
