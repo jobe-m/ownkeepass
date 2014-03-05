@@ -120,7 +120,7 @@ Page {
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Open Database"
+                text: "Open database"
                 onClicked: {
                     pageStack.push(queryPasswordDialogComponent,
                                    {
