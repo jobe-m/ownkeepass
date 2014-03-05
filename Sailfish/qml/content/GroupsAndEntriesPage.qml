@@ -40,7 +40,7 @@ Page {
     property string pageTitle: "not initialized"
 
     function init() {
-        groupsAndEntriesPage.state = "SHOW_GROUPS_AND_OR_ENTRIES"
+        groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
         loadGroups()
     }
 
@@ -137,7 +137,7 @@ Page {
                     groupsAndEntriesPage.state = "SEARCHING"
                 } else {
                     console.log("Search lost foucs")
-                    if (text.length === 0) groupsAndEntriesPage.state = "SHOW_GROUPS_AND_OR_ENTRIES"
+                    if (text.length === 0) groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
                 }
             }
 
@@ -220,14 +220,16 @@ Page {
             }
 
             onSearchClicked: {
-                // open search page
-                pageStack.push(Qt.resolvedUrl("SearchPage.qml").toString(), {
-                                   "searchGroupId": groupsAndEntriesPage.groupId,
-                                   "pageTitle": groupsAndEntriesPage.groupId === 0 ? "Search in all Groups" :
-                                                                                     "Search in " + groupsAndEntriesPage.pageTitle,
-                                   "coverTitle": groupsAndEntriesPage.groupId === 0 ? "All Groups" :
-                                                                                      groupsAndEntriesPage.pageTitle
-                               })
+                // toggle search bar
+                if (groupsAndEntriesPage.state === "SEARCH_BAR_HIDDEN") {
+                    groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
+                } else if (groupsAndEntriesPage.state === "SEARCH_BAR_SHOWN" ||
+                           groupsAndEntriesPage.state === "SEARCHING") {
+                    // steal focus from search bar so that is not active next time the user
+                    // selects "Show search" from menu, otherwise behaviour is weird
+                    listView.focus = true
+                    groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
+                }
             }
         }
 
@@ -248,7 +250,7 @@ Page {
         onMasterGroupsLoaded: {
             if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
-            if (ownKeepassSettings.showSearchBar && !isEmpty) {
+            if (/*ownKeepassSettings.showSearchBar &&*/ !isEmpty) {
                 searchField.focus = true
             }
         }
@@ -262,7 +264,7 @@ Page {
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: false
                 enableNewPasswordGroupsMenuItem: false
                 enableNewPasswordEntryMenuItem: false
-                enableSearchMenuItem: false }
+                enableSearchMenuItem: false; isTextHideSearch: false }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: true }
@@ -270,11 +272,11 @@ Page {
             PropertyChanges { target: rectState; color: "white" }
         },
         State {
-            name: "SHOW_GROUPS_AND_OR_ENTRIES"
+            name: "SEARCH_BAR_HIDDEN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
                 enableNewPasswordEntryMenuItem: !loadMasterGroups
-                enableSearchMenuItem: !ownKeepassSettings.showSearchBar && !kdbListModel.isEmpty }
+                enableSearchMenuItem: true; isTextHideSearch: false }
             PropertyChanges { target: viewPlaceholder
                 enabled: listView.count === 0 }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
@@ -282,8 +284,25 @@ Page {
             PropertyChanges { target: pageHeader
                 title: loadMasterGroups ? "Password Groups" :
                                           groupsAndEntriesPage.pageTitle }
+            PropertyChanges { target: searchField; enabled: false }
+
+            PropertyChanges { target: rectState; color: "yellow" }
+        },
+        State {
+            name: "SEARCH_BAR_SHOWN"
+            PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
+                enableNewPasswordGroupsMenuItem: true
+                enableNewPasswordEntryMenuItem: !loadMasterGroups
+                enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: true }
+            PropertyChanges { target: viewPlaceholder
+                enabled: kdbListModel.isEmpty }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
+            PropertyChanges { target: busyIndicator; running: false }
+            PropertyChanges { target: pageHeader
+                title: loadMasterGroups ? "Password Groups" :
+                                          groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
-                enabled: ownKeepassSettings.showSearchBar && !kdbListModel.isEmpty }
+                enabled: !kdbListModel.isEmpty }
 
             PropertyChanges { target: rectState; color: "green" }
         },
@@ -292,7 +311,7 @@ Page {
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
                 enableNewPasswordEntryMenuItem: !loadMasterGroups
-                enableSearchMenuItem: false }
+                enableSearchMenuItem: searchField.text.length === 0; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder
                 enabled: listView.count === 0 }
@@ -315,7 +334,7 @@ Page {
 //                state = "SEARCHING"
 //            } else {
 //            }
-//            state = "SHOW_GROUPS_AND_OR_ENTRIES"
+//            state = "SEARCH_BAR_SHOWN"
 
             // set group title and state in cover page
             applicationWindow.cover.title = groupsAndEntriesPage.pageTitle
