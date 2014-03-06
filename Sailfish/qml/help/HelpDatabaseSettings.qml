@@ -32,7 +32,7 @@ Label {
     text: "On this dialog you can change database internal settings of your currently opened Keepass \
 database file.<br><br>\
 \
-<b>Master Password</b><br><br>\
+<b>Master password</b><br><br>\
 Here you can type in a new master password for the Keepass database. Please note that if you forgot your master \
 password there is no way to recover the password. It is not saved in the Keepass database and there is also no backdoor \
 to open the database without your password. Furhtermore make sure you choose a long password of around 10 - 15 \
@@ -42,7 +42,7 @@ characters and use a mixture of small and big letters, numbers and special chara
 <b>Encryption currently in use</b><br><br>\
 This is the encryption algorithm which is used to cipher the Keepass database content.<br><br>\
 \
-<b>Key Transformation Rounds</b><br><br>\
+<b>Key transformation rounds</b><br><br>\
 \
 Set the default value for key transformation rounds for your Keepass database. \
 This value controls the amount of encryption rounds computed \

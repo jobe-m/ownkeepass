@@ -31,13 +31,13 @@ Label {
     linkColor: Theme.highlightColor
     text: "On this page you can change default settings of the ownKeepass application.<br><br>\
 \
-<b>Default Encryption</b><br><br>\
+<b>Default encryption</b><br><br>\
 \
 Adjust the default encryption algorithm which is used when you create a new Keepass database. \
 The encryption algorithm can be changed also later after creation of your \
 database in the database settings.<br><br>\
 \
-<b>Key Transformation Rounds</b><br><br>\
+<b>Key transformation rounds</b><br><br>\
 \
 Set the default value for key transformation rounds for a new Keepass database. \
 This value controls the amount of encryption rounds computed \
@@ -47,7 +47,7 @@ the database more robust against brute force attacks. \
 As a good compromise between security and usability you should adjust the value so that opening \
 the database takes one second on your phone.<br><br>\
 \
-<b>UI Settings</b><br><br>\
+<b>UI settings</b><br><br>\
 \
 The inactivity lock time value is used to automatically lock the Keepass \
 database after the specified amount of time has elapsed after the ownKeepass \
@@ -55,9 +55,9 @@ application went in background. Thus the inactivity timer is also active \
 when ownKeepass is minimized to the cover state on home screen.<br><br>\
 \
 If you want to see username and password of all password entries already \
-in the list views you can switch \"Extended List View\" on.<br><br>\
+in the list views you can switch \"Extended list view\" on.<br><br>\
 \
-<b>Cover Settings</b><br><br>\
+<b>Cover settings</b><br><br>\
 \
 Here you can adjust functionality and information shown on the cover page. \
 You can enable showing username and password in cleartext of the currently \

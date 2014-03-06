@@ -22,9 +22,6 @@
 **
 ***************************************************************************/
 
-// enable (1) / disable (0) development mode
-// This sets some paths for SDK usage (/opt/sdk/...) and a default database password for testing
-var developmentMode = 0
 var databaseUiName = ""
 
 var constants = {

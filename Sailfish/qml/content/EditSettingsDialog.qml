@@ -85,7 +85,7 @@ Dialog {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "ownKeepass settings"
+                text: "ownKeepass Settings"
             }
 
             SilicaLabel {

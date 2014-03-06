@@ -98,8 +98,8 @@ Dialog {
             }
 
             SilicaLabel {
-                text: editEntryDetailsDialog.createNewEntry ? "Create new Password Entry:" :
-                                                              "Edit Password Entry:"
+                text: editEntryDetailsDialog.createNewEntry ? "Create new password entry:" :
+                                                              "Edit password entry:"
             }
 
             TextField {
@@ -108,7 +108,7 @@ Dialog {
                 inputMethodHints: Qt.ImhSensitiveData
                 label: "Title"
                 text: ""
-                placeholderText: "Set Title (mandatory)"
+                placeholderText: "Set title (mandatory)"
                 errorHighlight: text.length === 0
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -125,9 +125,9 @@ Dialog {
                 id: entryUrlTextField
                 width: parent.width
                 inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhSensitiveData
-                label: "Url"
+                label: "URL"
                 text: ""
-                placeholderText: "Set Url"
+                placeholderText: "Set URL"
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUsernameTextField.focus = true
                 onTextChanged: {
@@ -144,7 +144,7 @@ Dialog {
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData
                 label: "Username"
                 text: ""
-                placeholderText: "Set Username"
+                placeholderText: "Set username"
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryPasswordTextField.focus = true
                 onTextChanged: {
@@ -168,7 +168,7 @@ Dialog {
                     echoMode: TextInput.Password
                     label: "Password"
                     text: ""
-                    placeholderText: "Set Password"
+                    placeholderText: "Set password"
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
                     onTextChanged: {
@@ -202,9 +202,9 @@ Dialog {
                 width: parent.width
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                 echoMode: TextInput.Password
-                label: "Verify Password"
+                label: "Verify password"
                 text: ""
-                placeholderText: "Verify Password"
+                placeholderText: "Verify password"
                 errorHighlight: entryPasswordTextField.text !== text
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: {
@@ -223,7 +223,7 @@ Dialog {
                 width: parent.width
                 label: "Comment"
                 text: ""
-                placeholderText: "Set Comment"
+                placeholderText: "Set comment"
                 onTextChanged: {
                     editEntryDetailsDialog.commentChanged =
                             (editEntryDetailsDialog.origComment !== text ? true : false)

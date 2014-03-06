@@ -61,7 +61,7 @@ Cover {
             clipboardState = Global.constants.clipboardPasswordDropped
             break
         case Global.constants.clipboardPasswordDropped:
-            infoTextView.text = "Clipboard empty"
+            infoTextView.text = "Clipboard empty now"
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()

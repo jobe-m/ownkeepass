@@ -31,7 +31,7 @@ Label {
     linkColor: Theme.highlightColor
     text: "To open an existing Keepass database you need to provide the following details:<br><br>\
 \
-<b>Database Location</b><br><br>\
+<b>Database location</b><br><br>\
 \
 Here you specify from where the database file will be opened. To make opening as easy as possible you \
 should place the database file in one of the following locations: \
@@ -48,22 +48,22 @@ to the master password. This key file should not be uploaded to the cloud servic
 Please specify in this text field the file name of your Keepass database file which is located in one of above \
 locations.<br><br>\
 \
-<b>Use Key File</b><br><br>\
+<b>Use key file</b><br><br>\
 \
 If you need a key file for opening your Keepass database please check this option. The following two \
 options will occure automatically on the page.<br><br>\
 \
-<b>Key File Location</b><br><br>\
+<b>Key file location</b><br><br>\
 \
 The same as for database location also applies here. Except that the key file cannot be loaded from \"Sailbox local \
 storage\" in order to protect your security by design.<br><br>\
 \
-<b>Key File Path and File Name</b><br><br>\
+<b>Key file path and file name</b><br><br>\
 \
 Please type in here the file name of the key file which is located in one of above \
 locations.<br><br>\
 \
-<b>Master Password</b><br><br>\
+<b>Master password</b><br><br>\
 \
 Type in here the password for your Keepass database.<br><br>\
 \

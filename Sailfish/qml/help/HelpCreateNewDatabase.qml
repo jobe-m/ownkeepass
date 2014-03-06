@@ -31,7 +31,7 @@ Label {
     linkColor: Theme.highlightColor
     text: "On this page you can create a new database where ownKeepass will store your sensitive data.<br><br>\
 \
-<b>Database Location</b><br><br>\
+<b>Database location</b><br><br>\
 \
 First you need to specify where the database file will be stored. Available options are \"Documents on phone\", \
 \"SD Card\", \"Android storage\" and \"Sailbox local storage\". \
@@ -54,23 +54,23 @@ Please specify in this text field the relative path and file name for your Keepa
 can type in \"ownkeepass/notes.kdb\". If you have opened ownKeepass the first time you will see that string already \
 pre-filled for your convenience.<br><br>\
 \
-<b>Use Key File</b><br><br>\
+<b>Use key file</b><br><br>\
 \
 A key file can be used additionally to a master password to protect the Keepass database. Both are used together to \
 generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key \
 becomes in principle stronger against attacks. You can use for example a random picture as key file.<br><br>\
 \
-<b>Key File Location</b><br><br>\
+<b>Key file location</b><br><br>\
 \
 The same as for database location also applies here. Except that the key file location cannot be set to \"Sailbox local \
 storage\" in order to protect your security by design.<br><br>\
 \
-<b>Key File Path and File Name</b><br><br>\
+<b>Key file path and file name</b><br><br>\
 \
 Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can \
 choose here a picture as a key file.<br><br>\
 \
-<b>Master Password</b><br><br>\
+<b>Master password</b><br><br>\
 \
 Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 \
 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the \

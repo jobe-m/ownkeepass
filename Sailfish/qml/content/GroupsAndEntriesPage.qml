@@ -130,10 +130,8 @@ Page {
 
             onFocusChanged: {
                 if (focus) {
-                    console.log("Search has focus")
                     groupsAndEntriesPage.state = "SEARCHING"
                 } else {
-                    console.log("Search lost foucs")
                     if (text.length === 0) groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
                 }
             }
@@ -158,7 +156,7 @@ Page {
 
         ViewSearchPlaceholder {
             id: searchNoEntriesFoundPlaceholder
-            text: "No Entries found"
+            text: "No entries found"
             onClicked: {
                 searchField.forceActiveFocus()
             }
@@ -176,7 +174,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     enabled: busyIndicator.running
                     visible: busyIndicator.running
-                    text: "Decrypting Keepass Database"
+                    text: "Decrypting Keepass database"
                     color: Theme.secondaryHighlightColor
                     font.pixelSize: Theme.fontSizeExtraLarge
                     Behavior on opacity { FadeAnimation {} }
@@ -283,7 +281,7 @@ Page {
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: loadMasterGroups ? "Password Groups" :
+                title: loadMasterGroups ? "Password groups" :
                                           groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: false }
         },
@@ -298,7 +296,7 @@ Page {
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: loadMasterGroups ? "Password Groups" :
+                title: loadMasterGroups ? "Password groups" :
                                           groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
                 enabled: !kdbListModel.isEmpty }
@@ -313,7 +311,7 @@ Page {
             PropertyChanges { target: searchNoEntriesFoundPlaceholder
                 enabled: listView.count === 0 }
             PropertyChanges { target: pageHeader
-                title: loadMasterGroups ? "Search in all Groups" :
+                title: loadMasterGroups ? "Search in all groups" :
                                           "Search in " + groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: true }
         }
@@ -323,7 +321,6 @@ Page {
         if (__closeOnError && status === PageStatus.Active) {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
-            console.log("status changed to active of: " + groupId)
             // check if page state needs to change because search bar state was changed on a sub-page
             if (ownKeepassSettings.showSearchBar && state === "SEARCH_BAR_HIDDEN") {
                 state = "SEARCH_BAR_SHOWN"

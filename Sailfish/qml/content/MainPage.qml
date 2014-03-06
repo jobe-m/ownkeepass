@@ -112,8 +112,7 @@ Page {
                                        "keyFileLocation": 0,
                                        "keyFilePath": "",
                                        "loadLastDb": ownKeepassSettings.loadLastDb,
-                                       // Development mode here for faster testing with predefined database file
-                                       "password": Global.developmentMode === 1 ? "qwertz" : ""
+                                       "password": ""
                                    })
                 }
             }
@@ -131,8 +130,7 @@ Page {
                                        "keyFileLocation": 0,
                                        "keyFilePath": "",
                                        "loadLastDb": ownKeepassSettings.loadLastDb,
-                                       // Development mode here for faster testing with predefined database file
-                                       "password": Global.developmentMode === 1 ? "qwertz" : ""
+                                       "password": ""
                                    })
                 }
             }
@@ -169,8 +167,7 @@ Page {
                              "keyFileLocation": keyFileLocation,
                              "keyFilePath": keyFilePath,
                              "loadLastDb": ownKeepassSettings.loadLastDb,
-                             // Development mode here for faster testing with predefined database file
-                             "password": Global.developmentMode === 1 ? "qwertz" : "" })
+                             "password": "" })
         }
     }
 
@@ -243,17 +240,17 @@ Page {
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
-                            Global.env.infoPopup.show("Permission Error", "Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'.", 0, false)
+                            Global.env.infoPopup.show("Permission error", "Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'.", 0, false)
                             masterGroupsPage.closeOnError()
                         }
                     } else {
                         // Key file should be used but does not exist
-                        Global.env.infoPopup.show("Key File Error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
+                        Global.env.infoPopup.show("Key file error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
                         masterGroupsPage.closeOnError()
                     }
                 } else {
                     // Database file already exists
-                    Global.env.infoPopup.show("Database File already exists", "Please specify another path and name for your Keepass database or delete the old database within a Filebrowser.", 0, false)
+                    Global.env.infoPopup.show("Database file already exists", "Please specify another path and name for your Keepass database or delete the old database within a Filebrowser.", 0, false)
                     masterGroupsPage.closeOnError()
                 }
             } else {
@@ -265,12 +262,12 @@ Page {
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
-                        Global.env.infoPopup.show("Key File Error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
+                        Global.env.infoPopup.show("Key file error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
                         masterGroupsPage.closeOnError()
                     }
                 } else {
                     // Database file does not exist
-                    Global.env.infoPopup.show("Database File Error", "Database file does not exist. Please check path to database file again.", 0, false)
+                    Global.env.infoPopup.show("Database file error", "Database file does not exist. Please check path to database file again.", 0, false)
                     masterGroupsPage.closeOnError()
                 }
             }
@@ -721,8 +718,7 @@ Page {
                                  "keyFileLocation": model.keyFileLocation,
                                  "keyFilePath": model.keyFilePath,
                                  "loadLastDb": ownKeepassSettings.loadLastDb,
-                                 // Development mode here for faster testing with predefined database file
-                                 "password": Global.developmentMode === 1 ? "qwertz" : "" })
+                                 "password": "" })
             }
         }
     }
@@ -776,13 +772,13 @@ Page {
             property int type: 0
             headerAcceptText: "Yes"
             headerTitleText: "Yes"
-            titleText: "Unsaved Changes"
+            titleText: "Unsaved changes"
             message: type === kdbListItemInternal.c_queryForEntry ?
-                         "Do you want to save changes to the Password Entry?" :
+                         "Do you want to save changes to the password entry?" :
                          type === kdbListItemInternal.c_queryForGroup ?
-                             "Do you want to save changes to the Password Group?" :
+                             "Do you want to save changes to the password group?" :
                              type === kdbListItemInternal.c_queryForDatabaseSettings ?
-                                 "Do you want to save changes to Database Settings?" :
+                                 "Do you want to save changes to database settings?" :
                                  type === kdbListItemInternal.c_queryForKeepassSettings ?
                                      "Do you want to save changed settings values?" : ""
 

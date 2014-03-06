@@ -167,8 +167,8 @@ file when storing your Keepass database online.", 0, false)
                 TextSwitch {
                     id: useKeyFileSwitch
                     checked: false
-                    text: "Use Key File"
-                    description: "Switch this on to use a key file together with a master password for your new Keepass Database"
+                    text: "Use key file"
+                    description: "Switch this on to use a key file together with a master password for your new Keepass database"
                     onCheckedChanged: {
                         // When opening database from dropbox storage show warning if no key file is used
                         if ((queryPasswordDialog.state === "OpenNewDatabase") &&
@@ -190,7 +190,7 @@ file when storing your Keepass database online.", 0, false)
                     ComboBox {
                         id: keyFileLocationComboBox
                         width: parent.width
-                        label: "Key File location:"
+                        label: "Key file location:"
                         currentIndex: 0
                         menu: ContextMenu {
                             MenuItem { text: "Documents on phone" }
@@ -225,6 +225,7 @@ file when storing your Keepass database online.", 0, false)
                 errorHighlight: text.length === 0
                 label: "Password"
                 placeholderText: "Enter password"
+                text: ""
                 EnterKey.enabled: !errorHighlight
                 EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
                 EnterKey.iconSource: queryPasswordDialog.state === "CreateNewDatabase" ?
@@ -248,10 +249,9 @@ file when storing your Keepass database online.", 0, false)
                 echoMode: TextInput.Password
                 visible: enabled
                 errorHighlight: passwordField.text !== text
-                label: "Confirm Password"
+                label: "Confirm password"
                 placeholderText: label
-                // Development mode here for faster testing with predefined database file
-                text: Global.developmentMode === 1 ? "qwertz" : ""
+                text: ""
                 EnterKey.enabled: !passwordField.errorHighlight && !errorHighlight
                 EnterKey.highlighted: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"

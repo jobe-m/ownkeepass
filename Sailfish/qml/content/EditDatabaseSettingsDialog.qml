@@ -100,9 +100,9 @@ Dialog {
                     width: parent.width
                     inputMethodHints: Qt.ImhNoPredictiveText
                     echoMode: TextInput.Password
-                    label: "Master Password"
+                    label: "Master password"
                     text: ""
-                    placeholderText: "Change Master Password"
+                    placeholderText: "Change master password"
                     EnterKey.enabled: text.length > 0
                     EnterKey.highlighted: text.length > 0
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -126,9 +126,9 @@ Dialog {
                 inputMethodHints: Qt.ImhNoPredictiveText
                 echoMode: TextInput.Password
                 errorHighlight: databaseMasterPassword.text !== text
-                label: !errorHighlight ? "Master Password confirmed" : "Confirm Master Password"
+                label: !errorHighlight ? "Master password confirmed" : "Confirm master password"
                 text: ""
-                placeholderText: "Confirm Master Password"
+                placeholderText: "Confirm master password"
                 EnterKey.enabled: databaseMasterPassword.text.length > 0 && !errorHighlight
                 EnterKey.highlighted: databaseMasterPassword.text.length > 0 && !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
@@ -165,7 +165,7 @@ Dialog {
                     inputMethodHints: Qt.ImhFormattedNumbersOnly
                     validator: RegExpValidator { regExp: /^[0-9]*$/ }
                     errorHighlight: Number(text) === 0
-                    label: "Key Transformation Rounds"
+                    label: "Key transformation rounds"
                     placeholderText: label
                     text: Global.env.kdbDatabase.keyTransfRounds
                     EnterKey.enabled: !errorHighlight

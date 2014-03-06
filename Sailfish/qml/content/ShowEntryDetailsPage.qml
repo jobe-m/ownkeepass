@@ -55,14 +55,14 @@ Page {
                      !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
             image.source: "../../wallicons/wall-key.png"
             text: "No content"
-            hintText: "Pull down to add Url, Username, Password and Comment"
+            hintText: "Pull down to add URL, username, password and comment"
         }
 
         PullDownMenu {
             MenuItem {
                 enabled: entryUrlTextArea.text !== ""
                 visible: enabled
-                text: "Copy Url"
+                text: "Copy URL"
                 onClicked: {
                     Clipboard.text = entryUrlTextArea.text
                 }
@@ -71,7 +71,7 @@ Page {
             MenuItem {
                 enabled: entryUsernameTextArea.text !== ""
                 visible: enabled
-                text: "Copy Username"
+                text: "Copy username"
                 onClicked: {
                     Clipboard.text = entryUsernameTextArea.text
                 }
@@ -80,14 +80,14 @@ Page {
             MenuItem {
                 enabled: entryPasswordTextField.text !== ""
                 visible: enabled
-                text: "Copy Password"
+                text: "Copy password"
                 onClicked: {
                     Clipboard.text = entryPasswordTextField.text
                 }
             }
 
             MenuItem {
-                text: "Edit Password Entry"
+                text: "Edit password entry"
                 onClicked: {
                     pageStack.push(editEntryDetailsDialogComponent,
                                    { "entryId": showEntryDetailsPage.entryId })
@@ -122,7 +122,7 @@ Page {
                 enabled: text !== ""
                 visible: text !== ""
                 readOnly: true
-                label: "Url"
+                label: "URL"
                 color: Theme.primaryColor
             }
 
