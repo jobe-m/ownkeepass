@@ -43,10 +43,7 @@ Dialog {
     property alias password: passwordField.text
 
     acceptDestination: Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString()
-    acceptDestinationProperties: { "initOnPageConstruction": false,
-                                   "pageTitle": "Password groups",
-                                   "groupId": 0,
-                                   "loadMasterGroups": true }
+    acceptDestinationProperties: { "initOnPageConstruction": false, "groupId": 0 }
     acceptDestinationAction: PageStackAction.Replace
 
     function showWarning() {

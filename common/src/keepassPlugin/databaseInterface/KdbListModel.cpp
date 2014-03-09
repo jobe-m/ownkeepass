@@ -75,7 +75,7 @@ KdbListModel::~KdbListModel()
 /// slot which adds a new item to the data model
 void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId)
 {
-    qDebug() << "KdbListModel::slot_addItemToListModel (m_modelId: " << m_modelId << " modelId: " << modelId << ")";
+//    qDebug() << "KdbListModel::slot_addItemToListModel (m_modelId: " << m_modelId << " modelId: " << modelId << ")";
     if (!m_registered) {
         m_modelId = modelId;
         m_registered = true;
@@ -94,10 +94,13 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
             beginInsertRows(QModelIndex(), i, i);
             m_items.insert(i, item);
             endInsertRows();
-
+        }
+        // emit isEmptyChanged signal if list view was empty before
+        if (m_items.length() == 1) {
+            emit isEmptyChanged();
         }
 
-        qDebug("slot_addItemToListModel - added: %s", CSTR(title));
+//        qDebug("slot_addItemToListModel - added: %s", CSTR(title));
     }
 
     // signal to property to update itself in QML
@@ -188,8 +191,9 @@ void KdbListModel::clear()
     m_items.clear();
     endResetModel();
 
-    // signal to property to update itself in QML
+    // signal to QML and for property update
     emit modelDataChanged();
+    emit isEmptyChanged();
 }
 
 void KdbListModel::clearListModel()
@@ -210,6 +214,10 @@ void KdbListModel::slot_deleteItem(int itemId)
             endRemoveRows();
             // signal to property to update itself in QML
             emit modelDataChanged();
+            // emit isEmptyChanged signal if last item was deleted
+            if (m_items.isEmpty()) {
+                emit isEmptyChanged();
+            }
         }
     }
 }

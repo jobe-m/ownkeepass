@@ -36,8 +36,7 @@ Page {
     property bool initOnPageConstruction: true
     // ID of the keepass group which should be shown
     property int groupId: 0
-    property bool loadMasterGroups: false
-    property string pageTitle: "not initialized"
+    property string pageTitle: "Password groups"
 
     function init() {
         if (ownKeepassSettings.showSearchBar) {
@@ -53,7 +52,7 @@ Page {
         // "Loading" state is initially active when database is currently opening from QueryPasswordDialog.
         // Depending how long it takes to calculate the master key by doing keyTransfomationRounds the init
         // function is called with a significant delay. During that time the busy indicator is shown.
-        if (loadMasterGroups) {
+        if (groupId === 0) {
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
             kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)
@@ -77,6 +76,13 @@ Page {
         console.log("ERROR: Could not save")
         Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
     }
+
+//    Rectangle {
+//        id: rectState
+//        width: 20
+//        height: 20
+//        opacity: 0.5
+//    }
 
     Item {
         id: headerBox
@@ -130,9 +136,13 @@ Page {
 
             onFocusChanged: {
                 if (focus) {
+                    console.log("Search bar has focus")
                     groupsAndEntriesPage.state = "SEARCHING"
                 } else {
-                    if (text.length === 0) groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
+                    console.log("Search bar lost focus")
+                    if (text.length === 0 && groupsAndEntriesPage.state === "SEARCHING") {
+                        groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
+                    }
                 }
             }
 
@@ -196,8 +206,8 @@ Page {
             id: viewPlaceholder
             image.source: "../../wallicons/wall-group.png"
             text: "Group is empty"
-            hintText: loadMasterGroups ? "Pull down to add password groups" :
-                                         "Pull down to add password groups or entries"
+            hintText: groupId === 0 ? "Pull down to add password groups" :
+                                      "Pull down to add password groups or entries"
         }
 
         DatabaseMenu {
@@ -205,16 +215,22 @@ Page {
             menuLabelText: Global.databaseUiName
 
             onNewPasswordGroupClicked: {
+                // empty searchField
+                searchField.text = ""
                 pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
                                { "createNewGroup": true, "parentGroupId": groupId })
             }
 
             onNewPasswordEntryClicked: {
+                // empty searchField
+                searchField.text = ""
                 pageStack.push(Global.env.mainPage.editEntryDetailsDialogComponent,
                                { "createNewEntry": true, "parentGroupId": groupId })
             }
 
             onSearchClicked: {
+                // empty searchField
+                searchField.text = ""
                 // toggle search bar
                 if (groupsAndEntriesPage.state === "SEARCH_BAR_HIDDEN") {
                     // hide search bar
@@ -235,7 +251,7 @@ Page {
         }
 
         ApplicationMenu {
-            helpContent: groupsAndEntriesPage.groupId === 0 ? "MasterGroupsPage" : ""
+            helpContent: groupId === 0 ? "MasterGroupsPage" : "SubGroupsPage"
         }
 
         VerticalScrollDecorator {}
@@ -269,51 +285,71 @@ Page {
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: true }
+            PropertyChanges { target: pageHeader; title: "Loading" }
+            PropertyChanges { target: searchField; enabled: false }
+            // Don't set cover state here, it will overwrite cover state from Query password dialog
+
+//            PropertyChanges { target: rectState; color: "white" }
         },
         State {
             name: "SEARCH_BAR_HIDDEN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: !loadMasterGroups
-                enableSearchMenuItem: true; isTextHideSearch: false }
-            PropertyChanges { target: viewPlaceholder
-                enabled: listView.count === 0 }
+                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: false }
+            PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: loadMasterGroups ? "Password groups" :
-                                          groupsAndEntriesPage.pageTitle }
+                title: groupId === 0 ? "Password groups" :
+                                       groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: false }
+            PropertyChanges { target: applicationWindow.cover
+                title: groupId === 0 ? "Password groups" :
+                                       groupsAndEntriesPage.pageTitle
+                state: "GROUPS_VIEW" }
+
+//            PropertyChanges { target: rectState; color: "red" }
         },
         State {
             name: "SEARCH_BAR_SHOWN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: !loadMasterGroups
+                enableNewPasswordEntryMenuItem: groupId !== 0
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: true }
-            PropertyChanges { target: viewPlaceholder
-                enabled: kdbListModel.isEmpty }
+            PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: loadMasterGroups ? "Password groups" :
-                                          groupsAndEntriesPage.pageTitle }
+                title: groupId === 0 ? "Password groups" :
+                                       groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
                 enabled: !kdbListModel.isEmpty }
+            PropertyChanges { target: applicationWindow.cover
+                title: groupId === 0 ? "Password groups" :
+                                       groupsAndEntriesPage.pageTitle
+                state: "GROUPS_VIEW" }
+
+//            PropertyChanges { target: rectState; color: "yellow" }
         },
         State {
             name: "SEARCHING"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: !loadMasterGroups
-                enableSearchMenuItem: searchField.text.length === 0; isTextHideSearch: true }
+                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableSearchMenuItem: true/*searchField.text.length === 0*/; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: false }
-            PropertyChanges { target: searchNoEntriesFoundPlaceholder
-                enabled: listView.count === 0 }
+            PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: pageHeader
-                title: loadMasterGroups ? "Search in all groups" :
-                                          "Search in " + groupsAndEntriesPage.pageTitle }
+                title: groupId === 0 ? "Search in all groups" :
+                                       "Search in " + groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: true }
+            PropertyChanges { target: applicationWindow.cover
+                title: groupId === 0 ? "Search in all groups" :
+                                       "Search in " + groupsAndEntriesPage.pageTitle
+                state: "SEARCH_VIEW" }
+
+//            PropertyChanges { target: rectState; color: "green" }
         }
     ]
 
@@ -325,12 +361,33 @@ Page {
             if (ownKeepassSettings.showSearchBar && state === "SEARCH_BAR_HIDDEN") {
                 state = "SEARCH_BAR_SHOWN"
             } else if (!ownKeepassSettings.showSearchBar && state !== "SEARCH_BAR_HIDDEN") {
+                // steal focus from search bar
+                listView.focus = true
                 state = "SEARCH_BAR_HIDDEN"
+            } else {
+                // restore group title and state in cover page
+                switch (state) {
+                case "SEARCH_BAR_HIDDEN":
+                    applicationWindow.cover.title = groupId === 0 ? "Password groups" :
+                                                                    groupsAndEntriesPage.pageTitle
+                    applicationWindow.cover.state = "GROUPS_VIEW"
+                    break
+                case "SEARCH_BAR_SHOWN":
+                    applicationWindow.cover.title = groupId === 0 ? "Password groups" :
+                                                                    groupsAndEntriesPage.pageTitle
+                    applicationWindow.cover.state = "GROUPS_VIEW"
+                    break
+                case "SEARCHING":
+                    applicationWindow.cover.title = groupId === 0 ? "Search in all groups" :
+                                                                    "Search in " + groupsAndEntriesPage.pageTitle
+                    applicationWindow.cover.state = "SEARCH_VIEW"
+                    break
+                default:
+                    applicationWindow.cover.title = pageTitle
+                    applicationWindow.cover.state = "GROUPS_VIEW"
+                    break
+                }
             }
-
-            // set group title and state in cover page
-            applicationWindow.cover.title = groupsAndEntriesPage.pageTitle
-            applicationWindow.cover.state = "GROUPS_VIEW"
         }
     }
 

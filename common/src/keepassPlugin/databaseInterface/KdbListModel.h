@@ -72,7 +72,7 @@ public:
         RE_LAST
     };
 
-    Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY modelDataChanged)
+    Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
     Q_PROPERTY(int searchRootGroupId READ getSearchRootGroupId WRITE setSearchRootGroupId STORED true SCRIPTABLE true)
 
 public:
@@ -105,9 +105,10 @@ signals:
     void groupsAndEntriesLoaded(int result);
     void masterGroupsLoaded(int result);
     void searchEntriesCompleted(int result);
+    void modelDataChanged();
 
     // signal for property
-    void modelDataChanged();
+    void isEmptyChanged();
 
 public slots:
     // signal from KdbInterfaceWorker
