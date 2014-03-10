@@ -158,7 +158,7 @@ Page {
         target: ownKeepassSettings
         onLoadLastDatabase: { // returns: dbLocation, dbFilePath, ...
             // Set database name in global object for pulley menu on query password page
-            Global.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
+            applicationWindow.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
             pageStack.push(queryPasswordDialogComponent,
                            { "state": "OpenRecentDatabase",
                              "dbFileLocation": dbLocation,
@@ -307,7 +307,7 @@ Page {
                                                  internal.keyFilePath)
             ownKeepassSettings.loadLastDb = internal.loadLastDb
             // Set database name in global object for pulley menu on groups and entries pages
-            Global.databaseUiName = Global.getLocationName(dbFileLocation) + " " + databasePath
+            applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + databasePath
             // Get database name and set on cover page for create new and open database states
             applicationWindow.cover.title = databasePath.substring(
                         databasePath.lastIndexOf("/") + 1, databasePath.length)
@@ -709,7 +709,7 @@ Page {
 
             onClicked: {
                 // Set database name in global object for pulley menu on query password page
-                Global.databaseUiName = Global.getLocationName(model.databaseLocation) + " " + model.databaseFilePath
+                applicationWindow.databaseUiName = Global.getLocationName(model.databaseLocation) + " " + model.databaseFilePath
                 pageStack.push(queryPasswordDialogComponent,
                                { "state": "OpenRecentDatabase",
                                  "dbFileLocation": model.databaseLocation,

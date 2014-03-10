@@ -212,7 +212,7 @@ Page {
 
         DatabaseMenu {
             id: databaseMenu
-            menuLabelText: Global.databaseUiName
+            menuLabelText: applicationWindow.databaseUiName
 
             onNewPasswordGroupClicked: {
                 // empty searchField

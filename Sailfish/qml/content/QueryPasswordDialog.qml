@@ -59,7 +59,7 @@ additional security for your Keepass database when storing it online!", 0, false
         PullDownMenu {
             id: queryPasswordMenu
             MenuLabel {
-                text: Global.databaseUiName
+                text: applicationWindow.databaseUiName
             }
         }
 
@@ -232,6 +232,8 @@ file when storing your Keepass database online.", 0, false)
                     if (queryPasswordDialog.state === "CreateNewDatabase") {
                         confirmPasswordField.focus = true
                     } else {
+                        // set database name for pulley menu on opening database
+                        applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + dbFilePath
                         parent.focus = true
                         accept()
                         close()
@@ -253,6 +255,8 @@ file when storing your Keepass database online.", 0, false)
                 EnterKey.highlighted: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: {
+                    // set database name for pulley menu on creating database
+                    applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + dbFilePath
                     parent.focus = true
                     accept()
                     close()

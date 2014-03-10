@@ -96,7 +96,7 @@ Page {
 
             MenuLabel {
                 enabled: text !== ""
-                text: Global.databaseUiName
+                text: applicationWindow.databaseUiName
             }
         }
 
