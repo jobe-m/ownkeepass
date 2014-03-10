@@ -36,6 +36,9 @@ ApplicationWindow
     property MainPage mainPageRef: null
     property InfoPopup infoPopupRef: infoPopup
 
+    // application global properties
+    property string databaseUiName: ""
+
     initialPage: mainPageContainer
     cover: coverPage
 
@@ -64,11 +67,6 @@ ApplicationWindow
     Connections {
         target: ownKeepassSettings
         onShowInfoBanner: infoPopup.show(title, message, 0, false)
-    }
-
-    Component.onCompleted: {
-        // Init recent database file list
-        Global.config.initArrays()
     }
 
     onApplicationActiveChanged: {
