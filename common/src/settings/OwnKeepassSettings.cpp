@@ -45,7 +45,6 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
-//    m_settings = new Settings(filePath, parent);
     loadSettings();
 }
 

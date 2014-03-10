@@ -57,6 +57,11 @@ when ownKeepass is minimized to the cover state on home screen.<br><br>\
 If you want to see username and password of all password entries already \
 in the list views you can switch \"Extended list view\" on.<br><br>\
 \
+By enabling \"Focus search bar\" the search bar on the master password groups page will be \
+automatically focused and the on-screen keyboard is shown when you open the Keepass \
+database. That let you access the \
+search functionality to find your desired password even faster.<br><br>\
+\
 <b>Cover settings</b><br><br>\
 \
 Here you can adjust functionality and information shown on the cover page. \
