@@ -35,7 +35,7 @@ secretly in the database.<br><br>\
 \
 It is possible to show username and password for each password entry already \
 in the list view. To enable that feature open the ownKeepass settings and \
-check the "Extended list view" switch.<br><br>\
+check the \"Extended list view\" switch.<br><br>\
 \
 A search bar can be enabled from pulley menu which is shown on top of \
 the password group list. With it you can search only in the specific password \
