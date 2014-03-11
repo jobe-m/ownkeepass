@@ -434,8 +434,6 @@ Page {
         /*
           Data used to save ownKeepass default setting values
           */
-//        property string defaultDatabaseFilePath
-//        property string defaultKeyFilePath
         property int defaultCryptAlgorithm
         property int defaultKeyTransfRounds
         property int inactivityLockTime
@@ -451,12 +449,6 @@ Page {
         property bool createNewItem: false
         property int itemId: 0
         property int parentGroupId: 0
-
-        // some constants
-        readonly property int c_queryForEntry: 1
-        readonly property int c_queryForGroup: 2
-        readonly property int c_queryForDatabaseSettings: 3
-        readonly property int c_queryForKeepassSettings: 4
 
         function saveKdbGroupDetails() {
             console.log("Group name: " + groupName)
@@ -500,14 +492,14 @@ Page {
                     originalEntryComment !== entryComment) {
                 // open query dialog for unsaved changes
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "type": c_queryForEntry })
+                                  { "state": "QUERY_FOR_ENTRY" })
             }
         }
 
         function checkForUnsavedKdbGroupChanges() {
             if (originalGroupName !== groupName) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "type": c_queryForGroup })
+                                  { "state": "QUERY_FOR_GROUP" })
             }
         }
 
@@ -570,7 +562,7 @@ Page {
                     databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm ||
                     databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "type": c_queryForDatabaseSettings })
+                                  { "state": "QUERY_FOR_DATABASE_SETTINGS" })
             }
         }
 
@@ -608,7 +600,7 @@ Page {
                     ownKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
                     ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "type": c_queryForKeepassSettings})
+                                  { "state": "QUERY_FOR_APP_SETTINGS"})
             }
         }
 
@@ -768,28 +760,55 @@ Page {
     Component {
         id: queryDialogForUnsavedChangesComponent
         QueryDialog {
-            state: ""
-            property int type: 0
+            id: queryDialogForUnsavedChanges
             headerAcceptText: "Yes"
             headerTitleText: "Yes"
             titleText: "Unsaved changes"
-            message: type === kdbListItemInternal.c_queryForEntry ?
-                         "Do you want to save changes to the password entry?" :
-                         type === kdbListItemInternal.c_queryForGroup ?
-                             "Do you want to save changes to the password group?" :
-                             type === kdbListItemInternal.c_queryForDatabaseSettings ?
-                                 "Do you want to save changes to database settings?" :
-                                 type === kdbListItemInternal.c_queryForKeepassSettings ?
-                                     "Do you want to save changed settings values?" : ""
+            message: ""
 
-            onAccepted:  type === kdbListItemInternal.c_queryForEntry ?
-                             kdbListItemInternal.saveKdbEntryDetails() :
-                             type === kdbListItemInternal.c_queryForGroup ?
-                                 kdbListItemInternal.saveKdbGroupDetails() :
-                                 type === kdbListItemInternal.c_queryForDatabaseSettings ?
-                                     kdbListItemInternal.saveDatabaseSettings() :
-                                     type === kdbListItemInternal.c_queryForKeepassSettings ?
-                                         kdbListItemInternal.saveKeepassSettings() : console.log("ERROR in query for unsaved changes")
+            onAccepted: {
+                switch (state) {
+                case "QUERY_FOR_ENTRY":
+                    kdbListItemInternal.saveKdbEntryDetails()
+                    break
+                case "QUERY_FOR_GROUP":
+                    kdbListItemInternal.saveKdbGroupDetails()
+                    break
+                case "QUERY_FOR_DATABASE_SETTINGS":
+                    kdbListItemInternal.saveDatabaseSettings()
+                    break
+                case "QUERY_FOR_APP_SETTINGS":
+                    kdbListItemInternal.saveKeepassSettings()
+                    break
+                default:
+                    console.log("ERROR in query for unsaved changes")
+                    break
+                }
+            }
+
+            state: "QUERY_FOR_ENTRY"
+            states: [
+                State {
+                    name: "QUERY_FOR_ENTRY"
+                    PropertyChanges { target: queryDialogForUnsavedChanges
+                        message: "Do you want to save changes to the password entry?" }
+                },
+                State {
+                    name: "QUERY_FOR_GROUP"
+                    PropertyChanges { target: queryDialogForUnsavedChanges
+                        message: "Do you want to save changes to the password group?" }
+                },
+                State {
+                    name: "QUERY_FOR_DATABASE_SETTINGS"
+                    PropertyChanges { target: queryDialogForUnsavedChanges
+                        message: "Do you want to save changes to database settings?" }
+                },
+                State {
+                    name: "QUERY_FOR_APP_SETTINGS"
+                    PropertyChanges { target: queryDialogForUnsavedChanges
+                        message: "Do you want to save changed settings values?" }
+                }
+            ]
         }
     }
 
