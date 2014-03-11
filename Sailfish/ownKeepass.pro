@@ -90,7 +90,6 @@ OTHER_FILES += \
     qml/content/KdbListItem.qml \
     qml/help/HelpPage.qml \
     qml/content/GroupsAndEntriesPage.qml \
-    qml/content/FileBrowserPage.qml \
     qml/content/EditSettingsDialog.qml \
     qml/content/EditGroupDetailsDialog.qml \
     qml/content/EditEntryDetailsDialog.qml \
@@ -105,7 +104,6 @@ OTHER_FILES += \
     harbour-ownkeepass.desktop \
     rpm/harbour-ownkeepass.spec \
     qml/Main.qml \
-    qml/content/MainPageObsolete.qml \
     qml/content/MainPage.qml \
     qml/help/HelpMainPage.qml \
     qml/help/HelpCreateNewDatabase.qml \
