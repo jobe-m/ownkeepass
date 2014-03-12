@@ -37,6 +37,16 @@ isEmpty(VERSION) {
 }
 DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 
+linux-g++-32 {
+    message("Loading libs for emulator")
+    ARCH_LIBS=i486_x86
+}
+
+linux-g++ {
+    message("Loading libs for jolla device")
+    ARCH_LIBS=armv7hl
+}
+
 # The name of the app
 # NOTICE: name defined in TARGET has a corresponding QML filename.
 #         If name defined in TARGET is changed, following needs to be
@@ -47,13 +57,15 @@ DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 #         - icon definition filename in desktop file must be changed
 TARGET = harbour-ownkeepass
 
-# adding common qml and image files for the app
-common_qml_and_image_files.files += \
+# adding common QML files, QML imports, C++ libs and image files for the app
+common_files.files += \
     ../common/images/entryicons \
     ../common/images/covericons \
-    ../common/images/wallicons
-common_qml_and_image_files.path = /usr/share/$${TARGET}
-INSTALLS += common_qml_and_image_files
+    ../common/images/wallicons \
+    # armv7hl, i486_x86
+    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
+    ../common/qml/imports/PasswordGenerator/qmldir
+common_files.path = /usr/share/$${TARGET}
 
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
