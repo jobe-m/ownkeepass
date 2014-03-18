@@ -61,11 +61,13 @@ TARGET = harbour-ownkeepass
 common_files.files += \
     ../common/images/entryicons \
     ../common/images/covericons \
-    ../common/images/wallicons \
-    # armv7hl, i486_x86
+    ../common/images/wallicons
+common_files.path = /usr/share/$${TARGET}
+password_generator.files += \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
     ../common/qml/imports/PasswordGenerator/qmldir
-common_files.path = /usr/share/$${TARGET}
+password_generator.path = /usr/share/$${TARGET}/harbour/ownKeepass/PasswordGenerator
+INSTALLS += common_files password_generator
 
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
@@ -124,4 +126,5 @@ OTHER_FILES += \
     qml/help/HelpDatabaseSettings.qml \
     qml/help/HelpSettings.qml \
     qml/help/HelpMasterGroupsPage.qml \
-    qml/help/HelpSubGroupsPage.qml
+    qml/help/HelpSubGroupsPage.qml \
+    qml/content/PasswordGeneratorDialog.qml
