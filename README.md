@@ -9,7 +9,8 @@ Release 1.0.9 is available in Jolla Harbour! New release 1.0.10 submitted.
 For those of you who want to try the latest version have a look [here] [1]
 
 Current limitations/known bugs:
-*   Search bar in list view is corrupt since Sailfish OS version 1.0.4.20 update
+*   Search bar in list view is corrupt since Sailfish OS version 1.0.4.20 update (issue fixed in release 1.0.10)
+*   SD card location is not accessible after updating Sailfish OS to version 1.0.4.20 (will be fixed in next release)
 
 If you found a bug please report it on the issue page. Thanks :)
 
