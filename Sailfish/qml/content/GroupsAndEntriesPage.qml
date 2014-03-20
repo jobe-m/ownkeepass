@@ -96,6 +96,8 @@ Page {
             neutralPos = listView.contentY
         }
 
+//        Tracer { color: "green" }
+
         PageHeaderExtended {
             id: pageHeader
             anchors.top: parent.top
@@ -106,21 +108,22 @@ Page {
 
         SearchField {
             id: searchField
+            property int enabledHeight: 100
             anchors.top: pageHeader.bottom
             anchors.left: parent.left
             width: parent.width
             opacity: enabled ? 1.0 : 0.0
-            height: enabled ? implicitHeight : 0
+            height: enabled ? enabledHeight : 0
             placeholderText: "Search"
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: listView.focus = true
 
             onHeightChanged: {
                 // recalculate neutral position when search field appears and disappears
-                if (height === implicitHeight) {
-                    parent.neutralPos -= implicitHeight
+                if (height === enabledHeight) {
+                    parent.neutralPos -= enabledHeight
                 } else if (height === 0) {
-                    parent.neutralPos += implicitHeight
+                    parent.neutralPos += enabledHeight
                 }
             }
 
@@ -233,7 +236,7 @@ Page {
                 searchField.text = ""
                 // toggle search bar
                 if (groupsAndEntriesPage.state === "SEARCH_BAR_HIDDEN") {
-                    // hide search bar
+                    // show search bar
                     groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
                     // save to settings
                     ownKeepassSettings.showSearchBar = true
@@ -242,8 +245,8 @@ Page {
                     // steal focus from search bar so that is not active next time when the user
                     // selects "Show search" from pulley menu, otherwise its behaviour is weird
                     listView.focus = true
-                    // show search bar
-                    groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
+                    // hide search bar a bit delayed to let the pulley menu snap back and avoid motor saw sound
+                    searchBarHiddenTimer.restart()
                     // save to settings
                     ownKeepassSettings.showSearchBar = false
                 }
@@ -271,6 +274,12 @@ Page {
                 searchField.focus = true
             }
         }
+    }
+
+    Timer {
+        id: searchBarHiddenTimer
+        interval: 500
+        onTriggered: groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
     }
 
     state: "LOADING"
