@@ -59,7 +59,16 @@ int main(int argc, char *argv[])
                                    "/" + appName + "/settings.ini");
     // These are the predefined locations where the user can save the Keepass database and key file
     const QString jollaPhoneDocumentsPath(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]);
-    const QString sdCardPath("/run/user/100000/media/sdcard");
+
+    QString sdCardPath("/media/sdcard");
+    QDir mediaSdCard = QDir("/media/sdcard");
+    QStringList sdCardMountPoint = mediaSdCard.entryList(QStringList() << "????-????", QDir::Dirs, QDir::DirsFirst);
+    if (sdCardMountPoint.length() != 0) {
+        sdCardPath.append("/").append(sdCardMountPoint[0]);
+        qDebug() << "Found SdCard mount point:" << sdCardPath;
+    } else {
+        // SdCard base mount directory does not exist
+    }
     const QString androidStoragePath("/data/sdcard");
     const QString sailboxLocalStoragePath(QDir::homePath() + "/Downloads");
 
