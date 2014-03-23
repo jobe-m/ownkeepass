@@ -24,6 +24,7 @@
 #define OWNKEEPASSHELPER_H
 
 #include <QObject>
+#include <QDir>
 
 // A convenience class with helper functions used in QML context
 class OwnKeepassHelper : public QObject
@@ -33,10 +34,25 @@ class OwnKeepassHelper : public QObject
 public:
     Q_INVOKABLE bool fileExists(QString filePath) const;
     Q_INVOKABLE bool createFilePathIfNotExist(QString filePath) const;
+    Q_INVOKABLE bool sdCardExists() const;
+    Q_INVOKABLE QString getJollaPhoneDocumentsPath() const;
+    Q_INVOKABLE QString getSdCardPath() const;
+    Q_INVOKABLE QString getAndroidStoragePath() const;
+    Q_INVOKABLE QString getSailboxLocalStoragePath() const;
 
 public:
     OwnKeepassHelper(QObject *parent = 0);
     virtual ~OwnKeepassHelper() {}
+
+signals:
+    // Signal to QML
+    void showInfoBanner(QString title, QString message);
+
+private:
+    QStringList mountPoints() const;
+    QStringList sdCardPartitions() const;
+
+    QDir m_dir;
 };
 
 #endif // OWNKEEPASSHELPER_H

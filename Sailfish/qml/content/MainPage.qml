@@ -277,13 +277,13 @@ Page {
         function getRootPath(value) {
             switch (value) {
             case 0:
-                return jollaPhoneDocumentsPath
+                return ownKeepassHelper.getJollaPhoneDocumentsPath()
             case 1:
-                return sdCardPath
+                return ownKeepassHelper.getSdCardPath()
             case 2:
-                return androidStoragePath
+                return ownKeepassHelper.getAndroidStoragePath()
             case 3:
-                return sailboxLocalStoragePath
+                return ownKeepassHelper.getSailboxLocalStoragePath()
             }
         }
 
