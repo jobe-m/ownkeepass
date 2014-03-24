@@ -24,6 +24,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
+#include <QTextStream>
 
 #include "OwnKeepassHelper.h"
 
@@ -52,9 +53,9 @@ bool OwnKeepassHelper::createFilePathIfNotExist(QString filePath) const
     else return false;
 }
 
-bool OwnKeepassHelper::sdCardExists() const
+bool OwnKeepassHelper::sdCardExists()
 {
-    QStringList sdCards = sdCardPartitions();
+    QStringList sdCards(sdCardPartitions());
     // multi-partition SD cards (count > 1) are not supported
     return (sdCards.count() == 1);
 }
@@ -64,21 +65,22 @@ QString OwnKeepassHelper::getJollaPhoneDocumentsPath() const
     return QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
 }
 
-QString OwnKeepassHelper::getSdCardPath() const
+QString OwnKeepassHelper::getSdCardPath()
 {
-    QStringList sdCards = sdCardPartitions();
+    QStringList sdCards(sdCardPartitions());
     if (sdCards.isEmpty()) {
         return QString();
     }
-    if (sdcards.count() > 1) {
+    if (sdCards.count() > 1) {
         // tell user that multi-partition SD cards are not supported
-        showInfoBanner("Problem with SD card",
+        emit showInfoBanner("Problem with SD card",
                        "SD cards with multiple partitions are not supported.");
         return QString();
     }
 
     // return always first partition, multi-partition SD cards are not supported
-    return m_dir.absoluteFilePath(sdcards.first());
+    QString sdCard(m_dir.absoluteFilePath(sdCards.first()));
+    return sdCard;
 }
 
 QString OwnKeepassHelper::getAndroidStoragePath() const
@@ -119,7 +121,7 @@ QStringList OwnKeepassHelper::mountPoints() const
     return dirs;
 }
 
-QStringList OwnKeepassHelper::sdCardPartitions() const
+QStringList OwnKeepassHelper::sdCardPartitions()
 {
     if (!m_dir.exists()){
         return QStringList();

@@ -34,9 +34,9 @@ class OwnKeepassHelper : public QObject
 public:
     Q_INVOKABLE bool fileExists(QString filePath) const;
     Q_INVOKABLE bool createFilePathIfNotExist(QString filePath) const;
-    Q_INVOKABLE bool sdCardExists() const;
+    Q_INVOKABLE bool sdCardExists();
     Q_INVOKABLE QString getJollaPhoneDocumentsPath() const;
-    Q_INVOKABLE QString getSdCardPath() const;
+    Q_INVOKABLE QString getSdCardPath();
     Q_INVOKABLE QString getAndroidStoragePath() const;
     Q_INVOKABLE QString getSailboxLocalStoragePath() const;
 
@@ -50,7 +50,7 @@ signals:
 
 private:
     QStringList mountPoints() const;
-    QStringList sdCardPartitions() const;
+    QStringList sdCardPartitions();
 
     QDir m_dir;
 };

@@ -103,7 +103,7 @@ additional security for your Keepass database when storing it online!", 0, false
                     currentIndex: 0
                     menu: ContextMenu {
                         MenuItem { text: "Documents on phone" }
-                        MenuItem { text: "SD card" }
+                        MenuItem { id: dbLocSdCard; text: "SD card" }
                         MenuItem { text: "Android storage" }
                         MenuItem { text: "Sailbox local storage" }
                     }
@@ -191,7 +191,7 @@ file when storing your Keepass database online.", 0, false)
                         currentIndex: 0
                         menu: ContextMenu {
                             MenuItem { text: "Documents on phone" }
-                            MenuItem { text: "SD card" }
+                            MenuItem { id: keyFileLocSdCard; text: "SD card" }
                             MenuItem { text: "Android storage" }
                         }
                     }
@@ -268,6 +268,13 @@ file when storing your Keepass database online.", 0, false)
                 text: "Open automatically"
             }
         }
+    }
+
+    Component.onCompleted: {
+        // check if SD card is present and enable
+        var sdEnabled = ownKeepassHelper.sdCardExists()
+        dbLocSdCard.enabled = sdEnabled
+        keyFileLocSdCard.enabled = sdEnabled
     }
 
     states: [
