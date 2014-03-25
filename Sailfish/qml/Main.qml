@@ -69,6 +69,11 @@ ApplicationWindow
         onShowInfoBanner: infoPopup.show(title, message, 0, false)
     }
 
+    Connections {
+        target: ownKeepassHelper
+        onShowInfoBanner: infoPopup.show(title, message, 0, false)
+    }
+
     onApplicationActiveChanged: {
         // Application goes into background or returns to active focus again
         if (applicationActive) {

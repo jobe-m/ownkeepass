@@ -29,7 +29,6 @@
 #include <QGuiApplication>
 #include <QQuickView>
 #include <QScopedPointer>
-#include <QStandardPaths>
 #include <QtQml>
 #include <sailfishapp.h>
 
@@ -57,11 +56,6 @@ int main(int argc, char *argv[])
     const QString appName("harbour-ownkeepass");
     const QString settingsFilePath(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation)[0] +
                                    "/" + appName + "/settings.ini");
-    // These are the predefined locations where the user can save the Keepass database and key file
-    const QString jollaPhoneDocumentsPath(QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0]);
-    const QString sdCardPath("/run/user/100000/media/sdcard");
-    const QString androidStoragePath("/data/sdcard");
-    const QString sailboxLocalStoragePath(QDir::homePath() + "/Downloads");
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
@@ -75,12 +69,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
-
-    // Make some simple properties available in QML
-    view->rootContext()->setContextProperty("jollaPhoneDocumentsPath", jollaPhoneDocumentsPath);
-    view->rootContext()->setContextProperty("sdCardPath", sdCardPath);
-    view->rootContext()->setContextProperty("androidStoragePath", androidStoragePath);
-    view->rootContext()->setContextProperty("sailboxLocalStoragePath", sailboxLocalStoragePath);
 
     // Setup some class as context properties and make them accessible in QML
     QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());

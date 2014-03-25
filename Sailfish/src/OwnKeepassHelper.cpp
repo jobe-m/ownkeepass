@@ -23,14 +23,18 @@
 #include <QFile>
 #include <QDir>
 #include <QFileInfo>
+#include <QStandardPaths>
+#include <QTextStream>
 
 #include "OwnKeepassHelper.h"
 
 OwnKeepassHelper::OwnKeepassHelper(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_dir("/media/sdcard")
 {}
 
-bool OwnKeepassHelper::fileExists(QString filePath) const {
+bool OwnKeepassHelper::fileExists(QString filePath) const
+{
     if (filePath == "") return false;
     // Check if file exists
     if (QFile::exists(filePath)) return true;
@@ -38,7 +42,8 @@ bool OwnKeepassHelper::fileExists(QString filePath) const {
     else return false;
 }
 
-bool OwnKeepassHelper::createFilePathIfNotExist(QString filePath) const {
+bool OwnKeepassHelper::createFilePathIfNotExist(QString filePath) const
+{
     if (filePath == "") return false;
     // Check if file path exists
     if (QDir(QFileInfo(filePath).path()).exists()) return true;
@@ -46,4 +51,97 @@ bool OwnKeepassHelper::createFilePathIfNotExist(QString filePath) const {
     else if (QDir(QFileInfo(filePath).path()).mkpath(QFileInfo(filePath).path())) return true;
     // File path could not be created
     else return false;
+}
+
+bool OwnKeepassHelper::sdCardExists()
+{
+    QStringList sdCards(sdCardPartitions());
+    // multi-partition SD cards (count > 1) are not supported
+    return (sdCards.count() == 1);
+}
+
+QString OwnKeepassHelper::getJollaPhoneDocumentsPath() const
+{
+    return QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
+}
+
+QString OwnKeepassHelper::getSdCardPath()
+{
+    QStringList sdCards(sdCardPartitions());
+    if (sdCards.isEmpty()) {
+        return QString();
+    }
+    if (sdCards.count() > 1) {
+        // tell user that multi-partition SD cards are not supported
+        emit showInfoBanner("Problem with SD card",
+                       "SD cards with multiple partitions are not supported.");
+        return QString();
+    }
+
+    // return always first partition, multi-partition SD cards are not supported
+    QString sdCard(m_dir.absoluteFilePath(sdCards.first()));
+    return sdCard;
+}
+
+QString OwnKeepassHelper::getAndroidStoragePath() const
+{
+    return "/data/sdcard";
+}
+
+QString OwnKeepassHelper::getSailboxLocalStoragePath() const
+{
+    return QDir::homePath() + "/Downloads";
+}
+
+QStringList OwnKeepassHelper::mountPoints() const
+{
+    // read /proc/mounts and return all mount points for the filesystem
+    QFile file("/proc/mounts");
+    if (!file.open(QFile::ReadOnly | QFile::Text)) {
+        return QStringList();
+    }
+    QTextStream in(&file);
+    QString result = in.readAll();
+
+    // split result to lines
+    QStringList lines = result.split(QRegExp("[\n\r]"));
+
+    // get columns
+    QStringList dirs;
+    foreach (QString line, lines) {
+        QStringList columns = line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+        if (columns.count() < 6) { // skip broken mount points
+            continue;
+        }
+
+        QString dir = columns.at(1);
+        dirs.append(dir);
+    }
+
+    return dirs;
+}
+
+QStringList OwnKeepassHelper::sdCardPartitions()
+{
+    if (!m_dir.exists()){
+        return QStringList();
+    }
+    m_dir.setFilter(QDir::AllDirs | QDir::NoDotAndDotDot);
+    QStringList sdCardPartitions = m_dir.entryList();
+    if (sdCardPartitions.isEmpty()) {
+        return QStringList();
+    }
+
+    // remove all directories which are not mount points
+    QStringList mounts = mountPoints();
+    QMutableStringListIterator i(sdCardPartitions);
+    while (i.hasNext()) {
+        QString dirname = i.next();
+        QString abspath = m_dir.absoluteFilePath(dirname);
+        if (!mounts.contains(abspath)) {
+            i.remove();
+        }
+    }
+
+    return sdCardPartitions;
 }
