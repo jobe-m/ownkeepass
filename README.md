@@ -4,12 +4,12 @@ ownKeepass
 Status
 ------
 
-Release 1.0.10 is available in Jolla Harbour! New release 1.0.11 submitted which fixes the issue "SD card location is not accessible after updating Sailfish OS to version 1.0.4.20".
+Release 1.0.12 is available in Jolla Harbour! That release fixes the issue "SD card location is not accessible after updating Sailfish OS to version 1.0.4.20".
 
-For those of you who want to try the latest version have a look [here] [1]
+For those of you who who does not have access to Jolla harbour (e.g. Nexus 4 Sailfish OS images) have a look [here] [1]
 
 Current limitations/known bugs:
-*   n/a
+*   KeepassX 2 databases (.kdbx) are not yet supported
 
 If you found a bug please report it on the issue page. Thanks :)
 
