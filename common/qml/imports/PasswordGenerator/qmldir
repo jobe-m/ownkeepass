@@ -1,3 +1,2 @@
-module harbour.ownKeepass
-plugin PasswordGenerator
-
+module harbour.ownkeepass.PasswordGenerator
+plugin PasswordGenerator ../../../
