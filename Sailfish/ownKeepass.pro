@@ -62,12 +62,18 @@ common_files.files += \
     ../common/images/entryicons \
     ../common/images/covericons \
     ../common/images/wallicons
-common_files.path = /usr/share/$${TARGET}
-password_generator.files += \
-    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
+password_generator_qmldir.files += \
     ../common/qml/imports/PasswordGenerator/qmldir
-password_generator.path = /usr/share/$${TARGET}/harbour/ownKeepass/PasswordGenerator
-INSTALLS += common_files password_generator
+password_generator_lib.files += \
+    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
+    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgcrypt.so.11 \
+    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgpg-error.so.0
+common_files.path = /usr/share/$${TARGET}
+password_generator_qmldir.path = /usr/share/$${TARGET}/lib/harbour/ownkeepass/PasswordGenerator
+password_generator_lib.path = /usr/share/$${TARGET}/lib
+INSTALLS += common_files \
+            password_generator_lib \
+            password_generator_qmldir
 
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
