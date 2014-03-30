@@ -42,6 +42,13 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     m_copyNpasteFromCover(true),
     m_loadLastDb(false),
     m_recentDatabaseListLength(5), // currently not yet changeable
+    m_pwGenLength(12),
+    m_pwGenLowerLetters(true),
+    m_pwGenUpperLetters(true),
+    m_pwGenNumbers(true),
+    m_pwGenSpecialChars(false),
+    m_pwGenExcludeLookAlike(true),
+    m_pwGenCharFromEveryGroup(true),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
@@ -292,6 +299,69 @@ void OwnKeepassSettings::setLoadLastDb(bool value)
         m_loadLastDb = value;
         m_settings->setValue("main/loadLastDb", QVariant(m_loadLastDb));
         emit loadLastDbChanged();
+    }
+}
+
+void OwnKeepassSettings::setPwGenLength(int value)
+{
+    if (value != m_pwGenLength) {
+        m_pwGenLength = value;
+        m_settings->setValue("pwGen/Length", QVariant(m_pwGenLength));
+        emit pwGenLengthChanged();
+    }
+}
+
+void OwnKeepassSettings::setPwGenLowerLetters(bool value)
+{
+    if (value != m_pwGenLowerLetters) {
+        m_pwGenLowerLetters = value;
+        m_settings->setValue("pwGen/LowerLetters", QVariant(m_pwGenLowerLetters));
+        emit pwGenLowerLettersChanged();
+    }
+}
+
+void OwnKeepassSettings::setPwGenUpperLetters(bool value)
+{
+    if (value != m_pwGenUpperLetters) {
+        m_pwGenUpperLetters = value;
+        m_settings->setValue("pwGen/UpperLetters", QVariant(m_pwGenUpperLetters));
+        emit pwGenUpperLettersChanged();
+    }
+}
+
+void OwnKeepassSettings::setPwGenNumbers(bool value)
+{
+    if (value != m_pwGenNumbers) {
+        m_pwGenNumbers = value;
+        m_settings->setValue("pwGen/Numbers", QVariant(m_pwGenNumbers));
+        emit pwGenNumbersChanged();
+    }
+}
+
+void OwnKeepassSettings::setPwGenSpecialChars(bool value)
+{
+    if (value != m_pwGenSpecialChars) {
+        m_pwGenSpecialChars = value;
+        m_settings->setValue("pwGen/SpecialChars", QVariant(m_pwGenSpecialChars));
+        emit pwGenSpecialCharsChanged();
+    }
+}
+
+void OwnKeepassSettings::setPwGenExcludeLookAlike(bool value)
+{
+    if (value != m_pwGenExcludeLookAlike) {
+        m_pwGenExcludeLookAlike = value;
+        m_settings->setValue("pwGen/ExcludeLookAlike", QVariant(m_pwGenExcludeLookAlike));
+        emit pwGenExcludeLookAlikeChanged();
+    }
+}
+
+void OwnKeepassSettings::setPwGenCharFromEveryGroup(bool value)
+{
+    if (value != m_pwGenCharFromEveryGroup) {
+        m_pwGenCharFromEveryGroup = value;
+        m_settings->setValue("pwGen/CharFromEveryGroup", QVariant(m_pwGenCharFromEveryGroup));
+        emit pwGenCharFromEveryGroupChanged();
     }
 }
 

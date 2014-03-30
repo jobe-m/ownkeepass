@@ -24,7 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 import "../common"
-import harbour.ownKeepass.PasswordGenerator 1.0
+import harbour.ownkeepass.PasswordGenerator 1.0
 
 Dialog {
     id: passwordGeneratorDialog
@@ -33,13 +33,13 @@ Dialog {
 
     PasswordGenerator {
         id: passwordGenerator
-        length: 12 // ownKeepassSettings.pwGenLength
-        lowerLetters: true // ownKeepassSettings.pwGenLowerLetters
-        upperLetters: true // ownKeepassSettings.pwGenUpperLetters
-        numbers: true // ownKeepassSettings.pwGenNumbers
-        specialCharacters: false // ownKeepassSettings.pwGenSpecialChars
-        excludeLookAlike: true // ownKeepassSettings.pwGenExcludeLookAlike
-        charFromEveryGroup: true // ownKeepassSettings.pwGenCharFromEveryGroup
+        length: ownKeepassSettings.pwGenLength
+        lowerLetters: ownKeepassSettings.pwGenLowerLetters
+        upperLetters: ownKeepassSettings.pwGenUpperLetters
+        numbers: ownKeepassSettings.pwGenNumbers
+        specialCharacters: ownKeepassSettings.pwGenSpecialChars
+        excludeLookAlike: ownKeepassSettings.pwGenExcludeLookAlike
+        charFromEveryGroup: ownKeepassSettings.pwGenCharFromEveryGroup
     }
 
     SilicaFlickable {
@@ -67,36 +67,25 @@ Dialog {
             spacing: Theme.paddingLarge
 
             DialogHeader {
-                title: "Generate password"
+                title: "Accept"
+                acceptText: "Generate password"
             }
-
-//            SilicaLabel {
-//                id: dialogTitle
-//                font.pixelSize: Theme.fontSizeLarge
-//                font.bold: true
-//                text: "Generate password"
-//            }
 
             Item {
                 width: parent.width
-                height: generatedPasswordTextArea.height + genPwTextAreaSeparator.height
+                height: generatedPasswordField.height
 
                 TextField {
-                    id: generatedPasswordTextArea
+                    id: generatedPasswordField
                     anchors.top: parent.top
                     anchors.left: parent.left
                     anchors.right: showPasswordButton.left
                     echoMode: TextInput.Password
                     readOnly: true
-                    label: "Password"
+                    label: "Generated password"
+                    placeholderText: "No char group selected"
+                    errorHighlight: text.length === 0
                     color: Theme.primaryColor
-                }
-
-                Separator {
-                    id: genPwTextAreaSeparator
-                    anchors.top: generatedPasswordTextArea.bottom
-                    anchors.left: parent.left
-                    width: generatedPasswordTextArea.width
                 }
 
                 IconButton {
@@ -104,12 +93,12 @@ Dialog {
                     anchors.top: parent.top
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge
-                    icon.source: generatedPasswordTextArea.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
+                    icon.source: generatedPasswordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
                     onClicked: {
-                        if (generatedPasswordTextArea.echoMode === TextInput.Normal) {
-                            generatedPasswordTextArea.echoMode = TextInput.Password
+                        if (generatedPasswordField.echoMode === TextInput.Normal) {
+                            generatedPasswordField.echoMode = TextInput.Password
                         } else {
-                            generatedPasswordTextArea.echoMode = TextInput.Normal
+                            generatedPasswordField.echoMode = TextInput.Normal
                         }
                     }
                 }
@@ -122,45 +111,45 @@ Dialog {
 
                 Switch {
                     id: lowerLetters
-                    icon.source: "image://theme/icon-l-shuffle"
-                    checked: true // ownKeepassSettings.pwGenLowerLetters
+                    icon.source: "../../wallicons/icon-l-lowerLetter.png"
+                    checked: ownKeepassSettings.pwGenLowerLetters
                     onCheckedChanged: {
-                        generatedPasswordTextArea = passwordGenerator.generatePassword()
-//                        ownKeepassSettings.pwGenLowerLetters =
-                                passwordGenerator.lowerLetters = checked
+                        passwordGenerator.lowerLetters = checked
+                        generatedPasswordField.text = passwordGenerator.generatePassword()
+                        ownKeepassSettings.pwGenLowerLetters = checked
                     }
                 }
 
                 Switch {
                     id: upperLetters
-                    icon.source: "image://theme/icon-l-star"
-                    checked: true // ownKeepassSettings.pwGenUpperLetters
+                    icon.source: "../../wallicons/icon-l-upperLetters.png"
+                    checked: ownKeepassSettings.pwGenUpperLetters
                     onCheckedChanged: {
-                        generatedPasswordTextArea = passwordGenerator.generatePassword()
-//                        ownKeepassSettings.pwGenUpperLetters =
-                                passwordGenerator.upperLetters = checked
+                        passwordGenerator.upperLetters = checked
+                        generatedPasswordField.text = passwordGenerator.generatePassword()
+                        ownKeepassSettings.pwGenUpperLetters = checked
                     }
                 }
 
                 Switch {
                     id: numbers
-                    icon.source: "image://theme/icon-l-right"
-                    checked: true // ownKeepassSettings.pwGenNumbers
+                    icon.source: "../../wallicons/icon-l-numbers.png"
+                    checked: ownKeepassSettings.pwGenNumbers
                     onCheckedChanged: {
-                        generatedPasswordTextArea = passwordGenerator.generatePassword()
-//                        ownKeepassSettings.pwGenNumbers =
-                                passwordGenerator.numbers = checked
+                        passwordGenerator.numbers = checked
+                        generatedPasswordField.text = passwordGenerator.generatePassword()
+                        ownKeepassSettings.pwGenNumbers = checked
                     }
                 }
 
                 Switch {
                     id: specialChars
-                    icon.source: "image://theme/icon-l-usb"
-                    checked: false // ownKeepassSettings.pwGenSpecialChars
+                    icon.source: "../../wallicons/icon-l-specialChars.png"
+                    checked: ownKeepassSettings.pwGenSpecialChars
                     onCheckedChanged: {
-                        generatedPasswordTextArea = passwordGenerator.generatePassword()
-//                        ownKeepassSettings.pwGenSpecialChars =
-                                passwordGenerator.specialCharacters = checked
+                        passwordGenerator.specialCharacters = checked
+                        generatedPasswordField.text = passwordGenerator.generatePassword()
+                        ownKeepassSettings.pwGenSpecialChars = checked
                     }
                 }
             }
@@ -174,45 +163,51 @@ Dialog {
                 stepSize: 1
                 valueText: value
                 label: "Length"
-                value: 12 // ownKeepassSettings.pwGenLength
+                value: ownKeepassSettings.pwGenLength
                 onValueChanged: {
                     passwordGenerator.length = value
-                    generatedPasswordTextArea = passwordGenerator.generatePassword()
-                    // ownKeepassSettings.pwGenLength = value
+                    generatedPasswordField.text = passwordGenerator.generatePassword()
+                    ownKeepassSettings.pwGenLength = value
                 }
             }
 
             TextSwitch {
                 id: excludeLookAlike
-                checked:true // ownKeepassSettings.pwGenExcludeLookAlike
+                checked: ownKeepassSettings.pwGenExcludeLookAlike
                 text: "Exclude look-alike characters"
                 onCheckedChanged: {
                     passwordGenerator.excludeLookAlike = checked
-                    generatedPasswordTextArea = passwordGenerator.generatePassword()
-                    // ownKeepassSettings.pwGenExcludeLookAlike = checked
+                    generatedPasswordField.text = passwordGenerator.generatePassword()
+                    ownKeepassSettings.pwGenExcludeLookAlike = checked
                 }
             }
 
             TextSwitch {
                 id: charFromEveryGroup
-                checked: true // ownKeepassSettings.pwGenCharFromEveryGroup
+                checked: ownKeepassSettings.pwGenCharFromEveryGroup
                 text: "Ensure that the password contains characters from every group"
                 onCheckedChanged: {
                     passwordGenerator.charFromEveryGroup = checked
-                    generatedPasswordTextArea = passwordGenerator.generatePassword()
-                    // ownKeepassSettings.pwGenCharFromEveryGroup = checked
+                    generatedPasswordField.text = passwordGenerator.generatePassword()
+                    ownKeepassSettings.pwGenCharFromEveryGroup = checked
+                }
+            }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Generate"
+                onClicked: {
+                    generatedPasswordField.text = passwordGenerator.generatePassword()
                 }
             }
         }
     }
 
     Component.onCompleted: {
-        generatedPasswordTextArea = passwordGenerator.generatePassword()
+        generatedPasswordField.text = passwordGenerator.generatePassword()
     }
-//    Component.onDestruction: {
-//    }
 
     onDone: {
-        generatedPassword = generatedPasswordTextArea.text
+        generatedPassword = generatedPasswordField.text
     }
 }
