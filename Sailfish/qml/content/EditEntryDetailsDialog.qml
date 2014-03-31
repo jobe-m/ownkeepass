@@ -229,13 +229,13 @@ Dialog {
                     anchors.top: parent.top
                     anchors.right: parent.right
                     anchors.rightMargin: Theme.paddingLarge
-                    icon.source: "../../wallicons/icon-l-openeye.png"
+                    icon.source: "../../wallicons/icon-l-generator.png"
                     onClicked: {
                         var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
-                                    pwGenDialog.accepted.connect(function() {
-                                        entryPasswordTextField.text =
-                                                entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
-                                    })
+                        pwGenDialog.accepted.connect(function() {
+                            entryPasswordTextField.text =
+                                    entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
+                        })
                     }
                 }
             }

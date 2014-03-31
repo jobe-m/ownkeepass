@@ -31,6 +31,8 @@ Dialog {
 
     property string generatedPassword: ""
 
+    canNavigateForward: !generatedPasswordField.errorHighlight
+
     PasswordGenerator {
         id: passwordGenerator
         length: ownKeepassSettings.pwGenLength
@@ -104,6 +106,23 @@ Dialog {
                 }
             }
 
+            Slider {
+                id: passwordLength
+                width: parent.width - Theme.paddingSmall * 2
+                anchors.horizontalCenter: parent.horizontalCenter
+                minimumValue: 4
+                maximumValue: 64
+                stepSize: 1
+                valueText: value
+                label: "Length"
+                value: ownKeepassSettings.pwGenLength
+                onValueChanged: {
+                    passwordGenerator.length = value
+                    generatedPasswordField.text = passwordGenerator.generatePassword()
+                    ownKeepassSettings.pwGenLength = value
+                }
+            }
+
             Row {
                 width: children.width
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -111,7 +130,7 @@ Dialog {
 
                 Switch {
                     id: lowerLetters
-                    icon.source: "../../wallicons/icon-l-lowerLetter.png"
+                    icon.source: "../../wallicons/icon-l-lowerletters.png"
                     checked: ownKeepassSettings.pwGenLowerLetters
                     onCheckedChanged: {
                         passwordGenerator.lowerLetters = checked
@@ -122,7 +141,7 @@ Dialog {
 
                 Switch {
                     id: upperLetters
-                    icon.source: "../../wallicons/icon-l-upperLetters.png"
+                    icon.source: "../../wallicons/icon-l-upperletters.png"
                     checked: ownKeepassSettings.pwGenUpperLetters
                     onCheckedChanged: {
                         passwordGenerator.upperLetters = checked
@@ -144,30 +163,13 @@ Dialog {
 
                 Switch {
                     id: specialChars
-                    icon.source: "../../wallicons/icon-l-specialChars.png"
+                    icon.source: "../../wallicons/icon-l-specialchars.png"
                     checked: ownKeepassSettings.pwGenSpecialChars
                     onCheckedChanged: {
                         passwordGenerator.specialCharacters = checked
                         generatedPasswordField.text = passwordGenerator.generatePassword()
                         ownKeepassSettings.pwGenSpecialChars = checked
                     }
-                }
-            }
-
-            Slider {
-                id: passwordLength
-                width: parent.width - Theme.paddingSmall * 2
-                anchors.horizontalCenter: parent.horizontalCenter
-                minimumValue: 4
-                maximumValue: 64
-                stepSize: 1
-                valueText: value
-                label: "Length"
-                value: ownKeepassSettings.pwGenLength
-                onValueChanged: {
-                    passwordGenerator.length = value
-                    generatedPasswordField.text = passwordGenerator.generatePassword()
-                    ownKeepassSettings.pwGenLength = value
                 }
             }
 
