@@ -6,7 +6,8 @@ Status
 
 Release 1.0.12 is available in Jolla Harbour! That release fixes the issue "SD card location is not accessible after updating Sailfish OS to version 1.0.4.20".
 
-For those of you who who does not have access to Jolla harbour (e.g. Nexus 4 Sailfish OS images) have a look [here] [1]
+For those of you who does not have access to Jolla harbour (e.g. developer build for Nexus 4) or want to try new versions have a look [here] [1]
+*   Beta version 1.0.13 available with new password generator
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
