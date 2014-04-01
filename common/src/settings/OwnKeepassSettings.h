@@ -158,8 +158,6 @@ private:
     int m_defaultCryptAlgorithm;
     int m_defaultKeyTransfRounds;
     int m_locktime;  // min = 0, max = 10, default = 3
-    // false
-    // true
     bool m_showUserNamePasswordInListView;
     bool m_showSearchBar;
     bool m_focusSearchBarOnStartup;

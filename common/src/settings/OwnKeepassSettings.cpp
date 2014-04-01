@@ -118,6 +118,14 @@ void OwnKeepassSettings::loadSettings() {
     m_showUserNamePasswordOnCover    = (m_settings->getValue("settings/showUserNamePasswordOnCover", QVariant(m_showUserNamePasswordOnCover))).toBool();
     m_lockDatabaseFromCover          = (m_settings->getValue("settings/lockDatabaseFromCover", QVariant(m_lockDatabaseFromCover))).toBool();
     m_copyNpasteFromCover            = (m_settings->getValue("settings/copyNpasteFromCover", QVariant(m_copyNpasteFromCover))).toBool();
+    m_loadLastDb                     = (m_settings->getValue("main/loadLastDb", QVariant(m_loadLastDb))).toBool();
+    m_pwGenLength                    = (m_settings->getValue("pwGen/Length", QVariant(m_pwGenLength))).toInt();
+    m_pwGenLowerLetters              = (m_settings->getValue("pwGen/LowerLetters", QVariant(m_pwGenLowerLetters))).toBool();
+    m_pwGenUpperLetters              = (m_settings->getValue("pwGen/UpperLetters", QVariant(m_pwGenUpperLetters))).toBool();
+    m_pwGenNumbers                   = (m_settings->getValue("pwGen/Numbers", QVariant(m_pwGenNumbers))).toBool();
+    m_pwGenSpecialChars              = (m_settings->getValue("pwGen/SpecialChars", QVariant(m_pwGenSpecialChars))).toBool();
+    m_pwGenExcludeLookAlike          = (m_settings->getValue("pwGen/ExcludeLookAlike", QVariant(m_pwGenExcludeLookAlike))).toBool();
+    m_pwGenCharFromEveryGroup        = (m_settings->getValue("pwGen/CharFromEveryGroup", QVariant(m_pwGenCharFromEveryGroup))).toBool();
 
     // emit signals for property changes
     emit simpleModeChanged();
@@ -128,6 +136,14 @@ void OwnKeepassSettings::loadSettings() {
     emit showUserNamePasswordOnCoverChanged();
     emit lockDatabaseFromCoverChanged();
     emit copyNpasteFromCoverChanged();
+    emit loadLastDbChanged();
+    emit pwGenLengthChanged();
+    emit pwGenLowerLettersChanged();
+    emit pwGenUpperLettersChanged();
+    emit pwGenNumbersChanged();
+    emit pwGenSpecialCharsChanged();
+    emit pwGenExcludeLookAlikeChanged();
+    emit pwGenCharFromEveryGroupChanged();
 
     // load recent database list if we are in expert mode
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
@@ -142,8 +158,6 @@ void OwnKeepassSettings::loadSettings() {
                     m_recentDatabaseList[i]["keyFilePath"].toString());
         }
     }
-
-    m_loadLastDb = (m_settings->getValue("main/loadLastDb", QVariant(m_loadLastDb))).toBool();
 }
 
 void OwnKeepassSettings::addRecentDatabase(QString uiName,
