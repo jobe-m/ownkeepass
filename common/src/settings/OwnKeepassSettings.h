@@ -49,6 +49,14 @@ public:
     Q_PROPERTY(bool lockDatabaseFromCover READ lockDatabaseFromCover WRITE setLockDatabaseFromCover NOTIFY lockDatabaseFromCoverChanged)
     Q_PROPERTY(bool copyNpasteFromCover READ copyNpasteFromCover WRITE setCopyNpasteFromCover NOTIFY copyNpasteFromCoverChanged)
     Q_PROPERTY(bool loadLastDb READ loadLastDb WRITE setLoadLastDb NOTIFY loadLastDbChanged)
+    Q_PROPERTY(int pwGenLength READ pwGenLength WRITE setPwGenLength NOTIFY pwGenLengthChanged)
+    Q_PROPERTY(bool pwGenLowerLetters READ pwGenLowerLetters WRITE setPwGenLowerLetters NOTIFY pwGenLowerLettersChanged)
+    Q_PROPERTY(bool pwGenUpperLetters READ pwGenUpperLetters WRITE setPwGenUpperLetters NOTIFY pwGenUpperLettersChanged)
+    Q_PROPERTY(bool pwGenNumbers READ pwGenNumbers WRITE setPwGenNumbers NOTIFY pwGenNumbersChanged)
+    Q_PROPERTY(bool pwGenSpecialChars READ pwGenSpecialChars WRITE setPwGenSpecialChars NOTIFY pwGenSpecialCharsChanged)
+    Q_PROPERTY(bool pwGenExcludeLookAlike READ pwGenExcludeLookAlike WRITE setPwGenExcludeLookAlike NOTIFY pwGenExcludeLookAlikeChanged)
+    Q_PROPERTY(bool pwGenCharFromEveryGroup READ pwGenCharFromEveryGroup WRITE setPwGenCharFromEveryGroup NOTIFY pwGenCharFromEveryGroupChanged)
+
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
                                        int dbLocation,
@@ -86,12 +94,31 @@ public:
     void setCopyNpasteFromCover(const bool value);
     bool loadLastDb() const { return m_loadLastDb; }
     void setLoadLastDb(const bool value);
+    int pwGenLength() const { return m_pwGenLength; }
+    void setPwGenLength(const int value);
+    bool pwGenLowerLetters() const { return m_pwGenLowerLetters; }
+    void setPwGenLowerLetters(const bool value);
+    bool pwGenUpperLetters() const { return m_pwGenUpperLetters; }
+    void setPwGenUpperLetters(const bool value);
+    bool pwGenNumbers() const { return m_pwGenNumbers; }
+    void setPwGenNumbers(const bool value);
+    bool pwGenSpecialChars() const { return m_pwGenSpecialChars; }
+    void setPwGenSpecialChars(const bool value);
+    bool pwGenExcludeLookAlike() const { return m_pwGenExcludeLookAlike; }
+    void setPwGenExcludeLookAlike(const bool value);
+    bool pwGenCharFromEveryGroup() const { return m_pwGenCharFromEveryGroup; }
+    void setPwGenCharFromEveryGroup(const bool value);
 
     void checkSettingsVersion();
 
 signals:
     // Signal to QML
     void showInfoBanner(QString title, QString message);
+    void loadLastDatabase(int dbLocation,
+                          QString dbFilePath,
+                          bool useKeyFile,
+                          int keyFileLocation,
+                          QString keyFilePath);
 
     // Signals for property
     void recentDatabaseModelChanged();
@@ -107,11 +134,13 @@ signals:
     void lockDatabaseFromCoverChanged();
     void copyNpasteFromCoverChanged();
     void loadLastDbChanged();
-    void loadLastDatabase(int dbLocation,
-                          QString dbFilePath,
-                          bool useKeyFile,
-                          int keyFileLocation,
-                          QString keyFilePath);
+    void pwGenLengthChanged();
+    void pwGenLowerLettersChanged();
+    void pwGenUpperLettersChanged();
+    void pwGenNumbersChanged();
+    void pwGenSpecialCharsChanged();
+    void pwGenExcludeLookAlikeChanged();
+    void pwGenCharFromEveryGroupChanged();
 
 private:
     void loadSettings();
@@ -129,8 +158,6 @@ private:
     int m_defaultCryptAlgorithm;
     int m_defaultKeyTransfRounds;
     int m_locktime;  // min = 0, max = 10, default = 3
-    // false
-    // true
     bool m_showUserNamePasswordInListView;
     bool m_showSearchBar;
     bool m_focusSearchBarOnStartup;
@@ -143,6 +170,15 @@ private:
     bool m_loadLastDb;
     QList<QVariantMap> m_recentDatabaseList;
     int m_recentDatabaseListLength;
+
+    // settings for password generator
+    int m_pwGenLength;
+    bool m_pwGenLowerLetters;
+    bool m_pwGenUpperLetters;
+    bool m_pwGenNumbers;
+    bool m_pwGenSpecialChars;
+    bool m_pwGenExcludeLookAlike;
+    bool m_pwGenCharFromEveryGroup;
 
     Settings* m_settings;
 };

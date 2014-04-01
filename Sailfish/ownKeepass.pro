@@ -37,6 +37,16 @@ isEmpty(VERSION) {
 }
 DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 
+linux-g++-32 {
+    message("Loading libs for emulator")
+    ARCH_LIBS=i486_x86
+}
+
+linux-g++ {
+    message("Loading libs for jolla device")
+    ARCH_LIBS=armv7hl
+}
+
 # The name of the app
 # NOTICE: name defined in TARGET has a corresponding QML filename.
 #         If name defined in TARGET is changed, following needs to be
@@ -47,13 +57,23 @@ DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 #         - icon definition filename in desktop file must be changed
 TARGET = harbour-ownkeepass
 
-# adding common qml and image files for the app
-common_qml_and_image_files.files += \
+# adding common QML files, QML imports, C++ libs and image files for the app
+common_files.files += \
     ../common/images/entryicons \
     ../common/images/covericons \
     ../common/images/wallicons
-common_qml_and_image_files.path = /usr/share/$${TARGET}
-INSTALLS += common_qml_and_image_files
+password_generator_qmldir.files += \
+    ../common/qml/imports/PasswordGenerator/qmldir
+password_generator_lib.files += \
+    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
+    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgcrypt.so.11 \
+    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgpg-error.so.0
+common_files.path = /usr/share/$${TARGET}
+password_generator_qmldir.path = /usr/share/$${TARGET}/lib/harbour/ownkeepass/PasswordGenerator
+password_generator_lib.path = /usr/share/$${TARGET}/lib
+INSTALLS += common_files \
+            password_generator_lib \
+            password_generator_qmldir
 
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
@@ -112,4 +132,5 @@ OTHER_FILES += \
     qml/help/HelpDatabaseSettings.qml \
     qml/help/HelpSettings.qml \
     qml/help/HelpMasterGroupsPage.qml \
-    qml/help/HelpSubGroupsPage.qml
+    qml/help/HelpSubGroupsPage.qml \
+    qml/content/PasswordGeneratorDialog.qml

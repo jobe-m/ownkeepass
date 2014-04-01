@@ -62,8 +62,8 @@ int main(int argc, char *argv[])
     app->setOrganizationName(orgName);
     app->setApplicationName(appName);
 
-    // @uri harbour.ownkeepass
-    const char* uri("harbour.ownkeepass");
+    // @uri harbour.ownkeepass.KeepassX1
+    const char* uri("harbour.ownkeepass.KeepassX1");
     // make the following classes available in QML
     qmlRegisterType<kpxPublic::KdbDatabase>(uri, 1, 0, "KdbDatabase");
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
@@ -76,6 +76,9 @@ int main(int argc, char *argv[])
     QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath));
     view->rootContext()->setContextProperty("ownKeepassSettings", okpSettings.data());
     view->rootContext()->setContextProperty("recentDatabaseModel", okpSettings->recentDatabaseModel());
+
+    // enable access to qml import libs
+    view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());
 
     // Set main QML file and go ahead
     view->setSource(SailfishApp::pathTo("qml/Main.qml"));

@@ -1,0 +1,5 @@
+ownKeepass includes system libraries which are not allowed to be required in Jolla harbour:
+- libgcrypt.so.11 extracted from package libgcrypt-1.5.0-1.1.2.i486.rpm which is taken from build.merproject.org >  mer-core:i486:release > Packages > libgcrypt.
+- libgpg-error.so.0 extracted from package libpgp-error-1.10-1.1.2.i486.rpm which is taken from build.merproject.org > mer-core:i486:release > Packages > libgpg-error
+
+

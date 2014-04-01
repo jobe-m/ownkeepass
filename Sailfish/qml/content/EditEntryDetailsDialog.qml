@@ -197,25 +197,47 @@ Dialog {
                 }
             }
 
-            TextField {
-                id: entryVerifyPasswordTextField
+            Item {
                 width: parent.width
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                echoMode: TextInput.Password
-                label: "Verify password"
-                text: ""
-                placeholderText: "Verify password"
-                errorHighlight: entryPasswordTextField.text !== text
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: {
-                    // if password not yet verified go back to password field
-                    if (entryPasswordTextField.text !== text) {
-                        entryPasswordTextField.focus = true
-                    } else {
-                        entryCommentTextField.focus = true
+                height: entryVerifyPasswordTextField.height
+
+                TextField {
+                    id: entryVerifyPasswordTextField
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: generatePasswordButton.left
+                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                    echoMode: TextInput.Password
+                    label: "Verify password"
+                    text: ""
+                    placeholderText: "Verify password"
+                    errorHighlight: entryPasswordTextField.text !== text
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: {
+                        // if password not yet verified go back to password field
+                        if (entryPasswordTextField.text !== text) {
+                            entryPasswordTextField.focus = true
+                        } else {
+                            entryCommentTextField.focus = true
+                        }
+                    }
+                    focusOutBehavior: -1
+                }
+
+                IconButton {
+                    id: generatePasswordButton
+                    anchors.top: parent.top
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingLarge
+                    icon.source: "../../wallicons/icon-l-generator.png"
+                    onClicked: {
+                        var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
+                        pwGenDialog.accepted.connect(function() {
+                            entryPasswordTextField.text =
+                                    entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
+                        })
                     }
                 }
-                focusOutBehavior: -1
             }
 
             TextArea {
