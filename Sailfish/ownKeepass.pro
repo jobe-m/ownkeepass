@@ -133,4 +133,6 @@ OTHER_FILES += \
     qml/help/HelpSettings.qml \
     qml/help/HelpMasterGroupsPage.qml \
     qml/help/HelpSubGroupsPage.qml \
-    qml/content/PasswordGeneratorDialog.qml
+    qml/content/PasswordGeneratorDialog.qml \
+    qml/content/LicensePage.qml \
+    qml/content/ChangeLogPage.qml
