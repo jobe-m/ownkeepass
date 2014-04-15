@@ -34,6 +34,7 @@ ApplicationWindow
 
     // For accessing main page to pass further application activity status
     property MainPage mainPageRef: null
+    // For accessing info popup from everywhere make it global for the application
     property InfoPopup infoPopupRef: infoPopup
 
     // application global properties
@@ -66,12 +67,16 @@ ApplicationWindow
 
     Connections {
         target: ownKeepassSettings
-        onShowInfoBanner: infoPopup.show(title, message, 0, false)
+        onShowInfoBanner: infoPopup.show(Global.info, title, message)
+        onShowChangeLogBanner: {
+            infoPopup.show(Global.info, title, message)
+            pageStack.push(Qt.resolvedUrl("content/ChangeLogPage.qml"))
+        }
     }
 
     Connections {
         target: ownKeepassHelper
-        onShowInfoBanner: infoPopup.show(title, message, 0, false)
+        onShowErrorBanner: infoPopup.show(Global.error, title, message)
     }
 
     onApplicationActiveChanged: {

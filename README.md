@@ -4,13 +4,14 @@ ownKeepass
 Status
 ------
 
-Release 1.0.12 is available in Jolla harbour! That release fixes the issue "SD card location is not accessible after updating Sailfish OS to version 1.0.4.20".
+Release 1.0.15 is available in Jolla store! This version adds a password generator!
 
-For those of you who do not have access to Jolla harbour (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla harbour have a look [here] [1]
-*   Beta version 1.0.13 available with new password generator
+For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
+*   No new beta version available
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
+*   Database open and create dialogs are a bit difficult to use due to free text input as file paths
 
 If you found a bug please report it on the issue page. Thanks :)
 

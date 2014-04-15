@@ -22,6 +22,12 @@
 **
 ***************************************************************************/
 
+// Constants used by infoBanner type
+var none = 0
+var info = 1
+var warning = 2
+var error = 3
+
 var constants = {
     _1microsecond: 1,
     _5seconds: 5 * 1000,

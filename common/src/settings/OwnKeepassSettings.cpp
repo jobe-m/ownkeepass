@@ -104,6 +104,8 @@ void OwnKeepassSettings::checkSettingsVersion()
                 }
             }
         }
+
+        emit showChangeLogBanner("ownKeepass got updated", "New version " + m_version + " now installed on your phone. Have a look in the change log for details.");
     }
 }
 

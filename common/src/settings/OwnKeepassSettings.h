@@ -114,6 +114,7 @@ public:
 signals:
     // Signal to QML
     void showInfoBanner(QString title, QString message);
+    void showChangeLogBanner(QString title, QString message);
     void loadLastDatabase(int dbLocation,
                           QString dbFilePath,
                           bool useKeyFile,

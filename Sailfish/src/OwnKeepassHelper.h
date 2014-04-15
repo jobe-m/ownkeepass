@@ -46,7 +46,7 @@ public:
 
 signals:
     // Signal to QML
-    void showInfoBanner(QString title, QString message);
+    void showErrorBanner(QString title, QString message);
 
 private:
     QStringList mountPoints() const;

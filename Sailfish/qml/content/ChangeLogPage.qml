@@ -55,6 +55,14 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.15 Password generator implemented</b>\
+<ul>\
+<li>A password generator can be opened when editing a password entry by clicking on the gear-wheel</li>\
+<li>Refactored the about page, put license info on separate page and added change log page</li>\
+<li>A popup info banner appears now after installation of a new ownKeepass version</li>\
+<li>Updated icon for info popup banner</li>\
+</ul>\
+<br>\
 <b>v1.0.12 Bugfix release for Sailfish OS version 1.0.4.20</b>\
 <ul>\
 <li>Fixed corrupted search bar after updating Sailfish OS version to 1.0.4.20</li>\

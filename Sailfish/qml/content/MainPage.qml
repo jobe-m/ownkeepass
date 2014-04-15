@@ -240,17 +240,17 @@ Page {
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
-                            Global.env.infoPopup.show("Permission error", "Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'.", 0, false)
+                            Global.env.infoPopup.show(Global.error, "Permission error", "Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'.")
                             masterGroupsPage.closeOnError()
                         }
                     } else {
                         // Key file should be used but does not exist
-                        Global.env.infoPopup.show("Key file error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
+                        Global.env.infoPopup.show(Global.warning, "Key file error", "Database path is ok, but your key file is not present. Please check path to key file: " + completeKeyFilePath)
                         masterGroupsPage.closeOnError()
                     }
                 } else {
                     // Database file already exists
-                    Global.env.infoPopup.show("Database file already exists", "Please specify another path and name for your Keepass database or delete the old database within a Filebrowser.", 0, false)
+                    Global.env.infoPopup.show(Global.info, "Database file already exists", "Please specify another path and name for your Keepass database or delete the old database within a file browser.")
                     masterGroupsPage.closeOnError()
                 }
             } else {
@@ -262,12 +262,12 @@ Page {
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
-                        Global.env.infoPopup.show("Key file error", "Database path is ok, but your key file is not present. Please check path to key file again.", 0, false)
+                        Global.env.infoPopup.show(Global.warning, "Key file error", "Database path is ok, but your key file is not present. Please check path to key file: " + completeKeyFilePath)
                         masterGroupsPage.closeOnError()
                     }
                 } else {
                     // Database file does not exist
-                    Global.env.infoPopup.show("Database file error", "Database file does not exist. Please check path to database file again.", 0, false)
+                    Global.env.infoPopup.show(Global.warning, "Database file error", "Database file does not exist. Please check path to database file: " + completeDbFilePath)
                     masterGroupsPage.closeOnError()
                 }
             }
@@ -331,7 +331,7 @@ Page {
 
         function databasePasswordChangedHandler() {
             console.log("Database password changed successfully")
-            Global.env.infoPopup.show("Password changed", "The master password of your database was changed successfully.", 3, false)
+            Global.env.infoPopup.show(Global.info, "Password changed", "The master password of your database was changed successfully.", 3)
 
         }
 
@@ -340,39 +340,39 @@ Page {
             // show error to the user
             switch (result) {
             case KdbDatabase.RE_DB_CLOSE_FAILED:
-                Global.env.infoPopup.show("Internal database error", "Could not close the previous opened database. Please try again. Error message: " + errorMsg, 0, false)
+                Global.env.infoPopup.show(Global.error, "Internal database error", "Could not close the previous opened database. Please try again. Error message: " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_SETKEY_ERROR:
-                Global.env.infoPopup.show("Internal key error", "The following error occured during opening of database: " + errorMsg, 0, false)
+                Global.env.infoPopup.show(Global.error, "Internal key error", "The following error occured during opening of database: " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_SETKEYFILE_ERROR:
-                Global.env.infoPopup.show("Internal key file error", "The following error occured during opening of database: " + errorMsg, 0, false)
+                Global.env.infoPopup.show(Global.error, "Internal key file error", "The following error occured during opening of database: " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_LOAD_ERROR:
-                Global.env.infoPopup.show("Error loading database", errorMsg + " Please try again.", 0, false)
+                Global.env.infoPopup.show(Global.warning, "Error loading database", errorMsg + " Please try again.")
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_FILE_ERROR:
-                Global.env.infoPopup.show("Internal file error", "The following error occured during creation of database: " + errorMsg, 0, false)
+                Global.env.infoPopup.show(Global.error, "Internal file error", "The following error occured during creation of database: " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR:
-                Global.env.infoPopup.show("Internal database error", "Creation of backup group failed with following error: " + errorMsg, 0, false)
+                Global.env.infoPopup.show(Global.error, "Internal database error", "Creation of backup group failed with following error: " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_SAVE_ERROR:
-                Global.env.infoPopup.show("Save database error", "Could not save database with following error: " + errorMsg, 0, false)
+                Global.env.infoPopup.show(Global.error, "Save database error", "Could not save database with following error: " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_ALREADY_CLOSED:
-                Global.env.infoPopup.show("Database error", "Database was already closed. Nothing serious, but please submit a bug report.", 0, false)
+                Global.env.infoPopup.show(Global.error, "Database error", "Database was already closed. Nothing serious, but please submit a bug report.")
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_CLOSE_FAILED:
-                Global.env.infoPopup.show("Database error", "An error occured on closing your database: " + errorMsg, 0, false)
+                Global.env.infoPopup.show(Global.error, "Database error", "An error occured on closing your database: " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             default:

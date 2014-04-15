@@ -69,12 +69,12 @@ Page {
     property string __saveState: state
     function __showLoadErrorPage() {
         console.log("ERROR: Could not load")
-        Global.env.infoPopup.show("Load Error", "Could not load all items from Keepass database file. That's strange.", 0, false)
+        Global.env.infoPopup.show(Global.error, "Load Error", "Could not load all items from Keepass database file. That's strange.")
     }
 
     function __showSaveErrorPage() {
         console.log("ERROR: Could not save")
-        Global.env.infoPopup.show("Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.", 0, false)
+        Global.env.infoPopup.show(Global.error, "Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.")
     }
 
 //    Rectangle {
@@ -95,8 +95,6 @@ Page {
         Component.onCompleted: {
             neutralPos = listView.contentY
         }
-
-//        Tracer { color: "green" }
 
         PageHeaderExtended {
             id: pageHeader

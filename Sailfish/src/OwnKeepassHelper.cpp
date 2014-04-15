@@ -73,7 +73,7 @@ QString OwnKeepassHelper::getSdCardPath()
     }
     if (sdCards.count() > 1) {
         // tell user that multi-partition SD cards are not supported
-        emit showInfoBanner("Problem with SD card",
+        emit showErrorBanner("Problem with SD card",
                        "SD cards with multiple partitions are not supported.");
         return QString();
     }

@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013-2014 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -22,36 +22,41 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../scripts/Global.js" as Global
 
 MouseArea {
     id: infoPopup
 
-    property bool enableTimeout: false
-    property alias title: titleLabel.text
-    property alias message: messageLabel.text
+    property int popupType: Global.none
+    property alias popupTitle: titleLabel.text
+    property alias popupMessage: messageLabel.text
 
-    function show(title, message, timeout, enableTimeout) {
-        infoPopup.title = title
-        infoPopup.message = message
-        infoPopup.enableTimeout = enableTimeout
-        if (timeout !== undefined)
-            _timeout = timeout
-        else
-            _timeout = 5000 // set default
-        if (infoPopup.enableTimeout) countdown.restart()
+    function show(type, title, message, timeout) {
+        popupType = type
+        popupTitle = title
+        popupMessage = message
+        if (timeout !== undefined) {
+            _timeout = timeout * 1000
+        } else {
+            _timeout = 0 // set default "0" to disable timeout
+        }
+        if (_timeout !== 0) {
+            countdown.restart()
+        }
         state = "active"
     }
+
     function cancel() {
         _close()
         closed()
     }
 
     function _close() {
-        if (enableTimeout) countdown.stop()
+        if (_timeout !== 0) countdown.stop()
         state = ""
     }
 
-    property int _timeout: 5000
+    property int _timeout: 0
 
     signal closed
 
@@ -71,7 +76,7 @@ MouseArea {
         Transition {
             to: "active"
             SequentialAnimation {
-                PropertyAction { target: infoPopup; properties: "visible" }
+                PropertyAction { target: infoPopup; property: "visible" }
                 FadeAnimation {}
             }
         },
@@ -113,8 +118,26 @@ MouseArea {
         y: Theme.paddingLarge
         width: 48
         height: 36
-        source: "image://theme/icon-system-warning"
         fillMode: Image.PreserveAspectFit
+
+        states: [
+            State {
+                when: popupType === Global.none
+                PropertyChanges { target: infoPopupIcon; source: "" }
+            },
+            State {
+                when: popupType === Global.info
+                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-info.png" }
+            },
+            State {
+                when: popupType === Global.warning
+                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-warning.png" }
+            },
+            State {
+                when: popupType === Global.error
+                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-error.png" }
+            }
+        ]
     }
 
     Column {
@@ -149,7 +172,7 @@ MouseArea {
         id: countdown
         running: false
         repeat: false
-        interval: infoPopup._timeout
+        interval: _timeout
 
         function restart() {
             running = false
