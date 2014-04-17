@@ -40,6 +40,7 @@ Dialog {
     property bool showUserNamePasswordOnCoverChanged: false
     property bool lockDatabaseFromCoverChanged: false
     property bool copyNpasteFromCoverChanged: false
+    property bool clearClipboardChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
@@ -50,7 +51,7 @@ Dialog {
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
                 focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
-                copyNpasteFromCoverChanged) {
+                copyNpasteFromCoverChanged || clearClipboardChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
             applicationWindow.cover.title = "Settings"
         } else {
@@ -150,7 +151,19 @@ Dialog {
             }
 
             SectionHeader {
-                text: "UI settings"
+                text: "Security"
+            }
+
+            TextSwitch {
+                id: clearClipboard
+                checked: ownKeepassSettings.clearClipboard
+                text: "Clear clipboard"
+                description: "If enabled the clipboard will be cleared after 10 seconds when username or password is copied"
+                onCheckedChanged: {
+                    editSettingsDialog.clearClipboardChanged =
+                            clearClipboard.checked !== ownKeepassSettings.clearClipboard
+                    editSettingsDialog.updateCoverState()
+                }
             }
 
             Slider {
@@ -206,6 +219,10 @@ Dialog {
                     editSettingsDialog.inactivityLockTimeChanged = inactivityLockTime.value !== ownKeepassSettings.locktime
                     editSettingsDialog.updateCoverState()
                 }
+            }
+
+            SectionHeader {
+                text: "UI settings"
             }
 
             TextSwitch {
@@ -284,7 +301,8 @@ Dialog {
                     focusSearchBarOnStartup.checked,
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
-                    copyNpasteFromCover.checked)
+                    copyNpasteFromCover.checked,
+                    clearClipboard.checked)
         kdbListItemInternal.saveKeepassSettings()
     }
 
@@ -298,7 +316,8 @@ Dialog {
                     focusSearchBarOnStartup.checked,
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
-                    copyNpasteFromCover.checked)
+                    copyNpasteFromCover.checked,
+                    clearClipboard.checked)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }

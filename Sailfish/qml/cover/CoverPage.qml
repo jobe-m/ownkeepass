@@ -37,6 +37,7 @@ Cover {
     property string saveEntryTitle: ""
 
     signal lockDatabase()
+    signal triggerClearClipboard()
 
     // internal
     property int clipboardState: Global.constants.clipboardUnused
@@ -51,6 +52,8 @@ Cover {
             infoTextTimer.restart()
             Clipboard.text = coverPage.username
             clipboardState = Global.constants.clipboardUsernameDropped
+            // trigger cleaning of clipboard after 10 seconds
+            triggerClearClipboard()
             break
         case Global.constants.clipboardUsernameDropped:
             infoTextView.text = "Password copied into clipboard"
@@ -59,6 +62,8 @@ Cover {
             infoTextTimer.restart()
             Clipboard.text = coverPage.password
             clipboardState = Global.constants.clipboardPasswordDropped
+            // trigger cleaning of clipboard after 10 seconds
+            triggerClearClipboard()
             break
         case Global.constants.clipboardPasswordDropped:
             infoTextView.text = "Clipboard empty now"

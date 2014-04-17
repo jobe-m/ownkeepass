@@ -74,6 +74,8 @@ Page {
                 text: "Copy username"
                 onClicked: {
                     Clipboard.text = entryUsernameTextArea.text
+                    // trigger cleaning of clipboard after 10 seconds
+                    applicationWindow.mainPageRef.clipboardTimerStart()
                 }
             }
 
@@ -83,6 +85,8 @@ Page {
                 text: "Copy password"
                 onClicked: {
                     Clipboard.text = entryPasswordTextField.text
+                    // trigger cleaning of clipboard after 10 seconds
+                    applicationWindow.mainPageRef.clipboardTimerStart()
                 }
             }
 

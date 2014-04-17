@@ -63,6 +63,7 @@ ApplicationWindow
     CoverPage {
         id: coverPage
         onLockDatabase: mainPageRef.lockDatabase()
+        onTriggerClearClipboard: mainPageRef.clipboardTimerStart()
     }
 
     Connections {

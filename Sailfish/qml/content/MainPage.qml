@@ -57,6 +57,11 @@ Page {
         pageStack.pop(mainPage)
     }
 
+    function clipboardTimerStart() {
+        if (ownKeepassSettings.clearClipboard)
+        clipboardTimer.restart()
+    }
+
     Timer {
         id: inactivityTimer
         running: false
@@ -66,6 +71,18 @@ Page {
         onTriggered: {
             // Inactivity timer hit
             lockDatabase()
+        }
+    }
+
+    Timer {
+        id: clipboardTimer
+        running: false
+        repeat: false
+        interval: Global.constants._10seconds
+        triggeredOnStart: false
+        onTriggered: {
+            // delete clipboard content
+            Clipboard.text = ""
         }
     }
 
@@ -442,6 +459,7 @@ Page {
         property bool showUserNamePasswordOnCover
         property bool lockDatabaseFromCover
         property bool copyNpasteFromCover
+        property bool clearClipboard
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -578,7 +596,7 @@ Page {
 
         function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
-                                    aLockDatabaseFromCover, aCopyNpasteFromCover) {
+                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard) {
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
@@ -587,6 +605,7 @@ Page {
             showUserNamePasswordOnCover = aShowUserNamePasswordOnCover
             lockDatabaseFromCover = aLockDatabaseFromCover
             copyNpasteFromCover = aCopyNpasteFromCover
+            clearClipboard = aClearClipboard
         }
 
         function checkForUnsavedKeepassSettingsChanges() {
@@ -598,7 +617,8 @@ Page {
                     ownKeepassSettings.focusSearchBarOnStartup !== focusSearchBarOnStartup ||
                     ownKeepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
                     ownKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
-                    ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover) {
+                    ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover ||
+                    ownKeepassSettings.clearClipboard !== clearClipboard) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_APP_SETTINGS"})
             }

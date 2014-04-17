@@ -49,6 +49,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
     m_pwGenSpecialChars(false),
     m_pwGenExcludeLookAlike(true),
     m_pwGenCharFromEveryGroup(true),
+    m_clearClipboard(true),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
@@ -128,6 +129,7 @@ void OwnKeepassSettings::loadSettings() {
     m_pwGenSpecialChars              = (m_settings->getValue("pwGen/SpecialChars", QVariant(m_pwGenSpecialChars))).toBool();
     m_pwGenExcludeLookAlike          = (m_settings->getValue("pwGen/ExcludeLookAlike", QVariant(m_pwGenExcludeLookAlike))).toBool();
     m_pwGenCharFromEveryGroup        = (m_settings->getValue("pwGen/CharFromEveryGroup", QVariant(m_pwGenCharFromEveryGroup))).toBool();
+    m_clearClipboard                 = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toBool();
 
     // emit signals for property changes
     emit simpleModeChanged();
@@ -146,6 +148,7 @@ void OwnKeepassSettings::loadSettings() {
     emit pwGenSpecialCharsChanged();
     emit pwGenExcludeLookAlikeChanged();
     emit pwGenCharFromEveryGroupChanged();
+    emit clearClipboardChanged();
 
     // load recent database list if we are in expert mode
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
@@ -378,6 +381,15 @@ void OwnKeepassSettings::setPwGenCharFromEveryGroup(bool value)
         m_pwGenCharFromEveryGroup = value;
         m_settings->setValue("pwGen/CharFromEveryGroup", QVariant(m_pwGenCharFromEveryGroup));
         emit pwGenCharFromEveryGroupChanged();
+    }
+}
+
+void OwnKeepassSettings::setClearClipboard(bool value)
+{
+    if (value != m_clearClipboard) {
+        m_clearClipboard = value;
+        m_settings->setValue("settings/clearClipboard", QVariant(m_clearClipboard));
+        emit clearClipboardChanged();
     }
 }
 

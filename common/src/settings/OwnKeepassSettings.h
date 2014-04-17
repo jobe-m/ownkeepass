@@ -56,6 +56,7 @@ public:
     Q_PROPERTY(bool pwGenSpecialChars READ pwGenSpecialChars WRITE setPwGenSpecialChars NOTIFY pwGenSpecialCharsChanged)
     Q_PROPERTY(bool pwGenExcludeLookAlike READ pwGenExcludeLookAlike WRITE setPwGenExcludeLookAlike NOTIFY pwGenExcludeLookAlikeChanged)
     Q_PROPERTY(bool pwGenCharFromEveryGroup READ pwGenCharFromEveryGroup WRITE setPwGenCharFromEveryGroup NOTIFY pwGenCharFromEveryGroupChanged)
+    Q_PROPERTY(bool clearClipboard READ clearClipboard WRITE setClearClipboard NOTIFY clearClipboardChanged)
 
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
@@ -108,6 +109,8 @@ public:
     void setPwGenExcludeLookAlike(const bool value);
     bool pwGenCharFromEveryGroup() const { return m_pwGenCharFromEveryGroup; }
     void setPwGenCharFromEveryGroup(const bool value);
+    bool clearClipboard() const { return m_clearClipboard; }
+    void setClearClipboard(const bool value);
 
     void checkSettingsVersion();
 
@@ -142,6 +145,7 @@ signals:
     void pwGenSpecialCharsChanged();
     void pwGenExcludeLookAlikeChanged();
     void pwGenCharFromEveryGroupChanged();
+    void clearClipboardChanged();
 
 private:
     void loadSettings();
@@ -181,6 +185,7 @@ private:
     bool m_pwGenExcludeLookAlike;
     bool m_pwGenCharFromEveryGroup;
 
+    bool m_clearClipboard;
     Settings* m_settings;
 };
 
