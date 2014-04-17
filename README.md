@@ -7,7 +7,9 @@ Status
 Release 1.0.15 is available in Jolla store! This version adds a password generator!
 
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
-*   No new beta version available
+*   Beta version 1.0.16 available with:
+*   Clipboard cleared after 10 seconds (adjustable in application settings)
+*   Possibility to show master password when opening a database
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
