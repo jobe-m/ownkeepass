@@ -47,8 +47,8 @@ Dialog {
     acceptDestinationAction: PageStackAction.Replace
 
     function showWarning() {
-        applicationWindow.infoPopupRef.show("Warning", "Please make sure to use a key file for \
-additional security for your Keepass database when storing it online!", 0, false)
+        applicationWindow.infoPopupRef.show(Global.info, "Warning", "Please make sure to use a key file for \
+additional security for your Keepass database when storing it online!")
     }
 
     SilicaFlickable {
@@ -110,10 +110,10 @@ additional security for your Keepass database when storing it online!", 0, false
                     onCurrentIndexChanged: {
                         // Warn about usage of Android storage
                         if (currentIndex === 2) {
-                            applicationWindow.infoPopupRef.show("Warning", "Please be aware that using the \
+                            applicationWindow.infoPopupRef.show(Global.info, "Warning", "Please be aware that using the \
 Android storage might cause problems due to different file ownership and permissions. If modifications to your \
 Keepass database are not saved make sure the file is writable for user \"nemo\". So if you don't know how to handle \
-file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.", 0, false)
+file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.")
                         }
                         // When opening database from dropbox storage show warning if no key file is used
                         else if ((queryPasswordDialog.state === "OpenNewDatabase") &&
@@ -125,11 +125,11 @@ file permissions in the terminal on your Jolla phone it would be wise not to use
                                  (currentIndex === 3)) {
                             useKeyFileSwitch.enabled = false
                             useKeyFileSwitch.checked = true
-                            applicationWindow.infoPopupRef.show("Advice", "You choosed to place your new \
+                            applicationWindow.infoPopupRef.show(Global.info, "Advice", "You choosed to place your new \
 Keepass database in the Dropbox cloud. Please make sure to use a unique password for Dropbox \
 and enable two-step verification to increase security of your online storage! \
 ownKeepass does enforce to use a locally stored key \
-file when storing your Keepass database online.", 0, false)
+file when storing your Keepass database online.")
                         } else {
                             useKeyFileSwitch.enabled = true
                         }
@@ -214,29 +214,54 @@ file when storing your Keepass database online.", 0, false)
                 id: passwordTitle
             }
 
-            TextField {
-                id: passwordField
+            Item {
                 width: parent.width
-                inputMethodHints: Qt.ImhNoPredictiveText
-                echoMode: TextInput.Password
-                errorHighlight: text.length === 0
-                label: "Password"
-                placeholderText: "Enter password"
-                text: ""
-                EnterKey.enabled: !errorHighlight
-                EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
-                EnterKey.iconSource: queryPasswordDialog.state === "CreateNewDatabase" ?
-                                         "image://theme/icon-m-enter-next" :
-                                         "image://theme/icon-m-enter-accept"
-                EnterKey.onClicked: {
-                    if (queryPasswordDialog.state === "CreateNewDatabase") {
-                        confirmPasswordField.focus = true
-                    } else {
-                        // set database name for pulley menu on opening database
-                        applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + dbFilePath
-                        parent.focus = true
-                        accept()
-                        close()
+                height: passwordField.height
+
+                TextField {
+                    id: passwordField
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: showPasswordButton.left
+                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                    echoMode: TextInput.Password
+                    errorHighlight: text.length === 0
+                    label: "Password"
+                    placeholderText: "Enter password"
+                    text: ""
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
+                    EnterKey.iconSource: queryPasswordDialog.state === "CreateNewDatabase" ?
+                                             "image://theme/icon-m-enter-next" :
+                                             "image://theme/icon-m-enter-accept"
+                    EnterKey.onClicked: {
+                        if (queryPasswordDialog.state === "CreateNewDatabase") {
+                            confirmPasswordField.focus = true
+                        } else {
+                            // set database name for pulley menu on opening database
+                            applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + dbFilePath
+                            parent.focus = true
+                            accept()
+                            close()
+                        }
+                    }
+                    focusOutBehavior: -1
+                }
+
+                IconButton {
+                    id: showPasswordButton
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
+                    onClicked: {
+                        if (passwordField.echoMode === TextInput.Normal) {
+                            passwordField.echoMode =
+                                    confirmPasswordField.echoMode = TextInput.Password
+                        } else {
+                            passwordField.echoMode =
+                                    confirmPasswordField.echoMode = TextInput.Normal
+                        }
                     }
                 }
             }
@@ -261,6 +286,7 @@ file when storing your Keepass database online.", 0, false)
                     accept()
                     close()
                 }
+                focusOutBehavior: -1
             }
 
             TextSwitch {
