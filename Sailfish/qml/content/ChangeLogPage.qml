@@ -55,6 +55,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.16 Intermediate beta release</b>\
+<ul>\
+<li>Clipboard cleared after 10 seconds (adjustable in application settings)</li>\
+<li>Possibility to show master password when opening a database</li>\
+</ul>\
+<br>\
 <b>v1.0.15 Password generator implemented</b>\
 <ul>\
 <li>A password generator can be opened when editing a password entry by clicking on the gear-wheel</li>\
