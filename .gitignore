@@ -1,3 +1,4 @@
 *.user.*
 *.user
-harbour-ownkeepass.spec
+*.spec
+*~
