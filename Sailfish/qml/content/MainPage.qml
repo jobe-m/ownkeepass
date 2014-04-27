@@ -86,8 +86,127 @@ Page {
         }
     }
 
+    SilicaFlickable {
+        id: simpleModeView
+        anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: col.height
+
+        // Show a scollbar when the view is flicked, place this over all other content
+        VerticalScrollDecorator {}
+
+        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+        ApplicationMenu {
+            helpContent: "MainPage"
+        }
+
+        Column {
+            id: col
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            PageHeaderExtended {
+                title: "About ownKeepass"
+                subTitle: "Password Safe"
+            }
+
+            Image {
+                width: 492
+                height: 492
+                source: "../../wallicons/wall-ownKeys.png"
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            Item {
+                width: parent.width
+                height: passwordField.height
+
+                TextField {
+                    id: passwordField
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: showPasswordButton.left
+                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                    echoMode: TextInput.Password
+                    errorHighlight: text.length === 0
+                    label: "Master password"
+                    placeholderText: "Enter master password"
+                    text: ""
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.highlighted: simpleModeView.state !== "CREATE_NEW_DATABASE" && text !== ""
+                    EnterKey.iconSource: simpleModeView.state === "CREATE_NEW_DATABASE" ?
+                                             "image://theme/icon-m-enter-next" :
+                                             "image://theme/icon-m-enter-accept"
+                    EnterKey.onClicked: {
+                        if (simpleModeView.state === "CREATE_NEW_DATABASE") {
+                            confirmPasswordField.focus = true
+                        } else {
+                            parent.focus = true
+// TODO trigger open database
+                        }
+                    }
+                    focusOutBehavior: -1
+                }
+
+                IconButton {
+                    id: showPasswordButton
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" :
+                                                                               "../../wallicons/icon-l-closeeye.png"
+                    onClicked: {
+                        if (passwordField.echoMode === TextInput.Normal) {
+                            passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Password
+                        } else {
+                            passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Normal
+                        }
+                    }
+                }
+            }
+
+            TextField {
+                id: confirmPasswordField
+                width: parent.width
+                inputMethodHints: Qt.ImhNoPredictiveText
+                echoMode: TextInput.Password
+                visible: enabled
+                errorHighlight: passwordField.text !== text
+                label: "Confirm master password"
+                placeholderText: label
+                text: ""
+                EnterKey.enabled: !passwordField.errorHighlight && !errorHighlight
+                EnterKey.highlighted: !errorHighlight
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                EnterKey.onClicked: {
+                    parent.focus = true
+// TODO trigger create database
+                }
+                focusOutBehavior: -1
+            }
+        }
+
+// TODO add switch for more info:
+// show database path and name
+// show key file path and name
+
+        state: "CREATE_NEW_DATABASE"
+        states: [
+            State {
+                name: "CREATE_NEW_DATABASE"
+                PropertyChanges { target: confirmPasswordField; enabled: true }
+            },
+            State {
+                name: "OPEN_DATABASE"
+                PropertyChanges { target: confirmPasswordField; enabled: false }
+            }
+        ]
+    }
+
     SilicaListView {
         id: listView
+        enabled: false
+        visible: enabled
         anchors.fill: parent
         model: recentDatabaseModel
 
@@ -186,6 +305,18 @@ Page {
                              "loadLastDb": ownKeepassSettings.loadLastDb,
                              "password": "" })
         }
+        onDatabaseInSimpleMode: { // returns: databaseExists, ...
+            if (databaseExists) {
+                // Set database name in global object for pulley menu on query password page
+                applicationWindow.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
+                simpleModeView.state = "OPEN_DATABASE"
+// TODO set db location, path and keyfile stuff
+            } else {
+                applicationWindow.databaseUiName = Global.getLocationName(0) + " ownkeepass/notes.kdb"
+                simpleModeView.state = "CREATE_NEW_DATABASE"
+// TODO set default db location, path and no keyfile
+            }
+        }
     }
 
     Component.onCompleted: {
@@ -219,6 +350,19 @@ Page {
         property bool loadLastDb: false
         property Page masterGroupsPage
 
+        function init() {
+            // load settings into kdbDatabase
+            kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
+            // initialize check if the last used database should be opened again or
+            // if we are in simple mode then check if last or default database exists
+// TODO uncomment when ready
+//            if (ownKeepassSettings.simpleMode) {
+                ownKeepassSettings.checkDatabaseInSimpleMode()
+//            } else {
+//                ownKeepassSettings.checkLoadLastDatabase()
+//            }
+        }
+
         function openKeepassDatabase(password,
                                      createNewDatabase,
                                      acceptDestinationInstance,
@@ -238,10 +382,13 @@ Page {
 
             if (password === "") console.log("ERROR: Password is empty")
             // prepate database and key file
-            var completeDbFilePath = getRootPath(dbFileLocation) + "/" + databasePath
+            var completeDbFilePath = ownKeepassHelper.getLocationRootPath(dbFileLocation) + "/" + databasePath
             var completeKeyFilePath
-            if (useKeyFile) completeKeyFilePath = getRootPath(keyFileLocation) + "/" + keyFilePath
-            else completeKeyFilePath = ""
+            if (useKeyFile) {
+                completeKeyFilePath = ownKeepassHelper.getLocationRootPath(keyFileLocation) + "/" + keyFilePath
+            } else {
+                completeKeyFilePath = ""
+            }
 
             if (createNewDatabase) {
                 // Check if database file already exists and if key file is present if it should be used
@@ -288,27 +435,6 @@ Page {
                     masterGroupsPage.closeOnError()
                 }
             }
-        }
-
-        // Get phisical path for file location
-        function getRootPath(value) {
-            switch (value) {
-            case 0:
-                return ownKeepassHelper.getJollaPhoneDocumentsPath()
-            case 1:
-                return ownKeepassHelper.getSdCardPath()
-            case 2:
-                return ownKeepassHelper.getAndroidStoragePath()
-            case 3:
-                return ownKeepassHelper.getSailboxLocalStoragePath()
-            }
-        }
-
-        function init() {
-            // load settings into kdbDatabase
-            kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
-            // initialize check if the last used database should be opened again
-            ownKeepassSettings.checkLoadLastDatabase()
         }
 
         function updateRecentDatabaseListModel() {

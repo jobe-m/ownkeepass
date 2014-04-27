@@ -32,13 +32,14 @@ class OwnKeepassHelper : public QObject
     Q_OBJECT
 
 public:
-    Q_INVOKABLE bool fileExists(QString filePath) const;
-    Q_INVOKABLE bool createFilePathIfNotExist(QString filePath) const;
+    Q_INVOKABLE bool fileExists(const QString filePath) const;
+    Q_INVOKABLE bool createFilePathIfNotExist(const QString filePath) const;
     Q_INVOKABLE bool sdCardExists();
-    Q_INVOKABLE QString getJollaPhoneDocumentsPath() const;
+    Q_INVOKABLE QString getJollaPhoneDocumentsPath();
     Q_INVOKABLE QString getSdCardPath();
-    Q_INVOKABLE QString getAndroidStoragePath() const;
-    Q_INVOKABLE QString getSailboxLocalStoragePath() const;
+    Q_INVOKABLE QString getAndroidStoragePath();
+    Q_INVOKABLE QString getSailboxLocalStoragePath();
+    Q_INVOKABLE QString getLocationRootPath(const int value);
 
 public:
     OwnKeepassHelper(QObject *parent = 0);

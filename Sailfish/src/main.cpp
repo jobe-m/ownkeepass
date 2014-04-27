@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
     // Setup some class as context properties and make them accessible in QML
     QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());
     view->rootContext()->setContextProperty("ownKeepassHelper", helper.data());
-    QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath));
+    QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath, helper.data()));
     view->rootContext()->setContextProperty("ownKeepassSettings", okpSettings.data());
     view->rootContext()->setContextProperty("recentDatabaseModel", okpSettings->recentDatabaseModel());
 

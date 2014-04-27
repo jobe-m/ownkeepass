@@ -78,21 +78,22 @@ INSTALLS += common_files \
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
 
-INCLUDEPATH += ../common/src/settings
+INCLUDEPATH += ../common/src/settings \
+    ../common/src
 
 # C++ sources
 SOURCES += src/main.cpp \
-    src/OwnKeepassHelper.cpp \
     ../common/src/settings/setting.cpp \
     ../common/src/settings/RecentDatabaseListModel.cpp \
-    ../common/src/settings/OwnKeepassSettings.cpp
+    ../common/src/settings/OwnKeepassSettings.cpp \
+    ../common/src/OwnKeepassHelper.cpp
 
 # C++ headers
 HEADERS += \
-    src/OwnKeepassHelper.h \
     ../common/src/settings/setting.h \
     ../common/src/settings/RecentDatabaseListModel.h \
-    ../common/src/settings/OwnKeepassSettings.h
+    ../common/src/settings/OwnKeepassSettings.h \
+    ../common/src/OwnKeepassHelper.h
 
 OTHER_FILES += \
     ../README.md \

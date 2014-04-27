@@ -27,6 +27,7 @@
 #include <QAbstractListModel>
 #include "setting.h"
 #include "RecentDatabaseListModel.h"
+#include "OwnKeepassHelper.h"
 
 namespace settingsPublic {
 
@@ -66,9 +67,10 @@ public:
                                        int keyFileLocation,
                                        QString keyFilePath);
     Q_INVOKABLE void checkLoadLastDatabase();
+    Q_INVOKABLE void checkDatabaseInSimpleMode();
 
 public:
-    OwnKeepassSettings(const QString filePath, QObject *parent = 0);
+    OwnKeepassSettings(const QString filePath, OwnKeepassHelper *helper, QObject *parent = 0);
     virtual ~OwnKeepassSettings();
 
     QAbstractListModel* recentDatabaseModel() const { return (QAbstractListModel*)m_recentDatabaseModel.data(); }
@@ -123,6 +125,12 @@ signals:
                           bool useKeyFile,
                           int keyFileLocation,
                           QString keyFilePath);
+    void databaseInSimpleMode(bool databaseExists,
+                              int dbLocation,
+                              QString dbFilePath,
+                              bool useKeyFile,
+                              int keyFileLocation,
+                              QString keyFilePath);
 
     // Signals for property
     void recentDatabaseModelChanged();
@@ -152,6 +160,7 @@ private:
 
 private:
     QScopedPointer<settingsPrivate::RecentDatabaseListModel> m_recentDatabaseModel;
+    OwnKeepassHelper *m_helper; // owned by parent
 
     // Settings version
     // This is used to check if settings from some older ownKeepass version are available

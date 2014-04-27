@@ -25,9 +25,10 @@
 
 using namespace settingsPublic;
 
-OwnKeepassSettings::OwnKeepassSettings(const QString filePath, QObject *parent):
+OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper *helper, QObject *parent):
     QObject(parent),
     m_recentDatabaseModel(new settingsPrivate::RecentDatabaseListModel(m_recentDatabaseListLength)),
+    m_helper(helper),
     m_previousVersion("1.0.0"),
     m_version(OWN_KEEPASS_VERSION),
     m_simpleMode(false),
@@ -403,4 +404,30 @@ void OwnKeepassSettings::checkLoadLastDatabase()
                 m_recentDatabaseList[0]["keyFileLocation"].toInt(),
                 m_recentDatabaseList[0]["keyFilePath"].toString());
     }
+}
+
+void OwnKeepassSettings::checkDatabaseInSimpleMode()
+{
+    if (!m_recentDatabaseList.isEmpty()) {
+        // check if last loaded database exists
+        int dbLocationInt = m_recentDatabaseList[0]["dbLocation"].toInt();
+        QString dbLocation(m_helper->getLocationRootPath(dbLocationInt));
+        QString dbFilePath(m_recentDatabaseList[0]["dbFilePath"].toString());
+        if (QFile::exists(dbLocation + "/" + dbFilePath)) {
+            emit databaseInSimpleMode(true, dbLocationInt, dbFilePath,
+                    m_recentDatabaseList[0]["useKeyFile"].toBool(),
+                    m_recentDatabaseList[0]["keyFileLocation"].toInt(),
+                    m_recentDatabaseList[0]["keyFilePath"].toString());
+            return;
+        }
+    } else {
+        // check if default database exists
+        QString dbLocation(m_helper->getLocationRootPath(0));
+        if (QFile::exists(dbLocation + "/ownkeepass/notes.kdb")) {
+            emit databaseInSimpleMode(true, 0, "ownkeepass/notes.kdb", false, 0, "");
+            return;
+        }
+    }
+    // no database found
+    emit databaseInSimpleMode(false, 0, "", false, 0, "");
 }

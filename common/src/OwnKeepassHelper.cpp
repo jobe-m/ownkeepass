@@ -33,7 +33,7 @@ OwnKeepassHelper::OwnKeepassHelper(QObject *parent)
       m_dir("/media/sdcard")
 {}
 
-bool OwnKeepassHelper::fileExists(QString filePath) const
+bool OwnKeepassHelper::fileExists(const QString filePath) const
 {
     if (filePath == "") return false;
     // Check if file exists
@@ -42,7 +42,7 @@ bool OwnKeepassHelper::fileExists(QString filePath) const
     else return false;
 }
 
-bool OwnKeepassHelper::createFilePathIfNotExist(QString filePath) const
+bool OwnKeepassHelper::createFilePathIfNotExist(const QString filePath) const
 {
     if (filePath == "") return false;
     // Check if file path exists
@@ -60,7 +60,7 @@ bool OwnKeepassHelper::sdCardExists()
     return (sdCards.count() == 1);
 }
 
-QString OwnKeepassHelper::getJollaPhoneDocumentsPath() const
+QString OwnKeepassHelper::getJollaPhoneDocumentsPath()
 {
     return QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
 }
@@ -83,12 +83,12 @@ QString OwnKeepassHelper::getSdCardPath()
     return sdCard;
 }
 
-QString OwnKeepassHelper::getAndroidStoragePath() const
+QString OwnKeepassHelper::getAndroidStoragePath()
 {
     return "/data/sdcard";
 }
 
-QString OwnKeepassHelper::getSailboxLocalStoragePath() const
+QString OwnKeepassHelper::getSailboxLocalStoragePath()
 {
     return QDir::homePath() + "/Downloads";
 }
@@ -145,3 +145,21 @@ QStringList OwnKeepassHelper::sdCardPartitions()
 
     return sdCardPartitions;
 }
+
+// Get phisical path for file location
+QString OwnKeepassHelper::getLocationRootPath(const int value)
+{
+    switch (value) {
+    case 0:
+        return getJollaPhoneDocumentsPath();
+    case 1:
+        return getSdCardPath();
+    case 2:
+        return getAndroidStoragePath();
+    case 3:
+        return getSailboxLocalStoragePath();
+    default:
+        return "";
+    }
+}
+
