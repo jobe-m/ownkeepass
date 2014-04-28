@@ -128,21 +128,27 @@ Page {
                     anchors.right: showPasswordButton.left
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    errorHighlight: text.length === 0
                     label: "Master password"
                     placeholderText: "Enter master password"
                     text: ""
-                    EnterKey.enabled: !errorHighlight
+//                    EnterKey.enabled: text.length !== 0
                     EnterKey.highlighted: simpleModeView.state !== "CREATE_NEW_DATABASE" && text !== ""
-                    EnterKey.iconSource: simpleModeView.state === "CREATE_NEW_DATABASE" ?
-                                             "image://theme/icon-m-enter-next" :
-                                             "image://theme/icon-m-enter-accept"
+                    EnterKey.iconSource: text.length === 0 ?
+                                             "image://theme/icon-m-enter-close" :
+                                             simpleModeView.state === "CREATE_NEW_DATABASE" ?
+                                                 "image://theme/icon-m-enter-next" :
+                                                 "image://theme/icon-m-enter-accept"
                     EnterKey.onClicked: {
-                        if (simpleModeView.state === "CREATE_NEW_DATABASE") {
+                        if (text.length === 0) {
+                            parent.focus = true
+                        } else if (simpleModeView.state === "CREATE_NEW_DATABASE") {
                             confirmPasswordField.focus = true
                         } else {
                             parent.focus = true
-// TODO trigger open database
+                            // open master groups page and load database in background
+                            var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                                                                  { "initOnPageConstruction": false, "groupId": 0 })
+                            internal.openKeepassDatabase(passwordField.text, false, masterGroupsPage)
                         }
                     }
                     focusOutBehavior: -1
@@ -175,7 +181,7 @@ Page {
                 label: "Confirm master password"
                 placeholderText: label
                 text: ""
-                EnterKey.enabled: !passwordField.errorHighlight && !errorHighlight
+                EnterKey.enabled: passwordField.text.length !== 0 && !errorHighlight
                 EnterKey.highlighted: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: {
@@ -310,11 +316,17 @@ Page {
                 // Set database name in global object for pulley menu on query password page
                 applicationWindow.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
                 simpleModeView.state = "OPEN_DATABASE"
-// TODO set db location, path and keyfile stuff
+                // set db location, path and keyfile stuff
+                internal.setDatabaseInfo(dbLocation,
+                                         dbFilePath,
+                                         useKeyFile,
+                                         keyFileLocation,
+                                         keyFilePath)
             } else {
                 applicationWindow.databaseUiName = Global.getLocationName(0) + " ownkeepass/notes.kdb"
                 simpleModeView.state = "CREATE_NEW_DATABASE"
-// TODO set default db location, path and no keyfile
+                // set default db location, path and no keyfile
+                internal.setDatabaseInfo(0, "ownkeepass/notes.kdb", false, "", "")
             }
         }
     }
@@ -363,29 +375,30 @@ Page {
 //            }
         }
 
-        function openKeepassDatabase(password,
-                                     createNewDatabase,
-                                     acceptDestinationInstance,
-                                     dbFileLocation,
-                                     dbFilePath,
-                                     useKeyFile,
-                                     keyFileLocation,
-                                     keyFilePath) {
-            // Save handler to masterGroups page, it is needed to init the view once the database
-            // could be opened with given password and/or key file
-            internal.masterGroupsPage = acceptDestinationInstance
+        function setDatabaseInfo(dbFileLocation,
+                                 dbFilePath,
+                                 useKeyFile,
+                                 keyFileLocation,
+                                 keyFilePath) {
             internal.dbFileLocation = dbFileLocation
             internal.databasePath =  dbFilePath
             internal.useKeyFile = useKeyFile
             internal.keyFileLocation = keyFileLocation
             internal.keyFilePath = keyFilePath
+        }
 
+        function openKeepassDatabase(password,
+                                     createNewDatabase,
+                                     acceptDestinationInstance) {
+            // Save handler to masterGroups page, it is needed to init the view once the database
+            // could be opened with given password and/or key file
+            internal.masterGroupsPage = acceptDestinationInstance
             if (password === "") console.log("ERROR: Password is empty")
             // prepate database and key file
-            var completeDbFilePath = ownKeepassHelper.getLocationRootPath(dbFileLocation) + "/" + databasePath
+            var completeDbFilePath = ownKeepassHelper.getLocationRootPath(internal.dbFileLocation) + "/" + internal.databasePath
             var completeKeyFilePath
-            if (useKeyFile) {
-                completeKeyFilePath = ownKeepassHelper.getLocationRootPath(keyFileLocation) + "/" + keyFilePath
+            if (internal.useKeyFile) {
+                completeKeyFilePath = ownKeepassHelper.getLocationRootPath(internal.keyFileLocation) + "/" + internal.keyFilePath
             } else {
                 completeKeyFilePath = ""
             }
@@ -795,14 +808,14 @@ Page {
         id: queryPasswordDialogComponent
         QueryPasswordDialog {
             onAccepted: {
+                internal.setDatabaseInfo(dbFileLocation,
+                                         dbFilePath,
+                                         useKeyFile,
+                                         keyFileLocation,
+                                         keyFilePath)
                 internal.openKeepassDatabase(password,
                                              state === "CreateNewDatabase",
-                                             acceptDestinationInstance,
-                                             dbFileLocation,
-                                             dbFilePath,
-                                             useKeyFile,
-                                             keyFileLocation,
-                                             keyFilePath)
+                                             acceptDestinationInstance)
                 internal.loadLastDb = loadLastDb
             }
             onRejected: {
