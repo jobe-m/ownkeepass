@@ -149,6 +149,7 @@ Page {
                             var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                                                   { "initOnPageConstruction": false, "groupId": 0 })
                             internal.openKeepassDatabase(passwordField.text, false, masterGroupsPage)
+                            passwordField.text = ""
                         }
                     }
                     focusOutBehavior: -1
@@ -187,14 +188,78 @@ Page {
                 EnterKey.onClicked: {
                     parent.focus = true
 // TODO trigger create database
+                    passwordField.text = ""
+                    confirmPasswordField.text = ""
                 }
                 focusOutBehavior: -1
             }
-        }
 
-// TODO add switch for more info:
-// show database path and name
-// show key file path and name
+            Column {
+                spacing: 0
+                width: parent.width
+
+                TextSwitch {
+                    id: showMoreInfoSwitch
+//                    checked: ownKeepassSettings.
+                    text: "Show more info"
+                    onCheckedChanged: {
+//                        ownKeepassSettings.
+                    }
+                }
+
+                Column {
+                    enabled: showMoreInfoSwitch.checked
+                    opacity: enabled ? 1.0 : 0.0
+                    height: enabled ? children.height : 0
+                    width: parent.width
+                    spacing: 0
+
+                    Label {
+                        x: Theme.paddingLarge
+                        width: parent.width - Theme.paddingLarge * 2
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.secondaryColor
+                        horizontalAlignment: Text.AlignLeft
+                        text: "Database path and name"
+                    }
+
+                    Label {
+                        x: Theme.paddingLarge
+                        width: parent.width - Theme.paddingLarge * 2
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.primaryColor
+                        horizontalAlignment: Text.AlignLeft
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        text: Global.getLocationName(internal.dbFileLocation) + " " + internal.databasePath
+                    }
+
+                    Label {
+                        x: Theme.paddingLarge
+                        width: parent.width - Theme.paddingLarge * 2
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.secondaryColor
+                        horizontalAlignment: Text.AlignLeft
+                        text: internal.keyFilePath.length !== 0 ?
+                                  "Key file path and name" : "No key file used"
+                    }
+
+                    Label {
+                        x: Theme.paddingLarge
+                        enabled: internal.keyFilePath.length !== 0
+                        visible: enabled
+                        width: parent.width - Theme.paddingLarge * 2
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.primaryColor
+                        horizontalAlignment: Text.AlignLeft
+                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                        text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
+                    }
+
+                    Behavior on opacity { NumberAnimation { duration: 500 } }
+                    Behavior on height { NumberAnimation { duration: 500 } }
+                }
+            }
+        }
 
         state: "CREATE_NEW_DATABASE"
         states: [
