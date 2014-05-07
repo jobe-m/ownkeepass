@@ -31,7 +31,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_helper(helper),
     m_previousVersion("1.0.0"),
     m_version(OWN_KEEPASS_VERSION),
-    m_simpleMode(false),
+    m_simpleMode(true),
     m_defaultCryptAlgorithm(0),
     m_defaultKeyTransfRounds(50000),
     m_locktime(3),
@@ -50,7 +50,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_pwGenSpecialChars(false),
     m_pwGenExcludeLookAlike(true),
     m_pwGenCharFromEveryGroup(true),
-    m_clearClipboard(true),
+    m_clearClipboard(10),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
@@ -130,7 +130,7 @@ void OwnKeepassSettings::loadSettings() {
     m_pwGenSpecialChars              = (m_settings->getValue("pwGen/SpecialChars", QVariant(m_pwGenSpecialChars))).toBool();
     m_pwGenExcludeLookAlike          = (m_settings->getValue("pwGen/ExcludeLookAlike", QVariant(m_pwGenExcludeLookAlike))).toBool();
     m_pwGenCharFromEveryGroup        = (m_settings->getValue("pwGen/CharFromEveryGroup", QVariant(m_pwGenCharFromEveryGroup))).toBool();
-    m_clearClipboard                 = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toBool();
+    m_clearClipboard                 = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toInt();
 
     // emit signals for property changes
     emit simpleModeChanged();
@@ -151,18 +151,16 @@ void OwnKeepassSettings::loadSettings() {
     emit pwGenCharFromEveryGroupChanged();
     emit clearClipboardChanged();
 
-    // load recent database list if we are in expert mode
+    // load recent database list
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
-    if (!m_simpleMode) {
-        for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-            m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
-                    m_recentDatabaseList[i]["uiPath"].toString(),
-                    m_recentDatabaseList[i]["dbLocation"].toInt(),
-                    m_recentDatabaseList[i]["dbFilePath"].toString(),
-                    m_recentDatabaseList[i]["useKeyFile"].toBool(),
-                    m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                    m_recentDatabaseList[i]["keyFilePath"].toString());
-        }
+    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+        m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
+                m_recentDatabaseList[i]["uiPath"].toString(),
+                m_recentDatabaseList[i]["dbLocation"].toInt(),
+                m_recentDatabaseList[i]["dbFilePath"].toString(),
+                m_recentDatabaseList[i]["useKeyFile"].toBool(),
+                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
+                m_recentDatabaseList[i]["keyFilePath"].toString());
     }
 }
 
@@ -385,7 +383,7 @@ void OwnKeepassSettings::setPwGenCharFromEveryGroup(bool value)
     }
 }
 
-void OwnKeepassSettings::setClearClipboard(bool value)
+void OwnKeepassSettings::setClearClipboard(int value)
 {
     if (value != m_clearClipboard) {
         m_clearClipboard = value;

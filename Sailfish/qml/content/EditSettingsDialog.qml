@@ -32,6 +32,7 @@ Dialog {
     // pages like list view or edit dialogs, which have different cover states
     property string saveCoverState: ""
     property string saveCoverTitle: ""
+    property bool simpleModeChanged: false
     property bool defaultCryptAlgorithmChanged: false
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
@@ -47,7 +48,7 @@ Dialog {
             saveCoverState = applicationWindow.cover.state
         if (saveCoverTitle === "") // save initial state
             saveCoverTitle = applicationWindow.cover.title
-        if (defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
+        if (simpleModeChanged || defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
                 focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
@@ -91,6 +92,21 @@ Dialog {
 
             SilicaLabel {
                 text: "Change default settings of your ownKeepass application here"
+            }
+
+            SectionHeader {
+                text: "Database"
+            }
+
+            TextSwitch {
+                id: simpleMode
+                checked: ownKeepassSettings.simpleMode
+                text: "Single database loading"
+                description: "Switch between using one or multiple databases on main page"
+                onCheckedChanged: {
+                    simpleModeChanged = checked !== ownKeepassSettings.simpleMode
+                    updateCoverState()
+                }
             }
 
             Column {
@@ -160,8 +176,9 @@ Dialog {
                 text: "Clear clipboard"
                 description: "If enabled the clipboard will be cleared after 10 seconds when username or password is copied"
                 onCheckedChanged: {
-                    editSettingsDialog.clearClipboardChanged =
-                            clearClipboard.checked !== ownKeepassSettings.clearClipboard
+                    // This workaround makes it possible to change this simple switch later with a slider setting which will control timer value
+                    var clearClipboardTimer = clearClipboard.checked ? 10 : 0
+                    editSettingsDialog.clearClipboardChanged = clearClipboardTimer !== ownKeepassSettings.clearClipboard
                     editSettingsDialog.updateCoverState()
                 }
             }
@@ -294,6 +311,7 @@ Dialog {
     onAccepted: {
         // First save locally ownKeepass settings then trigger saving
         kdbListItemInternal.setKeepassSettings(
+                    simpleMode.checked,
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
@@ -302,13 +320,14 @@ Dialog {
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
-                    clearClipboard.checked)
+                    clearClipboard.checked ? 10 : 0)
         kdbListItemInternal.saveKeepassSettings()
     }
 
     onRejected: {
         // Save ownKeepass settings to check for unsaved changes
         kdbListItemInternal.setKeepassSettings(
+                    simpleMode.checked,
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
@@ -317,7 +336,7 @@ Dialog {
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
-                    clearClipboard.checked)
+                    clearClipboard.checked ? 10 : 0)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }

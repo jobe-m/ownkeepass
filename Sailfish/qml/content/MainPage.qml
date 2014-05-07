@@ -58,8 +58,10 @@ Page {
     }
 
     function clipboardTimerStart() {
-        if (ownKeepassSettings.clearClipboard)
-        clipboardTimer.restart()
+        if (ownKeepassSettings.clearClipboard !== 0) {
+            clipboardTimer.interval = ownKeepassSettings.clearClipboard
+            clipboardTimer.restart()
+        }
     }
 
     Timer {
@@ -78,7 +80,6 @@ Page {
         id: clipboardTimer
         running: false
         repeat: false
-        interval: Global.constants._10seconds
         triggeredOnStart: false
         onTriggered: {
             // delete clipboard content
@@ -92,10 +93,16 @@ Page {
         contentWidth: parent.width
         contentHeight: col.height
 
-        // Show a scollbar when the view is flicked, place this over all other content
-        VerticalScrollDecorator {}
+        // simple mode view is only visible in simple mode, yay :)
+        enabled: ownKeepassSettings.simpleMode
+        opacity: enabled ? 1.0 : 0.0
 
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+        Behavior on opacity { FadeAnimation {} }
+
+        // Show a scollbar when the view is flicked, place this over all other content
+        VerticalScrollDecorator { }
+
+        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable
         ApplicationMenu {
             helpContent: "MainPage"
         }
@@ -131,7 +138,6 @@ Page {
                     label: "Master password"
                     placeholderText: "Enter master password"
                     text: ""
-//                    EnterKey.enabled: text.length !== 0
                     EnterKey.highlighted: simpleModeView.state !== "CREATE_NEW_DATABASE" && text !== ""
                     EnterKey.iconSource: text.length === 0 ?
                                              "image://theme/icon-m-enter-close" :
@@ -200,11 +206,7 @@ Page {
 
                 TextSwitch {
                     id: showMoreInfoSwitch
-//                    checked: ownKeepassSettings.
                     text: "Show more info"
-                    onCheckedChanged: {
-//                        ownKeepassSettings.
-                    }
                 }
 
                 Column {
@@ -255,8 +257,10 @@ Page {
                         text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
                     }
 
-                    Behavior on opacity { NumberAnimation { duration: 500 } }
-                    Behavior on height { NumberAnimation { duration: 500 } }
+//                    Behavior on opacity { NumberAnimation { duration: 500 } }
+//                    Behavior on height { NumberAnimation { duration: 500 } }
+                    Behavior on opacity { FadeAnimation { } }
+                    Behavior on height { FadeAnimation { } }
                 }
             }
         }
@@ -275,16 +279,20 @@ Page {
     }
 
     SilicaListView {
-        id: listView
-        enabled: false
-        visible: enabled
+        id: notSoSimpleModeView
         anchors.fill: parent
         model: recentDatabaseModel
+
+        // show list view in expert mode
+        enabled: !ownKeepassSettings.simpleMode
+        opacity: enabled ? 1.0 : 0.0
+
+        Behavior on opacity { FadeAnimation { } }
 
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+        // PullDownMenu and PushUpMenu must be declared in SilicaListView
         ApplicationMenu {
             helpContent: "MainPage"
         }
@@ -432,12 +440,11 @@ Page {
             kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
             // initialize check if the last used database should be opened again or
             // if we are in simple mode then check if last or default database exists
-// TODO uncomment when ready
-//            if (ownKeepassSettings.simpleMode) {
+            if (ownKeepassSettings.simpleMode) {
                 ownKeepassSettings.checkDatabaseInSimpleMode()
-//            } else {
-//                ownKeepassSettings.checkLoadLastDatabase()
-//            }
+            } else {
+                ownKeepassSettings.checkLoadLastDatabase()
+            }
         }
 
         function setDatabaseInfo(dbFileLocation,
@@ -655,6 +662,7 @@ Page {
         /*
           Data used to save ownKeepass default setting values
           */
+        property bool simpleMode
         property int defaultCryptAlgorithm
         property int defaultKeyTransfRounds
         property int inactivityLockTime
@@ -663,7 +671,7 @@ Page {
         property bool showUserNamePasswordOnCover
         property bool lockDatabaseFromCover
         property bool copyNpasteFromCover
-        property bool clearClipboard
+        property int clearClipboard
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -798,9 +806,10 @@ Page {
                 Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
         }
 
-        function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
+        function setKeepassSettings(aSimpleMode, aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
                                     aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard) {
+            simpleMode = aSimpleMode
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
@@ -814,6 +823,7 @@ Page {
 
         function checkForUnsavedKeepassSettingsChanges() {
             if (
+                    ownKeepassSettings.simpleMode !== simpleMode ||
                     ownKeepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
                     ownKeepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     ownKeepassSettings.locktime !== inactivityLockTime ||
@@ -829,6 +839,7 @@ Page {
         }
 
         function saveKeepassSettings() {
+            ownKeepassSettings.simpleMode = simpleMode
             ownKeepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm
             ownKeepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             ownKeepassSettings.locktime = inactivityLockTime
@@ -837,6 +848,7 @@ Page {
             ownKeepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover
             ownKeepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
             ownKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
+            ownKeepassSettings.clearClipboard = clearClipboard
         }
     }
 
