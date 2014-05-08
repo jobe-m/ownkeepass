@@ -269,7 +269,7 @@ file when storing your Keepass database online.")
             TextField {
                 id: confirmPasswordField
                 width: parent.width
-                inputMethodHints: Qt.ImhNoPredictiveText
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                 echoMode: TextInput.Password
                 visible: enabled
                 errorHighlight: passwordField.text !== text
