@@ -31,13 +31,16 @@ Label {
     linkColor: Theme.highlightColor
     text: "On this page you can change default settings of the ownKeepass application.<br><br>\
 \
-<b>Default encryption</b><br><br>\
+<b>Database</b><br><br>\
 \
-Adjust the default encryption algorithm which is used when you create a new Keepass database. \
+With \"Single database loading\" you can switch the main page between some kind of simple mode and expert mode. \
+When this swith is enabled you can open only one Keepass database directly from the main page. This is to make usage \
+as easy as possible for the average user. If you want to switch between different Keepass databases uncheck this switch \
+and you will see the last five opened Keepass databases in a list on the main page for fast access.<br><br>\
+\
+Adjust here also the default encryption algorithm which is used when you create a new Keepass database. \
 The encryption algorithm can be changed also later after creation of your \
 database in the database settings.<br><br>\
-\
-<b>Key transformation rounds</b><br><br>\
 \
 Set the default value for key transformation rounds for a new Keepass database. \
 This value controls the amount of encryption rounds computed \
@@ -47,12 +50,17 @@ the database more robust against brute force attacks. \
 As a good compromise between security and usability you should adjust the value so that opening \
 the database takes one second on your phone.<br><br>\
 \
-<b>UI settings</b><br><br>\
+<b>Security</b><br><br>\
+\
+Here you can enable clearing of the clipboard 10 seconds after you \
+copied the username or password into it.<br><br>\
 \
 The inactivity lock time value is used to automatically lock the Keepass \
 database after the specified amount of time has elapsed after the ownKeepass \
 application went in background. Thus the inactivity timer is also active \
 when ownKeepass is minimized to the cover state on home screen.<br><br>\
+\
+<b>UI settings</b><br><br>\
 \
 If you want to see username and password of all password entries already \
 in the list views you can switch \"Extended list view\" on.<br><br>\
