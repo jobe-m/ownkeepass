@@ -25,11 +25,13 @@
 
 using namespace settingsPublic;
 
+#define INITIAL_VERSION "1.0.0"
+
 OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper *helper, QObject *parent):
     QObject(parent),
     m_recentDatabaseModel(new settingsPrivate::RecentDatabaseListModel(m_recentDatabaseListLength)),
     m_helper(helper),
-    m_previousVersion("1.0.0"),
+    m_previousVersion(INITIAL_VERSION),
     m_version(OWN_KEEPASS_VERSION),
     m_simpleMode(true),
     m_defaultCryptAlgorithm(0),
@@ -107,7 +109,10 @@ void OwnKeepassSettings::checkSettingsVersion()
             }
         }
 
-        emit showChangeLogBanner("ownKeepass got updated", "New version " + m_version + " now installed on your phone. Have a look in the change log for details.");
+        // check if ownKeepass was updated and trigger to show into banner
+        if (m_previousVersion != INITIAL_VERSION) {
+            emit showChangeLogBanner("ownKeepass got updated", "New version " + m_version + " now installed on your phone. Have a look in the change log for details.");
+        }
     }
 }
 
