@@ -7,7 +7,9 @@ Status
 Release 1.0.15 is available in Jolla store! This version adds a password generator!
 
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
-*   Beta version 1.0.16 available with:
+
+Beta version 1.0.17 available with:
+*   Open a Keepass database by typing in the master password without bothering any other details (adjustable with "Single database loading" in application settings)
 *   Clipboard cleared after 10 seconds (adjustable in application settings)
 *   Possibility to show master password when opening a database
 

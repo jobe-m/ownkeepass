@@ -55,8 +55,10 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.0.16 Intermediate beta release</b>\
+<b>v1.0.17 Intermediate beta release</b>\
 <ul>\
+<li>Open a Keepass database by typing in the master password without bothering any \
+other details (adjustable with \"Single database loading\" in application settings)</li>\
 <li>Clipboard cleared after 10 seconds (adjustable in application settings)</li>\
 <li>Possibility to show master password when opening a database</li>\
 </ul>\
