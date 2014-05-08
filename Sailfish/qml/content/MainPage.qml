@@ -110,10 +110,10 @@ Page {
         Column {
             id: col
             width: parent.width
-            spacing: Theme.paddingLarge
+            spacing: 0
 
             PageHeaderExtended {
-                title: "About ownKeepass"
+                title: "ownKeepass"
                 subTitle: "Password Safe"
             }
 
@@ -122,6 +122,12 @@ Page {
                 height: 492
                 source: "../../wallicons/wall-ownKeys.png"
                 anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            SilicaLabel {
+                enabled: confirmPasswordField.enabled
+                visible: enabled
+                text: "Type in a master password for locking your new Keepass Password Safe:" + "\n"
             }
 
             Item {
@@ -181,21 +187,29 @@ Page {
             TextField {
                 id: confirmPasswordField
                 width: parent.width
-                inputMethodHints: Qt.ImhNoPredictiveText
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                 echoMode: TextInput.Password
                 visible: enabled
                 errorHighlight: passwordField.text !== text
                 label: "Confirm master password"
                 placeholderText: label
                 text: ""
-                EnterKey.enabled: passwordField.text.length !== 0 && !errorHighlight
+                EnterKey.enabled: confirmPasswordField.text.length === 0 || (passwordField.text.length !== 0 && !errorHighlight)
                 EnterKey.highlighted: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                EnterKey.iconSource: text.length === 0 ?
+                                         "image://theme/icon-m-enter-close" :
+                                         "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: {
                     parent.focus = true
+                    if (text.length !== 0) {
 // TODO trigger create database
-                    passwordField.text = ""
-                    confirmPasswordField.text = ""
+                        // open master groups page and load database in background
+                        var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                                                              { "initOnPageConstruction": false, "groupId": 0 })
+                        internal.openKeepassDatabase(passwordField.text, true, masterGroupsPage)
+                        passwordField.text = ""
+                        confirmPasswordField.text = ""
+                    }
                 }
                 focusOutBehavior: -1
             }
@@ -257,8 +271,6 @@ Page {
                         text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
                     }
 
-//                    Behavior on opacity { NumberAnimation { duration: 500 } }
-//                    Behavior on height { NumberAnimation { duration: 500 } }
                     Behavior on opacity { FadeAnimation { } }
                     Behavior on height { FadeAnimation { } }
                 }
@@ -299,7 +311,7 @@ Page {
 
         header: Column {
             width: parent.width
-            spacing: 0 // Theme.paddingLarge
+            spacing: 0
 
             PageHeaderExtended {
                 title: "ownKeepass"
