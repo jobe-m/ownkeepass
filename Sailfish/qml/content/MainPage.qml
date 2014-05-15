@@ -215,11 +215,14 @@ Page {
             }
 
             Column {
+                id: moreInfoColumn
                 spacing: 0
                 width: parent.width
 
                 TextSwitch {
                     id: showMoreInfoSwitch
+                    enabled: moreInfoColumn.enabled
+                    visible: enabled
                     text: "Show more info"
                 }
 
@@ -282,10 +285,12 @@ Page {
             State {
                 name: "CREATE_NEW_DATABASE"
                 PropertyChanges { target: confirmPasswordField; enabled: true }
+                PropertyChanges { target: moreInfoColumn ; enabled: false }
             },
             State {
                 name: "OPEN_DATABASE"
                 PropertyChanges { target: confirmPasswordField; enabled: false }
+                PropertyChanges { target: moreInfoColumn ; enabled: true }
             }
         ]
     }
