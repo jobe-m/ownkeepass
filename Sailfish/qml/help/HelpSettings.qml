@@ -33,11 +33,6 @@ Label {
 \
 <b>Database</b><br><br>\
 \
-With \"Single database loading\" you can switch the main page between some kind of simple mode and expert mode. \
-When this swith is enabled you can open only one Keepass database directly from the main page. This is to make usage \
-as easy as possible for the average user. If you want to switch between different Keepass databases uncheck this switch \
-and you will see the last five opened Keepass databases in a list on the main page for fast access.<br><br>\
-\
 Adjust here also the default encryption algorithm which is used when you create a new Keepass database. \
 The encryption algorithm can be changed also later after creation of your \
 database in the database settings.<br><br>\
@@ -78,5 +73,12 @@ opened password entry on the cover. \
 Moreover you can also enable or disable both cover actions. The first action is to lock \
 the database. The second cover action triggers either copying of the \
 username and password into the clipboard or deleting of the clipboard \
-content.<br>"
+content.<br><br>\
+\
+<b>Advanced settings</b><br><br>\
+\
+With \"Expert user mode\" you can enable an advanced mode for database handling. \
+If you check this switch you are able to open different Keepass databases and see the last \
+five opened Keepass databases in a list on the main page for fast access.<br><br>\
+"
 }
