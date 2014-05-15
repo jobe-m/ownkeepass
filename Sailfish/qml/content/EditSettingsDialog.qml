@@ -32,7 +32,6 @@ Dialog {
     // pages like list view or edit dialogs, which have different cover states
     property string saveCoverState: ""
     property string saveCoverTitle: ""
-    property bool simpleModeChanged: false
     property bool defaultCryptAlgorithmChanged: false
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
@@ -42,13 +41,14 @@ Dialog {
     property bool lockDatabaseFromCoverChanged: false
     property bool copyNpasteFromCoverChanged: false
     property bool clearClipboardChanged: false
+    property bool expertModeChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
             saveCoverState = applicationWindow.cover.state
         if (saveCoverTitle === "") // save initial state
             saveCoverTitle = applicationWindow.cover.title
-        if (simpleModeChanged || defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
+        if (expertModeChanged || defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
                 focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
@@ -96,17 +96,6 @@ Dialog {
 
             SectionHeader {
                 text: "Database"
-            }
-
-            TextSwitch {
-                id: simpleMode
-                checked: ownKeepassSettings.simpleMode
-                text: "Single database loading"
-                description: "Switch between using one or multiple databases on main page"
-                onCheckedChanged: {
-                    simpleModeChanged = checked !== ownKeepassSettings.simpleMode
-                    updateCoverState()
-                }
             }
 
             Column {
@@ -305,13 +294,28 @@ Dialog {
                     editSettingsDialog.updateCoverState()
                 }
             }
+
+            SectionHeader {
+                text: "Advanced settings"
+            }
+
+            TextSwitch {
+                id: expertMode
+                checked: !ownKeepassSettings.simpleMode
+                text: "Expert user mode"
+                description: "This enables advanced functionality like handling multiple databases on main page"
+                onCheckedChanged: {
+                    expertModeChanged = checked === ownKeepassSettings.simpleMode
+                    updateCoverState()
+                }
+            }
         }
     }
 
     onAccepted: {
         // First save locally ownKeepass settings then trigger saving
         kdbListItemInternal.setKeepassSettings(
-                    simpleMode.checked,
+                    !(expertMode.checked),
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
@@ -327,7 +331,7 @@ Dialog {
     onRejected: {
         // Save ownKeepass settings to check for unsaved changes
         kdbListItemInternal.setKeepassSettings(
-                    simpleMode.checked,
+                    !(expertMode.checked),
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
