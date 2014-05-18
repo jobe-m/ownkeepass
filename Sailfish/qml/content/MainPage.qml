@@ -59,7 +59,7 @@ Page {
 
     function clipboardTimerStart() {
         if (ownKeepassSettings.clearClipboard !== 0) {
-            clipboardTimer.interval = ownKeepassSettings.clearClipboard
+            clipboardTimer.interval = ownKeepassSettings.clearClipboard * 1000
             clipboardTimer.restart()
         }
     }

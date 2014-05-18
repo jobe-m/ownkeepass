@@ -161,7 +161,7 @@ Dialog {
 
             TextSwitch {
                 id: clearClipboard
-                checked: ownKeepassSettings.clearClipboard
+                checked: ownKeepassSettings.clearClipboard !== 0
                 text: "Clear clipboard"
                 description: "If enabled the clipboard will be cleared after 10 seconds when username or password is copied"
                 onCheckedChanged: {
