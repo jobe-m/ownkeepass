@@ -4,18 +4,15 @@ ownKeepass
 Status
 ------
 
-Release 1.0.15 is available in Jolla store! This version adds a password generator!
+Release 1.0.18 will be available shortly in Jolla store! Hightlight of this version is a simplified main page for opening one single Keepass database. Old version of the main page (now called "expert user mode") can be switched on in application settings.
 
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
 
-Beta version 1.0.17 available with:
-*   Open a Keepass database by typing in the master password without bothering any other details (adjustable with "Single database loading" in application settings)
-*   Clipboard cleared after 10 seconds (adjustable in application settings)
-*   Possibility to show master password when opening a database
+No new beta version available.
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
-*   Database open and create dialogs are a bit difficult to use due to free text input as file paths
+*   Database open and create dialogs are a bit difficult to use due to free text input for file name and path (if "expert user mode" is used)
 
 If you found a bug please report it on the issue page. Thanks :)
 
@@ -23,9 +20,17 @@ Roadmap
 -------
 
 I am planning 3 major updates for ownKeepass to happen somewhere the next time.
-*   The first is to extend the current functionality by introducing a password generator and to activate the password expiration feature which can remind you to change a specific password. Both features are already known by KeepassX on the desktop.
-*   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud should happen before integration of Keepass 2 database support.
-*   The third update is about Keepass 2 database support. It has currently the lowest priority because of the parent project [KeepassX 2][3] which is still in alpha phase. I am planning to reuse the database code from it thus will wait a bit longer to let the project mature.
+
+v 1.1.0
+*   Extend the current functionality by introducing a password generator [Done]
+*   Activate password expiration feature which can remind you to change a specific password. Both features are already known by KeepassX on the desktop.
+
+v 1.2.0
+*   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
+*   Maybe I add also support for Dropbox.
+
+v 1.3.0
+*   The third major update is about Keepass 2 database support. It has currently the lowest priority because of the parent project [KeepassX 2][3] which is still in alpha phase. I am planning to reuse the database code from it thus will wait a bit longer to let the project mature.
 
 The status of my todo list for the next release can be looked up [here] [6].
 
@@ -37,7 +42,7 @@ protect sensible data like passwords for web pages, credit card numbers,
 PINs, TANs and other bits of information which should be kept secret. All that information
 is saved in a database file which is encrypted and stored locally on your phone. To open
 the database you need to know the master password of the database. The used database
-format is compatible to Keepass version 1. That means you can use [Keepass] [2] on your desktop
+format is compatible to Keepass version 1. That means you can use [Keepass classic 1.27+] [2] or [KeepassX 0.4.3] [3] on your desktop
 system to decrypt and open that database file, too.
 
 Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is
@@ -121,27 +126,30 @@ Features (already working)
 *   Search keepass entries in whole database
 *   Copy username and password from within cover page and use cover page to peak from other apps to
     look up username and password
+*   Clear clipboard after 10 seconds and a lot of more
 
 That's it so far.
 
-27-Feb-2014
+18-May-2014
 
 Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
 [1]: https://www.tisno.de/owncloud/public.php?service=files&t=598987d3cdeba24d83b18a63fce18b08 "Download beta release of ownKeepass for Jolla Phone"
-[2]: http://www.keepass.info                                           "Official Keepass homepage"
+[2]: http://www.keepass.info/help/v1/setup.html                        "Official Keepass homepage for version 1"
 [3]: http://www.keepassx.org                                           "KeepassX project homepage"
 [4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
-[6]: https://github.com/jobe-m/ownkeepass/issues?milestone=2&state=open "Status of next ownKeepass release 1.1"
+[6]: https://github.com/jobe-m/ownkeepass/issues?milestone=2&state=open "Status of next major ownKeepass release 1.1.0"
 
 Screenshots
 -----------
 
-![ownKeepass main page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_MainPage.jpg)
-![ownKeepass query master password](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_QueryMasterPassword.jpg)
-![ownKeepass group view](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_GroupView.jpg)
-![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_SearchPage.jpg)
-![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_ShowEntryPage.jpg)
-![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_DatabaseSettings.jpg)
-![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_Cover.jpg)
+![ownKeepass main mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_MainPage2.jpg)
+![ownKeepass main page expert mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_MainPageExpertMode2.jpg)
+![ownKeepass query master password](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_QueryMasterPassword2.jpg)
+![ownKeepass group view](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_GroupView2.jpg)
+![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_SearchPage2.jpg)
+![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_ShowEntryPage2.jpg)
+![ownKeepass password generator page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_PasswordGeneratorPage2.jpg)
+![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_DatabaseSettings2.jpg)
+![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_Cover2.jpg)
