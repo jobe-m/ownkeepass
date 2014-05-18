@@ -186,10 +186,9 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
                 alreadyOnFirstPosition = true;
                 break;
             } else {
-                // Delete it from list and re-add it at the first position here only when it's not already on the first position
+                // Delete it from list and re-add it below at the first position here only when it's not already on the first position
                 m_recentDatabaseList.removeAt(i);
-                // In non simple mode we have recent list on main page
-                if (!m_simpleMode) m_recentDatabaseModel->deleteItem(i);
+                m_recentDatabaseModel->deleteItem(i);
             }
         }
     }
@@ -205,15 +204,13 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
         recentDatabase["keyFileLocation"] = QVariant(keyFileLocation);
         recentDatabase["keyFilePath"] = QVariant(keyFilePath);
         m_recentDatabaseList.insert(0, recentDatabase);
-        // In non simple mode we have recent list on main page
-        if (!m_simpleMode) m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
+        m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
     }
 
     // Check if list is longer than predefined value in settings
     if (m_recentDatabaseList.length() > m_recentDatabaseListLength) {
         m_recentDatabaseList.removeLast();
-        // In non simple mode we have recent list on main page
-        if (!m_simpleMode) m_recentDatabaseModel->deleteItem(m_recentDatabaseListLength);
+        m_recentDatabaseModel->deleteItem(m_recentDatabaseListLength);
     }
 
     // save new recent Database list
