@@ -55,7 +55,7 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.0.18 Little things for your convenience</b>\
+<b>v1.0.18 Simplified main page</b>\
 <ul>\
 <li>Open one Keepass database from main page by typing the master password without bothering any \
 other details (adjustable with \"Expert user mode\" in application settings)</li>\
