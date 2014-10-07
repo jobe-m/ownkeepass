@@ -4,7 +4,7 @@ ownKeepass
 Status
 ------
 
-Release 1.0.18 will be available shortly in Jolla store! Hightlight of this version is a simplified main page for opening one single Keepass database. Old version of the main page (now called "expert user mode") can be switched on in application settings.
+Release 1.0.19 will be available shortly in Jolla store! It contains some small bugfixes.
 
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
 
