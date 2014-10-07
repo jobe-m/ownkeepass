@@ -25,7 +25,7 @@ import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
 
-Cover {
+CoverBackground {
     id: coverPage
 
     state: "NO_DATABASE_OPENED"

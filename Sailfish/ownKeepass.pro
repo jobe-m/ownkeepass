@@ -1,26 +1,26 @@
-#***************************************************************************
-#**
-#** Copyright (C) 2013 - 2014 Marko Koschak (marko.koschak@tisno.de)
-#** All rights reserved.
-#**
-#** This file is part of ownKeepass.
-#**
-#** ownKeepass is free software: you can redistribute it and/or modify
-#** it under the terms of the GNU General Public License as published by
-#** the Free Software Foundation, either version 2 of the License, or
-#** (at your option) any later version.
-#**
-#** ownKeepass is distributed in the hope that it will be useful,
-#** but WITHOUT ANY WARRANTY; without even the implied warranty of
-#** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#** GNU General Public License for more details.
-#**
-#** You should have received a copy of the GNU General Public License
-#** along with ownKeepass. If not, see <http://www.gnu.org/licenses/>.
-#**
-#***************************************************************************
+############################################################################
+#
+# Copyright (C) 2013 - 2014 Marko Koschak (marko.koschak@tisno.de)
+# All rights reserved.
+#
+# This file is part of ownKeepass.
+#
+# ownKeepass is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# ownKeepass is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with ownKeepass. If not, see <http://www.gnu.org/licenses/>.
+#
+############################################################################
 
-# the sources of the keepass QML plugins
+# Sources of the keepass QML plugins
 include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 
@@ -37,6 +37,8 @@ isEmpty(VERSION) {
 }
 DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 
+# Following define is a trick to load the desired precompiled version of a plugin
+# Depending if compiling for emulator or the real device
 linux-g++-32 {
     message("Loading libs for emulator")
     ARCH_LIBS=i486_x86

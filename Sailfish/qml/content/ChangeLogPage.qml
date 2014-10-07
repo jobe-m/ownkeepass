@@ -55,6 +55,13 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.19 Small bugfixes</b>\
+<ul>\
+<li>Change background of cover page to match default appearance</li>\
+<li>Bugfix: When changing a database to use a key file the key file path was not saved \
+in recently opened database list item</li>\
+</ul>\
+<br>\
 <b>v1.0.18 Simplified main page</b>\
 <ul>\
 <li>Open one Keepass database from main page by typing the master password without bothering any \

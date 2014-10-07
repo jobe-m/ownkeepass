@@ -223,7 +223,7 @@ Page {
                     id: showMoreInfoSwitch
                     enabled: moreInfoColumn.enabled
                     visible: enabled
-                    text: "Show more info"
+                    text: "Show more details"
                 }
 
                 Column {
