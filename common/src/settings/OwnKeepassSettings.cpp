@@ -181,31 +181,23 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     // check if the recent database is already in the list
     for(int i = 0; i < m_recentDatabaseList.length(); ++i) {
         if (m_recentDatabaseList[i]["uiName"].toString() == uiName && m_recentDatabaseList[i]["uiPath"].toString() == uiPath) {
-            if (i == 0) {
-                // already at first position in the list
-                alreadyOnFirstPosition = true;
-                break;
-            } else {
-                // Delete it from list and re-add it below at the first position here only when it's not already on the first position
-                m_recentDatabaseList.removeAt(i);
-                m_recentDatabaseModel->deleteItem(i);
-            }
+            // Delete it from list and re-add it below at the first position here only when it's not already on the first position
+            m_recentDatabaseList.removeAt(i);
+            m_recentDatabaseModel->deleteItem(i);
         }
     }
     // Insert recent at first position in the list model
-    if (!alreadyOnFirstPosition) {
-        QMap<QString, QVariant> recentDatabase;
-        recentDatabase.clear();
-        recentDatabase["uiName"] = QVariant(uiName);
-        recentDatabase["uiPath"] = QVariant(uiPath);
-        recentDatabase["dbLocation"] = QVariant(dbLocation);
-        recentDatabase["dbFilePath"] = QVariant(dbFilePath);
-        recentDatabase["useKeyFile"] = QVariant(useKeyFile);
-        recentDatabase["keyFileLocation"] = QVariant(keyFileLocation);
-        recentDatabase["keyFilePath"] = QVariant(keyFilePath);
-        m_recentDatabaseList.insert(0, recentDatabase);
-        m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
-    }
+    QMap<QString, QVariant> recentDatabase;
+    recentDatabase.clear();
+    recentDatabase["uiName"] = QVariant(uiName);
+    recentDatabase["uiPath"] = QVariant(uiPath);
+    recentDatabase["dbLocation"] = QVariant(dbLocation);
+    recentDatabase["dbFilePath"] = QVariant(dbFilePath);
+    recentDatabase["useKeyFile"] = QVariant(useKeyFile);
+    recentDatabase["keyFileLocation"] = QVariant(keyFileLocation);
+    recentDatabase["keyFilePath"] = QVariant(keyFilePath);
+    m_recentDatabaseList.insert(0, recentDatabase);
+    m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
 
     // Check if list is longer than predefined value in settings
     if (m_recentDatabaseList.length() > m_recentDatabaseListLength) {
