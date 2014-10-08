@@ -80,18 +80,13 @@ CoverBackground {
     width: Theme.coverSizeLarge.width
     height: Theme.coverSizeLarge.height
 
-    Rectangle {
-        anchors.fill: parent
-        color: Theme.rgba(Theme.highlightColor, 0.2)
-
-        Image {
-            width: parent.width * 0.85
-            height: width
-            anchors.top: parent.top
-            anchors.right: parent.right
-            source: "../../wallicons/cover-cloud.png"
-            opacity: 0.2
-        }
+    Image {
+        width: parent.width * 0.85
+        height: width
+        anchors.top: parent.top
+        anchors.right: parent.right
+        source: "../../wallicons/cover-cloud.png"
+        opacity: 0.2
     }
 
     Timer {
