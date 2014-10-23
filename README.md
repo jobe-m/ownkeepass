@@ -16,7 +16,7 @@ Current limitations/known bugs:
 
 If you found a bug please report it on the issue page. Thanks :)
 
-Roadmap
+Roadmap (needs an update)
 -------
 
 I am planning 3 major updates for ownKeepass to happen somewhere the next time.
