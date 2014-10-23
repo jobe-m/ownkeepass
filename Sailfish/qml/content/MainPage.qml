@@ -1015,8 +1015,8 @@ Page {
         QueryDialog {
             id: queryDialogForUnsavedChanges
             headerAcceptText: "Yes"
-            headerTitleText: "Yes"
-            titleText: "Unsaved changes"
+            headerCancelText: "No"
+            headerTitleText: "Unsaved changes"
             message: ""
 
             onAccepted: {

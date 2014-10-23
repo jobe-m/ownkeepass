@@ -81,13 +81,8 @@ Dialog {
 
             DialogHeader {
                 acceptText: "Save"
-                title: "Save"
-            }
-
-            SilicaLabel {
-                font.pixelSize: Theme.fontSizeLarge
-                font.bold: true
-                text: "ownKeepass Settings"
+                cancelText: "Discard"
+                title: "ownKeepass Settings"
             }
 
             SilicaLabel {

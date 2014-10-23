@@ -28,8 +28,8 @@ Dialog {
     id: queryDialog
 
     property alias headerAcceptText: dialogHeader.acceptText
+    property alias headerCancelText: dialogHeader.cancelText
     property alias headerTitleText: dialogHeader.title
-    property alias titleText: dialogTitle.text
     property alias message: dialogMessage.text
 
     SilicaFlickable {
@@ -46,12 +46,6 @@ Dialog {
 
             DialogHeader {
                 id: dialogHeader
-            }
-
-            SilicaLabel {
-                id: dialogTitle
-                font.pixelSize: Theme.fontSizeLarge
-                font.bold: true
             }
 
             SilicaLabel {

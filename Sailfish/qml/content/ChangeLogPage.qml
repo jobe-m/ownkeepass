@@ -55,6 +55,11 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.20 Updated dialogs</b>\
+<ul>\
+<li>Adapted dialog appearance for Sailfish OS 1.1.0.38 Uitukka</li>\
+</ul>\
+<br>\
 <b>v1.0.19 Small bugfixes</b>\
 <ul>\
 <li>Change background of cover page to match default appearance</li>\

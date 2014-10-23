@@ -77,13 +77,6 @@ additional security for your Keepass database when storing it online!")
 
             DialogHeader {
                 id: queryPasswordDialogHeader
-                title: acceptText
-            }
-
-            SilicaLabel {
-                id: dialogTitle
-                font.pixelSize: Theme.fontSizeLarge
-                font.bold: true
             }
 
             Column {
@@ -307,6 +300,7 @@ file when storing your Keepass database online.")
         State {
             name: "CreateNewDatabase"
             PropertyChanges { target: queryPasswordDialogHeader; acceptText: "Create" }
+            PropertyChanges { target: queryPasswordDialogHeader; title: "New Password Safe" }
             PropertyChanges { target: dialogTitle; text: "New Password Safe" }
             PropertyChanges { target: dbFileColumn; enabled: true }
             PropertyChanges { target: keyFileColumn; enabled: true }
@@ -325,7 +319,7 @@ file when storing your Keepass database online.")
         State {
             name: "OpenNewDatabase"
             PropertyChanges { target: queryPasswordDialogHeader; acceptText: "Open" }
-            PropertyChanges { target: dialogTitle; text: "Password Safe" }
+            PropertyChanges { target: queryPasswordDialogHeader; title: "Password Safe" }
             PropertyChanges { target: dbFileColumn; enabled: true }
             PropertyChanges { target: keyFileColumn; enabled: true }
             PropertyChanges { target: passwordTitle; text: "Type in master password for unlocking your Keepass Password Safe:" }
@@ -342,7 +336,7 @@ file when storing your Keepass database online.")
         State {
             name: "OpenRecentDatabase"
             PropertyChanges { target: queryPasswordDialogHeader; acceptText: "Open" }
-            PropertyChanges { target: dialogTitle; text: "Password Safe" }
+            PropertyChanges { target: queryPasswordDialogHeader; title: "Password Safe" }
             PropertyChanges { target: dbFileColumn; enabled: false }
             PropertyChanges { target: keyFileColumn; enabled: false }
             PropertyChanges { target: passwordTitle; text: "Type in master password for unlocking your Keepass Password Safe:" }

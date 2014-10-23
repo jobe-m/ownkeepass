@@ -69,8 +69,7 @@ Dialog {
             spacing: Theme.paddingLarge
 
             DialogHeader {
-                title: "Accept"
-                acceptText: "Generate password"
+                acceptText: "Accept"
             }
 
             Item {

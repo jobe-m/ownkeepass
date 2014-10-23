@@ -60,7 +60,6 @@ Dialog {
 
             DialogHeader {
                 acceptText: "Save"
-                title: "Save"
             }
 
             SilicaLabel {

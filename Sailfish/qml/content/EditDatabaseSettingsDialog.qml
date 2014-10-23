@@ -72,13 +72,7 @@ Dialog {
 
             DialogHeader {
                 acceptText: "Save"
-                title: "Save"
-            }
-
-            SilicaLabel {
-                font.pixelSize: Theme.fontSizeLarge
-                font.bold: true
-                text: "Database Settings"
+                title: "Database Settings"
             }
 
             SilicaLabel {
