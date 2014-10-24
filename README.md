@@ -1,6 +1,8 @@
 ownKeepass
 ==========
 
+STRANGE PROBLEM WITH JOLLA STORE: Currently ownKeepass seems dissapeared from the store. I contacted Jolla already and they are working to get it back in the store.
+
 Status
 ------
 
