@@ -127,6 +127,8 @@ Page {
 
             onTextChanged: {
                 if (text.length > 0) {
+                    // set group Id from which the search should be performed
+                    kdbListModel.searchRootGroupId = groupId
                     kdbListModel.searchEntriesInKdbDatabase(searchField.text)
                 } else {
                     kdbListModel.clearListModel()
@@ -268,7 +270,7 @@ Page {
         onMasterGroupsLoaded: {
             if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
-            if (ownKeepassSettings.showSearchBar &&ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
+            if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true
             }
         }

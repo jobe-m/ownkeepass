@@ -28,10 +28,11 @@ using namespace kpxPublic;
 using namespace kpxPrivate;
 
 KdbListModel::KdbListModel(QObject *parent)
-    : QAbstractListModel(parent)
+    : QAbstractListModel(parent),
+      m_modelId(0),
+      m_registered(false),
+      m_searchRootGroupId(0)
 {
-    m_registered = false;
-
     // connect signals to backend
     bool ret = connect(this, SIGNAL(loadMasterGroups()),
                        KdbInterface::getInstance()->getWorker(), SLOT(slot_loadMasterGroups()));
