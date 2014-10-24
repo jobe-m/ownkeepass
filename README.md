@@ -6,7 +6,7 @@ STRANGE PROBLEM WITH JOLLA STORE: Currently ownKeepass seems dissapeared from th
 Status
 ------
 
-Release 1.0.19 will be available shortly in Jolla store! It contains some small bugfixes.
+Release 1.0.21 will be available shortly in Jolla store! It contains  bugfixes for the new Qt 5.2 based firmware update 1.1.0.39 Uitukka.
 
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
 
