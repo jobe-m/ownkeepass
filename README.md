@@ -8,6 +8,8 @@ Status
 
 Release 1.0.21 will be available shortly in Jolla store! It contains  bugfixes for the new Qt 5.2 based firmware update 1.1.0.39 Uitukka.
 
+Release 1.0.21 is available on [openrepos.net] [7] and through the warehouse app on your Jolla phone, too.
+
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
 
 No new beta version available.
@@ -142,6 +144,7 @@ Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 [4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
 [6]: https://github.com/jobe-m/ownkeepass/issues?milestone=2&state=open "Status of next major ownKeepass release 1.1.0"
+[7]: https://openrepos.net/content/jobe/ownkeepass
 
 Screenshots
 -----------
