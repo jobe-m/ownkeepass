@@ -529,86 +529,88 @@
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="373"/>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="378"/>
         <source>Password groups</source>
-        <translation type="unfinished">Salasana ryhmät</translation>
+        <translation>Salasana ryhmät</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="72"/>
         <source>Load Error</source>
-        <translation type="unfinished">Latausvirhe</translation>
+        <translation>Latausvirhe</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="72"/>
         <source>Could not load all items from Keepass database file. That&apos;s strange.</source>
-        <translation type="unfinished">En onnistunut lataamaan kaikkia salasanatiedostoja Keepass-tietokannasta. Se on outoa.</translation>
+        <translation>En onnistunut lataamaan kaikkia salasanatiedostoja Keepass-tietokannasta. Sepä on outoa.</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="77"/>
         <source>Save Error</source>
-        <translation type="unfinished">Talletusvirhe</translation>
+        <translation>Talletusvirhe</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="77"/>
         <source>Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.</source>
-        <translation type="unfinished">En onnistunut tallentamaan muutoksia Keepass-tietokantatiedostoon. Joko tiedosto tai sen sijainti on kirjoitussuojattu, tai tiedosto on poistettu</translation>
+        <translation>En onnistunut tallentamaan muutoksia Keepass-tietokantatiedostoon. Joko tiedosto tai sen sijainti on kirjoitussuojattu, tai tiedosto on poistettu.</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="108"/>
         <source>Search</source>
-        <translation type="unfinished">Haku</translation>
+        <translation>Haku</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="165"/>
         <source>No entries found</source>
-        <translation type="unfinished">Tiedostoja ei löydetty</translation>
+        <translation>Tiedostoja ei löydetty</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="183"/>
         <source>Decrypting Keepass database</source>
-        <translation type="unfinished"></translation>
+        <translation>Keepass-tietokannan salauksen purkaminen</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="204"/>
         <source>Group is empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmä on tyhjä</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="205"/>
         <source>Pull down to add password groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Vedä alas lisätäksesi salasana-ryhmiä</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="206"/>
         <source>Pull down to add password groups or entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Vedä alas lisätäksesi salasana-ryhmiä tai -tiedostoja</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="250"/>
         <source>MasterGroupsPage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>I put the words together as in the origina </translatorcomment>
+        <translation>PääryhmienSivu</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="250"/>
         <source>SubGroupsPage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>I put the words together as in the origina</translatorcomment>
+        <translation>AlaryhmienSivu</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="290"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Lataan</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="346"/>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="350"/>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="383"/>
         <source>Search in all groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi kaikista ryhmistä</translation>
     </message>
     <message>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="347"/>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="351"/>
         <location filename="../../Sailfish/qml/content/GroupsAndEntriesPage.qml" line="384"/>
         <source>Search in</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi ryhmästä</translation>
     </message>
 </context>
 <context>
@@ -616,7 +618,10 @@
     <message>
         <location filename="../../Sailfish/qml/help/HelpCreateNewDatabase.qml" line="32"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;First you need to specify where the database file will be stored. Available options are &quot;Documents on phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; and &quot;Sailbox local storage&quot;. Take the first option &quot;Documents on phone&quot; if you want the database to be located on the phone or choose &quot;SD card&quot; to place the database on the removable SD card. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. If SD card is not inserted the SD card location item is disabled. Please make sure the SD card is properly detected by looking at it in a File Browser. If you want to share the Keepass database with Android Apps you can place it into &quot;Android storage&quot;. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option &quot;Sailbox local storage&quot; can be used together with Sailbox. If you place your database there Sailbox can up- and download the file to the Dropbox online service. Sailbox is available in Jolla Harbour for download.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the relative path and file name for your Keepass database file. For example you can type in &quot;ownkeepass/notes.kdb&quot;. If you have opened ownKeepass the first time you will see that string already pre-filled for your convenience.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file location cannot be set to &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can choose here a picture as a key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Sailbox is also available in Jolla Store.Enhanced &quot; Please be aware of that.&quot; with something like &quot; Please be aware of these issues if you encounter sudden problems with, for example with opening of the file&quot; </translatorcomment>
+        <translation>Tällä sivulla voit luoda uuden tietokannan, johon ownKeepass tallettaa tärkeät tietosi.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokannan sijainti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ensin sinun tulee määrittää mihin tietokantatiedosto talletetaan. Valittavanasi on &quot;Dokumentit puhelimessa&quot;, &quot;SD-kortti&quot;, &quot;Android-muisti&quot; ja &quot;Sailbox-paikallismuisti&quot;. Valitse ensimmäinen asetus, &quot;Dokumentit puhelimessa&quot;, mikäli haluat tiedoston sijaitsevan puhelimessasi tai valitse &quot;SD-kortti&quot;, mikäli haluat sen sijaitsevan irroitettavalla SD-muistikortilla. Kortilla voi olla vain yksi alustettu osio. Tällä hetkellä ownKeepass ei tue muistikortteja, joissa on useampia osioita. Mikäli muistikorttia ei ole asennettu paikalleen, tämä valinta on pois käytöstä. On parasta, että varmistat muistikortin olevan näkyvissä esimerkiksi File Browser-ohjelmalla, ennen kuin valitsen sen käytön. Mikäli haluat jakaa tiedoston myös Android-ohjelmien kanssa, sijoita se Android-muistiin. Huomioi kuitenkin, että tiedostojen jakaminen voi johtaa hankaluuksiin, johtuen tiedostojen omistaja-asetusten muuttumisesta, samoin kuin niiden käyttäjäoikeuksien eroavuuksista kahden järjestelmän välillä. Muista tämä mikäli tiedosto ei esimerkiksi aukea enää. Viimein valinta, &quot;Sailbox-paikallismuisti&quot; on tarkoitettu käytettäväksi Sailbox-ohjelman kanssa : tämä sallii tiedoston jakamisen käyttäen Dropbox-pilvipalvelua. Sailbox-ohjelma on ladattavissa Jolla Harbourista.&lt;br&gt;&lt;br&gt;Muistutus : Mikäli lataat Keepass-tietokantasi Dropbox-pilvipalveluun, muista käyttää paikallisesti tallennettua avaintiedostoa pääsalasanan lisäksi (katso alla). Tätä avaintiedostoa ei tule tallettaa mihinkään pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokantatiedoston polku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä tekstikentässä polku alkaen kotitiedostosta ja tiedostonimi Keepass-tietokantatiedostoosi. Esimerkiksi &quot;ownkeepass/notes.kdb&quot;. Mikäli käytät ownKeepass-ohjelmaa ensimmäistä kertaa, tämä kenttä on esitäytetty käyttöäsi helpottamaan.&lt;br&gt;&lt;br&gt;&lt;b&gt;Käytä avaintiedostoa&lt;/b&gt;&lt;br&gt;&lt;br&gt;Avaintiedostoa voidaan käyttää pääsalasanan lisäksi suojaamaan Keepass-tietokantaa. Molempia käytetään yhtäaikaa varsinaisen avaimen laskemiseen, joka lopulta avaa tietokannan. Käyttämällä tiedostoa, jossa on paljon erilaista tietoa, laskettu avain on periaatteessa vahvempi hyökkäyksiä vastaan. Voit käyttää esimerkiksi satunnaista kuvatiedostoa avaintiedostona.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaintiedoston sijanti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Katso &quot;Tietokannan sijainti&quot;, tähän pätee samat sijaintii liittyvät ohjeet. Ainoastaan &quot;Sailbox-paikallismuisti&quot; ei ole käytettävissä, jotta molemmat suojausmenetelmäsi eivät tallettuisi pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;
+Avaintiedoston polku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä tekstikentässä polku alkaen kotitiedostosta ja nimi tiedostoon jota haluat käyttää avaintiedostonasi. Voit valita esimerkiksi jonkun kuvatiedoston.&lt;br&gt;&lt;br&gt;&lt;b&gt;Pääsalasana&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tämä on salasana, joka suojaa uuta Keepass-tietokantaasi. Älä epäröi valita pitkää salasaa, jonka on oltava 10 - 15 merkkiä pitkä. Käytä sekoittaen isoja ja pieniä kirjaimia, numeroita ja erikoismerkkejä. Toista salasanasi kentässä &quot;Varmista salasana&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaa automaattisesti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valitse tämä asetus, mikäli haluat ownKeepass-ohjelman automaattisesti avaavan tässä antamasi tietokantatiedoston, kun seuraavan kerran käynnistät sovelluksen. Tässä tapauksessa sinut ohjataan suoraan sivulle, jossa voit antaa tietokannan pääsalasanan.&lt;br&gt;&lt;br&gt;
+</translation>
     </message>
 </context>
 <context>
@@ -624,7 +629,7 @@
     <message>
         <location filename="../../Sailfish/qml/help/HelpDatabaseSettings.qml" line="32"/>
         <source>On this dialog you can change database internal settings of your currently opened Keepass database file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can type in a new master password for the Keepass database. Please note that if you forgot your master password there is no way to recover the password. It is not saved in the Keepass database and there is also no backdoor to open the database without your password. Furhtermore make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Master Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Encryption currently in use&lt;/b&gt;&lt;br&gt;&lt;br&gt;This is the encryption algorithm which is used to cipher the Keepass database content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key transformation rounds&lt;/b&gt;&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for your Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tällä sivulla voi muuttaa parhaillaan avoinna olevan Keepass-tietokannan sisäisiä asetuksia&lt;br&gt;&lt;br&gt;&lt;b&gt;Pääsalasana&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä uusi Keepass-tietokannan pääsalasana. Muista, että mikäli unohdat pääsalasan, ei ole mitään mahdollisuuksia saada sitä selville. Sitä ei talleteta tietokantatiedostoon eikä ole olemassa mitään takaporttia mistä sen voisi noutaa tai avata tietokanta ilman sitä. Älä epäröi valita pitkää salasaa, jonka on oltava 10 - 15 merkkiä pitkä. Käytä sekoittaen isoja ja pieniä kirjaimia, numeroita ja erikoismerkkejä. Toista salasanasi kentässä &quot;Varmista salasana&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Käytetty salausmenetelmä&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tämä on salausalgoritmi jota käytetään koodaamaan Keepass-tietokannan sisältö.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaimen muunnoskerrat&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aseta oletusarvo avaimen laskennalliselle muunnoskerroille. Tämä arvo määrittelee salauslaskentojen määrän pääsalasanalle. Asetuksen muuttamisella on suora vaikutus tietokannan avausaikaan, mikä vaatii sen salauksen purkamista. Toisaalta asettamalla tämä arvo suureksi, voidaan tietokannasta tehdä kestävämpi suoria hyökkäyksiä vastaan. Hyvänä kompromissina suorituskyvyn ja turvallisuuden välillä voidaan pitää lukuarvoa, joka sallii tietokannan avaamisen noin sekunnissa puhelimessasi.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
