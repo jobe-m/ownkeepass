@@ -47,13 +47,13 @@ Page {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "License"
+                text: qsTr("License")
             }
 
             SilicaLabel {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
-                text: "This program is free software: you can redistribute it and/or modify it under the \
+                text: qsTr("This program is free software: you can redistribute it and/or modify it under the \
 terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of \
 the License or (at your option) any later version.<br><br>\
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even \
@@ -107,9 +107,8 @@ GPLv2<br><br>\
 Yarrow pseudo-randomness generator:<br>\
 Copyright (C) 2007 Tarek Saidi<br>\
 Copyright (C) 2001 Niels Müler<br>\
-GPLv2<br>"
+GPLv2<br>")
                 onLinkActivated: {
-                    console.log(link + " link activated")
                     Qt.openUrlExternally(link)
                 }
             }

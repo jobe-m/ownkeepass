@@ -59,7 +59,7 @@ Dialog {
             spacing: Theme.paddingLarge
 
             DialogHeader {
-                acceptText: "Save"
+                acceptText: qsTr("Save")
             }
 
             SilicaLabel {
@@ -70,9 +70,9 @@ Dialog {
             TextField {
                 id: groupTitleTextField
                 width: parent.width
-                label: "Name of group"
+                label: qsTr("Name of group")
                 text: ""
-                placeholderText: "Set name of group"
+                placeholderText: qsTr("Set name of group")
                 errorHighlight: text === ""
                 EnterKey.enabled: !errorHighlight
                 EnterKey.highlighted: !errorHighlight

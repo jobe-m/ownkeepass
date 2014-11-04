@@ -29,7 +29,7 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "This page is showing password entries and sub-groups of your \
+    text: qsTr("This page is showing password entries and sub-groups of your \
 Keepass database. A password entry finally stores the bits of information \
 secretly in the database.<br><br>\
 \
@@ -39,5 +39,5 @@ check the \"Extended list view\" switch.<br><br>\
 \
 A search bar can be enabled from pulley menu which is shown on top of \
 the password group list. With it you can search only in the specific password \
-group and all its sub-groups.<br><br>"
+group and all its sub-groups.<br><br>")
 }

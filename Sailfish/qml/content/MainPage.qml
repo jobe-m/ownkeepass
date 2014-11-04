@@ -127,7 +127,7 @@ Page {
             SilicaLabel {
                 enabled: confirmPasswordField.enabled
                 visible: enabled
-                text: "Type in a master password for locking your new Keepass Password Safe:" + "\n"
+                text: qsTr("Type in a master password for locking your new Keepass Password Safe:") + "\n"
             }
 
             Item {
@@ -141,8 +141,8 @@ Page {
                     anchors.right: showPasswordButton.left
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    label: "Master password"
-                    placeholderText: "Enter master password"
+                    label: qsTr("Master password")
+                    placeholderText: qsTr("Enter master password")
                     text: ""
                     EnterKey.highlighted: simpleModeView.state !== "CREATE_NEW_DATABASE" && text !== ""
                     EnterKey.iconSource: text.length === 0 ?
@@ -191,7 +191,7 @@ Page {
                 echoMode: TextInput.Password
                 visible: enabled
                 errorHighlight: passwordField.text !== text
-                label: "Confirm master password"
+                label: qsTr("Confirm master password")
                 placeholderText: label
                 text: ""
                 EnterKey.enabled: confirmPasswordField.text.length === 0 || (passwordField.text.length !== 0 && !errorHighlight)
@@ -223,7 +223,7 @@ Page {
                     id: showMoreInfoSwitch
                     enabled: moreInfoColumn.enabled
                     visible: enabled
-                    text: "Show more details"
+                    text: qsTr("Show more details")
                 }
 
                 Column {
@@ -239,7 +239,7 @@ Page {
                         font.pixelSize: Theme.fontSizeExtraSmall
                         color: Theme.secondaryColor
                         horizontalAlignment: Text.AlignLeft
-                        text: "Database path and name"
+                        text: qsTr("Database path and name")
                     }
 
                     Label {
@@ -259,7 +259,7 @@ Page {
                         color: Theme.secondaryColor
                         horizontalAlignment: Text.AlignLeft
                         text: internal.keyFilePath.length !== 0 ?
-                                  "Key file path and name" : "No key file used"
+                                  qsTr("Key file path and name") : qsTr("No key file used")
                     }
 
                     Label {
@@ -332,7 +332,7 @@ Page {
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Create new database"
+                text: qsTr("Create new database")
                 onClicked: {
                     pageStack.push(queryPasswordDialogComponent,
                                    {
@@ -351,7 +351,7 @@ Page {
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Open database"
+                text: qsTr("Open database")
                 onClicked: {
                     pageStack.push(queryPasswordDialogComponent,
                                    {
@@ -370,7 +370,7 @@ Page {
             SectionHeader {
                 enabled: !recentDatabaseModel.isEmpty
                 visible: enabled
-                text: "Recent databases"
+                text: qsTr("Recent databases")
             }
         }
 
@@ -506,17 +506,17 @@ Page {
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
-                            Global.env.infoPopup.show(Global.error, "Permission error", "Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'.")
+                            Global.env.infoPopup.show(Global.error, qsTr("Permission error"), qsTr("Cannot create path for your Keepass database file. You may need to set directory permissions for user \'nemo\'."))
                             masterGroupsPage.closeOnError()
                         }
                     } else {
                         // Key file should be used but does not exist
-                        Global.env.infoPopup.show(Global.warning, "Key file error", "Database path is ok, but your key file is not present. Please check path to key file: " + completeKeyFilePath)
+                        Global.env.infoPopup.show(Global.warning, qsTr("Key file error"), qsTr("Database path is ok, but your key file is not present. Please check path to key file:") + " " + completeKeyFilePath)
                         masterGroupsPage.closeOnError()
                     }
                 } else {
                     // Database file already exists
-                    Global.env.infoPopup.show(Global.info, "Database file already exists", "Please specify another path and name for your Keepass database or delete the old database within a file browser.")
+                    Global.env.infoPopup.show(Global.info, qsTr("Database file already exists"), qsTr("Please specify another path and name for your Keepass database or delete the old database within a file browser."))
                     masterGroupsPage.closeOnError()
                 }
             } else {
@@ -528,12 +528,12 @@ Page {
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
-                        Global.env.infoPopup.show(Global.warning, "Key file error", "Database path is ok, but your key file is not present. Please check path to key file: " + completeKeyFilePath)
+                        Global.env.infoPopup.show(Global.warning, qsTr("Key file error"), qsTr("Database path is ok, but your key file is not present. Please check path to key file:") + " " + completeKeyFilePath)
                         masterGroupsPage.closeOnError()
                     }
                 } else {
                     // Database file does not exist
-                    Global.env.infoPopup.show(Global.warning, "Database file error", "Database file does not exist. Please check path to database file: " + completeDbFilePath)
+                    Global.env.infoPopup.show(Global.warning, qsTr("Database file error"), qsTr("Database file does not exist. Please check path to database file:") + " " + completeDbFilePath)
                     masterGroupsPage.closeOnError()
                 }
             }
@@ -576,7 +576,7 @@ Page {
 
         function databasePasswordChangedHandler() {
             console.log("Database password changed successfully")
-            Global.env.infoPopup.show(Global.info, "Password changed", "The master password of your database was changed successfully.", 3)
+            Global.env.infoPopup.show(Global.info, qsTr("Password changed"), qsTr("The master password of your database was changed successfully."), 3)
 
         }
 
@@ -585,39 +585,39 @@ Page {
             // show error to the user
             switch (result) {
             case KdbDatabase.RE_DB_CLOSE_FAILED:
-                Global.env.infoPopup.show(Global.error, "Internal database error", "Could not close the previous opened database. Please try again. Error message: " + errorMsg)
+                Global.env.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Could not close the previous opened database. Please try again. Error message:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_SETKEY_ERROR:
-                Global.env.infoPopup.show(Global.error, "Internal key error", "The following error occured during opening of database: " + errorMsg)
+                Global.env.infoPopup.show(Global.error, qsTr("Internal key error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_SETKEYFILE_ERROR:
-                Global.env.infoPopup.show(Global.error, "Internal key file error", "The following error occured during opening of database: " + errorMsg)
+                Global.env.infoPopup.show(Global.error, qsTr("Internal key file error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_LOAD_ERROR:
-                Global.env.infoPopup.show(Global.warning, "Error loading database", errorMsg + " Please try again.")
+                Global.env.infoPopup.show(Global.warning, qsTr("Error loading database"), errorMsg + " " + qsTr("Please try again."))
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_FILE_ERROR:
-                Global.env.infoPopup.show(Global.error, "Internal file error", "The following error occured during creation of database: " + errorMsg)
+                Global.env.infoPopup.show(Global.error, qsTr("Internal file error"), qsTr("The following error occured during creation of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR:
-                Global.env.infoPopup.show(Global.error, "Internal database error", "Creation of backup group failed with following error: " + errorMsg)
+                Global.env.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Creation of backup group failed with following error:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_SAVE_ERROR:
-                Global.env.infoPopup.show(Global.error, "Save database error", "Could not save database with following error: " + errorMsg)
+                Global.env.infoPopup.show(Global.error, qsTr("Save database error"), qsTr("Could not save database with following error:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_ALREADY_CLOSED:
-                Global.env.infoPopup.show(Global.error, "Database error", "Database was already closed. Nothing serious, but please submit a bug report.")
+                Global.env.infoPopup.show(Global.error, qsTr("Database error"), qsTr("Database was already closed. Nothing serious, but please submit a bug report."))
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_CLOSE_FAILED:
-                Global.env.infoPopup.show(Global.error, "Database error", "An error occured on closing your database: " + errorMsg)
+                Global.env.infoPopup.show(Global.error, qsTr("Database error"), qsTr("An error occured on closing your database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             default:
@@ -1014,9 +1014,9 @@ Page {
         id: queryDialogForUnsavedChangesComponent
         QueryDialog {
             id: queryDialogForUnsavedChanges
-            headerAcceptText: "Yes"
-            headerCancelText: "No"
-            headerTitleText: "Unsaved changes"
+            headerAcceptText: qsTr("Yes")
+            headerCancelText: qsTr("No")
+            headerTitleText: qsTr("Unsaved changes")
             message: ""
 
             onAccepted: {
@@ -1044,22 +1044,22 @@ Page {
                 State {
                     name: "QUERY_FOR_ENTRY"
                     PropertyChanges { target: queryDialogForUnsavedChanges
-                        message: "Do you want to save changes to the password entry?" }
+                        message: qsTr("Do you want to save changes to the password entry?") }
                 },
                 State {
                     name: "QUERY_FOR_GROUP"
                     PropertyChanges { target: queryDialogForUnsavedChanges
-                        message: "Do you want to save changes to the password group?" }
+                        message: qsTr("Do you want to save changes to the password group?") }
                 },
                 State {
                     name: "QUERY_FOR_DATABASE_SETTINGS"
                     PropertyChanges { target: queryDialogForUnsavedChanges
-                        message: "Do you want to save changes to database settings?" }
+                        message: qsTr("Do you want to save changes to database settings?") }
                 },
                 State {
                     name: "QUERY_FOR_APP_SETTINGS"
                     PropertyChanges { target: queryDialogForUnsavedChanges
-                        message: "Do you want to save changed settings values?" }
+                        message: qsTr("Do you want to save changed settings values?") }
                 }
             ]
         }

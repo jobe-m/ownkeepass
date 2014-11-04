@@ -29,7 +29,7 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "ownKeepass is a password safe application with the purpose to \
+    text: qsTr("ownKeepass is a password safe application with the purpose to \
 protect sensible data like passwords for web pages, credit card numbers, \
 PINs, TANs and other bits of information which should be kept secret. All that information \
 is saved in a database file which is encrypted and stored locally on your phone. To open \
@@ -92,5 +92,5 @@ of ownKeepass:<br>\
 [2] <a href=\"www.keepassx.org\">www.keepassX.org</a><br>\
 [3] <a href=\"http://technet.microsoft.com/en-us/library/cc722487.aspx\">10 Immutable Laws of Security</a><br>\
 [4] <a href=\"http://www.keepass.info/download.html\">www.keepass.info/download.html</a><br><br>\
-"
+")
 }

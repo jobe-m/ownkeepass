@@ -36,7 +36,7 @@ Page {
     property bool initOnPageConstruction: true
     // ID of the keepass group which should be shown
     property int groupId: 0
-    property string pageTitle: "Password groups"
+    property string pageTitle: qsTr("Password groups")
 
     function init() {
         if (ownKeepassSettings.showSearchBar) {
@@ -69,20 +69,13 @@ Page {
     property string __saveState: state
     function __showLoadErrorPage() {
         console.log("ERROR: Could not load")
-        Global.env.infoPopup.show(Global.error, "Load Error", "Could not load all items from Keepass database file. That's strange.")
+        Global.env.infoPopup.show(Global.error, qsTr("Load Error"), qsTr("Could not load all items from Keepass database file. That's strange."))
     }
 
     function __showSaveErrorPage() {
         console.log("ERROR: Could not save")
-        Global.env.infoPopup.show(Global.error, "Save Error", "Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.")
+        Global.env.infoPopup.show(Global.error, qsTr("Save Error"), qsTr("Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed."))
     }
-
-//    Rectangle {
-//        id: rectState
-//        width: 20
-//        height: 20
-//        opacity: 0.5
-//    }
 
     Item {
         id: headerBox
@@ -112,7 +105,7 @@ Page {
             width: parent.width
             opacity: enabled ? 1.0 : 0.0
             height: enabled ? enabledHeight : 0
-            placeholderText: "Search"
+            placeholderText: qsTr("Search")
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: listView.focus = true
 
@@ -169,7 +162,7 @@ Page {
 
         ViewSearchPlaceholder {
             id: searchNoEntriesFoundPlaceholder
-            text: "No entries found"
+            text: qsTr("No entries found")
             onClicked: {
                 searchField.forceActiveFocus()
             }
@@ -187,7 +180,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     enabled: busyIndicator.running
                     visible: busyIndicator.running
-                    text: "Decrypting Keepass database"
+                    text: qsTr("Decrypting Keepass database")
                     color: Theme.secondaryHighlightColor
                     font.pixelSize: Theme.fontSizeExtraLarge
                     Behavior on opacity { FadeAnimation {} }
@@ -208,9 +201,9 @@ Page {
         SilicaViewPlaceholder {
             id: viewPlaceholder
             image.source: "../../wallicons/wall-group.png"
-            text: "Group is empty"
-            hintText: groupId === 0 ? "Pull down to add password groups" :
-                                      "Pull down to add password groups or entries"
+            text: qsTr("Group is empty")
+            hintText: groupId === 0 ? qsTr("Pull down to add password groups") :
+                                      qsTr("Pull down to add password groups or entries")
         }
 
         DatabaseMenu {
@@ -254,7 +247,7 @@ Page {
         }
 
         ApplicationMenu {
-            helpContent: groupId === 0 ? "MasterGroupsPage" : "SubGroupsPage"
+            helpContent: groupId === 0 ? qsTr("MasterGroupsPage") : qsTr("SubGroupsPage")
         }
 
         VerticalScrollDecorator {}
@@ -294,7 +287,7 @@ Page {
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: true }
-            PropertyChanges { target: pageHeader; title: "Loading" }
+            PropertyChanges { target: pageHeader; title: qsTr("Loading") }
             PropertyChanges { target: searchField; enabled: false }
             // Don't set cover state here, it will overwrite cover state from Query password dialog
 
@@ -310,11 +303,11 @@ Page {
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? "Password groups" :
+                title: groupId === 0 ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: false }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? "Password groups" :
+                title: groupId === 0 ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -330,12 +323,12 @@ Page {
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? "Password groups" :
+                title: groupId === 0 ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
                 enabled: !kdbListModel.isEmpty }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? "Password groups" :
+                title: groupId === 0 ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -350,12 +343,12 @@ Page {
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? "Search in all groups" :
-                                       "Search in " + groupsAndEntriesPage.pageTitle }
+                title: groupId === 0 ? qsTr("Search in all groups") :
+                                       qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: true }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? "Search in all groups" :
-                                       "Search in " + groupsAndEntriesPage.pageTitle
+                title: groupId === 0 ? qsTr("Search in all groups") :
+                                       qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle
                 state: "SEARCH_VIEW" }
 
 //            PropertyChanges { target: rectState; color: "green" }
@@ -377,18 +370,18 @@ Page {
                 // restore group title and state in cover page
                 switch (state) {
                 case "SEARCH_BAR_HIDDEN":
-                    applicationWindow.cover.title = groupId === 0 ? "Password groups" :
+                    applicationWindow.cover.title = groupId === 0 ? qsTr("Password groups") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break
                 case "SEARCH_BAR_SHOWN":
-                    applicationWindow.cover.title = groupId === 0 ? "Password groups" :
+                    applicationWindow.cover.title = groupId === 0 ? qsTr("Password groups") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break
                 case "SEARCHING":
-                    applicationWindow.cover.title = groupId === 0 ? "Search in all groups" :
-                                                                    "Search in " + groupsAndEntriesPage.pageTitle
+                    applicationWindow.cover.title = groupId === 0 ? qsTr("Search in all groups") :
+                                                                    qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "SEARCH_VIEW"
                     break
                 default:

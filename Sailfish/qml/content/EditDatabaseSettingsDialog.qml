@@ -61,7 +61,7 @@ Dialog {
         VerticalScrollDecorator {}
 
         ApplicationMenu {
-            helpContent: "DatabaseSettings"
+            helpContent: qsTr("Database Settings")
             disableSettingsItem: true
         }
 
@@ -71,12 +71,12 @@ Dialog {
             spacing: Theme.paddingLarge
 
             DialogHeader {
-                acceptText: "Save"
-                title: "Database Settings"
+                acceptText: qsTr("Save")
+                title: qsTr("Database Settings")
             }
 
             SilicaLabel {
-                text: "Change settings of your currently opened Keepass database here"
+                text: qsTr("Change settings of your currently opened Keepass database here")
             }
 
             Column {
@@ -84,7 +84,7 @@ Dialog {
                 spacing: 0
 
                 SilicaLabel {
-                    text: "Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!"
+                    text: qsTr("Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!")
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }
@@ -94,9 +94,9 @@ Dialog {
                     width: parent.width
                     inputMethodHints: Qt.ImhNoPredictiveText
                     echoMode: TextInput.Password
-                    label: "Master password"
+                    label: qsTr("Master password")
                     text: ""
-                    placeholderText: "Change master password"
+                    placeholderText: qsTr("Change master password")
                     EnterKey.enabled: text.length > 0
                     EnterKey.highlighted: text.length > 0
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -120,9 +120,9 @@ Dialog {
                 inputMethodHints: Qt.ImhNoPredictiveText
                 echoMode: TextInput.Password
                 errorHighlight: databaseMasterPassword.text !== text
-                label: !errorHighlight ? "Master password confirmed" : "Confirm master password"
+                label: !errorHighlight ? qsTr("Master password confirmed") : qsTr("Confirm master password")
                 text: ""
-                placeholderText: "Confirm master password"
+                placeholderText: qsTr("Confirm master password")
                 EnterKey.enabled: databaseMasterPassword.text.length > 0 && !errorHighlight
                 EnterKey.highlighted: databaseMasterPassword.text.length > 0 && !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
@@ -136,7 +136,7 @@ Dialog {
             ComboBox {
                 id: databaseCryptAlgorithm
                 width: parent.width
-                label: "Encryption currently in use:"
+                label: qsTr("Encryption currently in use:")
                 currentIndex: Global.env.kdbDatabase.cryptAlgorithm
                 menu: ContextMenu {
                     MenuItem { text: "AES/Rijndael" }
@@ -159,7 +159,7 @@ Dialog {
                     inputMethodHints: Qt.ImhFormattedNumbersOnly
                     validator: RegExpValidator { regExp: /^[0-9]*$/ }
                     errorHighlight: Number(text) === 0
-                    label: "Key transformation rounds"
+                    label: qsTr("Key transformation rounds")
                     placeholderText: label
                     text: Global.env.kdbDatabase.keyTransfRounds
                     EnterKey.enabled: !errorHighlight
@@ -173,7 +173,7 @@ Dialog {
                 }
 
                 SilicaLabel {
-                    text: "Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks"
+                    text: qsTr("Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks")
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }

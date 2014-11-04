@@ -31,13 +31,13 @@ PushUpMenu {
     property string helpContent: ""
 
     MenuItem {
-        text: "About"
+        text: qsTr("About")
         onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
     }
     MenuItem {
         enabled: helpContent !== ""
         visible: enabled
-        text: "Help"
+        text: qsTr("Help")
         onClicked: pageStack.push(Qt.resolvedUrl("../help/HelpPage.qml"), {
                                       helpPageContent: helpContent
                                   })
@@ -45,7 +45,7 @@ PushUpMenu {
     MenuItem {
         enabled: !disableSettingsItem
         visible: enabled
-        text: "Settings"
+        text: qsTr("Settings")
         onClicked: pageStack.push(Global.env.mainPage.editSettingsDialogComponent)
     }
 }

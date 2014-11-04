@@ -47,14 +47,14 @@ Page {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "Change log"
+                text: qsTr("Change log")
             }
 
             SilicaLabel {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: "\
+                text: qsTr("\
 <b>v1.0.21 Bugfix Release</b>\
 <ul>\
 <li>Search was not working on Sailfish OS 1.1.0.38 Uitukka</li>\
@@ -130,22 +130,11 @@ other details (adjustable with \"Expert user mode\" in application settings)</li
 <li>Database settings (master password, encryption and key transformation rounds) can be adjusted</li>\
 <li>Some nice graphics and Sailfish like UI behaviour</li>\
 </ul>\
-"
+")
                 onLinkActivated: {
-                    console.log(link + " link activated")
                     Qt.openUrlExternally(link)
                 }
             }
         }
     }
 }
-
-/*
-<b>v1.0. </b>\
-<ul>\
-<li></li>\
-<li></li>\
-<li></li>\
-</ul>\
-<br>\
-*/

@@ -93,21 +93,21 @@ Dialog {
             spacing: Theme.paddingLarge
 
             DialogHeader {
-                acceptText: "Save"
+                acceptText: qsTr("Save")
             }
 
             SilicaLabel {
-                text: editEntryDetailsDialog.createNewEntry ? "Create new password entry:" :
-                                                              "Edit password entry:"
+                text: editEntryDetailsDialog.createNewEntry ? qsTr("Create new password entry:") :
+                                                              qsTr("Edit password entry:")
             }
 
             TextField {
                 id: entryTitleTextField
                 width: parent.width
                 inputMethodHints: Qt.ImhSensitiveData
-                label: "Title"
+                label: qsTr("Title")
                 text: ""
-                placeholderText: "Set title (mandatory)"
+                placeholderText: qsTr("Set title (mandatory)")
                 errorHighlight: text.length === 0
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -124,9 +124,9 @@ Dialog {
                 id: entryUrlTextField
                 width: parent.width
                 inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhSensitiveData
-                label: "URL"
+                label: qsTr("URL")
                 text: ""
-                placeholderText: "Set URL"
+                placeholderText: qsTr("Set URL")
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUsernameTextField.focus = true
                 onTextChanged: {
@@ -141,9 +141,9 @@ Dialog {
                 id: entryUsernameTextField
                 width: parent.width
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData
-                label: "Username"
+                label: qsTr("Username")
                 text: ""
-                placeholderText: "Set username"
+                placeholderText: qsTr("Set username")
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryPasswordTextField.focus = true
                 onTextChanged: {
@@ -165,9 +165,9 @@ Dialog {
                     anchors.right: showPasswordButton.left
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    label: "Password"
+                    label: qsTr("Password")
                     text: ""
-                    placeholderText: "Set password"
+                    placeholderText: qsTr("Set password")
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
                     onTextChanged: {
@@ -207,9 +207,9 @@ Dialog {
                     anchors.right: generatePasswordButton.left
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    label: "Verify password"
+                    label: qsTr("Verify password")
                     text: ""
-                    placeholderText: "Verify password"
+                    placeholderText: qsTr("Verify password")
                     errorHighlight: entryPasswordTextField.text !== text
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: {
@@ -242,9 +242,9 @@ Dialog {
             TextArea {
                 id: entryCommentTextField
                 width: parent.width
-                label: "Comment"
+                label: qsTr("Comment")
                 text: ""
-                placeholderText: "Set comment"
+                placeholderText: qsTr("Set comment")
                 onTextChanged: {
                     editEntryDetailsDialog.commentChanged =
                             (editEntryDetailsDialog.origComment !== text ? true : false)

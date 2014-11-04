@@ -51,7 +51,7 @@ Page {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "Help"
+                text: qsTr("Help")
             }
 
             Loader {

@@ -46,7 +46,7 @@ CoverBackground {
         // copy entry detail into clipboard, round robin -> username, password, empty clipboard
         switch (clipboardState) {
         case Global.constants.clipboardUnused:
-            infoTextView.text = "Username copied into clipboard"
+            infoTextView.text = qsTr("Username copied into clipboard")
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()
@@ -56,7 +56,7 @@ CoverBackground {
             triggerClearClipboard()
             break
         case Global.constants.clipboardUsernameDropped:
-            infoTextView.text = "Password copied into clipboard"
+            infoTextView.text = qsTr("Password copied into clipboard")
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()
@@ -66,7 +66,7 @@ CoverBackground {
             triggerClearClipboard()
             break
         case Global.constants.clipboardPasswordDropped:
-            infoTextView.text = "Clipboard empty now"
+            infoTextView.text = qsTr("Clipboard now empty")
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()
@@ -185,7 +185,7 @@ CoverBackground {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeTiny
-                    text: entryUsernameLabel.text !== "" ? "Username" : "No username"
+                    text: entryUsernameLabel.text !== "" ? qsTr("Username") : qsTr("No username")
                 }
 
                 Label {
@@ -211,7 +211,7 @@ CoverBackground {
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.fontSizeTiny
-                    text: entryPasswordLabel.text !== "" ? "Password" : "No password"
+                    text: entryPasswordLabel.text !== "" ? qsTr("Password") : qsTr("No password")
                 }
 
                 Label {
@@ -300,49 +300,49 @@ CoverBackground {
             PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "No database opened" }
+            PropertyChanges { target: coverTextLabel; text: qsTr("No database opened") }
         },
         State {
             name: "CREATE_NEW_DATABASE"
             PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "Create new database" }
+            PropertyChanges { target: coverTextLabel; text: qsTr("Create new database") }
         },
         State {
             name: "OPEN_DATABASE"
             PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "Open database" }
+            PropertyChanges { target: coverTextLabel; text: qsTr("Open database") }
         },
         State {
             name: "DATABASE_LOCKED"
             PropertyChanges { target: actionLockDatabaseOnly; enabled: false }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "Database is locked" }
+            PropertyChanges { target: coverTextLabel; text: qsTr("Database is locked") }
         },
         State {
             name: "UNSAVED_CHANGES"
             PropertyChanges { target: actionLockDatabaseOnly; enabled: ownKeepassSettings.lockDatabaseFromCover }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "You have unsaved changes pending" }
+            PropertyChanges { target: coverTextLabel; text: qsTr("You have unsaved changes pending") }
         },
         State {
             name: "GROUPS_VIEW"
             PropertyChanges { target: actionLockDatabaseOnly; enabled: ownKeepassSettings.lockDatabaseFromCover }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "View password group" }
+            PropertyChanges { target: coverTextLabel; text: qsTr("View password group") }
         },
         State {
             name: "SEARCH_VIEW"
             PropertyChanges { target: actionLockDatabaseOnly; enabled: ownKeepassSettings.lockDatabaseFromCover }
             PropertyChanges { target: actionCopyOnly; enabled: false }
             PropertyChanges { target: actionLockDatabaseAndCopy; enabled: false }
-            PropertyChanges { target: coverTextLabel; text: "Search for password entries" }
+            PropertyChanges { target: coverTextLabel; text: qsTr("Search for password entries") }
         },
         State {
             name: "ENTRY_VIEW"
@@ -353,7 +353,7 @@ CoverBackground {
             PropertyChanges { target: actionLockDatabaseAndCopy
                 enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover }
             PropertyChanges { target: coverTextLabel
-                text: !ownKeepassSettings.showUserNamePasswordOnCover ? "Username and password are hidden" : "" }
+                text: !ownKeepassSettings.showUserNamePasswordOnCover ? qsTr("Username and password are hidden") : "" }
             StateChangeScript {
                 name: "resetClipboardState"
                 script: {

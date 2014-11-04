@@ -40,8 +40,8 @@ Page {
             spacing: Theme.paddingLarge
 
             PageHeaderExtended {
-                title: "About ownKeepass"
-                subTitle: "Password Safe"
+                title: qsTr("About ownKeepass")
+                subTitle: qsTr("Password Safe")
             }
 
             Image {
@@ -53,7 +53,7 @@ Page {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: "ownKeepass is a Keepass 1.x compatible password safe application"
+                text: qsTr("ownKeepass is a Keepass 1.x compatible password safe application")
             }
 
             SilicaLabel {
@@ -61,7 +61,7 @@ Page {
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: "Version " + ownKeepassSettings.version + "<br>\
+                text: qsTr("Version") + " " + ownKeepassSettings.version + "<br>\
 Copyright &#169; 2013-2014 Marko Koschak<br>"
             }
 
@@ -69,14 +69,12 @@ Copyright &#169; 2013-2014 Marko Koschak<br>"
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: "ownKeepass is distributed under the terms \
-of the GNU General Public License (GPL) version 2 or (at your \
-option) version 3."
+                text: qsTr("ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.")
             }
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "View license"
+                text: qsTr("View license")
                 onClicked: pageStack.push(Qt.resolvedUrl("LicensePage.qml"))
             }
 
@@ -91,16 +89,15 @@ option) version 3."
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: "<b>Credits</b><br><br>\
-Jolla for continuing where Nokia stopped<br>\
-The KeepassX project<br>\
-Petri Mäkijärvi for good hints and testing<br><br>\
+                text: qsTr("<b>Credits</b><br><br>\
+Jolla (for continuing where Nokia stopped)<br>\
+The KeepassX project (for a Qt implementation of Keepass)<br>\
+Petri Mäkijärvi (testing)<br><br>\
 \
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
-I hope you have as much fun using ownKeepass as I had creating it!"
+I hope you have as much fun using ownKeepass as I had creating it!")
                 onLinkActivated: {
-                    console.log(link + " link activated")
                     Qt.openUrlExternally(link)
                 }
             }
