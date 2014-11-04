@@ -47,7 +47,7 @@ Page {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "License"
+                text: qsTr("License")
             }
 
             SilicaLabel {
@@ -109,7 +109,6 @@ Copyright (C) 2007 Tarek Saidi<br>\
 Copyright (C) 2001 Niels Müler<br>\
 GPLv2<br>"
                 onLinkActivated: {
-                    console.log(link + " link activated")
                     Qt.openUrlExternally(link)
                 }
             }

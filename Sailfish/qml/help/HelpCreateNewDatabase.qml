@@ -29,7 +29,7 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "On this page you can create a new database where ownKeepass will store your sensitive data.<br><br>\
+    text: qsTr("On this page you can create a new database where ownKeepass will store your sensitive data.<br><br>\
 \
 <b>Database location</b><br><br>\
 \
@@ -80,5 +80,5 @@ characters and use a mixture of small and big letters, numbers and special chara
 <b>Open automatically</b><br><br>\
 \
 Check this option if you want that ownKeepass automatically opens this database again when you start the application the \
-next time. You will be forwarded directly to the password query dialog.<br><br>"
+next time. You will be forwarded directly to the password query dialog.<br><br>")
 }

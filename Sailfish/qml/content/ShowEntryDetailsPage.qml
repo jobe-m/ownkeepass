@@ -54,15 +54,15 @@ Page {
             enabled: !entryUrlTextArea.enabled && !entryUsernameTextArea.enabled &&
                      !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
             image.source: "../../wallicons/wall-key.png"
-            text: "No content"
-            hintText: "Pull down to add URL, username, password and comment"
+            text: qsTr("No content")
+            hintText: qsTr("Pull down to add URL, username, password and comment")
         }
 
         PullDownMenu {
             MenuItem {
                 enabled: entryUrlTextArea.text !== ""
                 visible: enabled
-                text: "Copy URL"
+                text: qsTr("Copy URL")
                 onClicked: {
                     Clipboard.text = entryUrlTextArea.text
                 }
@@ -71,7 +71,7 @@ Page {
             MenuItem {
                 enabled: entryUsernameTextArea.text !== ""
                 visible: enabled
-                text: "Copy username"
+                text: qsTr("Copy username")
                 onClicked: {
                     Clipboard.text = entryUsernameTextArea.text
                     // trigger cleaning of clipboard after 10 seconds
@@ -82,7 +82,7 @@ Page {
             MenuItem {
                 enabled: entryPasswordTextField.text !== ""
                 visible: enabled
-                text: "Copy password"
+                text: qsTr("Copy password")
                 onClicked: {
                     Clipboard.text = entryPasswordTextField.text
                     // trigger cleaning of clipboard after 10 seconds
@@ -91,7 +91,7 @@ Page {
             }
 
             MenuItem {
-                text: "Edit password entry"
+                text: qsTr("Edit password entry")
                 onClicked: {
                     pageStack.push(editEntryDetailsDialogComponent,
                                    { "entryId": showEntryDetailsPage.entryId })
@@ -126,7 +126,7 @@ Page {
                 enabled: text !== ""
                 visible: text !== ""
                 readOnly: true
-                label: "URL"
+                label: qsTr("URL")
                 color: Theme.primaryColor
             }
 
@@ -136,7 +136,7 @@ Page {
                 enabled: text !== ""
                 visible: text !== ""
                 readOnly: true
-                label: "Username"
+                label: qsTr("Username")
                 color: Theme.primaryColor
             }
 
@@ -154,7 +154,7 @@ Page {
                     opacity: 1.0
                     readOnly: true
                     echoMode: TextInput.Password
-                    label: "Password"
+                    label: qsTr("Password")
                     color: Theme.primaryColor
                     Behavior on opacity { FadeAnimation {} }
                 }
@@ -166,7 +166,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     opacity: 0.0
                     readOnly: true
-                    label: "Password"
+                    label: qsTr("Password")
                     text: entryPasswordTextField.text
                     color: Theme.primaryColor
                     Behavior on opacity { FadeAnimation {} }
@@ -196,7 +196,7 @@ Page {
                 enabled: text !== ""
                 visible: text !== ""
                 readOnly: true
-                label: "Comment"
+                label: qsTr("Comment")
                 color: Theme.primaryColor
             }
         }

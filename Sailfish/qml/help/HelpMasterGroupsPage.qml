@@ -29,7 +29,7 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "This page is showing main password groups of your Keepass database. \
+    text: qsTr("This page is showing main password groups of your Keepass database. \
 A password group is a container for password entries. Thus in order to store a \
 password entry you need to create at least one group first.<br><br>\
 \
@@ -41,5 +41,5 @@ A search bar can be enabled from pulley menu which is shown on top of the \
 password group list. With it you can search for password entries throughout the \
 whole Keepass database. If you want that the search bar automatically gets focus \
 when you open the Keepass database please open the setting page and check the \
-corresponding switch.<br><br>"
+corresponding switch.<br><br>")
 }

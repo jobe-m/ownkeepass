@@ -47,7 +47,7 @@ Page {
             SilicaLabel {
                 font.pixelSize: Theme.fontSizeLarge
                 font.bold: true
-                text: "Change log"
+                text: qsTr("Change log")
             }
 
             SilicaLabel {
@@ -132,20 +132,9 @@ other details (adjustable with \"Expert user mode\" in application settings)</li
 </ul>\
 "
                 onLinkActivated: {
-                    console.log(link + " link activated")
                     Qt.openUrlExternally(link)
                 }
             }
         }
     }
 }
-
-/*
-<b>v1.0. </b>\
-<ul>\
-<li></li>\
-<li></li>\
-<li></li>\
-</ul>\
-<br>\
-*/

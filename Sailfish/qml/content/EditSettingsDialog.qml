@@ -70,7 +70,7 @@ Dialog {
         VerticalScrollDecorator {}
 
         ApplicationMenu {
-            helpContent: "Settings"
+            helpContent: qsTr("Settings")
             disableSettingsItem: true
         }
 
@@ -80,17 +80,17 @@ Dialog {
             spacing: Theme.paddingLarge
 
             DialogHeader {
-                acceptText: "Save"
-                cancelText: "Discard"
-                title: "ownKeepass Settings"
+                acceptText: qsTr("Save")
+                cancelText: qsTr("Discard")
+                title: qsTr("ownKeepass Settings")
             }
 
             SilicaLabel {
-                text: "Change default settings of your ownKeepass application here"
+                text: qsTr("Change default settings of your ownKeepass application here")
             }
 
             SectionHeader {
-                text: "Database"
+                text: qsTr("Database")
             }
 
             Column {
@@ -98,7 +98,7 @@ Dialog {
                 spacing: 0
 
                 SilicaLabel {
-                    text: "This is the encryption which will be used as default when creating a new Keepass database:"
+                    text: qsTr("This is the encryption which will be used as default when creating a new Keepass database:")
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }
@@ -106,7 +106,7 @@ Dialog {
                 ComboBox {
                     id: defaultCryptAlgorithm
                     width: editSettingsDialog.width
-                    label: "Default encryption:"
+                    label: qsTr("Default encryption:")
                     currentIndex: ownKeepassSettings.defaultCryptAlgorithm
                     menu: ContextMenu {
                         MenuItem { text: "AES/Rijndael" }
@@ -130,7 +130,7 @@ Dialog {
                     inputMethodHints: Qt.ImhFormattedNumbersOnly
                     validator: RegExpValidator { regExp: /^[0-9]*$/ }
                     errorHighlight: Number(text) === 0
-                    label: "Default key transformation rounds"
+                    label: qsTr("Default key transformation rounds")
                     placeholderText: label
                     text: String(ownKeepassSettings.defaultKeyTransfRounds)
                     EnterKey.enabled: !errorHighlight
@@ -144,21 +144,21 @@ Dialog {
                 }
 
                 SilicaLabel {
-                    text: "Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks"
+                    text: qsTr("Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks")
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.secondaryColor
                 }
             }
 
             SectionHeader {
-                text: "Security"
+                text: qsTr("Security")
             }
 
             TextSwitch {
                 id: clearClipboard
                 checked: ownKeepassSettings.clearClipboard !== 0
-                text: "Clear clipboard"
-                description: "If enabled the clipboard will be cleared after 10 seconds when username or password is copied"
+                text: qsTr("Clear clipboard")
+                description: qsTr("If enabled the clipboard will be cleared after 10 seconds when username or password is copied")
                 onCheckedChanged: {
                     // This workaround makes it possible to change this simple switch later with a slider setting which will control timer value
                     var clearClipboardTimer = clearClipboard.checked ? 10 : 0
@@ -176,7 +176,7 @@ Dialog {
                 width: parent.width - Theme.paddingLarge * 2
                 anchors.horizontalCenter: parent.horizontalCenter
                 valueText: calculateInactivityTime(value)
-                label: "Inactivity lock time"
+                label: qsTr("Inactivity lock time")
                 /*
                   0 = immediately
                   1 = 5 seconds
@@ -193,27 +193,27 @@ Dialog {
                 function calculateInactivityTime(value) {
                     switch (value) {
                     case 0:
-                        return "Immediately"
+                        return qsTr("Immediately")
                     case 1:
-                        return "5 seconds"
+                        return "5 " + qsTr("seconds")
                     case 2:
-                        return "10 seconds"
+                        return "10 " + qsTr("seconds")
                     case 3:
-                        return "30 seconds"
+                        return "30 " + qsTr("seconds")
                     case 4:
-                        return "1 minute"
+                        return "1 " + qsTr("minute")
                     case 5:
-                        return "2 minutes"
+                        return "2 " + qsTr("minutes")
                     case 6:
-                        return "5 minutes"
+                        return "5 " + qsTr("minutes")
                     case 7:
-                        return "10 minutes"
+                        return "10 " + qsTr("minutes")
                     case 8:
-                        return "30 minutes"
+                        return "30 " + qsTr("minutes")
                     case 9:
-                        return "60 minutes"
+                        return "60 " + qsTr("minutes")
                     case 10:
-                        return "Unlimited"
+                        return qsTr("Unlimited")
                     }
                 }
                 onValueChanged: {
@@ -223,14 +223,14 @@ Dialog {
             }
 
             SectionHeader {
-                text: "UI settings"
+                text: qsTr("UI settings")
             }
 
             TextSwitch {
                 id: showUserNamePasswordInListView
                 checked: ownKeepassSettings.showUserNamePasswordInListView
-                text: "Extended list liew"
-                description: "If you switch this on username and password are shown below entry title in list views"
+                text: qsTr("Extended list liew")
+                description: qsTr("If you switch this on username and password are shown below entry title in list views")
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordInListViewChanged =
                             showUserNamePasswordInListView.checked !== ownKeepassSettings.showUserNamePasswordInListView
@@ -241,8 +241,8 @@ Dialog {
             TextSwitch {
                 id: focusSearchBarOnStartup
                 checked: ownKeepassSettings.focusSearchBarOnStartup
-                text: "Focus search bar"
-                description: "If enabled the search bar will be focused on application startup"
+                text: qsTr("Focus search bar")
+                description: qsTr("If enabled the search bar will be focused on application startup")
                 onCheckedChanged: {
                     editSettingsDialog.focusSearchBarOnStartupChanged =
                             focusSearchBarOnStartup.checked !== ownKeepassSettings.focusSearchBarOnStartup
@@ -251,14 +251,14 @@ Dialog {
             }
 
             SectionHeader {
-                text: "Cover settings"
+                text: qsTr("Cover settings")
             }
 
             TextSwitch {
                 id: showUserNamePasswordOnCover
                 checked: ownKeepassSettings.showUserNamePasswordOnCover
-                text: "Show username and password"
-                description: "Switching this on will show username and password of the currently opened Keepass entry on the cover"
+                text: qsTr("Show username and password")
+                description: qsTr("Switching this on will show username and password of the currently opened Keepass entry on the cover")
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordOnCoverChanged =
                             showUserNamePasswordOnCover.checked !== ownKeepassSettings.showUserNamePasswordOnCover
@@ -269,8 +269,8 @@ Dialog {
             TextSwitch {
                 id: lockDatabaseFromCover
                 checked: ownKeepassSettings.lockDatabaseFromCover
-                text: "Lock database from cover"
-                description: "This lets you lock the database with the left cover action"
+                text: qsTr("Lock database from cover")
+                description: qsTr("This lets you lock the database with the left cover action")
                 onCheckedChanged: {
                     editSettingsDialog.lockDatabaseFromCoverChanged =
                             lockDatabaseFromCover.checked !== ownKeepassSettings.lockDatabaseFromCover
@@ -281,8 +281,8 @@ Dialog {
             TextSwitch {
                 id: copyNpasteFromCover
                 checked: ownKeepassSettings.copyNpasteFromCover
-                text: "Copy'n'paste from cover"
-                description: "Enable this to copy username and password into clipboard from cover"
+                text: qsTr("Copy'n'paste from cover")
+                description: qsTr("Enable this to copy username and password into clipboard from cover")
                 onCheckedChanged: {
                     editSettingsDialog.copyNpasteFromCoverChanged =
                             copyNpasteFromCover.checked !== ownKeepassSettings.copyNpasteFromCover
@@ -291,14 +291,14 @@ Dialog {
             }
 
             SectionHeader {
-                text: "Advanced settings"
+                text: qsTr("Advanced settings")
             }
 
             TextSwitch {
                 id: expertMode
                 checked: !ownKeepassSettings.simpleMode
-                text: "Expert user mode"
-                description: "This enables advanced functionality like handling multiple databases on main page"
+                text: qsTr("Expert user mode")
+                description: qsTr("This enables advanced functionality like handling multiple databases on main page")
                 onCheckedChanged: {
                     expertModeChanged = checked === ownKeepassSettings.simpleMode
                     updateCoverState()

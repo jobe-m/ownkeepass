@@ -113,6 +113,7 @@ OTHER_FILES += \
     qml/content/KdbListItem.qml \
     qml/help/HelpPage.qml \
     qml/content/GroupsAndEntriesPage.qml \
+    qml/content/ChangeLogPage.qml \
     qml/content/EditSettingsDialog.qml \
     qml/content/EditGroupDetailsDialog.qml \
     qml/content/EditEntryDetailsDialog.qml \
@@ -138,4 +139,24 @@ OTHER_FILES += \
     qml/help/HelpSubGroupsPage.qml \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
-    qml/content/ChangeLogPage.qml
+    qml/content/ChangeLogPage.qml \
+    ../common/translations/ownKeepass.ts
+
+# to disable building translations every time, comment out the
+# following CONFIG line
+CONFIG += sailfishapp_i18n
+TRANSLATIONS += \
+    ../common/translations/ownKeepass.ts
+#    ../common/translations/ownKeepass-de_DE.ts \
+#    ../common/translations/ownKeepass-sv_SE.ts
+
+#lupdate_only {
+#    SOURCES = \
+#        qml/*.qml \
+#        qml/common/*.qml \
+#        qml/content/*.qml \
+#        qml/cover/*.qml \
+#        qml/help/*.qml
+#    TRANSLATIONS = \
+#        ../common/translations/ownKeepass.ts
+#}

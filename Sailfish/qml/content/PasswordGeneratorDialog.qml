@@ -69,7 +69,7 @@ Dialog {
             spacing: Theme.paddingLarge
 
             DialogHeader {
-                acceptText: "Accept"
+                acceptText: qsTr("Accept")
             }
 
             Item {
@@ -83,8 +83,8 @@ Dialog {
                     anchors.right: showPasswordButton.left
                     echoMode: TextInput.Password
                     readOnly: true
-                    label: "Generated password"
-                    placeholderText: "No char group selected"
+                    label: qsTr("Generated password")
+                    placeholderText: qsTr("No char group selected")
                     errorHighlight: text.length === 0
                     color: Theme.primaryColor
                 }
@@ -113,7 +113,7 @@ Dialog {
                 maximumValue: 64
                 stepSize: 1
                 valueText: value
-                label: "Length"
+                label: qsTr("Length")
                 value: ownKeepassSettings.pwGenLength
                 onValueChanged: {
                     passwordGenerator.length = value
@@ -175,7 +175,7 @@ Dialog {
             TextSwitch {
                 id: excludeLookAlike
                 checked: ownKeepassSettings.pwGenExcludeLookAlike
-                text: "Exclude look-alike characters"
+                text: qsTr("Exclude look-alike characters")
                 onCheckedChanged: {
                     passwordGenerator.excludeLookAlike = checked
                     generatedPasswordField.text = passwordGenerator.generatePassword()
@@ -186,7 +186,7 @@ Dialog {
             TextSwitch {
                 id: charFromEveryGroup
                 checked: ownKeepassSettings.pwGenCharFromEveryGroup
-                text: "Ensure that the password contains characters from every group"
+                text: qsTr("Ensure that the password contains characters from every group")
                 onCheckedChanged: {
                     passwordGenerator.charFromEveryGroup = checked
                     generatedPasswordField.text = passwordGenerator.generatePassword()
@@ -196,7 +196,7 @@ Dialog {
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Generate"
+                text: qsTr("Generate")
                 onClicked: {
                     generatedPasswordField.text = passwordGenerator.generatePassword()
                 }

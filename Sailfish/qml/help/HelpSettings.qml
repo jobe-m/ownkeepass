@@ -29,7 +29,7 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "On this page you can change default settings of the ownKeepass application.<br><br>\
+    text: qsTr("On this page you can change default settings of the ownKeepass application.<br><br>\
 \
 <b>Database</b><br><br>\
 \
@@ -79,6 +79,5 @@ content.<br><br>\
 \
 With \"Expert user mode\" you can enable an advanced mode for database handling. \
 If you check this switch you are able to open different Keepass databases and see the last \
-five opened Keepass databases in a list on the main page for fast access.<br><br>\
-"
+five opened Keepass databases in a list on the main page for fast access.<br><br>")
 }

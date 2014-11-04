@@ -29,7 +29,7 @@ Label {
     font.pixelSize: Theme.fontSizeSmall
     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     linkColor: Theme.highlightColor
-    text: "On this dialog you can change database internal settings of your currently opened Keepass \
+    text: qsTr("On this dialog you can change database internal settings of your currently opened Keepass \
 database file.<br><br>\
 \
 <b>Master password</b><br><br>\
@@ -50,5 +50,5 @@ on the master password. Adjusting this value has direct effect on the time \
 needed to decrypt the database on loading. But setting this value higher makes \
 the database more robust against brute force attacks. \
 As a good compromise between security and usability you should adjust the value so that opening \
-the database takes one second on your phone.<br><br>"
+the database takes one second on your phone.<br><br>")
 }

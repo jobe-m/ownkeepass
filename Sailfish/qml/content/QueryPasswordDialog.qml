@@ -86,27 +86,27 @@ additional security for your Keepass database when storing it online!")
                 spacing: 0
 
                 SilicaLabel {
-                    text: "Specify location, path and file name of your new Keepass database:"
+                    text: qsTr("Specify location, path and file name of your new Keepass database:")
                 }
 
                 ComboBox {
                     id: dbFileLocationComboBox
                     width: parent.width
-                    label: "Database location:"
+                    label: qsTr("Database location:")
                     currentIndex: 0
                     menu: ContextMenu {
-                        MenuItem { text: "Documents on phone" }
-                        MenuItem { id: dbLocSdCard; text: "SD card" }
-                        MenuItem { text: "Android storage" }
-                        MenuItem { text: "Sailbox local storage" }
+                        MenuItem { text: qsTr("Documents on phone") }
+                        MenuItem { id: dbLocSdCard; text: qsTr("SD card") }
+                        MenuItem { text: qsTr("Android storage") }
+                        MenuItem { text: qsTr("Sailbox local storage") }
                     }
                     onCurrentIndexChanged: {
                         // Warn about usage of Android storage
                         if (currentIndex === 2) {
-                            applicationWindow.infoPopupRef.show(Global.info, "Warning", "Please be aware that using the \
+                            applicationWindow.infoPopupRef.show(Global.info, qsTr("Warning"), qsTr("Please be aware that using the \
 Android storage might cause problems due to different file ownership and permissions. If modifications to your \
 Keepass database are not saved make sure the file is writable for user \"nemo\". So if you don't know how to handle \
-file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.")
+file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that."))
                         }
                         // When opening database from dropbox storage show warning if no key file is used
                         else if ((queryPasswordDialog.state === "OpenNewDatabase") &&
@@ -118,11 +118,11 @@ file permissions in the terminal on your Jolla phone it would be wise not to use
                                  (currentIndex === 3)) {
                             useKeyFileSwitch.enabled = false
                             useKeyFileSwitch.checked = true
-                            applicationWindow.infoPopupRef.show(Global.info, "Advice", "You choosed to place your new \
+                            applicationWindow.infoPopupRef.show(Global.info, qsTr("Advice"), qsTr("You choosed to place your new \
 Keepass database in the Dropbox cloud. Please make sure to use a unique password for Dropbox \
 and enable two-step verification to increase security of your online storage! \
 ownKeepass does enforce to use a locally stored key \
-file when storing your Keepass database online.")
+file when storing your Keepass database online."))
                         } else {
                             useKeyFileSwitch.enabled = true
                         }
@@ -133,8 +133,8 @@ file when storing your Keepass database online.")
                     id: dbFilePathField
                     width: parent.width
                     inputMethodHints: Qt.ImhUrlCharactersOnly
-                    label: "Path and name of database file"
-                    placeholderText: "Set path and name of database file"
+                    label: qsTr("Path and name of database file")
+                    placeholderText: qsTr("Set path and name of database file")
                     errorHighlight: text === ""
                     EnterKey.enabled: text.length > 0
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -157,8 +157,8 @@ file when storing your Keepass database online.")
                 TextSwitch {
                     id: useKeyFileSwitch
                     checked: false
-                    text: "Use key file"
-                    description: "Switch this on to use a key file together with a master password for your new Keepass database"
+                    text: qsTr("Use key file")
+                    description: qsTr("Switch this on to use a key file together with a master password for your new Keepass database")
                     onCheckedChanged: {
                         // When opening database from dropbox storage show warning if no key file is used
                         if ((queryPasswordDialog.state === "OpenNewDatabase") &&
@@ -180,12 +180,12 @@ file when storing your Keepass database online.")
                     ComboBox {
                         id: keyFileLocationComboBox
                         width: parent.width
-                        label: "Key file location:"
+                        label: qsTr("Key file location:")
                         currentIndex: 0
                         menu: ContextMenu {
-                            MenuItem { text: "Documents on phone" }
-                            MenuItem { id: keyFileLocSdCard; text: "SD card" }
-                            MenuItem { text: "Android storage" }
+                            MenuItem { text: qsTr("Documents on phone") }
+                            MenuItem { id: keyFileLocSdCard; text: qsTr("SD card") }
+                            MenuItem { text: qsTr("Android storage") }
                         }
                     }
 
@@ -193,8 +193,8 @@ file when storing your Keepass database online.")
                         id: keyFilePathField
                         width: parent.width
                         inputMethodHints: Qt.ImhUrlCharactersOnly
-                        label: "Path and name of key file"
-                        placeholderText: "Set path and name of key file"
+                        label: qsTr("Path and name of key file")
+                        placeholderText: qsTr("Set path and name of key file")
                         errorHighlight: text === ""
                         EnterKey.enabled: text.length > 0
                         EnterKey.iconSource: "image://theme/icon-m-enter-next"
@@ -219,8 +219,8 @@ file when storing your Keepass database online.")
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
                     errorHighlight: text.length === 0
-                    label: "Password"
-                    placeholderText: "Enter password"
+                    label: qsTr("Password")
+                    placeholderText: qsTr("Enter password")
                     text: ""
                     EnterKey.enabled: !errorHighlight
                     EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
@@ -266,7 +266,7 @@ file when storing your Keepass database online.")
                 echoMode: TextInput.Password
                 visible: enabled
                 errorHighlight: passwordField.text !== text
-                label: "Confirm password"
+                label: qsTr("Confirm password")
                 placeholderText: label
                 text: ""
                 EnterKey.enabled: !passwordField.errorHighlight && !errorHighlight
@@ -284,7 +284,7 @@ file when storing your Keepass database online.")
 
             TextSwitch {
                 id: openAutomaticallySwitch
-                text: "Open automatically"
+                text: qsTr("Open automatically")
             }
         }
     }
@@ -299,12 +299,12 @@ file when storing your Keepass database online.")
     states: [
         State {
             name: "CreateNewDatabase"
-            PropertyChanges { target: queryPasswordDialogHeader; acceptText: "Create" }
-            PropertyChanges { target: queryPasswordDialogHeader; title: "New Password Safe" }
-            PropertyChanges { target: dialogTitle; text: "New Password Safe" }
+            PropertyChanges { target: queryPasswordDialogHeader; acceptText: qsTr("Create") }
+            PropertyChanges { target: queryPasswordDialogHeader; title: qsTr("New Password Safe") }
+            PropertyChanges { target: dialogTitle; text: qsTr("New Password Safe") }
             PropertyChanges { target: dbFileColumn; enabled: true }
             PropertyChanges { target: keyFileColumn; enabled: true }
-            PropertyChanges { target: passwordTitle; text: "Type in a master password for locking your new Keepass Password Safe:" }
+            PropertyChanges { target: passwordTitle; text: qsTr("Type in a master password for locking your new Keepass Password Safe:") }
             PropertyChanges { target: confirmPasswordField; enabled: true }
             PropertyChanges { target: queryPasswordDialog
                 canNavigateForward: !passwordField.errorHighlight &&
@@ -318,11 +318,11 @@ file when storing your Keepass database online.")
         },
         State {
             name: "OpenNewDatabase"
-            PropertyChanges { target: queryPasswordDialogHeader; acceptText: "Open" }
-            PropertyChanges { target: queryPasswordDialogHeader; title: "Password Safe" }
+            PropertyChanges { target: queryPasswordDialogHeader; acceptText: qsTr("Open") }
+            PropertyChanges { target: queryPasswordDialogHeader; title: qsTr("Password Safe") }
             PropertyChanges { target: dbFileColumn; enabled: true }
             PropertyChanges { target: keyFileColumn; enabled: true }
-            PropertyChanges { target: passwordTitle; text: "Type in master password for unlocking your Keepass Password Safe:" }
+            PropertyChanges { target: passwordTitle; text: qsTr("Type in master password for unlocking your Keepass Password Safe:") }
             PropertyChanges { target: confirmPasswordField; enabled: false }
             PropertyChanges { target: queryPasswordDialog
                 canNavigateForward: !passwordField.errorHighlight &&
@@ -335,11 +335,11 @@ file when storing your Keepass database online.")
         },
         State {
             name: "OpenRecentDatabase"
-            PropertyChanges { target: queryPasswordDialogHeader; acceptText: "Open" }
-            PropertyChanges { target: queryPasswordDialogHeader; title: "Password Safe" }
+            PropertyChanges { target: queryPasswordDialogHeader; acceptText: qsTr("Open") }
+            PropertyChanges { target: queryPasswordDialogHeader; title: qsTr("Password Safe") }
             PropertyChanges { target: dbFileColumn; enabled: false }
             PropertyChanges { target: keyFileColumn; enabled: false }
-            PropertyChanges { target: passwordTitle; text: "Type in master password for unlocking your Keepass Password Safe:" }
+            PropertyChanges { target: passwordTitle; text: qsTr("Type in master password for unlocking your Keepass Password Safe:") }
             PropertyChanges { target: confirmPasswordField; enabled: false }
             PropertyChanges { target: queryPasswordDialog; canNavigateForward: passwordField.text !== "" }
             PropertyChanges { target: passwordField; focus: true }

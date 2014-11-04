@@ -41,7 +41,7 @@ PullDownMenu {
     MenuItem {
         enabled: enableSearchMenuItem
         visible: enabled
-        text: isTextHideSearch ? "Hide search" : "Show search"
+        text: isTextHideSearch ? qsTr("Hide search") : qsTr("Show search")
         onClicked: {
             searchClicked()
         }
@@ -59,7 +59,7 @@ PullDownMenu {
     MenuItem {
         enabled: enableNewPasswordGroupsMenuItem
         visible: enabled
-        text: "New password group"
+        text: qsTr("New password group")
         onClicked: {
             newPasswordGroupClicked()
         }
@@ -68,7 +68,7 @@ PullDownMenu {
     MenuItem {
         enabled: enableNewPasswordEntryMenuItem
         visible: enabled
-        text: "New password entry"
+        text: qsTr("New password entry")
         onClicked: {
             newPasswordEntryClicked()
         }
