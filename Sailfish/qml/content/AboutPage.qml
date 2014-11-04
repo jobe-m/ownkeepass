@@ -92,11 +92,12 @@ Copyright &#169; 2013-2014 Marko Koschak<br>"
                 text: qsTr("<b>Credits</b><br><br>\
 Jolla (for continuing where Nokia stopped)<br>\
 The KeepassX project (for a Qt implementation of Keepass)<br>\
-Petri Mäkijärvi (testing)<br><br>\
+Petri Mäkijärvi (testing)<br>\
+Åke Engelbrektson (Swedish translation)<br><br>\
 \
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
-I hope you have as much fun using ownKeepass as I had creating it!")
+I hope you have as much fun using ownKeepass as I have creating it!")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }
