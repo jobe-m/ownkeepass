@@ -70,12 +70,15 @@ password_generator_lib.files += \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgcrypt.so.11 \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgpg-error.so.0
+
 common_files.path = /usr/share/$${TARGET}
 password_generator_qmldir.path = /usr/share/$${TARGET}/lib/harbour/ownkeepass/PasswordGenerator
 password_generator_lib.path = /usr/share/$${TARGET}/lib
-INSTALLS += common_files \
-            password_generator_lib \
-            password_generator_qmldir
+
+INSTALLS += \
+    common_files \
+    password_generator_lib \
+    password_generator_qmldir
 
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
@@ -146,17 +149,4 @@ OTHER_FILES += \
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
-    ../common/translations/ownKeepass.ts
-#    ../common/translations/ownKeepass-de_DE.ts \
-#    ../common/translations/ownKeepass-sv_SE.ts
-
-#lupdate_only {
-#    SOURCES = \
-#        qml/*.qml \
-#        qml/common/*.qml \
-#        qml/content/*.qml \
-#        qml/cover/*.qml \
-#        qml/help/*.qml
-#    TRANSLATIONS = \
-#        ../common/translations/ownKeepass.ts
-#}
+    translations/harbour-ownkeepass_sv_SE.ts

@@ -55,6 +55,11 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.22 Translation update</b>\
+<ul>\
+<li>Added very first translation: Swedish</li>\
+</ul>\
+<br>\
 <b>v1.0.21 Bugfix Release</b>\
 <ul>\
 <li>Search was not working on Sailfish OS 1.1.0.38 Uitukka</li>\
