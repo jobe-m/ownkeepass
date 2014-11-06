@@ -114,7 +114,7 @@ Page {
 
             PageHeaderExtended {
                 title: "ownKeepass"
-                subTitle: "Password Safe [" + DebugLocale + "]"
+                subTitle: "Password Safe"
             }
 
             Image {

@@ -142,11 +142,11 @@ OTHER_FILES += \
     qml/help/HelpSubGroupsPage.qml \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
-    qml/content/ChangeLogPage.qml \
-    ../common/translations/ownKeepass.ts
+    qml/content/ChangeLogPage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
-    translations/harbour-ownkeepass_sv_SE.ts
+    translations/harbour-ownkeepass_sv_SE.ts \
+    translations/harbour-ownkeepass_fi_FI.ts

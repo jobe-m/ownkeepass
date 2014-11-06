@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.ownkeepass.KeepassX1 1.0
 import "../common"
 
 Page {
@@ -72,16 +73,48 @@ Copyright &#169; 2013-2014 Marko Koschak<br>"
                 text: qsTr("ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.")
             }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("View license")
-                onClicked: pageStack.push(Qt.resolvedUrl("LicensePage.qml"))
+            Row {
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.paddingLarge
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.paddingLarge
+                height: Theme.itemSizeMedium + Theme.paddingMedium
+
+                Button {
+                    anchors.bottom: parent.bottom
+                    width: parent.width / 2
+                    text: "License"
+                    onClicked: pageStack.push(Qt.resolvedUrl("LicensePage.qml"))
+                }
+
+                Button {
+                    anchors.bottom: parent.bottom
+                    width: parent.width / 2
+                    text: "Change log"
+                    onClicked: pageStack.push(Qt.resolvedUrl("ChangeLogPage.qml"))
+                }
             }
 
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: "View change log"
-                onClicked: pageStack.push(Qt.resolvedUrl("ChangeLogPage.qml"))
+            Row {
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.paddingLarge
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.paddingLarge
+                height: Theme.itemSizeMedium + Theme.paddingMedium
+
+                Button {
+                    anchors.bottom: parent.bottom
+                    width: parent.width / 2
+                    text: qsTr("Translate")
+                    onClicked: Qt.openUrlExternally("https://www.transifex.com/projects/p/jobe_m-ownKeepass/")
+                }
+
+                Button {
+                    anchors.bottom: parent.bottom
+                    width: parent.width / 2
+                    text: qsTr("Report bugs")
+                    onClicked: Qt.openUrlExternally("https://github.com/jobe-m/ownkeepass/issues")
+                }
             }
 
             SilicaLabel {
@@ -92,12 +125,13 @@ Copyright &#169; 2013-2014 Marko Koschak<br>"
                 text: qsTr("<b>Credits</b><br><br>\
 Jolla (for continuing where Nokia stopped)<br>\
 The KeepassX project (for a Qt implementation of Keepass)<br>\
-Petri Mäkijärvi (testing)<br>\
+Petri Mäkijärvi (Finnish translation and testing)<br>\
 Åke Engelbrektson (Swedish translation)<br><br>\
 \
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
-I hope you have as much fun using ownKeepass as I have creating it!")
+I hope you have as much fun using ownKeepass as I have creating it!" + "<br><br>\
+[Current system locale: " + DebugLocale + "]")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }

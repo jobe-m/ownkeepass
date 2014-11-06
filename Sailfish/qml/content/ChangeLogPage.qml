@@ -57,7 +57,8 @@ Page {
                 text: "\
 <b>v1.0.22 Translation update</b>\
 <ul>\
-<li>Added very first translation: Swedish</li>\
+<li>Added Swedish translation</li>\
+<li>Added Finnish translation</li>\
 </ul>\
 <br>\
 <b>v1.0.21 Bugfix Release</b>\

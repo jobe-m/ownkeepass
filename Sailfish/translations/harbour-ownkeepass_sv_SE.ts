@@ -4,39 +4,43 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="43"/>
+        <location filename="../qml/content/AboutPage.qml" line="44"/>
         <source>About ownKeepass</source>
         <translation>Om ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="44"/>
+        <location filename="../qml/content/AboutPage.qml" line="45"/>
         <source>Password Safe</source>
         <translation>Säker lösenordsförvaring</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="56"/>
+        <location filename="../qml/content/AboutPage.qml" line="57"/>
         <source>ownKeepass is a Keepass 1.x compatible password safe application</source>
         <translation>ownKeepass är en Keepass 1.x-kompatibel, säker lösenordsförvaring</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="64"/>
+        <location filename="../qml/content/AboutPage.qml" line="65"/>
         <source>Version</source>
         <translation>Version</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="72"/>
+        <location filename="../qml/content/AboutPage.qml" line="73"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
         <translation>ownKeepass distribueras under vilkoren för GNU General Public License (GPL) version 2 eller (om så önskas) version 3.</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="77"/>
-        <source>View license</source>
-        <translation>Visa licens</translation>
+        <location filename="../qml/content/AboutPage.qml" line="108"/>
+        <source>Translate</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="92"/>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri M��kij��rvi (testing)&lt;br&gt;��ke Engelbrektson (Swedish translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
+        <location filename="../qml/content/AboutPage.qml" line="115"/>
+        <source>Report bugs</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View license</source>
+        <translation type="obsolete">Visa licens</translation>
     </message>
     <message>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (testing)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I had creating it!</source>
