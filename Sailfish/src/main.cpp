@@ -63,14 +63,14 @@ int main(int argc, char *argv[])
     app->setApplicationName(appName);
 
     QString locale = QLocale::system().name();
-    QTranslator translator;
-    translator.load("harbour-ownkeepass_" + locale, SailfishApp::pathTo(QString("translations")).toLocalFile());
+//    QTranslator translator;
+//    translator.load("harbour-ownkeepass_" + locale, SailfishApp::pathTo(QString("translations")).toLocalFile());
 
-    qDebug() << "Locale: " << locale;
-    qDebug() << "path: " << SailfishApp::pathTo(QString("translations")).toLocalFile();
+//    qDebug() << "Locale: " << locale;
+//    qDebug() << "path: " << SailfishApp::pathTo(QString("translations")).toLocalFile();
     view->rootContext()->setContextProperty("DebugLocale",QVariant(locale));
 
-    app->installTranslator(&translator);
+//    app->installTranslator(&translator);
 
     // @uri harbour.ownkeepass.KeepassX1
     const char* uri("harbour.ownkeepass.KeepassX1");

@@ -148,5 +148,5 @@ OTHER_FILES += \
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
-    translations/harbour-ownkeepass_sv_SE.ts \
-    translations/harbour-ownkeepass_fi_FI.ts
+    translations/harbour-ownkeepass-sv_SE.ts \
+    translations/harbour-ownkeepass-fi_FI.ts
