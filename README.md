@@ -1,40 +1,37 @@
 ownKeepass
 ==========
 
-STRANGE PROBLEM WITH JOLLA STORE: Currently ownKeepass seems dissapeared from the store. I contacted Jolla already and they are working to get it back in the store.
-
 Status
 ------
 
-Release 1.0.21 will be available shortly in Jolla store! It contains  bugfixes for the new Qt 5.2 based firmware update 1.1.0.39 Uitukka.
+Release 1.0.21 will be available shortly in Jolla store! It contains  bugfixes for the new
+Qt 5.2 based firmware update 1.1.0.39 Uitukka.
 
-Release 1.0.21 is available on [openrepos.net] [7] and through the warehouse app on your Jolla phone, too.
+Release 1.0.22 is available on [openrepos.net] [7] and through the warehouse app on your Jolla phone, too.
+Adding Swedish and Finnish translation.
 
-For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4) or want to try new versions which are not yet in Jolla store have a look [here] [1]
+For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4)
+or want to try new versions which are not yet in Jolla store have a look [here] [1]
 
 No new beta version available.
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
-*   Database open and create dialogs are a bit difficult to use due to free text input for file name and path (if "expert user mode" is used)
+*   Database open and create dialogs are a bit difficult to use due to free text input for
+file name and path (if "expert user mode" is used)
 
 If you found a bug please report it on the issue page. Thanks :)
 
-Roadmap (needs an update)
+Roadmap
 -------
 
-I am planning 3 major updates for ownKeepass to happen somewhere the next time.
+List of planned features for ownKeepass to happen somewhere the next time. Priority
+in descending order.
 
-v 1.1.0
-*   Extend the current functionality by introducing a password generator [Done]
-*   Activate password expiration feature which can remind you to change a specific password. Both features are already known by KeepassX on the desktop.
-
-v 1.2.0
+*   Add file/directory chooser for opening and creating new Keepass databases.
+*   Keepass 2 database support. Planning to reuse database code from [KeepassX 2][3] project.
 *   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
-*   Maybe I add also support for Dropbox.
-
-v 1.3.0
-*   The third major update is about Keepass 2 database support. It has currently the lowest priority because of the parent project [KeepassX 2][3] which is still in alpha phase. I am planning to reuse the database code from it thus will wait a bit longer to let the project mature.
+*   Activate password expiration feature which can remind you to change a specific password.
 
 The status of my todo list for the next release can be looked up [here] [6].
 
@@ -134,7 +131,7 @@ Features (already working)
 
 That's it so far.
 
-18-May-2014
+07-Nov-2014
 
 Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
