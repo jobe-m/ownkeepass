@@ -65,6 +65,11 @@
 <context>
     <name>ChangeLogPage</name>
     <message>
+        <location filename="../qml/content/ChangeLogPage.qml" line="44"/>
+        <source>Password Safe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="50"/>
         <source>Change log</source>
         <translation type="unfinished"></translation>
@@ -645,6 +650,11 @@
 <context>
     <name>HelpPage</name>
     <message>
+        <location filename="../qml/help/HelpPage.qml" line="47"/>
+        <source>Password Safe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/help/HelpPage.qml" line="53"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
@@ -682,6 +692,11 @@
 <context>
     <name>LicensePage</name>
     <message>
+        <location filename="../qml/content/LicensePage.qml" line="44"/>
+        <source>Password Safe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/LicensePage.qml" line="50"/>
         <source>License</source>
         <translation type="unfinished"></translation>
@@ -689,6 +704,12 @@
 </context>
 <context>
     <name>MainPage</name>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="117"/>
+        <location filename="../qml/content/MainPage.qml" line="323"/>
+        <source>Password Safe</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="130"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>

@@ -75,6 +75,11 @@
 <context>
     <name>ChangeLogPage</name>
     <message>
+        <location filename="../qml/content/ChangeLogPage.qml" line="44"/>
+        <source>Password Safe</source>
+        <translation>Salasanasovellus</translation>
+    </message>
+    <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="50"/>
         <source>Change log</source>
         <translatorcomment>Not to betranslated by an agreement.</translatorcomment>
@@ -675,6 +680,11 @@ ownKeepass-sovelluksen tietokantaosion lähdekoodi perustuu KeepassX-projektiin 
 <context>
     <name>HelpPage</name>
     <message>
+        <location filename="../qml/help/HelpPage.qml" line="47"/>
+        <source>Password Safe</source>
+        <translation>Salasanasovellus</translation>
+    </message>
+    <message>
         <location filename="../qml/help/HelpPage.qml" line="53"/>
         <source>Help</source>
         <translation>Ohje</translation>
@@ -713,6 +723,11 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>LicensePage</name>
     <message>
+        <location filename="../qml/content/LicensePage.qml" line="44"/>
+        <source>Password Safe</source>
+        <translation>Salasanasovellus</translation>
+    </message>
+    <message>
         <location filename="../qml/content/LicensePage.qml" line="50"/>
         <source>License</source>
         <translatorcomment>Not to betranslated by an agreement.</translatorcomment>
@@ -721,6 +736,12 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 </context>
 <context>
     <name>MainPage</name>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="117"/>
+        <location filename="../qml/content/MainPage.qml" line="323"/>
+        <source>Password Safe</source>
+        <translation>Salasanasovellus</translation>
+    </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="130"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>

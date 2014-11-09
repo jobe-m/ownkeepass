@@ -41,7 +41,7 @@ Page {
 
             PageHeaderExtended {
                 title: "ownKeepass"
-                subTitle: "Password Safe"
+                subTitle: qsTr("Password Safe")
             }
 
             SilicaLabel {
