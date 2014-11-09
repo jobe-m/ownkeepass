@@ -23,12 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Label {
-    verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignLeft
-    font.pixelSize: Theme.fontSizeSmall
-    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-    linkColor: Theme.highlightColor
+HelpPage {
     text: qsTr("On this page you can change default settings of the ownKeepass application.<br><br>\
 \
 <b>Database</b><br><br>\

@@ -23,12 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Label {
-    verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignLeft
-    font.pixelSize: Theme.fontSizeSmall
-    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-    linkColor: Theme.highlightColor
+HelpPage {
     text: qsTr("ownKeepass is a password safe application with the purpose to \
 protect sensible data like passwords for web pages, credit card numbers, \
 PINs, TANs and other bits of information which should be kept secret. All that information \

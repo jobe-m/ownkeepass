@@ -23,12 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Label {
-    verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignLeft
-    font.pixelSize: Theme.fontSizeSmall
-    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-    linkColor: Theme.highlightColor
+HelpPage {
     text: qsTr("This page is showing password entries and sub-groups of your \
 Keepass database. A password entry finally stores the bits of information \
 secretly in the database.<br><br>\

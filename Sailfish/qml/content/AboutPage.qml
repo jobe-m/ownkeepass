@@ -130,8 +130,8 @@ Petri Mäkijärvi (Finnish translation and testing)<br>\
 \
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
-I hope you have as much fun using ownKeepass as I have creating it!" + "<br><br>\
-[Current system locale: " + DebugLocale + "]")
+I hope you have as much fun using ownKeepass as I have creating it!") +
+"<br><br>[Current system locale: " + DebugLocale + "]"
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }

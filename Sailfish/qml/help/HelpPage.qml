@@ -27,8 +27,7 @@ import "../common"
 Page {
     id: helpPage
 
-    // set to default help text showing on main page
-    property string helpPageContent: ""
+    property alias text: helpTextLabel.text
 
     SilicaFlickable {
         anchors.fill: parent
@@ -54,12 +53,9 @@ Page {
                 text: qsTr("Help")
             }
 
-            Loader {
-                x: Theme.paddingLarge
-                width: parent.width - Theme.paddingLarge * 2
-                source: helpPageContent !== "" ? "Help" + helpPageContent + ".qml" : ""
-                asynchronous: true
-                visible: status == Loader.Ready
+            SilicaLabel {
+                id: helpTextLabel
+                linkColor: Theme.highlightColor
             }
         }
     }

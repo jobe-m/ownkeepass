@@ -70,7 +70,7 @@ Dialog {
         VerticalScrollDecorator {}
 
         ApplicationMenu {
-            helpContent: qsTr("Settings")
+            helpContent: "Settings"
             disableSettingsItem: true
         }
 

@@ -247,7 +247,7 @@ Page {
         }
 
         ApplicationMenu {
-            helpContent: groupId === 0 ? qsTr("MasterGroupsPage") : qsTr("SubGroupsPage")
+            helpContent: groupId === 0 ? "MasterGroupsPage" : "SubGroupsPage"
         }
 
         VerticalScrollDecorator {}

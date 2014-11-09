@@ -23,12 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Label {
-    verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignLeft
-    font.pixelSize: Theme.fontSizeSmall
-    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-    linkColor: Theme.highlightColor
+HelpPage {
     text: qsTr("To open an existing Keepass database you need to provide the following details:<br><br>\
 \
 <b>Database location</b><br><br>\

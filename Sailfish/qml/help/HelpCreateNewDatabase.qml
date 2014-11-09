@@ -23,12 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Label {
-    verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignLeft
-    font.pixelSize: Theme.fontSizeSmall
-    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-    linkColor: Theme.highlightColor
+HelpPage {
     text: qsTr("On this page you can create a new database where ownKeepass will store your sensitive data.<br><br>\
 \
 <b>Database location</b><br><br>\

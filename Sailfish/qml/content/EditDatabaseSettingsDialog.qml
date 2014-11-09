@@ -61,7 +61,7 @@ Dialog {
         VerticalScrollDecorator {}
 
         ApplicationMenu {
-            helpContent: qsTr("Database Settings")
+            helpContent: "DatabaseSettings"
             disableSettingsItem: true
         }
 

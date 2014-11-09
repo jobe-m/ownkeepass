@@ -38,9 +38,7 @@ PushUpMenu {
         enabled: helpContent !== ""
         visible: enabled
         text: qsTr("Help")
-        onClicked: pageStack.push(Qt.resolvedUrl("../help/HelpPage.qml"), {
-                                      helpPageContent: helpContent
-                                  })
+        onClicked: pageStack.push(Qt.resolvedUrl("../help/Help" + helpContent + ".qml"))
     }
     MenuItem {
         enabled: !disableSettingsItem

@@ -23,12 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Label {
-    verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignLeft
-    font.pixelSize: Theme.fontSizeSmall
-    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-    linkColor: Theme.highlightColor
+HelpPage {
     text: qsTr("Type in here the password for opening the database. I you choosed a key file it will be automatically \
 loaded from the path you specified earlier. If you get an error on opening the database and you are sure \
 that your provided password is correct check if the key file is still in the same place when you opened the \
