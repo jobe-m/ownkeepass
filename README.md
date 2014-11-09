@@ -1,6 +1,8 @@
 ownKeepass
 ==========
 
+[Bug reports goes here] [8] - [Translations here] [9]
+
 Status
 ------
 
@@ -13,14 +15,10 @@ Adding Swedish and Finnish translation.
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4)
 or want to try new versions which are not yet in Jolla store have a look [here] [1]
 
-No new beta version available.
-
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
 *   Database open and create dialogs are a bit difficult to use due to free text input for
 file name and path (if "expert user mode" is used)
-
-If you found a bug please report it on the issue page. Thanks :)
 
 Roadmap
 -------
@@ -142,6 +140,8 @@ Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
 [6]: https://github.com/jobe-m/ownkeepass/milestones                   "Status of next major ownKeepass releases"
 [7]: https://openrepos.net/content/jobe/ownkeepass
+[8]: https://github.com/jobe-m/ownkeepass/issues
+[9]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
 
 Screenshots
 -----------
