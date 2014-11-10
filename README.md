@@ -1,7 +1,7 @@
 ownKeepass
 ==========
 
-[Bug reports goes here] [8] - [Translations here] [9]
+[Bug reports go here] [8] - [Translations here] [9]
 
 Status
 ------
