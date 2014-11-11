@@ -420,6 +420,11 @@
         <translation>Jos asetettu, leikepöytä tyhjennetään 10 sekunnin kuluttua siitä, kun käyttäjänimi tai salasana on kopioitu</translation>
     </message>
     <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="283"/>
+        <source>Change of language will be active in ownKeepass after restarting the application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="167"/>
         <source>Inactivity lock time</source>
         <translatorcomment>Inactivity=käyttämättömyys,tyhjäkäynti? laitan Automaattinen</translatorcomment>
@@ -484,11 +489,6 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="261"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="283"/>
-        <source>A new language will be active in ownKeepass after restarting the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

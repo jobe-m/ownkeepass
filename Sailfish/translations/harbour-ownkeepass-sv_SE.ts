@@ -421,6 +421,11 @@
         <translation>Vid aktivering, kommer Urklipp att rensas från kopierade användarnamn och lösenord, efter 10 sekunder.</translation>
     </message>
     <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="283"/>
+        <source>Change of language will be active in ownKeepass after restarting the application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="167"/>
         <source>Inactivity lock time</source>
         <translation>Tidslås vid inaktivitet</translation>
@@ -484,11 +489,6 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="261"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="283"/>
-        <source>A new language will be active in ownKeepass after restarting the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
