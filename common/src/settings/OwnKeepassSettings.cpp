@@ -53,6 +53,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_pwGenExcludeLookAlike(true),
     m_pwGenCharFromEveryGroup(true),
     m_clearClipboard(10),
+    m_language(0),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
@@ -136,6 +137,7 @@ void OwnKeepassSettings::loadSettings() {
     m_pwGenExcludeLookAlike          = (m_settings->getValue("pwGen/ExcludeLookAlike", QVariant(m_pwGenExcludeLookAlike))).toBool();
     m_pwGenCharFromEveryGroup        = (m_settings->getValue("pwGen/CharFromEveryGroup", QVariant(m_pwGenCharFromEveryGroup))).toBool();
     m_clearClipboard                 = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toInt();
+    m_language                       = (m_settings->getValue("settings/language", QVariant(m_language))).toInt();
 
     // emit signals for property changes
     emit simpleModeChanged();
@@ -155,6 +157,7 @@ void OwnKeepassSettings::loadSettings() {
     emit pwGenExcludeLookAlikeChanged();
     emit pwGenCharFromEveryGroupChanged();
     emit clearClipboardChanged();
+    emit languageChanged();
 
     // load recent database list
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
@@ -383,6 +386,15 @@ void OwnKeepassSettings::setClearClipboard(int value)
         m_clearClipboard = value;
         m_settings->setValue("settings/clearClipboard", QVariant(m_clearClipboard));
         emit clearClipboardChanged();
+    }
+}
+
+void OwnKeepassSettings::setLanguage(const int value)
+{
+    if ((value < LANG_INVALID) && (value != m_language)) {
+        m_language = value;
+        m_settings->setValue("settings/language", QVariant(m_language));
+        emit languageChanged();
     }
 }
 

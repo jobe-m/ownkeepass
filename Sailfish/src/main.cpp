@@ -62,16 +62,6 @@ int main(int argc, char *argv[])
     app->setOrganizationName(orgName);
     app->setApplicationName(appName);
 
-    QString locale = QLocale::system().name();
-//    QTranslator translator;
-//    translator.load("harbour-ownkeepass_" + locale, SailfishApp::pathTo(QString("translations")).toLocalFile());
-
-//    qDebug() << "Locale: " << locale;
-//    qDebug() << "path: " << SailfishApp::pathTo(QString("translations")).toLocalFile();
-    view->rootContext()->setContextProperty("DebugLocale",QVariant(locale));
-
-//    app->installTranslator(&translator);
-
     // @uri harbour.ownkeepass.KeepassX1
     const char* uri("harbour.ownkeepass.KeepassX1");
     // make the following classes available in QML
@@ -86,6 +76,30 @@ int main(int argc, char *argv[])
     QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath, helper.data()));
     view->rootContext()->setContextProperty("ownKeepassSettings", okpSettings.data());
     view->rootContext()->setContextProperty("recentDatabaseModel", okpSettings->recentDatabaseModel());
+
+    // Check if user has set language explicitly to be used in the app
+    QString locale = QLocale::system().name();
+    view->rootContext()->setContextProperty("DebugLocale",QVariant(locale));
+    QTranslator translator;
+    if (settingsPublic::OwnKeepassSettings::LANG_SYSTEM_DEFAULT != okpSettings->language()) {
+        switch (okpSettings->language()) {
+        case settingsPublic::OwnKeepassSettings::LANG_DE_DE:
+            translator.load("harbour-ownkeepass-de_DE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        case settingsPublic::OwnKeepassSettings::LANG_FI_FI:
+            translator.load("harbour-ownkeepass-fi_FI.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        case settingsPublic::OwnKeepassSettings::LANG_SV_SE:
+            translator.load("harbour-ownkeepass-sv_SE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        default:
+            translator.load("harbour-ownkeepass.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        }
+        // install translator for specific language
+        // otherwise the system language will be set by SailfishApp
+        app->installTranslator(&translator);
+    }
 
     // enable access to qml import libs
     view->engine()->addImportPath(SailfishApp::pathTo("lib/").toLocalFile());

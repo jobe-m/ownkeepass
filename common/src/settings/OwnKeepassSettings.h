@@ -38,6 +38,17 @@ class OwnKeepassSettings : public QObject
     Q_OBJECT
 
 public:
+    Q_ENUMS(eLanguages)
+    enum eLanguages {
+        LANG_SYSTEM_DEFAULT = 0,
+        LANG_EN_GB,
+        LANG_SV_SE,
+        LANG_FI_FI,
+        LANG_DE_DE,
+        LANG_INVALID
+    };
+
+public:
     Q_PROPERTY(QString version READ version NOTIFY versionChanged)
     Q_PROPERTY(bool simpleMode READ simpleMode WRITE setSimpleMode NOTIFY simpleModeChanged)
     Q_PROPERTY(int defaultCryptAlgorithm READ defaultCryptAlgorithm WRITE setDefaultCryptAlgorithm NOTIFY defaultCryptAlgorithmChanged)
@@ -58,6 +69,7 @@ public:
     Q_PROPERTY(bool pwGenExcludeLookAlike READ pwGenExcludeLookAlike WRITE setPwGenExcludeLookAlike NOTIFY pwGenExcludeLookAlikeChanged)
     Q_PROPERTY(bool pwGenCharFromEveryGroup READ pwGenCharFromEveryGroup WRITE setPwGenCharFromEveryGroup NOTIFY pwGenCharFromEveryGroupChanged)
     Q_PROPERTY(int clearClipboard READ clearClipboard WRITE setClearClipboard NOTIFY clearClipboardChanged)
+    Q_PROPERTY(int language READ language WRITE setLanguage NOTIFY languageChanged)
 
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
@@ -113,6 +125,8 @@ public:
     void setPwGenCharFromEveryGroup(const bool value);
     int clearClipboard() const { return m_clearClipboard; }
     void setClearClipboard(const int value);
+    int language() const { return m_language; }
+    void setLanguage(const int value);
 
     void checkSettingsVersion();
 
@@ -154,6 +168,7 @@ signals:
     void pwGenExcludeLookAlikeChanged();
     void pwGenCharFromEveryGroupChanged();
     void clearClipboardChanged();
+    void languageChanged();
 
 private:
     void loadSettings();
@@ -195,6 +210,8 @@ private:
     bool m_pwGenCharFromEveryGroup;
 
     int m_clearClipboard;
+    int m_language;
+
     Settings* m_settings;
 };
 

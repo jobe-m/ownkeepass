@@ -42,6 +42,7 @@ Dialog {
     property bool copyNpasteFromCoverChanged: false
     property bool clearClipboardChanged: false
     property bool expertModeChanged: false
+    property bool languageChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
@@ -52,7 +53,7 @@ Dialog {
                 inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
                 focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
-                copyNpasteFromCoverChanged || clearClipboardChanged) {
+                copyNpasteFromCoverChanged || clearClipboardChanged || languageChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
             applicationWindow.cover.title = "Settings"
         } else {
@@ -154,19 +155,6 @@ Dialog {
                 text: qsTr("Security")
             }
 
-            TextSwitch {
-                id: clearClipboard
-                checked: ownKeepassSettings.clearClipboard !== 0
-                text: qsTr("Clear clipboard")
-                description: qsTr("If enabled the clipboard will be cleared after 10 seconds when username or password is copied")
-                onCheckedChanged: {
-                    // This workaround makes it possible to change this simple switch later with a slider setting which will control timer value
-                    var clearClipboardTimer = clearClipboard.checked ? 10 : 0
-                    editSettingsDialog.clearClipboardChanged = clearClipboardTimer !== ownKeepassSettings.clearClipboard
-                    editSettingsDialog.updateCoverState()
-                }
-            }
-
             Slider {
                 id: inactivityLockTime
                 value: ownKeepassSettings.locktime
@@ -222,6 +210,19 @@ Dialog {
                 }
             }
 
+            TextSwitch {
+                id: clearClipboard
+                checked: ownKeepassSettings.clearClipboard !== 0
+                text: qsTr("Clear clipboard")
+                description: qsTr("If enabled the clipboard will be cleared after 10 seconds when username or password is copied")
+                onCheckedChanged: {
+                    // This workaround makes it possible to change this simple switch later with a slider setting which will control timer value
+                    var clearClipboardTimer = clearClipboard.checked ? 10 : 0
+                    editSettingsDialog.clearClipboardChanged = clearClipboardTimer !== ownKeepassSettings.clearClipboard
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
             SectionHeader {
                 text: qsTr("UI settings")
             }
@@ -247,6 +248,41 @@ Dialog {
                     editSettingsDialog.focusSearchBarOnStartupChanged =
                             focusSearchBarOnStartup.checked !== ownKeepassSettings.focusSearchBarOnStartup
                     editSettingsDialog.updateCoverState()
+                }
+            }
+
+            Column {
+                width: parent.width
+                spacing: 0
+
+                ComboBox {
+                    id: language
+                    width: editSettingsDialog.width
+                    label: qsTr("Language:")
+                    currentIndex: ownKeepassSettings.language
+                    menu: ContextMenu {
+                        // LANG_SYSTEM_DEFAULT = 0
+                        // LANG_EN_GB
+                        // LANG_SV_SE
+                        // LANG_FI_FI
+                        // LANG_DE_DE
+                        MenuItem { text: "System default" }
+                        MenuItem { text: "English" }
+                        MenuItem { text: "Swedish" }
+                        MenuItem { text: "Finnish" }
+//                        MenuItem { text: "German" }
+                    }
+                    onCurrentIndexChanged: {
+                        editSettingsDialog.languageChanged =
+                                language.currentIndex !== ownKeepassSettings.language
+                        editSettingsDialog.updateCoverState()
+                    }
+                }
+
+                SilicaLabel {
+                    text: qsTr("Change of language will be active in ownKeepass after restarting the application")
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
                 }
             }
 
@@ -319,7 +355,8 @@ Dialog {
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
-                    clearClipboard.checked ? 10 : 0)
+                    clearClipboard.checked ? 10 : 0,
+                    language.currentIndex)
         kdbListItemInternal.saveKeepassSettings()
     }
 
@@ -335,7 +372,8 @@ Dialog {
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
-                    clearClipboard.checked ? 10 : 0)
+                    clearClipboard.checked ? 10 : 0,
+                    language.currentIndex)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }

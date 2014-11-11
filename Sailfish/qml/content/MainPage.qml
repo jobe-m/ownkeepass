@@ -689,6 +689,7 @@ Page {
         property bool lockDatabaseFromCover
         property bool copyNpasteFromCover
         property int clearClipboard
+        property int language
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -825,7 +826,7 @@ Page {
 
         function setKeepassSettings(aSimpleMode, aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
-                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard) {
+                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage) {
             simpleMode = aSimpleMode
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
@@ -836,6 +837,7 @@ Page {
             lockDatabaseFromCover = aLockDatabaseFromCover
             copyNpasteFromCover = aCopyNpasteFromCover
             clearClipboard = aClearClipboard
+            language = aLanguage
         }
 
         function checkForUnsavedKeepassSettingsChanges() {
@@ -849,7 +851,8 @@ Page {
                     ownKeepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
                     ownKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
                     ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover ||
-                    ownKeepassSettings.clearClipboard !== clearClipboard) {
+                    ownKeepassSettings.clearClipboard !== clearClipboard ||
+                    ownKeepassSettings.language !== language) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_APP_SETTINGS"})
             }
@@ -866,6 +869,7 @@ Page {
             ownKeepassSettings.lockDatabaseFromCover = lockDatabaseFromCover
             ownKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
             ownKeepassSettings.clearClipboard = clearClipboard
+            ownKeepassSettings.language = language
         }
     }
 
