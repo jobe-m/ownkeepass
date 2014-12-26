@@ -6,11 +6,8 @@ ownKeepass
 Status
 ------
 
-Release 1.0.21 is available in Jolla store! It contains  bugfixes for the new
-Qt 5.2 based firmware update 1.1.0.39 Uitukka. Release 1.0.22 submitted.
-
-Release 1.0.22 is available on [openrepos.net] [7] and through the warehouse app on your Jolla phone, too.
-Adding Swedish and Finnish translation.
+Release 1.0.23 is ready and will be available in jolla store and [openrepos.net] [7].
+It contains a couple of new translations.
 
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4)
 or want to try new versions which are not yet in Jolla store have a look [here] [1]
