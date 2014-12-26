@@ -20,13 +20,11 @@
 **
 ***************************************************************************/
 
-#include <QtDeclarative/qdeclarative.h>
 #include <QDebug>
 
 #include "KdbDatabase.h"
 #include "KdbListModel.h"
 #include "private/KdbInterface.h"
-//#include "private/KdbInterfaceWorker.h"
 
 using namespace std;
 using namespace kpxPublic;
