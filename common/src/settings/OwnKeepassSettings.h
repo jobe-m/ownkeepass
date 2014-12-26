@@ -45,6 +45,9 @@ public:
         LANG_SV_SE,
         LANG_FI_FI,
         LANG_DE_DE,
+        LANG_CS_CZ,
+        LANG_CA,
+        LANG_NL_NL,
         LANG_INVALID
     };
 

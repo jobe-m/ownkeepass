@@ -55,9 +55,10 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.0.23 Bugfixes</b>\
+<b>v1.0.23 Bugfixes and new translations</b>\
 <ul>\
 <li>Translation updates and bugfixes for Finnish and Swedish</li>\
+<li>New translations for German, Catalan, Czech and Dutch. The last two are not finished yet. Help to get them done. Thanks :)</li>\
 </ul>\
 <br>\
 <b>v1.0.22 Translation update</b>\

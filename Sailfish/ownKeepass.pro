@@ -149,4 +149,8 @@ OTHER_FILES += \
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
     translations/harbour-ownkeepass-sv_SE.ts \
-    translations/harbour-ownkeepass-fi_FI.ts
+    translations/harbour-ownkeepass-fi_FI.ts \
+    translations/harbour-ownkeepass-de_DE.ts \
+    translations/harbour-ownkeepass-cs_CZ.ts \
+    translations/harbour-ownkeepass-ca.ts \
+    translations/harbour-ownkeepass-nl_NL.ts

@@ -266,11 +266,18 @@ Dialog {
                         // LANG_SV_SE
                         // LANG_FI_FI
                         // LANG_DE_DE
+                        // LANG_CS_CZ
+                        // LANG_CA
+                        // LANG_NL_NL
+
                         MenuItem { text: "System default" }
                         MenuItem { text: "English" }
                         MenuItem { text: "Swedish" }
                         MenuItem { text: "Finnish" }
-//                        MenuItem { text: "German" }
+                        MenuItem { text: "German" }
+                        MenuItem { text: "Czech" }
+                        MenuItem { text: "Catalan" }
+                        MenuItem { text: "Dutch" }
                     }
                     onCurrentIndexChanged: {
                         editSettingsDialog.languageChanged =

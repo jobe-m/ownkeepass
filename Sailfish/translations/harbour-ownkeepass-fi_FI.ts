@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fi_FI">
+<TS version="2.1" language="fi_FI">
 <context>
     <name>AboutPage</name>
     <message>
@@ -26,8 +26,17 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="73"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translatorcomment>Not to betranslated by common agreement.</translatorcomment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="86"/>
+        <source>License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="93"/>
+        <source>Change log</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="108"/>
@@ -41,17 +50,8 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri M��kij��rvi (Finnish translation and testing)&lt;br&gt;��ke Engelbrektson (Swedish translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
+        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels (Dutch translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View license</source>
-        <translation type="obsolete">Lue lisenssi</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (testing)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I had creating it!</source>
-        <translatorcomment>Took diffs from commit 55a2b158706fada0dd25bb0af348cd5243b6d3d0 (Åke and &apos;have&apos;) </translatorcomment>
-        <translation type="obsolete">&lt;b&gt;Kiitokset&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jollalle (joka jatkoi siitä, mihinNokia jäi)&lt;br&gt;KeepassX-projektille (joka teki Keepass-ohjelmasta Qt-version)&lt;br&gt;Petri Mäkijärvelle (testauksesta)&lt;br&gt;&lt;br&gt;Åke Engelbrektsonille (käännöksestä ruotsiksi)&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Toivottavasti teillä on yhtä hauskaa ownKeepass-ohjelman kanssa, kuin minulla on sen tekemisessä!</translation>
     </message>
 </context>
 <context>
@@ -82,8 +82,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="50"/>
         <source>Change log</source>
-        <translatorcomment>Not to betranslated by an agreement.</translatorcomment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -356,10 +355,6 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <source>Settings</source>
-        <translation type="obsolete">Asetukset</translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="84"/>
         <source>Save</source>
         <translation>Talleta</translation>
@@ -420,14 +415,13 @@
         <translation>Jos asetettu, leikepöytä tyhjennetään 10 sekunnin kuluttua siitä, kun käyttäjänimi tai salasana on kopioitu</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="283"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="167"/>
         <source>Inactivity lock time</source>
-        <translatorcomment>Inactivity=käyttämättömyys,tyhjäkäynti? laitan Automaattinen</translatorcomment>
         <translation>Automaattinen lukitusaika</translation>
     </message>
     <message>
@@ -492,52 +486,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Cover settings</source>
         <translation>Kuvakeasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="296"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="303"/>
         <source>Show username and password</source>
         <translation>Näytä käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="304"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Asettamalla tämä, kuvakkeessa näytetään kulloinkin avoinna olevan Keepass-tiedoston käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="308"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>Lock database from cover</source>
         <translation>Lukitse tietokanta kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="309"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Tämä sallii tietokannan lukituksen kuvaketta vasemmalle pyyhkäisten</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="320"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Leikkaa ja liimaa kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="321"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Asettamalla tämän, sallit käyttäjänimen ja salasanan kopioinnin kuvakkeesta leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="337"/>
         <source>Advanced settings</source>
         <translation>Erikoisasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="336"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="343"/>
         <source>Expert user mode</source>
         <translation>Edistyneen käyttäjän toimintatila</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="337"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="344"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Tämä asetus tuo edistyneet toiminnat, kuten useampien tietokantojen käsittelyn suoraan avaussivulle</translation>
     </message>
@@ -606,16 +600,6 @@
         <translation>Vedä alas lisätäksesi salasana-ryhmiä tai -tiedostoja</translation>
     </message>
     <message>
-        <source>MasterGroupsPage</source>
-        <translatorcomment>I put the words together as in the origina </translatorcomment>
-        <translation type="obsolete">PääryhmienSivu</translation>
-    </message>
-    <message>
-        <source>SubGroupsPage</source>
-        <translatorcomment>I put the words together as in the origina</translatorcomment>
-        <translation type="obsolete">AlaryhmienSivu</translation>
-    </message>
-    <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="290"/>
         <source>Loading</source>
         <translation>Lataan</translation>
@@ -640,7 +624,6 @@
     <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;First you need to specify where the database file will be stored. Available options are &quot;Documents on phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; and &quot;Sailbox local storage&quot;. Take the first option &quot;Documents on phone&quot; if you want the database to be located on the phone or choose &quot;SD card&quot; to place the database on the removable SD card. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. If SD card is not inserted the SD card location item is disabled. Please make sure the SD card is properly detected by looking at it in a File Browser. If you want to share the Keepass database with Android Apps you can place it into &quot;Android storage&quot;. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option &quot;Sailbox local storage&quot; can be used together with Sailbox. If you place your database there Sailbox can up- and download the file to the Dropbox online service. Sailbox is available in Jolla Harbour for download.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the relative path and file name for your Keepass database file. For example you can type in &quot;ownkeepass/notes.kdb&quot;. If you have opened ownKeepass the first time you will see that string already pre-filled for your convenience.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file location cannot be set to &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can choose here a picture as a key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translatorcomment>Sailbox is also available in Jolla Store.Enhanced &quot; Please be aware of that.&quot; with something like &quot; Please be aware of these issues if you encounter sudden problems with, for example with opening of the file&quot; </translatorcomment>
         <translation>Tällä sivulla voit luoda uuden tietokannan, johon ownKeepass tallettaa tärkeät tietosi.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokannan sijainti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ensin sinun tulee määrittää mihin tietokantatiedosto talletetaan. Valittavanasi on &quot;Dokumentit puhelimessa&quot;, &quot;SD-kortti&quot;, &quot;Android-muisti&quot; ja &quot;Sailbox-paikallismuisti&quot;. Valitse ensimmäinen asetus, &quot;Dokumentit puhelimessa&quot;, mikäli haluat tiedoston sijaitsevan puhelimessasi tai valitse &quot;SD-kortti&quot;, mikäli haluat sen sijaitsevan irroitettavalla SD-muistikortilla. Kortilla voi olla vain yksi alustettu osio. Tällä hetkellä ownKeepass ei tue muistikortteja, joissa on useampia osioita. Mikäli muistikorttia ei ole asennettu paikalleen, tämä valinta on pois käytöstä. On parasta, että varmistat muistikortin olevan näkyvissä esimerkiksi File Browser-sovelluksella, ennen kuin valitsen sen käytön. Mikäli haluat jakaa tiedoston myös Android-sovellusten kanssa, sijoita se Android-muistiin. Huomioi kuitenkin, että tiedostojen jakaminen voi johtaa hankaluuksiin, johtuen tiedostojen omistaja-asetusten muuttumisesta, samoin kuin niiden käyttäjäoikeuksien eroavuuksista kahden järjestelmän välillä. Muista tämä mikäli tiedosto ei esimerkiksi aukea enää. Viimein valinta, &quot;Sailbox-paikallismuisti&quot; on tarkoitettu käytettäväksi Sailbox-sovelluksen kanssa : tämä sallii tiedoston jakamisen käyttäen Dropbox-pilvipalvelua. Sailbox-sovellus on ladattavissa Jolla Harbourista.&lt;br&gt;&lt;br&gt;Muistutus : Mikäli lataat Keepass-tietokantasi Dropbox-pilvipalveluun, muista käyttää paikallisesti tallennettua avaintiedostoa pääsalasanan lisäksi (katso alla). Tätä avaintiedostoa ei tule tallettaa mihinkään pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokantatiedoston polku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä tekstikentässä polku alkaen kotitiedostosta ja tiedostonimi Keepass-tietokantatiedostoosi. Esimerkiksi &quot;ownkeepass/notes.kdb&quot;. Mikäli käytät ownKeepass-sovellusta ensimmäistä kertaa, tämä kenttä on esitäytetty käyttöäsi helpottamaan.&lt;br&gt;&lt;br&gt;&lt;b&gt;Käytä avaintiedostoa&lt;/b&gt;&lt;br&gt;&lt;br&gt;Avaintiedostoa voidaan käyttää pääsalasanan lisäksi suojaamaan Keepass-tietokantaa. Molempia käytetään yhtäaikaa varsinaisen avaimen laskemiseen, joka lopulta avaa tietokannan. Käyttämällä tiedostoa, jossa on paljon erilaista tietoa, laskettu avain on periaatteessa vahvempi hyökkäyksiä vastaan. Voit käyttää esimerkiksi satunnaista kuvatiedostoa avaintiedostona.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaintiedoston sijanti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Katso &quot;Tietokannan sijainti&quot;, tähän pätee samat sijaintii liittyvät ohjeet. Ainoastaan &quot;Sailbox-paikallismuisti&quot; ei ole käytettävissä, jotta molemmat suojausmenetelmäsi eivät tallettuisi pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;
 Avaintiedoston polku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä tekstikentässä polku alkaen kotitiedostosta ja nimi tiedostoon jota haluat käyttää avaintiedostonasi. Voit valita esimerkiksi jonkun kuvatiedoston.&lt;br&gt;&lt;br&gt;&lt;b&gt;Pääsalasana&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tämä on salasana, joka suojaa uuta Keepass-tietokantaasi. Älä epäröi valita pitkää salasaa, jonka on oltava 10 - 15 merkkiä pitkä. Käytä sekoittaen isoja ja pieniä kirjaimia, numeroita ja erikoismerkkejä. Toista salasanasi kentässä &quot;Varmista salasana&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaa automaattisesti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valitse tämä asetus, mikäli haluat ownKeepass-sovelluksen automaattisesti avaavan tässä antamasi tietokantatiedoston, kun seuraavan kerran käynnistät sovelluksen. Tässä tapauksessa sinut ohjataan suoraan sivulle, jossa voit antaa tietokannan pääsalasanan.&lt;br&gt;&lt;br&gt;
 </translation>
@@ -740,8 +723,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/LicensePage.qml" line="50"/>
         <source>License</source>
-        <translatorcomment>Not to betranslated by an agreement.</translatorcomment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

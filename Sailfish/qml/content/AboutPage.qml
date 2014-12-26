@@ -83,14 +83,14 @@ Copyright &#169; 2013-2014 Marko Koschak<br>"
                 Button {
                     anchors.bottom: parent.bottom
                     width: parent.width / 2
-                    text: "License"
+                    text: qsTr("License")
                     onClicked: pageStack.push(Qt.resolvedUrl("LicensePage.qml"))
                 }
 
                 Button {
                     anchors.bottom: parent.bottom
                     width: parent.width / 2
-                    text: "Change log"
+                    text: qsTr("Change log")
                     onClicked: pageStack.push(Qt.resolvedUrl("ChangeLogPage.qml"))
                 }
             }
@@ -126,12 +126,14 @@ Copyright &#169; 2013-2014 Marko Koschak<br>"
 Jolla (for continuing where Nokia stopped)<br>\
 The KeepassX project (for a Qt implementation of Keepass)<br>\
 Petri Mäkijärvi (Finnish translation and testing)<br>\
-Åke Engelbrektson (Swedish translation)<br><br>\
+Åke Engelbrektson (Swedish translation)<br>\
+Agusti Clara (Catalan translation)<br>\
+fri (Czech translation)<br>\
+Heimen Stoffels (Dutch translation)<br><br>\
 \
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
-I hope you have as much fun using ownKeepass as I have creating it!") +
-"<br><br>[Current system locale: " + DebugLocale + "]"
+I hope you have as much fun using ownKeepass as I have creating it!")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }
