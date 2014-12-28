@@ -50,8 +50,12 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
+        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K (Dutch translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels (Dutch translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished">&lt;b&gt;Bedankt aan&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (voor voortzetten wat Nokia stopzette)&lt;br&gt;Het KeepassX-project (voor een Qt-implementatie van Keepass)&lt;br&gt;Petri Mäkijärvi (Finse vertaling en testen)&lt;br&gt;Åke Engelbrektson (Zweedse vertaling)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ik hoop dat u net zo veel plezier heeft met het gebruiken van ownKeepass als dat ik heb tijdens het ontwikkelen ervan!</translation>
+        <translation type="obsolete">&lt;b&gt;Bedankt aan&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (voor voortzetten wat Nokia stopzette)&lt;br&gt;Het KeepassX-project (voor een Qt-implementatie van Keepass)&lt;br&gt;Petri Mäkijärvi (Finse vertaling en testen)&lt;br&gt;Åke Engelbrektson (Zweedse vertaling)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ik hoop dat u net zo veel plezier heeft met het gebruiken van ownKeepass als dat ik heb tijdens het ontwikkelen ervan!</translation>
     </message>
 </context>
 <context>
