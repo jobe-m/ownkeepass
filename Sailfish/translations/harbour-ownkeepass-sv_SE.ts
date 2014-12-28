@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -31,12 +29,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="86"/>
         <source>License</source>
-        <translation type="unfinished">Licens</translation>
+        <translation>Licens</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="93"/>
         <source>Change log</source>
-        <translation type="unfinished">Ändringslogg</translation>
+        <translation>Ändringslogg</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="108"/>
@@ -51,11 +49,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels (Dutch translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="vanished">&lt;b&gt;Tack till&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (för att de fortsatte där Nokia slutade)&lt;br&gt;KeepassX-projektet (för Qt-implementationen av Keepass)&lt;br&gt;Petri Mäkijärvi (Finsk översättning och testning)&lt;br&gt;Åke Engelbrektson (Svensk översättning)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hoppas ni har lika stort nöje av att använda ownKeepass, som jag har av att skapa det!</translation>
+        <translation>&lt;b&gt;Tack till&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (för att de fortsatte där Nokia slutade)&lt;br&gt;KeepassX-projektet (för Qt-implementationen av Keepass)&lt;br&gt;Petri Mäkijärvi (Finsk översättning och testning)&lt;br&gt;Åke Engelbrektson (Svensk översättning)&lt;br&gt;Agusti Clara (Katalansk översättning)&lt;br&gt;fri (Tjeckisk översättning)&lt;br&gt;Heimen Stoffels (Nederländsk translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Hoppas ni har lika stort nöje av att använda ownKeepass, som jag har av att skapa det!</translation>
     </message>
 </context>
 <context>
