@@ -42,7 +42,7 @@ about the features offered by ownKeepass especially on the settings pages.<br><b
 \
 <b>Some words about Keepass database security</b><br><br>\
 \
-The database code in ownKeepass is based on the KeepassX project [2] and as such conains a lot of \
+The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of \
 security related features. It uses proven encryption algorithms like Advanced Encryption Standard \
 (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing \
 algorithm and in-memory encryption of all passwords. Furthermore it protects the master \
@@ -77,7 +77,7 @@ impossible to guess.<br><br>\
 I don't want to set it in stone yet but here is a list of features you might see in future versions \
 of ownKeepass:<br>\
 <ul>\
-<li>Build-in sync of database file with a WebDAV server like ownCloud</li>\
+<li>Built-in sync of database file with a WebDAV server like ownCloud</li>\
 <li>If feasible auto-type of username and passwords into web page</li>\
 <li>Support for Keepass version 2 database files</li>\
 </ul>\

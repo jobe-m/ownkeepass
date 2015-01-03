@@ -59,7 +59,7 @@ development. This is so much of technical motivation to me to do some great UI s
 Some words about Keepass database security
 ------------------------------------------
 
-The database code in ownKeepass is based on the [KeepassX project] [3] and as such conains a lot of
+The database code in ownKeepass is based on the [KeepassX project] [3] and as such contains a lot of
 security related features. It uses proven encryption algorithms like Advanced Encryption Standard
 (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing
 algorithm and in-memory encryption of all passwords. Furthermore it protects the master
