@@ -269,6 +269,7 @@ Dialog {
                         // LANG_CS_CZ
                         // LANG_CA
                         // LANG_NL_NL
+                        // LANG_ES
 
                         MenuItem { text: "System default" }
                         MenuItem { text: "English" }
@@ -278,6 +279,7 @@ Dialog {
                         MenuItem { text: "Czech" }
                         MenuItem { text: "Catalan" }
                         MenuItem { text: "Dutch" }
+                        MenuItem { text: "Spanish" }
                     }
                     onCurrentIndexChanged: {
                         editSettingsDialog.languageChanged =
