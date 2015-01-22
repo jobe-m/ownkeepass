@@ -48,6 +48,7 @@ public:
         LANG_CS_CZ,
         LANG_CA,
         LANG_NL_NL,
+        LANG_ES,
         LANG_INVALID
     };
 
