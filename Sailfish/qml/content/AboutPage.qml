@@ -129,7 +129,9 @@ Petri Mäkijärvi (Finnish translation and testing)<br>\
 Åke Engelbrektson (Swedish translation)<br>\
 Agusti Clara (Catalan translation)<br>\
 fri (Czech translation)<br>\
-Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)<br><br>\
+Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)<br>\
+carmenfdezb (Spanish translation)<br>\
+<br><br>\
 \
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
