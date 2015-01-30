@@ -6,8 +6,8 @@ ownKeepass
 Status
 ------
 
-Release 1.0.23 is ready and will be available in jolla store and [openrepos.net] [7].
-It contains a couple of new translations.
+Release 1.0.24 is ready and will be available in [openrepos.net] [7].
+It contains translation updates and Spanish as new translation. Jolla store will come later.
 
 For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4)
 or want to try new versions which are not yet in Jolla store have a look [here] [1]
