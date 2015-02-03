@@ -1,0 +1,3 @@
+[submodule "common/src/keepassPlugin/keepassx"]
+	path = common/src/keepassPlugin/keepassx
+	url = git@github.com:keepassx/keepassx.git
