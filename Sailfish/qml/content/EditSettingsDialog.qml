@@ -270,6 +270,11 @@ Dialog {
                         // LANG_CA
                         // LANG_NL_NL
                         // LANG_ES
+                        // LANG_FR_FR
+                        // LANG_IT
+                        // LANG_RU
+                        // LANG_DA
+                        // LANG_PL_PL
 
                         MenuItem { text: "System default" }
                         MenuItem { text: "English" }
@@ -280,6 +285,11 @@ Dialog {
                         MenuItem { text: "Catalan" }
                         MenuItem { text: "Dutch" }
                         MenuItem { text: "Spanish" }
+                        MenuItem { text: "French (partly)" }
+                        MenuItem { text: "Italian (partly)" }
+                        MenuItem { text: "Russian (partly)" }
+                        MenuItem { text: "Danish (partly)" }
+//                        MenuItem { text: "Polish" } -- not yet started 
                     }
                     onCurrentIndexChanged: {
                         editSettingsDialog.languageChanged =
