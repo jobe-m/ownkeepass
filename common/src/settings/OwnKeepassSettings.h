@@ -49,6 +49,11 @@ public:
         LANG_CA,
         LANG_NL_NL,
         LANG_ES,
+        LANG_FR_FR,
+        LANG_IT,
+        LANG_RU,
+        LANG_DA,
+        LANG_PL_PL,
         LANG_INVALID
     };
 
