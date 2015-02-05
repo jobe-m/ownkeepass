@@ -104,6 +104,21 @@ int main(int argc, char *argv[])
         case settingsPublic::OwnKeepassSettings::LANG_ES:
             translator.load("harbour-ownkeepass-es.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
+        case settingsPublic::OwnKeepassSettings::LANG_FR_FR:
+            translator.load("harbour-ownkeepass-fr_FR.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        case settingsPublic::OwnKeepassSettings::LANG_IT:
+            translator.load("harbour-ownkeepass-it.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        case settingsPublic::OwnKeepassSettings::LANG_RU:
+            translator.load("harbour-ownkeepass-ru.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        case settingsPublic::OwnKeepassSettings::LANG_DA:
+            translator.load("harbour-ownkeepass-da.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        case settingsPublic::OwnKeepassSettings::LANG_PL_PL:
+            translator.load("harbour-ownkeepass-pl_PL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
         default:
             translator.load("harbour-ownkeepass.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
