@@ -154,4 +154,9 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-cs_CZ.ts \
     translations/harbour-ownkeepass-ca.ts \
     translations/harbour-ownkeepass-nl_NL.ts \
-    translations/harbour-ownkeepass-es.ts
+    translations/harbour-ownkeepass-es.ts \
+    translations/harbour-ownkeepass-fr_FR.ts \
+    translations/harbour-ownkeepass-it.ts \
+    translations/harbour-ownkeepass-ru.ts \
+    translations/harbour-ownkeepass-da.ts
+#    translations/harbour-ownkeepass-pl_PL.ts
