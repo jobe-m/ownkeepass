@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -20,39 +20,27 @@
 **
 ***************************************************************************/
 
-#ifndef KDBINTERFACE_H
-#define KDBINTERFACE_H
+#include <QDebug>
 
-#include <QObject>
-#include <QThread>
-
-#include "KdbInterfaceWorker.h"
 #include "KdbxInterfaceWorker.h"
 
-namespace kpxPrivate {
+using namespace keepassx2Private;
+using namespace kpxPublic;
 
-class KdbInterface : public QObject
+KdbxInterfaceWorker::KdbxInterfaceWorker(QObject *parent)
+    : QObject(parent),
+      m_kdbxDatabase(NULL),
+      m_setting_showUserNamePasswordsInListView(false)
 {
-    Q_OBJECT
-
-public:
-    virtual ~KdbInterface();
-
-    static KdbInterface* getInstance();
-
-    // access to internal worker needed to connect to its slots
-    KdbInterfaceWorker* getWorker() { return &m_worker; }
-
-private:
-    // Prevent object creation, it will be created as singleton object
-    KdbInterface(QObject* parent = 0);
-    Q_DISABLE_COPY(KdbInterface)
-
-    QThread m_workerThread;
-    KdbInterfaceWorker m_worker;
-    keepassx2Private::KdbxInterfaceWorker m_worker_kdbx;
-    static KdbInterface* m_Instance;
-};
-
+    initKdbDatabase();
 }
-#endif // KDBINTERFACE_H
+
+KdbxInterfaceWorker::~KdbxInterfaceWorker()
+{
+    qDebug("Destructor KdbInterfaceWorker");
+    delete m_kdbxDatabase;
+}
+
+void KdbxInterfaceWorker::initKdbDatabase()
+{
+}

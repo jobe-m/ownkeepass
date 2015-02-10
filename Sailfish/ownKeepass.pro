@@ -22,6 +22,7 @@
 
 # Sources of the keepass QML plugins
 include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
+include(../common/src/keepassPlugin/kdbxdatabase/kdbxdatabase.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 
 # Get release version from .spec file and paste it further to c++ through a define
