@@ -415,7 +415,7 @@
         <translation>Je-li povoleno, schránka bude vyprázdněna po 10 sekundách, až bude uživatelské jméno a heslo zkopírováno.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="292"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>Změna jazyka se v ownKeepass projeví po opětovném spuštění programu</translation>
     </message>
@@ -486,52 +486,52 @@
         <translation>Jazyk:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="299"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="309"/>
         <source>Cover settings</source>
         <translation>Nastavení činností pro pohyb prsty nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="305"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>Show username and password</source>
         <translation>Ukázat uživatelské jméno a heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="306"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Pokud toto zapnete, jsou na krytu ukázány uživatelské jméno a heslo nyní otevřeného záznamu Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
         <source>Lock database from cover</source>
         <translation>Uzamknout databázi švihnutím prsty nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Toto vám umožní databázi zamknout pomocí činnosti švihnutí prsty vlevo nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="329"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopírovat a vložit švihnutím prsty nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Toto povolte pro zkopírování uživatelského jména a hesla do schránky švihnutím prsty nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="349"/>
         <source>Advanced settings</source>
         <translation>Pokročilá nastavení</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="345"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="355"/>
         <source>Expert user mode</source>
         <translation>Režim zkušeného uživatele</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="346"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Toto umožní pokročilé funkce jako práce s více databázemi na hlavní stránce</translation>
     </message>

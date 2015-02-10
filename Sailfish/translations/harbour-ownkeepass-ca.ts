@@ -419,7 +419,7 @@
         <translation>Si s&apos;habilita, el porta-retalls es netejarà després de 10 segons d&apos;haver copiat una contrasenya o un nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="292"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>El canvi d&apos;idioma serà efectiu després de reiniciar l&apos;aplicació</translation>
     </message>
@@ -490,52 +490,52 @@
         <translation>Idioma:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="299"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="309"/>
         <source>Cover settings</source>
         <translation>Configuració de portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="305"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>Show username and password</source>
         <translation>Mostra el nom d&apos;usuari i la contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="306"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Si s&apos;activa, es mostraran el nom d&apos;usuari i la contrasenya el registre Keepass que estigui obert a la vista de portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
         <source>Lock database from cover</source>
         <translation>Bloca la base de dades des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Això us permet blocar la base de dades amb l&apos;acció de portada de l&apos;esquerra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="329"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Copiar i enganxar des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Això us permet copiar i enganxar noms d&apos;usuari i contrasenyes al porta-retalls des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="349"/>
         <source>Advanced settings</source>
         <translation>Configuració avançada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="345"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="355"/>
         <source>Expert user mode</source>
         <translation>Mode d&apos;usuari expert</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="346"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Això habilita funcions avançades com ara la gestió de més d&apos;una base de dades des de la pàgina principal</translation>
     </message>

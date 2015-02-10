@@ -419,7 +419,7 @@
         <translation>Wanneer ingeschakeld zal het klembord 10 seconden na kopiëren van gebruikersnaam of wachtwoord worden gewist</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="292"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>Veranderen van de taal zal worden toegepast na het herstarten van de applicatie</translation>
     </message>
@@ -490,52 +490,52 @@
         <translation>Taal:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="299"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="309"/>
         <source>Cover settings</source>
         <translation>Omslaginstellingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="305"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>Show username and password</source>
         <translation>Gebruikersnaam en wachtwoord weergeven</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="306"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Wanneer u dit inschakelt, zullen gebruikersnaam en wachtwoord van de huidige vermelding worden weergegeven op de omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
         <source>Lock database from cover</source>
         <translation>Database vergrendelen vanaf omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Dit stelt u in staat de database te vergrendelen met linker-omslagactie.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="329"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopiëren-en-plakken vanaf omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Schakel dit in gebruikersnaam en wachtwoord naar het klembord te kopiëren vanaf de omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="349"/>
         <source>Advanced settings</source>
         <translation>Geavanceerde instellingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="345"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="355"/>
         <source>Expert user mode</source>
         <translation>Expert-gebruikersmodus</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="346"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Dit schakelt geavanceerde functionaliteit in zoals het behanderen van meerdere databases op de hoofdpagina</translation>
     </message>

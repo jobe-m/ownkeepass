@@ -415,7 +415,7 @@
         <translation>Jos asetettu, leikepöytä tyhjennetään 10 sekunnin kuluttua siitä, kun käyttäjänimi tai salasana on kopioitu</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="292"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation type="unfinished"></translation>
     </message>
@@ -486,52 +486,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="299"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="309"/>
         <source>Cover settings</source>
         <translation>Kuvakeasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="305"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>Show username and password</source>
         <translation>Näytä käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="306"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Asettamalla tämä, kuvakkeessa näytetään kulloinkin avoinna olevan Keepass-tiedoston käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
         <source>Lock database from cover</source>
         <translation>Lukitse tietokanta kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Tämä sallii tietokannan lukituksen kuvaketta vasemmalle pyyhkäisten</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="329"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Leikkaa ja liimaa kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Asettamalla tämän, sallit käyttäjänimen ja salasanan kopioinnin kuvakkeesta leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="349"/>
         <source>Advanced settings</source>
         <translation>Erikoisasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="345"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="355"/>
         <source>Expert user mode</source>
         <translation>Edistyneen käyttäjän toimintatila</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="346"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Tämä asetus tuo edistyneet toiminnat, kuten useampien tietokantojen käsittelyn suoraan avaussivulle</translation>
     </message>

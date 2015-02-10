@@ -423,7 +423,7 @@
         <translation>Vid aktivering, kommer Urklipp att rensas från kopierade användarnamn och lösenord, efter 10 sekunder.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="292"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>Språkändringar aktiveras efter omstart av </translation>
     </message>
@@ -494,52 +494,52 @@
         <translation>Språk:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="299"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="309"/>
         <source>Cover settings</source>
         <translation>Minitayrinställningar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="305"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>Show username and password</source>
         <translation>Visa användarnamn och lösenord</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="306"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Vid aktivering kommer användarnamn och lösenord för öppnad Keepass-post att visas på programminiatyren.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
         <source>Lock database from cover</source>
         <translation>Lås databas från programminiatyren</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Låter dig låsa databasen med vänster miniatyrfunktion.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="329"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopiera och klistra in från miniatyren</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Aktiveras för att kunna kopiera användarnamn och lösenord direkt från programminiatyren.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="349"/>
         <source>Advanced settings</source>
         <translation>Avancerade inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="345"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="355"/>
         <source>Expert user mode</source>
         <translation>Expertläge</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="346"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Aktiverar avancerad funktionalitet, som hantering av flera databaser, på huvudsidan.</translation>
     </message>
