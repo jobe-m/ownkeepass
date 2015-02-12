@@ -54,7 +54,8 @@ Page {
 
     function lockDatabase() {
         // By going back to main page database will be locked
-        pageStack.pop(mainPage)
+        pageStack.push(Qt.resolvedUrl("LockPage.qml").toString())
+//        pageStack.pop(mainPage)
     }
 
     function clipboardTimerStart() {

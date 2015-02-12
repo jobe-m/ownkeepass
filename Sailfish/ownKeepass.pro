@@ -142,7 +142,8 @@ OTHER_FILES += \
     qml/help/HelpSubGroupsPage.qml \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
-    qml/content/ChangeLogPage.qml
+    qml/content/ChangeLogPage.qml \
+    qml/content/LockPage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
