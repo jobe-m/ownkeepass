@@ -29,6 +29,12 @@ import harbour.ownkeepass.KeepassX1 1.0
 Page {
     id: lockPage
 
+    property string firstChar: "a"
+    property string secondChar: "s"
+    property string thirdChar: "d"
+
+    // internal
+    property int __counter: 0
     backNavigation: false
 
     SilicaFlickable {
@@ -78,21 +84,23 @@ Page {
                     anchors.horizontalCenterOffset: -(parent.width / 6)
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    placeholderText: "x"
+                    placeholderText: ""
                     text: ""
-                    EnterKey.highlighted: text !== ""
-                    EnterKey.iconSource: text.length === 0 ?
-                                             "image://theme/icon-m-enter-close" : "image://theme/icon-m-enter-accept"
-                    EnterKey.onClicked: {
+                    maximumLength: 1
+                    EnterKey.highlighted: false
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: parent.focus = true
+                    onTextChanged: {
                         if (text.length !== 0) {
+                            secondFast.focus = true
                         }
                     }
-                    Keys.onPressed: {
-                        secondFast.focus = true
+                    onClicked: {
+                        text = ""
+                        secondFast.text = ""
+                        thirdFast.text = ""
                     }
-
                     focusOutBehavior: -1
-                    Tracer {}
                 }
 
                 TextField {
@@ -102,21 +110,22 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    placeholderText: "x"
+                    placeholderText: ""
                     text: ""
-                    EnterKey.highlighted: text !== ""
-                    EnterKey.iconSource: text.length === 0 ?
-                                             "image://theme/icon-m-enter-close" : "image://theme/icon-m-enter-accept"
-                    EnterKey.onClicked: {
+                    maximumLength: 1
+                    EnterKey.highlighted: false
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: parent.focus = true
+                    onTextChanged: {
                         if (text.length !== 0) {
+                            thirdFast.focus = true
                         }
                     }
-                    Keys.onPressed: {
-                        thirdFast.focus = true
+                    onClicked: {
+                        text = ""
+                        thirdFast.text = ""
                     }
-
                     focusOutBehavior: -1
-                    Tracer {}
                 }
 
                 TextField {
@@ -127,22 +136,34 @@ Page {
                     anchors.horizontalCenterOffset: parent.width / 6
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    placeholderText: "x"
+                    placeholderText: ""
                     text: ""
-                    EnterKey.highlighted: text !== ""
-                    EnterKey.iconSource: text.length === 0 ?
-                                             "image://theme/icon-m-enter-close" : "image://theme/icon-m-enter-accept"
-                    EnterKey.onClicked: {
+                    maximumLength: 1
+                    EnterKey.highlighted: false
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: parent.focus = true
+                    onTextChanged: {
                         if (text.length !== 0) {
+                            parent.focus = true
+                        }
+
+                        if ((text.length !== 0) && (secondFast.text !== 0) && (firstFast.text !== 0) &&
+                                (firstFast.text === firstChar) && (secondFast.text === secondChar) && (thirdFast.text === thirdChar))  {
                             lockPage.backNavigation = true
+                            pageStack.pop()
+                        } else {
+                            if (__counter >= 3) {
+                                pageStack.pop(mainPage)
+                            } else {
+                                __counter++
+                                firstFast.text = ""
+                                secondFast.text = ""
+                                text = ""
+                            }
                         }
                     }
-                    Keys.onPressed: {
-
-                    }
-
+                    onClicked: text = ""
                     focusOutBehavior: -1
-                    Tracer {}
                 }
             }
         }
