@@ -29,6 +29,8 @@ import harbour.ownkeepass.KeepassX1 1.0
 Page {
     id: lockPage
 
+    backNavigation: false
+
     SilicaFlickable {
         id: lockView
         anchors.fill: parent
@@ -66,62 +68,83 @@ Page {
 
             Item {
                 width: parent.width
-                height: passwordField.height
+                height: firstFast.height
 
                 TextField {
-                    id: passwordField
+                    id: firstFast
+                    width: parent.width / 7
                     anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.right: showPasswordButton.left
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: -(parent.width / 6)
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
-                    label: qsTr("Master password")
-                    placeholderText: qsTr("Enter master password")
+                    placeholderText: "x"
                     text: ""
                     EnterKey.highlighted: text !== ""
                     EnterKey.iconSource: text.length === 0 ?
                                              "image://theme/icon-m-enter-close" : "image://theme/icon-m-enter-accept"
                     EnterKey.onClicked: {
                         if (text.length !== 0) {
-                            parent.focus = true
-                            database.unlock(passwordField.text)
-                            passwordField.text = ""
                         }
                     }
+                    Keys.onPressed: {
+                        secondFast.focus = true
+                    }
+
                     focusOutBehavior: -1
+                    Tracer {}
                 }
 
-                IconButton {
-                    id: showPasswordButton
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
-                    anchors.verticalCenter: parent.verticalCenter
-                    icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" :
-                                                                               "../../wallicons/icon-l-closeeye.png"
-                    onClicked: {
-                        if (passwordField.echoMode === TextInput.Normal) {
-                            passwordField.echoMode = TextInput.Password
-                        } else {
-                            passwordField.echoMode = TextInput.Normal
+                TextField {
+                    id: secondFast
+                    width: parent.width / 7
+                    anchors.top: parent.top
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                    echoMode: TextInput.Password
+                    placeholderText: "x"
+                    text: ""
+                    EnterKey.highlighted: text !== ""
+                    EnterKey.iconSource: text.length === 0 ?
+                                             "image://theme/icon-m-enter-close" : "image://theme/icon-m-enter-accept"
+                    EnterKey.onClicked: {
+                        if (text.length !== 0) {
                         }
                     }
+                    Keys.onPressed: {
+                        thirdFast.focus = true
+                    }
+
+                    focusOutBehavior: -1
+                    Tracer {}
+                }
+
+                TextField {
+                    id: thirdFast
+                    width: parent.width / 7
+                    anchors.top: parent.top
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset: parent.width / 6
+                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                    echoMode: TextInput.Password
+                    placeholderText: "x"
+                    text: ""
+                    EnterKey.highlighted: text !== ""
+                    EnterKey.iconSource: text.length === 0 ?
+                                             "image://theme/icon-m-enter-close" : "image://theme/icon-m-enter-accept"
+                    EnterKey.onClicked: {
+                        if (text.length !== 0) {
+                            lockPage.backNavigation = true
+                        }
+                    }
+                    Keys.onPressed: {
+
+                    }
+
+                    focusOutBehavior: -1
+                    Tracer {}
                 }
             }
         }
-    }
-
-/*    KdbDatabase {
-        id: database
-        onDatabaseOpened: {
-            console.log("Database unlocked again")
-        }
-
-        onErrorOccured: {
-            console.log("Error on database unlock")
-        }
-    }
-*/
-    Component.onCompleted: {
-        Global.env.kdbDatabase.lock()
     }
 }
