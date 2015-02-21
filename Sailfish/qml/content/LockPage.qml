@@ -69,7 +69,8 @@ Page {
             }
 
             SilicaLabel {
-                text: qsTr("Unlock your Keepass Password Safe:") + "\n"
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Unlock your Password Safe with the last three digits of your master password:") + "\n"
             }
 
             Item {

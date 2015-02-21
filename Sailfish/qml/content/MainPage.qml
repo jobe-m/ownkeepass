@@ -436,6 +436,7 @@ Page {
             applicationWindow.cover.state = "NO_DATABASE_OPENED"
             // now also check database and key file paths if they exists
             internal.init()
+            lockDatabase()
         }
     }
 
