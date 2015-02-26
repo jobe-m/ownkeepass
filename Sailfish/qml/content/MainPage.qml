@@ -38,6 +38,11 @@ Page {
     property Component editSettingsDialogComponent: editSettingsDialogComponent
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
 
+    // internal
+    property string __unlockCharA: "Ö"
+    property string __unlockCharB: "ß"
+    property string __unlockCharC: "ü"
+
     function inactivityTimerStart() {
         var inactivityTime = Global.getInactivityTime(ownKeepassSettings.locktime)
         // Check if the user has not set timer to unlimited
@@ -53,10 +58,22 @@ Page {
     }
 
     function lockDatabase() {
-        // By going back to main page database will be locked
-        pageStack.push(Qt.resolvedUrl("LockPage.qml").toString())
-//        pageStack.pop(mainPage)
+        if (ownKeepassSettings.fastUnlock) {
+            pageStack.push(Qt.resolvedUrl("LockPage.qml").toString(),
+                           { "firstChar": __unlockCharA,
+                               "secondChar": __unlockCharB,
+                               "thirdChar": __unlockCharC,
+                               "mainPage": mainPage,
+                               "recoverCoverState": applicationWindow.cover.state })
+            // Update cover page state
+            applicationWindow.cover.title = ""
+            applicationWindow.cover.state = "DATABASE_LOCKED"
+        } else {
+            // No fast unlock: By going back to main page database will be closed
+            pageStack.pop(mainPage)
+        }
     }
+
 
     function clipboardTimerStart() {
         if (ownKeepassSettings.clearClipboard !== 0) {
@@ -145,7 +162,9 @@ Page {
                     label: qsTr("Master password")
                     placeholderText: qsTr("Enter master password")
                     text: ""
-                    EnterKey.highlighted: simpleModeView.state !== "CREATE_NEW_DATABASE" && text !== ""
+                    errorHighlight: text.length > 0 && text.length < 3
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.highlighted: true
                     EnterKey.iconSource: text.length === 0 ?
                                              "image://theme/icon-m-enter-close" :
                                              simpleModeView.state === "CREATE_NEW_DATABASE" ?
@@ -191,12 +210,12 @@ Page {
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                 echoMode: TextInput.Password
                 visible: enabled
-                errorHighlight: passwordField.text !== text
+                errorHighlight: passwordField.text !== text && text.length !== 0
                 label: qsTr("Confirm master password")
                 placeholderText: label
                 text: ""
-                EnterKey.enabled: confirmPasswordField.text.length === 0 || (passwordField.text.length !== 0 && !errorHighlight)
-                EnterKey.highlighted: !errorHighlight
+                EnterKey.enabled: text.length === 0 || (passwordField.text.length >= 3 && !errorHighlight)
+                EnterKey.highlighted: text.length === 0 || !errorHighlight
                 EnterKey.iconSource: text.length === 0 ?
                                          "image://theme/icon-m-enter-close" :
                                          "image://theme/icon-m-enter-accept"
@@ -436,7 +455,6 @@ Page {
             applicationWindow.cover.state = "NO_DATABASE_OPENED"
             // now also check database and key file paths if they exists
             internal.init()
-            lockDatabase()
         }
     }
 
@@ -485,6 +503,13 @@ Page {
             // could be opened with given password and/or key file
             internal.masterGroupsPage = acceptDestinationInstance
             if (password === "") console.log("ERROR: Password is empty")
+
+            if (ownKeepassSettings.fastUnlock) {
+                __unlockCharA = password.charAt(password.length - 3)
+                __unlockCharB = password.charAt(password.length - 2)
+                __unlockCharC = password.charAt(password.length - 1)
+            }
+
             // prepate database and key file
             var completeDbFilePath = ownKeepassHelper.getLocationRootPath(internal.dbFileLocation) + "/" + internal.databasePath
             var completeKeyFilePath

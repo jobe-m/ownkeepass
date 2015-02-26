@@ -51,6 +51,7 @@ var env = {
     kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
+    coverPage: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
@@ -66,6 +67,9 @@ var env = {
 
     setKeepassSettings: function(obj) {
         this.keepassSettings = obj
+    },
+    setCoverPage: function(obj) {
+        this.coverPage = obj
     }
 }
 

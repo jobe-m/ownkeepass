@@ -24,17 +24,18 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
-import harbour.ownkeepass.KeepassX1 1.0
 
 Page {
     id: lockPage
 
-    property string firstChar: "a"
-    property string secondChar: "s"
-    property string thirdChar: "d"
+    property string firstChar: "ü"
+    property string secondChar: "ä"
+    property string thirdChar: "ß"
+    property Page mainPage
+    property string recoverCoverState: "NO_DATABASE_OPENED"
 
     // internal
-    property int __counter: 0
+    property int __counter: 3
     backNavigation: false
 
     SilicaFlickable {
@@ -44,12 +45,9 @@ Page {
         contentHeight: col.height
 
         // Show a scollbar when the view is flicked, place this over all other content
-        VerticalScrollDecorator { }
+        VerticalScrollDecorator {}
 
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable
-        ApplicationMenu {
-            helpContent: "LockPage"
-        }
+        ApplicationMenu {}
 
         Column {
             id: col
@@ -148,18 +146,27 @@ Page {
                             parent.focus = true
                         }
 
-                        if ((text.length !== 0) && (secondFast.text !== 0) && (firstFast.text !== 0) &&
-                                (firstFast.text === firstChar) && (secondFast.text === secondChar) && (thirdFast.text === thirdChar))  {
-                            lockPage.backNavigation = true
-                            pageStack.pop()
-                        } else {
-                            if (__counter >= 3) {
-                                pageStack.pop(mainPage)
+                        if (firstFast.text.length !== 0 && secondFast.text.length !== 0 && thirdFast.text.length !== 0) {
+                            if (firstFast.text === firstChar && secondFast.text === secondChar && thirdFast.text === thirdChar) {
+                                lockPage.backNavigation = true
+                                pageStack.pop()
+                                // restore state of cover page
+                                Global.env.coverPage.state = recoverCoverState
                             } else {
-                                __counter++
-                                firstFast.text = ""
-                                secondFast.text = ""
-                                text = ""
+                                if (__counter === 1) {
+                                    pageStack.pop(mainPage)
+                                } else {
+                                    __counter--
+                                    firstFast.text = ""
+                                    secondFast.text = ""
+                                    text = ""
+                                    if (__counter > 1) {
+                                        var message = qsTr("You have 2 tries left")
+                                    } else {
+                                        message = qsTr("You have 1 try left")
+                                    }
+                                    Global.env.infoPopup.show(Global.warning, qsTr("Wrong unlock code"), message, 3)
+                                }
                             }
                         }
                     }

@@ -54,6 +54,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_pwGenCharFromEveryGroup(true),
     m_clearClipboard(10),
     m_language(0),
+    m_fastUnlock(true),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
@@ -67,68 +68,16 @@ OwnKeepassSettings::~OwnKeepassSettings()
 
 void OwnKeepassSettings::checkSettingsVersion()
 {
-    // Check previous settings file version here and
-    // do legacy updates if needed
+    // Check previous settings file version here and notify usr on new version
     m_previousVersion = (m_settings->getValue("settings/version", QVariant(m_previousVersion))).toString();
     if (m_previousVersion != m_version) {
-        // check if no version number was saved, this was a bug until version 1.0.4, from version 1.0.5 the new
+        // Check if no version number was saved, this was a bug until version 1.0.4, from version 1.0.5 the new
         // version is saved every time the app version increases
-        m_settings->setValue("settings/version", QVariant(m_version));
-
-        QRegExp rx("(\\d+).(\\d+).(\\d+)");
-        if ((rx.indexIn(m_previousVersion)) == -1) {
-            qDebug() << "ERROR: Cannot extract version number.";
-            return;
-        }
-        int major = rx.cap(1).toInt();
-        int minor = rx.cap(2).toInt();
-        int patch = rx.cap(3).toInt();
-
-        // From version 1.0.5 on the Sailbox local storage location changed from /home/nemo/dropbox to
-        // /home/nemo/Downloads, so copy any database to new location
-        if ((major == 1) && (minor == 0) && (patch < 5)) {
-            for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
-                // Check if database file is saved unter sailbox local storage
-                // and move it to new location
-                if (m_recentDatabaseList[i]["dbLocation"].toInt() == 3) {
-                    // Check if database file is still in old location (/home/nemo/dropbox)
-                    QString filename = m_recentDatabaseList[i]["dbFilePath"].toString();
-                    QString oldFile = QDir::homePath() + "/dropbox/" + filename;
-                    QString newFile = QDir::homePath() + "/Downloads/" + filename;
-                    if (QFile::exists(oldFile)) {
-                        // Check if there is already a file in /home/nemo/Downloads with the same name
-                        // If yes, rename it before copying
-                        if (QFile::exists(newFile)) {
-                            QFile::rename(newFile, newFile + ".renamed");
-                        }
-                        // Move file to new location
-                        QFile::rename(oldFile, newFile);
-                    }
-                }
-            }
-        }
-        // Version 1.0.25 introduced a file browser and also redefined the file locations
-        // Thus we need to reset the recent opened database list because the paths will not fit
-        if ((major == 1) && (minor == 0) && (patch < 25)) {
-            m_settings->removeArray("main/recentDatabases");
-        }
-
-        // check if ownKeepass was updated and trigger to show into banner
         if (m_previousVersion != INITIAL_VERSION) {
             emit showChangeLogBanner();
         }
-    }
-
-    // load recent database list
-    m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
-    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-        m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
-                m_recentDatabaseList[i]["uiPath"].toString(),
-                m_recentDatabaseList[i]["dbLocation"].toInt(),
-                m_recentDatabaseList[i]["dbFilePath"].toString(),
-                m_recentDatabaseList[i]["useKeyFile"].toBool(),
-                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                m_recentDatabaseList[i]["keyFilePath"].toString());
+        // Now save new version number
+        m_settings->setValue("settings/version", QVariant(m_version));
     }
 }
 
@@ -153,6 +102,7 @@ void OwnKeepassSettings::loadSettings() {
     m_pwGenCharFromEveryGroup        = (m_settings->getValue("pwGen/CharFromEveryGroup", QVariant(m_pwGenCharFromEveryGroup))).toBool();
     m_clearClipboard                 = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toInt();
     m_language                       = (m_settings->getValue("settings/language", QVariant(m_language))).toInt();
+    m_fastUnlock                     = (m_settings->getValue("settings/fastUnlock", QVariant(m_fastUnlock))).toBool();
 
     // emit signals for property changes
     emit simpleModeChanged();
@@ -173,6 +123,39 @@ void OwnKeepassSettings::loadSettings() {
     emit pwGenCharFromEveryGroupChanged();
     emit clearClipboardChanged();
     emit languageChanged();
+    emit fastUnlockChanged();
+
+    // Check previous settings file version here and
+    // do legacy updates if needed
+    m_previousVersion = (m_settings->getValue("settings/version", QVariant(m_previousVersion))).toString();
+    if (m_previousVersion != m_version) {
+        QRegExp rx("(\\d+).(\\d+).(\\d+)");
+        if ((rx.indexIn(m_previousVersion)) == -1) {
+            qDebug() << "ERROR: Cannot extract version number.";
+            return;
+        }
+        int major = rx.cap(1).toInt();
+        int minor = rx.cap(2).toInt();
+        int patch = rx.cap(3).toInt();
+
+        // Version 1.0.25 introduced a file browser and also redefined the file locations
+        // Thus we need to reset the recent opened database list because the paths will not fit
+        if ((major == 1) && (minor == 0) && (patch < 25)) {
+            m_settings->removeArray("main/recentDatabases");
+        }
+    }
+
+    // load recent database list
+    m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
+    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+        m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
+                m_recentDatabaseList[i]["uiPath"].toString(),
+                m_recentDatabaseList[i]["dbLocation"].toInt(),
+                m_recentDatabaseList[i]["dbFilePath"].toString(),
+                m_recentDatabaseList[i]["useKeyFile"].toBool(),
+                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
+                m_recentDatabaseList[i]["keyFilePath"].toString());
+    }
 }
 
 void OwnKeepassSettings::addRecentDatabase(QString uiName,
@@ -398,6 +381,15 @@ void OwnKeepassSettings::setLanguage(const int value)
         m_language = value;
         m_settings->setValue("settings/language", QVariant(m_language));
         emit languageChanged();
+    }
+}
+
+void OwnKeepassSettings::setFastUnlock(const bool value)
+{
+    if (value != m_fastUnlock) {
+        m_fastUnlock = value;
+        m_settings->setValue("settings/fastUnlock", QVariant(m_fastUnlock));
+        emit fastUnlockChanged();
     }
 }
 
