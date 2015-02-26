@@ -73,13 +73,13 @@ var env = {
 function getLocationName(value) {
     switch (value) {
     case 0:
-        return "Documents: "
+        return qsTr("Nothing selected yet")
     case 1:
-        return "SD Card: "
+        return qsTr("Home:") + (" ")
     case 2:
-        return "Android Storage: "
+        return qsTr("SD Card:") + (" ")
     case 3:
-        return "Sailbox: "
+        return qsTr("Android Storage:") + (" ")
     }
 }
 

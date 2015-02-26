@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2014 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2014 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -141,8 +141,7 @@ public:
 
 signals:
     // Signal to QML
-    void showInfoBanner(QString title, QString message);
-    void showChangeLogBanner(QString title, QString message);
+    void showChangeLogBanner();
     void loadLastDatabase(int dbLocation,
                           QString dbFilePath,
                           bool useKeyFile,

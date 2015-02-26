@@ -1,6 +1,6 @@
 ############################################################################
 #
-# Copyright (C) 2013 - 2014 Marko Koschak (marko.koschak@tisno.de)
+# Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 # All rights reserved.
 #
 # This file is part of ownKeepass.
@@ -23,6 +23,7 @@
 # Sources of the keepass QML plugins
 include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
+include(../common/src/fileBrowserPlugin/fileBrowserPlugin.pri)
 
 # Get release version from .spec file and paste it further to c++ through a define
 isEmpty(VERSION) {
@@ -143,7 +144,8 @@ OTHER_FILES += \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
     qml/content/ChangeLogPage.qml \
-    qml/content/LockPage.qml
+    qml/content/LockPage.qml \
+    qml/common/FileSystemDialog.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

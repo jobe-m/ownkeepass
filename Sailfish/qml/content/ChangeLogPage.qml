@@ -55,6 +55,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.25 Openrepos beta release </b>\
+<ul>\
+<li>Added file browser in order to select database file when opening or creating a new Keepass database. \
+The recent opened database list needs to be reinitialized and is set to empty. Please test this feature and report bugs in openrepos or github.</li>\
+</ul>\
+<br>\
 <b>v1.0.24 Translation update</b>\
 <ul>\
 <li>Added new translation for Spanish</li>\
