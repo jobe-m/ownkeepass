@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2014 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2014 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -103,17 +103,32 @@ void OwnKeepassSettings::checkSettingsVersion()
                         }
                         // Move file to new location
                         QFile::rename(oldFile, newFile);
-                        emit showInfoBanner("ownKeepass update",
-                                       "You have stored at least one Keepass database in \"Sailbox local storage\". Because the Dropbox client Sailbox changed recently its default storage to \"" + QDir::homePath() + "/Downloads\" ownKeepass has moved your database file from \"" + QDir::homePath() + "/dropbox\" to \"" + QDir::homePath() + "/Downloads\". If you haven't yet updated Sailbox please do it now from Jolla Store. This Info is shown only once.");
                     }
                 }
             }
         }
+        // Version 1.0.25 introduced a file browser and also redefined the file locations
+        // Thus we need to reset the recent opened database list because the paths will not fit
+        if ((major == 1) && (minor == 0) && (patch < 25)) {
+            m_settings->removeArray("main/recentDatabases");
+        }
 
         // check if ownKeepass was updated and trigger to show into banner
         if (m_previousVersion != INITIAL_VERSION) {
-            emit showChangeLogBanner("ownKeepass got updated", "New version " + m_version + " now installed on your phone. Have a look in the change log for details.");
+            emit showChangeLogBanner();
         }
+    }
+
+    // load recent database list
+    m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
+    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+        m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
+                m_recentDatabaseList[i]["uiPath"].toString(),
+                m_recentDatabaseList[i]["dbLocation"].toInt(),
+                m_recentDatabaseList[i]["dbFilePath"].toString(),
+                m_recentDatabaseList[i]["useKeyFile"].toBool(),
+                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
+                m_recentDatabaseList[i]["keyFilePath"].toString());
     }
 }
 
@@ -158,18 +173,6 @@ void OwnKeepassSettings::loadSettings() {
     emit pwGenCharFromEveryGroupChanged();
     emit clearClipboardChanged();
     emit languageChanged();
-
-    // load recent database list
-    m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
-    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-        m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
-                m_recentDatabaseList[i]["uiPath"].toString(),
-                m_recentDatabaseList[i]["dbLocation"].toInt(),
-                m_recentDatabaseList[i]["dbFilePath"].toString(),
-                m_recentDatabaseList[i]["useKeyFile"].toBool(),
-                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                m_recentDatabaseList[i]["keyFilePath"].toString());
-    }
 }
 
 void OwnKeepassSettings::addRecentDatabase(QString uiName,
@@ -426,9 +429,9 @@ void OwnKeepassSettings::checkDatabaseInSimpleMode()
         }
     } else {
         // check if default database exists
-        QString dbLocation(m_helper->getLocationRootPath(0));
-        if (QFile::exists(dbLocation + "/ownkeepass/notes.kdb")) {
-            emit databaseInSimpleMode(true, 0, "ownkeepass/notes.kdb", false, 0, "");
+        QString dbLocation(m_helper->getLocationRootPath(1));
+        if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
+            emit databaseInSimpleMode(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "");
             return;
         }
     }

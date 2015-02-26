@@ -23,6 +23,7 @@
 # Sources of the keepass QML plugins
 include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
+include(../common/src/fileBrowserPlugin/fileBrowserPlugin.pri)
 
 # Get release version from .spec file and paste it further to c++ through a define
 isEmpty(VERSION) {
@@ -142,7 +143,8 @@ OTHER_FILES += \
     qml/help/HelpSubGroupsPage.qml \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
-    qml/content/ChangeLogPage.qml
+    qml/content/ChangeLogPage.qml \
+    qml/common/FileSystemDialog.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

@@ -40,6 +40,7 @@
 #include "OwnKeepassHelper.h"
 #include "OwnKeepassSettings.h"
 #include "RecentDatabaseListModel.h"
+#include "FileBrowserPlugin.h"
 
 int main(int argc, char *argv[])
 {
@@ -69,6 +70,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
+    qmlRegisterType<FileBrowserListModel>(uri, 1, 0, "FileBrowserListModel");
 
     // Setup some class as context properties and make them accessible in QML
     QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());

@@ -545,6 +545,72 @@
     </message>
 </context>
 <context>
+    <name>FileSystemDialog</name>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
+        <source>Problem with SD card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
+        <source>SD cards with multiple partitions are not supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
+        <source>New file name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
+        <source>Enter new file name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
+        <source>Open</source>
+        <translation type="unfinished">Öffnen</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
+        <source>Create</source>
+        <translation type="unfinished">Neu anlegen</translation>
+    </message>
+</context>
+<context>
+    <name>Global</name>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="76"/>
+        <source>Nothing selected yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="78"/>
+        <source>Home:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="80"/>
+        <source>SD Card:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="82"/>
+        <source>Android Storage:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
@@ -630,9 +696,14 @@
 <context>
     <name>HelpCreateNewDatabase</name>
     <message>
-        <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;First you need to specify where the database file will be stored. Available options are &quot;Documents on phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; and &quot;Sailbox local storage&quot;. Take the first option &quot;Documents on phone&quot; if you want the database to be located on the phone or choose &quot;SD card&quot; to place the database on the removable SD card. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. If SD card is not inserted the SD card location item is disabled. Please make sure the SD card is properly detected by looking at it in a File Browser. If you want to share the Keepass database with Android Apps you can place it into &quot;Android storage&quot;. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option &quot;Sailbox local storage&quot; can be used together with Sailbox. If you place your database there Sailbox can up- and download the file to the Dropbox online service. Sailbox is available in Jolla Harbour for download.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the relative path and file name for your Keepass database file. For example you can type in &quot;ownkeepass/notes.kdb&quot;. If you have opened ownKeepass the first time you will see that string already pre-filled for your convenience.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file location cannot be set to &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can choose here a picture as a key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation>Auf dieser Seite kannst Du eine neue Datenbank anlegen wo ownKeepass deine sensiblen Daten speichern kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Als erstes musst Du wählen wo deine neue Datenbank angelegt werden soll. Du kannst zwischen folgenden Speicherorten wählen: &quot;Dokumente im Telefonspeicher&quot;, &quot;SD Karte&quot;, &quot;Android Umgebung&quot; und &quot;Lokale Sailbox Umgebung&quot;. Wähle den ersten Eintrag &quot;Dokumente im Telefonspeicher&quot;, wenn Du die Datenbank lokal auf deinem Smartphone speichern willst, oder wähle &quot;SD Karte&quot; um die Datenbank auf einer austauschbaren Speicherkarte zu platzieren. Die Speicherkarte sollte nur eine einzelne formatierte Partition besitzen, da zur Zeit keine Speicherkarten mit mehreren Partitionen von ownKeepass unterstützt werden. Falls keine Speicherkarte eingelegt ist ist der Eintrag &quot;SD Karte&quot; nicht anwählbar. Bitte stelle sicher, dass die Speicherkarte korrekt vom System erkannt wurde. Schaue dir zum Beispiel mal mit einem Datei-Browser den Inhalt der Speicherkarte an. Wenn Du die Keepass Datenbank zusammen mit Android Apps benutzen willst, speichere sie in die &quot;Android Umgebung&quot;. Bitte beachte jedoch, dass das gemeinsame Benutzen von Dateien mit Android Apps aufgrund von Dateizugriffsrechten ärgerliche Nebeneffekte haben kann. Den letzten Eintrag &quot;Lokale Sailbox Umgebung&quot; kann zusammen mit der Sailbox App genutzt werden. Wenn Du deine Datenbank dort ablegst, kann Sailbox die Datei zum Dropbox-Online-Service hoch- und von dort runterladen. Sailbox ist im Jolla Store erhältlich.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank in der Dropbox-Cloud speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den relativen Dateipfad und -namen innerhalb des Speicherortes an wo deine Keepass Datenbankdatei angelegt werden soll. Du kannst zum Beispiel folgendes eingeben &quot;ownkeepass/notes.kdb&quot;. Wenn Du zum ersten mal ownKeepass benutzt wird dieser Dateipfad und -name als Vorauswahl genommen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du zusätzlich zum Zugangspasswort deiner Keepass Datenbank eine Schlüsseldatei zum Öffnen verwenden möchtest. Diese Datei kann zum Beispiel ein zufälliges Foto sein. Mit der Benutzung einer Schlüsseldatei, die selbst aus einer enormen Menge an quasi zufälligen Daten besteht, wird der generierte Schlüssel im Prinzip sicherer gegenüber einem Angriff auf den Datenbankschlüssel.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier gilt dasselbe wie für den Speicherort der Keepass Datenbank außer, dass die Schlüsseldatei aus Sicherheitsgründen nicht von der lokalen Sailbox Umgebung geladen werden kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den Dateipfad und -namen der Datei innerhalb des Speicherortes an, die Du als Schlüsseldatei verwenden möchtest.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen deiner neuen Datenbank ein. Wähle ein langes sicheres Passwort, das aus ungefähr 10 -15 Zeichen besteht und verwende eine Mischung aus Klein- und Grossbuchstaben, Nummern und Sonderzeichen. Wiederhole das Zugangspasswort in dem Feld &quot;Bestätige das Zugangspasswort&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
+        <translation type="vanished">Auf dieser Seite kannst Du eine neue Datenbank anlegen wo ownKeepass deine sensiblen Daten speichern kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Als erstes musst Du wählen wo deine neue Datenbank angelegt werden soll. Du kannst zwischen folgenden Speicherorten wählen: &quot;Dokumente im Telefonspeicher&quot;, &quot;SD Karte&quot;, &quot;Android Umgebung&quot; und &quot;Lokale Sailbox Umgebung&quot;. Wähle den ersten Eintrag &quot;Dokumente im Telefonspeicher&quot;, wenn Du die Datenbank lokal auf deinem Smartphone speichern willst, oder wähle &quot;SD Karte&quot; um die Datenbank auf einer austauschbaren Speicherkarte zu platzieren. Die Speicherkarte sollte nur eine einzelne formatierte Partition besitzen, da zur Zeit keine Speicherkarten mit mehreren Partitionen von ownKeepass unterstützt werden. Falls keine Speicherkarte eingelegt ist ist der Eintrag &quot;SD Karte&quot; nicht anwählbar. Bitte stelle sicher, dass die Speicherkarte korrekt vom System erkannt wurde. Schaue dir zum Beispiel mal mit einem Datei-Browser den Inhalt der Speicherkarte an. Wenn Du die Keepass Datenbank zusammen mit Android Apps benutzen willst, speichere sie in die &quot;Android Umgebung&quot;. Bitte beachte jedoch, dass das gemeinsame Benutzen von Dateien mit Android Apps aufgrund von Dateizugriffsrechten ärgerliche Nebeneffekte haben kann. Den letzten Eintrag &quot;Lokale Sailbox Umgebung&quot; kann zusammen mit der Sailbox App genutzt werden. Wenn Du deine Datenbank dort ablegst, kann Sailbox die Datei zum Dropbox-Online-Service hoch- und von dort runterladen. Sailbox ist im Jolla Store erhältlich.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank in der Dropbox-Cloud speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den relativen Dateipfad und -namen innerhalb des Speicherortes an wo deine Keepass Datenbankdatei angelegt werden soll. Du kannst zum Beispiel folgendes eingeben &quot;ownkeepass/notes.kdb&quot;. Wenn Du zum ersten mal ownKeepass benutzt wird dieser Dateipfad und -name als Vorauswahl genommen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du zusätzlich zum Zugangspasswort deiner Keepass Datenbank eine Schlüsseldatei zum Öffnen verwenden möchtest. Diese Datei kann zum Beispiel ein zufälliges Foto sein. Mit der Benutzung einer Schlüsseldatei, die selbst aus einer enormen Menge an quasi zufälligen Daten besteht, wird der generierte Schlüssel im Prinzip sicherer gegenüber einem Angriff auf den Datenbankschlüssel.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier gilt dasselbe wie für den Speicherort der Keepass Datenbank außer, dass die Schlüsseldatei aus Sicherheitsgründen nicht von der lokalen Sailbox Umgebung geladen werden kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den Dateipfad und -namen der Datei innerhalb des Speicherortes an, die Du als Schlüsseldatei verwenden möchtest.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen deiner neuen Datenbank ein. Wähle ein langes sicheres Passwort, das aus ungefähr 10 -15 Zeichen besteht und verwende eine Mischung aus Klein- und Grossbuchstaben, Nummern und Sonderzeichen. Wiederhole das Zugangspasswort in dem Feld &quot;Bestätige das Zugangspasswort&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
+        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;\
+&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -666,9 +737,13 @@
 <context>
     <name>HelpOpenNewDatabase</name>
     <message>
-        <location filename="../qml/help/HelpOpenNewDatabase.qml" line="27"/>
         <source>To open an existing Keepass database you need to provide the following details:&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you specify from where the database file will be opened. To make opening as easy as possible you should place the database file in one of the following locations: &quot;Documents on Phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; or &quot;Sailbox local storage&quot;. If you have trouble with ownKeepass not finding the file make sure it is in desired place by looking it up in a file browser. Documents on Phone is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) Android storage is at &quot;%2&quot; and Sailbox local storage you will find at &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the file name of your Keepass database file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file cannot be loaded from &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please type in here the file name of the key file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation>Um eine existierende Keepass Datenbank zu öffnen muss Du die folgenden Daten angeben:&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hiermit gibst Du an von wo die Datenbank geöffnet werden soll. Um das Öffnen der Datenbank so leicht wie möglich zu machen, solltest Du die Datenbankdatei in einem der foldenden Speicherorte ablegen: &quot;Dokumente im Telefonspeicher&quot;, &quot;SD Karte&quot;, &quot;Android Umgebung&quot; oder &quot;Lokale Sailbox Umgebung&quot;. Falls Du Schwierigkeiten mit dem Öffnen der Keepass Datenbank hast, überprüfe den Speicherort und Dateipfad deiner Datenbank mit Hilfe eines Datei-Browsers. Dokumente im Telefonspeicher befinden sich unter &quot;%1&quot;. Wenn eine SD Karte in dein Smartphone eingelegt ist, befindet sie sich unter &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Bitte beachte, dass SD Karten mit mehr als einer Partition nicht unterstützt werden.) Die Android Umgebung befindet sich unter &quot;%2&quot; und die lokale Sailbox Umgebung findest Du unter &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank in der Dropbox-Cloud speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den relativen Dateipfad und -namen innerhalb des Speicherortes an von wo deine Keepass Datenbankdatei geöffnet werden soll. Der Speicherort kann eine der oben genannten Alternativen sein.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du eine Schlüsseldatei zum Öffnen deiner Keepass Datenbank benötigst. Die folgenden zwei Optionen erscheinen dann automatisch auf der Seite.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier gilt dasselbe wie für den Speicherort der Keepass Datenbank außer, dass die Schlüsseldatei aus Sicherheitsgründen nicht von der lokalen Sailbox Umgebung geladen werden kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den relativen Dateipfad und -namen der Schlüsseldatei innerhalb des Speicherortes an von wo die Schlüsseldatei geladen werden soll.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen der Datenbank ein.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
+        <translation type="vanished">Um eine existierende Keepass Datenbank zu öffnen muss Du die folgenden Daten angeben:&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hiermit gibst Du an von wo die Datenbank geöffnet werden soll. Um das Öffnen der Datenbank so leicht wie möglich zu machen, solltest Du die Datenbankdatei in einem der foldenden Speicherorte ablegen: &quot;Dokumente im Telefonspeicher&quot;, &quot;SD Karte&quot;, &quot;Android Umgebung&quot; oder &quot;Lokale Sailbox Umgebung&quot;. Falls Du Schwierigkeiten mit dem Öffnen der Keepass Datenbank hast, überprüfe den Speicherort und Dateipfad deiner Datenbank mit Hilfe eines Datei-Browsers. Dokumente im Telefonspeicher befinden sich unter &quot;%1&quot;. Wenn eine SD Karte in dein Smartphone eingelegt ist, befindet sie sich unter &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Bitte beachte, dass SD Karten mit mehr als einer Partition nicht unterstützt werden.) Die Android Umgebung befindet sich unter &quot;%2&quot; und die lokale Sailbox Umgebung findest Du unter &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank in der Dropbox-Cloud speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den relativen Dateipfad und -namen innerhalb des Speicherortes an von wo deine Keepass Datenbankdatei geöffnet werden soll. Der Speicherort kann eine der oben genannten Alternativen sein.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du eine Schlüsseldatei zum Öffnen deiner Keepass Datenbank benötigst. Die folgenden zwei Optionen erscheinen dann automatisch auf der Seite.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier gilt dasselbe wie für den Speicherort der Keepass Datenbank außer, dass die Schlüsseldatei aus Sicherheitsgründen nicht von der lokalen Sailbox Umgebung geladen werden kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den relativen Dateipfad und -namen der Schlüsseldatei innerhalb des Speicherortes an von wo die Schlüsseldatei geladen werden soll.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen der Datenbank ein.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="../qml/help/HelpOpenNewDatabase.qml" line="27"/>
+        <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -736,6 +811,29 @@
         <location filename="../qml/content/LicensePage.qml" line="50"/>
         <source>License</source>
         <translation>Lizenz</translation>
+    </message>
+</context>
+<context>
+    <name>Main</name>
+    <message>
+        <location filename="../qml/Main.qml" line="72"/>
+        <source>ownKeepass got updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Main.qml" line="73"/>
+        <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Main.qml" line="82"/>
+        <source>Problem with SD card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/Main.qml" line="83"/>
+        <source>SD cards with multiple partitions are not supported.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1008,121 +1106,112 @@
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="89"/>
         <source>Specify location, path and file name of your new Keepass database:</source>
-        <translation>Gib den Speicherort, Dateipfad und -namen für deine neue Keepass Datenbank an:</translation>
+        <translation type="vanished">Gib den Speicherort, Dateipfad und -namen für deine neue Keepass Datenbank an:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="95"/>
         <source>Database location:</source>
-        <translation>Speicherort der Keepass Datenbank:</translation>
+        <translation type="vanished">Speicherort der Keepass Datenbank:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="98"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="186"/>
         <source>Documents on phone</source>
-        <translation>Dokumente im Telefonspeicher</translation>
+        <translation type="vanished">Dokumente im Telefonspeicher</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="99"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="187"/>
         <source>SD card</source>
-        <translation>SD Karte</translation>
+        <translation type="vanished">SD Karte</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="100"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="188"/>
         <source>Android storage</source>
-        <translation>Android Umgebung</translation>
+        <translation type="vanished">Android Umgebung</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="101"/>
         <source>Sailbox local storage</source>
-        <translation>Lokale Sailbox Umgebung</translation>
+        <translation type="vanished">Lokale Sailbox Umgebung</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="106"/>
         <source>Warning</source>
-        <translation>Warnung</translation>
+        <translation type="vanished">Warnung</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="106"/>
         <source>Please be aware that using the Android storage might cause problems due to different file ownership and permissions. If modifications to your Keepass database are not saved make sure the file is writable for user &quot;nemo&quot;. So if you don&apos;t know how to handle file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.</source>
-        <translation>Bitte beachte, dass bei der Nutzung der Android Umgebung Probleme mit den Zugriffsrechten von Dateien auftreten können. Wenn Änderungen an deiner Keepass Datenbank nicht gespeichert werden, stelle sicher, dass die Datenbankdatei für den UNIX Benutzer &quot;nemo&quot; schreibbar ist. Also, falls Du keine Ahnung hast wie man Dateirechte im Terminal deines Jolla Smartphones handhabt, ist es keine gute Idee Dateien aus der Android Umgebung zu verwenden. Sorry.</translation>
+        <translation type="vanished">Bitte beachte, dass bei der Nutzung der Android Umgebung Probleme mit den Zugriffsrechten von Dateien auftreten können. Wenn Änderungen an deiner Keepass Datenbank nicht gespeichert werden, stelle sicher, dass die Datenbankdatei für den UNIX Benutzer &quot;nemo&quot; schreibbar ist. Also, falls Du keine Ahnung hast wie man Dateirechte im Terminal deines Jolla Smartphones handhabt, ist es keine gute Idee Dateien aus der Android Umgebung zu verwenden. Sorry.</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="121"/>
         <source>Advice</source>
-        <translation>Ein guter Rat</translation>
+        <translation type="vanished">Ein guter Rat</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="121"/>
         <source>You choosed to place your new Keepass database in the Dropbox cloud. Please make sure to use a unique password for Dropbox and enable two-step verification to increase security of your online storage! ownKeepass does enforce to use a locally stored key file when storing your Keepass database online.</source>
-        <translation>Du hast dich entschieden deine Keepass Datenbank in der Dropbox Cloud zu speichern. Bitte stelle sicher, dass Du ein sicheres Passwort für Dropbox benutzt und erwäge ebenfalls Two-Step-Verifizierung zu aktivieren um die Sicherheit weiter zu erhöhen! ownKeepass erwartet standartmäßig eine lokal gespeicherte Schlüsseldatei, wenn Du deine Keepass Datenbank online speicherst.</translation>
+        <translation type="vanished">Du hast dich entschieden deine Keepass Datenbank in der Dropbox Cloud zu speichern. Bitte stelle sicher, dass Du ein sicheres Passwort für Dropbox benutzt und erwäge ebenfalls Two-Step-Verifizierung zu aktivieren um die Sicherheit weiter zu erhöhen! ownKeepass erwartet standartmäßig eine lokal gespeicherte Schlüsseldatei, wenn Du deine Keepass Datenbank online speicherst.</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="136"/>
         <source>Path and name of database file</source>
-        <translation>Dateipfad und -name der Keepass Datenbank</translation>
+        <translation type="vanished">Dateipfad und -name der Keepass Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="137"/>
         <source>Set path and name of database file</source>
-        <translation>Gib den Dateipfad und -namen der Keepass Datenbank an</translation>
+        <translation type="vanished">Gib den Dateipfad und -namen der Keepass Datenbank an</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="160"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="147"/>
         <source>Use key file</source>
         <translation>Schlüsseldatei benutzen</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="161"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="148"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Wähle das hier aus um eine Schlüsseldatei zusammen mit einem Passwort zum sperren deiner neuen Keepass Datenbank zu verwenden</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="183"/>
         <source>Key file location:</source>
-        <translation>Speicherort der Schlüsseldatei:</translation>
+        <translation type="vanished">Speicherort der Schlüsseldatei:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="196"/>
         <source>Path and name of key file</source>
-        <translation>Dateipfad und -name der Schlüsseldatei</translation>
+        <translation type="vanished">Dateipfad und -name der Schlüsseldatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="197"/>
         <source>Set path and name of key file</source>
-        <translation>Dateipfad und -name der Schlüsseldatei setzen</translation>
+        <translation type="vanished">Dateipfad und -name der Schlüsseldatei setzen</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="222"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
+        <source>Please specify a new Keepass database file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="323"/>
+        <source>Please choose an existing Keepass database file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
         <source>Password</source>
         <translation>Passwort</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="223"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
         <source>Enter password</source>
         <translation>Passwort eingeben</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="269"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="275"/>
         <source>Confirm password</source>
         <translation>Passwort bestätigen</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="287"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Open automatically</source>
         <translation>Automatisch öffnen</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="302"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="301"/>
         <source>Create</source>
         <translation>Neu anlegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="304"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="302"/>
         <source>New Password Safe</source>
         <translation>Neue Passwortdatenbank</translation>
     </message>
@@ -1133,19 +1222,19 @@
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="338"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="340"/>
         <source>Open</source>
         <translation>Öffnen</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="322"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="339"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="341"/>
         <source>Password Safe</source>
         <translation>Passwortsafe</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="325"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="342"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="327"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="344"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Gib das Passwort zum entsperren deiner Keepass Datenbank ein:</translation>
     </message>
