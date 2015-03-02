@@ -73,11 +73,41 @@ void OwnKeepassSettings::checkSettingsVersion()
     if (m_previousVersion != m_version) {
         // Check if no version number was saved, this was a bug until version 1.0.4, from version 1.0.5 the new
         // version is saved every time the app version increases
+        m_settings->setValue("settings/version", QVariant(m_version));
+
+        QRegExp rx("(\\d+).(\\d+).(\\d+)");
+        if ((rx.indexIn(m_previousVersion)) == -1) {
+            qDebug() << "ERROR: Cannot extract version number.";
+            return;
+        }
+        int major = rx.cap(1).toInt();
+        int minor = rx.cap(2).toInt();
+        int patch = rx.cap(3).toInt();
+
+        // Version 1.0.25 introduced a file browser and also redefined the file locations
+        // Thus we need to reset the recent opened database list because the paths will not fit
+        if ((major == 1) && (minor == 0) && (patch < 25)) {
+            m_settings->removeArray("main/recentDatabases");
+        }
+
+        // check if ownKeepass was updated and trigger to show info banner in QML
         if (m_previousVersion != INITIAL_VERSION) {
             emit showChangeLogBanner();
         }
         // Now save new version number
         m_settings->setValue("settings/version", QVariant(m_version));
+    }
+
+    // load recent database list
+    m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
+    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+        m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
+                m_recentDatabaseList[i]["uiPath"].toString(),
+                m_recentDatabaseList[i]["dbLocation"].toInt(),
+                m_recentDatabaseList[i]["dbFilePath"].toString(),
+                m_recentDatabaseList[i]["useKeyFile"].toBool(),
+                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
+                m_recentDatabaseList[i]["keyFilePath"].toString());
     }
 }
 
@@ -124,38 +154,6 @@ void OwnKeepassSettings::loadSettings() {
     emit clearClipboardChanged();
     emit languageChanged();
     emit fastUnlockChanged();
-
-    // Check previous settings file version here and
-    // do legacy updates if needed
-    m_previousVersion = (m_settings->getValue("settings/version", QVariant(m_previousVersion))).toString();
-    if (m_previousVersion != m_version) {
-        QRegExp rx("(\\d+).(\\d+).(\\d+)");
-        if ((rx.indexIn(m_previousVersion)) == -1) {
-            qDebug() << "ERROR: Cannot extract version number.";
-            return;
-        }
-        int major = rx.cap(1).toInt();
-        int minor = rx.cap(2).toInt();
-        int patch = rx.cap(3).toInt();
-
-        // Version 1.0.25 introduced a file browser and also redefined the file locations
-        // Thus we need to reset the recent opened database list because the paths will not fit
-        if ((major == 1) && (minor == 0) && (patch < 25)) {
-            m_settings->removeArray("main/recentDatabases");
-        }
-    }
-
-    // load recent database list
-    m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
-    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-        m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
-                m_recentDatabaseList[i]["uiPath"].toString(),
-                m_recentDatabaseList[i]["dbLocation"].toInt(),
-                m_recentDatabaseList[i]["dbFilePath"].toString(),
-                m_recentDatabaseList[i]["useKeyFile"].toBool(),
-                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                m_recentDatabaseList[i]["keyFilePath"].toString());
-    }
 }
 
 void OwnKeepassSettings::addRecentDatabase(QString uiName,
