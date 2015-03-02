@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013-2014 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013-2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -26,45 +26,22 @@ import Sailfish.Silica 1.0
 HelpPage {
     text: qsTr("On this page you can create a new database where ownKeepass will store your sensitive data.<br><br>\
 \
-<b>Database location</b><br><br>\
-\
-First you need to specify where the database file will be stored. Available options are \"Documents on phone\", \
-\"SD card\", \"Android storage\" and \"Sailbox local storage\". \
-Take the first option \"Documents on phone\" if you want the database to be \
-located on the phone or choose \"SD card\" to place the database on the removable SD card. There should be only one \
+Open the file browser and choose a file name and a directory. You can choose to locate your database in the home \
+directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD \
+card is inserted or the card is not correctly detected by the System. There should be only one \
 formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. \
-If SD card is not inserted the SD card location item is disabled. \
-Please make sure the SD card is properly detected by looking at it in a File Browser. \
-If you want to share the Keepass database with Android Apps you can place it into \"Android storage\". \
+\"Android storage\" is there to share the database with Android Apps. \
 However sharing files with the Android world can be annoying due to different file ownership and permissions. \
-Please be aware of that. The last option \"Sailbox local storage\" can be used together with Sailbox. \
-If you place your database there Sailbox can up- and download the file to \
-the Dropbox online service. Sailbox is available in Jolla Harbour for download.<br><br>\
+Please be aware of that.<br><br>\
 \
-Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition \
+Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition \
 to the master password. This key file should not be uploaded to the cloud service.<br><br>\
-\
-<b>Database path and file name</b><br><br>\
-\
-Please specify in this text field the relative path and file name for your Keepass database file. For example you \
-can type in \"ownkeepass/notes.kdb\". If you have opened ownKeepass the first time you will see that string already \
-pre-filled for your convenience.<br><br>\
-\
+\\
 <b>Use key file</b><br><br>\
 \
 A key file can be used additionally to a master password to protect the Keepass database. Both are used together to \
 generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key \
 becomes in principle stronger against attacks. You can use for example a random picture as key file.<br><br>\
-\
-<b>Key file location</b><br><br>\
-\
-The same as for database location also applies here. Except that the key file location cannot be set to \"Sailbox local \
-storage\" in order to protect your security by design.<br><br>\
-\
-<b>Key file path and file name</b><br><br>\
-\
-Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can \
-choose here a picture as a key file.<br><br>\
 \
 <b>Master password</b><br><br>\
 \

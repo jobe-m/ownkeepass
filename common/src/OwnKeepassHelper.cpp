@@ -60,9 +60,9 @@ bool OwnKeepassHelper::sdCardExists()
     return (sdCards.count() == 1);
 }
 
-QString OwnKeepassHelper::getJollaPhoneDocumentsPath()
+QString OwnKeepassHelper::getHomePath()
 {
-    return QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
+    return QStandardPaths::standardLocations(QStandardPaths::HomeLocation)[0];
 }
 
 QString OwnKeepassHelper::getSdCardPath()
@@ -73,8 +73,7 @@ QString OwnKeepassHelper::getSdCardPath()
     }
     if (sdCards.count() > 1) {
         // tell user that multi-partition SD cards are not supported
-        emit showErrorBanner("Problem with SD card",
-                       "SD cards with multiple partitions are not supported.");
+        emit showErrorBanner();
         return QString();
     }
 
@@ -86,11 +85,6 @@ QString OwnKeepassHelper::getSdCardPath()
 QString OwnKeepassHelper::getAndroidStoragePath()
 {
     return "/data/sdcard";
-}
-
-QString OwnKeepassHelper::getSailboxLocalStoragePath()
-{
-    return QDir::homePath() + "/Downloads";
 }
 
 QStringList OwnKeepassHelper::mountPoints() const
@@ -150,14 +144,12 @@ QStringList OwnKeepassHelper::sdCardPartitions()
 QString OwnKeepassHelper::getLocationRootPath(const int value)
 {
     switch (value) {
-    case 0:
-        return getJollaPhoneDocumentsPath();
     case 1:
-        return getSdCardPath();
+        return getHomePath();
     case 2:
-        return getAndroidStoragePath();
+        return getSdCardPath();
     case 3:
-        return getSailboxLocalStoragePath();
+        return getAndroidStoragePath();
     default:
         return "";
     }
