@@ -51,7 +51,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Danksagungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (für das geniale Sailfish OS)&lt;br&gt;Das KeepassX Projekt (für eine Qt Implementierung von Keepass)&lt;br&gt;Petri Mäkijärvi (Finnische Übersetzung und testen)&lt;br&gt;Åke Engelbrektson (Schwedische Übersetzung)&lt;br&gt;Agusti Clara (Katalanische Übersetzung)&lt;br&gt;fri (Tschechische Übersetzung)&lt;br&gt;Heimen Stoffels, Rob K (Niederländische Übersetzung)&lt;br&gt;carmenfdezb (Spanische Übersetzung)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ich hoffe ihr habt mindestens so viel Spaß während der Benutzung von ownKeepass, wie ich während der Entwicklung!</translation>
     </message>
     <message>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
@@ -545,7 +545,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation>Diese Einstellung aktiviert den Expertenmodus. In diesem Modus ist es möglich zwischen mehreren Keepass Datenbanken auf der Startseite der App zu wechseln. Ebenso ermöglicht es das Öffnen einer Keepass Datenbank von einem selbst zu definierenden Dateipfad. (Vorsicht: Das ist wirklich schwerer als es sich anhört, da es noch keinen File-Browser gibt.)</translation>
+        <translation>Diese Einstellung aktiviert den Expertenmodus, bei dem man zwischen mehreren Keepass Datenbanken auf der Startseite wechseln kann</translation>
     </message>
 </context>
 <context>
@@ -553,65 +553,65 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Problem mit der SD Karte</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>SD Karten mit mehreren Partitionen werden nicht unterstützt.</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbruch</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>New file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuer Dateiname</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
         <source>Enter new file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuen Dateinamen angeben</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
         <source>Open</source>
-        <translation type="unfinished">Öffnen</translation>
+        <translation>Öffnen</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
         <source>Create</source>
-        <translation type="unfinished">Neu anlegen</translation>
+        <translation>Neu anlegen</translation>
     </message>
 </context>
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="80"/>
+        <location filename="../qml/scripts/Global.js" line="76"/>
         <source>Nothing selected yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Noch nichts ausgewählt</translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="78"/>
+        <source>Home:</source>
+        <translation>Home:</translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="80"/>
+        <source>SD Card:</source>
+        <translation>SD Karte:</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="82"/>
-        <source>Home:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/scripts/Global.js" line="84"/>
-        <source>SD Card:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/scripts/Global.js" line="86"/>
         <source>Android Storage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Android Umgebung:</translation>
     </message>
 </context>
 <context>
@@ -707,7 +707,7 @@
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;\
 &lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auf dieser Seite kannst Du eine neue Datenbank anlegen wo ownKeepass deine sensiblen Daten speichern kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Als erstes musst Du wählen wo deine neue Datenbank angelegt werden soll. Du kannst zwischen folgenden Speicherorten wählen: &quot;Dokumente im Telefonspeicher&quot;, &quot;SD Karte&quot;, &quot;Android Umgebung&quot; und &quot;Lokale Sailbox Umgebung&quot;. Wähle den ersten Eintrag &quot;Dokumente im Telefonspeicher&quot;, wenn Du die Datenbank lokal auf deinem Smartphone speichern willst, oder wähle &quot;SD Karte&quot; um die Datenbank auf einer austauschbaren Speicherkarte zu platzieren. Die Speicherkarte sollte nur eine einzelne formatierte Partition besitzen, da zur Zeit keine Speicherkarten mit mehreren Partitionen von ownKeepass unterstützt werden. Falls keine Speicherkarte eingelegt ist ist der Eintrag &quot;SD Karte&quot; nicht anwählbar. Bitte stelle sicher, dass die Speicherkarte korrekt vom System erkannt wurde. Schaue dir zum Beispiel mal mit einem Datei-Browser den Inhalt der Speicherkarte an. Wenn Du die Keepass Datenbank zusammen mit Android Apps benutzen willst, speichere sie in die &quot;Android Umgebung&quot;. Bitte beachte jedoch, dass das gemeinsame Benutzen von Dateien mit Android Apps aufgrund von Dateizugriffsrechten ärgerliche Nebeneffekte haben kann. Den letzten Eintrag &quot;Lokale Sailbox Umgebung&quot; kann zusammen mit der Sailbox App genutzt werden. Wenn Du deine Datenbank dort ablegst, kann Sailbox die Datei zum Dropbox-Online-Service hoch- und von dort runterladen. Sailbox ist im Jolla Store erhältlich.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank in der Dropbox-Cloud speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den relativen Dateipfad und -namen innerhalb des Speicherortes an wo deine Keepass Datenbankdatei angelegt werden soll. Du kannst zum Beispiel folgendes eingeben &quot;ownkeepass/notes.kdb&quot;. Wenn Du zum ersten mal ownKeepass benutzt wird dieser Dateipfad und -name als Vorauswahl genommen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du zusätzlich zum Zugangspasswort deiner Keepass Datenbank eine Schlüsseldatei zum Öffnen verwenden möchtest. Diese Datei kann zum Beispiel ein zufälliges Foto sein. Mit der Benutzung einer Schlüsseldatei, die selbst aus einer enormen Menge an quasi zufälligen Daten besteht, wird der generierte Schlüssel im Prinzip sicherer gegenüber einem Angriff auf den Datenbankschlüssel.&lt;br&gt;&lt;br&gt;&lt;b&gt;Speicherort der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier gilt dasselbe wie für den Speicherort der Keepass Datenbank außer, dass die Schlüsseldatei aus Sicherheitsgründen nicht von der lokalen Sailbox Umgebung geladen werden kann.&lt;br&gt;&lt;br&gt;&lt;b&gt;Dateipfad und -name der Schlüsseldatei&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier den Dateipfad und -namen der Datei innerhalb des Speicherortes an, die Du als Schlüsseldatei verwenden möchtest.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen deiner neuen Datenbank ein. Wähle ein langes sicheres Passwort, das aus ungefähr 10 -15 Zeichen besteht und verwende eine Mischung aus Klein- und Grossbuchstaben, Nummern und Sonderzeichen. Wiederhole das Zugangspasswort in dem Feld &quot;Bestätige das Zugangspasswort&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -818,52 +818,24 @@
     </message>
 </context>
 <context>
-    <name>LockPage</name>
-    <message>
-        <location filename="../qml/content/LockPage.qml" line="59"/>
-        <source>Password Safe</source>
-        <translation type="unfinished">Passwortsafe</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/LockPage.qml" line="71"/>
-        <source>Unlock your Password Safe with the last three digits of your master password:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/LockPage.qml" line="164"/>
-        <source>You have 2 tries left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/LockPage.qml" line="166"/>
-        <source>You have 1 try left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/LockPage.qml" line="168"/>
-        <source>Wrong unlock code</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="73"/>
+        <location filename="../qml/Main.qml" line="72"/>
         <source>ownKeepass got updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="74"/>
+        <location filename="../qml/Main.qml" line="73"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="83"/>
+        <location filename="../qml/Main.qml" line="82"/>
         <source>Problem with SD card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="84"/>
+        <location filename="../qml/Main.qml" line="83"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -871,228 +843,228 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="135"/>
-        <location filename="../qml/content/MainPage.qml" line="343"/>
+        <location filename="../qml/content/MainPage.qml" line="117"/>
+        <location filename="../qml/content/MainPage.qml" line="323"/>
         <source>Password Safe</source>
         <translation>Passwortsafe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="148"/>
+        <location filename="../qml/content/MainPage.qml" line="130"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Gib ein Zugangspasswort ein um deine neue Keepass Datenbank zu sperren:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="162"/>
+        <location filename="../qml/content/MainPage.qml" line="144"/>
         <source>Master password</source>
         <translation>Zugangspasswort</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="163"/>
+        <location filename="../qml/content/MainPage.qml" line="145"/>
         <source>Enter master password</source>
         <translation>Zugangspasswort eingeben</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="214"/>
+        <location filename="../qml/content/MainPage.qml" line="194"/>
         <source>Confirm master password</source>
         <translation>Zugangspasswort bestätigen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="246"/>
+        <location filename="../qml/content/MainPage.qml" line="226"/>
         <source>Show more details</source>
         <translation>Weitere Details anzeigen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="262"/>
+        <location filename="../qml/content/MainPage.qml" line="242"/>
         <source>Database path and name</source>
         <translation>Dateipfad und -name der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="282"/>
+        <location filename="../qml/content/MainPage.qml" line="262"/>
         <source>Key file path and name</source>
         <translation>Dateipfad und -name der Schlüsseldatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="282"/>
+        <location filename="../qml/content/MainPage.qml" line="262"/>
         <source>No key file used</source>
         <translation>Keine Schlüsseldatei in Benutzung</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="355"/>
+        <location filename="../qml/content/MainPage.qml" line="335"/>
         <source>Create new database</source>
         <translation>Neue Datenbank anlegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="374"/>
+        <location filename="../qml/content/MainPage.qml" line="354"/>
         <source>Open database</source>
         <translation>Datenbank öffnen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="393"/>
+        <location filename="../qml/content/MainPage.qml" line="373"/>
         <source>Recent databases</source>
         <translation>Zuletzt benutzte Datenbanken</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="509"/>
         <source>Permission error</source>
         <translation>Zugriffsfehler</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="509"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Keepass Datenbankpfad kann nicht angelegt werden. Sehr wahrscheinlich musst Du dem UNIX Nutzerkonto &apos;nemo&apos; Zugriffsrechte geben.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="541"/>
-        <location filename="../qml/content/MainPage.qml" line="558"/>
+        <location filename="../qml/content/MainPage.qml" line="514"/>
+        <location filename="../qml/content/MainPage.qml" line="531"/>
         <source>Key file error</source>
         <translation>Fehler in der Schlüsseldatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="541"/>
-        <location filename="../qml/content/MainPage.qml" line="558"/>
+        <location filename="../qml/content/MainPage.qml" line="514"/>
+        <location filename="../qml/content/MainPage.qml" line="531"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Der Pfad zur Datenbank ist in Ordnung, aber die Schlüsseldatei ist nicht verfügbar. Bitte überprüfe den Pfad zur Schlüsseldatei:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="546"/>
+        <location filename="../qml/content/MainPage.qml" line="519"/>
         <source>Database file already exists</source>
         <translation>Datenbankdatei existiert bereits</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="546"/>
+        <location filename="../qml/content/MainPage.qml" line="519"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Bitte wähle einen anderen Dateipfad oder -namen für deine Keepass Datenbank oder lösche die alte Datenbank mit Hilfe eines Dateimanagers.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="563"/>
+        <location filename="../qml/content/MainPage.qml" line="536"/>
         <source>Database file error</source>
         <translation>Fehler in der Datenbankdatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="563"/>
+        <location filename="../qml/content/MainPage.qml" line="536"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Keepass Datenbank existiert nicht. Bitte überprüfe den Dateipfad zur Datenbank:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="606"/>
+        <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>Password changed</source>
         <translation>Passwort wurde geändert</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="606"/>
+        <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Das Zugangspasswort für deine Keepass Datenbank wurde erfolgreich geändert.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
-        <location filename="../qml/content/MainPage.qml" line="635"/>
+        <location filename="../qml/content/MainPage.qml" line="588"/>
+        <location filename="../qml/content/MainPage.qml" line="608"/>
         <source>Internal database error</source>
         <translation>Fehler in der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
+        <location filename="../qml/content/MainPage.qml" line="588"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Die zuvor geöffnete Datenbank konnte nicht geschlossen werden. Bitte versuche es erneut. Fehlerbeschreibung:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="592"/>
         <source>Internal key error</source>
         <translation>Fehler beim Verarbeiten des Schlüssels</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
-        <location filename="../qml/content/MainPage.qml" line="623"/>
+        <location filename="../qml/content/MainPage.qml" line="592"/>
+        <location filename="../qml/content/MainPage.qml" line="596"/>
         <source>The following error occured during opening of database:</source>
         <translation>Beim Öffnen der Datenbank ist folgender Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="623"/>
+        <location filename="../qml/content/MainPage.qml" line="596"/>
         <source>Internal key file error</source>
         <translation>Fehler in der Schlüsseldatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="627"/>
+        <location filename="../qml/content/MainPage.qml" line="600"/>
         <source>Error loading database</source>
         <translation>Fehler beim Laden der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="627"/>
+        <location filename="../qml/content/MainPage.qml" line="600"/>
         <source>Please try again.</source>
         <translation>Bitte versuche es erneut.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="631"/>
+        <location filename="../qml/content/MainPage.qml" line="604"/>
         <source>Internal file error</source>
         <translation>Dateifehler</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="631"/>
+        <location filename="../qml/content/MainPage.qml" line="604"/>
         <source>The following error occured during creation of database:</source>
         <translation>Beim Erzeugen der Datenbank ist folgender Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="635"/>
+        <location filename="../qml/content/MainPage.qml" line="608"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Die Erzeugung der Backup-Passwortgruppe ist mit der folgenden Fehlermeldung fehlgeschlagen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="639"/>
+        <location filename="../qml/content/MainPage.qml" line="612"/>
         <source>Save database error</source>
         <translation>Fehler beim Speichern der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="639"/>
+        <location filename="../qml/content/MainPage.qml" line="612"/>
         <source>Could not save database with following error:</source>
         <translation>Datenbank konnte nicht gespeichert werden. Es ist folgender Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="643"/>
-        <location filename="../qml/content/MainPage.qml" line="647"/>
+        <location filename="../qml/content/MainPage.qml" line="616"/>
+        <location filename="../qml/content/MainPage.qml" line="620"/>
         <source>Database error</source>
         <translation>Fehler in der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="643"/>
+        <location filename="../qml/content/MainPage.qml" line="616"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
         <translation>Datenbank war bereits geschlossen. Nix ernsthaftes, aber bitte lass es den Autor dieser App wissen und schick mir einen Fehlerbericht.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="647"/>
+        <location filename="../qml/content/MainPage.qml" line="620"/>
         <source>An error occured on closing your database:</source>
         <translation>Beim Schliessen der Datenbank ist ein Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1048"/>
+        <location filename="../qml/content/MainPage.qml" line="1021"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1049"/>
+        <location filename="../qml/content/MainPage.qml" line="1022"/>
         <source>No</source>
         <translation>Nein</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1050"/>
+        <location filename="../qml/content/MainPage.qml" line="1023"/>
         <source>Unsaved changes</source>
         <translation>Ungespeicherte Änderungen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1078"/>
+        <location filename="../qml/content/MainPage.qml" line="1051"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Möchstes Du deine Änderungen am Passworteintrag speichern?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1083"/>
+        <location filename="../qml/content/MainPage.qml" line="1056"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Möchtest Du deine Änderungen an der Passwortgruppe speichern?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1088"/>
+        <location filename="../qml/content/MainPage.qml" line="1061"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Möchtest Du die geänderten Datenbank Einstellungen speichern?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1093"/>
+        <location filename="../qml/content/MainPage.qml" line="1066"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Möchtest Du die geänderten Einstellungen speichern?</translation>
     </message>
