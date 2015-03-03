@@ -1,16 +1,16 @@
 ownKeepass
 ==========
 
-[Bug reports go here] [8] - [Translations here] [9]
+[Bug reports go here] [7] - [Translations here] [8]
 
 Status
 ------
 
-Release 1.0.24 is ready and will be available in [openrepos.net] [7].
-It contains translation updates and Spanish as new translation. Jolla store will come later.
+Beta Release 1.0.25 available from [openrepos.net] [1] and warehouse app
+* File browser implemented for opening and creating Keepass database, finally ;) Please test!
 
-For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4)
-or want to try new versions which are not yet in Jolla store have a look [here] [1]
+Release 1.0.24 available in Jolla store
+* Translation updates and Spanish as new translation.
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
@@ -130,15 +130,14 @@ That's it so far.
 
 Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
-[1]: https://www.tisno.de/owncloud/public.php?service=files&t=598987d3cdeba24d83b18a63fce18b08 "Download beta release of ownKeepass for Jolla Phone"
+[1]: https://openrepos.net/content/jobe/ownkeepass                     "Beta and testing releases"
 [2]: http://www.keepass.info/help/v1/setup.html                        "Official Keepass homepage for version 1"
 [3]: http://www.keepassx.org                                           "KeepassX project homepage"
 [4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
 [6]: https://github.com/jobe-m/ownkeepass/milestones                   "Status of next major ownKeepass releases"
-[7]: https://openrepos.net/content/jobe/ownkeepass
-[8]: https://github.com/jobe-m/ownkeepass/issues
-[9]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
+[7]: https://github.com/jobe-m/ownkeepass/issues
+[8]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
 
 Screenshots
 -----------
