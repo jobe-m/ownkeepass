@@ -162,7 +162,6 @@ Page {
                     label: qsTr("Master password")
                     placeholderText: qsTr("Enter master password")
                     text: ""
-                    errorHighlight: text.length > 0 && text.length < 3
                     EnterKey.enabled: !errorHighlight
                     EnterKey.highlighted: true
                     EnterKey.iconSource: text.length === 0 ?
@@ -304,11 +303,13 @@ Page {
         states: [
             State {
                 name: "CREATE_NEW_DATABASE"
+                PropertyChanges { target: passwordField; errorHighlight: text.length > 0 && text.length < 3 }
                 PropertyChanges { target: confirmPasswordField; enabled: true }
                 PropertyChanges { target: moreInfoColumn ; enabled: false }
             },
             State {
                 name: "OPEN_DATABASE"
+                PropertyChanges { target: passwordField; errorHighlight: false }
                 PropertyChanges { target: confirmPasswordField; enabled: false }
                 PropertyChanges { target: moreInfoColumn ; enabled: true }
             }

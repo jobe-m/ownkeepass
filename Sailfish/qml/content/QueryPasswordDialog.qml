@@ -225,8 +225,8 @@ Dialog {
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
                     errorHighlight: text.length === 0
-                    label: qsTr("Password")
-                    placeholderText: qsTr("Enter password")
+                    label: qsTr("Master password")
+                    placeholderText: qsTr("Enter master password")
                     text: ""
                     EnterKey.enabled: !errorHighlight
                     EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
