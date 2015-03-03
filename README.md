@@ -110,12 +110,12 @@ the Keepass database code is split into four classes which are exposed as object
     webpage, username, password, comment, etc. Through this object it is also possible to create
     new entries and save them in the Keepass database.
 
-Features (already working)
---------------------------
+Features
+--------
 
 *   Load and save (automatically in background) kdb database file
 *   Create, modify and delete Keepass groups and entries
-*   Create new and open existing keepass files from Phone's Documents folder, SD Card or Android Storage
+*   Create new and open existing keepass files from Phone's Home folder, SD Card or Android Storage
 *   Database settings adjustable like master password, encryption algorithm and key transformation rounds
 *   Search keepass entries in whole database
 *   Copy username and password from within cover page and use cover page to peak from other apps to
@@ -124,7 +124,7 @@ Features (already working)
 
 That's it so far.
 
-07-Nov-2014
+03-Mar-2015
 
 Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
