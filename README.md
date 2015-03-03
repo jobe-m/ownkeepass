@@ -14,8 +14,7 @@ Release 1.0.24 available in Jolla store
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
-*   Database open and create dialogs are a bit difficult to use due to free text input for
-file name and path (if "expert user mode" is used)
+
 
 Roadmap
 -------
@@ -23,7 +22,6 @@ Roadmap
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Add file/directory chooser for opening and creating new Keepass databases.
 *   Keepass 2 database support. Planning to reuse database code from [KeepassX 2][3] project.
 *   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
 *   Activate password expiration feature which can remind you to change a specific password.
