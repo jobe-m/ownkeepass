@@ -49,13 +49,13 @@
         <translation>Fehler melden</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation>&lt;b&gt;Danksagungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (für das geniale Sailfish OS)&lt;br&gt;Das KeepassX Projekt (für eine Qt Implementierung von Keepass)&lt;br&gt;Petri Mäkijärvi (Finnische Übersetzung und testen)&lt;br&gt;Åke Engelbrektson (Schwedische Übersetzung)&lt;br&gt;Agusti Clara (Katalanische Übersetzung)&lt;br&gt;fri (Tschechische Übersetzung)&lt;br&gt;Heimen Stoffels, Rob K (Niederländische Übersetzung)&lt;br&gt;carmenfdezb (Spanische Übersetzung)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ich hoffe ihr habt mindestens so viel Spaß während der Benutzung von ownKeepass, wie ich während der Entwicklung!</translation>
+        <translation type="vanished">&lt;b&gt;Danksagungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (für das geniale Sailfish OS)&lt;br&gt;Das KeepassX Projekt (für eine Qt Implementierung von Keepass)&lt;br&gt;Petri Mäkijärvi (Finnische Übersetzung und testen)&lt;br&gt;Åke Engelbrektson (Schwedische Übersetzung)&lt;br&gt;Agusti Clara (Katalanische Übersetzung)&lt;br&gt;fri (Tschechische Übersetzung)&lt;br&gt;Heimen Stoffels, Rob K (Niederländische Übersetzung)&lt;br&gt;carmenfdezb (Spanische Übersetzung)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ich hoffe ihr habt mindestens so viel Spaß während der Benutzung von ownKeepass, wie ich während der Entwicklung!</translation>
     </message>
     <message>
+        <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="vanished">&lt;b&gt;Danksagungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (für das geniale Sailfish OS)&lt;br&gt;Das KeepassX Projekt (für eine Qt Implementierung von Keepass)&lt;br&gt;Petri Mäkijärvi (Finnische Übersetzung und testen)&lt;br&gt;Åke Engelbrektson (Schwedische Übersetzung)&lt;br&gt;Agusti Clara (Katalanische Übersetzung)&lt;br&gt;fri (Tschechische Übersetzung)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Niederländische Übersetzung)&lt;br&gt;carmenfdezb (Spanische Übersetzung)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ich hoffe ihr habt mindestens so viel Spaß während der Benutzung von ownKeepass, wie ich während der Entwicklung!</translation>
+        <translation>&lt;b&gt;Danksagungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (für das geniale Sailfish OS)&lt;br&gt;Das KeepassX Projekt (für eine Qt Implementierung von Keepass)&lt;br&gt;Petri Mäkijärvi (Finnische Übersetzung und testen)&lt;br&gt;Åke Engelbrektson (Schwedische Übersetzung)&lt;br&gt;Agusti Clara (Katalanische Übersetzung)&lt;br&gt;fri (Tschechische Übersetzung)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Niederländische Übersetzung)&lt;br&gt;carmenfdezb (Spanische Übersetzung)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ich hoffe ihr habt mindestens so viel Spaß während der Benutzung von ownKeepass, wie ich während der Entwicklung!</translation>
     </message>
     <message>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
@@ -594,22 +594,22 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="76"/>
+        <location filename="../qml/scripts/Global.js" line="80"/>
         <source>Nothing selected yet</source>
         <translation>Noch nichts ausgewählt</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="78"/>
+        <location filename="../qml/scripts/Global.js" line="82"/>
         <source>Home:</source>
         <translation>Home:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="80"/>
+        <location filename="../qml/scripts/Global.js" line="84"/>
         <source>SD Card:</source>
         <translation>SD Karte:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="82"/>
+        <location filename="../qml/scripts/Global.js" line="86"/>
         <source>Android Storage:</source>
         <translation>Android Umgebung:</translation>
     </message>
@@ -818,253 +818,281 @@
     </message>
 </context>
 <context>
+    <name>LockPage</name>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="59"/>
+        <source>Password Safe</source>
+        <translation type="unfinished">Passwortsafe</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="71"/>
+        <source>Unlock your Password Safe with the last three digits of your master password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="164"/>
+        <source>You have 2 tries left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="166"/>
+        <source>You have 1 try left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="168"/>
+        <source>Wrong unlock code</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="72"/>
+        <location filename="../qml/Main.qml" line="73"/>
         <source>ownKeepass got updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="73"/>
+        <location filename="../qml/Main.qml" line="74"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="82"/>
+        <location filename="../qml/Main.qml" line="83"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Problem mit der SD Karte</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="83"/>
+        <location filename="../qml/Main.qml" line="84"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SD Karten mit mehreren Partitionen werden nicht unterstützt.</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="117"/>
-        <location filename="../qml/content/MainPage.qml" line="323"/>
+        <location filename="../qml/content/MainPage.qml" line="135"/>
+        <location filename="../qml/content/MainPage.qml" line="344"/>
         <source>Password Safe</source>
         <translation>Passwortsafe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="130"/>
+        <location filename="../qml/content/MainPage.qml" line="148"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Gib ein Zugangspasswort ein um deine neue Keepass Datenbank zu sperren:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="144"/>
+        <location filename="../qml/content/MainPage.qml" line="162"/>
         <source>Master password</source>
         <translation>Zugangspasswort</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="145"/>
+        <location filename="../qml/content/MainPage.qml" line="163"/>
         <source>Enter master password</source>
         <translation>Zugangspasswort eingeben</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="194"/>
+        <location filename="../qml/content/MainPage.qml" line="213"/>
         <source>Confirm master password</source>
         <translation>Zugangspasswort bestätigen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="226"/>
+        <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>Show more details</source>
         <translation>Weitere Details anzeigen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="242"/>
+        <location filename="../qml/content/MainPage.qml" line="261"/>
         <source>Database path and name</source>
         <translation>Dateipfad und -name der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="262"/>
+        <location filename="../qml/content/MainPage.qml" line="281"/>
         <source>Key file path and name</source>
         <translation>Dateipfad und -name der Schlüsseldatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="262"/>
+        <location filename="../qml/content/MainPage.qml" line="281"/>
         <source>No key file used</source>
         <translation>Keine Schlüsseldatei in Benutzung</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="335"/>
+        <location filename="../qml/content/MainPage.qml" line="356"/>
         <source>Create new database</source>
         <translation>Neue Datenbank anlegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="354"/>
+        <location filename="../qml/content/MainPage.qml" line="375"/>
         <source>Open database</source>
         <translation>Datenbank öffnen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="373"/>
+        <location filename="../qml/content/MainPage.qml" line="394"/>
         <source>Recent databases</source>
         <translation>Zuletzt benutzte Datenbanken</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="537"/>
         <source>Permission error</source>
         <translation>Zugriffsfehler</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="537"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Keepass Datenbankpfad kann nicht angelegt werden. Sehr wahrscheinlich musst Du dem UNIX Nutzerkonto &apos;nemo&apos; Zugriffsrechte geben.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="514"/>
-        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="542"/>
+        <location filename="../qml/content/MainPage.qml" line="559"/>
         <source>Key file error</source>
         <translation>Fehler in der Schlüsseldatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="514"/>
-        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="542"/>
+        <location filename="../qml/content/MainPage.qml" line="559"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Der Pfad zur Datenbank ist in Ordnung, aber die Schlüsseldatei ist nicht verfügbar. Bitte überprüfe den Pfad zur Schlüsseldatei:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="519"/>
+        <location filename="../qml/content/MainPage.qml" line="547"/>
         <source>Database file already exists</source>
         <translation>Datenbankdatei existiert bereits</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="519"/>
+        <location filename="../qml/content/MainPage.qml" line="547"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Bitte wähle einen anderen Dateipfad oder -namen für deine Keepass Datenbank oder lösche die alte Datenbank mit Hilfe eines Dateimanagers.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="564"/>
         <source>Database file error</source>
         <translation>Fehler in der Datenbankdatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="564"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Keepass Datenbank existiert nicht. Bitte überprüfe den Dateipfad zur Datenbank:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="579"/>
+        <location filename="../qml/content/MainPage.qml" line="607"/>
         <source>Password changed</source>
         <translation>Passwort wurde geändert</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="579"/>
+        <location filename="../qml/content/MainPage.qml" line="607"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Das Zugangspasswort für deine Keepass Datenbank wurde erfolgreich geändert.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
+        <location filename="../qml/content/MainPage.qml" line="616"/>
+        <location filename="../qml/content/MainPage.qml" line="636"/>
         <source>Internal database error</source>
         <translation>Fehler in der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
+        <location filename="../qml/content/MainPage.qml" line="616"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Die zuvor geöffnete Datenbank konnte nicht geschlossen werden. Bitte versuche es erneut. Fehlerbeschreibung:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="592"/>
+        <location filename="../qml/content/MainPage.qml" line="620"/>
         <source>Internal key error</source>
         <translation>Fehler beim Verarbeiten des Schlüssels</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="592"/>
-        <location filename="../qml/content/MainPage.qml" line="596"/>
+        <location filename="../qml/content/MainPage.qml" line="620"/>
+        <location filename="../qml/content/MainPage.qml" line="624"/>
         <source>The following error occured during opening of database:</source>
         <translation>Beim Öffnen der Datenbank ist folgender Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="596"/>
+        <location filename="../qml/content/MainPage.qml" line="624"/>
         <source>Internal key file error</source>
         <translation>Fehler in der Schlüsseldatei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="600"/>
+        <location filename="../qml/content/MainPage.qml" line="628"/>
         <source>Error loading database</source>
         <translation>Fehler beim Laden der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="600"/>
+        <location filename="../qml/content/MainPage.qml" line="628"/>
         <source>Please try again.</source>
         <translation>Bitte versuche es erneut.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="604"/>
+        <location filename="../qml/content/MainPage.qml" line="632"/>
         <source>Internal file error</source>
         <translation>Dateifehler</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="604"/>
+        <location filename="../qml/content/MainPage.qml" line="632"/>
         <source>The following error occured during creation of database:</source>
         <translation>Beim Erzeugen der Datenbank ist folgender Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
+        <location filename="../qml/content/MainPage.qml" line="636"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Die Erzeugung der Backup-Passwortgruppe ist mit der folgenden Fehlermeldung fehlgeschlagen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="612"/>
+        <location filename="../qml/content/MainPage.qml" line="640"/>
         <source>Save database error</source>
         <translation>Fehler beim Speichern der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="612"/>
+        <location filename="../qml/content/MainPage.qml" line="640"/>
         <source>Could not save database with following error:</source>
         <translation>Datenbank konnte nicht gespeichert werden. Es ist folgender Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="616"/>
-        <location filename="../qml/content/MainPage.qml" line="620"/>
+        <location filename="../qml/content/MainPage.qml" line="644"/>
+        <location filename="../qml/content/MainPage.qml" line="648"/>
         <source>Database error</source>
         <translation>Fehler in der Datenbank</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="616"/>
+        <location filename="../qml/content/MainPage.qml" line="644"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
         <translation>Datenbank war bereits geschlossen. Nix ernsthaftes, aber bitte lass es den Autor dieser App wissen und schick mir einen Fehlerbericht.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="620"/>
+        <location filename="../qml/content/MainPage.qml" line="648"/>
         <source>An error occured on closing your database:</source>
         <translation>Beim Schliessen der Datenbank ist ein Fehler aufgetreten:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1021"/>
+        <location filename="../qml/content/MainPage.qml" line="1049"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1022"/>
+        <location filename="../qml/content/MainPage.qml" line="1050"/>
         <source>No</source>
         <translation>Nein</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1023"/>
+        <location filename="../qml/content/MainPage.qml" line="1051"/>
         <source>Unsaved changes</source>
         <translation>Ungespeicherte Änderungen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1051"/>
+        <location filename="../qml/content/MainPage.qml" line="1079"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Möchstes Du deine Änderungen am Passworteintrag speichern?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1056"/>
+        <location filename="../qml/content/MainPage.qml" line="1084"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Möchtest Du deine Änderungen an der Passwortgruppe speichern?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1061"/>
+        <location filename="../qml/content/MainPage.qml" line="1089"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Möchtest Du die geänderten Datenbank Einstellungen speichern?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1066"/>
+        <location filename="../qml/content/MainPage.qml" line="1094"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Möchtest Du die geänderten Einstellungen speichern?</translation>
     </message>
@@ -1190,14 +1218,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
         <source>Password</source>
-        <translation>Passwort</translation>
+        <translation type="vanished">Passwort</translation>
+    </message>
+    <message>
+        <source>Enter password</source>
+        <translation type="vanished">Passwort eingeben</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
+        <source>Master password</source>
+        <translation type="unfinished">Zugangspasswort</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
-        <source>Enter password</source>
-        <translation>Passwort eingeben</translation>
+        <source>Enter master password</source>
+        <translation type="unfinished">Zugangspasswort eingeben</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="275"/>
