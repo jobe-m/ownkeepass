@@ -35,7 +35,11 @@ KdbDatabase::KdbDatabase(QObject *parent):
     // set default values
     m_keyTransfRounds(50000),
     m_cryptAlgorithm(0),
-    m_showUserNamePasswordsInListView(false)
+    m_showUserNamePasswordsInListView(false),
+    m_isLocked(false),
+    m_dbFilePath(""),
+    m_keyFilePath(""),
+    m_readOnly(false)
 {
     // connect signals and slots to global KdbInterface class
     bool ret = connect(this, SIGNAL(openDatabase(QString,QString,QString,bool)),
@@ -87,6 +91,9 @@ void KdbDatabase::open(const QString& dbFilePath, const QString &keyFilePath, co
     qDebug() << "KdbDatabase::open()";
     // send signal to the global Keepass database interface component
     emit openDatabase(dbFilePath, password, keyFilePath, readonly);
+    m_dbFilePath = dbFilePath;
+    m_keyFilePath = keyFilePath;
+    m_readOnly = readonly;
 }
 
 void KdbDatabase::create(const QString& dbFilePath, const QString &keyFilePath, const QString& password)
@@ -94,11 +101,34 @@ void KdbDatabase::create(const QString& dbFilePath, const QString &keyFilePath, 
     qDebug() << "KdbDatabase::create()";
     // send signal to the global Keepass database interface component
     emit createNewDatabase(dbFilePath, password, keyFilePath, m_cryptAlgorithm, m_keyTransfRounds);
+    m_dbFilePath = dbFilePath;
+    m_keyFilePath = keyFilePath;
+    m_readOnly = false;
 }
 
 void KdbDatabase::close()
 {
+    m_isLocked = false;
+    m_dbFilePath = "";
+    m_keyFilePath = "";
     emit closeDatabase();
+}
+
+void KdbDatabase::lock()
+{
+    // Lock database means saving database and key file path and closing database
+    if (!m_isLocked) {
+        m_isLocked = true;
+        emit closeDatabase();
+    }
+}
+
+void KdbDatabase::unlock(const QString& password)
+{
+    // Unlock database means open the saved database again
+    if (m_isLocked) {
+        emit openDatabase(m_dbFilePath, password, m_keyFilePath, m_readOnly);
+    }
 }
 
 void KdbDatabase::changePassword(const QString &password, const QString &keyFile)

@@ -51,7 +51,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Danksagungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (für das geniale Sailfish OS)&lt;br&gt;Das KeepassX Projekt (für eine Qt Implementierung von Keepass)&lt;br&gt;Petri Mäkijärvi (Finnische Übersetzung und testen)&lt;br&gt;Åke Engelbrektson (Schwedische Übersetzung)&lt;br&gt;Agusti Clara (Katalanische Übersetzung)&lt;br&gt;fri (Tschechische Übersetzung)&lt;br&gt;Heimen Stoffels, Rob K (Niederländische Übersetzung)&lt;br&gt;carmenfdezb (Spanische Übersetzung)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ich hoffe ihr habt mindestens so viel Spaß während der Benutzung von ownKeepass, wie ich während der Entwicklung!</translation>
     </message>
     <message>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
@@ -545,7 +545,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="unfinished">Diese Einstellung aktiviert den Expertenmodus, bei dem man zwischen mehreren Keepass Datenbanken auf der Startseite wechseln kann</translation>
+        <translation>Diese Einstellung aktiviert den Expertenmodus, bei dem man zwischen mehreren Keepass Datenbanken auf der Startseite wechseln kann</translation>
     </message>
 </context>
 <context>
@@ -553,42 +553,42 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Problem mit der SD Karte</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>SD Karten mit mehreren Partitionen werden nicht unterstützt.</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbruch</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>New file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuer Dateiname</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
         <source>Enter new file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Neuen Dateinamen angeben</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
         <source>Open</source>
-        <translation type="unfinished">Öffnen</translation>
+        <translation>Öffnen</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
         <source>Create</source>
-        <translation type="unfinished">Neu anlegen</translation>
+        <translation>Neu anlegen</translation>
     </message>
 </context>
 <context>
@@ -596,22 +596,22 @@
     <message>
         <location filename="../qml/scripts/Global.js" line="76"/>
         <source>Nothing selected yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Noch nichts ausgewählt</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="78"/>
         <source>Home:</source>
-        <translation type="unfinished"></translation>
+        <translation>Home:</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="80"/>
         <source>SD Card:</source>
-        <translation type="unfinished"></translation>
+        <translation>SD Karte:</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="82"/>
         <source>Android Storage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Android Umgebung:</translation>
     </message>
 </context>
 <context>

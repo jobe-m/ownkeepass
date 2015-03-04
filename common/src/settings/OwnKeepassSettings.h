@@ -79,6 +79,7 @@ public:
     Q_PROPERTY(bool pwGenCharFromEveryGroup READ pwGenCharFromEveryGroup WRITE setPwGenCharFromEveryGroup NOTIFY pwGenCharFromEveryGroupChanged)
     Q_PROPERTY(int clearClipboard READ clearClipboard WRITE setClearClipboard NOTIFY clearClipboardChanged)
     Q_PROPERTY(int language READ language WRITE setLanguage NOTIFY languageChanged)
+    Q_PROPERTY(bool fastUnlock READ fastUnlock WRITE setFastUnlock NOTIFY fastUnlockChanged)
 
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
@@ -136,6 +137,8 @@ public:
     void setClearClipboard(const int value);
     int language() const { return m_language; }
     void setLanguage(const int value);
+    bool fastUnlock() const { return m_fastUnlock; }
+    void setFastUnlock(const bool value);
 
     void checkSettingsVersion();
 
@@ -177,6 +180,7 @@ signals:
     void pwGenCharFromEveryGroupChanged();
     void clearClipboardChanged();
     void languageChanged();
+    void fastUnlockChanged();
 
 private:
     void loadSettings();
@@ -219,6 +223,7 @@ private:
 
     int m_clearClipboard;
     int m_language;
+    bool m_fastUnlock;
 
     Settings* m_settings;
 };

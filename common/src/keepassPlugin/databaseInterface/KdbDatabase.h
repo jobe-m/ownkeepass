@@ -45,6 +45,8 @@ public: // QtQuick 1.1 needs here a public keyword otherwise if does not find th
     Q_INVOKABLE void open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
     Q_INVOKABLE void create(const QString& dbFilePath, const QString &keyFilePath, const QString& password);
     Q_INVOKABLE void close();
+    Q_INVOKABLE void lock();
+    Q_INVOKABLE void unlock(const QString& password);
     Q_INVOKABLE void changePassword(const QString& password, const QString &keyFile);
 
 public:
@@ -119,11 +121,17 @@ private slots:
     }
 
 private:
-    // the following properties are read from backend and therefore there are slots for it
+    // The following properties are read from backend and therefore there are slots for it
     int m_keyTransfRounds;
     int m_cryptAlgorithm;
-    // settings are simply passed over to the backend thread
+    // Settings are simply passed over to the backend thread
     bool m_showUserNamePasswordsInListView;
+
+    // Save database details for unlocking
+    bool m_isLocked;
+    QString m_dbFilePath;
+    QString m_keyFilePath;
+    bool m_readOnly;
 
     Q_DISABLE_COPY(KdbDatabase)
 };

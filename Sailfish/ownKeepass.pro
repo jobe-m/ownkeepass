@@ -1,6 +1,6 @@
 ############################################################################
 #
-# Copyright (C) 2013 - 2014 Marko Koschak (marko.koschak@tisno.de)
+# Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 # All rights reserved.
 #
 # This file is part of ownKeepass.
@@ -144,6 +144,7 @@ OTHER_FILES += \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
     qml/content/ChangeLogPage.qml \
+    qml/content/LockPage.qml \
     qml/common/FileSystemDialog.qml
 
 # to disable building translations every time, comment out the

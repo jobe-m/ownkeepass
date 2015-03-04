@@ -129,7 +129,7 @@ Petri Mäkijärvi (Finnish translation and testing)<br>\
 Åke Engelbrektson (Swedish translation)<br>\
 Agusti Clara (Catalan translation)<br>\
 fri (Czech translation)<br>\
-Heimen Stoffels, Rob K (Dutch translation)<br>\
+Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)<br>\
 carmenfdezb (Spanish translation)<br>\
 <br><br>\
 \

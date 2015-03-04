@@ -64,6 +64,7 @@ ApplicationWindow
         id: coverPage
         onLockDatabase: mainPageRef.lockDatabase()
         onTriggerClearClipboard: mainPageRef.clipboardTimerStart()
+        Component.onCompleted: Global.env.setCoverPage(coverPage)
     }
 
     Connections {

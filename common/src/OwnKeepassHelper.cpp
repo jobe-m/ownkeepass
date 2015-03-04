@@ -140,7 +140,7 @@ QStringList OwnKeepassHelper::sdCardPartitions()
     return sdCardPartitions;
 }
 
-// Get phisical path for file location
+// Get physical path for file location
 QString OwnKeepassHelper::getLocationRootPath(const int value)
 {
     switch (value) {

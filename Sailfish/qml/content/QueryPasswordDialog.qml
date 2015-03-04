@@ -225,8 +225,8 @@ Dialog {
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
                     errorHighlight: text.length === 0
-                    label: qsTr("Password")
-                    placeholderText: qsTr("Enter password")
+                    label: qsTr("Master password")
+                    placeholderText: qsTr("Enter master password")
                     text: ""
                     EnterKey.enabled: !errorHighlight
                     EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
@@ -347,7 +347,7 @@ Dialog {
             PropertyChanges { target: passwordField; focus: true }
             PropertyChanges { target: queryPasswordMenu; enabled: true; visible: true }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenRecentDatabase" }
-            PropertyChanges { target: applicationWindow.cover; state: "DATABASE_LOCKED"
+            PropertyChanges { target: applicationWindow.cover; state: "OPEN_DATABASE"
                 title: queryPasswordDialog.dbFilePath.substring(
                                   queryPasswordDialog.dbFilePath.lastIndexOf("/") + 1, queryPasswordDialog.dbFilePath.length)
             }
