@@ -1,21 +1,20 @@
 ownKeepass
 ==========
 
-[Bug reports go here] [8] - [Translations here] [9]
+[Bug reports go here] [7] - [Translations here] [8]
 
 Status
 ------
 
-Release 1.0.24 is ready and will be available in [openrepos.net] [7].
-It contains translation updates and Spanish as new translation. Jolla store will come later.
+Beta Release 1.0.25 available from [openrepos.net] [1] and warehouse app
+* File browser implemented for opening and creating Keepass database, finally ;) Please test!
 
-For those of you who do not have access to Jolla store (e.g. developer build for Nexus 4)
-or want to try new versions which are not yet in Jolla store have a look [here] [1]
+Release 1.0.24 available in Jolla store
+* Translation updates and Spanish as new translation.
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
-*   Database open and create dialogs are a bit difficult to use due to free text input for
-file name and path (if "expert user mode" is used)
+
 
 Roadmap
 -------
@@ -23,7 +22,6 @@ Roadmap
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Add file/directory chooser for opening and creating new Keepass databases.
 *   Keepass 2 database support. Planning to reuse database code from [KeepassX 2][3] project.
 *   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
 *   Activate password expiration feature which can remind you to change a specific password.
@@ -112,12 +110,12 @@ the Keepass database code is split into four classes which are exposed as object
     webpage, username, password, comment, etc. Through this object it is also possible to create
     new entries and save them in the Keepass database.
 
-Features (already working)
---------------------------
+Features
+--------
 
 *   Load and save (automatically in background) kdb database file
 *   Create, modify and delete Keepass groups and entries
-*   Create new and open existing keepass files from Phone's Documents folder, SD Card or Android Storage
+*   Create new and open existing keepass files from Phone's Home folder, SD Card or Android Storage
 *   Database settings adjustable like master password, encryption algorithm and key transformation rounds
 *   Search keepass entries in whole database
 *   Copy username and password from within cover page and use cover page to peak from other apps to
@@ -126,19 +124,18 @@ Features (already working)
 
 That's it so far.
 
-07-Nov-2014
+03-Mar-2015
 
 Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
-[1]: https://www.tisno.de/owncloud/public.php?service=files&t=598987d3cdeba24d83b18a63fce18b08 "Download beta release of ownKeepass for Jolla Phone"
+[1]: https://openrepos.net/content/jobe/ownkeepass                     "Beta and testing releases"
 [2]: http://www.keepass.info/help/v1/setup.html                        "Official Keepass homepage for version 1"
 [3]: http://www.keepassx.org                                           "KeepassX project homepage"
 [4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
 [5]: http://www.keepass.info/download.html                             "Download classic Keepass"
 [6]: https://github.com/jobe-m/ownkeepass/milestones                   "Status of next major ownKeepass releases"
-[7]: https://openrepos.net/content/jobe/ownkeepass
-[8]: https://github.com/jobe-m/ownkeepass/issues
-[9]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
+[7]: https://github.com/jobe-m/ownkeepass/issues
+[8]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
 
 Screenshots
 -----------
