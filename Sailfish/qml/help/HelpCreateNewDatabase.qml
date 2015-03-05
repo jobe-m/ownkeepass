@@ -36,7 +36,7 @@ Please be aware of that.<br><br>\
 \
 Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition \
 to the master password. This key file should not be uploaded to the cloud service.<br><br>\
-\\
+\
 <b>Use key file</b><br><br>\
 \
 A key file can be used additionally to a master password to protect the Keepass database. Both are used together to \
