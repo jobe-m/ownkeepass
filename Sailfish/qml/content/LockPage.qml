@@ -28,9 +28,9 @@ import "../scripts/Global.js" as Global
 Page {
     id: lockPage
 
-    property string firstChar: "ü"
-    property string secondChar: "ä"
-    property string thirdChar: "ß"
+    property string firstChar: ""
+    property string secondChar: ""
+    property string thirdChar: ""
     property Page mainPage
     property string recoverCoverState: "NO_DATABASE_OPENED"
 
@@ -148,6 +148,8 @@ Page {
 
                         if (firstFast.text.length !== 0 && secondFast.text.length !== 0 && thirdFast.text.length !== 0) {
                             if (firstFast.text === firstChar && secondFast.text === secondChar && thirdFast.text === thirdChar) {
+                                // enable fast unlock again
+                                Global.enableDatabaseLock = true
                                 lockPage.backNavigation = true
                                 pageStack.pop()
                                 // restore state of cover page

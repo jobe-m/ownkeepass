@@ -2,7 +2,7 @@
 
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -45,6 +45,14 @@ var constants = {
     clipboardUsernameDropped: 1,
     clipboardPasswordDropped: 2
 }
+
+// Environment variables
+
+// Indicator for database locking
+// true: Database is opened and can be locked by user or inactivity timer
+// false: Database is already locked by user, so that inactivity timer does not lock a second time
+var enableDatabaseLock = false
+
 
 var env = {
     mainPage: undefined,

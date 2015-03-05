@@ -39,9 +39,9 @@ Page {
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
 
     // internal
-    property string __unlockCharA: "Ö"
-    property string __unlockCharB: "ß"
-    property string __unlockCharC: "ü"
+    property string __unlockCharA: ""
+    property string __unlockCharB: ""
+    property string __unlockCharC: ""
 
     function inactivityTimerStart() {
         var inactivityTime = Global.getInactivityTime(ownKeepassSettings.locktime)
@@ -59,15 +59,19 @@ Page {
 
     function lockDatabase() {
         if (ownKeepassSettings.fastUnlock) {
-            pageStack.push(Qt.resolvedUrl("LockPage.qml").toString(),
-                           { "firstChar": __unlockCharA,
-                               "secondChar": __unlockCharB,
-                               "thirdChar": __unlockCharC,
-                               "mainPage": mainPage,
-                               "recoverCoverState": applicationWindow.cover.state })
-            // Update cover page state
-            applicationWindow.cover.title = ""
-            applicationWindow.cover.state = "DATABASE_LOCKED"
+            if (Global.enableDatabaseLock === true) {
+                pageStack.push(Qt.resolvedUrl("LockPage.qml").toString(),
+                               { "firstChar": __unlockCharA,
+                                   "secondChar": __unlockCharB,
+                                   "thirdChar": __unlockCharC,
+                                   "mainPage": mainPage,
+                                   "recoverCoverState": applicationWindow.cover.state })
+                // Update cover page state
+                applicationWindow.cover.title = ""
+                applicationWindow.cover.state = "DATABASE_LOCKED"
+                // Disable fast unlock because database is now locked already
+                Global.enableDatabaseLock = false
+            }
         } else {
             // No fast unlock: By going back to main page database will be closed
             pageStack.pop(mainPage)
@@ -506,6 +510,7 @@ Page {
             if (password === "") console.log("ERROR: Password is empty")
 
             if (ownKeepassSettings.fastUnlock) {
+                // Extract fast unlock code from master password
                 __unlockCharA = password.charAt(password.length - 3)
                 __unlockCharB = password.charAt(password.length - 2)
                 __unlockCharC = password.charAt(password.length - 1)
@@ -588,17 +593,25 @@ Page {
 
         function databaseOpenedHandler() {
             // Yeah, database opened successfully, now init master groups page and cover page
+            Global.enableDatabaseLock = true
             masterGroupsPage.init()
             updateRecentDatabaseListModel()
         }
 
         function newDatabaseCreatedHandler() {
             // Yeah, database created successfully, now init master groups page and cover page
+            Global.enableDatabaseLock = true
             masterGroupsPage.init()
             updateRecentDatabaseListModel()
         }
 
         function databaseClosedHandler() {
+            // disable fast unlock feature becase database is now closed anyway
+            Global.enableDatabaseLock = false
+            // Delete fast unlock code
+            __unlockCharA = ""
+            __unlockCharB = ""
+            __unlockCharC = ""
             console.log("Database closed")
         }
 

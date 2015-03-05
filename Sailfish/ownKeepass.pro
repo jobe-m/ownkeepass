@@ -150,6 +150,9 @@ OTHER_FILES += \
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
+
+linux-g++ {
+    message("Update translations only in release mode for jolla device")
 TRANSLATIONS += \
     translations/harbour-ownkeepass-sv_SE.ts \
     translations/harbour-ownkeepass-fi_FI.ts \
@@ -163,3 +166,4 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-ru.ts \
     translations/harbour-ownkeepass-da.ts
 #    translations/harbour-ownkeepass-pl_PL.ts
+}
