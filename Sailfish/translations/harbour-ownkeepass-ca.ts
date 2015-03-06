@@ -359,183 +359,193 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="84"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="85"/>
         <source>Save</source>
         <translation>Desa</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="85"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="86"/>
         <source>Discard</source>
         <translation>Descarta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="86"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
         <source>ownKeepass Settings</source>
         <translation>Configuració d&apos;ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="90"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="91"/>
         <source>Change default settings of your ownKeepass application here</source>
         <translation>Canvieu aquí la configuració per defecte del vostre ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="94"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="95"/>
         <source>Database</source>
         <translation>Base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="102"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="103"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
         <translation>Aquesta és l&apos;encriptació que s&apos;utilitzarà per defecte en crear una nova base de dades Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="111"/>
         <source>Default encryption:</source>
         <translation>Encriptació per defecte:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="135"/>
         <source>Default key transformation rounds</source>
         <translation>Rutina per defecte de transformació de clau</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="148"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="149"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Apujar aquest valor incrementa el temps d&apos;arrencada de la base de dades de Keepass però la fa molt més robusta contra atacs de força bruta. </translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="155"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="156"/>
         <source>Security</source>
         <translation>Seguretat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="216"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="218"/>
+        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="228"/>
         <source>Clear clipboard</source>
         <translation>Neteja el porta-retalls</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="217"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="229"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
         <translation>Si s&apos;habilita, el porta-retalls es netejarà després de 10 segons d&apos;haver copiat una contrasenya o un nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="314"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>El canvi d&apos;idioma serà efectiu després de reiniciar l&apos;aplicació</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="167"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="168"/>
         <source>Inactivity lock time</source>
         <translation>Bloqueig per inactivitat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="184"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="185"/>
         <source>Immediately</source>
         <translation>Immediatament</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="186"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="188"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="190"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="187"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="191"/>
         <source>seconds</source>
         <translation>segons</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="192"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="193"/>
         <source>minute</source>
         <translation>minut</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="194"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="196"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="198"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="200"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="202"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="197"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="199"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="201"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
         <source>minutes</source>
         <translation>minuts</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="204"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
         <source>Unlimited</source>
         <translation>Il·limitat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="217"/>
+        <source>Fast unlock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="239"/>
         <source>UI settings</source>
         <translation>Configuració de la IU</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="233"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
         <source>Extended list liew</source>
         <translation>Vista ampliada de llistes</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="234"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="246"/>
         <source>If you switch this on username and password are shown below entry title in list views</source>
         <translation>Si s&apos;activa, el nom d&apos;usuari i la contrasenya es mostren sota el títol de cada registre</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="257"/>
         <source>Focus search bar</source>
         <translation>Situa el cursor a la barra de cerca</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="246"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Si s&apos;activa, quan arrenqui l&apos;aplicació el cursor es situarà a la barra de cerca</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="261"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="273"/>
         <source>Language:</source>
         <translation>Idioma:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="309"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="321"/>
         <source>Cover settings</source>
         <translation>Configuració de portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
         <source>Show username and password</source>
         <translation>Mostra el nom d&apos;usuari i la contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Si s&apos;activa, es mostraran el nom d&apos;usuari i la contrasenya el registre Keepass que estigui obert a la vista de portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
         <source>Lock database from cover</source>
         <translation>Bloca la base de dades des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Això us permet blocar la base de dades amb l&apos;acció de portada de l&apos;esquerra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="351"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Copiar i enganxar des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="352"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Això us permet copiar i enganxar noms d&apos;usuari i contrasenyes al porta-retalls des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="349"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="361"/>
         <source>Advanced settings</source>
         <translation>Configuració avançada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="355"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="367"/>
         <source>Expert user mode</source>
         <translation>Mode d&apos;usuari expert</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="368"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Això habilita funcions avançades com ara la gestió de més d&apos;una base de dades des de la pàgina principal</translation>
     </message>
@@ -697,8 +707,7 @@
     </message>
     <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;\
-&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
+        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -762,9 +771,13 @@
 <context>
     <name>HelpSettings</name>
     <message>
-        <location filename="../qml/help/HelpSettings.qml" line="27"/>
         <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <translation>Aquesta pàgina us permet canviar la configuració per defecte d&apos;ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar l&apos;algoritme d&apos;encriptació per defecte que s&apos;utilitzar en crear una nova base de dades. L&apos;algoritme d&apos;encriptació també es pot canviar un cop ja s&apos;hagi creat la base de dades, des de la configuració de la base dades.&lt;br&gt;&lt;br&gt;Establiu el valor per efecte de les rondes de transformació de clau per una nova base de dades. Aquest valor control·la el número de rondes d&apos;encriptació que es computen sobre la contrasenya principal. L&apos;ajustament d&apos;aquest valor té un impacte directe sobre el temps que es necessita per desencriptar la base de dades per carregar-la. Valors més alts fan la base de dades més robusta contra atacs de força bruta. A manera de compromís entre seguretat i velocitat de càrrega, us suggerim un valor que situï el temps de càrrega a l&apos;entorn d&apos;un segon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Seguretat&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí podeu habilitar l&apos;opció de netejar el porta-retalls un cop transcorreguts 10 segons des que s&apos;hi hagin copiat un nom d&apos;usuari o contrasenya.&lt;br&gt;&lt;br&gt;El temps d&apos;inactivitat s&apos;utilitza per tancar la base de dades Keepass un cop transcorregut el temps establert amb l&apos;aplicació en segon pla. El temporitzador d&apos;inactivitat també és actiu quan es minimitza l&apos;aplicació a la vista de portada de la pantalla d&apos;inici del telèfon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració IU&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si voleu veure els noms d&apos;usuari i contrasenyes de tots els registres, habiliteu la &quot;Vista de llista ampliada&quot; per mostrar-los a la llista.&lt;br&gt;&lt;br&gt;Si habiliteu &quot;Situa el cursor a la barra de cerca&quot; tindreu el cursor i el teclat a punt per fer una cerca ràpidament en accedir a la pàgina.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració de portada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar les funcions i la informació que es mostra la pàgina de portada. Podeu habilitar que es mostri el nom d&apos;usuari i la contrasenya en un text clar del registre que estigui obert en aquell moment. També podeu habilitar dues accions de portada: tancar la base de dades, o bé copiar un registre o netejar, segons convingui, al porta-retalls.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració avancçada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Amb el &quot;Mode d&apos;usuari expert&quot; podreu habilitar les opcions de configuració avançades per gestionar bases de dades simultàniament i poder veure&apos;n les últimes cinc que s&apos;hagin obert en una llista a la pàgina principal per accedir-hi ràpidament.&lt;br&gt;&lt;br&gt;</translation>
+        <translation type="vanished">Aquesta pàgina us permet canviar la configuració per defecte d&apos;ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar l&apos;algoritme d&apos;encriptació per defecte que s&apos;utilitzar en crear una nova base de dades. L&apos;algoritme d&apos;encriptació també es pot canviar un cop ja s&apos;hagi creat la base de dades, des de la configuració de la base dades.&lt;br&gt;&lt;br&gt;Establiu el valor per efecte de les rondes de transformació de clau per una nova base de dades. Aquest valor control·la el número de rondes d&apos;encriptació que es computen sobre la contrasenya principal. L&apos;ajustament d&apos;aquest valor té un impacte directe sobre el temps que es necessita per desencriptar la base de dades per carregar-la. Valors més alts fan la base de dades més robusta contra atacs de força bruta. A manera de compromís entre seguretat i velocitat de càrrega, us suggerim un valor que situï el temps de càrrega a l&apos;entorn d&apos;un segon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Seguretat&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí podeu habilitar l&apos;opció de netejar el porta-retalls un cop transcorreguts 10 segons des que s&apos;hi hagin copiat un nom d&apos;usuari o contrasenya.&lt;br&gt;&lt;br&gt;El temps d&apos;inactivitat s&apos;utilitza per tancar la base de dades Keepass un cop transcorregut el temps establert amb l&apos;aplicació en segon pla. El temporitzador d&apos;inactivitat també és actiu quan es minimitza l&apos;aplicació a la vista de portada de la pantalla d&apos;inici del telèfon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració IU&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si voleu veure els noms d&apos;usuari i contrasenyes de tots els registres, habiliteu la &quot;Vista de llista ampliada&quot; per mostrar-los a la llista.&lt;br&gt;&lt;br&gt;Si habiliteu &quot;Situa el cursor a la barra de cerca&quot; tindreu el cursor i el teclat a punt per fer una cerca ràpidament en accedir a la pàgina.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració de portada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar les funcions i la informació que es mostra la pàgina de portada. Podeu habilitar que es mostri el nom d&apos;usuari i la contrasenya en un text clar del registre que estigui obert en aquell moment. També podeu habilitar dues accions de portada: tancar la base de dades, o bé copiar un registre o netejar, segons convingui, al porta-retalls.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració avancçada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Amb el &quot;Mode d&apos;usuari expert&quot; podreu habilitar les opcions de configuració avançades per gestionar bases de dades simultàniament i poder veure&apos;n les últimes cinc que s&apos;hagin obert en una llista a la pàgina principal per accedir-hi ràpidament.&lt;br&gt;&lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="../qml/help/HelpSettings.qml" line="27"/>
+        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the last three characters of the master password. Note that after three wrong attempts the database will be closed and you need to type in the full master password again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -804,27 +817,27 @@
 <context>
     <name>LockPage</name>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="59"/>
+        <location filename="../qml/content/LockPage.qml" line="61"/>
         <source>Password Safe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
-        <source>Unlock your Password Safe with the last three digits of your master password:</source>
+        <source>Unlock your Password Safe with the last three characters of your master password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="166"/>
+        <location filename="../qml/content/LockPage.qml" line="167"/>
         <source>You have 2 tries left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="168"/>
+        <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have 1 try left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="170"/>
+        <location filename="../qml/content/LockPage.qml" line="171"/>
         <source>Wrong unlock code</source>
         <translation type="unfinished"></translation>
     </message>
@@ -832,22 +845,22 @@
 <context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="73"/>
+        <location filename="../qml/Main.qml" line="72"/>
         <source>ownKeepass got updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="74"/>
+        <location filename="../qml/Main.qml" line="73"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="83"/>
+        <location filename="../qml/Main.qml" line="82"/>
         <source>Problem with SD card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="84"/>
+        <location filename="../qml/Main.qml" line="83"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1046,37 +1059,37 @@
         <translation>S&apos;ha produït un error mentre es tancava la base de dades:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1062"/>
+        <location filename="../qml/content/MainPage.qml" line="1066"/>
         <source>Yes</source>
         <translation>Sí</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1063"/>
+        <location filename="../qml/content/MainPage.qml" line="1067"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1064"/>
+        <location filename="../qml/content/MainPage.qml" line="1068"/>
         <source>Unsaved changes</source>
         <translation>Canvis no desats</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1092"/>
+        <location filename="../qml/content/MainPage.qml" line="1096"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Voleu desar els canvis al registre de contrasenya?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1097"/>
+        <location filename="../qml/content/MainPage.qml" line="1101"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Voleu desar els canvis al grup de contrasenyes?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1102"/>
+        <location filename="../qml/content/MainPage.qml" line="1106"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Voleu desar els canvis a la configuració de la base de dades?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1107"/>
+        <location filename="../qml/content/MainPage.qml" line="1111"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Voleu desar els canvis a la configuració?</translation>
     </message>

@@ -35,6 +35,7 @@ Dialog {
     property bool defaultCryptAlgorithmChanged: false
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
+    property bool fastUnlockChanged: false
     property bool showUserNamePasswordInListViewChanged: false
     property bool focusSearchBarOnStartupChanged: false
     property bool showUserNamePasswordOnCoverChanged: false
@@ -211,12 +212,23 @@ Dialog {
             }
 
             TextSwitch {
+                id: fastUnlock
+                checked: ownKeepassSettings.fastUnlock
+                text: qsTr("Fast unlock")
+                description: qsTr("Enable this to unlock your database quickly with just the last three characters of your master password.")
+                onCheckedChanged: {
+                    editSettingsDialog.fastUnlockChanged = fastUnlock.checked !== ownKeepassSettings.fastUnlock
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
+            TextSwitch {
                 id: clearClipboard
                 checked: ownKeepassSettings.clearClipboard !== 0
                 text: qsTr("Clear clipboard")
                 description: qsTr("If enabled the clipboard will be cleared after 10 seconds when username or password is copied")
                 onCheckedChanged: {
-                    // This workaround makes it possible to change this simple switch later with a slider setting which will control timer value
+                    // This workaround makes it possible to replace this simple switch later with a slider setting which will control timer value
                     var clearClipboardTimer = clearClipboard.checked ? 10 : 0
                     editSettingsDialog.clearClipboardChanged = clearClipboardTimer !== ownKeepassSettings.clearClipboard
                     editSettingsDialog.updateCoverState()
@@ -375,7 +387,8 @@ Dialog {
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
                     clearClipboard.checked ? 10 : 0,
-                    language.currentIndex)
+                    language.currentIndex,
+                    fastUnlock.checked)
         kdbListItemInternal.saveKeepassSettings()
     }
 
@@ -392,7 +405,8 @@ Dialog {
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
                     clearClipboard.checked ? 10 : 0,
-                    language.currentIndex)
+                    language.currentIndex,
+                    fastUnlock.checked)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }

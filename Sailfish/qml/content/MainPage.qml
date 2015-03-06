@@ -731,6 +731,7 @@ Page {
         property bool copyNpasteFromCover
         property int clearClipboard
         property int language
+        property bool fastUnlock
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -867,7 +868,7 @@ Page {
 
         function setKeepassSettings(aSimpleMode, aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
-                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage) {
+                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage, aFastUnlock) {
             simpleMode = aSimpleMode
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
@@ -879,6 +880,7 @@ Page {
             copyNpasteFromCover = aCopyNpasteFromCover
             clearClipboard = aClearClipboard
             language = aLanguage
+            fastUnlock = aFastUnlock
         }
 
         function checkForUnsavedKeepassSettingsChanges() {
@@ -893,7 +895,8 @@ Page {
                     ownKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
                     ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover ||
                     ownKeepassSettings.clearClipboard !== clearClipboard ||
-                    ownKeepassSettings.language !== language) {
+                    ownKeepassSettings.language !== language ||
+                    ownKeepassSettings.fastUnlock !== fastUnlock) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_APP_SETTINGS"})
             }
@@ -911,6 +914,7 @@ Page {
             ownKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
             ownKeepassSettings.clearClipboard = clearClipboard
             ownKeepassSettings.language = language
+            ownKeepassSettings.fastUnlock = fastUnlock
         }
     }
 

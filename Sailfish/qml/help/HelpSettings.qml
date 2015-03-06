@@ -42,13 +42,18 @@ the database takes one second on your phone.<br><br>\
 \
 <b>Security</b><br><br>\
 \
-Here you can enable clearing of the clipboard 10 seconds after you \
-copied the username or password into it.<br><br>\
-\
 The inactivity lock time value is used to automatically lock the Keepass \
 database after the specified amount of time has elapsed after the ownKeepass \
 application went in background. Thus the inactivity timer is also active \
 when ownKeepass is minimized to the cover state on home screen.<br><br>\
+\
+Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. \
+When you first open your password safe you are asked for your full password. But after you subsequently \
+lock it you can unlock quickly with a partial password which consists of the last three characters of the master password. \
+Note that after three wrong attempts the database will be closed and you need to type in the full master password again.<br><br>\
+\
+You can enable clearing of the clipboard 10 seconds after you \
+copied the username or password into it.<br><br>\
 \
 <b>UI settings</b><br><br>\
 \

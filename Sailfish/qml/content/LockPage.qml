@@ -47,12 +47,14 @@ Page {
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
-        ApplicationMenu {}
+        ApplicationMenu {
+            disableSettingsItem: true
+        }
 
         Column {
             id: col
             width: parent.width
-            spacing: 0
+            spacing: -20
 
             PageHeaderExtended {
                 title: "ownKeepass"
@@ -60,15 +62,13 @@ Page {
             }
 
             Image {
-                width: 492
-                height: 492
-                source: "../../wallicons/wall-ownKeys.png"
+                source: "../../wallicons/wall-key.png"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
             SilicaLabel {
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Unlock your Password Safe with the last three digits of your master password:") + "\n"
+                text: qsTr("Unlock your Password Safe with the last three characters of your master password:") + "\n"
             }
 
             Item {
@@ -86,6 +86,7 @@ Page {
                     placeholderText: ""
                     text: ""
                     maximumLength: 1
+                    focus: true
                     EnterKey.highlighted: false
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: parent.focus = true
