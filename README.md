@@ -6,8 +6,10 @@ ownKeepass
 Status
 ------
 
-Beta Release 1.0.25 available from [openrepos.net] [1] and warehouse app
-* File browser implemented for opening and creating Keepass database, finally ;) Please test!
+Beta Release 1.0.27 available from [openrepos.net] [1] and warehouse app
+* Added fast unlock feature which allows quick access to a locked database.
+* File browser implemented for opening and creating Keepass database, finally ;)
+* Please test both new features. I will do a bit of polishing and bug fixing and wait for some translations to be ready before releasing to Jolla store.
 
 Release 1.0.24 available in Jolla store
 * Translation updates and Spanish as new translation.
