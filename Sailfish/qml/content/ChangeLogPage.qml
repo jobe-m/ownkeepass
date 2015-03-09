@@ -55,6 +55,11 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.28 (Beta) Fast unlock retries adjustable</b>\
+<ul>\
+<li> Amount of retries available on fast unlock page is now adjustable between 0 (no retry), 1, 2, 3, 4 and 5 retries</li>\
+</ul>\
+<br>\
 <b>v1.0.27 Beta release with fast unlock database</b>\
 <ul>\
 <li> Added fast unlock feature which allows quick access to a locked database. \

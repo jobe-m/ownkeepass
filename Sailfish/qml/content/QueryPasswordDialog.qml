@@ -154,7 +154,7 @@ Dialog {
                     height: enabled ? children.height : 0
                     width: parent.width
                     spacing: Theme.paddingLarge
-                    Behavior on opacity { NumberAnimation { duration: 500 } }
+                    Behavior on opacity { FadeAnimation { duration: 500 } }
                     Behavior on height { NumberAnimation { duration: 500 } }
 
                     Item {

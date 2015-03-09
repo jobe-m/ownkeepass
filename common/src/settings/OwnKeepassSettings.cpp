@@ -55,6 +55,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_clearClipboard(10),
     m_language(0),
     m_fastUnlock(true),
+    m_fastUnlockRetryCount(3),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
@@ -133,6 +134,7 @@ void OwnKeepassSettings::loadSettings() {
     m_clearClipboard                 = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toInt();
     m_language                       = (m_settings->getValue("settings/language", QVariant(m_language))).toInt();
     m_fastUnlock                     = (m_settings->getValue("settings/fastUnlock", QVariant(m_fastUnlock))).toBool();
+    m_fastUnlockRetryCount           = (m_settings->getValue("settings/fastUnlockRetryCount", QVariant(m_fastUnlockRetryCount))).toInt();
 
     // emit signals for property changes
     emit simpleModeChanged();
@@ -154,6 +156,7 @@ void OwnKeepassSettings::loadSettings() {
     emit clearClipboardChanged();
     emit languageChanged();
     emit fastUnlockChanged();
+    emit fastUnlockRetryCountChanged();
 }
 
 void OwnKeepassSettings::addRecentDatabase(QString uiName,
@@ -388,6 +391,15 @@ void OwnKeepassSettings::setFastUnlock(const bool value)
         m_fastUnlock = value;
         m_settings->setValue("settings/fastUnlock", QVariant(m_fastUnlock));
         emit fastUnlockChanged();
+    }
+}
+
+void OwnKeepassSettings::setFastUnlockRetryCount(const int value)
+{
+    if (value != m_fastUnlockRetryCount) {
+        m_fastUnlockRetryCount = value;
+        m_settings->setValue("settings/fastUnlockRetryCount", QVariant(m_fastUnlockRetryCount));
+        emit fastUnlockRetryCountChanged();
     }
 }
 

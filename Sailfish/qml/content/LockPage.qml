@@ -35,7 +35,7 @@ Page {
     property string recoverCoverState: "NO_DATABASE_OPENED"
 
     // internal
-    property int __counter: 3
+    property int __counter: ownKeepassSettings.fastUnlockRetryCount + 1
     backNavigation: false
 
     SilicaFlickable {
@@ -164,7 +164,7 @@ Page {
                                     secondFast.text = ""
                                     text = ""
                                     if (__counter > 1) {
-                                        var message = qsTr("You have 2 tries left")
+                                        var message = qsTr("You have %1 tries left").arg(__counter)
                                     } else {
                                         message = qsTr("You have 1 try left")
                                     }

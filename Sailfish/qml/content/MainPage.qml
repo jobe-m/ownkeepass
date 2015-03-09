@@ -298,7 +298,7 @@ Page {
                     }
 
                     Behavior on opacity { FadeAnimation { } }
-                    Behavior on height { FadeAnimation { } }
+                    Behavior on height { NumberAnimation { } }
                 }
             }
         }
@@ -732,6 +732,7 @@ Page {
         property int clearClipboard
         property int language
         property bool fastUnlock
+        property int fastUnlockRetryCount
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -868,7 +869,7 @@ Page {
 
         function setKeepassSettings(aSimpleMode, aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
-                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage, aFastUnlock) {
+                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage, aFastUnlock, aFastUnlockRetryCount) {
             simpleMode = aSimpleMode
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
@@ -881,6 +882,7 @@ Page {
             clearClipboard = aClearClipboard
             language = aLanguage
             fastUnlock = aFastUnlock
+            fastUnlockRetryCount = aFastUnlockRetryCount
         }
 
         function checkForUnsavedKeepassSettingsChanges() {
@@ -896,7 +898,8 @@ Page {
                     ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover ||
                     ownKeepassSettings.clearClipboard !== clearClipboard ||
                     ownKeepassSettings.language !== language ||
-                    ownKeepassSettings.fastUnlock !== fastUnlock) {
+                    ownKeepassSettings.fastUnlock !== fastUnlock ||
+                    ownKeepassSettings.fastUnlockRetryCount !== fastUnlockRetryCount) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_APP_SETTINGS"})
             }
@@ -915,6 +918,7 @@ Page {
             ownKeepassSettings.clearClipboard = clearClipboard
             ownKeepassSettings.language = language
             ownKeepassSettings.fastUnlock = fastUnlock
+            ownKeepassSettings.fastUnlockRetryCount = fastUnlockRetryCount
         }
     }
 

@@ -359,193 +359,198 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="85"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="86"/>
         <source>Save</source>
         <translation>Opslaan</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="86"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
         <source>Discard</source>
         <translation>Verwerpen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
         <source>ownKeepass Settings</source>
         <translation>ownKeepass-instellingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="91"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="92"/>
         <source>Change default settings of your ownKeepass application here</source>
         <translation>Verander hier de standaard instellingen van uw ownKeepass-applicatie</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="95"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="96"/>
         <source>Database</source>
         <translation>Database</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="103"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="104"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
         <translation>Deze encyrptie zal worden gebruikt als standaard bij het creëren van een nieuwe Keepass-database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="111"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="112"/>
         <source>Default encryption:</source>
         <translation>Standaard encryptie:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="135"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="136"/>
         <source>Default key transformation rounds</source>
         <translation>Standaard sleutelomvormingsronde</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="149"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="150"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Door het hoger instellen van deze waarde, neemt de openingstijd van de Keepass-database toe maar is het beter beveiligd tegen aanvallen van buitenaf</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="156"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="157"/>
         <source>Security</source>
         <translation>Beveiliging</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="218"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
         <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="228"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="257"/>
         <source>Clear clipboard</source>
         <translation>Klembord wissen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="229"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
         <translation>Wanneer ingeschakeld zal het klembord 10 seconden na kopiëren van gebruikersnaam of wachtwoord worden gewist</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="314"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="343"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>Veranderen van de taal zal worden toegepast na het herstarten van de applicatie</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="168"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="169"/>
         <source>Inactivity lock time</source>
         <translation>Vergrendeltijd inactiviteit</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="185"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="186"/>
         <source>Immediately</source>
         <translation>Direct</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="187"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="191"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="188"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="190"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="192"/>
         <source>seconds</source>
         <translation>seconden</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="193"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="194"/>
         <source>minute</source>
         <translation>minuut</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="197"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="199"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="201"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="196"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="198"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="200"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="202"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="204"/>
         <source>minutes</source>
         <translation>minuten</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="206"/>
         <source>Unlimited</source>
         <translation>Oneindig</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="217"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="225"/>
         <source>Fast unlock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="239"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="244"/>
+        <source>Number of fast unlock retries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="268"/>
         <source>UI settings</source>
         <translation>UI-instellingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="274"/>
         <source>Extended list liew</source>
         <translation>Uitgebreide lijstweergave</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="246"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
         <source>If you switch this on username and password are shown below entry title in list views</source>
         <translation>Wanneer u dit inschakelt, zullen gebruikersnaam en wachtwoord onder de vermelding worden weergegeven in lijstweergaven</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="257"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="286"/>
         <source>Focus search bar</source>
         <translation>Zoekbalk focussen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="287"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Wanneer ingeschakeld zal de zoekbalk gefocust worden na het opstarten van de applicatie</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="273"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>Language:</source>
         <translation>Taal:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="321"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="350"/>
         <source>Cover settings</source>
         <translation>Omslaginstellingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
         <source>Show username and password</source>
         <translation>Gebruikersnaam en wachtwoord weergeven</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="328"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="357"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Wanneer u dit inschakelt, zullen gebruikersnaam en wachtwoord van de huidige vermelding worden weergegeven op de omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="368"/>
         <source>Lock database from cover</source>
         <translation>Database vergrendelen vanaf omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="340"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="369"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Dit stelt u in staat de database te vergrendelen met linker-omslagactie.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="351"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="380"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopiëren-en-plakken vanaf omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="352"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="381"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Schakel dit in gebruikersnaam en wachtwoord naar het klembord te kopiëren vanaf de omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="361"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="390"/>
         <source>Advanced settings</source>
         <translation>Geavanceerde instellingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="367"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="396"/>
         <source>Expert user mode</source>
         <translation>Expert-gebruikersmodus</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="368"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="397"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Dit schakelt geavanceerde functionaliteit in zoals het behanderen van meerdere databases op de hoofdpagina</translation>
     </message>
@@ -828,7 +833,7 @@
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
-        <source>You have 2 tries left</source>
+        <source>You have %1 tries left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1059,37 +1064,37 @@
         <translation>Er trad een fout tijdens het sluiten van uw database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1066"/>
+        <location filename="../qml/content/MainPage.qml" line="1070"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1067"/>
+        <location filename="../qml/content/MainPage.qml" line="1071"/>
         <source>No</source>
         <translation>Nee</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1068"/>
+        <location filename="../qml/content/MainPage.qml" line="1072"/>
         <source>Unsaved changes</source>
         <translation>Niet-opgeslagen wijzigingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1096"/>
+        <location filename="../qml/content/MainPage.qml" line="1100"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Wilt u de wijzigingen in het wachtwoordveld opslaan?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1101"/>
+        <location filename="../qml/content/MainPage.qml" line="1105"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Wilt u de wijzigingen opslaan voor de wachtwoordgroep?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1106"/>
+        <location filename="../qml/content/MainPage.qml" line="1110"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Wilt u de wijzigingen in de database-instellingen opslaan?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1111"/>
+        <location filename="../qml/content/MainPage.qml" line="1115"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Wilt u de wijzigingen in de instellingen opslaan?</translation>
     </message>

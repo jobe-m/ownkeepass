@@ -80,6 +80,7 @@ public:
     Q_PROPERTY(int clearClipboard READ clearClipboard WRITE setClearClipboard NOTIFY clearClipboardChanged)
     Q_PROPERTY(int language READ language WRITE setLanguage NOTIFY languageChanged)
     Q_PROPERTY(bool fastUnlock READ fastUnlock WRITE setFastUnlock NOTIFY fastUnlockChanged)
+    Q_PROPERTY(int fastUnlockRetryCount READ fastUnlockRetryCount WRITE setFastUnlockRetryCount NOTIFY fastUnlockRetryCountChanged)
 
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
@@ -139,6 +140,8 @@ public:
     void setLanguage(const int value);
     bool fastUnlock() const { return m_fastUnlock; }
     void setFastUnlock(const bool value);
+    int fastUnlockRetryCount() const { return m_fastUnlockRetryCount; }
+    void setFastUnlockRetryCount(const int value);
 
     void checkSettingsVersion();
 
@@ -181,6 +184,7 @@ signals:
     void clearClipboardChanged();
     void languageChanged();
     void fastUnlockChanged();
+    void fastUnlockRetryCountChanged();
 
 private:
     void loadSettings();
@@ -224,6 +228,7 @@ private:
     int m_clearClipboard;
     int m_language;
     bool m_fastUnlock;
+    int m_fastUnlockRetryCount;
 
     Settings* m_settings;
 };

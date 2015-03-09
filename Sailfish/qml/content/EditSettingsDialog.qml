@@ -36,6 +36,7 @@ Dialog {
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
     property bool fastUnlockChanged: false
+    property bool fastUnlockRetryCountChanged: false
     property bool showUserNamePasswordInListViewChanged: false
     property bool focusSearchBarOnStartupChanged: false
     property bool showUserNamePasswordOnCoverChanged: false
@@ -51,8 +52,8 @@ Dialog {
         if (saveCoverTitle === "") // save initial state
             saveCoverTitle = applicationWindow.cover.title
         if (expertModeChanged || defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
-                inactivityLockTimeChanged || showUserNamePasswordInListViewChanged ||
-                focusSearchBarOnStartupChanged ||
+                inactivityLockTimeChanged || fastUnlockChanged || fastUnlockRetryCountChanged ||
+                showUserNamePasswordInListViewChanged || focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged || clearClipboardChanged || languageChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
@@ -211,14 +212,42 @@ Dialog {
                 }
             }
 
-            TextSwitch {
-                id: fastUnlock
-                checked: ownKeepassSettings.fastUnlock
-                text: qsTr("Fast unlock")
-                description: qsTr("Enable this to unlock your database quickly with just the last three characters of your master password.")
-                onCheckedChanged: {
-                    editSettingsDialog.fastUnlockChanged = fastUnlock.checked !== ownKeepassSettings.fastUnlock
-                    editSettingsDialog.updateCoverState()
+            Column {
+                width: parent.width
+                height: fastUnlockRetryCount.enabled ? fastUnlock.height + fastUnlockRetryCount.height : fastUnlock.height
+                spacing: 0
+
+                Behavior on height { NumberAnimation { duration: 500 } }
+
+                TextSwitch {
+                    id: fastUnlock
+                    checked: ownKeepassSettings.fastUnlock
+                    text: qsTr("Fast unlock")
+                    description: qsTr("Enable this to unlock your database quickly with just the last three characters of your master password.")
+                    onCheckedChanged: {
+                        editSettingsDialog.fastUnlockChanged = fastUnlock.checked !== ownKeepassSettings.fastUnlock
+                        editSettingsDialog.updateCoverState()
+                    }
+                }
+
+                Slider {
+                    id: fastUnlockRetryCount
+                    enabled: fastUnlock.checked
+                    opacity: enabled ? 1.0 : 0.0
+                    value: ownKeepassSettings.fastUnlockRetryCount
+                    minimumValue: 0
+                    maximumValue: 5
+                    stepSize: 1
+                    width: parent.width - Theme.paddingLarge * 2
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    valueText: value
+                    label: qsTr("Number of fast unlock retries")
+                    onValueChanged: {
+                        editSettingsDialog.fastUnlockRetryCountChanged = fastUnlockRetryCount.value !== ownKeepassSettings.fastUnlockRetryCount
+                        editSettingsDialog.updateCoverState()
+                    }
+
+                    Behavior on opacity { FadeAnimation { duration: 500 } }
                 }
             }
 
@@ -388,7 +417,8 @@ Dialog {
                     copyNpasteFromCover.checked,
                     clearClipboard.checked ? 10 : 0,
                     language.currentIndex,
-                    fastUnlock.checked)
+                    fastUnlock.checked,
+                    fastUnlockRetryCount.value)
         kdbListItemInternal.saveKeepassSettings()
     }
 
@@ -406,7 +436,8 @@ Dialog {
                     copyNpasteFromCover.checked,
                     clearClipboard.checked ? 10 : 0,
                     language.currentIndex,
-                    fastUnlock.checked)
+                    fastUnlock.checked,
+                    fastUnlockRetryCount.value)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }
