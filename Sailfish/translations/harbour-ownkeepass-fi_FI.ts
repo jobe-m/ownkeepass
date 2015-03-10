@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -26,32 +24,32 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="73"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass-ohjelman lisenssiehdot ovat (valinnaisesti) joko GNU General Public License (GPL) version 2 tai 3 mukaisia.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="86"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisenssi</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="93"/>
         <source>Change log</source>
-        <translation type="unfinished"></translation>
+        <translation>Muutoshistoria</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="108"/>
         <source>Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännä</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="115"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Raportoi vioista</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Kiitokset&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (joka jatkoi siitä, mihin Nokia lopetti)&lt;br&gt;KeepassX-projekti (Keepass Qt-sovelluksesta)&lt;br&gt;Petri Mäkijärvi (suomennos ja testaus)&lt;br&gt;Åke Engelbrektson (ruotsinnos)&lt;br&gt;Agusti Clara (katalaani-kielen käännös)&lt;br&gt;fri (tšekin kielen käännös)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (hollannin kielen käännös)&lt;br&gt;carmenfdezb (käännös espanjaksi)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Toivottasti Sinulla on yhtä hauskaa käyttäessäsi ownKeepass-sovellusta, kuin minulla on ollut sen luomisessa!</translation>
     </message>
 </context>
 <context>
@@ -82,7 +80,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="50"/>
         <source>Change log</source>
-        <translation type="unfinished"></translation>
+        <translation>Muutoshistoria</translation>
     </message>
 </context>
 <context>
@@ -221,7 +219,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
         <source>Change master password</source>
-        <translation>Muuta pääsalasana</translation>
+        <translation>Vaihda pääsalasana</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="123"/>
@@ -405,11 +403,6 @@
         <translation>Turvallisuus</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
-        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="257"/>
         <source>Clear clipboard</source>
         <translation>Tyhjennä leikepöytä</translation>
@@ -422,7 +415,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="343"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Valittu kieli aktivoidaan kun sovellus käynnistetään uudelleen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="169"/>
@@ -463,12 +456,17 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="225"/>
         <source>Fast unlock</source>
-        <translation type="unfinished"></translation>
+        <translation>Nopea aukaisu</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
+        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
+        <translation>Valitse tämä aukaistaksesi tietokantasi nopeasti, käyttämällä vain pääsalasanasi kolmea viimeistä merkkiä.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="244"/>
         <source>Number of fast unlock retries</source>
-        <translation type="unfinished"></translation>
+        <translation>Pika avauksen uudelleenyritysten määrä</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="268"/>
@@ -498,7 +496,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kieli:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="350"/>
@@ -556,42 +554,42 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongelma SD-kortin kanssa</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ohjelma ei tue SD-kortteja, jotka on ositettu useampaan partitioon,</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>New file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi tiedostonimi</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
         <source>Enter new file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Anna uusi tiedostonimi</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Takaisin</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
         <source>Open</source>
-        <translation type="unfinished">Avaa</translation>
+        <translation>Avaa</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
         <source>Create</source>
-        <translation type="unfinished">Luo</translation>
+        <translation>Luo</translation>
     </message>
 </context>
 <context>
@@ -599,22 +597,22 @@
     <message>
         <location filename="../qml/scripts/Global.js" line="88"/>
         <source>Nothing selected yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Mitään ei ole vielä merkitty valituksi</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="90"/>
         <source>Home:</source>
-        <translation type="unfinished"></translation>
+        <translation>Koti:</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="92"/>
         <source>SD Card:</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-kortti:</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="94"/>
         <source>Android Storage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Android-muisti:</translation>
     </message>
 </context>
 <context>
@@ -703,15 +701,9 @@
 <context>
     <name>HelpCreateNewDatabase</name>
     <message>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;First you need to specify where the database file will be stored. Available options are &quot;Documents on phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; and &quot;Sailbox local storage&quot;. Take the first option &quot;Documents on phone&quot; if you want the database to be located on the phone or choose &quot;SD card&quot; to place the database on the removable SD card. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. If SD card is not inserted the SD card location item is disabled. Please make sure the SD card is properly detected by looking at it in a File Browser. If you want to share the Keepass database with Android Apps you can place it into &quot;Android storage&quot;. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option &quot;Sailbox local storage&quot; can be used together with Sailbox. If you place your database there Sailbox can up- and download the file to the Dropbox online service. Sailbox is available in Jolla Harbour for download.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the relative path and file name for your Keepass database file. For example you can type in &quot;ownkeepass/notes.kdb&quot;. If you have opened ownKeepass the first time you will see that string already pre-filled for your convenience.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file location cannot be set to &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can choose here a picture as a key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">Tällä sivulla voit luoda uuden tietokannan, johon ownKeepass tallettaa tärkeät tietosi.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokannan sijainti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ensin sinun tulee määrittää mihin tietokantatiedosto talletetaan. Valittavanasi on &quot;Dokumentit puhelimessa&quot;, &quot;SD-kortti&quot;, &quot;Android-muisti&quot; ja &quot;Sailbox-paikallismuisti&quot;. Valitse ensimmäinen asetus, &quot;Dokumentit puhelimessa&quot;, mikäli haluat tiedoston sijaitsevan puhelimessasi tai valitse &quot;SD-kortti&quot;, mikäli haluat sen sijaitsevan irroitettavalla SD-muistikortilla. Kortilla voi olla vain yksi alustettu osio. Tällä hetkellä ownKeepass ei tue muistikortteja, joissa on useampia osioita. Mikäli muistikorttia ei ole asennettu paikalleen, tämä valinta on pois käytöstä. On parasta, että varmistat muistikortin olevan näkyvissä esimerkiksi File Browser-sovelluksella, ennen kuin valitsen sen käytön. Mikäli haluat jakaa tiedoston myös Android-sovellusten kanssa, sijoita se Android-muistiin. Huomioi kuitenkin, että tiedostojen jakaminen voi johtaa hankaluuksiin, johtuen tiedostojen omistaja-asetusten muuttumisesta, samoin kuin niiden käyttäjäoikeuksien eroavuuksista kahden järjestelmän välillä. Muista tämä mikäli tiedosto ei esimerkiksi aukea enää. Viimein valinta, &quot;Sailbox-paikallismuisti&quot; on tarkoitettu käytettäväksi Sailbox-sovelluksen kanssa : tämä sallii tiedoston jakamisen käyttäen Dropbox-pilvipalvelua. Sailbox-sovellus on ladattavissa Jolla Harbourista.&lt;br&gt;&lt;br&gt;Muistutus : Mikäli lataat Keepass-tietokantasi Dropbox-pilvipalveluun, muista käyttää paikallisesti tallennettua avaintiedostoa pääsalasanan lisäksi (katso alla). Tätä avaintiedostoa ei tule tallettaa mihinkään pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokantatiedoston polku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä tekstikentässä polku alkaen kotitiedostosta ja tiedostonimi Keepass-tietokantatiedostoosi. Esimerkiksi &quot;ownkeepass/notes.kdb&quot;. Mikäli käytät ownKeepass-sovellusta ensimmäistä kertaa, tämä kenttä on esitäytetty käyttöäsi helpottamaan.&lt;br&gt;&lt;br&gt;&lt;b&gt;Käytä avaintiedostoa&lt;/b&gt;&lt;br&gt;&lt;br&gt;Avaintiedostoa voidaan käyttää pääsalasanan lisäksi suojaamaan Keepass-tietokantaa. Molempia käytetään yhtäaikaa varsinaisen avaimen laskemiseen, joka lopulta avaa tietokannan. Käyttämällä tiedostoa, jossa on paljon erilaista tietoa, laskettu avain on periaatteessa vahvempi hyökkäyksiä vastaan. Voit käyttää esimerkiksi satunnaista kuvatiedostoa avaintiedostona.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaintiedoston sijanti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Katso &quot;Tietokannan sijainti&quot;, tähän pätee samat sijaintii liittyvät ohjeet. Ainoastaan &quot;Sailbox-paikallismuisti&quot; ei ole käytettävissä, jotta molemmat suojausmenetelmäsi eivät tallettuisi pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;
-Avaintiedoston polku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä tekstikentässä polku alkaen kotitiedostosta ja nimi tiedostoon jota haluat käyttää avaintiedostonasi. Voit valita esimerkiksi jonkun kuvatiedoston.&lt;br&gt;&lt;br&gt;&lt;b&gt;Pääsalasana&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tämä on salasana, joka suojaa uuta Keepass-tietokantaasi. Älä epäröi valita pitkää salasaa, jonka on oltava 10 - 15 merkkiä pitkä. Käytä sekoittaen isoja ja pieniä kirjaimia, numeroita ja erikoismerkkejä. Toista salasanasi kentässä &quot;Varmista salasana&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaa automaattisesti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valitse tämä asetus, mikäli haluat ownKeepass-sovelluksen automaattisesti avaavan tässä antamasi tietokantatiedoston, kun seuraavan kerran käynnistät sovelluksen. Tässä tapauksessa sinut ohjataan suoraan sivulle, jossa voit antaa tietokannan pääsalasanan.&lt;br&gt;&lt;br&gt;
-</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tällä sivulla voit luoda uuden tietokannan, johon ownKeepass tallettaa sinun salassapidettävät tietosi.&lt;br&gt;&lt;br&gt;Avaa tiedostoselain ja valitse tiedostonimi ja hakemisto. Voit valita tietokannan sijoituspaikaksi puhelimen kotihakemiston, SD-kortin tai Android-muistin. Mikäli SD-korttivalinta on harmaa, tarkoittaa se joko sitä, että SD-korttia ei ole asennettu, tai että käyttöjärjestelmä ei sitä havaitse. SD-kortilla tulee olla vain yksi formatoitu osio. Tällä hetkellä moni-osioisiksi jaettuja SD-kortteja ei tueta ownKeepass-sovelluksessa. &quot;Android-muistia&quot; käytetään tietokannan jakamiseen Android-sovellusten kanssa. Huomaa, että tiedostojen jakaminen Android-maailman kanssa voi olla hankalaa, tiedostojen omistaja- ja saantioikeus-eroavaisuuksien vuoksi. Ole hyvä, ja ota tämä seikka huomioon.&lt;br&gt;&lt;br&gt;Ohje: mikäli lataat Keepass-tietokannan pilvipalveluun, varmista se käyttämällä paikallisesti talletettua avaintiedostoa pääsalasanan lisäksi. Avaintiedostoa ei tule koskaan ladata pilvipalveluun.&lt;br&gt;&lt;br&gt;\ &lt;b&gt;Avaintiedoston käyttö&lt;/b&gt;&lt;br&gt;&lt;br&gt;Avaintiedostoa voidaan käyttää pääsalasanan lisäksi suojaamaan Keepass-tietokantaa. Molempi käytetään yhtäaikaa generoimaan tunnusavain, jolla tietokanta voidaan avata. Periaatteesa on parempi käyttää tiedostoa, jossa on paljon tietoa generoidun salausavaimen sisällä, koska se luo vahvemman suojan suoria hyökkäyksiä vastaan. Voit käyttää esimerkiksi kuvatiedostoa tähän tarkoitukseen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Pääsalasana&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tähän tulee salasana uudelle Keepass-tietokannale. Varmista, että käytät salasanaa, joka on noin 10 - 15 merkkiä pitkä, ja joka käyttää sekaisin isoja ja pieniä merkkejä, numeroita ja erikoismerkkejä. Toista salasana &quot;vahvista salasana&quot;-kentässä.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaa automaattisesti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Merkitse tämä valinta, mikäli haluat että ownKeepass automaattisesti avaa valitun tietokannan kun seuraavan kerran käynnistät sovelluksen. Tässä tapauksessa avautuu automaattisesti ko. tietokannan salasana-kysely.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -742,13 +734,9 @@ ownKeepass-sovelluksen tietokantaosion lähdekoodi perustuu KeepassX-projektiin 
 <context>
     <name>HelpOpenNewDatabase</name>
     <message>
-        <source>To open an existing Keepass database you need to provide the following details:&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you specify from where the database file will be opened. To make opening as easy as possible you should place the database file in one of the following locations: &quot;Documents on Phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; or &quot;Sailbox local storage&quot;. If you have trouble with ownKeepass not finding the file make sure it is in desired place by looking it up in a file browser. Documents on Phone is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) Android storage is at &quot;%2&quot; and Sailbox local storage you will find at &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the file name of your Keepass database file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file cannot be loaded from &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please type in here the file name of the key file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">Voidaksesi avata Keepass tietokannan sinun tulee antaa seuraavat tiedot:&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokannan sijainti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Määritä tässä mistä tietokantatiedosto tulee avata. Tehdäksesi avaamisen mahdollisimman helpoksi sinun tulisi sijoittaa tietokantatiedosto johonkin seuraavista sijaintipaikoista: &quot;Dokumentit puhelimessa&quot;, &quot;SD-kortti&quot;, &quot;Android-muisti&quot; ja &quot;Sailbox-paikallismuisti&quot;. Mikäli sinulla on vaikeuksia löytää ownKeepass-sovelluksen kanssa haluttu tiedosto, varmista että tiedosto on oletetussa paikassa käyttäen File Browser sovellusta. &quot;Dokumentit puhelimessa&quot; on yleensä &quot;%1&quot;. Mikäli SD-muistikortti on asennettu, se löytyy polusta &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Huomaa, että muistikortit, joissa on useampi kuin yksi osio eivät toimi sovelluksen tässä versiossa.). &quot;Android-muisti&quot; on &quot;%2&quot; ja &quot;Sailbox-paikallismuisti&quot; löytyy täältä: &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Vinkki: mikäli lataat käyttämäsi Keepass tietokantatiedoston Dropbox-pilvipalveluun tai vastaavaan, varmista että käytät sen suojaamiseen paikallista avaintiedosta, jota ei tule tallentaa pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokantapolku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä tekstikentässä Keepass tietokannan tiedostopolku yllämainitussa sijaintipaikassa.&lt;br&gt;&lt;br&gt;&lt;b&gt;Käytä avaintiedostoa&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mikäli Keepass tietokanta tarvitsee avautuakseen avaintiedostoa, valitse tämä asetus, jolloin seuraavat kaksi asetusta tulevat myös näkyviin.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaintiedoston sijainti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Sama ohje kuin tietokannan sijainnissa pätee tässä. Ainoa ero on se, että avaintiedosto ei voi sijaita &quot;Sailbox-paikallismuisti&quot; sijaintipaikassa, mikä suojaa tietokantaa joka on ladattu pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt; Avaintiedoston polku ja tiedostonimi&lt;/b&gt;&lt;br&gt;&lt;br&gt;Kirjoita tähän avaintiedoston polku yllämainitussa sijaintipaikassa.&lt;br&gt;&lt;br&gt;&lt;b&gt;Pääsalasana&lt;/b&gt;&lt;br&gt;&lt;br&gt;Syötä tähän Keepass tietokantasi salasana.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaa automaattisesti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valitse tämä asetus, mikäli haluat ownKeepass sovelluksen avaavan valitun tietokannan automaattisesti kun käynnistät sovelluksen seuraavan kerran. Tässä tapauksessa pääsalasanan syöttökenttä avautuu suoraan valitulle tietokannalle.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="27"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tässä avataan olemassa oleva Keepass-tietokanta tiedosto.&lt;br&gt;&lt;br&gt;Valitse tiedost käyttäen tiedostoselainta. Voit etsiä tietokantaa seuraavista sijoituspaikoistta: puhelimen kotihakemisto, SD-kortti tai Android-muisti. Mikäli sinula on vaikeuksia löytää siirtämäsi tietokanta, varmista että olet laittanut sen johonkin seuraavista tiedostopoluista: &quot;Kotihakemisto&quot; on yleensä &quot;%1&quot;. Jos SD-kortti on asennettu puhelimeesi, se sijaitsee: &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Ole hyvä ja huomioi, että SD-kortteja, jotka on jaettu useampaan kuin yhteen osioon ei tueta tässä versiossa). &quot;Android-muisti&quot; sijaitsee: &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Ohje: mikäli lataat Keepass-tietokannan pilvipalveluun, varmista se käyttämällä paikallisesti talletettua avaintiedostoa pääsalasanan lisäksi. Avaintiedostoa ei tule koskaan ladata pilvipalveluun.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaintiedosto&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mikäli tarvitset avain-tiedostoa Keepass-tietokantasi avaamiseksi, merkitse tämä valinta. Kaksi seuraavaa valintaa tulevat automaattisesti sivulle.&lt;br&gt;&lt;br&gt;&lt;b&gt;Pääsalasana&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anna tässä Keepass-tietokantasi salasana.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avaa automaattisesti&lt;/b&gt;&lt;br&gt;&lt;br&gt;Merkitse tämä valinta, mikäli haluat että ownKeepass automaattisesti avaa valitun tietokannan kun seuraavan kerran käynnistät sovelluksen. Tässä tapauksessa avautuu automaattisesti ko. tietokannan salasana-kysely.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -775,13 +763,9 @@ ownKeepass-sovelluksen tietokantaosion lähdekoodi perustuu KeepassX-projektiin 
 <context>
     <name>HelpSettings</name>
     <message>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">Tällä sivulla voit muutta ownKeepass sovelluksen oletusasetuksia.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokanta&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valitse tässä salauskoodauksen algoritmin oletusarvo, jota käytetään, kun luot uuden Keepass tietokannan. Algoritmi voidaan myös muuttaa myös sen jälkeen, kun tietokanta on luotu, käyttäen tietokannan omia asetuksia.&lt;br&gt;&lt;br&gt;Aseta oletusarvo muunnoskerroille, kun uusi Keepass tietokanta luodaan. Tämä arvo määrittelee salauslaskentakertojen määrän pääsalasanalle. Asetuksen muuttamisella on suora vaikutus tietokannan avausaikaan, mikä vaatii sen salauksen purkamista. Toisaalta asettamalla tämä arvo suureksi, voidaan tietokannasta tehdä kestävämpi suoria hyökkäyksiä vastaan. Hyvänä kompromissina suorituskyvyn ja turvallisuuden välillä voidaan pitää lukuarvoa, joka sallii tietokannan avaamisen noin sekunnissa puhelimessasi.&lt;br&gt;&lt;br&gt;&lt;b&gt;Turvallisuus&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tässä voit asettaa leikepöydän automaattisen tyhjentämisen 10 sekuntia sen jälkeen, kun olet kopioinut käyttäjänimen tai salasanan siihen.&lt;br&gt;&lt;br&gt;Kun sovellus pysyy käyttämättömänä asetetun ajan, ownKeepass sovelluksen mentyä muiden sovellusten taustalle, Keepass tietokanta lukitaan automaattisesti. Tämä laskuri on siis myös käynnissä, kun ownKeepass-sovellus on minimoitu kortti-tilaan puhelimen kotisivunäytöllä.&lt;br&gt;&lt;br&gt;&lt;b&gt;Käyttöliitäntä&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mikäli haluat nähdä käyttäjänimen ja salasanan kaikkien salasanatiedostojen sisällöstä listausnäytöissä, aseta &quot;Laajennettu listausnäkymä&quot;.&lt;br&gt;&lt;br&gt;Valitsemalla &quot;Kohdista etsintäkenttään&quot; se avautuu automaattisesti samalla kun näppäimistö näytetään Keepass tiedoston avauksen yhteydessä. Tämä toiminta maksimoi etsintätoiminnan käytettävyyden tietokannan selauksen yhteydessä.&lt;br&gt;&lt;br&gt;&lt;b&gt;Kortti-toiminnat&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tässä voit valita toimintamuodon ja tiedot, jotka näytetään sovelluksen pääsivulla näytettävällä kortilla. Voit valita kulloinkin valitun salasanatiedoston käyttäjänimen ja salasanan näyttämisen selväkielisenä kortissa Voit myös kieltää tai sallia kortilla olevat toiminnot siihen liittyen. Ensimmäinen näistä mahdollistaa tietokannan lukituksen. Toinen toiminnoista kopioi joko käyttäjänimen tai salasanan leikepöydälle, ja lopulta tyhjentää sen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Edistyneet asetukset&lt;/b&gt;&lt;br&gt;&lt;br&gt;&quot;Edistyneet asetukset&quot; aktivoi seuraavat toiminnot tietokantojen käsittelyssä: Useampien Keepass tietokantojen avaaminen on mahdollista ja sovellus näyttää viisi viimeisintä Keepass tietokantaa avausnäytössä, mahdollistaen niiden nopean selaamisen.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpSettings.qml" line="27"/>
         <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the last three characters of the master password. Note that after three wrong attempts the database will be closed and you need to type in the full master password again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tällä sivulla voit muutta ownKeepass sovelluksen oletusasetuksia.&lt;br&gt;&lt;br&gt;&lt;b&gt;Tietokanta&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valitse tässä salauskoodauksen algoritmin oletusarvo, jota käytetään, kun luot uuden Keepass tietokannan. Algoritmi voidaan myös muuttaa myös sen jälkeen, kun tietokanta on luotu, käyttäen tietokannan omia asetuksia.&lt;br&gt;&lt;br&gt;Aseta oletusarvo muunnoskerroille, kun uusi Keepass tietokanta luodaan. Tämä arvo määrittelee salauslaskentakertojen määrän pääsalasanalle. Asetuksen muuttamisella on suora vaikutus tietokannan avausaikaan, mikä vaatii sen salauksen purkamista. Toisaalta asettamalla tämä arvo suureksi, voidaan tietokannasta tehdä kestävämpi suoria hyökkäyksiä vastaan. Hyvänä kompromissina suorituskyvyn ja turvallisuuden välillä voidaan pitää lukuarvoa, joka sallii tietokannan avaamisen noin sekunnissa puhelimessasi.&lt;br&gt;&lt;br&gt;&lt;b&gt;Turvallisuus&lt;/b&gt;&lt;br&gt;&lt;br&gt;Toimettomuusaikalukitus-arvoa käytetään lukitsemaan Keepass-tietokanta kun asetettu aika on kulunut siitä, kun ownKeepass-sovellus siirtyi taustalle. Näin toimettumuusaikalaskuri on käynnissä myös silloin, kun ownKeepass on minimoitu kortiksi kotisivulla.&lt;br&gt;&lt;br&gt;Nopea avaustoiminta mahdollistaa vahvan pääsanasanan käyttämisen, ja silti mahdollistaa nopean pääsyn Keepass-tietokantaasi. Kun avaat ensimmäistä kertaa salasanatietokantasi, sinulta kysytään koko salasanaa. Mutta sen jälkeen voi avata sen käyttäen vain osaa salasanastasi, joka käsittää vain kolme viimeistä merkkiä pääsalasanasta. Huomaa, että kolmen virheellisen yrityksen jälkeen tietokanta suljetaan ja sinun on annettava pääsalasana kokonaisuudessaan.&lt;br&gt;&lt;br&gt;Tässä voit asettaa myös leikepöydän automaattisen tyhjentämisen 10 sekuntia sen jälkeen, kun olet kopioinut tai salasanan siihen.&lt;br&gt;&lt;br&gt;Kun sovellus pysyy käyttämättömänä asetetun ajan, ownKeepass sovelluksen mentyä muiden sovellusten taustalle, Keepass tietokanta lukitaan automaattisesti. Tämä laskuri on siis myös käynnissä, kun ownKeepass-sovellus on minimoitu kortti-tilaan puhelimen kotisivunäytöllä.&lt;br&gt;&lt;br&gt;&lt;b&gt;Käyttöliitäntä&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mikäli haluat nähdä käyttäjänimen ja salasanan kaikkien salasanatiedostojen sisällöstä listausnäytöissä, aseta &quot;Laajennettu listausnäkymä&quot;.&lt;br&gt;&lt;br&gt;Valitsemalla &quot;Kohdista etsintäkenttään&quot; se avautuu automaattisesti samalla kun näppäimistö näytetään Keepass tiedoston avauksen yhteydessä. Tämä toiminta maksimoi etsintätoiminnan käytettävyyden tietokannan selauksen yhteydessä.&lt;br&gt;&lt;br&gt;&lt;b&gt;Kortti-toiminnat&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tässä voit valita toimintamuodon ja tiedot, jotka näytetään sovelluksen pääsivulla näytettävällä kortilla. Voit valita kulloinkin valitun salasanatiedoston käyttäjänimen ja salasanan näyttämisen selväkielisenä kortissa Voit myös kieltää tai sallia kortilla olevat toiminnot siihen liittyen. Ensimmäinen näistä mahdollistaa tietokannan lukituksen. Toinen toiminnoista kopioi joko käyttäjänimen tai salasanan leikepöydälle, ja lopulta tyhjentää sen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Edistyneet asetukset&lt;/b&gt;&lt;br&gt;&lt;br&gt;&quot;Edistyneet asetukset&quot; aktivoi seuraavat toiminnot tietokantojen käsittelyssä: Useampien Keepass tietokantojen avaaminen on mahdollista ja sovellus näyttää viisi viimeisintä Keepass tietokantaa avausnäytössä, mahdollistaen niiden nopean selaamisen.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -816,7 +800,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/LicensePage.qml" line="50"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisenssi</translation>
     </message>
 </context>
 <context>
@@ -824,27 +808,27 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/LockPage.qml" line="61"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation>Salasanatiedosto</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
         <source>Unlock your Password Safe with the last three characters of your master password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa salasanasovellus antamalla kolme viimeistä merkkiä pääsalasanasta:</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
         <source>You have %1 tries left</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinulla on %1 yritystä jäljellä</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have 1 try left</source>
-        <translation type="unfinished"></translation>
+        <translation>sinulla on 1 yritys jäljellä</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
         <source>Wrong unlock code</source>
-        <translation type="unfinished"></translation>
+        <translation>Väärä avauskoodi</translation>
     </message>
 </context>
 <context>
@@ -852,22 +836,22 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/Main.qml" line="72"/>
         <source>ownKeepass got updated</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass on päivitetty</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="73"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi version %1 on nyt asennettu puhelimeesi.  Katso muutoslokia lisätietojen saamiseksi.</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="82"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongelma SD-kortin kanssa</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="83"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-kortteja, joissa on useampi kuin yksi osio, ei tueta</translation>
     </message>
 </context>
 <context>
@@ -1140,52 +1124,14 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <source>Specify location, path and file name of your new Keepass database:</source>
-        <translation type="vanished">Anna sijainti, polku ja tiedostonimi uudelle Keepass tietokannallesi:</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
+        <source>Please specify a new Keepass database file:</source>
+        <translation>Valitse uusi Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
-        <source>Database location:</source>
-        <translation type="vanished">Tietokannan sijainti:</translation>
-    </message>
-    <message>
-        <source>Documents on phone</source>
-        <translation type="vanished">Dokumentit puhelimessa</translation>
-    </message>
-    <message>
-        <source>SD card</source>
-        <translation type="vanished">SD-kortti</translation>
-    </message>
-    <message>
-        <source>Android storage</source>
-        <translation type="vanished">Android-muisti</translation>
-    </message>
-    <message>
-        <source>Sailbox local storage</source>
-        <translation type="vanished">Sailbox-paikallismuisti</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Varoitus</translation>
-    </message>
-    <message>
-        <source>Please be aware that using the Android storage might cause problems due to different file ownership and permissions. If modifications to your Keepass database are not saved make sure the file is writable for user &quot;nemo&quot;. So if you don&apos;t know how to handle file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.</source>
-        <translation type="vanished">Huomioi että Android-muistin käyttö voi johtaa ongelmiin johtuen erilaisista omistus- ja käyttöoikeusarvoista järjestelmien välillä. Mikäli sinulla on vaikeuksia tallettaa muutoksiasi Keepass tietokantatiedostoon, varmista että tiedostossa on kirjoitusoikeus käyttäjälle &quot;nemo&quot;. Mikäli et tiedä miten käyttöoikeuksia voi muutta esimerkiksi terminaali-sovellusta käyttäen, ei ole kovin viisasta ryhtyä käyttämään Android-muistia tässä yhteydessä. Valitan.</translation>
-    </message>
-    <message>
-        <source>Advice</source>
-        <translation type="vanished">Vinkki</translation>
-    </message>
-    <message>
-        <source>You choosed to place your new Keepass database in the Dropbox cloud. Please make sure to use a unique password for Dropbox and enable two-step verification to increase security of your online storage! ownKeepass does enforce to use a locally stored key file when storing your Keepass database online.</source>
-        <translation type="vanished">Olet valinnut Dropbox pilvipalvelun uuden Keepass tietokannan sijaintipaikaksi. Ole hyvä ja varmista että sinulla on vahva ja uniikki salasana Dropbox palvelussa ja käytä myös kaksiosaista varmennusta, vahvistakseesi pilvipalvelusi turvallisuusta. OwnKeepass-sovellus suosittelee sinua käyttämään avaintiedostoa tässä yhteydessä ja ohjaa sinua pitämään sen paikallisesti tallennetussa tiedostossa, jos tietokanta on sijoitettu pilvipalvelimeen.</translation>
-    </message>
-    <message>
-        <source>Path and name of database file</source>
-        <translation type="vanished">Polku ja nimi tietokantatiedostoon</translation>
-    </message>
-    <message>
-        <source>Set path and name of database file</source>
-        <translation type="vanished">Aseta polku ja nimi tietokantatiedostoon</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="323"/>
+        <source>Please choose an existing Keepass database file:</source>
+        <translation>Valitse Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="147"/>
@@ -1198,44 +1144,14 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Aseta tämä käyttääksesi avaintiedosta pääsalasanan kanssa uuden Keepass tietokannan luomisessa</translation>
     </message>
     <message>
-        <source>Key file location:</source>
-        <translation type="vanished">Avaintiedoston sijainti:</translation>
-    </message>
-    <message>
-        <source>Path and name of key file</source>
-        <translation type="vanished">Polku ja nimi avaintiedostoon</translation>
-    </message>
-    <message>
-        <source>Set path and name of key file</source>
-        <translation type="vanished">Aseta polku ja nimi avaintiedostoon</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
-        <source>Please specify a new Keepass database file:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="323"/>
-        <source>Please choose an existing Keepass database file:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">Salasana</translation>
-    </message>
-    <message>
-        <source>Enter password</source>
-        <translation type="vanished">Anna salasana</translation>
-    </message>
-    <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
         <source>Master password</source>
-        <translation type="unfinished">Pääsalasana</translation>
+        <translation>Pääsalasana</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
         <source>Enter master password</source>
-        <translation type="unfinished">Anna pääsalasana</translation>
+        <translation>Anna pääsalasana</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="275"/>
