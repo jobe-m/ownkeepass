@@ -123,9 +123,9 @@ int main(int argc, char *argv[])
             translator.load("harbour-ownkeepass-it.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // LANG_PL_PL
-        case settingsPublic::OwnKeepassSettings::LANG_PL_PL:
-            translator.load("harbour-ownkeepass-pl_PL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
+//        case settingsPublic::OwnKeepassSettings::LANG_PL_PL:  -- not yet started
+//            translator.load("harbour-ownkeepass-pl_PL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+//            break;
         // LANG_RU
         case settingsPublic::OwnKeepassSettings::LANG_RU:
             translator.load("harbour-ownkeepass-ru.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
@@ -139,9 +139,9 @@ int main(int argc, char *argv[])
             translator.load("harbour-ownkeepass-sv_SE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // LANG_UK_UA
-        case settingsPublic::OwnKeepassSettings::LANG_UK_UA:
-            translator.load("harbour-ownkeepass-uk_UA.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
+//        case settingsPublic::OwnKeepassSettings::LANG_UK_UA: -- not yet started
+//            translator.load("harbour-ownkeepass-uk_UA.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+//            break;
         default:
             translator.load("harbour-ownkeepass.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
