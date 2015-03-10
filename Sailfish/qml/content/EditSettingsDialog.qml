@@ -303,34 +303,38 @@ Dialog {
                     currentIndex: ownKeepassSettings.language
                     menu: ContextMenu {
                         // LANG_SYSTEM_DEFAULT = 0
-                        // LANG_EN_GB
-                        // LANG_SV_SE
-                        // LANG_FI_FI
-                        // LANG_DE_DE
-                        // LANG_CS_CZ
                         // LANG_CA
-                        // LANG_NL_NL
-                        // LANG_ES
-                        // LANG_FR_FR
-                        // LANG_IT
-                        // LANG_RU
+                        // LANG_ZH_CN
+                        // LANG_CS_CZ
                         // LANG_DA
-                        // LANG_PL_PL
+                        // LANG_NL_NL
+                        // LANG_EN_GB
+                        // LANG_FI_FI
+                        // LANG_FR_FR
+                        // LANG_DE_DE
+                        // LANG_IT
+//                        // LANG_PL_PL -- not yet started
+                        // LANG_RU
+                        // LANG_ES
+                        // LANG_SV_SE
+//                        // LANG_UK_UA -- not yet started
 
                         MenuItem { text: "System default" }
-                        MenuItem { text: "English" }
-                        MenuItem { text: "Swedish" }
-                        MenuItem { text: "Finnish" }
-                        MenuItem { text: "German" }
-                        MenuItem { text: "Czech" }
                         MenuItem { text: "Catalan" }
-                        MenuItem { text: "Dutch" }
-                        MenuItem { text: "Spanish" }
-                        MenuItem { text: "French (partly)" }
-                        MenuItem { text: "Italian (partly)" }
-                        MenuItem { text: "Russian (partly)" }
+                        MenuIten { text: "Chinese" }
+                        MenuItem { text: "Czech" }
                         MenuItem { text: "Danish (partly)" }
-//                        MenuItem { text: "Polish" } -- not yet started 
+                        MenuItem { text: "Dutch" }
+                        MenuItem { text: "English" }
+                        MenuItem { text: "Finnish" }
+                        MenuItem { text: "French" }
+                        MenuItem { text: "German" }
+                        MenuItem { text: "Italian (partly)" }
+//                        MenuItem { text: "Polish" } -- not yet started
+                        MenuItem { text: "Russian (partly)" }
+                        MenuItem { text: "Spanish" }
+                        MenuItem { text: "Swedish" }
+//                        MenuItem { text: "Ukrainian" } -- not yet started
                     }
                     onCurrentIndexChanged: {
                         editSettingsDialog.languageChanged =
