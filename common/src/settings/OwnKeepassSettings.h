@@ -41,19 +41,21 @@ public:
     Q_ENUMS(eLanguages)
     enum eLanguages {
         LANG_SYSTEM_DEFAULT = 0,
-        LANG_EN_GB,
-        LANG_SV_SE,
-        LANG_FI_FI,
-        LANG_DE_DE,
-        LANG_CS_CZ,
         LANG_CA,
-        LANG_NL_NL,
-        LANG_ES,
-        LANG_FR_FR,
-        LANG_IT,
-        LANG_RU,
+        LANG_ZH_CN,
+        LANG_CS_CZ,
         LANG_DA,
-        LANG_PL_PL,
+        LANG_NL_NL,
+        LANG_EN_GB,
+        LANG_FI_FI,
+        LANG_FR_FR,
+        LANG_DE_DE,
+        LANG_IT,
+//        LANG_PL_PL, -- not yet started
+        LANG_RU,
+        LANG_ES,
+        LANG_SV_SE,
+//        LANG_UK_UA, -- not yet started
         LANG_INVALID
     };
 
