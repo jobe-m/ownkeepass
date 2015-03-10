@@ -166,7 +166,7 @@ Page {
                                     if (__counter > 1) {
                                         var message = qsTr("You have %1 tries left").arg(__counter)
                                     } else {
-                                        message = qsTr("You have 1 try left")
+                                        message = qsTr("You have one try left")
                                     }
                                     Global.env.infoPopup.show(Global.warning, qsTr("Wrong unlock code"), message, 3)
                                 }
