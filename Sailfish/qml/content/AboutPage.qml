@@ -125,17 +125,14 @@ Copyright &#169; 2013-2014 Marko Koschak<br>"
                 text: qsTr("<b>Credits</b><br><br>\
 Jolla (for continuing where Nokia stopped)<br>\
 The KeepassX project (for a Qt implementation of Keepass)<br>\
-Petri Mäkijärvi (Finnish translation and testing)<br>\
-Åke Engelbrektson (Swedish translation)<br>\
-Agusti Clara (Catalan translation)<br>\
-fri (Czech translation)<br>\
-Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)<br>\
-carmenfdezb (Spanish translation)<br>\
+All translators: %1<br>\
 <br><br>\
 \
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
 I hope you have as much fun using ownKeepass as I have creating it!")
+                .arg("Petri Mäkijärvi, Åke Engelbrektson, Agusti Clara, fri, Heimen Stoffels, Rob K, Nathan Follens, \
+carmenfdezb, TylerTemp, Peter Jespersen, Jordi, Guillaume Ariaux, Francesco Vaccaro, Lorenzo Facca, Alexey")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }

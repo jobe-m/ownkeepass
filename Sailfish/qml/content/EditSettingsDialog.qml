@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.ownkeepass.KeepassX1 1.0
 import "../scripts/Global.js" as Global
 import "../common"
 
@@ -300,45 +301,110 @@ Dialog {
                     id: language
                     width: editSettingsDialog.width
                     label: qsTr("Language:")
-                    currentIndex: ownKeepassSettings.language
+                    currentIndex: toCurrentIndex(ownKeepassSettings.language)
                     menu: ContextMenu {
-                        // LANG_SYSTEM_DEFAULT = 0
-                        // LANG_CA
-                        // LANG_ZH_CN
-                        // LANG_CS_CZ
-                        // LANG_DA
-                        // LANG_NL_NL
-                        // LANG_EN_GB
-                        // LANG_FI_FI
-                        // LANG_FR_FR
-                        // LANG_DE_DE
-                        // LANG_IT
-//                        // LANG_PL_PL -- not yet started
-                        // LANG_RU
-                        // LANG_ES
-                        // LANG_SV_SE
-//                        // LANG_UK_UA -- not yet started
-
-                        MenuItem { text: "System default" }
-                        MenuItem { text: "Catalan" }
-                        MenuIten { text: "Chinese" }
-                        MenuItem { text: "Czech" }
-                        MenuItem { text: "Danish (partly)" }
-                        MenuItem { text: "Dutch" }
-                        MenuItem { text: "English" }
-                        MenuItem { text: "Finnish" }
-                        MenuItem { text: "French" }
-                        MenuItem { text: "German" }
-                        MenuItem { text: "Italian (partly)" }
-//                        MenuItem { text: "Polish" } -- not yet started
-                        MenuItem { text: "Russian (partly)" }
-                        MenuItem { text: "Spanish" }
-                        MenuItem { text: "Swedish" }
-//                        MenuItem { text: "Ukrainian" } -- not yet started
+                        MenuItem { text: "System default" } // 0
+                        MenuItem { text: "Catalan" } // 1
+                        MenuItem { text: "Chinese" } // 2
+                        MenuItem { text: "Czech" } // 3
+                        MenuItem { text: "Danish (partly)" } // 4
+                        MenuItem { text: "Dutch" } // 5
+                        MenuItem { text: "English" } // 6
+                        MenuItem { text: "Finnish" } // 7
+                        MenuItem { text: "French" } // 8
+                        MenuItem { text: "German" } // 9
+                        MenuItem { text: "Italian (partly)" } // 10
+//                        MenuItem { text: "Polish" } // -1 -- not yet started
+                        MenuItem { text: "Russian (partly)" } // 11
+                        MenuItem { text: "Spanish" }  // 12
+                        MenuItem { text: "Swedish" } // 13
+//                        MenuItem { text: "Ukrainian" } // -1 -- not yet started
                     }
+
+                    // The next two converter functions decouple the alphabetic language list
+                    // index from the internal settings index, which cannot be changed for legacy reasons
+                    function toCurrentIndex(value) {
+                        console.log("Lang de: " + Languages.DE_DE)
+                        switch (value) {
+                        case Languages.SYSTEM_DEFAULT:
+                            return Global.system_default
+                        case Languages.EN_GB: // English
+                            return Global.english
+                        case Languages.SV_SE: // Swedish
+                            return Global.swedish
+                        case Languages.FI_FI: // Finnish
+                            return Global.finnish
+                        case Languages.DE_DE: // German
+                            return Global.german
+                        case Languages.CS_CZ: // Czech
+                            return Global.czech
+                        case Languages.CA: // Catalan
+                            return Global.catalan
+                        case Languages.NL_NL: // Dutch
+                            return Global.dutch
+                        case Languages.ES: // Spanish
+                            return Global.spanish
+                        case Languages.FR_FR: // French
+                            return Global.french
+                        case Languages.IT: // Itanian
+                            return Global.italian
+                        case Languages.RU: // Russian
+                            return Global.russian
+                        case Languages.DA: // Danish
+                            return Global.danish
+                        case Languages.PL_PL: // Polish
+                            return Global.polish
+                        case Languages.ZH_CN: // Chinese
+                            return Global.chinese
+                        case Languages.UK_UA: // Ukrainian
+                            return Global.ukrainian
+                        default:
+                            return Global.english
+                        }
+                    }
+
+                    function toSettingsIndex(value) {
+                        switch (value) {
+                        case Global.system_default:
+                            return Languages.SYSTEM_DEFAULT
+                        case Global.english:
+                            return Languages.EN_GB // English
+                        case Global.swedish:
+                            return Languages.SV_SE // Swedish
+                        case Global.finnish:
+                            return Languages.FI_FI // Finnish
+                        case Global.german:
+                            return Languages.DE_DE // German
+                        case Global.czech:
+                            return Languages.CS_CZ // Czech
+                        case Global.catalan:
+                            return Languages.CA // Catalan
+                        case Global.dutch:
+                            return Languages.NL_NL // Dutch
+                        case Global.spanish:
+                            return Languages.ES // Spanish
+                        case Global.french:
+                            return Languages.FR_FR // French
+                        case Global.italian:
+                            return Languages.IT // Itanian
+                        case Global.russian:
+                            return Languages.RU // Russian
+                        case Global.danish:
+                            return Languages.DA // Danish
+                        case Global.polish:
+                            return Languages.PL_PL // Polish
+                        case Global.chinese:
+                            return Languages.ZH_CN // Chinese
+                        case Global.ukrainian:
+                            return Languages.UK_UA // Ukrainian
+                        default:
+                            return Languages.EN_GB // English
+                        }
+                    }
+
                     onCurrentIndexChanged: {
                         editSettingsDialog.languageChanged =
-                                language.currentIndex !== ownKeepassSettings.language
+                                toSettingsIndex(language.currentIndex) !== ownKeepassSettings.language
                         editSettingsDialog.updateCoverState()
                     }
                 }
@@ -420,7 +486,7 @@ Dialog {
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
                     clearClipboard.checked ? 10 : 0,
-                    language.currentIndex,
+                    language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
                     fastUnlockRetryCount.value)
         kdbListItemInternal.saveKeepassSettings()
@@ -439,7 +505,7 @@ Dialog {
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
                     clearClipboard.checked ? 10 : 0,
-                    language.currentIndex,
+                    language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
                     fastUnlockRetryCount.value)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()

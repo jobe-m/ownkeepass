@@ -28,6 +28,25 @@ var info = 1
 var warning = 2
 var error = 3
 
+// The index list below must be the same as the order of language menu items in settings dialog
+var system_default = 0
+var catalan = 1
+var chinese = 2
+var czech = 3
+var danish = 4
+var dutch = 5
+var english = 6
+var finnish = 7
+var french = 8
+var german = 9
+var italian = 10
+var polish = -1 // not yet started
+var russian = 11
+var spanish = 12
+var swedish = 13
+var ukrainian = -1 // not yet started
+
+
 var constants = {
     _1microsecond: 1,
     _5seconds: 5 * 1000,

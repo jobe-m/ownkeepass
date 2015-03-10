@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fi_FI">
 <context>
     <name>AboutPage</name>
     <message>
@@ -48,8 +50,12 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
+        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation>&lt;b&gt;Kiitokset&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (joka jatkoi siitä, mihin Nokia lopetti)&lt;br&gt;KeepassX-projekti (Keepass Qt-sovelluksesta)&lt;br&gt;Petri Mäkijärvi (suomennos ja testaus)&lt;br&gt;Åke Engelbrektson (ruotsinnos)&lt;br&gt;Agusti Clara (katalaani-kielen käännös)&lt;br&gt;fri (tšekin kielen käännös)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (hollannin kielen käännös)&lt;br&gt;carmenfdezb (käännös espanjaksi)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Toivottasti Sinulla on yhtä hauskaa käyttäessäsi ownKeepass-sovellusta, kuin minulla on ollut sen luomisessa!</translation>
+        <translation type="vanished">&lt;b&gt;Kiitokset&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (joka jatkoi siitä, mihin Nokia lopetti)&lt;br&gt;KeepassX-projekti (Keepass Qt-sovelluksesta)&lt;br&gt;Petri Mäkijärvi (suomennos ja testaus)&lt;br&gt;Åke Engelbrektson (ruotsinnos)&lt;br&gt;Agusti Clara (katalaani-kielen käännös)&lt;br&gt;fri (tšekin kielen käännös)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (hollannin kielen käännös)&lt;br&gt;carmenfdezb (käännös espanjaksi)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Toivottasti Sinulla on yhtä hauskaa käyttäessäsi ownKeepass-sovellusta, kuin minulla on ollut sen luomisessa!</translation>
     </message>
 </context>
 <context>
@@ -353,198 +359,198 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="86"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
         <source>Save</source>
         <translation>Talleta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
         <source>Discard</source>
         <translation>Hylkää</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
         <source>ownKeepass Settings</source>
         <translation>ownKeepass asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="92"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
         <source>Change default settings of your ownKeepass application here</source>
         <translation>Muuta ownKeepass-oletusasetuksia tässä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="96"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="97"/>
         <source>Database</source>
         <translation>Tietokanta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="104"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="105"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
         <translation>Tämä on salausmenetelmän oletusarvo uuden Keepass-tietokannan luomiseen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="112"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="113"/>
         <source>Default encryption:</source>
         <translation>Salausmenetelmän oletusarvo:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="137"/>
         <source>Default key transformation rounds</source>
         <translation>Avaimen muutoslaskentakertojen oletusarvo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="150"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="151"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Tämä arvon asettaminen suuremmaksi lisää Keepass-tietokannan avaamiseen kuluvaa aikaa, mutta tekee siitä vahvemman suoria hyökkäyksiä vastaan</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="157"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="158"/>
         <source>Security</source>
         <translation>Turvallisuus</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="257"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
         <source>Clear clipboard</source>
         <translation>Tyhjennä leikepöytä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="259"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
         <translation>Jos asetettu, leikepöytä tyhjennetään 10 sekunnin kuluttua siitä, kun käyttäjänimi tai salasana on kopioitu</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="343"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="413"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>Valittu kieli aktivoidaan kun sovellus käynnistetään uudelleen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="169"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="170"/>
         <source>Inactivity lock time</source>
         <translation>Automaattinen lukitusaika</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="186"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="187"/>
         <source>Immediately</source>
         <translation>Välittömästi</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="188"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="190"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="192"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="191"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="193"/>
         <source>seconds</source>
         <translation>sekuntia</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="194"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
         <source>minute</source>
         <translation>minuutti</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="196"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="198"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="200"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="202"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="204"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="197"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="199"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="201"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
         <source>minutes</source>
         <translation>minuuttia</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="206"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
         <source>Unlimited</source>
         <translation>Ei aikarajaa</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="225"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
         <source>Fast unlock</source>
         <translation>Nopea aukaisu</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
         <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
         <translation>Valitse tämä aukaistaksesi tietokantasi nopeasti, käyttämällä vain pääsalasanasi kolmea viimeistä merkkiä.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="244"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
         <source>Number of fast unlock retries</source>
         <translation>Pika avauksen uudelleenyritysten määrä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="268"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="269"/>
         <source>UI settings</source>
         <translation>Käyttäjäliitännän asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="274"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
         <source>Extended list liew</source>
         <translation>Laajennetun listan näkymä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>If you switch this on username and password are shown below entry title in list views</source>
         <translation>Jos asetat tämän, käyttäjänimi ja salasana näytetään otsikon alapuolella listausnäytöissä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="286"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="287"/>
         <source>Focus search bar</source>
         <translation>Kohdista hakukenttään</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="287"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Jos asetettu, hakukenttä kohdistetaan sovelluksen käynnistyessä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="303"/>
         <source>Language:</source>
         <translation>Kieli:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="350"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="420"/>
         <source>Cover settings</source>
         <translation>Kuvakeasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="356"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="426"/>
         <source>Show username and password</source>
         <translation>Näytä käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="357"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="427"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Asettamalla tämä, kuvakkeessa näytetään kulloinkin avoinna olevan Keepass-tiedoston käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="368"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="438"/>
         <source>Lock database from cover</source>
         <translation>Lukitse tietokanta kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="369"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Tämä sallii tietokannan lukituksen kuvaketta vasemmalle pyyhkäisten</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="380"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="450"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Leikkaa ja liimaa kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="381"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="451"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Asettamalla tämän, sallit käyttäjänimen ja salasanan kopioinnin kuvakkeesta leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="390"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="460"/>
         <source>Advanced settings</source>
         <translation>Erikoisasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="396"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
         <source>Expert user mode</source>
         <translation>Edistyneen käyttäjän toimintatila</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="397"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Tämä asetus tuo edistyneet toiminnat, kuten useampien tietokantojen käsittelyn suoraan avaussivulle</translation>
     </message>
@@ -595,22 +601,22 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="88"/>
+        <location filename="../qml/scripts/Global.js" line="107"/>
         <source>Nothing selected yet</source>
         <translation>Mitään ei ole vielä merkitty valituksi</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="90"/>
+        <location filename="../qml/scripts/Global.js" line="109"/>
         <source>Home:</source>
         <translation>Koti:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="92"/>
+        <location filename="../qml/scripts/Global.js" line="111"/>
         <source>SD Card:</source>
         <translation>SD-kortti:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="94"/>
+        <location filename="../qml/scripts/Global.js" line="113"/>
         <source>Android Storage:</source>
         <translation>Android-muisti:</translation>
     </message>
@@ -822,8 +828,12 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
+        <source>You have one try left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>You have 1 try left</source>
-        <translation>sinulla on 1 yritys jäljellä</translation>
+        <translation type="vanished">sinulla on 1 yritys jäljellä</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>

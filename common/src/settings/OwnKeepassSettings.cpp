@@ -378,7 +378,7 @@ void OwnKeepassSettings::setClearClipboard(int value)
 
 void OwnKeepassSettings::setLanguage(const int value)
 {
-    if ((value < LANG_INVALID) && (value != m_language)) {
+    if ((value < Languages::INVALID) && (value != m_language)) {
         m_language = value;
         m_settings->setValue("settings/language", QVariant(m_language));
         emit languageChanged();

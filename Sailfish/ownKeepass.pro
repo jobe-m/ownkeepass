@@ -151,19 +151,19 @@ OTHER_FILES += \
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 
-linux-g++ {
-    message("Update translations only in release mode for jolla device")
 TRANSLATIONS += \
-    translations/harbour-ownkeepass-sv_SE.ts \
-    translations/harbour-ownkeepass-fi_FI.ts \
-    translations/harbour-ownkeepass-de_DE.ts \
-    translations/harbour-ownkeepass-cs_CZ.ts \
     translations/harbour-ownkeepass-ca.ts \
+    translations/harbour-ownkeepass-zh_CN.ts \
+    translations/harbour-ownkeepass-cs_CZ.ts \
+    translations/harbour-ownkeepass-da.ts \
     translations/harbour-ownkeepass-nl_NL.ts \
-    translations/harbour-ownkeepass-es.ts \
+    # en_GB is default language
+    translations/harbour-ownkeepass-fi_FI.ts \
     translations/harbour-ownkeepass-fr_FR.ts \
+    translations/harbour-ownkeepass-de_DE.ts \
     translations/harbour-ownkeepass-it.ts \
-    translations/harbour-ownkeepass-ru.ts \
-    translations/harbour-ownkeepass-da.ts
 #    translations/harbour-ownkeepass-pl_PL.ts
-}
+    translations/harbour-ownkeepass-ru.ts \
+    translations/harbour-ownkeepass-es.ts \
+    translations/harbour-ownkeepass-sv_SE.ts
+#    translations/harbour-ownkeepass-uk_UA.ts
