@@ -85,41 +85,62 @@ int main(int argc, char *argv[])
     QTranslator translator;
     if (settingsPublic::OwnKeepassSettings::LANG_SYSTEM_DEFAULT != okpSettings->language()) {
         switch (okpSettings->language()) {
-        case settingsPublic::OwnKeepassSettings::LANG_DE_DE:
-            translator.load("harbour-ownkeepass-de_DE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
-        case settingsPublic::OwnKeepassSettings::LANG_FI_FI:
-            translator.load("harbour-ownkeepass-fi_FI.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
-        case settingsPublic::OwnKeepassSettings::LANG_SV_SE:
-            translator.load("harbour-ownkeepass-sv_SE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
-        case settingsPublic::OwnKeepassSettings::LANG_CS_CZ:
-            translator.load("harbour-ownkeepass-cs_CZ.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
+        // LANG_CA
         case settingsPublic::OwnKeepassSettings::LANG_CA:
             translator.load("harbour-ownkeepass-ca.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        case settingsPublic::OwnKeepassSettings::LANG_NL_NL:
-            translator.load("harbour-ownkeepass-nl_NL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+        // LANG_ZH_CN
+        case settingsPublic::OwnKeepassSettings::LANG_ZH_CN:
+            translator.load("harbour-ownkeepass-zh_CN.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        case settingsPublic::OwnKeepassSettings::LANG_ES:
-            translator.load("harbour-ownkeepass-es.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+        // LANG_CS_CZ
+        case settingsPublic::OwnKeepassSettings::LANG_CS_CZ:
+            translator.load("harbour-ownkeepass-cs_CZ.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        case settingsPublic::OwnKeepassSettings::LANG_FR_FR:
-            translator.load("harbour-ownkeepass-fr_FR.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
-        case settingsPublic::OwnKeepassSettings::LANG_IT:
-            translator.load("harbour-ownkeepass-it.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
-        case settingsPublic::OwnKeepassSettings::LANG_RU:
-            translator.load("harbour-ownkeepass-ru.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
-            break;
+        // LANG_DA
         case settingsPublic::OwnKeepassSettings::LANG_DA:
             translator.load("harbour-ownkeepass-da.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
+        // LANG_NL_NL
+        case settingsPublic::OwnKeepassSettings::LANG_NL_NL:
+            translator.load("harbour-ownkeepass-nl_NL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_EN_GB - using default ts file
+        // LANG_FI_FI
+        case settingsPublic::OwnKeepassSettings::LANG_FI_FI:
+            translator.load("harbour-ownkeepass-fi_FI.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_FR_FR
+        case settingsPublic::OwnKeepassSettings::LANG_FR_FR:
+            translator.load("harbour-ownkeepass-fr_FR.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_DE_DE
+        case settingsPublic::OwnKeepassSettings::LANG_DE_DE:
+            translator.load("harbour-ownkeepass-de_DE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_IT
+        case settingsPublic::OwnKeepassSettings::LANG_IT:
+            translator.load("harbour-ownkeepass-it.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_PL_PL
         case settingsPublic::OwnKeepassSettings::LANG_PL_PL:
             translator.load("harbour-ownkeepass-pl_PL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_RU
+        case settingsPublic::OwnKeepassSettings::LANG_RU:
+            translator.load("harbour-ownkeepass-ru.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_ES
+        case settingsPublic::OwnKeepassSettings::LANG_ES:
+            translator.load("harbour-ownkeepass-es.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_SV_SE
+        case settingsPublic::OwnKeepassSettings::LANG_SV_SE:
+            translator.load("harbour-ownkeepass-sv_SE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // LANG_UK_UA
+        case settingsPublic::OwnKeepassSettings::LANG_UK_UA:
+            translator.load("harbour-ownkeepass-uk_UA.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         default:
             translator.load("harbour-ownkeepass.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
