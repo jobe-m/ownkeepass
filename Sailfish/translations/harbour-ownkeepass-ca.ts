@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ca">
+´<?xml version="1.0" ?><!DOCTYPE TS><TS language="ca" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -51,11 +49,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="vanished">&lt;b&gt;Crèdits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (per continuar on Nokia ho havia deixat) &lt;br&gt;El projecte KeepassX (per la implantació Qt de  Keepass)&lt;br&gt;Petri Mäkijärvi (traducció al finlandès i test)&lt;br&gt;Åke Engelbrektson (traducció al suec)&lt;br&gt;Agustí Clara (traducció al català)&lt;br&gt;fri (traducció al txec)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (traducció al neerlandès)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;L&apos;autor desitja que gaudiu de l&apos;aplicació tant com ha gaudit creant-la!</translation>
+        <translation>&lt;b&gt;Crèdits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (per continuar on Nokia ho havia deixat) &lt;br&gt;El projecte KeepassX (per la implantació Qt de  Keepass)&lt;br&gt;Petri Mäkijärvi (traducció al finlandès i test)&lt;br&gt;Åke Engelbrektson (traducció al suec)&lt;br&gt;Agustí Clara (traducció al català)&lt;br&gt;fri (traducció al txec)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (traducció al neerlandès)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;L&apos;autor desitja que gaudiu de l&apos;aplicació tant com ha gaudit creant-la!</translation>
     </message>
 </context>
 <context>
@@ -409,11 +403,6 @@
         <translation>Seguretat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
-        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="257"/>
         <source>Clear clipboard</source>
         <translation>Neteja el porta-retalls</translation>
@@ -467,12 +456,17 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="225"/>
         <source>Fast unlock</source>
-        <translation type="unfinished"></translation>
+        <translation>Desbloqueig ràpid</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
+        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
+        <translation>Habiliteu això per poder desbloquejar la vostra base de dades amb només els 3 últims caràcters de la contrasenya principal.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="244"/>
         <source>Number of fast unlock retries</source>
-        <translation type="unfinished"></translation>
+        <translation>Número d&apos;intents del desbloqueig ràpid</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="268"/>
@@ -560,42 +554,42 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Hi ha un problema amb la targeta SD</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les targetes SD amb particions múltiples no estan suportades.</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancel·la</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>New file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou nom de fitxer</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
         <source>Enter new file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduïu el nou nom de fitxer</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Enrere</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
         <source>Open</source>
-        <translation type="unfinished">Obre</translation>
+        <translation>Obre</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
         <source>Create</source>
-        <translation type="unfinished">Crea</translation>
+        <translation>Crea</translation>
     </message>
 </context>
 <context>
@@ -603,22 +597,22 @@
     <message>
         <location filename="../qml/scripts/Global.js" line="88"/>
         <source>Nothing selected yet</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha seleccionat res encara</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="90"/>
         <source>Home:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pàgina d&apos;inici:</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="92"/>
         <source>SD Card:</source>
-        <translation type="unfinished"></translation>
+        <translation>Targeta SD:</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="94"/>
         <source>Android Storage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emmagatzematge Android:</translation>
     </message>
 </context>
 <context>
@@ -707,13 +701,9 @@
 <context>
     <name>HelpCreateNewDatabase</name>
     <message>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;First you need to specify where the database file will be stored. Available options are &quot;Documents on phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; and &quot;Sailbox local storage&quot;. Take the first option &quot;Documents on phone&quot; if you want the database to be located on the phone or choose &quot;SD card&quot; to place the database on the removable SD card. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. If SD card is not inserted the SD card location item is disabled. Please make sure the SD card is properly detected by looking at it in a File Browser. If you want to share the Keepass database with Android Apps you can place it into &quot;Android storage&quot;. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option &quot;Sailbox local storage&quot; can be used together with Sailbox. If you place your database there Sailbox can up- and download the file to the Dropbox online service. Sailbox is available in Jolla Harbour for download.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the relative path and file name for your Keepass database file. For example you can type in &quot;ownkeepass/notes.kdb&quot;. If you have opened ownKeepass the first time you will see that string already pre-filled for your convenience.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file location cannot be set to &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can choose here a picture as a key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">En aquesta pàgina podeu crear una nova base de dades on ownKeepass emmagatzemarà les vostres dades sensibles.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicació de la base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;En primer lloc cal que especifiqueu on voleu ubicar la base de dades. Les opcions disponbiles són &quot;Documents&quot;, &quot;targeta SD&quot;, &quot;emmagatzematge Android&quot; o &quot;Sailbox&quot;.  Escolliu &quot;Documents&quot; per ubicar-la a la carpeta Documents de la memòria interna del telèfon, &quot;targeta SD&quot; per ubicar-la a la targeta extraïble SD. Cal que a la targeta SD només hi hagi una única partició formatada. Actualment ownKeepass no permet targetes amb múltiples particions. Si la targeta SD no està inserida l&apos;opció &quot;targeta SD&quot; queda inhabilitada. Assegureu-vos que la targeta SD estigui correctament detectada, buscant-la a través del navegador de Fitxers. Si voleu compartir la base dades amb aplicacions d&apos;Android podeu ubicar-la a &quot;emmagatzematge Android&quot;. Tanmateix compartir fitxers amb l&apos;entorn Android pot causar-vos molèsties degut als diferents nivells de permisos i propietaris dels fitxers. L&apos;última opció &quot;Sailbox&quot; us permet ubicar la base dades a la carpeta que utilitza aquesta aplicació per sincronitzar amb un compte de Dropbox. Podeu descarregar-vos Sailbox a la Jolla Store. &lt;br&gt;&lt;br&gt;Advertiment: si pugeu la base de dades Keepass a Dropbox assegureu-vos que feu servir una clau emmagatzemada localment, a més de la contrasenya principal. Aquest fitxer de clau no s&apos;hauria de desar a cap servei al núvol.&lt;br&gt;&lt;br&gt;&lt;b&gt;Nom i ruta del fitxer de base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Especifiqueu en aquest camp la ruta i el nom de fitxer per a la vostra base de dades Keepass. Per exemple podeu escriure-hi &quot;ownkeepass/notes.kdb&quot;. El primer cop que s&apos;inicia ownKeepass aquesta cadena apareix preomplerta per facilitar-vos la tasca, si voleu utilitzar-la.&lt;br&gt;&lt;br&gt;&lt;b&gt;Utilitzeu un fitxer de clau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Un fitxer de clau pot ser utilitzat com a complement a una contrasenya principal per protegir la base de dades Keepass. Ambdúes coses s&apos;utilitzen conjuntament per generar una clau que permetrà obrir la base de dades. Com més gran sigui el fitxer de dades de la clau, més forta serà la clau davant d&apos;atacs. Per exemple, podeu utilitzar una imatge aleatòria com a fitxer de clau.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicació del fitxer de clau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Els mateixos paràmetres que la base de dades poden aplicar-se aquí, llevat que el fitxer no pot ubicar-se a &quot;Sailbox&quot;, per prrotegir la vostra seguretat a partir del disseny de l&apos;aplicació.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ruta i nom del fitxer de clau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Especifiqueu aquí la ruta i el nom de fitxer que voleu utilitzar com a fitxer de clau de la base de dades. Per exemple, podeu escollir una imatge com a fitxer de clau&lt;br&gt;&lt;br&gt;&lt;b&gt;Contrasenya principal&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí podeu especificar la contrasenya principal per la vostra nova base de dades Keepass. Mireu d&apos;escollir una contrasenya llarga, a l&apos;entorn de 10-15 caràcters, i que combini majúscules, minúscules, caràcters especials i números. Cal que repetiu la contrasenya al camp &quot;Confirmeu la contrasenya&quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Obre automàticament&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marqueu aquesta opció si voleu que ownKeepass obri automàticament aquesta base de dades la pròxima vegada que arranqueu l&apos;aplicació. Això us portarà directament al diàleg de control de contrasenya.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>En aquesta pàgina podeu crear una nova base de dades on ownKeepass emmagatzemarà la vostra informació confidencial.&lt;br&gt;&lt;br&gt;Obriu el navegador i escolliu un nom de fitxer i un directori. Podeu escollir qualsevol directori al telèfon, a la targeta SD o a Android Storage. L&apos;opció targeta SD apareixerà en gris si la targeta no es detecta correctament o no està inserida. Les targetes SD amb particions múltiples no es suporten actualment per ownKeepass. L&apos;opció &quot;Android storage&quot; s&apos;ofereix per poder compartir la base de dades amb aplicacions Android. Tanmateix, l&apos;ús d&apos;aquesta ubicació pot presentar molèsties per qüestions de permisos i propietat dels fitxers. &lt;br&gt;&lt;br&gt;Advertiment: si pugeu la vostra base de dades Keepass al núvol assegureu-vos que utilitzeu un fitxer de clau emmagatzemat localment, a més de la contrasenya principal. Aquest fitxer no s&apos;ha de pujar en cap cas al núvol.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ús d&apos;un fitxer de clau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Podeu utilitzar un fitxer de clau com a protecció addicional, a més de la contrasenya principal, de la base de dades Keepass. Ambdós s&apos;utilitzaran per generar una clau molt més robusta per obrir la base de dades. Com més dades inclogui el fitxer de clau, més robusta la clau que se&apos;n derivarà. Per exemple, es pot utilitzar una imatge com a fitxer de clau.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contrasenya principal&lt;/b&gt;&lt;br&gt;&lt;br&gt;Assegureu-vos que escolliu una contrasenya principal llarga, entre 10-15 caràcters, i que combini majúscules, minúscules, números i caràcters especials. Repetiu-la a la casella &quot;Confirmeu Contrasenya&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Obertura automàtica&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marqueu aquesta opció si voleu que ownKeepass s&apos;obri automàticament amb aquesta base de dades quan torneu a iniciar l&apos;aplicació en el futur. Això us durà directament al diàleg de control de contrasenya.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -743,13 +733,9 @@
 <context>
     <name>HelpOpenNewDatabase</name>
     <message>
-        <source>To open an existing Keepass database you need to provide the following details:&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you specify from where the database file will be opened. To make opening as easy as possible you should place the database file in one of the following locations: &quot;Documents on Phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; or &quot;Sailbox local storage&quot;. If you have trouble with ownKeepass not finding the file make sure it is in desired place by looking it up in a file browser. Documents on Phone is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) Android storage is at &quot;%2&quot; and Sailbox local storage you will find at &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the file name of your Keepass database file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file cannot be loaded from &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please type in here the file name of the key file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">Per obrir una base dades Keepass ja existent cal que indiqueu aquests paràmetres:&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicació de la base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Indiqueu des d&apos;on s&apos;obrirà la base de dades. Per facilitar aquesta tasca procureu ubicar el fitxer de la base de dades en algun d&apos;aquests llocs: carpeta &quot;Documents&quot; del telèfon, &quot;targeta SD&quot;, carpeta &quot;Android storage&quot; o la carpeta local de &quot;Sailbox&quot;. Si teniu problemes per localitzar el fitxer, assegureu-vos que el trobeu mitjançant un explorador de fitxers. La carpeta &quot;Documents&quot; sol ubicar-se &quot;%1&quot;. Les targetes SD s&apos;ubiquen a &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Tingueu present que les targetes SD amb més d&apos;una partició no funcionaran.). L&apos;ubicació de &quot;Android storage&quot; és &quot;%2&quot; i la carpeta local de Sailbox a &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Advertiment: si pugeu la vostra base de dades Keepass a Dropbox, assegureu-vos que utilitzeu un fitxer de clau desat localment, com a complement de la contrasenya principal. Aquest fitxer no s&apos;ha de pujar en cap cas al servei al núvol.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ruta i nom del fitxer de la base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Indiqueu en aquest camp el nom del fitxer de la vostra base de dades Keepass que s&apos;hagi desat en alguna de les ubicacions anteriors.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ús d&apos;un fitxer de clau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si necessiteu un fitxer de clau per obrir la base de dades Keepass cal que marqueu aquesta opció. Això activarà les dues opcions següents.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicació del fitxer de clau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Les mateixes condicions que el fitxer de la base de dades són d&apos;apliació aquí, excepte que &quot;Sailbox&quot; no és una opció possible en aquest cas, per evitar comprometre la seguretat del fitxer.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ruta i nom del fitxer&lt;/b&gt;&lt;br&gt;&lt;br&gt;Indiqueu en aquest camp el nom del fitxer que s&apos;hagi desat en alguna de les ubicacions anteriors.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contrasenya principal&lt;/b&gt;&lt;br&gt;&lt;br&gt;Introduïu aquí la contrasenya per la vostra base de dades Keepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Obre automàticament&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marqueu aquesta opció si voleu que ownKeepass obri automàticament aquesta base de dades el pròxim cop que s&apos;iniciï l&apos;aplicació. Això us durà directament al diàleg d&apos;introducció de la contrasenya principal.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="27"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquí podeu obrir una base dades Keepass ja existent.&lt;br&gt;&lt;br&gt;Utilitzeu el navegador de fitxers per localitzar el fitxer de la base de dades. Podeu fer la cerca sobre aquestes ubicacions: carpeta Home, Targeta SD i Android Storage. Assegureu-vos que el fitxer de la base de dades estigui en alguna d&apos;aquestes ubicacions. &quot;Home&quot; s&apos;ubica normalment &quot;%1&quot;. Les targetes SD inserides s&apos;ubiquen a &quot;/media/sdard/&lt;UUID&gt;&quot;.(Tingueu present que les targetes SD amb més d&apos;una partició no estan suportades). &quot;Android storage&quot; s&apos;ubica a &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advertiment: si pugeu la vostre base de dades Keepass al núvol assegureu-vos que utilitzeu un fitxer de clau emmagatzemat localment, a més de la contrasenya principal. Aquest fitxer no s&apos;ha de pujar en cap cas al núvol.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ús d&apos;un fitxer de clau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si necessiteu un fitxer de clau per obrir la vostra base de dades Keepass cal que marqueu aquesta opció.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contrasenya principal&lt;/b&gt;&lt;br&gt;&lt;br&gt;Introduïu aquí la contrasenya de la vostra base de dades Keepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Obertura automàtica&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marqueu aquesta opció si voleu que ownKeepass obri automàticament aquesta base de dades la pròxima vegada que inicieu l&apos;aplicació. Això us durà directament al diàleg de control de contrasenya.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -776,13 +762,9 @@
 <context>
     <name>HelpSettings</name>
     <message>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">Aquesta pàgina us permet canviar la configuració per defecte d&apos;ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar l&apos;algoritme d&apos;encriptació per defecte que s&apos;utilitzar en crear una nova base de dades. L&apos;algoritme d&apos;encriptació també es pot canviar un cop ja s&apos;hagi creat la base de dades, des de la configuració de la base dades.&lt;br&gt;&lt;br&gt;Establiu el valor per efecte de les rondes de transformació de clau per una nova base de dades. Aquest valor control·la el número de rondes d&apos;encriptació que es computen sobre la contrasenya principal. L&apos;ajustament d&apos;aquest valor té un impacte directe sobre el temps que es necessita per desencriptar la base de dades per carregar-la. Valors més alts fan la base de dades més robusta contra atacs de força bruta. A manera de compromís entre seguretat i velocitat de càrrega, us suggerim un valor que situï el temps de càrrega a l&apos;entorn d&apos;un segon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Seguretat&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí podeu habilitar l&apos;opció de netejar el porta-retalls un cop transcorreguts 10 segons des que s&apos;hi hagin copiat un nom d&apos;usuari o contrasenya.&lt;br&gt;&lt;br&gt;El temps d&apos;inactivitat s&apos;utilitza per tancar la base de dades Keepass un cop transcorregut el temps establert amb l&apos;aplicació en segon pla. El temporitzador d&apos;inactivitat també és actiu quan es minimitza l&apos;aplicació a la vista de portada de la pantalla d&apos;inici del telèfon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració IU&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si voleu veure els noms d&apos;usuari i contrasenyes de tots els registres, habiliteu la &quot;Vista de llista ampliada&quot; per mostrar-los a la llista.&lt;br&gt;&lt;br&gt;Si habiliteu &quot;Situa el cursor a la barra de cerca&quot; tindreu el cursor i el teclat a punt per fer una cerca ràpidament en accedir a la pàgina.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració de portada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar les funcions i la informació que es mostra la pàgina de portada. Podeu habilitar que es mostri el nom d&apos;usuari i la contrasenya en un text clar del registre que estigui obert en aquell moment. També podeu habilitar dues accions de portada: tancar la base de dades, o bé copiar un registre o netejar, segons convingui, al porta-retalls.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració avancçada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Amb el &quot;Mode d&apos;usuari expert&quot; podreu habilitar les opcions de configuració avançades per gestionar bases de dades simultàniament i poder veure&apos;n les últimes cinc que s&apos;hagin obert en una llista a la pàgina principal per accedir-hi ràpidament.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpSettings.qml" line="27"/>
         <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the last three characters of the master password. Note that after three wrong attempts the database will be closed and you need to type in the full master password again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquesta pàgina us permet canviar la configuració per defecte d&apos;ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar l&apos;algoritme d&apos;encriptació per defecte que s&apos;utilitzar en crear una nova base de dades. L&apos;algoritme d&apos;encriptació també es pot canviar un cop ja s&apos;hagi creat la base de dades, des de la configuració de la base dades.&lt;br&gt;&lt;br&gt;Establiu el valor per efecte de les rondes de transformació de clau per una nova base de dades. Aquest valor control·la el número de rondes d&apos;encriptació que es computen sobre la contrasenya principal. L&apos;ajustament d&apos;aquest valor té un impacte directe sobre el temps que es necessita per desencriptar la base de dades per carregar-la. Valors més alts fan la base de dades més robusta contra atacs de força bruta. A manera de compromís entre seguretat i velocitat de càrrega, us suggerim un valor que situï el temps de càrrega a l&apos;entorn d&apos;un segon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Seguretat&lt;/b&gt;&lt;br&gt;&lt;br&gt;El valor del temps de bloqueig per inactivitat s&apos;utilitza per bloquejar la base de dades Keepass un cop transcorregut el temps establert amb l&apos;aplicació funcionant en segon pla. El temps d&apos;inactivitat també es compta quan l&apos;aplicació apareix minimitzada a la portada de la pantall d&apos;inici. &lt;br&gt;&lt;br&gt;El desbloqueig ràpid us permet utilitzar una contrasenya principal forta i un accés ràpid alhora. El primer accés que es fa a la base de dades l&apos;aplicació exigirà la contrasenya completa. Pels bloquejos i desbloquejos següents podreu utilitzar els últims 3 caràcters de la contrasenya principal. Tingueu present que disposeu de 3 intents per introduir els valors correctes. En cas d&apos;esgotar-los, l&apos;aplicació demanarà la contrasenya principal completa una altra vegada.&lt;br&gt;&lt;br&gt;Podeu habilitar l&apos;opció de netejar el porta-retalls un cop transcorreguts 10 segons des que s&apos;hi hagin copiat un nom d&apos;usuari o contrasenya.&lt;br&gt;&lt;br&gt;El temps d&apos;inactivitat s&apos;utilitza per tancar la base de dades Keepass un cop transcorregut el temps establert amb l&apos;aplicació en segon pla. El temporitzador d&apos;inactivitat també és actiu quan es minimitza l&apos;aplicació a la vista de portada de la pantalla d&apos;inici del telèfon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració IU&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si voleu veure els noms d&apos;usuari i contrasenyes de tots els registres, habiliteu la &quot;Vista de llista ampliada&quot; per mostrar-los a la llista.&lt;br&gt;&lt;br&gt;Si habiliteu &quot;Situa el cursor a la barra de cerca&quot; tindreu el cursor i el teclat a punt per fer una cerca ràpidament en accedir a la pàgina.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració de portada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar les funcions i la informació que es mostra la pàgina de portada. Podeu habilitar que es mostri el nom d&apos;usuari i la contrasenya en un text clar del registre que estigui obert en aquell moment. També podeu habilitar dues accions de portada: tancar la base de dades, o bé copiar un registre o netejar, segons convingui, al porta-retalls.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració avancçada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Amb el &quot;Mode d&apos;usuari expert&quot; podreu habilitar les opcions de configuració avançades per gestionar bases de dades simultàniament i poder veure&apos;n les últimes cinc que s&apos;hagin obert en una llista a la pàgina principal per accedir-hi ràpidament.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -824,27 +806,27 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="61"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation>Protecció de contrasenyes</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
         <source>Unlock your Password Safe with the last three characters of your master password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Desbloquegeu la Protecció de Contrasenyes amb els 3 últims caràcters de la vostra contrasenya principal:</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
         <source>You have %1 tries left</source>
-        <translation type="unfinished"></translation>
+        <translation>Us queden %1 intents</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have 1 try left</source>
-        <translation type="unfinished"></translation>
+        <translation>Només us queda 1 intent</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
         <source>Wrong unlock code</source>
-        <translation type="unfinished"></translation>
+        <translation>codi de desbloqueig erroni</translation>
     </message>
 </context>
 <context>
@@ -852,22 +834,22 @@
     <message>
         <location filename="../qml/Main.qml" line="72"/>
         <source>ownKeepass got updated</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;ha actualitzat ownKeepass </translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="73"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;ha instal·lat la nova versió %1 al telèfon. Mireu-ne els detalls a la llista de canvis.</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="82"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Hi ha un problema amb la targeta SD</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="83"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les targetes SD amb particions múltiples no estan suportades.</translation>
     </message>
 </context>
 <context>
@@ -1140,52 +1122,14 @@
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <source>Specify location, path and file name of your new Keepass database:</source>
-        <translation type="vanished">Especifiqueu la ubicació, ruta i nom del fitxer de la vostra base de dades Keepass:</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
+        <source>Please specify a new Keepass database file:</source>
+        <translation>Especifiqueu un nou fitxer de base de dades Keepass:</translation>
     </message>
     <message>
-        <source>Database location:</source>
-        <translation type="vanished">Ubicació de la base de dades:</translation>
-    </message>
-    <message>
-        <source>Documents on phone</source>
-        <translation type="vanished">Carpeta Documents</translation>
-    </message>
-    <message>
-        <source>SD card</source>
-        <translation type="vanished">Targeta SD</translation>
-    </message>
-    <message>
-        <source>Android storage</source>
-        <translation type="vanished">Android storage</translation>
-    </message>
-    <message>
-        <source>Sailbox local storage</source>
-        <translation type="vanished">Carpeta local de Sailbox</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">Advertiment</translation>
-    </message>
-    <message>
-        <source>Please be aware that using the Android storage might cause problems due to different file ownership and permissions. If modifications to your Keepass database are not saved make sure the file is writable for user &quot;nemo&quot;. So if you don&apos;t know how to handle file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.</source>
-        <translation type="vanished">Tingueu present que utilitzar la carpeta Android storage pot causar problemes degut als permisos i propietat dels fitxers. Si no podeu desar els canvis de la vostra base de dades assegureu-vos que l&apos;usuari &quot;nemo&quot; hi tingui permisos d&apos;escriptura. Cal que sapigueu gestionar permisos de fitxer des del terminal per fer-ho.</translation>
-    </message>
-    <message>
-        <source>Advice</source>
-        <translation type="vanished">Advertiment</translation>
-    </message>
-    <message>
-        <source>You choosed to place your new Keepass database in the Dropbox cloud. Please make sure to use a unique password for Dropbox and enable two-step verification to increase security of your online storage! ownKeepass does enforce to use a locally stored key file when storing your Keepass database online.</source>
-        <translation type="vanished">Heu escollit ubicar la vostra nova base de dades Keepass al núvol de Dropbox. Assegureu-vos d&apos;utilitzar una contrasenya exclusiva per Dropbox i habiliteu la verificació  en dos passos per augmentar la seguretat del vostre compte. OwnKeepass exigeix que utilitzeu un fitxer de clau emmagatzemat localment quan es desa la base de dades al núvol.</translation>
-    </message>
-    <message>
-        <source>Path and name of database file</source>
-        <translation type="vanished">Ruta i nom del fitxer de la base de dades</translation>
-    </message>
-    <message>
-        <source>Set path and name of database file</source>
-        <translation type="vanished">Establiu la ruta i el nom del fitxer de la base de dades</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="323"/>
+        <source>Please choose an existing Keepass database file:</source>
+        <translation>Escolliu un fitxer de base de dades Keepass existent:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="147"/>
@@ -1198,44 +1142,14 @@
         <translation>Habiliteu això per utilitzar alhora un fitxer de clau i una contrasenya principal per la vostra nova base de dades Keepass</translation>
     </message>
     <message>
-        <source>Key file location:</source>
-        <translation type="vanished">Ubicació del fitxer de clau:</translation>
-    </message>
-    <message>
-        <source>Path and name of key file</source>
-        <translation type="vanished">Ruta i nom del fitxer de clau</translation>
-    </message>
-    <message>
-        <source>Set path and name of key file</source>
-        <translation type="vanished">Establiu la ruta i el nom del fitxer de clau</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
-        <source>Please specify a new Keepass database file:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="323"/>
-        <source>Please choose an existing Keepass database file:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="vanished">Contrasenya</translation>
-    </message>
-    <message>
-        <source>Enter password</source>
-        <translation type="vanished">Introdueix la contrasenya</translation>
-    </message>
-    <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
         <source>Master password</source>
-        <translation type="unfinished">Contrasenya principal</translation>
+        <translation>Contrasenya principal</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
         <source>Enter master password</source>
-        <translation type="unfinished">Introduïu la contrasenya principal</translation>
+        <translation>Introduïu la contrasenya principal</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="275"/>
