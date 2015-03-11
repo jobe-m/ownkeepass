@@ -68,7 +68,7 @@ Page {
 
             SilicaLabel {
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Unlock your Password Safe with the last three characters of your master password:") + "\n"
+                text: qsTr("Unlock your Password Safe with the first 3 characters of your master password:") + "\n"
             }
 
             Item {
