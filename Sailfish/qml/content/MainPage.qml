@@ -862,13 +862,24 @@ Page {
         }
 
         function saveDatabaseSettings() {
-            if (databaseMasterPassword !== "")
+            if (databaseMasterPassword !== "") {
                 Global.env.kdbDatabase.changePassword(databaseMasterPassword, databaseKeyFile)
-            databaseMasterPassword = ""
-            if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm)
+                if (databaseMasterPassword.length < 3) {
+                    console.log("ERROR: Passwort too short for fast unlock!")
+                } else {
+                    // Extract fast unlock code from master password
+                    __unlockCharA = databaseMasterPassword.charAt(0)
+                    __unlockCharB = databaseMasterPassword.charAt(1)
+                    __unlockCharC = databaseMasterPassword.charAt(2)
+                }
+                databaseMasterPassword = ""
+            }
+            if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm) {
                 Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
+            }
             if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds)
-                Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
+                Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds {
+            }
         }
 
         function setKeepassSettings(aSimpleMode, aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
