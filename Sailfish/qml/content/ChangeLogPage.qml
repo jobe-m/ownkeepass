@@ -55,11 +55,13 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.0.29 (RC1) Translation updates</b>\
+<b>v1.0.29 (RC) Translation updates and bug fixes</b>\
 <ul>\
+<li>Fixed some bugs with fast unlock feature</li>\
+<li>Changing fast unlock code to use the first 3 chars from the master password</li>\
 <li>Added new translations for Chinese, Danish, French, Italian and Russian</li>\
 <li>Updated all translations</li>\
-<li>Czech, French, Italian, Russian and Danish are not finished yet</li>\
+<li>Czech, French, Italian, Russian and Danish translations are not finished yet</li>\
 </ul>\
 <br>\
 <b>v1.0.28 (Beta) Fast unlock retries adjustable</b>\

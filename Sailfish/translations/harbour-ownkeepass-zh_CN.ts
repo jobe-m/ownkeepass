@@ -932,167 +932,167 @@
         <translation>最近使用过的数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="553"/>
+        <location filename="../qml/content/MainPage.qml" line="552"/>
         <source>Permission error</source>
         <translation>权限错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="553"/>
+        <location filename="../qml/content/MainPage.qml" line="552"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>无法创建Keepass数据库文件路径。你也许需要将这个目录权限设置为用户“nemo”。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="558"/>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="557"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Key file error</source>
         <translation>关键字文件错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="558"/>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="557"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>数据库路径正常，但未找到你的关键字文件。请检查关键字文件路径：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="563"/>
+        <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Database file already exists</source>
         <translation>数据库文件已存在</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="563"/>
+        <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>请为Keepass数据库设定另外一个路径和名字，或者在文件管理器中删除旧的数据库。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="580"/>
+        <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>Database file error</source>
         <translation>数据库文件错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="580"/>
+        <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>数据库文件不存在。请检查数据库文件路径：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="631"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Password changed</source>
         <translation>密码已修改</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="631"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>数据库主密码修改成功。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="640"/>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="638"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Internal database error</source>
         <translation>数据库内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="640"/>
+        <location filename="../qml/content/MainPage.qml" line="638"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>无法关闭之前打开的数据库。请重试。错误信息：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="644"/>
+        <location filename="../qml/content/MainPage.qml" line="642"/>
         <source>Internal key error</source>
         <translation>关键字内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="644"/>
-        <location filename="../qml/content/MainPage.qml" line="648"/>
+        <location filename="../qml/content/MainPage.qml" line="642"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>The following error occured during opening of database:</source>
         <translation>打开数据库时发生了以下错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="648"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>Internal key file error</source>
         <translation>关键字文件内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="652"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
         <source>Error loading database</source>
         <translation>载入数据库错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="652"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
         <source>Please try again.</source>
         <translation>请重试。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
+        <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>Internal file error</source>
         <translation>文件内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
+        <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>The following error occured during creation of database:</source>
         <translation>创建数据库时发生以下错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>创建组备份时发生以下错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="664"/>
+        <location filename="../qml/content/MainPage.qml" line="662"/>
         <source>Save database error</source>
         <translation>保存数据库错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="664"/>
+        <location filename="../qml/content/MainPage.qml" line="662"/>
         <source>Could not save database with following error:</source>
         <translation>无法保存数据库，错误信息：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
-        <location filename="../qml/content/MainPage.qml" line="672"/>
+        <location filename="../qml/content/MainPage.qml" line="666"/>
+        <location filename="../qml/content/MainPage.qml" line="670"/>
         <source>Database error</source>
         <translation>数据库错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
+        <location filename="../qml/content/MainPage.qml" line="666"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
         <translation>数据库已成功关闭。没什么严重的问题，但请提交一个BUG报告。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="672"/>
+        <location filename="../qml/content/MainPage.qml" line="670"/>
         <source>An error occured on closing your database:</source>
         <translation>关闭数据库时发生了一个错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1092"/>
+        <location filename="../qml/content/MainPage.qml" line="1090"/>
         <source>Yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1093"/>
+        <location filename="../qml/content/MainPage.qml" line="1091"/>
         <source>No</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1094"/>
+        <location filename="../qml/content/MainPage.qml" line="1092"/>
         <source>Unsaved changes</source>
         <translation>未保存的更改</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1122"/>
+        <location filename="../qml/content/MainPage.qml" line="1120"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>你想保存修改的密码词条吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1127"/>
+        <location filename="../qml/content/MainPage.qml" line="1125"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>你想保存修改的密码组吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1132"/>
+        <location filename="../qml/content/MainPage.qml" line="1130"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>你想保存修改的数据库设置吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1137"/>
+        <location filename="../qml/content/MainPage.qml" line="1135"/>
         <source>Do you want to save changed settings values?</source>
         <translation>你想保存修改的设置吗？</translation>
     </message>

@@ -63,7 +63,7 @@ Page {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: qsTr("Version") + " " + ownKeepassSettings.version + "<br>\
-Copyright &#169; 2013-2014 Marko Koschak<br>"
+Copyright &#169; 2013-2015 Marko Koschak<br>"
             }
 
             SilicaLabel {
