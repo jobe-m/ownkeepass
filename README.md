@@ -6,7 +6,8 @@ ownKeepass
 Status
 ------
 
-Beta Release 1.0.28 available from [openrepos.net] [1] and warehouse app
+Beta Release 1.0.29 available from [openrepos.net] [1] and warehouse app
+*   Added new translations for Chinese, Danish, French, Italian and Russian
 *   Added fast unlock feature which allows quick access to a locked database
 *   Amount of retries on fast unlock page adjustable in settings from 0 to 5 tries
 *   File browser implemented for opening and creating Keepass database, finally ;)
@@ -33,6 +34,7 @@ in descending order.
 I am searching for contributors who want and can work on specific additional features:
 *   Delete a Keepass database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/64)
 *   Import and export functionality -> [REQ](https://github.com/jobe-m/ownkeepass/issues/44)
+*   Change sorting of password groups and entries in database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/82)
 
 The status of my todo list for the next release can be looked up [here] [6].
 
@@ -132,9 +134,9 @@ Features
 
 That's it so far.
 
-03-Mar-2015
+11-Mar-2015
 
-Copyright 2014 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
+Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
 [1]: https://openrepos.net/content/jobe/ownkeepass                     "Beta and testing releases"
 [2]: http://www.keepass.info/help/v1/setup.html                        "Official Keepass homepage for version 1"
