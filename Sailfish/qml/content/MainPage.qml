@@ -510,10 +510,14 @@ Page {
             if (password === "") console.log("ERROR: Password is empty")
 
             if (ownKeepassSettings.fastUnlock) {
-                // Extract fast unlock code from master password
-                __unlockCharA = password.charAt(password.length - 3)
-                __unlockCharB = password.charAt(password.length - 2)
-                __unlockCharC = password.charAt(password.length - 1)
+                if (password.length < 3) {
+                    console.log("ERROR: Passwort too short for fast unlock!")
+                } else {
+                    // Extract fast unlock code from master password
+                    __unlockCharA = password.charAt(0)
+                    __unlockCharB = password.charAt(1)
+                    __unlockCharC = password.charAt(2)
+                }
             }
 
             // prepate database and key file
