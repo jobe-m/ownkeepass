@@ -458,6 +458,12 @@ Page {
             // so set cover page state accordingly
             applicationWindow.cover.title = ""
             applicationWindow.cover.state = "NO_DATABASE_OPENED"
+            // disable fast unlock feature becase database is now closed anyway
+            Global.enableDatabaseLock = false
+            // Delete fast unlock code
+            __unlockCharA = ""
+            __unlockCharB = ""
+            __unlockCharC = ""
             // now also check database and key file paths if they exists
             internal.init()
         }
@@ -616,7 +622,6 @@ Page {
             __unlockCharA = ""
             __unlockCharB = ""
             __unlockCharC = ""
-            console.log("Database closed")
         }
 
         function databasePasswordChangedHandler() {
@@ -877,8 +882,8 @@ Page {
             if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm) {
                 Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
             }
-            if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds)
-                Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds {
+            if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
+                Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
             }
         }
 
