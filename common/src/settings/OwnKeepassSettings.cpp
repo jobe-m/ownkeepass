@@ -55,7 +55,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_clearClipboard(10),
     m_language(0),
     m_fastUnlock(true),
-    m_fastUnlockRetryCount(3),
+    m_fastUnlockRetryCount(2),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
