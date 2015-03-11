@@ -51,7 +51,9 @@ Dialog {
     }
 
     // forbit page navigation if master password is not confirmed and key transformation rounds is zero
-    canNavigateForward: !confirmDatabaseMasterPassword.errorHighlight && !databaseKeyTransfRounds.errorHighlight
+    canNavigateForward: !databaseMasterPassword.errorHighlight &&
+                        databaseMasterPassword.text === confirmDatabaseMasterPassword.text &&
+                        !databaseKeyTransfRounds.errorHighlight
 
     SilicaFlickable {
         anchors.fill: parent
