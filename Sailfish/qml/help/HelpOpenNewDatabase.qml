@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 HelpPage {
+    //: Removed one sentence in section "Use key file"
     text: qsTr("Here you can open an existing Keepass database file.<br><br>\
 \
 Use the file browser to search for your Keepass database file. You will be able to look into the \
