@@ -55,6 +55,34 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.0.29 (RC) Translation updates and bug fixes</b>\
+<ul>\
+<li>Fixed some bugs with fast unlock feature</li>\
+<li>Changing fast unlock code to use the first 3 chars from the master password</li>\
+<li>Added new translations for Chinese, Danish, French, Italian and Russian</li>\
+<li>Updated all translations</li>\
+<li>Czech, French, Italian, Russian and Danish translations are not finished yet</li>\
+</ul>\
+<br>\
+<b>v1.0.28 (Beta) Fast unlock retries adjustable</b>\
+<ul>\
+<li>Amount of retries available on fast unlock page is now adjustable between 0 (no retry), 1, 2, 3, 4 and 5 retries</li>\
+</ul>\
+<br>\
+<b>v1.0.27 Beta release with fast unlock database</b>\
+<ul>\
+<li>Added fast unlock feature which allows quick access to a locked database. \
+When you first open your password safe you are asked for your full password. But after you subsequently \
+lock it you can unlock quickly with a partial password which consists of the last three characters of the master password. \
+Please test this feature also and report bugs in openrepos.net or github. I would be glad also to just hear that it's working fine for you :)</li>\
+</ul>\
+<br>\
+<b>v1.0.25 Beta release with new file browser</b>\
+<ul>\
+<li>Added file browser in order to select database file when opening or creating a new Keepass database. \
+The recent opened database list needs to be reinitialized and thus is set to empty. Please test this feature and report bugs in openrepos.net or github.</li>\
+</ul>\
+<br>\
 <b>v1.0.24 Translation update</b>\
 <ul>\
 <li>Added new translation for Spanish</li>\

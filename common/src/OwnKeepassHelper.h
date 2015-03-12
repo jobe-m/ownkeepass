@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 - 2014 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -35,10 +35,9 @@ public:
     Q_INVOKABLE bool fileExists(const QString filePath) const;
     Q_INVOKABLE bool createFilePathIfNotExist(const QString filePath) const;
     Q_INVOKABLE bool sdCardExists();
-    Q_INVOKABLE QString getJollaPhoneDocumentsPath();
+    Q_INVOKABLE QString getHomePath();
     Q_INVOKABLE QString getSdCardPath();
     Q_INVOKABLE QString getAndroidStoragePath();
-    Q_INVOKABLE QString getSailboxLocalStoragePath();
     Q_INVOKABLE QString getLocationRootPath(const int value);
 
 public:
@@ -47,7 +46,7 @@ public:
 
 signals:
     // Signal to QML
-    void showErrorBanner(QString title, QString message);
+    void showErrorBanner();
 
 private:
     QStringList mountPoints() const;

@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2014 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2014 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -33,24 +33,36 @@ namespace settingsPublic {
 
 const QString OWN_KEEPASS_VERSION(PROGRAMVERSION); // get version from yaml/spec file
 
-class OwnKeepassSettings : public QObject
+class Languages : public QObject
 {
     Q_OBJECT
 
 public:
     Q_ENUMS(eLanguages)
     enum eLanguages {
-        LANG_SYSTEM_DEFAULT = 0,
-        LANG_EN_GB,
-        LANG_SV_SE,
-        LANG_FI_FI,
-        LANG_DE_DE,
-        LANG_CS_CZ,
-        LANG_CA,
-        LANG_NL_NL,
-        LANG_ES,
-        LANG_INVALID
+        SYSTEM_DEFAULT = 0,
+        EN_GB,
+        SV_SE,
+        FI_FI,
+        DE_DE,
+        CS_CZ,
+        CA,
+        NL_NL,
+        ES,
+        FR_FR,
+        IT,
+        RU,
+        DA,
+        PL_PL, // not yet started
+        ZH_CN,
+        UK_UA, // not yet started
+        INVALID
     };
+};
+
+class OwnKeepassSettings : public QObject
+{
+    Q_OBJECT
 
 public:
     Q_PROPERTY(QString version READ version NOTIFY versionChanged)
@@ -74,6 +86,8 @@ public:
     Q_PROPERTY(bool pwGenCharFromEveryGroup READ pwGenCharFromEveryGroup WRITE setPwGenCharFromEveryGroup NOTIFY pwGenCharFromEveryGroupChanged)
     Q_PROPERTY(int clearClipboard READ clearClipboard WRITE setClearClipboard NOTIFY clearClipboardChanged)
     Q_PROPERTY(int language READ language WRITE setLanguage NOTIFY languageChanged)
+    Q_PROPERTY(bool fastUnlock READ fastUnlock WRITE setFastUnlock NOTIFY fastUnlockChanged)
+    Q_PROPERTY(int fastUnlockRetryCount READ fastUnlockRetryCount WRITE setFastUnlockRetryCount NOTIFY fastUnlockRetryCountChanged)
 
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
@@ -131,13 +145,16 @@ public:
     void setClearClipboard(const int value);
     int language() const { return m_language; }
     void setLanguage(const int value);
+    bool fastUnlock() const { return m_fastUnlock; }
+    void setFastUnlock(const bool value);
+    int fastUnlockRetryCount() const { return m_fastUnlockRetryCount; }
+    void setFastUnlockRetryCount(const int value);
 
     void checkSettingsVersion();
 
 signals:
     // Signal to QML
-    void showInfoBanner(QString title, QString message);
-    void showChangeLogBanner(QString title, QString message);
+    void showChangeLogBanner();
     void loadLastDatabase(int dbLocation,
                           QString dbFilePath,
                           bool useKeyFile,
@@ -173,6 +190,8 @@ signals:
     void pwGenCharFromEveryGroupChanged();
     void clearClipboardChanged();
     void languageChanged();
+    void fastUnlockChanged();
+    void fastUnlockRetryCountChanged();
 
 private:
     void loadSettings();
@@ -215,6 +234,8 @@ private:
 
     int m_clearClipboard;
     int m_language;
+    bool m_fastUnlock;
+    int m_fastUnlockRetryCount;
 
     Settings* m_settings;
 };

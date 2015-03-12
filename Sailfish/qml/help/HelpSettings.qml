@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 HelpPage {
+    //: Added part for fast unlock
     text: qsTr("On this page you can change default settings of the ownKeepass application.<br><br>\
 \
 <b>Database</b><br><br>\
@@ -42,13 +43,19 @@ the database takes one second on your phone.<br><br>\
 \
 <b>Security</b><br><br>\
 \
-Here you can enable clearing of the clipboard 10 seconds after you \
-copied the username or password into it.<br><br>\
-\
 The inactivity lock time value is used to automatically lock the Keepass \
 database after the specified amount of time has elapsed after the ownKeepass \
 application went in background. Thus the inactivity timer is also active \
 when ownKeepass is minimized to the cover state on home screen.<br><br>\
+\
+Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. \
+When you first open your password safe you are asked for your full password. But after you subsequently \
+lock it you can unlock quickly with a partial password which consists of the last three characters of the \
+master password. You can choose the number of wrong attempts from zero to 5 after which the database will \
+be closed and the full master password is needed again.<br><br>\
+\
+You can enable clearing of the clipboard 10 seconds after you \
+copied the username or password into it.<br><br>\
 \
 <b>UI settings</b><br><br>\
 \

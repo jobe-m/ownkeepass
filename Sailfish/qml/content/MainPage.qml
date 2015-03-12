@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -38,6 +38,11 @@ Page {
     property Component editSettingsDialogComponent: editSettingsDialogComponent
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
 
+    // internal
+    property string __unlockCharA: ""
+    property string __unlockCharB: ""
+    property string __unlockCharC: ""
+
     function inactivityTimerStart() {
         var inactivityTime = Global.getInactivityTime(ownKeepassSettings.locktime)
         // Check if the user has not set timer to unlimited
@@ -53,9 +58,26 @@ Page {
     }
 
     function lockDatabase() {
-        // By going back to main page database will be locked
-        pageStack.pop(mainPage)
+        if (ownKeepassSettings.fastUnlock) {
+            if (Global.enableDatabaseLock === true) {
+                pageStack.push(Qt.resolvedUrl("LockPage.qml").toString(),
+                               { "firstChar": __unlockCharA,
+                                   "secondChar": __unlockCharB,
+                                   "thirdChar": __unlockCharC,
+                                   "mainPage": mainPage,
+                                   "recoverCoverState": applicationWindow.cover.state })
+                // Update cover page state
+                applicationWindow.cover.title = ""
+                applicationWindow.cover.state = "DATABASE_LOCKED"
+                // Disable fast unlock because database is now locked already
+                Global.enableDatabaseLock = false
+            }
+        } else {
+            // No fast unlock: By going back to main page database will be closed
+            pageStack.pop(mainPage)
+        }
     }
+
 
     function clipboardTimerStart() {
         if (ownKeepassSettings.clearClipboard !== 0) {
@@ -144,7 +166,8 @@ Page {
                     label: qsTr("Master password")
                     placeholderText: qsTr("Enter master password")
                     text: ""
-                    EnterKey.highlighted: simpleModeView.state !== "CREATE_NEW_DATABASE" && text !== ""
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.highlighted: true
                     EnterKey.iconSource: text.length === 0 ?
                                              "image://theme/icon-m-enter-close" :
                                              simpleModeView.state === "CREATE_NEW_DATABASE" ?
@@ -190,12 +213,12 @@ Page {
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                 echoMode: TextInput.Password
                 visible: enabled
-                errorHighlight: passwordField.text !== text
+                errorHighlight: passwordField.text !== text && text.length !== 0
                 label: qsTr("Confirm master password")
                 placeholderText: label
                 text: ""
-                EnterKey.enabled: confirmPasswordField.text.length === 0 || (passwordField.text.length !== 0 && !errorHighlight)
-                EnterKey.highlighted: !errorHighlight
+                EnterKey.enabled: text.length === 0 || (passwordField.text.length >= 3 && !errorHighlight)
+                EnterKey.highlighted: text.length === 0 || !errorHighlight
                 EnterKey.iconSource: text.length === 0 ?
                                          "image://theme/icon-m-enter-close" :
                                          "image://theme/icon-m-enter-accept"
@@ -275,7 +298,7 @@ Page {
                     }
 
                     Behavior on opacity { FadeAnimation { } }
-                    Behavior on height { FadeAnimation { } }
+                    Behavior on height { NumberAnimation { } }
                 }
             }
         }
@@ -284,11 +307,13 @@ Page {
         states: [
             State {
                 name: "CREATE_NEW_DATABASE"
+                PropertyChanges { target: passwordField; errorHighlight: text.length > 0 && text.length < 3 }
                 PropertyChanges { target: confirmPasswordField; enabled: true }
                 PropertyChanges { target: moreInfoColumn ; enabled: false }
             },
             State {
                 name: "OPEN_DATABASE"
+                PropertyChanges { target: passwordField; errorHighlight: false }
                 PropertyChanges { target: confirmPasswordField; enabled: false }
                 PropertyChanges { target: moreInfoColumn ; enabled: true }
             }
@@ -337,9 +362,9 @@ Page {
                     pageStack.push(queryPasswordDialogComponent,
                                    {
                                        "state": "CreateNewDatabase",
-                                       "dbFileLocation": 0,
+                                       "dbFileLocation": 1,
                                        // If ownKeepass was opened the very first time give the user a predefined database file path and name
-                                       "dbFilePath": recentDatabaseModel.isEmpty ? "ownkeepass/notes.kdb" : "",
+                                       "dbFilePath": recentDatabaseModel.isEmpty ? "Documents/ownkeepass/notes.kdb" : "",
                                        "useKeyFile": false,
                                        "keyFileLocation": 0,
                                        "keyFilePath": "",
@@ -413,10 +438,10 @@ Page {
                                          keyFileLocation,
                                          keyFilePath)
             } else {
-                applicationWindow.databaseUiName = Global.getLocationName(0) + " ownkeepass/notes.kdb"
+                applicationWindow.databaseUiName = Global.getLocationName(1) + " Documents/ownkeepass/notes.kdb"
                 simpleModeView.state = "CREATE_NEW_DATABASE"
                 // set default db location, path and no keyfile
-                internal.setDatabaseInfo(0, "ownkeepass/notes.kdb", false, "", "")
+                internal.setDatabaseInfo(1, "Documents/ownkeepass/notes.kdb", false, "", "")
             }
         }
     }
@@ -433,6 +458,12 @@ Page {
             // so set cover page state accordingly
             applicationWindow.cover.title = ""
             applicationWindow.cover.state = "NO_DATABASE_OPENED"
+            // disable fast unlock feature becase database is now closed anyway
+            Global.enableDatabaseLock = false
+            // Delete fast unlock code
+            __unlockCharA = ""
+            __unlockCharB = ""
+            __unlockCharC = ""
             // now also check database and key file paths if they exists
             internal.init()
         }
@@ -483,6 +514,18 @@ Page {
             // could be opened with given password and/or key file
             internal.masterGroupsPage = acceptDestinationInstance
             if (password === "") console.log("ERROR: Password is empty")
+
+            if (ownKeepassSettings.fastUnlock) {
+                if (password.length < 3) {
+                    console.log("ERROR: Passwort too short for fast unlock!")
+                } else {
+                    // Extract fast unlock code from master password
+                    __unlockCharA = password.charAt(0)
+                    __unlockCharB = password.charAt(1)
+                    __unlockCharC = password.charAt(2)
+                }
+            }
+
             // prepate database and key file
             var completeDbFilePath = ownKeepassHelper.getLocationRootPath(internal.dbFileLocation) + "/" + internal.databasePath
             var completeKeyFilePath
@@ -560,18 +603,25 @@ Page {
 
         function databaseOpenedHandler() {
             // Yeah, database opened successfully, now init master groups page and cover page
+            Global.enableDatabaseLock = true
             masterGroupsPage.init()
             updateRecentDatabaseListModel()
         }
 
         function newDatabaseCreatedHandler() {
             // Yeah, database created successfully, now init master groups page and cover page
+            Global.enableDatabaseLock = true
             masterGroupsPage.init()
             updateRecentDatabaseListModel()
         }
 
         function databaseClosedHandler() {
-            console.log("Database closed")
+            // disable fast unlock feature becase database is now closed anyway
+            Global.enableDatabaseLock = false
+            // Delete fast unlock code
+            __unlockCharA = ""
+            __unlockCharB = ""
+            __unlockCharC = ""
         }
 
         function databasePasswordChangedHandler() {
@@ -690,6 +740,8 @@ Page {
         property bool copyNpasteFromCover
         property int clearClipboard
         property int language
+        property bool fastUnlock
+        property int fastUnlockRetryCount
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -815,18 +867,29 @@ Page {
         }
 
         function saveDatabaseSettings() {
-            if (databaseMasterPassword !== "")
+            if (databaseMasterPassword !== "") {
                 Global.env.kdbDatabase.changePassword(databaseMasterPassword, databaseKeyFile)
-            databaseMasterPassword = ""
-            if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm)
+                if (databaseMasterPassword.length < 3) {
+                    console.log("ERROR: Passwort too short for fast unlock!")
+                } else {
+                    // Extract fast unlock code from master password
+                    __unlockCharA = databaseMasterPassword.charAt(0)
+                    __unlockCharB = databaseMasterPassword.charAt(1)
+                    __unlockCharC = databaseMasterPassword.charAt(2)
+                }
+                databaseMasterPassword = ""
+            }
+            if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm) {
                 Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
-            if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds)
+            }
+            if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
                 Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
+            }
         }
 
         function setKeepassSettings(aSimpleMode, aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
-                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage) {
+                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage, aFastUnlock, aFastUnlockRetryCount) {
             simpleMode = aSimpleMode
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
@@ -838,6 +901,8 @@ Page {
             copyNpasteFromCover = aCopyNpasteFromCover
             clearClipboard = aClearClipboard
             language = aLanguage
+            fastUnlock = aFastUnlock
+            fastUnlockRetryCount = aFastUnlockRetryCount
         }
 
         function checkForUnsavedKeepassSettingsChanges() {
@@ -852,7 +917,9 @@ Page {
                     ownKeepassSettings.lockDatabaseFromCover !== lockDatabaseFromCover ||
                     ownKeepassSettings.copyNpasteFromCover !== copyNpasteFromCover ||
                     ownKeepassSettings.clearClipboard !== clearClipboard ||
-                    ownKeepassSettings.language !== language) {
+                    ownKeepassSettings.language !== language ||
+                    ownKeepassSettings.fastUnlock !== fastUnlock ||
+                    ownKeepassSettings.fastUnlockRetryCount !== fastUnlockRetryCount) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_APP_SETTINGS"})
             }
@@ -870,6 +937,8 @@ Page {
             ownKeepassSettings.copyNpasteFromCover = copyNpasteFromCover
             ownKeepassSettings.clearClipboard = clearClipboard
             ownKeepassSettings.language = language
+            ownKeepassSettings.fastUnlock = fastUnlock
+            ownKeepassSettings.fastUnlockRetryCount = fastUnlockRetryCount
         }
     }
 

@@ -50,12 +50,12 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
+        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="vanished">&lt;b&gt;Créditos&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (por continuar donde Nokia lo dejó)&lt;br&gt;El proyecto KeepassX (por la implementación de Qt en Keepass)&lt;br&gt;Petri Mäkijärvi (traducción al finés y realización de pruebas)&lt;br&gt;Åke Engelbrektson (traducción al sueco)&lt;br&gt;Agusti Clara (traducción al catalán)&lt;br&gt;fri (traducción al checo)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (traducción al alemán)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;¡Espero que ownKeepass te guste tanto como a mí haberla creado!</translation>
+        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
+        <translation type="vanished">&lt;b&gt;Créditos&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (por continuar donde Nokia lo dejó)&lt;br&gt;El proyecto KeepassX (por implementar Qt en Keepass)&lt;br&gt;Petri Mäkijärvi (traducción al finés y realización de pruebas)&lt;br&gt;Åke Engelbrektson (traducción al sueco)&lt;br&gt;Agustí Clara (traducción al catalán)&lt;br&gt;fri (traducción al checo)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (traducción al holandés)&lt;br&gt;Carmen Fdez. B. (traducción al español)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;¡Espero que te diviertas mucho usando ownKeepass, tanto como yo en crearla!</translation>
     </message>
 </context>
 <context>
@@ -198,58 +198,58 @@
 <context>
     <name>EditDatabaseSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="75"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Database Settings</source>
         <translation>Ajustes de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="74"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="76"/>
         <source>Save</source>
         <translation>Guardar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="79"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="81"/>
         <source>Change settings of your currently opened Keepass database here</source>
         <translation>Cambiar aquí los ajustes de tu base de datos de Keepass que está abierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="87"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="89"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
         <translation>Nota: ¡Si cambias la contraseña maestra aquí, deberás recordarla la próxima vez que accedas a la base de datos de Keepass!</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="97"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
         <source>Master password</source>
         <translation>Contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="101"/>
         <source>Change master password</source>
         <translation>Cambiar la contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="123"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
         <source>Master password confirmed</source>
         <translation>Contraseña maestra confirmada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="123"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="125"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="128"/>
         <source>Confirm master password</source>
         <translation>Confirmar la contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="142"/>
         <source>Encryption currently in use:</source>
         <translation>Cifrado actualmente en uso:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="162"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="165"/>
         <source>Key transformation rounds</source>
         <translation>Rondas de cifrado de la clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="176"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Al aumentar este valor se incrementa el tiempo de apertura de la base de datos de Keepass pero hace que la clave sea robusta contra ataques de fuerza bruta</translation>
     </message>
@@ -359,185 +359,266 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="84"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
         <source>Save</source>
         <translation>Guardar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="85"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
         <source>Discard</source>
         <translation>Descartar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="86"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
         <source>ownKeepass Settings</source>
         <translation>Ajustes de ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="90"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
         <source>Change default settings of your ownKeepass application here</source>
         <translation>Cambiar aquí los ajustes por defecto de tu aplicación ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="94"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="97"/>
         <source>Database</source>
         <translation>Base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="102"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="105"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
         <translation>Este es el cifrado que se usará por defecto cuando se cree una nueva base de datos Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="113"/>
         <source>Default encryption:</source>
         <translation>Cifrado por defecto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="137"/>
         <source>Default key transformation rounds</source>
         <translation>Rondas de cifrado de la clave por defecto</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="148"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="151"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Al aumentar este valor se incrementa el tiempo de apertura de la base de datos de Keepass pero hace que la clave sea robusta contra ataques de fuerza bruta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="155"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="158"/>
         <source>Security</source>
         <translation>Seguridad</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="216"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
         <source>Clear clipboard</source>
         <translation>Limpiar portapapeles</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="217"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="259"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
         <translation>Si activas esta opción el portapapeles se limpiará después de 10 segundos cuando el nombre de usuario o contraseña se copie</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="292"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="413"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>El cambio de idioma se activará en ownKeepass después de reiniciar la aplicación</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="167"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="170"/>
         <source>Inactivity lock time</source>
         <translation>Tiempo de bloqueo por inactividad</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="184"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="187"/>
         <source>Immediately</source>
         <translation>Inmediatamente</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="186"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="188"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="190"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="191"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="193"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="192"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
         <source>minute</source>
         <translation>minuto</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="194"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="196"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="198"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="200"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="202"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="197"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="199"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="201"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
         <source>minutes</source>
         <translation>minutos</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="204"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
         <source>Unlimited</source>
         <translation>Ilimitado</translation>
     </message>
     <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
+        <source>Fast unlock</source>
+        <translation>Desbloqueo rápido</translation>
+    </message>
+    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
+        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
+        <translation>Habilita esta opción para desbloquear tu base de datos de forma rápida con sólo los tres últimos caracteres de tu contraseña maestra.</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
+        <source>Number of fast unlock retries</source>
+        <translation>Número de intentos de desbloqueo rápido</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="269"/>
         <source>UI settings</source>
         <translation>Ajustes de UI</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="233"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
         <source>Extended list liew</source>
         <translation>Vista de lista extendida</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="234"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>If you switch this on username and password are shown below entry title in list views</source>
         <translation>Si activas esta opción se mostrará el nombre de usuario y la contraseña bajo el título del registro en la vista de la lista</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="287"/>
         <source>Focus search bar</source>
         <translation>Enfoque barra de búsqueda</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="246"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Si activas esta opción el cursor se situará en la barra de búsqueda al abrir la aplicación</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="261"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="303"/>
         <source>Language:</source>
         <translation>Idioma:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="299"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="420"/>
         <source>Cover settings</source>
         <translation>Ajustes de la cubierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="305"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="426"/>
         <source>Show username and password</source>
         <translation>Mostrar nombre de usuario y contraseña</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="306"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="427"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Activando esta opción hará que el nombre de usuario y contraseña del registro de Keepass que está abierto se muestre en la cubierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="438"/>
         <source>Lock database from cover</source>
         <translation>Bloquear base de datos desde la cubierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Esto te permitirá bloquear la base de datos con la acción izquierda de la cubierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="329"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="450"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Copiar y pegar desde la cubierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="451"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Al activar esta opción se copiará el nombre de usuario y la contraseña en el portapapeles desde la cubierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="460"/>
         <source>Advanced settings</source>
         <translation>Ajustes avanzados</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="345"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
         <source>Expert user mode</source>
         <translation>Modo usuario experto</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="346"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Esto activará funciones avanzadas como la gestión de varias bases de datos en la página principal</translation>
+    </message>
+</context>
+<context>
+    <name>FileSystemDialog</name>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
+        <source>Problem with SD card</source>
+        <translation>Problema con la tarjeta SD</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
+        <source>SD cards with multiple partitions are not supported.</source>
+        <translation>Las tarjetas SD con varias particiones no están soportadas.</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
+        <source>Cancel</source>
+        <translation>Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
+        <source>New file name</source>
+        <translation>Nombre del nuevo fichero</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
+        <source>Enter new file name</source>
+        <translation>Introduce el nombre del nuevo fichero</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
+        <source>Back</source>
+        <translation>Volver</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
+        <source>Open</source>
+        <translation>Abrir</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
+        <source>Create</source>
+        <translation>Crear</translation>
+    </message>
+</context>
+<context>
+    <name>Global</name>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="107"/>
+        <source>Nothing selected yet</source>
+        <translation>No hay nada seleccionado aún</translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="109"/>
+        <source>Home:</source>
+        <translation>Home:</translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="111"/>
+        <source>SD Card:</source>
+        <translation>Tarjeta SD:</translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="113"/>
+        <source>Android Storage:</source>
+        <translation>Almacenamiento Android:</translation>
     </message>
 </context>
 <context>
@@ -627,8 +708,8 @@
     <name>HelpCreateNewDatabase</name>
     <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;First you need to specify where the database file will be stored. Available options are &quot;Documents on phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; and &quot;Sailbox local storage&quot;. Take the first option &quot;Documents on phone&quot; if you want the database to be located on the phone or choose &quot;SD card&quot; to place the database on the removable SD card. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. If SD card is not inserted the SD card location item is disabled. Please make sure the SD card is properly detected by looking at it in a File Browser. If you want to share the Keepass database with Android Apps you can place it into &quot;Android storage&quot;. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that. The last option &quot;Sailbox local storage&quot; can be used together with Sailbox. If you place your database there Sailbox can up- and download the file to the Dropbox online service. Sailbox is available in Jolla Harbour for download.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the relative path and file name for your Keepass database file. For example you can type in &quot;ownkeepass/notes.kdb&quot;. If you have opened ownKeepass the first time you will see that string already pre-filled for your convenience.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file location cannot be set to &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Give here the relative path and file name of a file which you want to use as a key file for your database. E.g. you can choose here a picture as a key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation>En esta página puedes crear una nueva base de datos donde ownKeepass almacenará tus datos sensibles.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicación de la base de datos&lt;/b&gt;&lt;br&gt;&lt;br&gt;En primer lugar debes especificar dónde se almacenará el fichero de la base de datos. Las opciones disponibles son &quot;Documents&quot;, &quot;tarjeta SD&quot;, &quot;almacenamiento Android&quot; y &quot;Sailbox&quot;. Elige la primera opción &quot;Documents&quot; para que la base de datos se ubique en la carpeta &quot;Documents&quot; de la memoria del teléfono, o elige &quot;tarjeta SD&quot; para que se ubique en la tarjeta extraíble SD. La tarjeta SD sólo debería tener una partición formateada. Actualmente ownKeepass no soporta tarjetas SD con varias particiones. Si la tarjeta SD no está insertada esta opción aparecerá deshabilitada. Por favor, asegúrate de que la tarjeta SD se detecta correctamente, buscándola con un explorador de archivos. Si quieres compartir la base de datos de Keepass con aplicaciones de Android puedes ubicarla en &quot;almacenamiento Android&quot;. Sin embargo, compartir ficheros en el entorno de Android puede ocasionarte problemas debido a los diferentes permisos y propietarios de los archivos. Por favor, ten en cuenta esto. La última opción &quot;Sailbox&quot; puede usarse junto con la aplicación Sailbox. La base de datos se ubicará en tu cuenta de Dropbox y puedes usar Salibox para cargar y descargar el fichero. Sailbox está disponible en la tienda de Jolla.&lt;br&gt;&lt;br&gt;Consejo: Si subes tu base de datos de Keepass a Dropbox, por favor, asegúrate de usar un fichero de clave almacenado localmente, además de la contraseña maestra. Este fichero de clave no debería subirse a ningún servicio en la nube.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ruta y nombre del fichero de la base de datos&lt;/b&gt;&lt;br&gt;&lt;br&gt;Por favor, especifica en este campo la ruta y el nombre del fichero para tu base de datos de Keepass. Por ejemplo, puedes escribir &quot;ownkeepass/notes.kdb&quot;. Si es la primera vez que abres ownKeepass,  para tu comodidad esta cadena ya aparecerá precargada.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usar fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Además de la contraseña maestra se puede utilizar un fichero de clave para proteger la base de datos de Keepass. Ambos se usarán conjuntamente para generar una clave de paso que permitirá abrir la base de datos. Cuanto mayor sea el fichero de clave más fuerte será la clave de paso generada frente a ataques. Por ejemplo, puedes usar una imagen aleatoria como fichero de clave.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicación del fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí se pueden aplicar las mismas opciones que en la ubicación de la base de datos a excepción de la opción &quot;Sailbox&quot;, a fin de proteger tu seguridad en el diseño de la aplicación.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ruta y nombre del fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Indica aquí la ruta y el nombre del fichero que quieres utilizar como fichero de clave para tu base de datos. Por ejemplo, puedes elegir aquí una imagen como fichero de clave.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contraseña maestra&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí va la contraseña para tu nueva base de datos de Keepass. Por favor, asegúrate de que eliges una contraseña larga, de alrededor de 10 - 15 caracteres y que sea una combinación de minúsculas y mayúsculas, números y caracteres especiales. Repite la contraseña en el campo &quot;Confirmar contraseña&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Abrir automáticamente&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marca esta opción si quieres que ownKeepass abra automáticamente esta base de datos la próxima vez que inicies la aplicación. Esto te llevará directamente al diálogo de solicitud de la contraseña.&lt;br&gt;&lt;br&gt;</translation>
+        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
+        <translation>En esta página puedes crear una nueva base de datos donde ownKeepass almacenará tus datos sensibles.&lt;br&gt;&lt;br&gt;Abre el explorador de archivos y elige un nombre de fichero y directorio. Puedes eligir entre ubicar tu base de datos en el directorio &quot;Home&quot; del teléfono, en la tarjeta SD o en el almacenamiento de Android. Si la opción de la tarjeta SD está en gris se debe a que no se ha insertado ninguna tarjeta SD o el Sistema no la ha detectado correctamente. La tarjeta SD debería tener una sola partición. Actualmente ownKeepass no soporta tarjetas SD con varias particiones. La opción &quot;Almacenamento Android&quot; es para compartir la base de datos con aplicaciones Android. Sin embargo, compartir ficheros en el entorno Android puede ocasionarte problemas debido a los diferentes permisos y propietarios de los archivos. Por favor, ten en cuenta esto.&lt;br&gt;&lt;br&gt;Consejo: si subes tu base de datos de Keepass a la nube, por favor, asegúrate de usar un fichero de clave almacenado localmente además de la contraseña maestra. Este fichero de clave no debería subirse a ningún servicio en la nube.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usar fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Además de la contraseña maestra puedes utilizar un fichero de clave para proteger la base de datos de Keepass. Ambos se usarán conjuntamente para generar una clave de paso que permitirá abrir la base de datos. Cuanto mayor sea el fichero de clave, la clave de paso que se genere será más fuerte contra ataques. Por ejemplo, puedes usar una imagen al azar como fichero de clave.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contraseña maestra&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí va la contraseña para tu nueva base de datos de Keepass. Por favor, asegúrate de elegir una contraseña larga, de alrededor de 10 a 15 caracteres y que sea una combinación de letras minúsculas y mayúsculas, números y caracteres especiales. Repite la contraseña en el campo &quot;Confirmar contraseña&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Abrir automáticamente&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marca esta opción si quieres que ownKeepass abra esta base de datos automáticamente la próxima vez que inicies la aplicación. Esto te llevará directamente al diálogo de solicitud de la contraseña.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -659,8 +740,8 @@
     <name>HelpOpenNewDatabase</name>
     <message>
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="27"/>
-        <source>To open an existing Keepass database you need to provide the following details:&lt;br&gt;&lt;br&gt;&lt;b&gt;Database location&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you specify from where the database file will be opened. To make opening as easy as possible you should place the database file in one of the following locations: &quot;Documents on Phone&quot;, &quot;SD card&quot;, &quot;Android storage&quot; or &quot;Sailbox local storage&quot;. If you have trouble with ownKeepass not finding the file make sure it is in desired place by looking it up in a file browser. Documents on Phone is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) Android storage is at &quot;%2&quot; and Sailbox local storage you will find at &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please specify in this text field the file name of your Keepass database file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file location&lt;/b&gt;&lt;br&gt;&lt;br&gt;The same as for database location also applies here. Except that the key file cannot be loaded from &quot;Sailbox local storage&quot; in order to protect your security by design.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key file path and file name&lt;/b&gt;&lt;br&gt;&lt;br&gt;Please type in here the file name of the key file which is located in one of above locations.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation>Para abrir una base de datos de Keepass que ya existe debes completar los siguientes datos:&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicación de la base de datos&lt;/b&gt;&lt;br&gt;&lt;br&gt;Especifica aquí desde donde se abrirá el fichero de la base de datos. Para hacer la apertura lo más fácil posible debes colocar el fichero de la base de datos en uno de los siguientes lugares: &quot;Documents&quot;, &quot;tarjeta SD&quot;, &quot;almacenamiento Android&quot; o &quot;Sailbox&quot;. Si tienes problemas para que ownKeep encuentre el fichero, asegúrate de que está en el lugar deseado. La carpeta &quot;Documents&quot; de la memoria del teléfono está ubicada en &quot;%1&quot;. Si una tarjeta SD está insertada en el teléfono, ésta se ubica en &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Ten en cuenta que las tarjetas SD con más de una partición no son compatibles). La ubicación del almacenamiento de Android es &quot;%2&quot; y del almacenamiento local  de Sailbox &quot;%3&quot;.&lt;br&gt;&lt;br&gt;Consejo: Si subes tu base de datos de Keepass a Dropbox, asegúrate de utilizar un fichero de clave almacenado localmente como complemento a la contraseña maestra. Este fichero no debería subirse al servicio en la nube.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ruta y nombre del fichero de la base de datos&lt;/b&gt;&lt;br&gt;&lt;br&gt;Por favor, especifica en este campo el nombre del fichero para tu base de datos de Keepass que se haya guardado en alguna de las ubicaciones anteriores.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usar fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si quieres usar un fichero de clave para abrir tu base de datos de Keepass debes marcar esta opción. Al hacer esto, se habilitarán automáticamente las dos siguientes opciones.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ubicación del fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí se pueden aplicar las mismas opciones que en la ubicación de la base de datos a excepción de la opción &quot;Sailbox&quot;&quot;, a fin de proteger tu seguridad en el diseño de la aplicación.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ruta y nombre del fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Indica aquí el nombre del fichero de clave, que se guardará en una de las ubicaciones anteriores.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contraseña maestra&lt;/b&gt;&lt;br&gt;&lt;br&gt;Escribe aquí la contraseña para abrir tu base de datos de Keepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Abrir automáticamente&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marca esta opción si quieres que ownKeepass abra automáticamente esta base de datos al iniciar la aplicación la próxima vez. Esto te llevará directamente al diálogo de solicitud de la contraseña.&lt;br&gt;&lt;br&gt;</translation>
+        <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option. The following two options will occure automatically on the page.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
+        <translation>Aquí puedes abrir una base de datos de Keepass que ya existe.&lt;br&gt;&lt;br&gt;Usa el explorador de archivos para buscar el fichero de tu base de datos. Podrás buscar dentro de las siguientes ubicaciones: Home, tarjeta SD y almacenamiento Android. Si tienes problemas para que ownKeepass encuentre el fichero, por favor, asegúrate de que éste está ubicado en alguna de las siguientes rutas. &quot;Home&quot; normalmente está en &quot;%1&quot;. Si has insertado una tarjeta SD en tu móvil, ésta se ubica en &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Por favor, ten encuenta que las tarjetas SD con más de una partición no están soportadas). &quot;Almacenamiento Android&quot; está ubicada en &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Consejo: si subes tu base de datos de Keepass a la nube, por favor, asegúrate de usar un fichero de clave almacenado localmente además de la contraseña maestra. Este fichero de clave no debería subirse al servicio en la nube.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usar fichero de clave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si necesitas un fichero de clave para abrir tu base de datos de Keepass, por favor, marca esta opción. Las siguientes dos opciones aparecerán en la página automáticamente.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contraseña maestra&lt;/b&gt;&lt;br&gt;&lt;br&gt;Escribe aquí la contraseña para tu base de datos de Keepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Abrir automáticamente&lt;/b&gt;&lt;br&gt;&lt;br&gt;Marca esta opción si quieres que ownKeepass abra automáticamente esta base de datos al iniciar la aplicación la próxima vez. Esto te llevará directamente al diálogo de solicitud de la contraseña.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -688,8 +769,8 @@
     <name>HelpSettings</name>
     <message>
         <location filename="../qml/help/HelpSettings.qml" line="27"/>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <translation>En esta página puedes cambiar los ajustes por defecto de la aplicación ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Base de datos&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí puedes configurar el algoritmo de cifrado por defecto que se va a utilizar cuando se cree una nueva base de datos de Keepass. También es posible cambiar el algoritmo de cifrado después de haber creado la base de datos.&lt;br&gt;&lt;br&gt;Establece el valor por defecto del número de rondas de cifrado de la clave para una nueva base de datos de Keepass. Este valor controla la cantidad de rondas de cifrado que se computan sobre la contraseña maestra. Su ajuste tiene un efecto directo sobre el tiempo necesario para descifrar la base de datos en la carga, pero aumentando este valor la base de datos será más robusta frente a ataques de fuerza bruta. Para que haya un buen equilibrio entre seguridad y usabilidad, debes ajustar este valor para que la apertura de la base de datos tarde un segundo en tu teléfono.&lt;br&gt;&lt;br&gt;&lt;b&gt;Seguridad&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí puedes activar la opción de limpiar el portapapeles 10 segundos después de copiar tu nombre de usuario y contraseña.&lt;br&gt;&lt;br&gt;El tiempo de bloqueo por inactividad se usa para que la base de datos de Keepass se bloquee automáticamente cuando ha transcurrido el tiempo establecido con la aplicación en segundo plano. El tiempo de inactividad también está activo cuando ownKeepass se minimiza con la vista de la cubierta en la pantalla principal.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ajustes UI&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si quieres ver el nombre de usuario y contraseña de todas los registros de contraseñas, activa la &quot;Vista de lista extendida&quot; para que se muestren en la lista.&lt;br&gt;&lt;br&gt;Si activas la opción &quot;Enfoque barra de búsqueda&quot; en la página de grupos de contraseñas el cursor se situará automáticamente en la barra de búsqueda al abrir la base de datos de Keepass. Esto hará que cuando quieras buscar una contraseña, el acceso a la búsqueda sea más rápido.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ajustes de la cubierta&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí puedes configurar la funcionalidad y la información que se muestra en la cubierta. Puedes habilitar que en la cubierta se muestre, en un texto no cifrado, el nombre de usuario y la contraseña del registro de contraseña que está abierto. Además, también puedes activar o desactivar las acciones de la cubierta. La primera acción es para bloquear la base de datos. Con la segunda acción de la cubierta se puede copiar el nombre de usuario y contraseña al portapapeles o también borrar el contenido  del portapapeles.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ajustes avanzados&lt;/b&gt;&lt;br&gt;&lt;br&gt;Con el &quot;Modo usuario experto&quot; puedes activar  un modo avanzado en la gestión de las bases de datos. Si marcas esta opción podrás abrir diferentes bases de datos de Keepass y ver las últimas cinco bases de datos abiertas en una lista en la página principal para un acceso rápido.&lt;br&gt;&lt;br&gt;</translation>
+        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the last three characters of the master password. Note that after three wrong attempts the database will be closed and you need to type in the full master password again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
+        <translation>En esta página puedes cambiar los ajustes por defecto de la aplicación ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Base de datos&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí puedes configurar el algoritmo de cifrado por defecto que se va a utilizar cuando se cree una nueva base de datos de Keepass. El algoritmo de cifrado también puede cambiarse una vez que se haya creado la base de datos, en los ajustes de la base de datos.&lt;br&gt;&lt;br&gt;Establece el valor por defecto de las rondas de cifrado de clave para una nueva base de datos de Keepass. Este valor controla el número de rondas de cifrado que se computan sobre la contraseña maestra. El ajuste de este valor tiene un efecto directo en el tiempo necesario para descifrar la base de datos durante la carga. Pero aumentando este valor hará que la base de datos sea más robusta contra ataques de fuerza bruta. Para que haya un buen equilibrio entre seguridad y usabilidad, debes ajustar este valor para que la apertura de la base de datos tarde un segundo en tu teléfono.&lt;br&gt;&lt;br&gt;&lt;b&gt;Seguridad&lt;/b&gt;&lt;br&gt;&lt;br&gt;El tiempo de bloqueo por inactividad se utiliza para que la base de datos de Keepass se bloquee automáticamente una vez que haya transcurrido el período de tiempo establecido con la aplicación ownKeepass en segundo plano. El tiempo de inactividad también está activo cuando ownKeepass se minimiza con la vista de la cubierta en la pantalla principal.&lt;br&gt;&lt;br&gt;Con el desbloqueo rápido puedes usar una contraseña maestra más fuerte, además de acceder de forma rápida a tu base de datos de Keepass. Posteriormente al bloqueo de la base de datos, puedes desbloquearla de forma rápida con una parte de la contraseña la cuál consiste en los tres últimos caracteres de la contraseña maestra. Ten en cuenta que después de tres intentos erróneos la base de datos se cerrará y necesitarás escribir la contraseña completa de nuevo.&lt;br&gt;&lt;br&gt;Puedes activar la opción de limpiar el portapapeles 10 segundos después de copiar tu nombre de usuario y contraseña.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ajustes UI&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si quieres ver el nombre de usuario y contraseña de todos los registros de contraseñas, activa la opción &quot;Vista de lista extendida&quot; para que se muestren en la lista.&lt;br&gt;&lt;br&gt;Si activas la opción &quot;Enfoque barra de búsqueda&quot; en la página de grupos de contraseñas, el cursor se situará automáticamente en la barra de búsqueda al abrir la base de datos de Keepass. Esto hará que cuando quieras buscar una contraseña, el acceso a la búsqueda sea más rápido.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ajustes de la cubierta&lt;/b&gt;&lt;br&gt;&lt;br&gt;Aquí puedes configurar la funcionalidad y la información que se muestra en la cubierta. Puedes habilitar que en la cubierta se muestre, en un texto no cifrado, el nombre de usuario y la contraseña del registro de contraseña que está abierto. Además, también puedes activar o desactivar ambas acciones de la cubierta. La primera acción es para bloquear la base de datos. Con la segunda acción de la cubierta se puede copiar el nombre de usuario y contraseña al portapapeles o también borrar el contenido del portapapeles.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ajustes avanzados&lt;/b&gt;&lt;br&gt;&lt;br&gt;Con el &quot;Modo usuario experto&quot; puedes activar un modo avanzado en la gestión de las bases de datos. Si marcas esta opción podrás abrir diferentes bases de datos de Keepass y ver las últimas cinco bases de datos abiertas en una lista en la página principal para un acceso rápido.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -727,230 +808,289 @@
     </message>
 </context>
 <context>
-    <name>MainPage</name>
+    <name>LockPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="117"/>
-        <location filename="../qml/content/MainPage.qml" line="323"/>
+        <location filename="../qml/content/LockPage.qml" line="61"/>
         <source>Password Safe</source>
         <translation>Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="130"/>
+        <source>Unlock your Password Safe with the last three characters of your master password:</source>
+        <translation type="vanished">Desbloquea tu Protección de Contraseñas con los tres últimos caracteres de tu contraseña maestra</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="71"/>
+        <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="167"/>
+        <source>You have %1 tries left</source>
+        <translation>Te quedan %1 intentos</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="169"/>
+        <source>You have one try left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have 1 try left</source>
+        <translation type="vanished">Te queda 1 intento</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="171"/>
+        <source>Wrong unlock code</source>
+        <translation>Código de desbloqueo erróneo</translation>
+    </message>
+</context>
+<context>
+    <name>Main</name>
+    <message>
+        <location filename="../qml/Main.qml" line="72"/>
+        <source>ownKeepass got updated</source>
+        <translation>ownKeepass se ha actualizado</translation>
+    </message>
+    <message>
+        <location filename="../qml/Main.qml" line="73"/>
+        <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
+        <translation>La nueva versión %1 ya está instalada en tu móvil. Echa un visazo al registro de cambios para más detalles. </translation>
+    </message>
+    <message>
+        <location filename="../qml/Main.qml" line="82"/>
+        <source>Problem with SD card</source>
+        <translation>Problema con la tarjeta SD</translation>
+    </message>
+    <message>
+        <location filename="../qml/Main.qml" line="83"/>
+        <source>SD cards with multiple partitions are not supported.</source>
+        <translation>Las tarjetas SD con varias particiones no están soportadas.</translation>
+    </message>
+</context>
+<context>
+    <name>MainPage</name>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="139"/>
+        <location filename="../qml/content/MainPage.qml" line="348"/>
+        <source>Password Safe</source>
+        <translation>Protección de Contraseñas</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="152"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Introduce una contraseña maestra para bloquear tu nueva Protección de Contraseñas Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="144"/>
+        <location filename="../qml/content/MainPage.qml" line="166"/>
         <source>Master password</source>
         <translation>Contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="145"/>
+        <location filename="../qml/content/MainPage.qml" line="167"/>
         <source>Enter master password</source>
         <translation>Introduce la contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="194"/>
+        <location filename="../qml/content/MainPage.qml" line="217"/>
         <source>Confirm master password</source>
         <translation>Confirmar la contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="226"/>
+        <location filename="../qml/content/MainPage.qml" line="249"/>
         <source>Show more details</source>
         <translation>Mostar más detalles</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="242"/>
+        <location filename="../qml/content/MainPage.qml" line="265"/>
         <source>Database path and name</source>
         <translation>Ruta y nombre de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="262"/>
+        <location filename="../qml/content/MainPage.qml" line="285"/>
         <source>Key file path and name</source>
         <translation>Ruta y nombre del fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="262"/>
+        <location filename="../qml/content/MainPage.qml" line="285"/>
         <source>No key file used</source>
         <translation>No se usa fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="335"/>
+        <location filename="../qml/content/MainPage.qml" line="360"/>
         <source>Create new database</source>
         <translation>Crear nueva base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="354"/>
+        <location filename="../qml/content/MainPage.qml" line="379"/>
         <source>Open database</source>
         <translation>Abrir base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="373"/>
+        <location filename="../qml/content/MainPage.qml" line="398"/>
         <source>Recent databases</source>
         <translation>Bases de datos recientes</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="552"/>
         <source>Permission error</source>
         <translation>Error en permisos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="552"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>No se ha podido crear la ruta para el fichero de la base de datos de Keepass. Debes revisar los permisos del usuario &apos;nemo&apos; sobre el directorio seleccionado.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="514"/>
-        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="557"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Key file error</source>
         <translation>Error en fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="514"/>
-        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="557"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>La ruta de la base de datos es correcta, pero no se encuentra el fichero de clave. Por favor, comprueba la ruta del fichero de clave:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="519"/>
+        <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Database file already exists</source>
         <translation>Ya existe el fichero de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="519"/>
+        <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Por favor, especifica otra ruta y nombre para tu base de datos de Keepass o borra la anterior base de datos con un explorador de archivos.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>Database file error</source>
         <translation>Error en el fichero de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>El fichero de la base de datos no existe. Por favor, comprueba la ruta del fichero:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="579"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Password changed</source>
         <translation>Contraseña cambiada</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="579"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Se ha cambiado correctamente la contraseña maestra de tu base de datos.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
+        <location filename="../qml/content/MainPage.qml" line="638"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Internal database error</source>
         <translation>Error interno en la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
+        <location filename="../qml/content/MainPage.qml" line="638"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>No se ha podido cerrar la base de datos que estaba abierta anteriormente. Por favor, inténtalo de nuevo. Mensaje de error:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="592"/>
+        <location filename="../qml/content/MainPage.qml" line="642"/>
         <source>Internal key error</source>
         <translation>Error interno en la clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="592"/>
-        <location filename="../qml/content/MainPage.qml" line="596"/>
+        <location filename="../qml/content/MainPage.qml" line="642"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>The following error occured during opening of database:</source>
         <translation>Ha ocurrido el siguiente error mientras se abría la base de datos:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="596"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>Internal key file error</source>
         <translation>Error interno en el fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="600"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
         <source>Error loading database</source>
         <translation>Error en la carga de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="600"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
         <source>Please try again.</source>
         <translation>Por favor, inténtalo de nuevo.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="604"/>
+        <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>Internal file error</source>
         <translation>Error interno en el fichero</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="604"/>
+        <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>The following error occured during creation of database:</source>
         <translation>Ha ocurrido el siguiente error mientras se creaba la base de datos:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Se ha producido un fallo al crear la copia de seguridad del grupo con el siguiente error:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="612"/>
+        <location filename="../qml/content/MainPage.qml" line="662"/>
         <source>Save database error</source>
         <translation>Guardar error de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="612"/>
+        <location filename="../qml/content/MainPage.qml" line="662"/>
         <source>Could not save database with following error:</source>
         <translation>No se ha podido guardar la base de datos por el siguiente error:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="616"/>
-        <location filename="../qml/content/MainPage.qml" line="620"/>
+        <location filename="../qml/content/MainPage.qml" line="666"/>
+        <location filename="../qml/content/MainPage.qml" line="670"/>
         <source>Database error</source>
         <translation>Error de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="616"/>
+        <location filename="../qml/content/MainPage.qml" line="666"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
         <translation>La base de datos se ha cerrado. No es algo serio, pero por favor, informa de este fallo.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="620"/>
+        <location filename="../qml/content/MainPage.qml" line="670"/>
         <source>An error occured on closing your database:</source>
         <translation>Ha ocurrido un error al cerrar tu base de datos:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1021"/>
+        <location filename="../qml/content/MainPage.qml" line="1090"/>
         <source>Yes</source>
         <translation>Sí</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1022"/>
+        <location filename="../qml/content/MainPage.qml" line="1091"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1023"/>
+        <location filename="../qml/content/MainPage.qml" line="1092"/>
         <source>Unsaved changes</source>
         <translation>Cambios no guardados</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1051"/>
+        <location filename="../qml/content/MainPage.qml" line="1120"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>¿Quieres guardar los cambios en el regitro de contraseña?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1056"/>
+        <location filename="../qml/content/MainPage.qml" line="1125"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>¿Quieres guardar los cambios en el grupo de contraseñas?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1061"/>
+        <location filename="../qml/content/MainPage.qml" line="1130"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>¿Quieres guardar los cambios en los ajustes de la base de datos?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1066"/>
+        <location filename="../qml/content/MainPage.qml" line="1135"/>
         <source>Do you want to save changed settings values?</source>
         <translation>¿Quieres guardar los cambios en los ajustes?</translation>
     </message>
@@ -996,121 +1136,52 @@
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="89"/>
-        <source>Specify location, path and file name of your new Keepass database:</source>
-        <translation>Especifica la ubicación, ruta y nombre del fichero de tu nueva base de datos:</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
+        <source>Please specify a new Keepass database file:</source>
+        <translation>Por favor, especifica un nuevo fichero de la base de datos de Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="95"/>
-        <source>Database location:</source>
-        <translation>Ubicación de la base de datos:</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="323"/>
+        <source>Please choose an existing Keepass database file:</source>
+        <translation>Por favor, elige un fichero existente de la base de datos de Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="98"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="186"/>
-        <source>Documents on phone</source>
-        <translation>Documents</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="99"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="187"/>
-        <source>SD card</source>
-        <translation>Tarjeta SD</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="100"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="188"/>
-        <source>Android storage</source>
-        <translation>Almacenamiento Android</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="101"/>
-        <source>Sailbox local storage</source>
-        <translation>Sailbox</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="106"/>
-        <source>Warning</source>
-        <translation>Aviso</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="106"/>
-        <source>Please be aware that using the Android storage might cause problems due to different file ownership and permissions. If modifications to your Keepass database are not saved make sure the file is writable for user &quot;nemo&quot;. So if you don&apos;t know how to handle file permissions in the terminal on your Jolla phone it would be wise not to use Android storage. Sorry for that.</source>
-        <translation>Por favor, ten en cuenta que usando la opción &quot;Almacenamiento Android&quot; puedes tener problemas debido a los diferentes permisos y propietarios de los archivos. Si no puedes guardar las modificaciones sobre tu base de datos de Keepass, asegúrate de que el usuario &quot;nemo&quot; tiene permisos de escritura sobre el fichero. Por tanto, si no sabes cómo cambiar los permisos de ficheros en tu Jolla a través de Terminal, no deberías usar esta opción. Siento esto.</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="121"/>
-        <source>Advice</source>
-        <translation>Recomendación</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="121"/>
-        <source>You choosed to place your new Keepass database in the Dropbox cloud. Please make sure to use a unique password for Dropbox and enable two-step verification to increase security of your online storage! ownKeepass does enforce to use a locally stored key file when storing your Keepass database online.</source>
-        <translation>Has elegido ubicar tu nueva base de datos de Keepass en la nube de Dropbox. ¡Por favor, asegúrate de usar una contraseña única para Dropbox y que tienes activada la verificación en dos pasos para aumentar la seguridad de tu almacenamiento online! ownKeepass cumple con el uso de un fichero de clave guardado localmente cuando la base de datos de Keepass se almacena online.</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="136"/>
-        <source>Path and name of database file</source>
-        <translation>Ruta y nombre del fichero de la base de datos</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="137"/>
-        <source>Set path and name of database file</source>
-        <translation>Introduce la ruta y nombre del fichero de la base de datos</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="160"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="147"/>
         <source>Use key file</source>
         <translation>Usar fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="161"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="148"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Activa esta opción para usar un fichero de clave conjuntamente con la contraseña maestra en tu nueva base de datos de Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="183"/>
-        <source>Key file location:</source>
-        <translation>Ubicación del fichero de clave:</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
+        <source>Master password</source>
+        <translation>Contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="196"/>
-        <source>Path and name of key file</source>
-        <translation>Ruta y nombre del fichero de clave</translation>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
+        <source>Enter master password</source>
+        <translation>Introduce la contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="197"/>
-        <source>Set path and name of key file</source>
-        <translation>Establece ruta y nombre del fichero de clave</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="222"/>
-        <source>Password</source>
-        <translation>Contraseña</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="223"/>
-        <source>Enter password</source>
-        <translation>Introduce la contraseña</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="269"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="275"/>
         <source>Confirm password</source>
         <translation>Confirmar contraseña</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="287"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Open automatically</source>
         <translation>Abrir automáticamente</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="302"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="301"/>
         <source>Create</source>
         <translation>Crear</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="303"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="304"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="302"/>
         <source>New Password Safe</source>
         <translation>Nueva Protección de Contraseñas</translation>
     </message>
@@ -1121,19 +1192,19 @@
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="338"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="340"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="322"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="339"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="341"/>
         <source>Password Safe</source>
         <translation>Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="325"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="342"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="327"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="344"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Introduce la contraseña maestra para desbloquear tu Protección de Contraseñas Keepass:</translation>
     </message>

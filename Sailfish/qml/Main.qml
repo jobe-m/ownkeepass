@@ -22,7 +22,6 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import QtQuick.LocalStorage 2.0
 import "content"
 import "cover"
 import "common"
@@ -64,12 +63,14 @@ ApplicationWindow
         id: coverPage
         onLockDatabase: mainPageRef.lockDatabase()
         onTriggerClearClipboard: mainPageRef.clipboardTimerStart()
+        Component.onCompleted: Global.env.setCoverPage(coverPage)
     }
 
     Connections {
         target: ownKeepassSettings
-        onShowInfoBanner: infoPopup.show(Global.info, title, message)
         onShowChangeLogBanner: {
+            var title = qsTr("ownKeepass got updated")
+            var message = qsTr("New version %1 now installed on your phone. Have a look in the change log for details.").arg(ownKeepassSettings.version)
             infoPopup.show(Global.info, title, message)
             pageStack.push(Qt.resolvedUrl("content/ChangeLogPage.qml"))
         }
@@ -77,7 +78,11 @@ ApplicationWindow
 
     Connections {
         target: ownKeepassHelper
-        onShowErrorBanner: infoPopup.show(Global.error, title, message)
+        onShowErrorBanner: {
+            var title = qsTr("Problem with SD card")
+            var message = qsTr("SD cards with multiple partitions are not supported.")
+            infoPopup.show(Global.error, title, message)
+        }
     }
 
     onApplicationActiveChanged: {

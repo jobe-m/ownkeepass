@@ -51,7 +51,9 @@ Dialog {
     }
 
     // forbit page navigation if master password is not confirmed and key transformation rounds is zero
-    canNavigateForward: !confirmDatabaseMasterPassword.errorHighlight && !databaseKeyTransfRounds.errorHighlight
+    canNavigateForward: !databaseMasterPassword.errorHighlight &&
+                        databaseMasterPassword.text === confirmDatabaseMasterPassword.text &&
+                        !databaseKeyTransfRounds.errorHighlight
 
     SilicaFlickable {
         anchors.fill: parent
@@ -97,7 +99,8 @@ Dialog {
                     label: qsTr("Master password")
                     text: ""
                     placeholderText: qsTr("Change master password")
-                    EnterKey.enabled: text.length > 0
+                    errorHighlight: text.length > 0 && text.length < 3
+                    EnterKey.enabled: !errorHighlight
                     EnterKey.highlighted: text.length > 0
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: {
@@ -119,11 +122,11 @@ Dialog {
                 width: parent.width
                 inputMethodHints: Qt.ImhNoPredictiveText
                 echoMode: TextInput.Password
-                errorHighlight: databaseMasterPassword.text !== text
+                errorHighlight: databaseMasterPassword.text !== text && text.length !== 0
                 label: !errorHighlight ? qsTr("Master password confirmed") : qsTr("Confirm master password")
                 text: ""
                 placeholderText: qsTr("Confirm master password")
-                EnterKey.enabled: databaseMasterPassword.text.length > 0 && !errorHighlight
+                EnterKey.enabled: text.length === 0 || (databaseMasterPassword.text.length >= 3 && !errorHighlight)
                 EnterKey.highlighted: databaseMasterPassword.text.length > 0 && !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 EnterKey.onClicked: {

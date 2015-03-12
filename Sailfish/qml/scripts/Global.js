@@ -2,7 +2,7 @@
 
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -28,6 +28,25 @@ var info = 1
 var warning = 2
 var error = 3
 
+// The index list below must be the same as the order of language menu items in settings dialog
+var system_default = 0
+var catalan = 1
+var chinese = 2
+var czech = 3
+var danish = 4
+var dutch = 5
+var english = 6
+var finnish = 7
+var french = 8
+var german = 9
+var italian = 10
+var polish = -1 // not yet started
+var russian = 11
+var spanish = 12
+var swedish = 13
+var ukrainian = -1 // not yet started
+
+
 var constants = {
     _1microsecond: 1,
     _5seconds: 5 * 1000,
@@ -46,11 +65,20 @@ var constants = {
     clipboardPasswordDropped: 2
 }
 
+// Environment variables
+
+// Indicator for database locking
+// true: Database is opened and can be locked by user or inactivity timer
+// false: Database is already locked by user, so that inactivity timer does not lock a second time
+var enableDatabaseLock = false
+
+
 var env = {
     mainPage: undefined,
     kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
+    coverPage: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
@@ -66,6 +94,9 @@ var env = {
 
     setKeepassSettings: function(obj) {
         this.keepassSettings = obj
+    },
+    setCoverPage: function(obj) {
+        this.coverPage = obj
     }
 }
 
@@ -73,13 +104,13 @@ var env = {
 function getLocationName(value) {
     switch (value) {
     case 0:
-        return "Documents: "
+        return qsTr("Nothing selected yet")
     case 1:
-        return "SD Card: "
+        return qsTr("Home:") + (" ")
     case 2:
-        return "Android Storage: "
+        return qsTr("SD Card:") + (" ")
     case 3:
-        return "Sailbox: "
+        return qsTr("Android Storage:") + (" ")
     }
 }
 

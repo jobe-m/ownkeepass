@@ -1,6 +1,6 @@
 ############################################################################
 #
-# Copyright (C) 2013 - 2014 Marko Koschak (marko.koschak@tisno.de)
+# Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 # All rights reserved.
 #
 # This file is part of ownKeepass.
@@ -24,6 +24,7 @@
 include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
 include(../common/src/keepassPlugin/kdbxdatabase/kdbxdatabase.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
+include(../common/src/fileBrowserPlugin/fileBrowserPlugin.pri)
 
 # Get release version from .spec file and paste it further to c++ through a define
 isEmpty(VERSION) {
@@ -143,16 +144,27 @@ OTHER_FILES += \
     qml/help/HelpSubGroupsPage.qml \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
-    qml/content/ChangeLogPage.qml
+    qml/content/ChangeLogPage.qml \
+    qml/content/LockPage.qml \
+    qml/common/FileSystemDialog.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
+
 TRANSLATIONS += \
-    translations/harbour-ownkeepass-sv_SE.ts \
-    translations/harbour-ownkeepass-fi_FI.ts \
-    translations/harbour-ownkeepass-de_DE.ts \
-    translations/harbour-ownkeepass-cs_CZ.ts \
     translations/harbour-ownkeepass-ca.ts \
+    translations/harbour-ownkeepass-zh_CN.ts \
+    translations/harbour-ownkeepass-cs_CZ.ts \
+    translations/harbour-ownkeepass-da.ts \
     translations/harbour-ownkeepass-nl_NL.ts \
-    translations/harbour-ownkeepass-es.ts
+    # en_GB is default language
+    translations/harbour-ownkeepass-fi_FI.ts \
+    translations/harbour-ownkeepass-fr_FR.ts \
+    translations/harbour-ownkeepass-de_DE.ts \
+    translations/harbour-ownkeepass-it.ts \
+#    translations/harbour-ownkeepass-pl_PL.ts
+    translations/harbour-ownkeepass-ru.ts \
+    translations/harbour-ownkeepass-es.ts \
+    translations/harbour-ownkeepass-sv_SE.ts
+#    translations/harbour-ownkeepass-uk_UA.ts

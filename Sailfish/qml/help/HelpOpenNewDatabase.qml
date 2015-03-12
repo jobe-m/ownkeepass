@@ -24,41 +24,22 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 HelpPage {
-    text: qsTr("To open an existing Keepass database you need to provide the following details:<br><br>\
+    //: Removed one sentence in section "Use key file"
+    text: qsTr("Here you can open an existing Keepass database file.<br><br>\
 \
-<b>Database location</b><br><br>\
+Use the file browser to search for your Keepass database file. You will be able to look into the \
+following locations: Home, SD card and Android storage. If you have trouble \
+with ownKeepass not finding the file please make sure to place it in below mentioned paths. \
+\"Home\" is usually \"%1\". If a SD card is inserted in your phone it is located at \"/media/sdcard/<UUID>\". \
+(Please note that SD cards with more than one partition are not supported.) \"Android storage\" \
+is located at \"%2\".<br><br>\
 \
-Here you specify from where the database file will be opened. To make opening as easy as possible you \
-should place the database file in one of the following locations: \
-\"Documents on Phone\", \"SD card\", \"Android storage\" or \"Sailbox local storage\". If you have trouble \
-with ownKeepass not finding the file make sure it is in desired place by looking it up in a file browser. \
-Documents on Phone is usually \"%1\". If a SD card is inserted in your phone it is located at \"/media/sdcard/<UUID>\". \
-(Please note that SD cards with more than one partition are not supported.) Android storage \
-is at \"%2\" and Sailbox local storage you will find \
-at \"%3\".<br><br>\
-\
-Advice: If you upload your Keepass database to Dropbox please make sure you use a locally stored key file in addition \
+Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition \
 to the master password. This key file should not be uploaded to the cloud service.<br><br>\
-\
-<b>Database path and file name</b><br><br>\
-\
-Please specify in this text field the file name of your Keepass database file which is located in one of above \
-locations.<br><br>\
 \
 <b>Use key file</b><br><br>\
 \
-If you need a key file for opening your Keepass database please check this option. The following two \
-options will occure automatically on the page.<br><br>\
-\
-<b>Key file location</b><br><br>\
-\
-The same as for database location also applies here. Except that the key file cannot be loaded from \"Sailbox local \
-storage\" in order to protect your security by design.<br><br>\
-\
-<b>Key file path and file name</b><br><br>\
-\
-Please type in here the file name of the key file which is located in one of above \
-locations.<br><br>\
+If you need a key file for opening your Keepass database please check this option.<br><br>\
 \
 <b>Master password</b><br><br>\
 \
@@ -68,7 +49,6 @@ Type in here the password for your Keepass database.<br><br>\
 \
 Check this option if you want that ownKeepass automatically opens this database again when you start the application the \
 next time. You will be forwarded directly to the password query dialog.<br><br>")
-    .arg(ownKeepassHelper.getJollaPhoneDocumentsPath())
+    .arg(ownKeepassHelper.getHomePath())
     .arg(ownKeepassHelper.getAndroidStoragePath())
-    .arg(ownKeepassHelper.getSailboxLocalStoragePath())
 }
