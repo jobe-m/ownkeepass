@@ -38,8 +38,7 @@ to the master password. This key file should not be uploaded to the cloud servic
 \
 <b>Use key file</b><br><br>\
 \
-If you need a key file for opening your Keepass database please check this option. The following two \
-options will occure automatically on the page.<br><br>\
+If you need a key file for opening your Keepass database please check this option.<br><br>\
 \
 <b>Master password</b><br><br>\
 \
