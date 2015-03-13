@@ -224,7 +224,7 @@ Dialog {
                     id: fastUnlock
                     checked: ownKeepassSettings.fastUnlock
                     text: qsTr("Fast unlock")
-                    description: qsTr("Enable this to unlock your database quickly with just the last three characters of your master password.")
+                    description: qsTr("Enable this to unlock your database quickly with just the first 3 characters of your master password.")
                     onCheckedChanged: {
                         editSettingsDialog.fastUnlockChanged = fastUnlock.checked !== ownKeepassSettings.fastUnlock
                         editSettingsDialog.updateCoverState()
