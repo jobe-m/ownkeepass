@@ -139,7 +139,10 @@ Dialog {
                 id: keyFileColumn
                 visible: enabled
                 width: parent.width
+                height: keyLoading.enabled ? useKeyFileSwitch.height + keyLoading.height : useKeyFileSwitch.height
                 spacing: 0
+
+                Behavior on height { NumberAnimation { duration: 500 } }
 
                 TextSwitch {
                     id: useKeyFileSwitch
@@ -148,62 +151,56 @@ Dialog {
                     description: qsTr("Switch this on to use a key file together with a master password for your new Keepass database")
                 }
 
-                Column {
-                    enabled: useKeyFile
+                Item {
+                    id: keyLoading
+                    enabled: useKeyFileSwitch.checked
                     opacity: enabled ? 1.0 : 0.0
-                    height: enabled ? children.height : 0
+
+                    property int locationIndex: 0
+                    property string relativePath: ""
+                    property string absolutePath: ""
+                    property bool createNewFile: false
+
                     width: parent.width
-                    spacing: Theme.paddingLarge
+                    height: keyFilePathArea.height > keyFilePathIcon.height ? keyFilePathArea.height : keyFilePathIcon.height
+
                     Behavior on opacity { FadeAnimation { duration: 500 } }
-                    Behavior on height { NumberAnimation { duration: 500 } }
 
-                    Item {
-                        id: keyLoading
+                    Label {
+                        id: keyFilePathArea
 
-                        property int locationIndex: 0
-                        property string relativePath: ""
-                        property string absolutePath: ""
-                        property bool createNewFile: false
+                        anchors.left: parent.left
+                        anchors.leftMargin: Theme.paddingLarge
+                        anchors.right: keyFilePathIcon.left
+                        anchors.rightMargin: Theme.paddingLarge
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: Global.getLocationName(keyLoading.locationIndex) + keyLoading.relativePath
+                        opacity: 0.6
+                        font.pixelSize: Theme.fontSizeSmall
+                        wrapMode: Text.Wrap
+                    }
 
-                        width: parent.width
-                        height: keyFilePathArea.height > keyFilePathIcon.height ? keyFilePathArea.height : keyFilePathIcon.height
+                    Image {
+                        id: keyFilePathIcon
+                        source: "image://theme/icon-m-right"
+                        anchors.right: parent.right
+                        anchors.rightMargin: Theme.paddingLarge
+                        anchors.verticalCenter: parent.verticalCenter
+                        fillMode: Image.PreserveAspectFit
+                    }
 
-                        Label {
-                            id: keyFilePathArea
-
-                            anchors.left: parent.left
-                            anchors.leftMargin: Theme.paddingLarge
-                            anchors.right: keyFilePathIcon.left
-                            anchors.rightMargin: Theme.paddingLarge
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: Global.getLocationName(keyLoading.locationIndex) + keyLoading.relativePath
-                            opacity: 0.6
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                        }
-
-                        Image {
-                            id: keyFilePathIcon
-                            source: "image://theme/icon-m-right"
-                            anchors.right: parent.right
-                            anchors.rightMargin: Theme.paddingLarge
-                            anchors.verticalCenter: parent.verticalCenter
-                            fillMode: Image.PreserveAspectFit
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(),
-                                                            { "locationIndex": keyLoading.locationIndex,
-                                                              "absolutePath": keyLoading.absolutePath,
-                                                              "state": keyLoading.createNewFile ? "CREATE_NEW_FILE" : "OPEN_FILE" })
-                                dialog.accepted.connect(function() {
-                                    keyLoading.locationIndex = dialog.locationIndex
-                                    keyLoading.relativePath = dialog.relativePath
-                                    keyLoading.absolutePath = dialog.absolutePath
-                                })
-                            }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(),
+                                                        { "locationIndex": keyLoading.locationIndex,
+                                                            "absolutePath": keyLoading.absolutePath,
+                                                            "state": keyLoading.createNewFile ? "CREATE_NEW_FILE" : "OPEN_FILE" })
+                            dialog.accepted.connect(function() {
+                                keyLoading.locationIndex = dialog.locationIndex
+                                keyLoading.relativePath = dialog.relativePath
+                                keyLoading.absolutePath = dialog.absolutePath
+                            })
                         }
                     }
                 }
