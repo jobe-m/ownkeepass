@@ -407,7 +407,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
-        <translation type="unfinished"></translation>
+        <translation>Activez cette option pour déverrouiller rapidement votre base de données avec les 3 premiers caractères de votre mot de passe principal.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
@@ -466,13 +466,9 @@
         <translation>Déverrouillage rapide</translation>
     </message>
     <message>
-        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
-        <translation type="vanished">Activez cette option pour déverrouiller votre base de données rapidement avec seulement les trois derniers caractères de votre mot de passe principal</translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
         <source>Number of fast unlock retries</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de tentatives de déverrouillage rapide</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="269"/>
@@ -601,22 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="107"/>
+        <location filename="../qml/scripts/Global.js" line="108"/>
         <source>Nothing selected yet</source>
+        <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Rien de séléctionné pour le moment</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
+        <location filename="../qml/scripts/Global.js" line="111"/>
         <source>Home:</source>
+        <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Accueil :</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="111"/>
+        <location filename="../qml/scripts/Global.js" line="113"/>
         <source>SD Card:</source>
         <translation>Carte SD :</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Android Storage:</source>
         <translation>Stockage Android :</translation>
     </message>
@@ -817,27 +815,19 @@
         <translation>Coffre à mot de passe</translation>
     </message>
     <message>
-        <source>Unlock your Password Safe with the last three characters of your master password:</source>
-        <translation type="vanished">Déverrouiller votre coffre à mot de passe avec les 3 derniers caractères de votre mot de passe principal :</translation>
-    </message>
-    <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Déverrouiller votre coffre à mot de passe avec les 3 premiers caractères de votre mot de passe principal :</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
         <source>You have %1 tries left</source>
-        <translation type="unfinished"></translation>
+        <translation>Il vous reste %1 tentatives</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have one try left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have 1 try left</source>
-        <translation type="vanished">1 tentative restante</translation>
+        <translation>1 tentative restante</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
