@@ -36,7 +36,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="93"/>
         <source>Change log</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændringslog</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="108"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="115"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Indrapporter fejl</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="50"/>
         <source>Change log</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændringslog</translation>
     </message>
 </context>
 <context>
@@ -120,7 +120,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="214"/>
         <source>No password</source>
-        <translation type="unfinished"></translation>
+        <translation>Intet kodeord</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="303"/>
@@ -295,7 +295,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="146"/>
         <source>Set username</source>
-        <translation type="unfinished"></translation>
+        <translation>Sæt brugernavn</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
@@ -329,7 +329,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="62"/>
         <source>Save</source>
-        <translation type="unfinished">Gem</translation>
+        <translation>Gem</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="66"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="73"/>
         <source>Name of group</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppenavn</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="75"/>
@@ -362,12 +362,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kassér</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
         <source>ownKeepass Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass Indstillinger</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
@@ -387,7 +387,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="113"/>
         <source>Default encryption:</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard-kryptering:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="137"/>
@@ -533,12 +533,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="451"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivér dette for at kopiere brugernavn og adgangskode til udklipsholderen fra miniature</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="460"/>
         <source>Advanced settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Avancerede indstillinger</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
@@ -561,17 +561,17 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SD-kort med flere partitioner er ikke understøttet.</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbryd</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>New file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyt filnavn</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
@@ -586,33 +586,35 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
         <source>Open</source>
-        <translation type="unfinished">Åben</translation>
+        <translation>Åben</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
         <source>Create</source>
-        <translation type="unfinished">Opret</translation>
+        <translation>Opret</translation>
     </message>
 </context>
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="107"/>
+        <location filename="../qml/scripts/Global.js" line="108"/>
         <source>Nothing selected yet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
-        <source>Home:</source>
+        <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="111"/>
-        <source>SD Card:</source>
+        <source>Home:</source>
+        <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="113"/>
+        <source>SD Card:</source>
+        <translation>SD-kort:</translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Android Storage:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -633,7 +635,7 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
         <source>Load Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Indlæsningsfejl</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
@@ -820,12 +822,12 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
         <source>You have %1 tries left</source>
-        <translation type="unfinished"></translation>
+        <translation>Du har %1 forsøg tilbage</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have one try left</source>
-        <translation type="unfinished"></translation>
+        <translation>Du har ét forsøg tilbage</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
@@ -838,7 +840,7 @@
     <message>
         <location filename="../qml/Main.qml" line="72"/>
         <source>ownKeepass got updated</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass er blevet opdateret</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="73"/>
@@ -853,7 +855,7 @@
     <message>
         <location filename="../qml/Main.qml" line="83"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-kort med flere partitioner er ikke understøttet.</translation>
     </message>
 </context>
 <context>
@@ -896,13 +898,13 @@
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="285"/>
-        <source>No key file used</source>
-        <translation>Ingen nøglefil brugt</translation>
+        <source>Key file path and name</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="285"/>
-        <source>Key file path and name</source>
-        <translation type="unfinished"></translation>
+        <source>No key file used</source>
+        <translation>Ingen nøglefil brugt</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="360"/>
@@ -944,7 +946,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Database file already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasefilen eksisterer allerede</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="562"/>
@@ -964,7 +966,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Password changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Adgangskode ændret</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="629"/>
@@ -1000,23 +1002,23 @@
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="650"/>
+        <source>Error loading database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
         <source>Please try again.</source>
         <translation>Prøv venligst igen.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="650"/>
-        <source>Error loading database</source>
-        <translation type="unfinished"></translation>
+        <location filename="../qml/content/MainPage.qml" line="654"/>
+        <source>Internal file error</source>
+        <translation>Intern filfejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>The following error occured during creation of database:</source>
         <translation>Følgende fejl opstod under oprettelse af database:</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="654"/>
-        <source>Internal file error</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="658"/>
@@ -1090,7 +1092,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="72"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Accepter</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="86"/>
@@ -1158,12 +1160,12 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekræft adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
         <source>Open automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Åben automatisk</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
@@ -1267,7 +1269,7 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="85"/>
         <source>Copy password</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiér adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="94"/>
