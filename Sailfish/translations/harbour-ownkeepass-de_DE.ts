@@ -51,7 +51,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Danksagungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (für das geniale Sailfish OS)&lt;br&gt;Das KeepassX Projekt (für eine Qt Implementierung von Keepass)&lt;br&gt;An alle Übersetzer: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Ich hoffe ihr habt mit ownKeepass mindestens so viel Spass wie ich während der Entwicklung!</translation>
     </message>
 </context>
 <context>
@@ -178,7 +178,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="53"/>
         <source>Database settings</source>
-        <translation>Datenbankeinstellungen</translation>
+        <translation>Datenbank Einstellungen</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="62"/>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Database Settings</source>
-        <translation>Datenbankeinstellungen</translation>
+        <translation>Datenbank Einstellungen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="76"/>
@@ -407,7 +407,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle diese Einstellung aus, um die Datenbank durch Eingabe der ersten 3 Zeichen deines Zugangspassworts zu entsperren.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
@@ -464,10 +464,6 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
         <source>Fast unlock</source>
         <translation>Schnelles Entsperren</translation>
-    </message>
-    <message>
-        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
-        <translation type="vanished">Wähle diese Einstellung aus, um die Datenbank durch Eingabe der letzten drei Zeichen deines Zugangspassworts zu entsperren.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
@@ -601,22 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="107"/>
+        <location filename="../qml/scripts/Global.js" line="108"/>
         <source>Nothing selected yet</source>
+        <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Noch nichts ausgewählt</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
+        <location filename="../qml/scripts/Global.js" line="111"/>
         <source>Home:</source>
+        <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Home:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="111"/>
+        <location filename="../qml/scripts/Global.js" line="113"/>
         <source>SD Card:</source>
         <translation>SD Karte:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Android Storage:</source>
         <translation>Android Umgebung:</translation>
     </message>
@@ -709,7 +707,7 @@
     <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf dieser Seite kannst Du eine neue Datenbank anlegen in der ownKeepass deine sensiblen Daten speichern kann.&lt;br&gt;&lt;br&gt;Öffne dazu den Dateibrowser und gib dort einen Dateinamen und ein Verzeichnis an. Du kannst dabei wählen, ob deine Datenbank in dem Home Verzeichnis im Telefonspeicher, auf der SD Karte oder in der Android Umgebung gespeichert werden soll. Wenn der Eintrag für die SD Karte hellgrau hinterlegt ist, ist entweder keine Speicherkarte eingelegt oder sie wird nicht korrekt vom System erkannt. Die Speicherkarte sollte nur eine einzelne formatierte Partition besitzen, da zur Zeit Speicherkarten mit mehreren Partitionen von ownKeepass nicht unterstützt werden. Wenn Du die Keepass Datenbank zusammen mit Android Apps benutzen willst, speichere sie in die Android Umgebung. Bitte beachte jedoch, dass das gemeinsame Benutzen von Dateien mit Android Apps aufgrund von Dateizugriffsrechten nicht immer funktioniert. Du musst unter Umständen im Terminal die Dateirechte von Hand anpassen.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank online speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du zusätzlich zum Zugangspasswort deiner Keepass Datenbank eine Schlüsseldatei zum Öffnen verwenden möchtest. Diese Datei kann zum Beispiel ein zufälliges Foto sein. Mit der Benutzung einer Schlüsseldatei, die selbst aus einer enormen Menge an quasi zufälligen Daten besteht, wird der generierte Schlüssel im Prinzip sicherer gegenüber einem Angriff auf den Datenbankschlüssel.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen deiner neuen Datenbank ein. Wähle ein langes und sicheres Passwort, das aus ungefähr 10 - 15 Zeichen besteht und verwende eine Mischung aus Klein- und Grossbuchstaben, Nummern und Sonderzeichen. Wiederhole das Zugangspasswort in dem Feld &quot;Passwort bestätigen&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -742,7 +740,7 @@
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Removed one sentence in section &quot;Use key file&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kannst du eine bestehende Keepass Datenbank öffnen.&lt;br&gt;&lt;b&gt;Bitte benutze den Dateibrowser um eine Datenbankdatei auszuwählen. Du kannst dabei auf die folgenden Specherorte zugreifen: Home, SD Karte und Android Umgebung. Falls Du deine Datenbank nicht findest, überprüfe ob du sie in einem der folgenen Pfade abgelegt hast. Home im Telefonspeicher befinden sich unter &quot;%1&quot;. Wenn eine Speicherkarte in dein Smartphone eingelegt ist, befindet sie sich unter &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Bitte beachte, dass Speicherkarten mit mehr als einer Partition nicht unterstützt werden.) Die Android Umgebung befindet sich unter &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank online speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du eine Schlüsseldatei zum Öffnen deiner Keepass Datenbank benötigst.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen der Datenbank ein.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -772,7 +770,7 @@
         <location filename="../qml/help/HelpSettings.qml" line="28"/>
         <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password. You can choose the number of wrong attempts from zero to 5 after which the database will be closed and the full master password is needed again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changes: Added part for fast unlock and changed description to first 3 chars</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Auf dieser Seite können Voreinstellungen für die ownKeepass Applikation geändert werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier kann der Verschlüsselungsalgorithmus ausgewählt werden, der standardmäßig für eine neue Keepass Datenbank benutzt werden soll. Dieser kann auch später in den Datenbankeinstellungen geändert werden.&lt;br&gt;&lt;br&gt;Die Anzahl der Schlüsselumwandlungen kann hier ebenfalls für eine neue Keepass Datenbank angegeben werden. Dieser Wert gibt an wie häufig das Zugangspasswort der Datenbank verschlüsselt wird bevor es selbst zur Entschlüsselung der Keepass Datenbank verwendet wird. Wenn der Wert für diese Einstellung erhöht wird, erhöht sich auch die Zeit um die Keepass Datenbank zu öffnen. Gleichzeitig wird die Datenbank auch robuster gegenüber Brute-Force-Angriffen. Als ein guter Kompromiss zwischen Sicherheit und Bequemlichkeit solltest Du den Wert so einstellen, dass das Öffnen der Keepass Datenbank etwa ein bis zwei Sekunden auf dem Smartphone benötigt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sicherheit&lt;/b&gt;&lt;br&gt;&lt;br&gt;Die Einstellung für Sperre bei Inaktivität kontrolliert ob und nach welcher Zeit die Applikation die Keepass Datenbank wieder schliessen soll. Der Zeitzähler für die Inaktivität startet wenn die Applikation in den Hintergrund geschickt wird und auf dem Homescreen als Cover sichtbar wird.&lt;br&gt;&lt;br&gt;Die Funktion &quot;Schnelles entsperren&quot; sorgt dafür, dass du ein langes und sicheres Passwort  verwenden kannst und trotzdem schnellen Zugriff auf deine Keepass Datenbank hast. Zum Öffnen der Datenbank fragt ownKeepass nach dem vollen Zugangspasswort für die Datenbank. Nach dem Sperren der Datenbank kannst du durch die Eingabe nur der ersten 3 Stellen des Zugangspasswortes wieder auf die Datenbank zugreifen. Dabei kannst du einstellen ob bei einer falschen Eingabe die Datenbank sofort oder erst nach bis zu 5 Versuchen geschlossen werden soll und man wieder das volle Zugangspasswort eingeben muss.&lt;br&gt;&lt;br&gt;Mit dieser Einstellung kannst Du festlegen, dass die Daten in der Zwischenablage 10 Sekunden nach der letzten Benutzung gelöscht werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Benutzerschnittstelle&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wenn Du den Bentzernamen und das Passwort eines Eintrages bereits in der Passwortliste sehen möchtest, wähle die Einstellung &quot;Detailierte Liste&quot; aus.&lt;br&gt;&lt;br&gt;Mit der Einstellung &quot;Aktiviere Suchfeld&quot; kann das Suchfeld über der Passwortliste automatisch beim öffnen der Datenbank ausgewählt werden. Auf diese Weise kannst Du noch schneller in deiner Keepass Datenbank einen Eintrag finden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier kannst Du die Funktionalität und das Erscheinungsbild des Covers beeinflussen. Der Benutzername und das Passwort eines im Hintergrund geöffneten Passworteintrags kann auf dem Cover angezeigt werden. Darüberhinaus kannst Du beide Cover-Aktionen einzeln aktivieren oder deaktivieren. Die erste Cover-Aktion sperrt eine geöffnete Datenbank. Die zweite Cover-Aktion kopiert entweder den Benutzernamen oder das Passwort in die Zwischenablage oder löscht den Inhalt der Zwischenablage wieder.&lt;br&gt;&lt;br&gt;&lt;b&gt;Erweiterte Einstellungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mit &quot;Expertenmodus&quot; kann zwischen zwei Einstellungen für die Startseite der Applikation gewählt werden. Wenn Du diese Einstellung aktivierst, kannst Du auf der Startseite eine von fünf zuletzt geöffneten Keepass Datenbanken zum Öffnen auswählen. Ist der &quot;Expertenmodus&quot; inaktiv erscheint eine vereinfachte Startseite mit nur den allernötigsten Informationen.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -817,13 +815,9 @@
         <translation>Passwort Safe</translation>
     </message>
     <message>
-        <source>Unlock your Password Safe with the last three characters of your master password:</source>
-        <translation type="vanished">Entsperre den Passwort Safe durch Eingabe der letzten drei Zeichen deines Zugangspassworts:</translation>
-    </message>
-    <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Entsperre deinen Passwort Safe durch Eingabe der ersten 3 Zeichen des Zugangspasswortes:</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
@@ -833,11 +827,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have one try left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have 1 try left</source>
-        <translation type="vanished">Du hast noch einen Versuch übrig</translation>
+        <translation>Du hast noch einen Versuch übrig</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
