@@ -53,10 +53,6 @@
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;Petri Mäkijärvi (Finnish translation and testing)&lt;br&gt;Åke Engelbrektson (Swedish translation)&lt;br&gt;Agusti Clara (Catalan translation)&lt;br&gt;fri (Czech translation)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (Dutch translation)&lt;br&gt;carmenfdezb (Spanish translation)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="vanished">&lt;b&gt;Zásluhy&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (pokračuje se tam, kde se Nokia zastavila)&lt;br&gt;Projekt KeepassX (pro provedení Keepass v Qt)&lt;br&gt;Petri Mäkijärvi (překlad do finštiny a zkoušení)&lt;br&gt;Åke Engelbrektson (překlad do švédštiny)&lt;br&gt;Agusti Clara (překlad do katalánštiny)&lt;br&gt;fri (překlad do češtiny)&lt;br&gt;Heimen Stoffels, Rob K, Nathan Follens (překlad do holandštiny)&lt;br&gt;carmenfdezb (překlad do španělštiny)&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;Mým přáním je, abyste si ownKeepass užili tak, jako já, když jsem je tvořil!</translation>
-    </message>
 </context>
 <context>
     <name>ApplicationMenu</name>
@@ -470,10 +466,6 @@
         <translation>Rychlé odemknutí</translation>
     </message>
     <message>
-        <source>Enable this to unlock your database quickly with just the last three characters of your master password.</source>
-        <translation type="vanished">Toto povolte pro rychlé odemknutí vaší databáze zadáním tří posledních znaků z hlavního hesla.</translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
         <source>Number of fast unlock retries</source>
         <translation>Počet pokusů o rychlé odemknutí</translation>
@@ -605,22 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="107"/>
+        <location filename="../qml/scripts/Global.js" line="108"/>
         <source>Nothing selected yet</source>
+        <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Nic ještě nebylo vybráno</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
+        <location filename="../qml/scripts/Global.js" line="111"/>
         <source>Home:</source>
+        <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Domovská složka:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="111"/>
+        <location filename="../qml/scripts/Global.js" line="113"/>
         <source>SD Card:</source>
         <translation>Karta SD</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Android Storage:</source>
         <translation>Úložiště Android:</translation>
     </message>
@@ -834,10 +828,6 @@
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have one try left</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have 1 try left</source>
-        <translation type="vanished">Zbývá vám ještě jeden pokus</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
