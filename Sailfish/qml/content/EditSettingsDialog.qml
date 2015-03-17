@@ -311,11 +311,11 @@ Dialog {
                         MenuItem { text: "Dutch" } // 5
                         MenuItem { text: "English" } // 6
                         MenuItem { text: "Finnish" } // 7
-                        MenuItem { text: "French" } // 8
+                        MenuItem { text: "French " } // 8
                         MenuItem { text: "German" } // 9
-                        MenuItem { text: "Italian (partly)" } // 10
+                        MenuItem { text: "Italian" } // 10
 //                        MenuItem { text: "Polish" } // -1 -- not yet started
-                        MenuItem { text: "Russian (partly)" } // 11
+                        MenuItem { text: "Russian" } // 11
                         MenuItem { text: "Spanish" }  // 12
                         MenuItem { text: "Swedish" } // 13
 //                        MenuItem { text: "Ukrainian" } // -1 -- not yet started

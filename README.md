@@ -6,18 +6,17 @@ ownKeepass
 Status
 ------
 
-Beta Release 1.0.29 available from [openrepos.net] [1] and warehouse app
-*   Added new translations for Chinese, Danish, French, Italian and Russian
-*   Added fast unlock feature which allows quick access to a locked database
-*   Amount of retries on fast unlock page adjustable in settings from 0 to 5 tries
-*   File browser implemented for opening and creating Keepass database, finally ;)
-*   Please test both new features. I will do a bit of polishing and bug fixing and wait for some translations to be ready before releasing to Jolla store
+Release 1.1.0 available from [openrepos.net] [1] and warehouse app
 
-Release 1.0.24 available in Jolla store
-*   Translation updates and Spanish as new translation
+* Added fast unlock feature which allows quick access to a locked database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password.
+* Amount of retries available on fast unlock page is adjustable from 0 (no retry) up to 5 retries
+* Added file browser in order to select database file when opening or creating a new Keepass database. The recent opened database list needs to be reinitialized and thus is set to empty.
+* Added new translations for Chinese, Danish, French, Italian and Russian
+* Czech, French, Russian and Danish translations are not finished yet. 
+
+Release 1.1.0 also already available in Jolla store
 
 Current limitations/known bugs:
-*   Fast unlock code not updated after changing database master password in database settings
 *   KeepassX 2 databases (.kdbx) are not yet supported
 
 

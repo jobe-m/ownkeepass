@@ -11,12 +11,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="45"/>
         <source>Password Safe</source>
-        <translation>Пароль сохранен</translation>
+        <translation>Хранение паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="57"/>
         <source>ownKeepass is a Keepass 1.x compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass - приложение, совместимое с менеджером паролей Keepass 1.x</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="65"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="115"/>
         <source>Report bugs</source>
-        <translation>Отправить отчет об ошибках</translation>
+        <translation>Отчет об ошибке</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="40"/>
         <source>Help</source>
-        <translation>Помощь</translation>
+        <translation>Справка</translation>
     </message>
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="46"/>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="44"/>
         <source>Password Safe</source>
-        <translation>Пароль сохранен</translation>
+        <translation>Хранение паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="50"/>
@@ -100,7 +100,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="69"/>
         <source>Clipboard now empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Буфер обмена очищен</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="188"/>
@@ -110,7 +110,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="188"/>
         <source>No username</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет имени пользователя</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="214"/>
@@ -125,37 +125,37 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="303"/>
         <source>No database opened</source>
-        <translation type="unfinished"></translation>
+        <translation>База паролей не открыта</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="310"/>
         <source>Create new database</source>
-        <translation type="unfinished"></translation>
+        <translation>Создать новую базу</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="317"/>
         <source>Open database</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть базу</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="324"/>
         <source>Database is locked</source>
-        <translation type="unfinished"></translation>
+        <translation>База паролей заблокирована</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="331"/>
         <source>You have unsaved changes pending</source>
-        <translation type="unfinished"></translation>
+        <translation>Есть изменения требующие сохранения</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="338"/>
         <source>View password group</source>
-        <translation type="unfinished"></translation>
+        <translation>Просмотр группы паролей</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="345"/>
         <source>Search for password entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск по записям</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="356"/>
@@ -178,17 +178,17 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="53"/>
         <source>Database settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки базы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="62"/>
         <source>New password group</source>
-        <translation type="unfinished"></translation>
+        <translation>Новая группа паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="71"/>
         <source>New password entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Новая запись</translation>
     </message>
 </context>
 <context>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Database Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки базы</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="76"/>
@@ -206,48 +206,48 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="81"/>
         <source>Change settings of your currently opened Keepass database here</source>
-        <translation type="unfinished"></translation>
+        <translation>Здесь можно изменить настройки текущей базы паролей Keepass</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="89"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
-        <translation type="unfinished"></translation>
+        <translation>Внимание! Изменяя мастер-пароль, вы должны быть уверены, что вспомните его в следующий раз при открытии базы паролей!</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
         <source>Master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Мастер-пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="101"/>
         <source>Change master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменить мастер-пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
         <source>Master password confirmed</source>
-        <translation type="unfinished"></translation>
+        <translation>Мастер-пароль подтвержден</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="128"/>
         <source>Confirm master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Подтвердите мастер-пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="142"/>
         <source>Encryption currently in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Метод шифрования:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="165"/>
         <source>Key transformation rounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Количество циклов шифрования</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
-        <translation type="unfinished"></translation>
+        <translation>Чем выше это значение, тем более затруднителен взлом пароля. Однако время открытия базы также увеличивается.</translation>
     </message>
 </context>
 <context>
@@ -260,12 +260,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="100"/>
         <source>Create new password entry:</source>
-        <translation type="unfinished"></translation>
+        <translation>Создание новой записи:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
         <source>Edit password entry:</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактирование записи:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="108"/>
@@ -275,7 +275,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="110"/>
         <source>Set title (mandatory)</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите название (обязательно)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="127"/>
@@ -285,7 +285,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="129"/>
         <source>Set URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="144"/>
@@ -295,7 +295,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="146"/>
         <source>Set username</source>
-        <translation>Установите имя пользователя</translation>
+        <translation>Введите имя пользователя</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
@@ -305,23 +305,23 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="170"/>
         <source>Set password</source>
-        <translation>Установите пароль</translation>
+        <translation>Введите пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="210"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Подтверждение пароля</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="245"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментарий</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="247"/>
         <source>Set comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите комментарий</translation>
     </message>
 </context>
 <context>
@@ -334,22 +334,22 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="66"/>
         <source>Type in a name for the new group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите название новой группы:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
         <source>Change name of group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменение названия группы:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="73"/>
         <source>Name of group</source>
-        <translation>Имя группы</translation>
+        <translation>Название группы</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="75"/>
         <source>Set name of group</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите название группы</translation>
     </message>
 </context>
 <context>
@@ -362,72 +362,72 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Отменить</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
         <source>ownKeepass Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
         <source>Change default settings of your ownKeepass application here</source>
-        <translation type="unfinished"></translation>
+        <translation>Здесь можно изменить настройки, используемые по умолчанию</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="97"/>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>База паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="105"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Шифрование, используемое по умолчанию для вновь создаваемых баз паролей Keepass:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="113"/>
         <source>Default encryption:</source>
-        <translation type="unfinished"></translation>
+        <translation>Шифрование:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="137"/>
         <source>Default key transformation rounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Число циклов шифрования</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="151"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
-        <translation type="unfinished"></translation>
+        <translation>Чем выше это значение, тем более затруднителен взлом пароля. Однако время открытия базы также увеличивается.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="158"/>
         <source>Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Безопасность</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
-        <translation type="unfinished"></translation>
+        <translation>Быстрая разблокировка базы путем ввода трёх последних символов мастер-пароля</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
         <source>Clear clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Очищать буфер обмена</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="259"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистка буфера обмена после копирования пароля по прошествии 10 секунд</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="413"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Изменение языка произойдет после перезагрузки приложения</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="170"/>
         <source>Inactivity lock time</source>
-        <translation type="unfinished"></translation>
+        <translation>Блокировка базы по времени</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="187"/>
@@ -439,7 +439,7 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="191"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="193"/>
         <source>seconds</source>
-        <translation>второй</translation>
+        <translation>секунд</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
@@ -453,22 +453,22 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
         <source>minutes</source>
-        <translation>минуты</translation>
+        <translation>минут</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
         <source>Unlimited</source>
-        <translation type="unfinished"></translation>
+        <translation>Не блокировать</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
         <source>Fast unlock</source>
-        <translation type="unfinished"></translation>
+        <translation>Быстрая разблокировка</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
         <source>Number of fast unlock retries</source>
-        <translation type="unfinished"></translation>
+        <translation>Число попыток ввода</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="269"/>
@@ -478,22 +478,22 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
         <source>Extended list liew</source>
-        <translation type="unfinished"></translation>
+        <translation>Расширенный вид списков</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет выводить вместе с названием записи также имя пользователя и пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="287"/>
         <source>Focus search bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Активировать строку поиска</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>If enabled the search bar will be focused on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет активировать строку поиска после открытия базы. Выключите если мешает клавиатура.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="303"/>
@@ -503,37 +503,37 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="420"/>
         <source>Cover settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки обложки</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="426"/>
         <source>Show username and password</source>
-        <translation>Показать имя пользователя и пароль</translation>
+        <translation>Имя пользователя и пароль на обложке</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="427"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет показывать имя пользователя и пароль на обложке приложения из открытой в данный момент записи</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="438"/>
         <source>Lock database from cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Блокировка базы с обложки</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
         <source>This lets you lock the database with the left cover action</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет блокировать базу паролей с обложки по левому действию.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="450"/>
         <source>Copy&apos;n&apos;paste from cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Копирование с обложки</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="451"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет копировать имя пользователя и пароль в буфер обмена с обложки</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="460"/>
@@ -543,12 +543,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
         <source>Expert user mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим эксперта</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="unfinished"></translation>
+        <translation>Включает управление несколькими базами на главной странице</translation>
     </message>
 </context>
 <context>
@@ -556,27 +556,27 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Проблема с SD-картой</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-карты с несколькими разделами не поддерживаются</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>New file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя нового файла</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
         <source>Enter new file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите имя файла</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
@@ -597,22 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="107"/>
+        <location filename="../qml/scripts/Global.js" line="108"/>
         <source>Nothing selected yet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
-        <source>Home:</source>
-        <translation type="unfinished"></translation>
+        <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
+        <translation>Ничего не выбрано</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="111"/>
-        <source>SD Card:</source>
+        <source>Home:</source>
+        <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="113"/>
+        <source>SD Card:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Android Storage:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -628,27 +630,27 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="373"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="378"/>
         <source>Password groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Группы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
         <source>Load Error</source>
-        <translation>Загрузить ошибку</translation>
+        <translation>Ошибка загрузки</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
         <source>Could not load all items from Keepass database file. That&apos;s strange.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно загрузить все записи из файла базы паролей.</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="77"/>
         <source>Save Error</source>
-        <translation>Сохранить ошибку</translation>
+        <translation>Ошибка сохранения</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="77"/>
         <source>Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно сохранить изменения в файл базы паролей. Место хранения файла недоступно для записи.</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="108"/>
@@ -658,27 +660,27 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="165"/>
         <source>No entries found</source>
-        <translation type="unfinished"></translation>
+        <translation>Записи не найдены</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="183"/>
         <source>Decrypting Keepass database</source>
-        <translation type="unfinished"></translation>
+        <translation>Расшифровка базы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="204"/>
         <source>Group is empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Группа пуста</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="205"/>
         <source>Pull down to add password groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Потяните вниз чтобы добавить группы</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="206"/>
         <source>Pull down to add password groups or entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Потяните вниз чтобы добавить группы или записи</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="290"/>
@@ -690,7 +692,7 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="350"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="383"/>
         <source>Search in all groups</source>
-        <translation>Искать по всех группах</translation>
+        <translation>Искать во всех группах</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
@@ -754,12 +756,12 @@
     <message>
         <location filename="../qml/help/HelpPage.qml" line="47"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Пароль сохранен</translation>
+        <translation>Хранение паролей</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpPage.qml" line="53"/>
         <source>Help</source>
-        <translation>Помощь</translation>
+        <translation>Справка</translation>
     </message>
 </context>
 <context>
@@ -797,7 +799,7 @@
     <message>
         <location filename="../qml/content/LicensePage.qml" line="44"/>
         <source>Password Safe</source>
-        <translation>Пароль сохранен</translation>
+        <translation>Хранение паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/LicensePage.qml" line="50"/>
@@ -810,27 +812,27 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="61"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Пароль сохранен</translation>
+        <translation>Хранение паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите 3 последних символа мастер-пароля для разблокировки базы:</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
         <source>You have %1 tries left</source>
-        <translation type="unfinished"></translation>
+        <translation>Осталось %1 попытки ввода</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have one try left</source>
-        <translation type="unfinished"></translation>
+        <translation>Осталась одна попытка ввода</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
         <source>Wrong unlock code</source>
-        <translation type="unfinished"></translation>
+        <translation>Неверный код разблокировки</translation>
     </message>
 </context>
 <context>
@@ -838,22 +840,22 @@
     <message>
         <location filename="../qml/Main.qml" line="72"/>
         <source>ownKeepass got updated</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass обновлен</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="73"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Новая версия %1 была установлена. Посмотрите список изменений.</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="82"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Проблема с SD-картой</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="83"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-карты с несколькими разделами не поддерживаются</translation>
     </message>
 </context>
 <context>
@@ -862,104 +864,104 @@
         <location filename="../qml/content/MainPage.qml" line="139"/>
         <location filename="../qml/content/MainPage.qml" line="348"/>
         <source>Password Safe</source>
-        <translation>Пароль сохранен</translation>
+        <translation>Хранение паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="152"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите мастер-пароль для блокировки новой базы паролей Keepass:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="166"/>
         <source>Master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Мастер-пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="167"/>
         <source>Enter master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите мастер-пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="217"/>
         <source>Confirm master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Подтверждение мастер-пароля</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="249"/>
         <source>Show more details</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать детали</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="265"/>
         <source>Database path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Место хранения базы паролей:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="285"/>
         <source>Key file path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу ключа:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="285"/>
         <source>No key file used</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл ключа не используется</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="360"/>
         <source>Create new database</source>
-        <translation type="unfinished"></translation>
+        <translation>Создать новую базу</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="379"/>
         <source>Open database</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть базу</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="398"/>
         <source>Recent databases</source>
-        <translation type="unfinished"></translation>
+        <translation>Недавно открытые</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="552"/>
         <source>Permission error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка прав доступа</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="552"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно создать путь к файлу базы паролей. Проверьте права для пользователя &apos;nemo&apos;.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="557"/>
         <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Key file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка файла-ключа</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="557"/>
         <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу базы верен, но файл ключа не найден. Проверьте путь к файлу ключа:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Database file already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл базы уже существует</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Укажите другой путь и имя для файла базы паролей или удалите старую базу через файловый менеджер.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>Database file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка файла базы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="579"/>
         <source>Database file does not exist. Please check path to database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл базы паролей не существует. Проверьте путь к файлу:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="629"/>
@@ -969,34 +971,39 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>The master password of your database was changed successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Мастер-пароль для базы паролей изменен успешно.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="638"/>
         <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Internal database error</source>
-        <translation type="unfinished"></translation>
+        <translation>Внутренняя ошибка базы данных</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="638"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно закрыть предыдущую базу. Попробуйте еще раз. Код ошибки:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="642"/>
         <source>Internal key error</source>
-        <translation type="unfinished"></translation>
+        <translation>Внутренняя ошибка ключа</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="642"/>
         <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>The following error occured during opening of database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при открытии базы паролей:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>Internal key file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Внутренняя ошибка файла ключа</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
+        <source>Error loading database</source>
+        <translation>Ошибка загрузки базы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="650"/>
@@ -1004,50 +1011,45 @@
         <translation>Пожалуйста, попробуйте снова.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="650"/>
-        <source>Error loading database</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>Internal file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Внутренняя ошибка файла</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>The following error occured during creation of database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при создании базы паролей:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Creation of backup group failed with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при создании резервной копии группы:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="662"/>
         <source>Save database error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка сохранения базы</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="662"/>
         <source>Could not save database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка сохранения базы паролей:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="666"/>
         <location filename="../qml/content/MainPage.qml" line="670"/>
         <source>Database error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка базы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="666"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>База паролей уже закрыта. Ничего серьезного, но отправьте отчет об ошибке.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="670"/>
         <source>An error occured on closing your database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при закрытии базы паролей:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1090"/>
@@ -1062,27 +1064,27 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="1092"/>
         <source>Unsaved changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Есть изменения</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1120"/>
         <source>Do you want to save changes to the password entry?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить изменения в записи?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1125"/>
         <source>Do you want to save changes to the password group?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить изменения в группе паролей?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1130"/>
         <source>Do you want to save changes to database settings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить изменения в настройках базы паролей?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1135"/>
         <source>Do you want to save changed settings values?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить изменения в настройках?</translation>
     </message>
 </context>
 <context>
@@ -1095,12 +1097,12 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="86"/>
         <source>Generated password</source>
-        <translation type="unfinished"></translation>
+        <translation>Сгенерированный пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
         <source>No char group selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Не выбрана группа символов</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="116"/>
@@ -1110,17 +1112,17 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="178"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Исключить подобные символы</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="189"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"></translation>
+        <translation>Убедиться, что пароль содержит символы из каждой группы</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="199"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>Сгенерировать</translation>
     </message>
 </context>
 <context>
@@ -1128,42 +1130,42 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="300"/>
         <source>Please specify a new Keepass database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Укажите новый файл для базы паролей:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="320"/>
         <source>Please choose an existing Keepass database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите существующий файл базы паролей:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
         <source>Use key file</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать файл ключа</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет использовать файл ключа вместе с мастер-паролем для базы Keepass</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
         <source>Master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Мастер-пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
         <source>Enter master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите мастер-пароль</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
-        <translation type="unfinished"></translation>
+        <translation>Подтверждение пароля</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
         <source>Open automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Открывать автоматически</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
@@ -1173,12 +1175,12 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="299"/>
         <source>New Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation>Новая база паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="304"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите мастер-пароль для блокировки создаваемой базы:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="318"/>
@@ -1190,13 +1192,13 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="338"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Пароль сохранен</translation>
+        <translation>База паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="324"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="341"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите мастер-пароль для разблокировки открываемой базы:</translation>
     </message>
 </context>
 <context>
@@ -1204,12 +1206,12 @@
     <message>
         <location filename="../qml/content/SelectDatabasePage.qml" line="205"/>
         <source>New database</source>
-        <translation type="unfinished"></translation>
+        <translation>Новая база паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/SelectDatabasePage.qml" line="205"/>
         <source>Open database</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть базу паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/SelectDatabasePage.qml" line="213"/>
@@ -1247,17 +1249,17 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="57"/>
         <source>No content</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет содержимого</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
         <source>Pull down to add URL, username, password and comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Потяните вниз чтобы добавить URL, имя пользователя, пароль и комментарий</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="65"/>
         <source>Copy URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Копировать URL</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
@@ -1272,7 +1274,7 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="94"/>
         <source>Edit password entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактировать запись</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="129"/>
@@ -1293,7 +1295,7 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="199"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментарий</translation>
     </message>
 </context>
 </TS>

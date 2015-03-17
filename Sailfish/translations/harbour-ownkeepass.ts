@@ -597,22 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="107"/>
+        <location filename="../qml/scripts/Global.js" line="108"/>
         <source>Nothing selected yet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
-        <source>Home:</source>
+        <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="111"/>
-        <source>SD Card:</source>
+        <source>Home:</source>
+        <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="113"/>
+        <source>SD Card:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Android Storage:</source>
         <translation type="unfinished"></translation>
     </message>
