@@ -104,8 +104,10 @@ var env = {
 function getLocationName(value) {
     switch (value) {
     case 0:
+        //: This is used in the file browser when the user has not yet selected any file.
         return qsTr("Nothing selected yet")
     case 1:
+        //: Like the user home folder in linux/unix
         return qsTr("Home:") + (" ")
     case 2:
         return qsTr("SD Card:") + (" ")
