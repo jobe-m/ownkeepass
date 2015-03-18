@@ -30,7 +30,8 @@
 #include "../KdbGroup.h"
 #include "crypto/yarrow.h"
 
-using namespace kpxPrivate;
+//using namespace kpxPrivate;
+using namespace keepassXClassic;
 using namespace kpxPublic;
 
 // KeepassX internal stuff

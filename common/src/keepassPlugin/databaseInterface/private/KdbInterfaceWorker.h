@@ -24,17 +24,19 @@
 #define KDBINTERFACEWORKER_H
 
 #include <QObject>
-#include "database/Kdb3Database.h"
+#include "DatabaseInterface.h"
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
 
 using namespace kpxPublic;
 
-namespace kpxPrivate {
+namespace keepassClassic {
+#include "database/Kdb3Database.h"
 
-class KdbInterfaceWorker : public QObject
+class KdbInterfaceWorker : public QObject, public DatabaseInterface
 {
     Q_OBJECT
+    Q_INTERFACES(DatabaseInterface)
 
 public:
     explicit KdbInterfaceWorker(QObject* parent = 0);
