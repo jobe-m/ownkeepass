@@ -51,7 +51,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Crédits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (pour continuer ce que Nokia a arrêté)&lt;br&gt;Le projet KeepassX (pour leur implémentation de Keepass en Qt)&lt;br&gt;Tous les traducteurs : %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;J&apos;espère que vous prenez autant de plaisir à utiliser ownKeepass que j&apos;en prends à le développer !</translation>
     </message>
 </context>
 <context>
@@ -420,7 +420,7 @@
         <translation>Si activé, le presse-papier sera vidé 10 secondes après que le nom d&apos;utilisateur ou le mot de passe soit copié</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="413"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="418"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>Changement de langue activé après redémarrage de l&apos;application</translation>
     </message>
@@ -501,52 +501,52 @@
         <translation>Langue :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="420"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="425"/>
         <source>Cover settings</source>
         <translation>Paramètres de couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="426"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="431"/>
         <source>Show username and password</source>
         <translation>Afficher le nom d&apos;utilisateur et le mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="427"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="432"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Si activé, le nom d&apos;utilisateur et mot de passe de la saisie Keepass active seront affichés sur la couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="438"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
         <source>Lock database from cover</source>
         <translation>Verrouiller la base de données depuis la couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="444"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Permet de verrouiller la base de données par une action à gauche depuis la couverture </translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="450"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Copier - coller depuis la couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="451"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="456"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Activer ceci pour copier le nom d&apos;utilisateur et le mot de passe dans le presse-papier depuis la couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="460"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="465"/>
         <source>Advanced settings</source>
         <translation>Paramètres avancés</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="471"/>
         <source>Expert user mode</source>
         <translation>Mode utilisateur expert</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="472"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Ceci permet des fonctionnalités avancées telle que gérer des base de données multiples depuis la page d&apos;accueil</translation>
     </message>
@@ -597,24 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="108"/>
+        <location filename="../qml/scripts/Global.js" line="109"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Rien de séléctionné pour le moment</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="111"/>
+        <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Home:</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Accueil :</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card:</source>
         <translation>Carte SD :</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="115"/>
+        <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage:</source>
         <translation>Stockage Android :</translation>
     </message>
@@ -707,7 +707,7 @@
     <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sur cette page, vous pouvez créer une nouvelle base de données où ownKeepass stockera vos données protégées.&lt;br&gt;&lt;br&gt;Utilisez l&apos;explorateur de fichiers pour choisir un nom de fichier et un dossier. Vous pouvez choisir de placer votre base de données dans le répertoire principal du téléphone, sur votre carte SD ou dans la partie réservée au stockage Android. Si la carte SD est grisée, cela signifie qu&apos;aucune carte SD n&apos;est insérée ou que la carte n&apos;est pas détectée par le système. Il doit y avoir une seule partition formatée sur la carte SD. Les cartes SD à partitions multiples ne sont pas supportées par ownKeepass pour le moment. Le &quot;stockage Android&quot; est présent pour partager la base de données avec les applications Android. Cependant, partager des fichiers avec le monde Android peut être problématique à cause des différents propriétaires et permissions sur les fichiers. Gardez ça en tête.&lt;br&gt;&lt;br&gt;Conseil: Si vous stockez votre base de données Keepass dans le Cloud, veillez à utiliser un fichier de clé stocké localement en plus du mot de passe principal. Ce fichier de clé ne doit pas être stocké sur le service de Cloud.&lt;br&gt;&lt;br&gt;&lt;b&gt;Utiliser un fichier de clé&lt;/b&gt;&lt;br&gt;&lt;br&gt;Un fichier de clé peut être utilisé en plus d&apos;un mot de passe principal pour protéger la base de données Keepass. Ils sont utilisés ensemble pour générer une clé qui ouvrira la base de données. Donc en utilisant un fichier contenant beaucoup de données, la clé générée devient en principe plus forte contre les attaques. Vous pouvez par exemple utiliser une photo choisie au hasard comme fichier de clé.&lt;br&gt;&lt;br&gt;&lt;b&gt;Mot de passe principal&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ici se trouve le mot de passe de votre nouvelle base de données Keepass. Veuillez choisir un mot de passe long d&apos;environ 10 - 15 caractères et utiliser un mélange de minuscules, majuscules, chiffres et caractères spéciaux. Retapez le mot de passe dans le champ &quot;Confirmez le mot de passe&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ouvrir automatiquement&lt;/b&gt;&lt;br&gt;&lt;br&gt;Cochez cette option si vous voulez que ownKeepass ouvre automatiquement cette base de données quand vous lancerez l&apos;application la prochaine fois. Vous arriverez directement sur la page pour entrer votre mot de passe.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>

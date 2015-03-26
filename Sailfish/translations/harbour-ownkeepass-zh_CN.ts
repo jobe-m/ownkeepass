@@ -420,7 +420,7 @@
         <translation>如果开启，将在复制用户名或密码10秒后清空剪贴板</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="413"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="418"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>修改语言将在ownKeepass重启后生效</translation>
     </message>
@@ -501,52 +501,52 @@
         <translation>语言：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="420"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="425"/>
         <source>Cover settings</source>
         <translation>封面设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="426"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="431"/>
         <source>Show username and password</source>
         <translation>显示用户名和密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="427"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="432"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>开启此项将在封面上显示当前Keepass词条的用户名和密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="438"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
         <source>Lock database from cover</source>
         <translation>从封面锁定数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="444"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>允许你通过封面向左扫来锁定数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="450"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>从封面复制粘贴</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="451"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="456"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>开启此项以从封面复制用户名和密码到剪贴板</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="460"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="465"/>
         <source>Advanced settings</source>
         <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="471"/>
         <source>Expert user mode</source>
         <translation>专家用户模式</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="472"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>可开启高级功能，如在主页上处理多个数据库</translation>
     </message>
@@ -597,24 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="108"/>
+        <location filename="../qml/scripts/Global.js" line="109"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>尚未选择</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="111"/>
+        <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Home:</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>主目录：</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card:</source>
         <translation>SD卡：</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="115"/>
+        <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage:</source>
         <translation>安卓存储：</translation>
     </message>

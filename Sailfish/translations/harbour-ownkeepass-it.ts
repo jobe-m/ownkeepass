@@ -420,7 +420,7 @@
         <translation>Se attivo gli appunti verranno epuliti dopo 10 minuti dalla copia del nome utente o della password</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="413"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="418"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>La nuova lingua verrà utilizzata a partire dal prossimo avvio dell&apos;app</translation>
     </message>
@@ -501,52 +501,52 @@
         <translation>Lingua:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="420"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="425"/>
         <source>Cover settings</source>
         <translation>Impostazioni cover</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="426"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="431"/>
         <source>Show username and password</source>
         <translation>Mostra nome utente e password</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="427"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="432"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Mostra il nome utente e la password dell&apos;elemento attivo nella cover</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="438"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
         <source>Lock database from cover</source>
         <translation>Blocca database dalla cover</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="444"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Blocca il database con uno swipe sulla cover</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="450"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Copia-incolla dalla cover</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="451"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="456"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Copia il nome utente e la password negli appunti dalla cover</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="460"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="465"/>
         <source>Advanced settings</source>
         <translation>Impostazioni avanzate</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="471"/>
         <source>Expert user mode</source>
         <translation>Modalità utente esperto</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="472"/>
         <source>This enables advanced functionality like handling multiple databases on main page</source>
         <translation>Funzionalità avanzate come la gestione di più database sulla pagina principale</translation>
     </message>
@@ -597,24 +597,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="108"/>
+        <location filename="../qml/scripts/Global.js" line="109"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Nessuna selezione</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="111"/>
+        <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Home:</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Home:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card:</source>
         <translation>Scheda SD:</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="115"/>
+        <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage:</source>
         <translation>Storage Android:</translation>
     </message>
