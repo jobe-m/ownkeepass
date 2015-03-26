@@ -173,17 +173,19 @@ QString FileBrowserListModel::getSdCardPath()
     }
 
     // return always first partition, multi-partition SD cards are not supported
-    QString sdCard(m_dir.absoluteFilePath(sdCards.first()));
+    QDir dir("/media/sdcard");
+    QString sdCard(dir.absoluteFilePath(sdCards.first()));
     return sdCard;
 }
 
 QStringList FileBrowserListModel::sdCardPartitions()
 {
-    if (!m_dir.exists()){
+    QDir dir("/media/sdcard");
+    if (!dir.exists()){
         return QStringList();
     }
-    m_dir.setFilter(QDir::AllDirs | QDir::NoDotAndDotDot);
-    QStringList sdCardPartitions = m_dir.entryList();
+    dir.setFilter(QDir::AllDirs | QDir::NoDotAndDotDot);
+    QStringList sdCardPartitions = dir.entryList();
     if (sdCardPartitions.isEmpty()) {
         return QStringList();
     }
@@ -193,7 +195,7 @@ QStringList FileBrowserListModel::sdCardPartitions()
     QMutableStringListIterator i(sdCardPartitions);
     while (i.hasNext()) {
         QString dirname = i.next();
-        QString abspath = m_dir.absoluteFilePath(dirname);
+        QString abspath = dir.absoluteFilePath(dirname);
         if (!mounts.contains(abspath)) {
             i.remove();
         }
