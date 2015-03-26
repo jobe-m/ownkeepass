@@ -40,10 +40,11 @@ var finnish = 7
 var french = 8
 var german = 9
 var italian = 10
+var norwegian_bokmal = 11
 var polish = -1 // not yet started
-var russian = 11
-var spanish = 12
-var swedish = 13
+var russian = 12
+var spanish = 13
+var swedish = 14
 var ukrainian = -1 // not yet started
 
 

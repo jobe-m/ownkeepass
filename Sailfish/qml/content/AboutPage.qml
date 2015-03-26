@@ -132,7 +132,8 @@ All translators: %1<br>\
 \
 I hope you have as much fun using ownKeepass as I have creating it!")
                 .arg("Petri Mäkijärvi, Åke Engelbrektson, Agusti Clara, fri, Heimen Stoffels, Rob K, Nathan Follens, \
-carmenfdezb, TylerTemp, Peter Jespersen, Jordi, Guillaume Ariaux, Francesco Vaccaro, Lorenzo Facca, Alexey")
+carmenfdezb, TylerTemp, Peter Jespersen, Jordi, Guillaume ARIAUX, Sylvain, Francesco Vaccaro, Lorenzo Facca, Alexey, \
+Anton Kalmykov, Sergiy K, Kjetil Kilhavn")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }

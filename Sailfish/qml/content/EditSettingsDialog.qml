@@ -314,10 +314,11 @@ Dialog {
                         MenuItem { text: "French " } // 8
                         MenuItem { text: "German" } // 9
                         MenuItem { text: "Italian" } // 10
+                        MenuItem { text: "Norwegian Bokmål (partly)" } // 11
 //                        MenuItem { text: "Polish" } // -1 -- not yet started
-                        MenuItem { text: "Russian" } // 11
-                        MenuItem { text: "Spanish" }  // 12
-                        MenuItem { text: "Swedish" } // 13
+                        MenuItem { text: "Russian" } // 12
+                        MenuItem { text: "Spanish" }  // 13
+                        MenuItem { text: "Swedish" } // 14
 //                        MenuItem { text: "Ukrainian" } // -1 -- not yet started
                     }
 
@@ -358,6 +359,8 @@ Dialog {
                             return Global.chinese
                         case Languages.UK_UA: // Ukrainian
                             return Global.ukrainian
+                        case Languages.NB_NO: // Norwegian Bokmål
+                            return Global.norwegian_bokmal
                         default:
                             return Global.english
                         }
@@ -397,6 +400,8 @@ Dialog {
                             return Languages.ZH_CN // Chinese
                         case Global.ukrainian:
                             return Languages.UK_UA // Ukrainian
+                        case Global.norwegian_bokmal:
+                            return Languages.NB_NO // Norwegian Bokmål
                         default:
                             return Languages.EN_GB // English
                         }
