@@ -31,7 +31,7 @@
 #include "crypto/yarrow.h"
 
 //using namespace kpxPrivate;
-using namespace keepassXClassic;
+using namespace keepassClassic;
 using namespace kpxPublic;
 
 // KeepassX internal stuff
@@ -101,8 +101,6 @@ void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, Q
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         OPEN_DB_CLEANUP
     }
-// TODO check if needed
-//    m_kdb3Database->generateMasterKey();
     // open database
     if (!m_kdb3Database->load(filePath, readonly)) {
         // send signal with error
@@ -111,7 +109,8 @@ void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, Q
         OPEN_DB_CLEANUP
     }
 
-// TODO create .lock file
+// TODO check if .lock file exists and ask user if he wants to open the database in read only mode or discard and open in read/write mode
+// TODO create .lock file if it does not exist yet
 
     // database was opened successful
     emit databaseOpened();

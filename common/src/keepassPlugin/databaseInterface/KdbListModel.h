@@ -26,7 +26,7 @@
 #include <QAbstractListModel>
 #include <QStringList>
 
-#include "database/Kdb3Database.h"
+//#include "database/Kdb3Database.h"
 
 namespace kpxPublic {
 

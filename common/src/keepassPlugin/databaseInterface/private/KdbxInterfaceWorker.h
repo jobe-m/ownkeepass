@@ -24,105 +24,108 @@
 #define KDBXINTERFACEWORKER_H
 
 #include <QObject>
+#include "DatabaseInterface.h"
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
 
+
 using namespace kpxPublic;
 
-namespace keepassx2Private {
+namespace keepass2Format {
 
 #include "core/Database.h"
-#include "core/Uuid.h"
+//#include "core/Uuid.h"
 
-class KdbxInterfaceWorker : public QObject
+class KdbxInterfaceWorker : public QObject, public DatabaseInterface
 {
     Q_OBJECT
+    Q_INTERFACES(DatabaseInterface)
 
 public:
     explicit KdbxInterfaceWorker(QObject* parent = 0);
     virtual ~KdbxInterfaceWorker();
 
 signals:
-//    // signals to KdbDatabase object
-//    void databaseOpened();
-//    void newDatabaseCreated();
-//    void databaseClosed();
-//    void passwordChanged();
-//    void databaseKeyTransfRoundsChanged(int value);
-//    void databaseCryptAlgorithmChanged(int value);
-//    void errorOccured(int result, QString errorMsg);
+    // signals to KdbDatabase object
+    void databaseOpened();
+    void newDatabaseCreated();
+    void databaseClosed();
+    void passwordChanged();
+    void databaseKeyTransfRoundsChanged(int value);
+    void databaseCryptAlgorithmChanged(int value);
+    void errorOccured(int result, QString errorMsg);
 
-//    // signals to KdbListModel object
-//    void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId);
-//    void masterGroupsLoaded(int result);
-//    void groupsAndEntriesLoaded(int result);
-//    void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId);
-//    void deleteItemInListModel(int itemId);
-//    void searchEntriesCompleted(int result);
+    // signals to KdbListModel object
+    void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId);
+    void masterGroupsLoaded(int result);
+    void groupsAndEntriesLoaded(int result);
+    void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId);
+    void deleteItemInListModel(int itemId);
+    void searchEntriesCompleted(int result);
 
-//    // signal to KdbEntry object
-//    void entryLoaded(int entryId,
-//                     QString title,
-//                     QString url,
-//                     QString username,
-//                     QString password,
-//                     QString comment,
-//                     QString binaryDesc,
-//                     QString creation,
-//                     QString lastMod,
-//                     QString lastAccess,
-//                     QString expire,
-//                     quint32 binarySize,
-//                     QString friendlySize
-//                     );
-//    void entrySaved(int result);
-//    void newEntryCreated(int result, int entryId);
-//    void entryDeleted(int result);
+    // signal to KdbEntry object
+    void entryLoaded(int entryId,
+                     QString title,
+                     QString url,
+                     QString username,
+                     QString password,
+                     QString comment,
+                     QString binaryDesc,
+                     QString creation,
+                     QString lastMod,
+                     QString lastAccess,
+                     QString expire,
+                     quint32 binarySize,
+                     QString friendlySize
+                     );
+    void entrySaved(int result);
+    void newEntryCreated(int result, int entryId);
+    void entryDeleted(int result);
 
-//    // signal to KdbGroup object
-//    void groupLoaded(QString title);
-//    void groupSaved(int result);
-//    void newGroupCreated(int result, int groupId);
-//    void groupDeleted(int result);
+    // signal to KdbGroup object
+    void groupLoaded(QString title);
+    void groupSaved(int result);
+    void newGroupCreated(int result, int groupId);
+    void groupDeleted(int result);
 
 
 public slots:
-//    // signals from KdbDatabase object
-//    void slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
-//    void slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
-//    void slot_closeDatabase();
-//    void slot_changePassKey(QString password, QString keyFile);
-//    void slot_changeKeyTransfRounds(int value);
-//    void slot_changeCryptAlgorithm(int value);
-//    void slot_setting_showUserNamePasswordsInListView(bool value);
+    // signals from KdbDatabase object
+    void slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
+    void slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
+    void slot_closeDatabase();
+    void slot_changePassKey(QString password, QString keyFile);
+    void slot_changeKeyTransfRounds(int value);
+    void slot_changeCryptAlgorithm(int value);
+    void slot_setting_showUserNamePasswordsInListView(bool value);
 
-//    // signal from KdbListModel object
-//    void slot_loadMasterGroups();
-//    void slot_loadGroupsAndEntries(int groupId);
-//    void slot_unregisterListModel(int modelId);
-//    void slot_searchEntries(QString searchString, int rootGroupId);
+    // signal from KdbListModel object
+    void slot_loadMasterGroups();
+    void slot_loadGroupsAndEntries(int groupId);
+    void slot_unregisterListModel(int modelId);
+    void slot_searchEntries(QString searchString, int rootGroupId);
 
-//    // signal from KdbEntry object
-//    void slot_loadEntry(int entryId);
-//    void slot_saveEntry(int entryId,
-//                        QString title,
-//                        QString url,
-//                        QString username,
-//                        QString password,
-//                        QString comment);
-//    void slot_createNewEntry(QString title,
-//                             QString url,
-//                             QString username,
-//                             QString password,
-//                             QString comment,
-//                             int parentGroupId);
-//    void slot_deleteEntry(int entryId);
+    // signal from KdbEntry object
+    void slot_loadEntry(int entryId);
+    void slot_saveEntry(int entryId,
+                        QString title,
+                        QString url,
+                        QString username,
+                        QString password,
+                        QString comment);
+    void slot_createNewEntry(QString title,
+                             QString url,
+                             QString username,
+                             QString password,
+                             QString comment,
+                             int parentGroupId);
+    void slot_deleteEntry(int entryId);
 
-//    // signal from KdbGroup object
-//    void slot_loadGroup(int groupId);
-//    void slot_saveGroup(int groupId, QString title);
-//    void slot_deleteGroup(int groupId);
-//    void slot_createNewGroup(QString title, quint32 iconId, int parentGroupId);
+    // signal from KdbGroup object
+    void slot_loadGroup(int groupId);
+    void slot_saveGroup(int groupId, QString title);
+    void slot_deleteGroup(int groupId);
+    void slot_createNewGroup(QString title, quint32 iconId, int parentGroupId);
 
 private:
     void initKdbDatabase();

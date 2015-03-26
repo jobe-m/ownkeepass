@@ -25,7 +25,6 @@
 
 #include <QObject>
 #include <QThread>
-//#include "KdbInterfaceWorker.h"
 #include "DatabaseInterface.h"
 
 namespace kpxPrivate {
@@ -40,7 +39,6 @@ public:
     static KdbInterface* getInstance();
 
     // access to internal worker needed to connect to its slots
-//    KdbInterfaceWorker* getWorker() { return &m_worker; }
     QObject* getWorker() { return dynamic_cast<QObject*>(m_worker); }
 
 private:
@@ -49,7 +47,6 @@ private:
     Q_DISABLE_COPY(KdbInterface)
 
     QThread m_workerThread;
-//    KdbInterfaceWorker m_worker;
     DatabaseInterface* m_worker;
     static KdbInterface* m_Instance;
 };

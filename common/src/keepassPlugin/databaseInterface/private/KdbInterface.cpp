@@ -21,7 +21,8 @@
 ***************************************************************************/
 
 #include "KdbInterface.h"
-#include "KdbInterfaceWorker.h"
+//#include "KdbInterfaceWorker.h"
+#include "KdbxInterfaceWorker.h"
 
 using namespace kpxPrivate;
 
@@ -36,7 +37,8 @@ KdbInterface::KdbInterface(QObject *parent)
     // Here a interface worker will be instantiated which operates on a Keepass version 1 database
     // To enable other database formats just load here another worker
     // TODO for KeepassX2
-    m_worker = new keepassClassic::KdbInterfaceWorker;
+//    m_worker = new keepassClassic::KdbInterfaceWorker;
+    m_worker = new keepass2Format::KdbxInterfaceWorker;
     // m_worker as hidden QObject has got no parent because it must be moved to another thread
 
     // DatabaseInterface object m_worker is also a QObject, so in order to use functions from it cast it before
@@ -52,6 +54,7 @@ KdbInterface::~KdbInterface()
         m_workerThread.terminate();
     }
     delete m_worker;
+    m_worker = NULL;
 }
 
 KdbInterface* KdbInterface::getInstance()
