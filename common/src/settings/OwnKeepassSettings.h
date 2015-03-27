@@ -56,6 +56,7 @@ public:
         PL_PL, // not yet started
         ZH_CN,
         UK_UA, // not yet started
+        NB_NO,
         INVALID
     };
 };

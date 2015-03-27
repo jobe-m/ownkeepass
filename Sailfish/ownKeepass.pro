@@ -163,6 +163,7 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-fr_FR.ts \
     translations/harbour-ownkeepass-de_DE.ts \
     translations/harbour-ownkeepass-it.ts \
+    translations/harbour-ownkeepass-nb_NO.ts \
 #    translations/harbour-ownkeepass-pl_PL.ts
     translations/harbour-ownkeepass-ru.ts \
     translations/harbour-ownkeepass-es.ts \

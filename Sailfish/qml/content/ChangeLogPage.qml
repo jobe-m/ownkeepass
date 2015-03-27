@@ -55,6 +55,13 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.1 Bugfix release</b>\
+<ul>\
+<li>Bugfix: File browser doesn't allow SD card selection</li>\
+<li>Update French and Danish translations</li>\
+<li>Added new translation for Norwegian Bokmål (not yet finished)</li>\
+</ul>\
+<br>\
 <b>v1.1.0 Database fast unlock and file browser</b>\
 <ul>\
 <li>Added fast unlock feature which allows quick access to a locked database. \

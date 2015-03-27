@@ -143,6 +143,9 @@ int main(int argc, char *argv[])
         case settingsPublic::Languages::UK_UA:
             translator.load("harbour-ownkeepass-uk_UA.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
+        case settingsPublic::Languages::NB_NO:
+            translator.load("harbour-ownkeepass-nb_NO.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
         default:
             translator.load("harbour-ownkeepass.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
