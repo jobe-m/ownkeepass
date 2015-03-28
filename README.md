@@ -32,6 +32,7 @@ I am searching for contributors who want and can work on specific additional fea
 *   Delete a Keepass database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/64)
 *   Import and export functionality -> [REQ](https://github.com/jobe-m/ownkeepass/issues/44)
 *   Change sorting of password groups and entries in database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/82)
+*   Move a password entry from one group to another group -> [REQ](https://github.com/jobe-m/ownkeepass/issues/69)
 
 The status of my todo list for the next release can be looked up [here] [6].
 
