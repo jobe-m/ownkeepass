@@ -38,7 +38,6 @@ Dialog {
     property alias useKeyFile: useKeyFileSwitch.checked
     property alias keyFileLocation: keyLoading.locationIndex
     property alias keyFilePath: keyLoading.relativePath
-    property alias loadLastDb: openAutomaticallySwitch.checked
     // Password is only going out and will be passed to kdbDatabase object open the database
     property alias password: passwordField.text
 
@@ -283,11 +282,6 @@ Dialog {
                     close()
                 }
                 focusOutBehavior: -1
-            }
-
-            TextSwitch {
-                id: openAutomaticallySwitch
-                text: qsTr("Open automatically")
             }
         }
     }

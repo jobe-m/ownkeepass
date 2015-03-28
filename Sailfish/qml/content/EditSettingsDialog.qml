@@ -460,7 +460,7 @@ Dialog {
                     editSettingsDialog.updateCoverState()
                 }
             }
-
+/*
             SectionHeader {
                 text: qsTr("Advanced settings")
             }
@@ -475,13 +475,13 @@ Dialog {
                     updateCoverState()
                 }
             }
+*/
         }
     }
 
     onAccepted: {
         // First save locally ownKeepass settings then trigger saving
         kdbListItemInternal.setKeepassSettings(
-                    !(expertMode.checked),
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
@@ -500,7 +500,6 @@ Dialog {
     onRejected: {
         // Save ownKeepass settings to check for unsaved changes
         kdbListItemInternal.setKeepassSettings(
-                    !(expertMode.checked),
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,

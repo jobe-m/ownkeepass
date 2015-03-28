@@ -110,21 +110,50 @@ Page {
     }
 
     SilicaFlickable {
-        id: simpleModeView
+        id: mainPageFlickable
         anchors.fill: parent
         contentWidth: parent.width
         contentHeight: col.height
-
-        // simple mode view is only visible in simple mode, yay :)
-        enabled: ownKeepassSettings.simpleMode
-        opacity: enabled ? 1.0 : 0.0
-
-        Behavior on opacity { FadeAnimation {} }
 
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator { }
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Create new database")
+                onClicked: {
+                    pageStack.push(queryPasswordDialogComponent,
+                                   {
+                                       "state": "CreateNewDatabase",
+                                       "dbFileLocation": 0,
+                                       // If ownKeepass was opened the very first time give the user a predefined database file path and name
+                                       "dbFilePath": recentDatabaseModel.isEmpty ? "Documents/ownkeepass/notes.kdb" : "",
+                                                                                   "useKeyFile": false,
+                                                                                   "keyFileLocation": 0,
+                                                                                   "keyFilePath": "",
+                                                                                   "password": ""
+                                   })
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Open database")
+                onClicked: {
+                    pageStack.push(queryPasswordDialogComponent,
+                                   {
+                                       "state": "OpenNewDatabase",
+                                       "dbFileLocation": 0,
+                                       "dbFilePath": "",
+                                       "useKeyFile": false,
+                                       "keyFileLocation": 0,
+                                       "keyFilePath": "",
+                                       "password": ""
+                                   })
+                }
+            }
+        }
+
         ApplicationMenu {
             helpContent: "MainPage"
         }
@@ -170,20 +199,21 @@ Page {
                     EnterKey.highlighted: true
                     EnterKey.iconSource: text.length === 0 ?
                                              "image://theme/icon-m-enter-close" :
-                                             simpleModeView.state === "CREATE_NEW_DATABASE" ?
+                                             mainPageFlickable.state === "CREATE_NEW_DATABASE" ?
                                                  "image://theme/icon-m-enter-next" :
                                                  "image://theme/icon-m-enter-accept"
                     EnterKey.onClicked: {
                         if (text.length === 0) {
                             parent.focus = true
-                        } else if (simpleModeView.state === "CREATE_NEW_DATABASE") {
+                        } else if (mainPageFlickable.state === "CREATE_NEW_DATABASE") {
                             confirmPasswordField.focus = true
                         } else {
                             parent.focus = true
                             // open master groups page and load database in background
                             var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                                                   { "initOnPageConstruction": false, "groupId": 0 })
-                            internal.openKeepassDatabase(passwordField.text, false, masterGroupsPage)
+                            var createNewDatabase =  false
+                            internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
                             passwordField.text = ""
                         }
                     }
@@ -225,11 +255,11 @@ Page {
                 EnterKey.onClicked: {
                     parent.focus = true
                     if (text.length !== 0) {
-// TODO trigger create database
                         // open master groups page and load database in background
                         var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                                               { "initOnPageConstruction": false, "groupId": 0 })
-                        internal.openKeepassDatabase(passwordField.text, true, masterGroupsPage)
+                        var createNewDatabase = true
+                        internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
                         passwordField.text = ""
                         confirmPasswordField.text = ""
                     }
@@ -238,7 +268,6 @@ Page {
             }
 
             Column {
-                id: moreInfoColumn
                 spacing: 0
                 width: parent.width
 
@@ -256,13 +285,16 @@ Page {
                     width: parent.width
                     spacing: 0
 
+                    Behavior on opacity { FadeAnimation { } }
+                    Behavior on height { NumberAnimation { } }
+
                     Label {
+                        id: databasePathAndName
                         x: Theme.paddingLarge
                         width: parent.width - Theme.paddingLarge * 2
                         font.pixelSize: Theme.fontSizeExtraSmall
                         color: Theme.secondaryColor
                         horizontalAlignment: Text.AlignLeft
-                        text: qsTr("Database path and name")
                     }
 
                     Label {
@@ -297,8 +329,16 @@ Page {
                         text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
                     }
 
-                    Behavior on opacity { FadeAnimation { } }
-                    Behavior on height { NumberAnimation { } }
+                    SectionHeader {
+                        enabled: !recentDatabaseModel.isEmpty
+                        visible: enabled
+                        text: qsTr("Recent databases")
+                    }
+
+                    Repeater {
+                        model: recentDatabaseModel
+                        delegate: recentDatabaseListItemComponent
+                    }
                 }
             }
         }
@@ -309,97 +349,21 @@ Page {
                 name: "CREATE_NEW_DATABASE"
                 PropertyChanges { target: passwordField; errorHighlight: text.length > 0 && text.length < 3 }
                 PropertyChanges { target: confirmPasswordField; enabled: true }
-                PropertyChanges { target: moreInfoColumn ; enabled: false }
+                PropertyChanges {
+                    target: databasePathAndName
+                    //: This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.
+                    text: qsTr("Path and name for new database") }
             },
             State {
                 name: "OPEN_DATABASE"
                 PropertyChanges { target: passwordField; errorHighlight: false }
                 PropertyChanges { target: confirmPasswordField; enabled: false }
-                PropertyChanges { target: moreInfoColumn ; enabled: true }
+                PropertyChanges {
+                    target: databasePathAndName
+                    //: This is on the first page where the user inputs the master password of his Keepass database.
+                    text: qsTr("Path and name of database") }
             }
         ]
-    }
-
-    SilicaListView {
-        id: notSoSimpleModeView
-        anchors.fill: parent
-        model: recentDatabaseModel
-
-        // show list view in expert mode
-        enabled: !ownKeepassSettings.simpleMode
-        opacity: enabled ? 1.0 : 0.0
-
-        Behavior on opacity { FadeAnimation { } }
-
-        // Show a scollbar when the view is flicked, place this over all other content
-        VerticalScrollDecorator {}
-
-        // PullDownMenu and PushUpMenu must be declared in SilicaListView
-        ApplicationMenu {
-            helpContent: "MainPage"
-        }
-
-        header: Column {
-            width: parent.width
-            spacing: 0
-
-            PageHeaderExtended {
-                title: "ownKeepass"
-                subTitle: qsTr("Password Safe")
-            }
-
-            Image {
-                width: 492
-                height: 492
-                source: "../../wallicons/wall-ownKeys.png"
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Create new database")
-                onClicked: {
-                    pageStack.push(queryPasswordDialogComponent,
-                                   {
-                                       "state": "CreateNewDatabase",
-                                       "dbFileLocation": 0,
-                                       // If ownKeepass was opened the very first time give the user a predefined database file path and name
-                                       "dbFilePath": recentDatabaseModel.isEmpty ? "Documents/ownkeepass/notes.kdb" : "",
-                                       "useKeyFile": false,
-                                       "keyFileLocation": 0,
-                                       "keyFilePath": "",
-                                       "loadLastDb": ownKeepassSettings.loadLastDb,
-                                       "password": ""
-                                   })
-                }
-            }
-
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Open database")
-                onClicked: {
-                    pageStack.push(queryPasswordDialogComponent,
-                                   {
-                                       "state": "OpenNewDatabase",
-                                       "dbFileLocation": 0,
-                                       "dbFilePath": "",
-                                       "useKeyFile": false,
-                                       "keyFileLocation": 0,
-                                       "keyFilePath": "",
-                                       "loadLastDb": ownKeepassSettings.loadLastDb,
-                                       "password": ""
-                                   })
-                }
-            }
-
-            SectionHeader {
-                enabled: !recentDatabaseModel.isEmpty
-                visible: enabled
-                text: qsTr("Recent databases")
-            }
-        }
-
-        delegate: recentDatabaseListItemComponent
     }
 
     KdbDatabase {
@@ -413,24 +377,11 @@ Page {
 
     Connections {
         target: ownKeepassSettings
-        onLoadLastDatabase: { // returns: dbLocation, dbFilePath, ...
-            // Set database name in global object for pulley menu on query password page
-            applicationWindow.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
-            pageStack.push(queryPasswordDialogComponent,
-                           { "state": "OpenRecentDatabase",
-                             "dbFileLocation": dbLocation,
-                             "dbFilePath": dbFilePath,
-                             "useKeyFile": useKeyFile,
-                             "keyFileLocation": keyFileLocation,
-                             "keyFilePath": keyFilePath,
-                             "loadLastDb": ownKeepassSettings.loadLastDb,
-                             "password": "" })
-        }
-        onDatabaseInSimpleMode: { // returns: databaseExists, ...
+        onDatabaseDetailsLoaded: { // returns: databaseExists, ...
             if (databaseExists) {
                 // Set database name in global object for pulley menu on query password page
                 applicationWindow.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
-                simpleModeView.state = "OPEN_DATABASE"
+                mainPageFlickable.state = "OPEN_DATABASE"
                 // set db location, path and keyfile stuff
                 internal.setDatabaseInfo(dbLocation,
                                          dbFilePath,
@@ -439,9 +390,13 @@ Page {
                                          keyFilePath)
             } else {
                 applicationWindow.databaseUiName = Global.getLocationName(1) + " Documents/ownkeepass/notes.kdb"
-                simpleModeView.state = "CREATE_NEW_DATABASE"
+                mainPageFlickable.state = "CREATE_NEW_DATABASE"
                 // set default db location, path and no keyfile
-                internal.setDatabaseInfo(1, "Documents/ownkeepass/notes.kdb", false, "", "")
+                internal.setDatabaseInfo(1,
+                                         "Documents/ownkeepass/notes.kdb",
+                                         false,
+                                         "",
+                                         "")
             }
         }
     }
@@ -480,19 +435,13 @@ Page {
         property bool useKeyFile: false
         property int keyFileLocation: 0
         property string keyFilePath: ""
-        property bool loadLastDb: false
         property Page masterGroupsPage
 
         function init() {
             // load settings into kdbDatabase
             kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
-            // initialize check if the last used database should be opened again or
-            // if we are in simple mode then check if last or default database exists
-            if (ownKeepassSettings.simpleMode) {
-                ownKeepassSettings.checkDatabaseInSimpleMode()
-            } else {
-                ownKeepassSettings.checkLoadLastDatabase()
-            }
+            // load details about most recently used database
+            ownKeepassSettings.loadDatabaseDetails()
         }
 
         function setDatabaseInfo(dbFileLocation,
@@ -593,7 +542,6 @@ Page {
                                                  internal.useKeyFile,
                                                  internal.keyFileLocation,
                                                  internal.keyFilePath)
-            ownKeepassSettings.loadLastDb = internal.loadLastDb
             // Set database name in global object for pulley menu on groups and entries pages
             applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + databasePath
             // Get database name and set on cover page for create new and open database states
@@ -729,7 +677,6 @@ Page {
         /*
           Data used to save ownKeepass default setting values
           */
-        property bool simpleMode
         property int defaultCryptAlgorithm
         property int defaultKeyTransfRounds
         property int inactivityLockTime
@@ -887,10 +834,9 @@ Page {
             }
         }
 
-        function setKeepassSettings(aSimpleMode, aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
+        function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
                                     aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage, aFastUnlock, aFastUnlockRetryCount) {
-            simpleMode = aSimpleMode
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
@@ -907,7 +853,6 @@ Page {
 
         function checkForUnsavedKeepassSettingsChanges() {
             if (
-                    ownKeepassSettings.simpleMode !== simpleMode ||
                     ownKeepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
                     ownKeepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     ownKeepassSettings.locktime !== inactivityLockTime ||
@@ -926,7 +871,6 @@ Page {
         }
 
         function saveKeepassSettings() {
-            ownKeepassSettings.simpleMode = simpleMode
             ownKeepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm
             ownKeepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             ownKeepassSettings.locktime = inactivityLockTime
@@ -983,11 +927,6 @@ Page {
                 internal.openKeepassDatabase(password,
                                              state === "CreateNewDatabase",
                                              acceptDestinationInstance)
-                internal.loadLastDb = loadLastDb
-            }
-            onRejected: {
-                // Reset "Open Automatically" so that the dialog does not open again
-                ownKeepassSettings.loadLastDb = false
             }
         }
     }
@@ -1035,7 +974,6 @@ Page {
                                  "useKeyFile": model.useKeyFile,
                                  "keyFileLocation": model.keyFileLocation,
                                  "keyFilePath": model.keyFilePath,
-                                 "loadLastDb": ownKeepassSettings.loadLastDb,
                                  "password": "" })
             }
         }

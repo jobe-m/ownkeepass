@@ -55,6 +55,13 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.2 Unified start page</b>\
+<ul>\
+<li>Enabled handling of multiple databases on start page per default. In fact after introducing the file \
+browser it is not neccessary to hide the database opening dialogs from the average user any more ;) So \
+\"expert mode\" is gone for now.</li>\
+</ul>\
+<br>\
 <b>v1.1.1 Bugfix release</b>\
 <ul>\
 <li>Bugfix: File browser doesn't allow SD card selection</li>\

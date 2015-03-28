@@ -33,7 +33,6 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_helper(helper),
     m_previousVersion(INITIAL_VERSION),
     m_version(OWN_KEEPASS_VERSION),
-    m_simpleMode(true),
     m_defaultCryptAlgorithm(0),
     m_defaultKeyTransfRounds(50000),
     m_locktime(3),
@@ -43,7 +42,6 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_showUserNamePasswordOnCover(true),
     m_lockDatabaseFromCover(true),
     m_copyNpasteFromCover(true),
-    m_loadLastDb(false),
     m_recentDatabaseListLength(5), // currently not yet changeable
     m_pwGenLength(12),
     m_pwGenLowerLetters(true),
@@ -100,8 +98,9 @@ void OwnKeepassSettings::checkSettingsVersion()
     }
 
     // load recent database list
+    // Position 1 won't be loaded, only position 2 - 5
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
-    for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+    for (int i = m_recentDatabaseList.length()-1; i > 0 ; --i) {
         m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
                 m_recentDatabaseList[i]["uiPath"].toString(),
                 m_recentDatabaseList[i]["dbLocation"].toInt(),
@@ -113,7 +112,6 @@ void OwnKeepassSettings::checkSettingsVersion()
 }
 
 void OwnKeepassSettings::loadSettings() {
-    m_simpleMode                     = (m_settings->getValue("settings/simpleMode", QVariant(m_simpleMode))).toBool();
     m_defaultCryptAlgorithm          = (m_settings->getValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm))).toInt();
     m_defaultKeyTransfRounds         = (m_settings->getValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds))).toInt();
     m_locktime                       = (m_settings->getValue("settings/locktime", QVariant(m_locktime))).toInt();
@@ -123,7 +121,6 @@ void OwnKeepassSettings::loadSettings() {
     m_showUserNamePasswordOnCover    = (m_settings->getValue("settings/showUserNamePasswordOnCover", QVariant(m_showUserNamePasswordOnCover))).toBool();
     m_lockDatabaseFromCover          = (m_settings->getValue("settings/lockDatabaseFromCover", QVariant(m_lockDatabaseFromCover))).toBool();
     m_copyNpasteFromCover            = (m_settings->getValue("settings/copyNpasteFromCover", QVariant(m_copyNpasteFromCover))).toBool();
-    m_loadLastDb                     = (m_settings->getValue("main/loadLastDb", QVariant(m_loadLastDb))).toBool();
     m_pwGenLength                    = (m_settings->getValue("pwGen/Length", QVariant(m_pwGenLength))).toInt();
     m_pwGenLowerLetters              = (m_settings->getValue("pwGen/LowerLetters", QVariant(m_pwGenLowerLetters))).toBool();
     m_pwGenUpperLetters              = (m_settings->getValue("pwGen/UpperLetters", QVariant(m_pwGenUpperLetters))).toBool();
@@ -137,7 +134,6 @@ void OwnKeepassSettings::loadSettings() {
     m_fastUnlockRetryCount           = (m_settings->getValue("settings/fastUnlockRetryCount", QVariant(m_fastUnlockRetryCount))).toInt();
 
     // emit signals for property changes
-    emit simpleModeChanged();
     emit defaultCryptAlgorithmChanged();
     emit defaultKeyTransfRoundsChanged();
     emit locktimeChanged();
@@ -145,7 +141,6 @@ void OwnKeepassSettings::loadSettings() {
     emit showUserNamePasswordOnCoverChanged();
     emit lockDatabaseFromCoverChanged();
     emit copyNpasteFromCoverChanged();
-    emit loadLastDbChanged();
     emit pwGenLengthChanged();
     emit pwGenLowerLettersChanged();
     emit pwGenUpperLettersChanged();
@@ -167,13 +162,28 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
                                            int keyFileLocation,
                                            QString keyFilePath)
 {
+    // Add first item, it is not in the list because it shall not be visible in the UI
+    m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
+    if (m_recentDatabaseList.length() > 0) {
+        m_recentDatabaseModel->addRecent(m_recentDatabaseList[0]["uiName"].toString(),
+                m_recentDatabaseList[0]["uiPath"].toString(),
+                m_recentDatabaseList[0]["dbLocation"].toInt(),
+                m_recentDatabaseList[0]["dbFilePath"].toString(),
+                m_recentDatabaseList[0]["useKeyFile"].toBool(),
+                m_recentDatabaseList[0]["keyFileLocation"].toInt(),
+                m_recentDatabaseList[0]["keyFilePath"].toString());
+    }
+
     bool alreadyOnFirstPosition = false;
     // check if the recent database is already in the list
-    for(int i = 0; i < m_recentDatabaseList.length(); ++i) {
+    for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
         if (m_recentDatabaseList[i]["uiName"].toString() == uiName && m_recentDatabaseList[i]["uiPath"].toString() == uiPath) {
             // Delete it from list and re-add it below at the first position here only when it's not already on the first position
             m_recentDatabaseList.removeAt(i);
             m_recentDatabaseModel->deleteItem(i);
+            if (0 == i) {
+                alreadyOnFirstPosition = true;
+            }
         }
     }
     // Insert recent at first position in the list model
@@ -203,15 +213,10 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
             m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
         }
     }
-}
 
-void OwnKeepassSettings::setSimpleMode(const bool value)
-{
-    if (value != m_simpleMode) {
-        m_simpleMode = value;
-        m_settings->setValue("settings/simpleMode", QVariant(m_simpleMode));
-        emit simpleModeChanged();
-    }
+    // The first item in the recent database list view shall not be shown in the UI because
+    // it is the active used database which is shown separately
+    m_recentDatabaseModel->deleteItem(0);
 }
 
 void OwnKeepassSettings::setDefaultCryptAlgorithm(const int value)
@@ -292,15 +297,6 @@ void OwnKeepassSettings::setCopyNpasteFromCover(const bool value)
         m_copyNpasteFromCover = value;
         m_settings->setValue("settings/copyNpasteFromCover", QVariant(m_copyNpasteFromCover));
         emit copyNpasteFromCoverChanged();
-    }
-}
-
-void OwnKeepassSettings::setLoadLastDb(bool value)
-{
-    if (value != m_loadLastDb) {
-        m_loadLastDb = value;
-        m_settings->setValue("main/loadLastDb", QVariant(m_loadLastDb));
-        emit loadLastDbChanged();
     }
 }
 
@@ -403,19 +399,7 @@ void OwnKeepassSettings::setFastUnlockRetryCount(const int value)
     }
 }
 
-void OwnKeepassSettings::checkLoadLastDatabase()
-{
-    // check if we need to load last database - if yes send signal to QML side to handle that
-    if (m_loadLastDb && !m_recentDatabaseList.isEmpty()) {
-        emit loadLastDatabase(m_recentDatabaseList[0]["dbLocation"].toInt(),
-                m_recentDatabaseList[0]["dbFilePath"].toString(),
-                m_recentDatabaseList[0]["useKeyFile"].toBool(),
-                m_recentDatabaseList[0]["keyFileLocation"].toInt(),
-                m_recentDatabaseList[0]["keyFilePath"].toString());
-    }
-}
-
-void OwnKeepassSettings::checkDatabaseInSimpleMode()
+void OwnKeepassSettings::loadDatabaseDetails()
 {
     if (!m_recentDatabaseList.isEmpty()) {
         // check if last loaded database exists
@@ -423,7 +407,7 @@ void OwnKeepassSettings::checkDatabaseInSimpleMode()
         QString dbLocation(m_helper->getLocationRootPath(dbLocationInt));
         QString dbFilePath(m_recentDatabaseList[0]["dbFilePath"].toString());
         if (QFile::exists(dbLocation + "/" + dbFilePath)) {
-            emit databaseInSimpleMode(true, dbLocationInt, dbFilePath,
+            emit databaseDetailsLoaded(true, dbLocationInt, dbFilePath,
                     m_recentDatabaseList[0]["useKeyFile"].toBool(),
                     m_recentDatabaseList[0]["keyFileLocation"].toInt(),
                     m_recentDatabaseList[0]["keyFilePath"].toString());
@@ -433,10 +417,10 @@ void OwnKeepassSettings::checkDatabaseInSimpleMode()
         // check if default database exists
         QString dbLocation(m_helper->getLocationRootPath(1));
         if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
-            emit databaseInSimpleMode(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "");
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "");
             return;
         }
     }
     // no database found
-    emit databaseInSimpleMode(false, 0, "", false, 0, "");
+    emit databaseDetailsLoaded(false, 0, "", false, 0, "");
 }

@@ -34,7 +34,7 @@ Page {
     // from the KdbListModel on startup. So the init() function is invoked later when the database could
     // be opened successfully with the master password.
     property bool initOnPageConstruction: true
-    // ID of the keepass group which should be shown
+    // ID of the keepass group which should be shown (0 for master groups)
     property int groupId: 0
     property string pageTitle: qsTr("Password groups")
 

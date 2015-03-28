@@ -67,7 +67,6 @@ class OwnKeepassSettings : public QObject
 
 public:
     Q_PROPERTY(QString version READ version NOTIFY versionChanged)
-    Q_PROPERTY(bool simpleMode READ simpleMode WRITE setSimpleMode NOTIFY simpleModeChanged)
     Q_PROPERTY(int defaultCryptAlgorithm READ defaultCryptAlgorithm WRITE setDefaultCryptAlgorithm NOTIFY defaultCryptAlgorithmChanged)
     Q_PROPERTY(int defaultKeyTransfRounds READ defaultKeyTransfRounds WRITE setDefaultKeyTransfRounds NOTIFY defaultKeyTransfRoundsChanged)
     Q_PROPERTY(int locktime READ locktime WRITE setLocktime NOTIFY locktimeChanged)
@@ -77,7 +76,6 @@ public:
     Q_PROPERTY(bool showUserNamePasswordOnCover READ showUserNamePasswordOnCover WRITE setShowUserNamePasswordOnCover NOTIFY showUserNamePasswordOnCoverChanged)
     Q_PROPERTY(bool lockDatabaseFromCover READ lockDatabaseFromCover WRITE setLockDatabaseFromCover NOTIFY lockDatabaseFromCoverChanged)
     Q_PROPERTY(bool copyNpasteFromCover READ copyNpasteFromCover WRITE setCopyNpasteFromCover NOTIFY copyNpasteFromCoverChanged)
-    Q_PROPERTY(bool loadLastDb READ loadLastDb WRITE setLoadLastDb NOTIFY loadLastDbChanged)
     Q_PROPERTY(int pwGenLength READ pwGenLength WRITE setPwGenLength NOTIFY pwGenLengthChanged)
     Q_PROPERTY(bool pwGenLowerLetters READ pwGenLowerLetters WRITE setPwGenLowerLetters NOTIFY pwGenLowerLettersChanged)
     Q_PROPERTY(bool pwGenUpperLetters READ pwGenUpperLetters WRITE setPwGenUpperLetters NOTIFY pwGenUpperLettersChanged)
@@ -97,8 +95,7 @@ public:
                                        bool useKeyFile,
                                        int keyFileLocation,
                                        QString keyFilePath);
-    Q_INVOKABLE void checkLoadLastDatabase();
-    Q_INVOKABLE void checkDatabaseInSimpleMode();
+    Q_INVOKABLE void loadDatabaseDetails();
 
 public:
     OwnKeepassSettings(const QString filePath, OwnKeepassHelper *helper, QObject *parent = 0);
@@ -106,8 +103,6 @@ public:
 
     QAbstractListModel* recentDatabaseModel() const { return (QAbstractListModel*)m_recentDatabaseModel.data(); }
     QString version() const { return m_version; }
-    bool simpleMode() const { return m_simpleMode; }
-    void setSimpleMode(const bool value);
     int defaultCryptAlgorithm() const { return m_defaultCryptAlgorithm; }
     void setDefaultCryptAlgorithm(const int value);
     int defaultKeyTransfRounds() const { return m_defaultKeyTransfRounds; }
@@ -126,8 +121,6 @@ public:
     void setLockDatabaseFromCover(const bool value);
     bool copyNpasteFromCover() const { return m_copyNpasteFromCover; }
     void setCopyNpasteFromCover(const bool value);
-    bool loadLastDb() const { return m_loadLastDb; }
-    void setLoadLastDb(const bool value);
     int pwGenLength() const { return m_pwGenLength; }
     void setPwGenLength(const int value);
     bool pwGenLowerLetters() const { return m_pwGenLowerLetters; }
@@ -156,12 +149,7 @@ public:
 signals:
     // Signal to QML
     void showChangeLogBanner();
-    void loadLastDatabase(int dbLocation,
-                          QString dbFilePath,
-                          bool useKeyFile,
-                          int keyFileLocation,
-                          QString keyFilePath);
-    void databaseInSimpleMode(bool databaseExists,
+    void databaseDetailsLoaded(bool databaseExists,
                               int dbLocation,
                               QString dbFilePath,
                               bool useKeyFile,
@@ -171,7 +159,6 @@ signals:
     // Signals for property
     void recentDatabaseModelChanged();
     void versionChanged();
-    void simpleModeChanged();
     void defaultCryptAlgorithmChanged();
     void defaultKeyTransfRoundsChanged();
     void locktimeChanged();
@@ -181,7 +168,6 @@ signals:
     void showUserNamePasswordOnCoverChanged();
     void lockDatabaseFromCoverChanged();
     void copyNpasteFromCoverChanged();
-    void loadLastDbChanged();
     void pwGenLengthChanged();
     void pwGenLowerLettersChanged();
     void pwGenUpperLettersChanged();
@@ -206,7 +192,6 @@ private:
     // If yes they might need to be merged into new version
     QString m_previousVersion; // this is to internally detect if the settings.ini file has an older version than the application
     QString m_version;
-    bool m_simpleMode;
     // Default encryption: AES/Rijndael = 0, Twofish = 1
     int m_defaultCryptAlgorithm;
     int m_defaultKeyTransfRounds;
@@ -218,9 +203,6 @@ private:
     bool m_lockDatabaseFromCover;
     bool m_copyNpasteFromCover;
 
-    // false: do not auto load last opened database
-    // true: load last database on startup automatically
-    bool m_loadLastDb;
     QList<QVariantMap> m_recentDatabaseList;
     int m_recentDatabaseListLength;
 
