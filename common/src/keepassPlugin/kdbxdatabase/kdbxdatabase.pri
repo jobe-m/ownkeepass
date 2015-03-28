@@ -20,25 +20,70 @@
 #**
 #***************************************************************************
 
-#QT += xml gui
+QT += gui concurrent
+
+# KeepassX 2 uses libgcrypt
+LIBS += -lgcrypt
 
 # enable preprocessor to find include paths
-INCLUDEPATH += $$PWD/../keepassx/src
+INCLUDEPATH += $$PWD/../keepassx/src $$PWD/inc
 DEPENDPATH  += $$PWD/../keepassx/src
 
 SOURCES += \
     ../common/src/keepassPlugin/keepassx/src/core/Database.cpp \
-    ../common/src/keepassPlugin/keepassx/src/core/Uuid.cpp
+    ../common/src/keepassPlugin/keepassx/src/core/Uuid.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/Entry.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/Group.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/Tools.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/Metadata.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/AutoTypeAssociations.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/EntryAttachments.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/EntryAttributes.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/TimeInfo.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/DatabaseIcons.cpp \
+    ../common/src/keepassPlugin/keepassx/src/core/FilePath.cpp \
+\
+    ../common/src/keepassPlugin/keepassx/src/keys/CompositeKey.cpp \
+\
+    ../common/src/keepassPlugin/keepassx/src/crypto/Random.cpp \
+    ../common/src/keepassPlugin/keepassx/src/crypto/CryptoHash.cpp \
+    ../common/src/keepassPlugin/keepassx/src/crypto/SymmetricCipher.cpp \
+    ../common/src/keepassPlugin/keepassx/src/crypto/SymmetricCipherGcrypt.cpp \
+    ../common/src/keepassPlugin/keepassx/src/crypto/SymmetricCipherSalsa20.cpp \
+    ../common/src/keepassPlugin/keepassx/src/crypto/salsa20/salsa20.c \
+    ../common/src/keepassPlugin/keepassx/src/crypto/Crypto.cpp \
+
 
 HEADERS += \
     ../common/src/keepassPlugin/keepassx/src/core/Database.h \
     ../common/src/keepassPlugin/keepassx/src/core/Uuid.h \
     ../common/src/keepassPlugin/keepassx/src/core/Group.h \
-    ../common/src/keepassPlugin/keepassx/src/core/Metadata.h \
+    ../common/src/keepassPlugin/keepassx/src/core/Entry.h \
     ../common/src/keepassPlugin/keepassx/src/core/Tools.h \
+    ../common/src/keepassPlugin/keepassx/src/core/Metadata.h \
+    ../common/src/keepassPlugin/keepassx/src/core/AutoTypeAssociations.h \
+    ../common/src/keepassPlugin/keepassx/src/core/EntryAttachments.h \
+    ../common/src/keepassPlugin/keepassx/src/core/EntryAttributes.h \
+    ../common/src/keepassPlugin/keepassx/src/core/Global.h \
+    ../common/src/keepassPlugin/keepassx/src/core/TimeInfo.h \
+    ../common/src/keepassPlugin/keepassx/src/core/DatabaseIcons.h \
+    ../common/src/keepassPlugin/keepassx/src/core/FilePath.h \
+\
     ../common/src/keepassPlugin/keepassx/src/keys/CompositeKey.h \
+    ../common/src/keepassPlugin/keepassx/src/keys/CompositeKey_p.h \
     ../common/src/keepassPlugin/keepassx/src/keys/Key.h \
+\
     ../common/src/keepassPlugin/keepassx/src/crypto/Random.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/CryptoHash.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/SymmetricCipher.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/SymmetricCipherGcrypt.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/SymmetricCipherSalsa20.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/salsa20/ecrypt-config.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/salsa20/ecrypt-machine.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/salsa20/ecrypt-portable.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/salsa20/ecrypt-sync.h \
+    ../common/src/keepassPlugin/keepassx/src/crypto/Crypto.h \
+\
     ../common/src/keepassPlugin/keepassx/src/format/KeePass2.h \
-
-#    ../common/src/keepassPlugin/keepassx/src/core/ \
+\
+    ../common/src/keepassPlugin/kdbxdatabase/inc/config-keepassx.h \
