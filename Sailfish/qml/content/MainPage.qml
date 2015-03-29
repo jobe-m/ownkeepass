@@ -273,8 +273,6 @@ Page {
 
                 TextSwitch {
                     id: showMoreInfoSwitch
-                    enabled: moreInfoColumn.enabled
-                    visible: enabled
                     text: qsTr("Show more details")
                 }
 
@@ -285,8 +283,8 @@ Page {
                     width: parent.width
                     spacing: 0
 
-                    Behavior on opacity { FadeAnimation { } }
-                    Behavior on height { NumberAnimation { } }
+//                    Behavior on opacity { FadeAnimation { duration: 200 } }
+//                    Behavior on height { NumberAnimation { duration: 200 } }
 
                     Label {
                         id: databasePathAndName
@@ -534,7 +532,7 @@ Page {
         function updateRecentDatabaseListModel() {
             // update recent database list
             var uiName = internal.databasePath.substring(internal.databasePath.lastIndexOf("/") + 1, internal.databasePath.length)
-            var uiPath = Global.getLocationName(internal.dbFileLocation) + internal.databasePath.substring(0, internal.databasePath.lastIndexOf("/") + 1)
+            var uiPath = internal.databasePath.substring(0, internal.databasePath.lastIndexOf("/") + 1)
             ownKeepassSettings.addRecentDatabase(uiName,
                                                  uiPath,
                                                  internal.dbFileLocation,
@@ -958,7 +956,7 @@ Page {
                     x: Theme.paddingLarge
                     width: parent.width - Theme.paddingLarge * 2
                     horizontalAlignment: Text.AlignLeft
-                    text: model.uiPath
+                    text: Global.getLocationName(model.databaseLocation) + " " + model.uiPath
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: listItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
                 }

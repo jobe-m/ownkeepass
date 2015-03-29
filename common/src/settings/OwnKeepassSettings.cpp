@@ -89,6 +89,21 @@ void OwnKeepassSettings::checkSettingsVersion()
             m_settings->removeArray("main/recentDatabases");
         }
 
+        // Version 1.1.3 fixes a bug in the recent database list
+        if ((major == 1) && (minor == 1) && (patch < 3)) {
+            m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
+            for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+                QString uiPath = m_recentDatabaseList[i]["uiPath"].toString();
+                m_recentDatabaseList[i]["uiPath"] = QVariant(uiPath.right(uiPath.length() - uiPath.lastIndexOf(": ") - 2));
+            }
+            // save changed recent Database list
+            m_settings->removeArray("main/recentDatabases");
+            for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
+                qDebug() << "changed: " << i << " - " << m_recentDatabaseList[i]["uiPath"];
+                m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
+            }
+        }
+
         // check if ownKeepass was updated and trigger to show info banner in QML
         if (m_previousVersion != INITIAL_VERSION) {
             emit showChangeLogBanner();
@@ -102,12 +117,12 @@ void OwnKeepassSettings::checkSettingsVersion()
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
     for (int i = m_recentDatabaseList.length()-1; i > 0 ; --i) {
         m_recentDatabaseModel->addRecent(m_recentDatabaseList[i]["uiName"].toString(),
-                m_recentDatabaseList[i]["uiPath"].toString(),
-                m_recentDatabaseList[i]["dbLocation"].toInt(),
-                m_recentDatabaseList[i]["dbFilePath"].toString(),
-                m_recentDatabaseList[i]["useKeyFile"].toBool(),
-                m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                m_recentDatabaseList[i]["keyFilePath"].toString());
+                                         m_recentDatabaseList[i]["uiPath"].toString(),
+                                         m_recentDatabaseList[i]["dbLocation"].toInt(),
+                                         m_recentDatabaseList[i]["dbFilePath"].toString(),
+                                         m_recentDatabaseList[i]["useKeyFile"].toBool(),
+                                         m_recentDatabaseList[i]["keyFileLocation"].toInt(),
+                                         m_recentDatabaseList[i]["keyFilePath"].toString());
     }
 }
 
@@ -166,18 +181,19 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
     if (m_recentDatabaseList.length() > 0) {
         m_recentDatabaseModel->addRecent(m_recentDatabaseList[0]["uiName"].toString(),
-                m_recentDatabaseList[0]["uiPath"].toString(),
-                m_recentDatabaseList[0]["dbLocation"].toInt(),
-                m_recentDatabaseList[0]["dbFilePath"].toString(),
-                m_recentDatabaseList[0]["useKeyFile"].toBool(),
-                m_recentDatabaseList[0]["keyFileLocation"].toInt(),
-                m_recentDatabaseList[0]["keyFilePath"].toString());
+                                         m_recentDatabaseList[0]["uiPath"].toString(),
+                                         m_recentDatabaseList[0]["dbLocation"].toInt(),
+                                         m_recentDatabaseList[0]["dbFilePath"].toString(),
+                                         m_recentDatabaseList[0]["useKeyFile"].toBool(),
+                                         m_recentDatabaseList[0]["keyFileLocation"].toInt(),
+                                         m_recentDatabaseList[0]["keyFilePath"].toString());
     }
 
     bool alreadyOnFirstPosition = false;
-    // check if the recent database is already in the list
+    // Check if the recent database is already in the list
     for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
-        if (m_recentDatabaseList[i]["uiName"].toString() == uiName && m_recentDatabaseList[i]["uiPath"].toString() == uiPath) {
+        if (m_recentDatabaseList[i]["dbLocation"].toInt() == dbLocation &&
+                m_recentDatabaseList[i]["dbFilePath"].toString() == dbFilePath) {
             // Delete it from list and re-add it below at the first position here only when it's not already on the first position
             m_recentDatabaseList.removeAt(i);
             m_recentDatabaseModel->deleteItem(i);
@@ -209,7 +225,7 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     if (!alreadyOnFirstPosition) {
         m_settings->removeArray("main/recentDatabases");
         for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
-            qDebug() << "save into settings: " << i << " - " << m_recentDatabaseList[i]["uiName"];
+//            qDebug() << "save into settings: " << i << " - " << m_recentDatabaseList[i]["uiName"];
             m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
         }
     }
