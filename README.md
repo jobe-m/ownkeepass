@@ -6,13 +6,16 @@ ownKeepass
 Status
 ------
 
-Release 1.1.1 available from [openrepos.net] [1] and warehouse app
+Release 1.1.3 available from [openrepos.net] [1] and warehouse app
+
+* Enabled handling of multiple databases on start page per default. In fact after introducing the file browser it is not neccessary to hide the database opening dialogs from the average user any more ;) So "expert mode" is gone for now.
+* Fix a bug in recent database list with localization of database location
+
+Release 1.1.1 available in Jolla store
 
 * Bugfix: File browser doesn't allow SD card selection
 * Update French and Danish translations
 * Added new translation for Norwegian Bokmål (not yet finished)
-
-Release 1.1.0 available in Jolla store (Release 1.1.1 will come shortly)
 
 Current limitations/known bugs:
 *   KeepassX 2 databases (.kdbx) are not yet supported
