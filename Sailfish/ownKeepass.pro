@@ -157,7 +157,7 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-cs_CZ.ts \
     translations/harbour-ownkeepass-da.ts \
     translations/harbour-ownkeepass-nl_NL.ts \
-    # en_GB is default language
+    translations/harbour-ownkeepass-en_GB.ts \
     translations/harbour-ownkeepass-fi_FI.ts \
     translations/harbour-ownkeepass-fr_FR.ts \
     translations/harbour-ownkeepass-de_DE.ts \

@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
     // Check if user has set language explicitly to be used in the app
     QString locale = QLocale::system().name();
     view->rootContext()->setContextProperty("DebugLocale",QVariant(locale));
+
     QTranslator translator;
     if (settingsPublic::Languages::SYSTEM_DEFAULT != okpSettings->language()) {
         switch (okpSettings->language()) {
@@ -106,7 +107,6 @@ int main(int argc, char *argv[])
         case settingsPublic::Languages::NL_NL:
             translator.load("harbour-ownkeepass-nl_NL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_EN_GB - using default ts file
         // LANG_FI_FI
         case settingsPublic::Languages::FI_FI:
             translator.load("harbour-ownkeepass-fi_FI.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
@@ -143,11 +143,13 @@ int main(int argc, char *argv[])
         case settingsPublic::Languages::UK_UA:
             translator.load("harbour-ownkeepass-uk_UA.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
+        // LANG_NB_NO
         case settingsPublic::Languages::NB_NO:
             translator.load("harbour-ownkeepass-nb_NO.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
+            // LANG_EN_GB
         default:
-            translator.load("harbour-ownkeepass.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            translator.load("harbour-ownkeepass-en_GB.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         }
         // install translator for specific language
