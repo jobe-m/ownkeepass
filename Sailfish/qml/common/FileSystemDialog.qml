@@ -103,6 +103,15 @@ Dialog {
     SilicaFlickable {
         anchors.fill: parent
 
+        PullDownMenu {
+            MenuItem {
+                text: fileBrowserListModel.showHiddenFiles ? qsTr("Hide hidden files") : qsTr("Show hidden files")
+                onClicked: {
+                    fileBrowserListModel.showHiddenFiles = !fileBrowserListModel.showHiddenFiles
+                }
+            }
+        }
+
         DialogHeader {
             id: header
             cancelText: qsTr("Cancel")
@@ -156,6 +165,8 @@ Dialog {
             height: parent.height - y
             model: fileBrowserListModel
             clip: true
+
+            VerticalScrollDecorator {}
 
             delegate: BackgroundItem {
                 id: delegate

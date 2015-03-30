@@ -90,6 +90,7 @@ public:
     Q_PROPERTY(QString breadcrumPath READ breadcrumPath NOTIFY breadcrumPathChanged)
     Q_PROPERTY(bool showDirsOnly READ showDirsOnly WRITE setShowDirsOnly NOTIFY showDirsOnlyChanged)
     Q_PROPERTY(bool validDir READ validDir NOTIFY validDirChanged)
+    Q_PROPERTY(bool showHiddenFiles READ showHiddenFiles WRITE setShowHiddenFiles NOTIFY showHiddenFilesChanged)
     Q_INVOKABLE void clear();
     Q_INVOKABLE void loadFilePath(QString path);
     Q_INVOKABLE void cd(QString path);
@@ -107,6 +108,8 @@ public:
     bool showDirsOnly() const { return m_showDirsOnly; }
     void setShowDirsOnly(const bool value) { m_showDirsOnly = value; }
     bool validDir() const { return m_valid_dir; }
+    void setShowHiddenFiles(const bool value);
+    bool showHiddenFiles() const { return m_showHiddenFiles; }
 
 signals:
     // Signal to QML
@@ -114,6 +117,7 @@ signals:
     void breadcrumPathChanged();
     void showDirsOnlyChanged();
     void validDirChanged();
+    void showHiddenFilesChanged();
 
 private:
     bool sdCardExists();
@@ -130,6 +134,7 @@ private:
     QString m_breadcrum_path;
     bool m_showDirsOnly;
     bool m_valid_dir;
+    bool m_showHiddenFiles;
 };
 
 #endif // FILEBROWSERPLUGIN_H

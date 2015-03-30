@@ -562,31 +562,41 @@
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
+        <source>Hide hidden files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
+        <source>Show hidden files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="117"/>
         <source>Cancel</source>
         <translation>Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="132"/>
         <source>New file name</source>
         <translation>Uusi tiedostonimi</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="124"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="133"/>
         <source>Enter new file name</source>
         <translation>Anna uusi tiedostonimi</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="187"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="198"/>
         <source>Back</source>
         <translation>Takaisin</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="232"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="243"/>
         <source>Open</source>
         <translation>Avaa</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="240"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="251"/>
         <source>Create</source>
         <translation>Luo</translation>
     </message>
