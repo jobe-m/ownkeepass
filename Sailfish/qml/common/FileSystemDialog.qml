@@ -105,7 +105,11 @@ Dialog {
 
         PullDownMenu {
             MenuItem {
-                text: fileBrowserListModel.showHiddenFiles ? qsTr("Hide hidden files") : qsTr("Show hidden files")
+                text: fileBrowserListModel.showHiddenFiles ?
+                    //: Used in file browser to hide the system files
+                    qsTr("Hide system files") :
+                    //: Used in file browser to show the hidden system files
+                    qsTr("Show system files")
                 onClicked: {
                     fileBrowserListModel.showHiddenFiles = !fileBrowserListModel.showHiddenFiles
                 }
