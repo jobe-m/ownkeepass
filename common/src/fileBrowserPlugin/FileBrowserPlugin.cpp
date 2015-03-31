@@ -22,6 +22,7 @@
 
 #include <QTextStream>
 #include <QStandardPaths>
+#include <QTranslator>
 #include "FileBrowserPlugin.h"
 
 
@@ -44,17 +45,17 @@ void FileBrowserListModel::appendRootElements()
     // Fill with root elements
     beginInsertRows(QModelIndex(), 0, 2);
     m_items.append(fileBrowserPlugin::FileBrowserItem(1,
-                                                      QString("Home"),
+                                                      QString("..1"),
                                                       QString("home"),
                                                       QStandardPaths::standardLocations(QStandardPaths::HomeLocation)[0],
                                                       true));
     m_items.append(fileBrowserPlugin::FileBrowserItem(2,
-                                                      QString("SD Card"),
+                                                      QString("..2"),
                                                       QString("pin"),
                                                       getSdCardPath(),
                                                       sdCardExists()));
     m_items.append(fileBrowserPlugin::FileBrowserItem(3,
-                                                      QString("Android Storage"),
+                                                      QString("..3"),
                                                       QString("folder"),
                                                       QString("/data/sdcard"),
                                                       true));

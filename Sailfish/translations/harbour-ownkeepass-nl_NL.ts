@@ -586,17 +586,32 @@
         <translation>Vul nieuwe bestandsnaam in</translation>
     </message>
     <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
+        <source>Home</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
+        <source>SD Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="201"/>
+        <source>Android Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="198"/>
         <source>Back</source>
         <translation>Terug</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="243"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="247"/>
         <source>Open</source>
         <translation>Openen</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="251"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="255"/>
         <source>Create</source>
         <translation>Creëren</translation>
     </message>
@@ -611,19 +626,32 @@
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="112"/>
-        <source>Home:</source>
+        <source>Home</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation>Persoonlijke map:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="114"/>
-        <source>SD Card:</source>
-        <translation>SD-kaart:</translation>
+        <source>SD Card</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="116"/>
+        <source>Android Storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Home:</source>
+        <extracomment>Like the user home folder in linux/unix</extracomment>
+        <translation type="vanished">Persoonlijke map:</translation>
+    </message>
+    <message>
+        <source>SD Card:</source>
+        <translation type="vanished">SD-kaart:</translation>
+    </message>
+    <message>
         <source>Android Storage:</source>
-        <translation>Android-opslag:</translation>
+        <translation type="vanished">Android-opslag:</translation>
     </message>
 </context>
 <context>

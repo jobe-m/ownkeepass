@@ -55,6 +55,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.4 Show hidden files in file browser</b>\
+<ul>\
+<li>Now it is also possible to select hidden files and folders from file browser</li>\
+<li>Bugfix for language seletion: English could not be selected if system language was not set to English</li>\
+</ul>\
+<br>\
 <b>v1.1.3 Unified start page</b>\
 <ul>\
 <li>Enabled handling of multiple databases on start page per default. In fact after introducing the file \

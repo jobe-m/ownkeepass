@@ -195,7 +195,11 @@ Dialog {
                     id: label
                     x: icon.x + icon.width + 6
                     y: icon.y - icon.height + 6
-                    text: model.file !== ".." ? model.file : qsTr("Back")
+                    text: model.file === ".." ? qsTr("Back") :
+                              model.file === "..1" ? qsTr("Home") :
+                              model.file === "..2" ? qsTr("SD Card") :
+                              model.file === "..3" ? qsTr("Android Storage") :
+                              model.file
                     anchors.verticalCenter: parent.verticalCenter
                     color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
 
