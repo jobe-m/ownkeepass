@@ -109,7 +109,7 @@ function getLocationName(value) {
         return qsTr("Nothing selected yet")
     case 1:
         //: Like the user home folder in linux/unix
-        return qsTr("Home") + (": ")
+        return qsTr("Device Memory") + (": ")
     case 2:
         return qsTr("SD Card") + (": ")
     case 3:

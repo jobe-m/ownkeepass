@@ -24,13 +24,13 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 HelpPage {
-    //: Removed one sentence in section "Use key file"
+    //: Removed one sentence in section "Use key file", Changed "Home" to "Device Memory", Removed section for "Open automatically", changed <UUID> to &lt;UUID&gt; so that it will be actually shown ;)
     text: qsTr("Here you can open an existing Keepass database file.<br><br>\
 \
 Use the file browser to search for your Keepass database file. You will be able to look into the \
-following locations: Home, SD card and Android storage. If you have trouble \
+following locations: Device Memory, SD card and Android storage. If you have trouble \
 with ownKeepass not finding the file please make sure to place it in below mentioned paths. \
-\"Home\" is usually \"%1\". If a SD card is inserted in your phone it is located at \"/media/sdcard/<UUID>\". \
+\"Device Memory\" is located at \"%1\". If a SD card is inserted in your phone it is located at \"/media/sdcard/&lt;UUID&gt;\". \
 (Please note that SD cards with more than one partition are not supported.) \"Android storage\" \
 is located at \"%2\".<br><br>\
 \
@@ -43,12 +43,7 @@ If you need a key file for opening your Keepass database please check this optio
 \
 <b>Master password</b><br><br>\
 \
-Type in here the password for your Keepass database.<br><br>\
-\
-<b>Open automatically</b><br><br>\
-\
-Check this option if you want that ownKeepass automatically opens this database again when you start the application the \
-next time. You will be forwarded directly to the password query dialog.<br><br>")
+Type in here the password for your Keepass database.<br><br>")
     .arg(ownKeepassHelper.getHomePath())
     .arg(ownKeepassHelper.getAndroidStoragePath())
 }

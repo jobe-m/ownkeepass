@@ -24,10 +24,11 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 HelpPage {
+    //: Changed "home drive on the phone" to "Device Memory", removed section for "Open automatically"
     text: qsTr("On this page you can create a new database where ownKeepass will store your sensitive data.<br><br>\
 \
-Open the file browser and choose a file name and a directory. You can choose to locate your database in the home \
-directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD \
+Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, \
+on the SD card or in the Android Storage. If the SD card entry is grey then no SD \
 card is inserted or the card is not correctly detected by the System. There should be only one \
 formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. \
 \"Android storage\" is there to share the database with Android Apps. \
@@ -47,10 +48,5 @@ becomes in principle stronger against attacks. You can use for example a random 
 \
 Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 \
 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the \
-\"Confirm Password\" field.<br><br>\
-\
-<b>Open automatically</b><br><br>\
-\
-Check this option if you want that ownKeepass automatically opens this database again when you start the application the \
-next time. You will be forwarded directly to the password query dialog.<br><br>")
+\"Confirm Password\" field.<br><br>")
 }

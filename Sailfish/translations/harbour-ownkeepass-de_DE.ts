@@ -206,7 +206,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerfen</translation>
+        <translation>Verwerfen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerfen</translation>
+        <translation>Verwerfen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerfen</translation>
+        <translation>Verwerfen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
@@ -550,48 +550,36 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Wenn diese Einstellung gesetzt ist, kannst Du direkt vom Cover aus den Benutzernamen und das Passwort des aktuell geöffneten Passworteintrags in die Zwischenablage kopieren.</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">Erweiterte Einstellungen</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">Expertenmodus</translation>
-    </message>
-    <message>
-        <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="vanished">Diese Einstellung aktiviert den Expertenmodus, bei dem man zwischen mehreren Keepass Datenbanken auf der Startseite wechseln kann</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
         <source>Problem with SD card</source>
-        <translation>Problem mit der SD Karte</translation>
+        <translation>Problem mit der Speicherkarte</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation>SD Karten mit mehreren Partitionen werden nicht unterstützt.</translation>
+        <translation>Speicherkarten mit mehreren Partitionen werden nicht unterstützt.</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Systemdateien ausblenden</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Systemdateien anzeigen</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="122"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Auswählen</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
@@ -609,17 +597,18 @@
         <translation>Neuen Dateinamen angeben</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="205"/>
-        <source>Home</source>
-        <translation>Benutzerverzeichnis</translation>
-    </message>
-    <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="206"/>
-        <source>SD Card</source>
-        <translation>SD Karte</translation>
+        <source>Device Memory</source>
+        <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
+        <translation>Gerätespeicher</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="207"/>
+        <source>SD Card</source>
+        <translation>Speicherkarte</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>Android Storage</source>
         <translation>Android Umgebung</translation>
     </message>
@@ -627,14 +616,6 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
         <source>Back</source>
         <translation>Zurück</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">Öffnen</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">Neu anlegen</translation>
     </message>
 </context>
 <context>
@@ -647,32 +628,19 @@
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="112"/>
-        <source>Home</source>
+        <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation>Benutzerverzeichnis</translation>
+        <translation>Gerätespeicher</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card</source>
-        <translation>SD Karte</translation>
+        <translation>Speicherkarte</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
         <translation>Android Umgebung</translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="vanished">Home:</translation>
-    </message>
-    <message>
-        <source>SD Card:</source>
-        <translation type="vanished">SD Karte:</translation>
-    </message>
-    <message>
-        <source>Android Storage:</source>
-        <translation type="vanished">Android Umgebung:</translation>
     </message>
 </context>
 <context>
@@ -761,9 +729,10 @@
 <context>
     <name>HelpCreateNewDatabase</name>
     <message>
-        <location filename="../qml/help/HelpCreateNewDatabase.qml" line="27"/>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation>Auf dieser Seite kannst Du eine neue Datenbank anlegen in der ownKeepass deine sensiblen Daten speichern kann.&lt;br&gt;&lt;br&gt;Öffne dazu den Dateibrowser und gib dort einen Dateinamen und ein Verzeichnis an. Du kannst dabei wählen, ob deine Datenbank in dem Home Verzeichnis im Telefonspeicher, auf der SD Karte oder in der Android Umgebung gespeichert werden soll. Wenn der Eintrag für die SD Karte hellgrau hinterlegt ist, ist entweder keine Speicherkarte eingelegt oder sie wird nicht korrekt vom System erkannt. Die Speicherkarte sollte nur eine einzelne formatierte Partition besitzen, da zur Zeit Speicherkarten mit mehreren Partitionen von ownKeepass nicht unterstützt werden. Wenn Du die Keepass Datenbank zusammen mit Android Apps benutzen willst, speichere sie in die Android Umgebung. Bitte beachte jedoch, dass das gemeinsame Benutzen von Dateien mit Android Apps aufgrund von Dateizugriffsrechten nicht immer funktioniert. Du musst unter Umständen im Terminal die Dateirechte von Hand anpassen.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank online speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du zusätzlich zum Zugangspasswort deiner Keepass Datenbank eine Schlüsseldatei zum Öffnen verwenden möchtest. Diese Datei kann zum Beispiel ein zufälliges Foto sein. Mit der Benutzung einer Schlüsseldatei, die selbst aus einer enormen Menge an quasi zufälligen Daten besteht, wird der generierte Schlüssel im Prinzip sicherer gegenüber einem Angriff auf den Datenbankschlüssel.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen deiner neuen Datenbank ein. Wähle ein langes und sicheres Passwort, das aus ungefähr 10 - 15 Zeichen besteht und verwende eine Mischung aus Klein- und Grossbuchstaben, Nummern und Sonderzeichen. Wiederhole das Zugangspasswort in dem Feld &quot;Passwort bestätigen&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
+        <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
+        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
+        <extracomment>Changed &quot;home drive on the phone&quot; to &quot;Device Memory&quot;, removed section for &quot;Open automatically&quot;</extracomment>
+        <translation>Auf dieser Seite kannst Du eine neue Datenbank anlegen in der ownKeepass deine sensiblen Daten speichern kann.&lt;br&gt;&lt;br&gt;Öffne dazu den Dateibrowser und gib dort einen Dateinamen und ein Verzeichnis an. Du kannst dabei wählen, ob deine Datenbank im Gerätespeicher, auf der Speicherkarte oder in der Android Umgebung gespeichert werden soll. Wenn der Eintrag für die Speicherkarte hellgrau hinterlegt ist, ist entweder keine Speicherkarte eingelegt oder sie wird nicht korrekt vom System erkannt. Die Speicherkarte sollte nur eine einzelne formatierte Partition besitzen, da zur Zeit Speicherkarten mit mehreren Partitionen von ownKeepass nicht unterstützt werden. Wenn Du die Keepass Datenbank zusammen mit Android Apps benutzen willst, speichere sie in die Android Umgebung. Bitte beachte jedoch, dass das gemeinsame Benutzen von Dateien mit Android Apps aufgrund von Dateizugriffsrechten nicht immer funktioniert. Du musst unter Umständen im Terminal die Dateirechte von Hand anpassen.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank online speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du zusätzlich zum Zugangspasswort deiner Keepass Datenbank eine Schlüsseldatei zum Öffnen verwenden möchtest. Diese Datei kann zum Beispiel ein zufälliges Foto sein. Mit der Benutzung einer Schlüsseldatei, die selbst aus einer enormen Menge an quasi zufälligen Daten besteht, wird der generierte Schlüssel im Prinzip sicherer gegenüber einem Angriff auf den Datenbankschlüssel.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen deiner neuen Datenbank ein. Wähle ein langes und sicheres Passwort, das aus ungefähr 10 - 15 Zeichen besteht und verwende eine Mischung aus Klein- und Grossbuchstaben, Nummern und Sonderzeichen. Wiederhole das Zugangspasswort in dem Feld &quot;Passwort bestätigen&quot;.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -779,7 +748,7 @@
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. The used database format is compatible to Keepass version 1. That means you can use Keepass [1] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is planned for a future release of ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass especially on the settings pages.&lt;br&gt;&lt;br&gt;&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like Advanced Encryption Standard (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords. Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of: &lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sharing Keepass database between your Jolla phone and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your phone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.&lt;br&gt;&lt;br&gt;&lt;b&gt;What to expect in future versions of ownKeepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;I don&apos;t want to set it in stone yet but here is a list of features you might see in future versions of ownKeepass:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Built-in sync of database file with a WebDAV server like ownCloud&lt;/li&gt;&lt;li&gt;If feasible auto-type of username and passwords into web page&lt;/li&gt;&lt;li&gt;Support for Keepass version 2 database files&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</source>
-        <translation>ownKeepass ist eine Passwort Safe Applikation mit dem Zweck sensible Daten wie Passwörter für Internet Seiten, Kreditkartennummern, PINs, TANs u.s.w vor unbefugtem Zugriff zu schützen. All diese Informationen werden in einer Datenbank gespeichert, die verschlüsselt auf dem Smartphone lokal gespeichert ist. Um auf die Informationen in dieser Datenbank zugreifen zu können muss man im Besitz des Zugangspasswort für die Datenbank sein. Das Datenbankformat ist kompatibel mit Verion 1 von Keepass. Das bedeutet, dass Du mit Keepass [1] auf deinem Arbeitsplatzrechner die Datenbank ebenfalls entschlüsseln und öffnen kannst.&lt;br&gt;&lt;br&gt;Bitte beachte, dass ownKeepass zur Zeit nicht mit Datenbanken von Keepass Version 2 umgehen kann. Dies habe ich mir für eine zukünftige Version von ownKeepass auf meine ToDo-Liste gesetzt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Benutzung der Hilfeseiten&lt;/b&gt;&lt;br&gt;&lt;br&gt;Auf einigen Seiten in ownKeepass findest Du im unteren Menü eigene Hilfetexte. Bitte mache davon Gebrauch um die Funktionalitäten von ownKeepass optimal auszunutzen, besonders auf den Einstellungsseiten.&lt;br&gt;&lt;br&gt;&lt;b&gt;Einige Worte über die Sicherheit der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Der Quelltext vom Datenbankzugriff in ownKeepass wurde vom KeepassX project [2] übernommen und enthält daher viele sicherheitskritische Eigenschaften. Es benutzt die als sicher bekannten Verschlüsselungsalgorithmen Advanced Encryption Standard (AES/Rijndael) oder Twofish mit 128 Bit Blockgrösse und 256 Bit Schlüsselgrösse, SHA-256 als Hashing Algorithmus und hält alle Passwörter verschlüsselt im (RAM) Speicher. Darüberhinaus schützt es das Zugangspasswort gegen Brute-Force- und Wörterbuchatacken durch mehrfach nacheinander durchgeführte Hash- und Verschlüsselungsberechnungen auf dem Zugangspasswort selbst bevor es zum entschlüsseln der Keepass Datenbank verwendet wird. Dieses vorgehen wird auch Schlüsselumwandlung genannt. Die Anzahl der Umwandlungsrunden kann in den Datenbankeinstellungen geändert werden.&lt;br&gt;&lt;br&gt;Aber letztendlich bieten alle oben genannten Eigenschaften lediglich einen Zusätzlichen Schutz gegenüber zwei entscheidenden Punkten:&lt;br&gt;(1) Benutze immer ein langes und schwer zu erratendes Zugangspasswort.&lt;br&gt;(2) Schütze dein System vor Spyware, die darauf spezialisiert ist ownKeepass anzugreifen.&lt;br&gt; Der zweite Punkt ist die Regel Nummer 1 von &quot;Die 10 unvergänglichen Gesetzte zur Sicherheit&quot; [3]: &quot;Wenn ein Bösewicht dich dazu bringt sein Programm auf deinem Computer laufen zu lassen, ist es nicht mehr dein Computer&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Gemeinsame Nutzung der Keepass Datenbank auf deinem Jolla Phone und Desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;Das Keepass Datenbank Format is perfekt dazu geeignet, um deinen Passwort Safe auf verschiedenen Geräten zu öffnen, wie z.B. Telefone, Tablets und Desktop PCs, da viele verschiedene Implementierungen von Keepass für diese Geräte existieren. Auf der Download Seite von Keepass [4] bekommst Du die Keepass Classic Version 1 für den Desktop PC. Dort findest Du auch eine Liste von alternativen Keepass Implementierungen und Programmen, die mit dem Keepass Datenbank Format kompatibel sind. Ich möchte an dieser Stelle auf KeepassX Version 0.4.3 [2] verweisen, das ebenfalls mit der Keepass Version 1 kompatibel ist.&lt;br&gt;Du kannst deine Keepass Datenbankdatei über eine SD Karte oder über einen Online-Speicher (z.B. Dropbox und ownCloud) zwischen den Geräten teilen. Wenn Du deine Datenbank online teilst, möchte ich dir raten, dass Du zusätzlich zum Zugangspasswort auch eine Schlüsseldatei benutzt. Diese zusätzliche Schlüsseldatei wird zum Öffnen und Entschlüsseln der Datenbank verwendet. Speichere diese Schlüsseldatei nur lokal auf deinen Geräten und lade sie niemals über das Internet auf einen externen Speicher. Falls ein Bösewicht einen Online-Speicher kapert und in den Besitz deiner Keepass Datenbank kommt, seht er vor der Schwierigkeit den Inhalt der Schlüsseldatei zu erraten. Da dieses Unterfangen aufgrund der Datenmenge der Schlüsseldatei schier unmöglich ist macht es deine Keepass Datei noch etwas sicherer.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ausblick auf zukünftige Versionen von ownKeepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ich möchte es nicht in Stein meisseln, aber hier ist eine Liste von Dingen, die vielleicht eines Tages in einer kommenden Version von ownKeepass implementiert sein werden:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Eingebauter Datei-Sync der Datenbank über einen WegbDAV Server, wie ownCloud&lt;/li&gt;&lt;li&gt;(Falls es möglich ist) Automatisches Eingeben (Auto-Type) von Benutzernamen und Passwort in Webseiten&lt;/li&gt;&lt;li&gt;Unterstützung von Keepass Version 2 Datenbanken&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;Ja, ja -ich weiss- vielleicht ein bischen zu ambitioniert ;)&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</translation>
+        <translation>ownKeepass ist eine Passwort Safe Applikation mit dem Zweck sensible Daten wie Passwörter für Internet Seiten, Kreditkartennummern, PINs, TANs u.s.w vor unbefugtem Zugriff zu schützen. All diese Informationen werden in einer Datenbank gespeichert, die verschlüsselt auf dem Smartphone lokal gespeichert ist. Um auf die Informationen in dieser Datenbank zugreifen zu können muss man im Besitz des Zugangspasswort für die Datenbank sein. Das Datenbankformat ist kompatibel mit Verion 1 von Keepass. Das bedeutet, dass Du mit Keepass [1] auf deinem Arbeitsplatzrechner die Datenbank ebenfalls entschlüsseln und öffnen kannst.&lt;br&gt;&lt;br&gt;Bitte beachte, dass ownKeepass zur Zeit nicht mit Datenbanken von Keepass Version 2 umgehen kann. Dies habe ich mir für eine zukünftige Version von ownKeepass auf meine ToDo-Liste gesetzt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Benutzung der Hilfeseiten&lt;/b&gt;&lt;br&gt;&lt;br&gt;Auf einigen Seiten in ownKeepass findest Du im unteren Menü eigene Hilfetexte. Bitte mache davon Gebrauch um die Funktionalitäten von ownKeepass optimal auszunutzen, besonders auf den Einstellungsseiten.&lt;br&gt;&lt;br&gt;&lt;b&gt;Einige Worte über die Sicherheit der Keepass Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Der Quelltext vom Datenbankzugriff in ownKeepass wurde vom KeepassX project [2] übernommen und enthält daher viele sicherheitskritische Eigenschaften. Es benutzt die als sicher bekannten Verschlüsselungsalgorithmen Advanced Encryption Standard (AES/Rijndael) oder Twofish mit 128 Bit Blockgrösse und 256 Bit Schlüsselgrösse, SHA-256 als Hashing Algorithmus und hält alle Passwörter verschlüsselt im (RAM) Speicher. Darüberhinaus schützt es das Zugangspasswort gegen Brute-Force- und Wörterbuchatacken durch mehrfach nacheinander durchgeführte Hash- und Verschlüsselungsberechnungen auf dem Zugangspasswort selbst bevor es zum entschlüsseln der Keepass Datenbank verwendet wird. Dieses vorgehen wird auch Schlüsselumwandlung genannt. Die Anzahl der Umwandlungsrunden kann in den Datenbankeinstellungen geändert werden.&lt;br&gt;&lt;br&gt;Aber letztendlich bieten alle oben genannten Eigenschaften lediglich einen Zusätzlichen Schutz gegenüber zwei entscheidenden Punkten:&lt;br&gt;(1) Benutze immer ein langes und schwer zu erratendes Zugangspasswort.&lt;br&gt;(2) Schütze dein System vor Spyware, die darauf spezialisiert ist ownKeepass anzugreifen.&lt;br&gt; Der zweite Punkt ist die Regel Nummer 1 von &quot;Die 10 unvergänglichen Gesetzte zur Sicherheit&quot; [3]: &quot;Wenn ein Bösewicht dich dazu bringt sein Programm auf deinem Computer laufen zu lassen, ist es nicht mehr dein Computer&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Gemeinsame Nutzung der Keepass Datenbank auf deinem Jolla Phone und Desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;Das Keepass Datenbank Format is perfekt dazu geeignet, um deinen Passwort Safe auf verschiedenen Geräten zu öffnen, wie z.B. Telefone, Tablets und Desktop PCs, da viele verschiedene Implementierungen von Keepass für diese Geräte existieren. Auf der Download Seite von Keepass [4] bekommst Du die Keepass Classic Version 1 für den Desktop PC. Dort findest Du auch eine Liste von alternativen Keepass Implementierungen und Programmen, die mit dem Keepass Datenbank Format kompatibel sind. Ich möchte an dieser Stelle auf KeepassX Version 0.4.3 [2] verweisen, das ebenfalls mit der Keepass Version 1 kompatibel ist.&lt;br&gt;Du kannst deine Keepass Datenbankdatei über eine Speicherkarte oder über einen Online-Speicher (z.B. Dropbox und ownCloud) zwischen den Geräten teilen. Wenn Du deine Datenbank online teilst, möchte ich dir raten, dass Du zusätzlich zum Zugangspasswort auch eine Schlüsseldatei benutzt. Diese zusätzliche Schlüsseldatei wird zum Öffnen und Entschlüsseln der Datenbank verwendet. Speichere diese Schlüsseldatei nur lokal auf deinen Geräten und lade sie niemals über das Internet auf einen externen Speicher. Falls ein Bösewicht einen Online-Speicher kapert und in den Besitz deiner Keepass Datenbank kommt, seht er vor der Schwierigkeit den Inhalt der Schlüsseldatei zu erraten. Da dieses Unterfangen aufgrund der Datenmenge der Schlüsseldatei schier unmöglich ist macht es deine Keepass Datei noch etwas sicherer.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ausblick auf zukünftige Versionen von ownKeepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ich möchte es nicht in Stein meisseln, aber hier ist eine Liste von Dingen, die vielleicht eines Tages in einer kommenden Version von ownKeepass implementiert sein werden:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Eingebauter Datei-Sync der Datenbank über einen WegbDAV Server, wie ownCloud&lt;/li&gt;&lt;li&gt;(Falls es möglich ist) Automatisches Eingeben (Auto-Type) von Benutzernamen und Passwort in Webseiten&lt;/li&gt;&lt;li&gt;Unterstützung von Keepass Version 2 Datenbanken&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;Ja, ja -ich weiss- vielleicht ein bischen zu ambitioniert ;)&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -794,9 +763,9 @@
     <name>HelpOpenNewDatabase</name>
     <message>
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
-        <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Removed one sentence in section &quot;Use key file&quot;</extracomment>
-        <translation>Hier kannst du eine bestehende Keepass Datenbank öffnen.&lt;br&gt;&lt;b&gt;Bitte benutze den Dateibrowser um eine Datenbankdatei auszuwählen. Du kannst dabei auf die folgenden Specherorte zugreifen: Home, SD Karte und Android Umgebung. Falls Du deine Datenbank nicht findest, überprüfe ob du sie in einem der folgenen Pfade abgelegt hast. Home im Telefonspeicher befinden sich unter &quot;%1&quot;. Wenn eine Speicherkarte in dein Smartphone eingelegt ist, befindet sie sich unter &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Bitte beachte, dass Speicherkarten mit mehr als einer Partition nicht unterstützt werden.) Die Android Umgebung befindet sich unter &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank online speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du eine Schlüsseldatei zum Öffnen deiner Keepass Datenbank benötigst.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen der Datenbank ein.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch öffnen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wähle diese Einstellung aus, wenn Du möchtest, dass ownKeepass beim nächsten starten automatisch die Passworteingabeseite für diese Keepass Datenbank öffnen soll.&lt;br&gt;&lt;br&gt;</translation>
+        <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Device Memory, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Device Memory&quot; is located at &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;</source>
+        <extracomment>Removed one sentence in section &quot;Use key file&quot;, Changed &quot;Home&quot; to &quot;Device Memory&quot;, Removed section for &quot;Open automatically&quot;, changed &lt;UUID&gt; to &amp;lt;UUID&amp;gt; so that it will be actually shown ;)</extracomment>
+        <translation>Hier kannst du eine bestehende Keepass Datenbank öffnen.&lt;br&gt;&lt;br&gt;Bitte benutze den Dateibrowser um eine Datenbankdatei auszuwählen. Du kannst dabei auf die folgenden Specherorte zugreifen: Gerätespeicher, Speicherkarte und Android Umgebung. Falls Du deine Datenbank nicht findest, überprüfe ob du sie in einem der folgenen Pfade abgelegt hast. Der Gerätespeicher befinden sich unter &quot;%1&quot;. Wenn eine Speicherkarte in dein Smartphone eingelegt ist, befindet sie sich unter &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Bitte beachte, dass Speicherkarten mit mehr als einer Partition nicht unterstützt werden.) Die Android Umgebung befindet sich unter &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Ein guter Rat: Wenn Du deine Keepass Datenbank online speicherst, stelle sicher, dass Du zusätzlich zum Zugangspasswort der Datenbank eine lokal gespeicherte Schlüsseldatei verwendest. Aus Sicherheitsgründen sollte diese Schlüsseldatei niemals in irgendeinen Onlinespeicher hochgeladen werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Schlüsseldatei benutzen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Markiere dieses Kontrollfeld, falls Du eine Schlüsseldatei zum Öffnen deiner Keepass Datenbank benötigst.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zugangspasswort&lt;/b&gt;&lt;br&gt;&lt;br&gt;Bitte gebe hier das Passwort zum Öffnen der Datenbank ein.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -906,12 +875,12 @@
     <message>
         <location filename="../qml/Main.qml" line="82"/>
         <source>Problem with SD card</source>
-        <translation>Problem mit der SD Karte</translation>
+        <translation>Problem mit der Speicherkarte</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="83"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation>SD Karten mit mehreren Partitionen werden nicht unterstützt.</translation>
+        <translation>Speicherkarten mit mehreren Partitionen werden nicht unterstützt.</translation>
     </message>
 </context>
 <context>
@@ -947,10 +916,6 @@
         <translation>Weitere Details anzeigen</translation>
     </message>
     <message>
-        <source>Database path and name</source>
-        <translation type="vanished">Dateipfad und -name der Datenbank</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
         <source>Key file path and name</source>
         <translation>Dateipfad und -name der Schlüsseldatei</translation>
@@ -979,13 +944,13 @@
         <location filename="../qml/content/MainPage.qml" line="353"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad und -name der neuen Datenbank</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad und -name der Datenbank</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="499"/>
@@ -1163,7 +1128,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerfen</translation>
+        <translation>Verwerfen</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
@@ -1216,7 +1181,7 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
         <source>Cancel</source>
-        <translation type="unfinished">Abbruch</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
@@ -1237,10 +1202,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
         <translation>Passwort bestätigen</translation>
-    </message>
-    <message>
-        <source>Open automatically</source>
-        <translation type="vanished">Automatisch öffnen</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
@@ -1274,41 +1235,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Gib das Passwort zum entsperren deiner Keepass Datenbank ein:</translation>
-    </message>
-</context>
-<context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">Neue Datenbank</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">Datenbank öffnen</translation>
-    </message>
-    <message>
-        <source>Type in a name for your new Keepass database:</source>
-        <translation type="vanished">Gib einen Namen für deine neue Keepassdatenbank ein:</translation>
-    </message>
-    <message>
-        <source>(Optional) Type in a name for a key file:</source>
-        <translation type="vanished">(Optional) Wähle eine Schlüsseldatei aus:</translation>
-    </message>
-    <message>
-        <source>Change location where the Keepass database file will be saved:</source>
-        <translation type="vanished">Ort zum Speichern der Keepassdatenbank ändern:</translation>
-    </message>
-    <message>
-        <source>Change location where the key file will be saved:</source>
-        <translation type="vanished">Ort zum Speichern der Schlüsseldatei ändern:</translation>
-    </message>
-    <message>
-        <source>Choose Keepass database file:</source>
-        <translation type="vanished">Keepassdatenbank auswählen:</translation>
-    </message>
-    <message>
-        <source>(Optional) Choose key file:</source>
-        <translation type="vanished">(Optional) Schlüsseldatei auswählen:</translation>
     </message>
 </context>
 <context>

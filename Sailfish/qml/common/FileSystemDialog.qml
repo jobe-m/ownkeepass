@@ -30,7 +30,7 @@ Dialog {
 
     // Index for location
     // 0 - No location / Don't change location
-    // 1 - Home
+    // 1 - Device Memory
     // 2 - SD Card
     // 3 - Android Storage
     property int locationIndex: 0
@@ -202,7 +202,8 @@ Dialog {
                     x: icon.x + icon.width + 6
                     y: icon.y - icon.height + 6
                     text: model.file === ".." ? qsTr("Back") :
-                              model.file === "..1" ? qsTr("Home") :
+                              //: "Device Memory" is used in the file browser and means all files which are saved under home folder of the user
+                              model.file === "..1" ? qsTr("Device Memory") :
                               model.file === "..2" ? qsTr("SD Card") :
                               model.file === "..3" ? qsTr("Android Storage") :
                               model.file
