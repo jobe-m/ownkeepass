@@ -194,7 +194,7 @@
 <context>
     <name>EditDatabaseSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="78"/>
         <source>Database Settings</source>
         <translation>Nastavení databáze</translation>
     </message>
@@ -204,48 +204,53 @@
         <translation>Uložit</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="81"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
+        <source>Discard</source>
+        <translation type="unfinished">Zahodit</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
         <source>Change settings of your currently opened Keepass database here</source>
         <translation>Zde změňte nastavení nyní otevřené databáze ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="89"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
         <translation>Poznámka: Tím že zde změníte hlavní heslo, budete si je muset, příště až otevřete databázi Keepass, zapamatovat!</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
         <source>Master password</source>
         <translation>Hlavní heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="101"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="102"/>
         <source>Change master password</source>
         <translation>Změnit hlavní heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
         <source>Master password confirmed</source>
         <translation>Hlavní heslo potvrzeno</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="128"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="129"/>
         <source>Confirm master password</source>
         <translation>Potvrdit hlavní heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="142"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="143"/>
         <source>Encryption currently in use:</source>
         <translation>Nyní používané šifrování:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="165"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="166"/>
         <source>Key transformation rounds</source>
         <translation>Kola proměny klíče</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="180"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Nastavení této hodnoty na vyšší zvýší délku času, po který se databáze Keepass otevírá, ale učiní jej daleko odolnějším proti útokům hrubou silou</translation>
     </message>
@@ -258,68 +263,73 @@
         <translation>Uložit</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="100"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
+        <source>Discard</source>
+        <translation type="unfinished">Zahodit</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
         <source>Create new password entry:</source>
         <translation>Vytvořit nový heslový záznam:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="102"/>
         <source>Edit password entry:</source>
         <translation>Upravit heslový záznam:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="108"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="109"/>
         <source>Title</source>
         <translation>Název</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="111"/>
         <source>Set title (mandatory)</source>
         <translation>Nastavit název (povinné)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="127"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>URL</source>
         <translation>Adresa (URL)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="129"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set URL</source>
         <translation>Nastavit adresu (URL)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="144"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="145"/>
         <source>Username</source>
         <translation>Uživatelské jméno</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="146"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>Set username</source>
         <translation>Nastavit uživatelské jméno</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="169"/>
         <source>Password</source>
         <translation>Heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="170"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="171"/>
         <source>Set password</source>
         <translation>Nastavit heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="210"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="211"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
         <source>Verify password</source>
         <translation>Ověřit heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="246"/>
         <source>Comment</source>
         <translation>Poznámka</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="247"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="248"/>
         <source>Set comment</source>
         <translation>Nastavit poznámku</translation>
     </message>
@@ -332,22 +342,27 @@
         <translation>Uložit</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="66"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
+        <source>Discard</source>
+        <translation type="unfinished">Zahodit</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
         <source>Type in a name for the new group:</source>
         <translation>Zadejte název nové skupiny:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="68"/>
         <source>Change name of group:</source>
         <translation>Změnit název skupiny:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="73"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="74"/>
         <source>Name of group</source>
         <translation>Název skupiny</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="75"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="76"/>
         <source>Set name of group</source>
         <translation>Nastavit název skupiny</translation>
     </message>
@@ -561,59 +576,65 @@
         <translation>Karty SD s více diskovými oddíly nejsou podporovány.</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
-        <source>Hide hidden files</source>
+        <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
+        <source>Hide system files</source>
+        <extracomment>Used in file browser to hide the system files</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
-        <source>Show hidden files</source>
+        <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
+        <source>Show system files</source>
+        <extracomment>Used in file browser to show the hidden system files</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="117"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="122"/>
+        <source>Select</source>
+        <extracomment>As in select file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="132"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="138"/>
         <source>New file name</source>
         <translation>Nový název souboru</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="133"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="139"/>
         <source>Enter new file name</source>
         <translation>Zadejte nový název souboru</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="205"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="206"/>
         <source>SD Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="201"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="207"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="198"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
         <source>Back</source>
         <translation>Zpět</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="247"/>
         <source>Open</source>
-        <translation>Otevřít</translation>
+        <translation type="vanished">Otevřít</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="255"/>
         <source>Create</source>
-        <translation>Vytvořit</translation>
+        <translation type="vanished">Vytvořit</translation>
     </message>
 </context>
 <context>
@@ -1140,32 +1161,37 @@
         <translation>Přijmout</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="86"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
+        <source>Discard</source>
+        <translation type="unfinished">Zahodit</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
         <source>Generated password</source>
         <translation>Vytvořené heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
         <source>No char group selected</source>
         <translation>Nevybrána žádná skupina znaků</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="116"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="117"/>
         <source>Length</source>
         <translation>Délka</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="178"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="179"/>
         <source>Exclude look-alike characters</source>
         <translation>vyloučit zdvojené znaky</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="189"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="190"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation>Zajistěte, že heslo obsahuje znaky z každé skupiny</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="199"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="200"/>
         <source>Generate</source>
         <translation>Vytvořit</translation>
     </message>
@@ -1173,37 +1199,42 @@
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Zadejte, prosím, nový soubor s databází Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Vyberte, prosím, stávající soubor s databází Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="149"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
         <source>Use key file</source>
         <translation>Použít soubor s klíčem</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Zrušit</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Zapněte toto zde pro použití souboru s klíčem společně s hlavním heslem pro uzamknutí vaší nové databáze Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="224"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
         <source>Master password</source>
         <translation>Hlavní heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
         <source>Enter master password</source>
         <translation>Zadejte hlavní heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="271"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
         <translation>Potvrdit heslo</translation>
     </message>
@@ -1212,35 +1243,35 @@
         <translation type="vanished">Otevřít automaticky</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Create</source>
         <translation>Vytvořit</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
         <source>New Password Safe</source>
         <translation>Nový sejf na hesla</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="299"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Napište hlavní heslo pro zamknutí vašeho nového sejfu s hesly Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="312"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="331"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="313"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="332"/>
         <source>Open</source>
         <translation>Otevřít</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="313"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="332"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
         <source>Password Safe</source>
         <translation>Sejf s hesly</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="318"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="335"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Napište hlavní heslo pro odemknutí vašeho sejfu s hesly Keepass:</translation>
     </message>
@@ -1248,44 +1279,36 @@
 <context>
     <name>SelectDatabasePage</name>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="205"/>
         <source>New database</source>
-        <translation>Nová databáze</translation>
+        <translation type="vanished">Nová databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="205"/>
         <source>Open database</source>
-        <translation>Otevřít databázi</translation>
+        <translation type="vanished">Otevřít databázi</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="213"/>
         <source>Type in a name for your new Keepass database:</source>
-        <translation>Zadejte název nové databáze Keepass:</translation>
+        <translation type="vanished">Zadejte název nové databáze Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="237"/>
         <source>(Optional) Type in a name for a key file:</source>
-        <translation>(Volitelné) Zadejte název souboru s klíčem:</translation>
+        <translation type="vanished">(Volitelné) Zadejte název souboru s klíčem:</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="269"/>
         <source>Change location where the Keepass database file will be saved:</source>
-        <translation>Změňte umístění, kde bude soubor s databází Keepass uložen:</translation>
+        <translation type="vanished">Změňte umístění, kde bude soubor s databází Keepass uložen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="286"/>
         <source>Change location where the key file will be saved:</source>
-        <translation>Změňte umístění, kde bude soubor s klíčem uložen:</translation>
+        <translation type="vanished">Změňte umístění, kde bude soubor s klíčem uložen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="305"/>
         <source>Choose Keepass database file:</source>
-        <translation>Změňte soubor s databází Keepass:</translation>
+        <translation type="vanished">Změňte soubor s databází Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="321"/>
         <source>(Optional) Choose key file:</source>
-        <translation>(Volitelné) Změňte soubor s klíčem:</translation>
+        <translation type="vanished">(Volitelné) Změňte soubor s klíčem:</translation>
     </message>
 </context>
 <context>

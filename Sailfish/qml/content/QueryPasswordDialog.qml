@@ -71,6 +71,7 @@ Dialog {
 
             DialogHeader {
                 id: queryPasswordDialogHeader
+                cancelText: qsTr("Cancel")
             }
 
             Column {

@@ -94,6 +94,7 @@ Dialog {
 
             DialogHeader {
                 acceptText: qsTr("Save")
+                cancelText: qsTr("Discard")
             }
 
             SilicaLabel {

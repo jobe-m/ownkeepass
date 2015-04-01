@@ -329,7 +329,7 @@ Dialog {
                         switch (value) {
                         case Languages.SYSTEM_DEFAULT:
                             return Global.system_default
-                        case Languages.EN_GB: // English
+                        case Languages.EN: // English
                             return Global.english
                         case Languages.SV_SE: // Swedish
                             return Global.swedish
@@ -371,7 +371,7 @@ Dialog {
                         case Global.system_default:
                             return Languages.SYSTEM_DEFAULT
                         case Global.english:
-                            return Languages.EN_GB // English
+                            return Languages.EN // English
                         case Global.swedish:
                             return Languages.SV_SE // Swedish
                         case Global.finnish:
@@ -389,7 +389,7 @@ Dialog {
                         case Global.french:
                             return Languages.FR_FR // French
                         case Global.italian:
-                            return Languages.IT // Itanian
+                            return Languages.IT // Italian
                         case Global.russian:
                             return Languages.RU // Russian
                         case Global.danish:
@@ -403,7 +403,7 @@ Dialog {
                         case Global.norwegian_bokmal:
                             return Languages.NB_NO // Norwegian Bokmål
                         default:
-                            return Languages.EN_GB // English
+                            return Languages.EN // English
                         }
                     }
 

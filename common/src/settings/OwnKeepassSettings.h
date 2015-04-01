@@ -41,22 +41,22 @@ public:
     Q_ENUMS(eLanguages)
     enum eLanguages {
         SYSTEM_DEFAULT = 0,
-        EN_GB,
-        SV_SE,
-        FI_FI,
-        DE_DE,
-        CS_CZ,
-        CA,
-        NL_NL,
-        ES,
-        FR_FR,
-        IT,
-        RU,
-        DA,
-        PL_PL, // not yet started
-        ZH_CN,
-        UK_UA, // not yet started
-        NB_NO,
+        EN,    // English
+        SV_SE, // Swedish
+        FI_FI, // Finnish
+        DE_DE, // German
+        CS_CZ, // Czech
+        CA,    // Catalan
+        NL_NL, // Dutch
+        ES,    // Spanish
+        FR_FR, // French
+        IT,    // Italian
+        RU,    // Russian
+        DA,    // Danish
+        PL_PL, // Plish - not yet started
+        ZH_CN, // Chinese
+        UK_UA, // Ukrainian - not yet started
+        NB_NO, // Norwegian Bogmål
         INVALID
     };
 };

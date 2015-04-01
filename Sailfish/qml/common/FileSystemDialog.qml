@@ -118,6 +118,8 @@ Dialog {
 
         DialogHeader {
             id: header
+            //: As in select file
+            acceptText: qsTr("Select")
             cancelText: qsTr("Cancel")
         }
 
@@ -248,7 +250,6 @@ Dialog {
         State {
             name: "OPEN_FILE"
             PropertyChanges { target: fileSystemDialog; canAccept: absolutePath !== "" }
-            PropertyChanges { target: header; acceptText: qsTr("Open") }
             PropertyChanges { target: newFileName; enabled: false }
             PropertyChanges { target: listView; y: header.y + header.height }
             PropertyChanges { target: fileBrowserListModel; showDirsOnly: false }
@@ -256,7 +257,6 @@ Dialog {
         State {
             name: "CREATE_NEW_FILE"
             PropertyChanges { target: fileSystemDialog; canAccept: fileBrowserListModel.validDir && fileNameField.text }
-            PropertyChanges { target: header; acceptText: qsTr("Create") }
             PropertyChanges { target: newFileName; enabled: true }
             PropertyChanges { target: listView; y: header.y + header.height + newFileName.height }
             PropertyChanges { target: fileBrowserListModel; showDirsOnly: true }

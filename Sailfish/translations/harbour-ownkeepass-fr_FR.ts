@@ -194,7 +194,7 @@
 <context>
     <name>EditDatabaseSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="78"/>
         <source>Database Settings</source>
         <translation>Paramètres de la base de données</translation>
     </message>
@@ -204,48 +204,53 @@
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="81"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
+        <source>Discard</source>
+        <translation type="unfinished">Rejeter</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
         <source>Change settings of your currently opened Keepass database here</source>
         <translation>Modifier ici les paramètres de votre base de données Keepass ouverte</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="89"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
         <translation>Remarque : en modifiant le mot de passe principal ici, vous devrez vous en souvenir lorsque vous ouvrirez la base de données Keepass !</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
         <source>Master password</source>
         <translation>Mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="101"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="102"/>
         <source>Change master password</source>
         <translation>Changer le mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
         <source>Master password confirmed</source>
         <translation>Mot de passe principal confirmé</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="126"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="128"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="129"/>
         <source>Confirm master password</source>
         <translation>Confirmer le mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="142"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="143"/>
         <source>Encryption currently in use:</source>
         <translation>Chiffrement en cours d&apos;utilisation :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="165"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="166"/>
         <source>Key transformation rounds</source>
         <translation>Cycle de transformation de la clé</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="180"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>En augmentant cette valeur, vous augmentez le délai d&apos;ouverture de la base de données Keepass mais vous la rendez plus robuste contre les attaques par force brute.</translation>
     </message>
@@ -258,68 +263,73 @@
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="100"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
+        <source>Discard</source>
+        <translation type="unfinished">Rejeter</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
         <source>Create new password entry:</source>
         <translation>Créer une nouvelle saisie de mot de passe :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="102"/>
         <source>Edit password entry:</source>
         <translation>Modifier la saisie de mot de passe :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="108"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="109"/>
         <source>Title</source>
         <translation>Titre</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="111"/>
         <source>Set title (mandatory)</source>
         <translation>Définir le titre (obligatoire)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="127"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="129"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set URL</source>
         <translation>Définir URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="144"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="145"/>
         <source>Username</source>
         <translation>Nom d&apos;utilisateur</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="146"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>Set username</source>
         <translation>Définir nom d&apos;utilisateur</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="169"/>
         <source>Password</source>
         <translation>Mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="170"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="171"/>
         <source>Set password</source>
         <translation>Définir un mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="210"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="211"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
         <source>Verify password</source>
         <translation>Vérifier un mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="246"/>
         <source>Comment</source>
         <translation>Commentaire</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="247"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="248"/>
         <source>Set comment</source>
         <translation>Définir commentaire</translation>
     </message>
@@ -332,22 +342,27 @@
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="66"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
+        <source>Discard</source>
+        <translation type="unfinished">Rejeter</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
         <source>Type in a name for the new group:</source>
         <translation>Saisir un nom pour le nouveau groupe :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="68"/>
         <source>Change name of group:</source>
         <translation>Modifier le nom de groupe :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="73"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="74"/>
         <source>Name of group</source>
         <translation>Nom de groupe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="75"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="76"/>
         <source>Set name of group</source>
         <translation>Définir le nom de groupe</translation>
     </message>
@@ -561,59 +576,65 @@
         <translation>Les cartes SD avec des partitions multiples ne sont pas prises en charge.</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
-        <source>Hide hidden files</source>
+        <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
+        <source>Hide system files</source>
+        <extracomment>Used in file browser to hide the system files</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="108"/>
-        <source>Show hidden files</source>
+        <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
+        <source>Show system files</source>
+        <extracomment>Used in file browser to show the hidden system files</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="117"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="122"/>
+        <source>Select</source>
+        <extracomment>As in select file</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="132"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="138"/>
         <source>New file name</source>
         <translation>Nouveau nom de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="133"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="139"/>
         <source>Enter new file name</source>
         <translation>Saisir un nouveau nom de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="205"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="206"/>
         <source>SD Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="201"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="207"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="198"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
         <source>Back</source>
         <translation>Retour</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="247"/>
         <source>Open</source>
-        <translation>Ouvrir</translation>
+        <translation type="vanished">Ouvrir</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="255"/>
         <source>Create</source>
-        <translation>Créer</translation>
+        <translation type="vanished">Créer</translation>
     </message>
 </context>
 <context>
@@ -1140,32 +1161,37 @@
         <translation>Accepter</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="86"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
+        <source>Discard</source>
+        <translation type="unfinished">Rejeter</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
         <source>Generated password</source>
         <translation>Générer le mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
         <source>No char group selected</source>
         <translation>Pas de groupe de caractères sélectionnés </translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="116"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="117"/>
         <source>Length</source>
         <translation>Longueur</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="178"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="179"/>
         <source>Exclude look-alike characters</source>
         <translation>Exclure les caractères qui se ressemble</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="189"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="190"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation>Assurez-vous que le mot de contient des caractères de chaque groupe</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="199"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="200"/>
         <source>Generate</source>
         <translation>Générer</translation>
     </message>
@@ -1173,37 +1199,42 @@
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Veuillez indiquer une nouvelle base de données Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Choisissez une base de données Keepass existante, SVP :</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="149"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
         <source>Use key file</source>
         <translation>Utiliser le fichier de clé</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Activez ceci pour utiliser un fichier de clé associé à un mot de passe principal pour votre nouvelle base de données Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="224"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
         <source>Master password</source>
         <translation>Mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
         <source>Enter master password</source>
         <translation>Entrer le mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="271"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
         <translation>Confirmer mot de passe</translation>
     </message>
@@ -1212,35 +1243,35 @@
         <translation type="vanished">Ouvrir automatiquement</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Create</source>
         <translation>Créer</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
         <source>New Password Safe</source>
         <translation>Nouveau coffre-fort à mots de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="299"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Saisir un mot de passe principal pour verrouiller votre nouveau coffre-fort Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="312"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="331"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="313"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="332"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="313"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="332"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
         <source>Password Safe</source>
         <translation>Coffre-fort à mots de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="318"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="335"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Saisir un mot de passe principal pour déverouiller votre coffre-fort Keepass :</translation>
     </message>
@@ -1248,44 +1279,36 @@
 <context>
     <name>SelectDatabasePage</name>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="205"/>
         <source>New database</source>
-        <translation>Nouvelle base de données</translation>
+        <translation type="vanished">Nouvelle base de données</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="205"/>
         <source>Open database</source>
-        <translation>Ouvrir base de données</translation>
+        <translation type="vanished">Ouvrir base de données</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="213"/>
         <source>Type in a name for your new Keepass database:</source>
-        <translation>Saisir un nom pour votre nouvelle base de données Keepass :</translation>
+        <translation type="vanished">Saisir un nom pour votre nouvelle base de données Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="237"/>
         <source>(Optional) Type in a name for a key file:</source>
-        <translation>(Optionnel) Saisir un nom pour un fichier de clé :</translation>
+        <translation type="vanished">(Optionnel) Saisir un nom pour un fichier de clé :</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="269"/>
         <source>Change location where the Keepass database file will be saved:</source>
-        <translation>Modifier l&apos;emplacement de sauvegarde du fichier de la base de données Keepass :</translation>
+        <translation type="vanished">Modifier l&apos;emplacement de sauvegarde du fichier de la base de données Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="286"/>
         <source>Change location where the key file will be saved:</source>
-        <translation>Modifier l&apos;emplacement de sauvegarde du fichier de clé :</translation>
+        <translation type="vanished">Modifier l&apos;emplacement de sauvegarde du fichier de clé :</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="305"/>
         <source>Choose Keepass database file:</source>
-        <translation>Choisir un fichier de base de données Keepass :</translation>
+        <translation type="vanished">Choisir un fichier de base de données Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectDatabasePage.qml" line="321"/>
         <source>(Optional) Choose key file:</source>
-        <translation>(Optionnel) Choisir un fichier de clé :</translation>
+        <translation type="vanished">(Optionnel) Choisir un fichier de clé :</translation>
     </message>
 </context>
 <context>

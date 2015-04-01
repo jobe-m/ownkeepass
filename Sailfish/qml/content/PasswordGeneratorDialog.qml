@@ -70,6 +70,7 @@ Dialog {
 
             DialogHeader {
                 acceptText: qsTr("Accept")
+                cancelText: qsTr("Discard")
             }
 
             Item {

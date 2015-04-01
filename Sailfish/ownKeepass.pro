@@ -112,7 +112,6 @@ OTHER_FILES += \
     qml/common/PageHeaderExtended.qml \
     qml/common/InfoPopup.qml \
     qml/content/ShowEntryDetailsPage.qml \
-    qml/content/SelectDatabasePage.qml \
     qml/content/QueryPasswordDialog.qml \
     qml/content/KdbListItem.qml \
     qml/help/HelpPage.qml \
@@ -157,7 +156,7 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-cs_CZ.ts \
     translations/harbour-ownkeepass-da.ts \
     translations/harbour-ownkeepass-nl_NL.ts \
-    translations/harbour-ownkeepass-en_GB.ts \
+    translations/harbour-ownkeepass-en.ts \
     translations/harbour-ownkeepass-fi_FI.ts \
     translations/harbour-ownkeepass-fr_FR.ts \
     translations/harbour-ownkeepass-de_DE.ts \

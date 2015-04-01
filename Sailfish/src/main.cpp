@@ -87,69 +87,69 @@ int main(int argc, char *argv[])
     QTranslator translator;
     if (settingsPublic::Languages::SYSTEM_DEFAULT != okpSettings->language()) {
         switch (okpSettings->language()) {
-        // LANG_CA
+        // Catalan
         case settingsPublic::Languages::CA:
             translator.load("harbour-ownkeepass-ca.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_ZH_CN
+        // Chinese
         case settingsPublic::Languages::ZH_CN:
             translator.load("harbour-ownkeepass-zh_CN.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_CS_CZ
+        // Czech
         case settingsPublic::Languages::CS_CZ:
             translator.load("harbour-ownkeepass-cs_CZ.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_DA
+        // Danish
         case settingsPublic::Languages::DA:
             translator.load("harbour-ownkeepass-da.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_NL_NL
+        // Dutch
         case settingsPublic::Languages::NL_NL:
             translator.load("harbour-ownkeepass-nl_NL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_FI_FI
+        // Finnish
         case settingsPublic::Languages::FI_FI:
             translator.load("harbour-ownkeepass-fi_FI.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_FR_FR
+        // French
         case settingsPublic::Languages::FR_FR:
             translator.load("harbour-ownkeepass-fr_FR.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_DE_DE
+        // German
         case settingsPublic::Languages::DE_DE:
             translator.load("harbour-ownkeepass-de_DE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_IT
+        // Italian
         case settingsPublic::Languages::IT:
             translator.load("harbour-ownkeepass-it.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_PL_PL
+        // Polish
         case settingsPublic::Languages::PL_PL:
             translator.load("harbour-ownkeepass-pl_PL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_RU
+        // Russian
         case settingsPublic::Languages::RU:
             translator.load("harbour-ownkeepass-ru.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_ES
+        // Spanish
         case settingsPublic::Languages::ES:
             translator.load("harbour-ownkeepass-es.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_SV_SE
+        // Swedish
         case settingsPublic::Languages::SV_SE:
             translator.load("harbour-ownkeepass-sv_SE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_UK_UA
+        // Ukrainian
         case settingsPublic::Languages::UK_UA:
             translator.load("harbour-ownkeepass-uk_UA.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-        // LANG_NB_NO
+        // Norwegian Bogmål
         case settingsPublic::Languages::NB_NO:
             translator.load("harbour-ownkeepass-nb_NO.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
-            // LANG_EN_GB
+        // English
         default:
-            translator.load("harbour-ownkeepass-en_GB.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            translator.load("harbour-ownkeepass-en.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         }
         // install translator for specific language

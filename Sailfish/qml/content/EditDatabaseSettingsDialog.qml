@@ -74,6 +74,7 @@ Dialog {
 
             DialogHeader {
                 acceptText: qsTr("Save")
+                cancelText: qsTr("Discard")
                 title: qsTr("Database Settings")
             }
 
