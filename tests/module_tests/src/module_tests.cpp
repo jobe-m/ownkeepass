@@ -33,7 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
-//#include ""
+#include "private/KdbxInterfaceWorker.h"
 
 int main(int argc, char *argv[])
 {
@@ -46,6 +46,13 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    return SailfishApp::main(argc, argv);
+    DatabaseInterface* dbInterface = new keepass2Format::KdbxInterfaceWorker();
+
+    int res = SailfishApp::main(argc, argv);
+
+    delete dbInterface;
+    dbInterface = NULL;
+
+    return res;
 }
 

@@ -150,22 +150,22 @@ OTHER_FILES += \
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
+#CONFIG += sailfishapp_i18n
 
-#TRANSLATIONS += \
-#    translations/harbour-ownkeepass-ca.ts \
-#    translations/harbour-ownkeepass-zh_CN.ts \
-#    translations/harbour-ownkeepass-cs_CZ.ts \
-#    translations/harbour-ownkeepass-da.ts \
-#    translations/harbour-ownkeepass-nl_NL.ts \
-#    # en_GB is default language
-#    translations/harbour-ownkeepass-fi_FI.ts \
-#    translations/harbour-ownkeepass-fr_FR.ts \
-#    translations/harbour-ownkeepass-de_DE.ts \
-#    translations/harbour-ownkeepass-it.ts \
-#    translations/harbour-ownkeepass-nb_NO.ts \
-#    #translations/harbour-ownkeepass-pl_PL.ts
-#    translations/harbour-ownkeepass-ru.ts \
-#    translations/harbour-ownkeepass-es.ts \
-#    translations/harbour-ownkeepass-sv_SE.ts
-#    #translations/harbour-ownkeepass-uk_UA.ts
+TRANSLATIONS += \
+    translations/harbour-ownkeepass-ca.ts \
+    translations/harbour-ownkeepass-zh_CN.ts \
+    translations/harbour-ownkeepass-cs_CZ.ts \
+    translations/harbour-ownkeepass-da.ts \
+    translations/harbour-ownkeepass-nl_NL.ts \
+    # en_GB is default language
+    translations/harbour-ownkeepass-fi_FI.ts \
+    translations/harbour-ownkeepass-fr_FR.ts \
+    translations/harbour-ownkeepass-de_DE.ts \
+    translations/harbour-ownkeepass-it.ts \
+    translations/harbour-ownkeepass-nb_NO.ts \
+    #translations/harbour-ownkeepass-pl_PL.ts
+    translations/harbour-ownkeepass-ru.ts \
+    translations/harbour-ownkeepass-es.ts \
+    translations/harbour-ownkeepass-sv_SE.ts
+    #translations/harbour-ownkeepass-uk_UA.ts

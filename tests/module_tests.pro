@@ -33,6 +33,7 @@
 
 # Sources of the keepass QML plugins
 include(../common/src/keepassPlugin/kdbxdatabase/kdbxdatabase.pri)
+include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 
 
 
@@ -43,6 +44,8 @@ CONFIG += sailfishapp
 
 SOURCES += module_tests/src/module_tests.cpp
 
+HEADERS +=
+
 OTHER_FILES += module_tests/qml/module_tests.qml \
     module_tests/qml/cover/CoverPage.qml \
     module_tests/qml/pages/FirstPage.qml \
@@ -51,5 +54,3 @@ OTHER_FILES += module_tests/qml/module_tests.qml \
     module_tests/rpm/module_tests.spec \
     module_tests/rpm/module_tests.yaml \
     module_tests/module_tests.desktop
-
-HEADERS +=

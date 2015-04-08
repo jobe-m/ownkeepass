@@ -24,6 +24,8 @@
 
 #include "KdbxInterfaceWorker.h"
 
+#include "crypto/Crypto.h"
+
 using namespace keepass2Format;
 using namespace kpxPublic;
 
@@ -42,6 +44,11 @@ KdbxInterfaceWorker::~KdbxInterfaceWorker()
 
 void KdbxInterfaceWorker::initKdbDatabase()
 {
+    if (!Crypto::init()) {
+        // Fatal error while testing the cryptographic functions
+// TODO add error handling
+    }
+
 }
 
 void KdbxInterfaceWorker::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)

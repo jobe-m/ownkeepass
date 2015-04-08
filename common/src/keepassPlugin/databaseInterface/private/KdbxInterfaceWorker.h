@@ -28,13 +28,13 @@
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
 
+// KeepassX 2 related includes
+#include "core/Database.h"
+
 
 using namespace kpxPublic;
 
 namespace keepass2Format {
-
-#include "core/Database.h"
-//#include "core/Uuid.h"
 
 class KdbxInterfaceWorker : public QObject, public DatabaseInterface
 {
