@@ -206,7 +206,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Discard</source>
-        <translation type="unfinished">放弃</translation>
+        <translation>放弃</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
         <source>Discard</source>
-        <translation type="unfinished">放弃</translation>
+        <translation>放弃</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
         <source>Discard</source>
-        <translation type="unfinished">放弃</translation>
+        <translation>放弃</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
@@ -550,18 +550,6 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>开启此项以从封面复制用户名和密码到剪贴板</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">高级设置</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">专家用户模式</translation>
-    </message>
-    <message>
-        <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="vanished">可开启高级功能，如在主页上处理多个数据库</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
@@ -579,19 +567,19 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>隐藏系统文件</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>显示系统文件</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="122"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>选择</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
@@ -612,30 +600,22 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="206"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>设备存储</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="207"/>
         <source>SD Card</source>
-        <translation type="unfinished"></translation>
+        <translation>SD卡</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>安卓存储</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
         <source>Back</source>
         <translation>返回</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">打开</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">创建</translation>
     </message>
 </context>
 <context>
@@ -650,30 +630,17 @@
         <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>设备存储</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card</source>
-        <translation type="unfinished"></translation>
+        <translation>SD卡</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="vanished">主目录：</translation>
-    </message>
-    <message>
-        <source>SD Card:</source>
-        <translation type="vanished">SD卡：</translation>
-    </message>
-    <message>
-        <source>Android Storage:</source>
-        <translation type="vanished">安卓存储：</translation>
+        <translation>安卓存储：</translation>
     </message>
 </context>
 <context>
@@ -762,14 +729,10 @@
 <context>
     <name>HelpCreateNewDatabase</name>
     <message>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">在本页上你可以创建一个新数据库，以让ownKeepass存储你的敏感数据。&lt;br&gt;&lt;br&gt;打开文件浏览器并选择一个文件名和目录。你可以选择将你的数据库存储在主目录，SD卡或者安卓存储中。如果SD卡选项为灰色，说明没有SD卡或者SD卡被系统保护。SD卡只能有一个分区。目前ownKeepass不支持多分区SD卡。“安卓存储”用来和安卓应用共享数据库。但是，因为所有者和权限不同，和安卓共享文件可能会出现问题，请注意这点。&lt;br&gt;&lt;br&gt;建议：如果你将Keepass数据库上传到云中，请确认除了主密码外你使用的是一个本地存储的关键字文件。这个关键字文件不应该被上传到云服务中。&lt;br&gt;&lt;br&gt;&lt;b&gt;使用关键字文件&lt;/b&gt;&lt;br&gt;&lt;br&gt;一个关键字文件可以被用来存储主密码以保护Keepass数据库。两者都被一起用来生成通行金钥以打开数据库。因此，通过使用一个含有大量生成的通行金匙可以在原则上更强大地防范攻击。你可以使用例如一个随机的图片文件来作为关键字文件。&lt;br&gt;&lt;br&gt;&lt;b&gt;主密码&lt;/b&gt;&lt;br&gt;&lt;br&gt;这是你新Keepass数据库的密码。请确保你使用了大约10-15字符的长密码并混合了小写、大写、数字和特殊符号。在“确认密码”输入框中再次输入密码。&lt;br&gt;&lt;br&gt;&lt;b&gt;自动打开&lt;/b&gt;&lt;br&gt;&lt;br&gt;勾选这个选项如果你希望ownKeepass在你下次打开此应用时自动打开数据库。你将被直接引导到密码查询对话框。&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changed &quot;home drive on the phone&quot; to &quot;Device Memory&quot;, removed section for &quot;Open automatically&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>在本页上你可以创建一个新数据库，以让ownKeepass存储你的敏感数据。&lt;br&gt;&lt;br&gt;打开文件浏览器并选择一个文件名和目录。你可以选择将你的数据库存储在设备存储、SD卡或者安卓存储中。如果SD卡选项为灰色，说明没有SD卡或者SD卡被系统保护。SD卡只能有一个分区。目前ownKeepass不支持多分区SD卡。“安卓存储”用来和安卓应用共享数据库。但是，因为所有者和权限不同，和安卓共享文件可能会出现问题，请注意这点。&lt;br&gt;&lt;br&gt;建议：如果你将Keepass数据库上传到云中，请确认除了主密码外你使用的是一个本地存储的关键字文件。这个关键字文件不应该被上传到云服务中。&lt;br&gt;&lt;br&gt;&lt;b&gt;使用关键字文件&lt;/b&gt;&lt;br&gt;&lt;br&gt;一个关键字文件可以被用来存储主密码以保护Keepass数据库。两者都被一起用来生成通行金钥以打开数据库。因此，通过使用一个含有大量生成的通行金匙可以在原则上更强大地防范攻击。你可以使用例如一个随机的图片文件来作为关键字文件。&lt;br&gt;&lt;br&gt;&lt;b&gt;主密码&lt;/b&gt;&lt;br&gt;&lt;br&gt;这是你新Keepass数据库的密码。请确保你使用了大约10-15字符的长密码并混合了小写、大写、数字和特殊符号。在“确认密码”输入框中再次输入密码。&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -799,15 +762,10 @@
 <context>
     <name>HelpOpenNewDatabase</name>
     <message>
-        <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Removed one sentence in section &quot;Use key file&quot;</extracomment>
-        <translation type="vanished">你可以在这里打开一个已存在的Keepass数据库文件。&lt;br&gt;&lt;br&gt;使用文件管理器来搜索你的Keepass数据库文件。你可以搜索这些地方：主目录，SD卡和安卓存储。如果你通过wonKeepass查找文件遇到问题，请确保你将文件放在了以下的路径：“主目录”通常是“%1”，如果你已经插入SD卡到手机，通常会在“/media/sdcard/&lt;UUID&gt;”。（请注意超过一个分区的SD卡是不支持的。）“安卓存储”通常在“%2”。&lt;br&gt;&lt;br&gt;建议：如果你上传Keepass数据库到云服务，请确保你和主密码一起使用了一个本地存储的关键字文件。这个关键字文件不应该上传到云服务。&lt;br&gt;&lt;br&gt;&lt;b&gt;使用关键字文件&lt;/b&gt;&lt;br&gt;&lt;br&gt;如果你需要一个关键字文件打开Keepass数据库，请检查这个选项&lt;br&gt;&lt;br&gt;&lt;b&gt;主密码&lt;/b&gt;&lt;br&gt;&lt;br&gt;在这里输入Keepass数据库的密码。&lt;br&gt;&lt;br&gt;&lt;b&gt;自动打开&lt;/b&gt;&lt;br&gt;&lt;br&gt;开启这个选项如果你希望ownKeepass在下次启动时自动打开这个数据库。你将被直接引导到密码查询对话框。&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Device Memory, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Device Memory&quot; is located at &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Removed one sentence in section &quot;Use key file&quot;, Changed &quot;Home&quot; to &quot;Device Memory&quot;, Removed section for &quot;Open automatically&quot;, changed &lt;UUID&gt; to &amp;lt;UUID&amp;gt; so that it will be actually shown ;)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>你可以在这里打开一个已存在的Keepass数据库文件。&lt;br&gt;&lt;br&gt;使用文件管理器来搜索你的Keepass数据库文件。你可以搜索这些地方：设备存储，SD卡和安卓存储。如果你通过wonKeepass查找文件遇到问题，请确保你将文件放在了以下的路径：“设备存储”在“%1”，如果你已经插入SD卡到手机，通常会在“/media/sdcard/&lt;UUID&gt;”。（请注意超过一个分区的SD卡是不支持的。）“安卓存储”通常在“%2”。&lt;br&gt;&lt;br&gt;建议：如果你上传Keepass数据库到云服务，请确保你和主密码一起使用了一个本地存储的关键字文件。这个关键字文件不应该上传到云服务。&lt;br&gt;&lt;br&gt;&lt;b&gt;使用关键字文件&lt;/b&gt;&lt;br&gt;&lt;br&gt;如果你需要一个关键字文件打开Keepass数据库，请检查这个选项&lt;br&gt;&lt;br&gt;&lt;b&gt;主密码&lt;/b&gt;&lt;br&gt;&lt;br&gt;在这里输入Keepass数据库的密码。&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -960,10 +918,6 @@
         <translation>显示更多细节</translation>
     </message>
     <message>
-        <source>Database path and name</source>
-        <translation type="vanished">数据库路径和名称</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
         <source>Key file path and name</source>
         <translation>关键字文件路径和名称</translation>
@@ -992,13 +946,13 @@
         <location filename="../qml/content/MainPage.qml" line="353"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>新数据库路径和名称</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>数据库路径和名称</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="499"/>
@@ -1176,7 +1130,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
         <source>Discard</source>
-        <translation type="unfinished">放弃</translation>
+        <translation>放弃</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
@@ -1229,7 +1183,7 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
@@ -1250,10 +1204,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
         <translation>确认密码</translation>
-    </message>
-    <message>
-        <source>Open automatically</source>
-        <translation type="vanished">自动打开</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
@@ -1287,41 +1237,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>输入主密码来解锁你的Keepass“密码安全”：</translation>
-    </message>
-</context>
-<context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">新数据库</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">打开数据库</translation>
-    </message>
-    <message>
-        <source>Type in a name for your new Keepass database:</source>
-        <translation type="vanished">为你的新Keepass数据库输入名称</translation>
-    </message>
-    <message>
-        <source>(Optional) Type in a name for a key file:</source>
-        <translation type="vanished">（可选）为关键字文件输入名称：</translation>
-    </message>
-    <message>
-        <source>Change location where the Keepass database file will be saved:</source>
-        <translation type="vanished">修改Keepass数据库文件将被存储的位置</translation>
-    </message>
-    <message>
-        <source>Change location where the key file will be saved:</source>
-        <translation type="vanished">修改关键字文件将被存储的位置：</translation>
-    </message>
-    <message>
-        <source>Choose Keepass database file:</source>
-        <translation type="vanished">选择Keepass数据库文件：</translation>
-    </message>
-    <message>
-        <source>(Optional) Choose key file:</source>
-        <translation type="vanished">（可选）选择关键字文件：</translation>
     </message>
 </context>
 <context>

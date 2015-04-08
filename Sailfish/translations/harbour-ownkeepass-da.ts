@@ -11,7 +11,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="45"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password Safe</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="57"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="73"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass distribueres under betingelserne i GNU General Public License (GPL) version 2 eller (efter eget valg) version 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="86"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="34"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="40"/>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="44"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password Safe</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="50"/>
@@ -90,12 +90,12 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="49"/>
         <source>Username copied into clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Brugernavn kopieret til udklipsholder</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="59"/>
         <source>Password copied into clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Password kopieret til udklipsholder</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="69"/>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="331"/>
         <source>You have unsaved changes pending</source>
-        <translation type="unfinished"></translation>
+        <translation>Du har ikke gemte ændringer der venter</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="338"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="345"/>
         <source>Search for password entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Søg efter kodeordsposter</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="358"/>
@@ -178,17 +178,17 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="53"/>
         <source>Database settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Databaseindstillinger</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="62"/>
         <source>New password group</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny kodeordsgruppe</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="71"/>
         <source>New password entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny kodeordspost</translation>
     </message>
 </context>
 <context>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="78"/>
         <source>Database Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Databaseindstillinger</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="76"/>
@@ -216,12 +216,12 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bemærk: Ved at ændre den primære adganskode her, skal du huske det den næste gang du åbner KeePass databasen!</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
         <source>Master password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Primær adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="102"/>
@@ -231,13 +231,13 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
         <source>Master password confirmed</source>
-        <translation type="unfinished"></translation>
+        <translation>Primær adgangskode bekræftet</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="129"/>
         <source>Confirm master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekræft primær adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="143"/>
@@ -252,7 +252,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="180"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
-        <translation type="unfinished"></translation>
+        <translation>Ved at skrue op for værdien af denne indstilling, forøges åbningstiden af KeePass databasen, men gør den mere robust over for brute force-angreb</translation>
     </message>
 </context>
 <context>
@@ -270,12 +270,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
         <source>Create new password entry:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opret ny kodeordspost:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="102"/>
         <source>Edit password entry:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger kodeordspost:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="109"/>
@@ -285,22 +285,22 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="111"/>
         <source>Set title (mandatory)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sæt titel (obligatorisk)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhedsressourcefinder</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Sæt Enhedsressourcefinder</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="145"/>
         <source>Username</source>
-        <translation type="unfinished">Brugernavn</translation>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
@@ -315,13 +315,13 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="171"/>
         <source>Set password</source>
-        <translation type="unfinished"></translation>
+        <translation>Sæt kodeord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="211"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Efterprøv kodeord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="246"/>
@@ -349,12 +349,12 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
         <source>Type in a name for the new group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast et navn på den nye gruppe:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="68"/>
         <source>Change name of group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skift navn på gruppe:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="74"/>
@@ -364,7 +364,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="76"/>
         <source>Set name of group</source>
-        <translation type="unfinished"></translation>
+        <translation>Sæt navn på gruppe</translation>
     </message>
 </context>
 <context>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
         <source>Save</source>
-        <translation type="unfinished">Gem</translation>
+        <translation>Gem</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
@@ -387,7 +387,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
         <source>Change default settings of your ownKeepass application here</source>
-        <translation type="unfinished"></translation>
+        <translation>Skift standardindstillinger for dit ownKeepass program her</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="97"/>
@@ -397,7 +397,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="105"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Denne kryptering bruges som standard, når en ny KeePass database oprettes:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="113"/>
@@ -412,7 +412,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="151"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
-        <translation type="unfinished"></translation>
+        <translation>Ved at skrue op for værdien af denne indstilling, forøges åbningstiden af KeePass databasen, men gør den mere robust over for brute force-angreb</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="158"/>
@@ -427,12 +427,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
         <source>Clear clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryd udklipsholder</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="259"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
-        <translation type="unfinished"></translation>
+        <translation>Når aktiveret, vil klippebordet blive ryddet efter 10 sekunder, når brugernavn eller password kopieres</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="418"/>
@@ -447,7 +447,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="187"/>
         <source>Immediately</source>
-        <translation type="unfinished"></translation>
+        <translation>Omgående</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
@@ -468,7 +468,7 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>minutter</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
@@ -508,7 +508,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>If enabled the search bar will be focused on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Når aktiveret vil søgefeltet være aktivt ved programopstart.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="303"/>
@@ -518,27 +518,27 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="425"/>
         <source>Cover settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniatureindstillinger</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="431"/>
         <source>Show username and password</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis brugernavn og adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="432"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Ved aktivering af denne vil  brugernavn og adgangskode på den aktuelt åbnede KeePass post, blive vist på miniaturen </translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
         <source>Lock database from cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Lås database fra miniature</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="444"/>
         <source>This lets you lock the database with the left cover action</source>
-        <translation type="unfinished"></translation>
+        <translation>Dette lader dig låse databasen med venstre miniature handling</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
@@ -550,26 +550,18 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Aktivér dette for at kopiere brugernavn og adgangskode til udklipsholderen fra miniature</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">Avancerede indstillinger</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">Ekspert brugertilstand</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="66"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Problem med SD-kort</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="67"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished">SD-kort med flere partitioner er ikke understøttet.</translation>
+        <translation>SD-kort opdelt i flere partitioner, er ikke understøttet.</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
@@ -602,7 +594,7 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="139"/>
         <source>Enter new file name</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast nyt filnavn</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="206"/>
@@ -623,15 +615,7 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">Åben</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">Opret</translation>
+        <translation>Tilbage</translation>
     </message>
 </context>
 <context>
@@ -640,7 +624,7 @@
         <location filename="../qml/scripts/Global.js" line="109"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Intet udvalgt endnu</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="112"/>
@@ -657,15 +641,6 @@
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="vanished">Hjem:</translation>
-    </message>
-    <message>
-        <source>SD Card:</source>
-        <translation type="vanished">SD-kort:</translation>
     </message>
 </context>
 <context>
@@ -689,7 +664,7 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
         <source>Could not load all items from Keepass database file. That&apos;s strange.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke indlæse alle poster fra Keepass databasefilen - underligt.</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="77"/>
@@ -699,7 +674,7 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="77"/>
         <source>Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke gemme ændringer til KeePass databasefil. Enten er placeringen af ​​filen skrivebeskyttet eller den er blevet fjernet.</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="108"/>
@@ -709,7 +684,7 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="165"/>
         <source>No entries found</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen poster fundet</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="183"/>
@@ -724,12 +699,12 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="205"/>
         <source>Pull down to add password groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Træk ned for at tilføje kodeordsgruppe</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="206"/>
         <source>Pull down to add password groups or entries</source>
-        <translation type="unfinished"></translation>
+        <translation>Træk ned for at tilføje kodeordsgruppe eller post</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="290"/>
@@ -748,7 +723,7 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="351"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
         <source>Search in</source>
-        <translation type="unfinished"></translation>
+        <translation>Søg i</translation>
     </message>
 </context>
 <context>
@@ -806,7 +781,7 @@
     <message>
         <location filename="../qml/help/HelpPage.qml" line="47"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password Safe</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpPage.qml" line="53"/>
@@ -849,7 +824,7 @@
     <message>
         <location filename="../qml/content/LicensePage.qml" line="44"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password Safe</translation>
     </message>
     <message>
         <location filename="../qml/content/LicensePage.qml" line="50"/>
@@ -862,7 +837,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="61"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password Safe</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
@@ -882,7 +857,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
         <source>Wrong unlock code</source>
-        <translation type="unfinished"></translation>
+        <translation>Forkert låsekode</translation>
     </message>
 </context>
 <context>
@@ -895,12 +870,12 @@
     <message>
         <location filename="../qml/Main.qml" line="73"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny version %1 er nu installeret på din telefon. Kig i ændringsloggen for detaljer.</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="82"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Problem med SD-kort</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="83"/>
@@ -913,7 +888,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="168"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password Safe</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="181"/>
@@ -923,27 +898,27 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="195"/>
         <source>Master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Primær adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="196"/>
         <source>Enter master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast primær adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="247"/>
         <source>Confirm master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekræft primær adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="276"/>
         <source>Show more details</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis flere detaljer</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
         <source>Key file path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Sti og navn på nøglefil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
@@ -958,7 +933,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="141"/>
         <source>Open database</source>
-        <translation type="unfinished">Åben database</translation>
+        <translation>Åben database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="333"/>
@@ -969,7 +944,7 @@
         <location filename="../qml/content/MainPage.qml" line="353"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sti og navn for ny database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="362"/>
@@ -997,7 +972,7 @@
         <location filename="../qml/content/MainPage.qml" line="504"/>
         <location filename="../qml/content/MainPage.qml" line="521"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stien til databasefilen er OK, men nøglefilen eksisterer ikke. Kontroller stien til nøglefilen:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="509"/>
@@ -1007,17 +982,17 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="509"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Angiv en anden sti og navn til din KeePass database eller slet den gamle database via filhåndteringen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="526"/>
         <source>Database file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl i databasefil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="526"/>
         <source>Database file does not exist. Please check path to database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasefilen findes ikke. Kontroller stien til databasefilen:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="575"/>
@@ -1027,7 +1002,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="575"/>
         <source>The master password of your database was changed successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den primære adgangskode til din database er nu succesfuldt ændret.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="584"/>
@@ -1038,28 +1013,28 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="584"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke lukke den tidligere åbnede database. Prøv venligst igen. Fejlmeddelelse:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="588"/>
         <source>Internal key error</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern nøglefejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="588"/>
         <location filename="../qml/content/MainPage.qml" line="592"/>
         <source>The following error occured during opening of database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Følgende fejl opstod ved åbning af database:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="592"/>
         <source>Internal key file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern fejl i nøglefil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="596"/>
         <source>Error loading database</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl ved indlæsning af database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="596"/>
@@ -1084,12 +1059,12 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="608"/>
         <source>Save database error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl ved lagring af database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="608"/>
         <source>Could not save database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke gemme database på grund af følgende fejl:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="612"/>
@@ -1100,12 +1075,12 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="612"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasen var allerede lukket. Der er ikke sket noget alvorligt, men indsend venligst en fejlrapport.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="616"/>
         <source>An error occured on closing your database:</source>
-        <translation type="unfinished"></translation>
+        <translation>En fejl opstod ved lukningen af din database:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1026"/>
@@ -1115,32 +1090,32 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="1027"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nej</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1028"/>
         <source>Unsaved changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikke gemte ændringer</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1056"/>
         <source>Do you want to save changes to the password entry?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vil du gemme ændringer til denne kodeordspost?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1061"/>
         <source>Do you want to save changes to the password group?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vil du gemme ændringer til denne kodeordsgruppe?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1066"/>
         <source>Do you want to save changes to database settings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vil du gemme ændringer til databaseindstillinger?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1071"/>
         <source>Do you want to save changed settings values?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ønsker du at gemme de ændrede indstillinger?</translation>
     </message>
 </context>
 <context>
@@ -1191,17 +1166,17 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
         <source>Please specify a new Keepass database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Angiv en ny KeePass databasefil:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
         <source>Please choose an existing Keepass database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vælg en eksisterende Keepass databasefil:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
         <source>Use key file</source>
-        <translation type="unfinished"></translation>
+        <translation>Brug nøglefil</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
@@ -1211,26 +1186,22 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
-        <translation type="unfinished"></translation>
+        <translation>Bruge både en nøglefil og et primært kodeord til din nye Keepass database</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
         <source>Master password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Primær adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
         <source>Enter master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast primær adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
         <translation>Bekræft adgangskode</translation>
-    </message>
-    <message>
-        <source>Open automatically</source>
-        <translation type="vanished">Åben automatisk</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
@@ -1257,7 +1228,7 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation>Password Safe</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
@@ -1267,22 +1238,11 @@
     </message>
 </context>
 <context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">Ny database</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">Åben database</translation>
-    </message>
-</context>
-<context>
     <name>ShowEntryDetailsPage</name>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="57"/>
         <source>No content</source>
-        <translation type="unfinished"></translation>
+        <translation>Intet indhold</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
@@ -1292,7 +1252,7 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="65"/>
         <source>Copy URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopier Enhedsressourcefinder</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
@@ -1307,12 +1267,12 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="94"/>
         <source>Edit password entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger kodeordspost</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="129"/>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhedsressourcefinder</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="139"/>

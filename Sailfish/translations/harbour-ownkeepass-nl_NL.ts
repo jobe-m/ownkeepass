@@ -550,18 +550,6 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Als dit wordt ingeschakeld zal kopiëren van gebruikersnaam en wachtwoord mogelijk zijn middels de omslag</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">Geavanceerde instellingen</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">Expert-gebruikersmodus</translation>
-    </message>
-    <message>
-        <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="vanished">Dit schakelt geavanceerde functionaliteit in zoals het behandelen van meerdere databases op de hoofdpagina</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
@@ -629,14 +617,6 @@
         <source>Back</source>
         <translation>Terug</translation>
     </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">Openen</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">Creëren</translation>
-    </message>
 </context>
 <context>
     <name>Global</name>
@@ -661,19 +641,6 @@
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="vanished">Persoonlijke map:</translation>
-    </message>
-    <message>
-        <source>SD Card:</source>
-        <translation type="vanished">SD-kaart:</translation>
-    </message>
-    <message>
-        <source>Android Storage:</source>
-        <translation type="vanished">Android-opslag:</translation>
     </message>
 </context>
 <context>
@@ -761,10 +728,6 @@
 </context>
 <context>
     <name>HelpCreateNewDatabase</name>
-    <message>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">Op deze pagina kunt een nieuwe database creëren waarin ownKeepass uw gevoelige gegevens op zal slaan.&lt;br&gt;&lt;br&gt;Open bestandsbladeraar en kies een bestandsnaam en -map. U kunt ervoor kiezen de database te plaatsen in uw persoonlijke map, op de SD-kaart of in de Android-opslagruimte. Als de SD-kaartoptie uitgegrijsd is, dan betekent dat dat de SD-kaart niet aanwezig is of het systeem hem niet herkent. Er dient slechts één geformatteerde partitie aanwezig te zijn op de SD-kaart; SD-kaarten met meerdere partities worden momenteel niet ondersteund door ownKeepass. &quot;Android-opslag&quot; is aanwezig zodat u de database kunt delen met Android-applicaties. Het kan dan alleen wel vervelend worden voor sommige Android-applicaties door andere bestandseigenaar-toestemmingen. Wees u daar bewust van.&lt;br&gt;&lt;br&gt;Advies: als u uw Keepass-database upload naar een clouddienst, zorg er dan voor dat u een lokaal opgeslagen sleutel gebruikt naast het hoofdwachtwoord. Dit sleutelbestand mag niet worden geüpload naar de clouddienst.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sleutelbestand gebruiken&lt;/b&gt;&lt;br&gt;&lt;br&gt;U kunt een sleutelbestand gebruiken naast het hoofdwachtwoord om de Keepass-database te beschermen. Zij zullen beiden gebruikt worden om een toeganssleutel te creëren die de database kan openen. Een bestand data bevat in de gegeneerde toegangssleutel maakt het sterker bestand tegen aanvallen van buitenaf. U kunt bijv. een willekeurige afbeelding gebruiken als een sleutelbestand.&lt;br&gt;&lt;br&gt;&lt;b&gt;Hoofdwachtwoord&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dit is het wachtwoord voor uw nieuwe Keepass-database. Gebruik een lang wachtwoord met 10 - 15 tekens en gebruik een combinatie van letters, nummers en speciale tekens. Herhaal het wachtwoord in het &quot;Wachtwoord bevestigen&quot;-veld.&lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisch openen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Vink dit aan wanneer u wilt dat Keepass de database bij de volgende applicatiestart automatisch opent. U wordt dan direct doorgestuurd naar het dialoogvenster dat om uw wachtwoord vraagt.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
     <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
@@ -953,10 +916,6 @@
         <translation>Meer details weergeven</translation>
     </message>
     <message>
-        <source>Database path and name</source>
-        <translation type="vanished">Pad en naam van database</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
         <source>Key file path and name</source>
         <translation>Pad en naam van sleutelbestand</translation>
@@ -985,13 +944,13 @@
         <location filename="../qml/content/MainPage.qml" line="353"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pad en naam van de nieuwe database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pad en naam van de database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="499"/>
@@ -1245,10 +1204,6 @@
         <translation>Wachtwoord bevestigen</translation>
     </message>
     <message>
-        <source>Open automatically</source>
-        <translation type="vanished">Automatisch openen</translation>
-    </message>
-    <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Create</source>
         <translation>Creëren</translation>
@@ -1280,41 +1235,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Typ het hoofdwachtwoord voor het ontgrendelen van uw Keepass-wachtwoordkluis:</translation>
-    </message>
-</context>
-<context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">Nieuwe database</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">Database openen</translation>
-    </message>
-    <message>
-        <source>Type in a name for your new Keepass database:</source>
-        <translation type="vanished">Typ een naam voor uw nieuwe Keepass-database:</translation>
-    </message>
-    <message>
-        <source>(Optional) Type in a name for a key file:</source>
-        <translation type="vanished">(Optioneel) Typ een naam voor een sleutelbestand:</translation>
-    </message>
-    <message>
-        <source>Change location where the Keepass database file will be saved:</source>
-        <translation type="vanished">Wijzig de locatie waar de Keepass-database zal worden opgeslagen:</translation>
-    </message>
-    <message>
-        <source>Change location where the key file will be saved:</source>
-        <translation type="vanished">Wijzig de locatie waar het sleutelbestand zal worden opgeslagen:</translation>
-    </message>
-    <message>
-        <source>Choose Keepass database file:</source>
-        <translation type="vanished">Keepass-databasebestand kiezen:</translation>
-    </message>
-    <message>
-        <source>(Optional) Choose key file:</source>
-        <translation type="vanished">(Optioneel) Sleutelbestand kiezen:</translation>
     </message>
 </context>
 <context>

@@ -422,7 +422,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto povolte pro rychlé odemknutí vaší databáze zadáním tří prvních znaků z hlavního hesla.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
@@ -550,18 +550,6 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Toto povolte pro zkopírování uživatelského jména a hesla do schránky švihnutím prsty nad krytem</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">Pokročilá nastavení</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">Režim zkušeného uživatele</translation>
-    </message>
-    <message>
-        <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="vanished">Toto umožní pokročilé funkce jako práce s více databázemi na hlavní stránce</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
@@ -629,14 +617,6 @@
         <source>Back</source>
         <translation>Zpět</translation>
     </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">Otevřít</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">Vytvořit</translation>
-    </message>
 </context>
 <context>
     <name>Global</name>
@@ -661,19 +641,6 @@
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="vanished">Domovská složka:</translation>
-    </message>
-    <message>
-        <source>SD Card:</source>
-        <translation type="vanished">Karta SD</translation>
-    </message>
-    <message>
-        <source>Android Storage:</source>
-        <translation type="vanished">Úložiště Android:</translation>
     </message>
 </context>
 <context>
@@ -875,17 +842,17 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Odemkněte sejf s hesly zadáním tří prvních znaků z hlavního hesla:</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
         <source>You have %1 tries left</source>
-        <translation type="unfinished"></translation>
+        <translation>Máte ještě %1 zbylé pokusy</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="169"/>
         <source>You have one try left</source>
-        <translation type="unfinished"></translation>
+        <translation>Zbývá vám jen jeden pokus</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="171"/>
@@ -949,10 +916,6 @@
         <translation>Ukázat více podrobností</translation>
     </message>
     <message>
-        <source>Database path and name</source>
-        <translation type="vanished">Cesta k databázi a název</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
         <source>Key file path and name</source>
         <translation>Cesta k souboru s klíčem a název</translation>
@@ -981,13 +944,13 @@
         <location filename="../qml/content/MainPage.qml" line="353"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cesta a název souboru s novou databází</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cesta a název databáze</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="499"/>
@@ -1241,10 +1204,6 @@
         <translation>Potvrdit heslo</translation>
     </message>
     <message>
-        <source>Open automatically</source>
-        <translation type="vanished">Otevřít automaticky</translation>
-    </message>
-    <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Create</source>
         <translation>Vytvořit</translation>
@@ -1276,41 +1235,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Napište hlavní heslo pro odemknutí vašeho sejfu s hesly Keepass:</translation>
-    </message>
-</context>
-<context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">Nová databáze</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">Otevřít databázi</translation>
-    </message>
-    <message>
-        <source>Type in a name for your new Keepass database:</source>
-        <translation type="vanished">Zadejte název nové databáze Keepass:</translation>
-    </message>
-    <message>
-        <source>(Optional) Type in a name for a key file:</source>
-        <translation type="vanished">(Volitelné) Zadejte název souboru s klíčem:</translation>
-    </message>
-    <message>
-        <source>Change location where the Keepass database file will be saved:</source>
-        <translation type="vanished">Změňte umístění, kde bude soubor s databází Keepass uložen:</translation>
-    </message>
-    <message>
-        <source>Change location where the key file will be saved:</source>
-        <translation type="vanished">Změňte umístění, kde bude soubor s klíčem uložen:</translation>
-    </message>
-    <message>
-        <source>Choose Keepass database file:</source>
-        <translation type="vanished">Změňte soubor s databází Keepass:</translation>
-    </message>
-    <message>
-        <source>(Optional) Choose key file:</source>
-        <translation type="vanished">(Volitelné) Změňte soubor s klíčem:</translation>
     </message>
 </context>
 <context>

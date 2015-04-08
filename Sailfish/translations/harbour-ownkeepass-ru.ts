@@ -550,18 +550,6 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Позволяет копировать имя пользователя и пароль в буфер обмена с обложки</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">Дополнительные настройки</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">Режим эксперта</translation>
-    </message>
-    <message>
-        <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="vanished">Включает управление несколькими базами на главной странице</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
@@ -628,14 +616,6 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
         <source>Back</source>
         <translation>Назад</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">Открыть</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">Создать</translation>
     </message>
 </context>
 <context>
@@ -936,10 +916,6 @@
         <translation>Показать детали</translation>
     </message>
     <message>
-        <source>Database path and name</source>
-        <translation type="vanished">Место хранения базы паролей:</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
         <source>Key file path and name</source>
         <translation>Путь к файлу ключа:</translation>
@@ -1228,10 +1204,6 @@
         <translation>Подтверждение пароля</translation>
     </message>
     <message>
-        <source>Open automatically</source>
-        <translation type="vanished">Открывать автоматически</translation>
-    </message>
-    <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Create</source>
         <translation>Создать</translation>
@@ -1263,17 +1235,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Введите мастер-пароль для разблокировки открываемой базы:</translation>
-    </message>
-</context>
-<context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">Новая база паролей</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">Открыть базу паролей</translation>
     </message>
 </context>
 <context>

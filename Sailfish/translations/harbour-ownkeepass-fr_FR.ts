@@ -206,7 +206,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Discard</source>
-        <translation type="unfinished">Rejeter</translation>
+        <translation>Rejeter</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
         <source>Discard</source>
-        <translation type="unfinished">Rejeter</translation>
+        <translation>Rejeter</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
         <source>Discard</source>
-        <translation type="unfinished">Rejeter</translation>
+        <translation>Rejeter</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
@@ -550,18 +550,6 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Activer ceci pour copier le nom d&apos;utilisateur et le mot de passe dans le presse-papier depuis la couverture</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">Paramètres avancés</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">Mode utilisateur expert</translation>
-    </message>
-    <message>
-        <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="vanished">Ceci permet des fonctionnalités avancées telle que gérer des base de données multiples depuis la page d&apos;accueil</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
@@ -579,19 +567,19 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Cacher les fichiers système</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les fichiers système</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="122"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
@@ -612,30 +600,22 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="206"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Mémoire de l&apos;appareil</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="207"/>
         <source>SD Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Carte SD</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Stockage Android</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
         <source>Back</source>
         <translation>Retour</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">Ouvrir</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">Créer</translation>
     </message>
 </context>
 <context>
@@ -650,30 +630,17 @@
         <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Mémoire de l&apos;appareil</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Carte SD</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="vanished">Accueil :</translation>
-    </message>
-    <message>
-        <source>SD Card:</source>
-        <translation type="vanished">Carte SD :</translation>
-    </message>
-    <message>
-        <source>Android Storage:</source>
-        <translation type="vanished">Stockage Android :</translation>
+        <translation>Stockage Android</translation>
     </message>
 </context>
 <context>
@@ -761,10 +728,6 @@
 </context>
 <context>
     <name>HelpCreateNewDatabase</name>
-    <message>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">Sur cette page, vous pouvez créer une nouvelle base de données où ownKeepass stockera vos données protégées.&lt;br&gt;&lt;br&gt;Utilisez l&apos;explorateur de fichiers pour choisir un nom de fichier et un dossier. Vous pouvez choisir de placer votre base de données dans le répertoire principal du téléphone, sur votre carte SD ou dans la partie réservée au stockage Android. Si la carte SD est grisée, cela signifie qu&apos;aucune carte SD n&apos;est insérée ou que la carte n&apos;est pas détectée par le système. Il doit y avoir une seule partition formatée sur la carte SD. Les cartes SD à partitions multiples ne sont pas supportées par ownKeepass pour le moment. Le &quot;stockage Android&quot; est présent pour partager la base de données avec les applications Android. Cependant, partager des fichiers avec le monde Android peut être problématique à cause des différents propriétaires et permissions sur les fichiers. Gardez ça en tête.&lt;br&gt;&lt;br&gt;Conseil: Si vous stockez votre base de données Keepass dans le Cloud, veillez à utiliser un fichier de clé stocké localement en plus du mot de passe principal. Ce fichier de clé ne doit pas être stocké sur le service de Cloud.&lt;br&gt;&lt;br&gt;&lt;b&gt;Utiliser un fichier de clé&lt;/b&gt;&lt;br&gt;&lt;br&gt;Un fichier de clé peut être utilisé en plus d&apos;un mot de passe principal pour protéger la base de données Keepass. Ils sont utilisés ensemble pour générer une clé qui ouvrira la base de données. Donc en utilisant un fichier contenant beaucoup de données, la clé générée devient en principe plus forte contre les attaques. Vous pouvez par exemple utiliser une photo choisie au hasard comme fichier de clé.&lt;br&gt;&lt;br&gt;&lt;b&gt;Mot de passe principal&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ici se trouve le mot de passe de votre nouvelle base de données Keepass. Veuillez choisir un mot de passe long d&apos;environ 10 - 15 caractères et utiliser un mélange de minuscules, majuscules, chiffres et caractères spéciaux. Retapez le mot de passe dans le champ &quot;Confirmez le mot de passe&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ouvrir automatiquement&lt;/b&gt;&lt;br&gt;&lt;br&gt;Cochez cette option si vous voulez que ownKeepass ouvre automatiquement cette base de données quand vous lancerez l&apos;application la prochaine fois. Vous arriverez directement sur la page pour entrer votre mot de passe.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
     <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
@@ -953,10 +916,6 @@
         <translation>Afficher plus de détails</translation>
     </message>
     <message>
-        <source>Database path and name</source>
-        <translation type="vanished">Emplacement et nom de la base de données</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
         <source>Key file path and name</source>
         <translation>Emplacement et nom du fichier de clé</translation>
@@ -985,13 +944,13 @@
         <location filename="../qml/content/MainPage.qml" line="353"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Emplacement et nom du fichier de la nouvelle base de données</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Emplacement et nom du fichier de la base de données</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="499"/>
@@ -1169,7 +1128,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
         <source>Discard</source>
-        <translation type="unfinished">Rejeter</translation>
+        <translation>Rejeter</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
@@ -1222,7 +1181,7 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
@@ -1243,10 +1202,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
         <source>Confirm password</source>
         <translation>Confirmer mot de passe</translation>
-    </message>
-    <message>
-        <source>Open automatically</source>
-        <translation type="vanished">Ouvrir automatiquement</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
@@ -1280,41 +1235,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Saisir un mot de passe principal pour déverouiller votre coffre-fort Keepass :</translation>
-    </message>
-</context>
-<context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">Nouvelle base de données</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">Ouvrir base de données</translation>
-    </message>
-    <message>
-        <source>Type in a name for your new Keepass database:</source>
-        <translation type="vanished">Saisir un nom pour votre nouvelle base de données Keepass :</translation>
-    </message>
-    <message>
-        <source>(Optional) Type in a name for a key file:</source>
-        <translation type="vanished">(Optionnel) Saisir un nom pour un fichier de clé :</translation>
-    </message>
-    <message>
-        <source>Change location where the Keepass database file will be saved:</source>
-        <translation type="vanished">Modifier l&apos;emplacement de sauvegarde du fichier de la base de données Keepass :</translation>
-    </message>
-    <message>
-        <source>Change location where the key file will be saved:</source>
-        <translation type="vanished">Modifier l&apos;emplacement de sauvegarde du fichier de clé :</translation>
-    </message>
-    <message>
-        <source>Choose Keepass database file:</source>
-        <translation type="vanished">Choisir un fichier de base de données Keepass :</translation>
-    </message>
-    <message>
-        <source>(Optional) Choose key file:</source>
-        <translation type="vanished">(Optionnel) Choisir un fichier de clé :</translation>
     </message>
 </context>
 <context>

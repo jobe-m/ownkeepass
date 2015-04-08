@@ -550,18 +550,6 @@
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Copia il nome utente e la password negli appunti dalla cover</translation>
     </message>
-    <message>
-        <source>Advanced settings</source>
-        <translation type="vanished">Impostazioni avanzate</translation>
-    </message>
-    <message>
-        <source>Expert user mode</source>
-        <translation type="vanished">Modalità utente esperto</translation>
-    </message>
-    <message>
-        <source>This enables advanced functionality like handling multiple databases on main page</source>
-        <translation type="vanished">Funzionalità avanzate come la gestione di più database sulla pagina principale</translation>
-    </message>
 </context>
 <context>
     <name>FileSystemDialog</name>
@@ -629,14 +617,6 @@
         <source>Back</source>
         <translation>Indietro</translation>
     </message>
-    <message>
-        <source>Open</source>
-        <translation type="vanished">Apri</translation>
-    </message>
-    <message>
-        <source>Create</source>
-        <translation type="vanished">Crea</translation>
-    </message>
 </context>
 <context>
     <name>Global</name>
@@ -661,19 +641,6 @@
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Home:</source>
-        <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="vanished">Home:</translation>
-    </message>
-    <message>
-        <source>SD Card:</source>
-        <translation type="vanished">Scheda SD:</translation>
-    </message>
-    <message>
-        <source>Android Storage:</source>
-        <translation type="vanished">Storage Android:</translation>
     </message>
 </context>
 <context>
@@ -762,10 +729,6 @@
 <context>
     <name>HelpCreateNewDatabase</name>
     <message>
-        <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in the home directory of the phone, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">In questa pagina è possibile creare un nuovo database in cui ownKeepass memorizzerà i vostri dati sensibili. &lt;br&gt;&lt;br&gt;Apri il file browser e scegli un nome per il file e una cartella. Puoi scegliere se salvare il tuo database nel telefono, nella scheda SD o nello memoria Android. Se la voce della scheda SD è grigia allora nessuna scheda SD è inserita o la scheda non viene rilevata correttamente dal sistema. Solo le schede SD con una sola partizione sono ammesse, in quanto attualmente le schede multi-partizioni non sono supportate da ownKeepass. &quot;Android Storage&quot; permette di condividere il database con le app Android, anche se ciò potrebbe creare problemi a causa di differenti permessi e autorizzazioni sui file. Sii consapevole di questo.&lt;br&gt;&lt;br&gt; Consigli:. Se carichi il database Keepass nel cloud assicurati di utilizzare un file chiave memorizzato localmente in aggiunta alla password principale. Questo file chiave non deve essere caricato nel servizio cloud. &lt;br&gt;&lt;br&gt;&lt;b&gt;Utilizzo del file chiave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Un file chiave può essere utilizzato in aggiunta ad una password principale per proteggere il database Keepass. Entrambi sono utilizzati insieme per generare una chiave di accesso che aprirà il database. Quindi, utilizzando un file con un sacco di dati all&apos;interno della chiave di accesso, essa diventa in linea di principio più forte contro gli attacchi. È possibile utilizzare ad esempio un&apos;immagine casuale come file di chiave. &lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt; Qui va la password per il tuo nuovo database Keepass. Assicurati di scegliere una password lunga circa 10 - 15 caratteri contenente caratteri maiscuoli e minuscoli, numeri e caratteri speciali. Ripeti la password nel campo &quot;Conferma password&quot;. &lt;br&gt;&lt;br&gt;&lt;b&gt;Apri automaticamente&lt;/b&gt;&lt;br&gt;&lt;br&gt;Seleziona questa opzione se desideri che ownKeepass apra automaticamente questo database di nuovo quando si avvia l&apos;applicazione la volta successiva. Verrai indirizzato direttamente alla schermata in cui inserire la password.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-    <message>
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changed &quot;home drive on the phone&quot; to &quot;Device Memory&quot;, removed section for &quot;Open automatically&quot;</extracomment>
@@ -798,11 +761,6 @@
 </context>
 <context>
     <name>HelpOpenNewDatabase</name>
-    <message>
-        <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Home, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Home&quot; is usually &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&lt;UUID&gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens this database again when you start the application the next time. You will be forwarded directly to the password query dialog.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Removed one sentence in section &quot;Use key file&quot;</extracomment>
-        <translation type="vanished">Qui è possibile aprire un file di database Keepass esistente. &lt;br&gt;&lt;br&gt;Tramite il file browser puoi cercare il file nelle seguenti posizioni: home, scheda SD e Storage Android; se hai difficoltà ad individuarlo con ownKeepass, assicurati di posizionarlo nei percorsi sopra indicati. &quot;Home&quot; è di solito &quot;% 1&quot;. Se una scheda SD è inserita nel telefono, il percorso è&quot;/sdcard/&lt;UUID&gt;/media&quot;. (Ricorda che le schede SD con più di una partizione non sono supportate.) &quot;Storage Android&quot; si trova in &quot;% 2&quot;.&lt;br&gt;&lt;br&gt;Consiglio:. Se carichi il database Keepass nel cloud assicurarti di utilizzare un file di chiave memorizzato localmente oltre alla password principale; evita di caricare anche il file chiave nel cloud.&lt;br&gt;&lt;br&gt;&lt;b&gt;Uso del file chiave&lt;/b&gt;&lt;br&gt;&lt;br&gt;Se utilizzi un file chiave per aprire il database Keepass seleziona questa opzione.&lt;br&gt;&lt;br&gt;&lt;b&gt;Password principale&lt;/b&gt;&lt;br&gt;&lt;br&gt;Inserisci qui la password per il database Keepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Apri automaticamente&lt;/b&gt;&lt;br&gt;&lt;br&gt;Seleziona questa opzione se vuoi che ownKeepass apra automaticamente questo database di nuovo al prossimo avvio dell&apos;app. Verrà mostrata direttamente la finestra in cui inserire la password.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
     <message>
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Device Memory, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Device Memory&quot; is located at &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;</source>
@@ -956,10 +914,6 @@
         <location filename="../qml/content/MainPage.qml" line="276"/>
         <source>Show more details</source>
         <translation>Mostra altri dettagli</translation>
-    </message>
-    <message>
-        <source>Database path and name</source>
-        <translation type="vanished">Percorso e nome del database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="315"/>
@@ -1250,10 +1204,6 @@
         <translation>Conferma password</translation>
     </message>
     <message>
-        <source>Open automatically</source>
-        <translation type="vanished">Apri automaticamente</translation>
-    </message>
-    <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Create</source>
         <translation>Crea</translation>
@@ -1285,41 +1235,6 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Inserisci una password principale per sbloccare il tuo nuovo Keepass:</translation>
-    </message>
-</context>
-<context>
-    <name>SelectDatabasePage</name>
-    <message>
-        <source>New database</source>
-        <translation type="vanished">Nuovo database</translation>
-    </message>
-    <message>
-        <source>Open database</source>
-        <translation type="vanished">Apri database</translation>
-    </message>
-    <message>
-        <source>Type in a name for your new Keepass database:</source>
-        <translation type="vanished">Inserisci nome per il database Keepass:</translation>
-    </message>
-    <message>
-        <source>(Optional) Type in a name for a key file:</source>
-        <translation type="vanished">(Opzionale) Inserisci nome per il file chiave:</translation>
-    </message>
-    <message>
-        <source>Change location where the Keepass database file will be saved:</source>
-        <translation type="vanished">Cambia posizione del file del database:</translation>
-    </message>
-    <message>
-        <source>Change location where the key file will be saved:</source>
-        <translation type="vanished">Cambia posizione del file chiave:</translation>
-    </message>
-    <message>
-        <source>Choose Keepass database file:</source>
-        <translation type="vanished">Scegli file database Keepass:</translation>
-    </message>
-    <message>
-        <source>(Optional) Choose key file:</source>
-        <translation type="vanished">(Opzionale) Scegli file chiave:</translation>
     </message>
 </context>
 <context>
