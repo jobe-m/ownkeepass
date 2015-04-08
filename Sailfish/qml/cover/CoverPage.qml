@@ -353,7 +353,9 @@ CoverBackground {
             PropertyChanges { target: actionLockDatabaseAndCopy
                 enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover }
             PropertyChanges { target: coverTextLabel
-                text: !ownKeepassSettings.showUserNamePasswordOnCover ? qsTr("Username and password are hidden") : "" }
+                text: (coverPage.username.length !== 0 || coverPage.password.length !== 0 ) &&
+                      !ownKeepassSettings.showUserNamePasswordOnCover ?
+                          qsTr("Username and password are hidden") : "" }
             StateChangeScript {
                 name: "resetClipboardState"
                 script: {
