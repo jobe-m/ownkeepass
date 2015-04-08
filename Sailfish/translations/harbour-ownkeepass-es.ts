@@ -158,7 +158,7 @@
         <translation>Búsqueda de contraseñas registradas</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="356"/>
+        <location filename="../qml/cover/CoverPage.qml" line="358"/>
         <source>Username and password are hidden</source>
         <translation>El nombre de usuario y contraseña están ocultos</translation>
     </message>

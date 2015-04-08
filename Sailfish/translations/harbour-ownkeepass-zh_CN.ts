@@ -158,7 +158,7 @@
         <translation>搜索密码词条</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="356"/>
+        <location filename="../qml/cover/CoverPage.qml" line="358"/>
         <source>Username and password are hidden</source>
         <translation>用户名和密码已隐藏</translation>
     </message>

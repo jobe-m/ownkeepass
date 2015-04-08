@@ -158,7 +158,7 @@
         <translation>Cerca contrasenyes registrades</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="356"/>
+        <location filename="../qml/cover/CoverPage.qml" line="358"/>
         <source>Username and password are hidden</source>
         <translation>S&apos;han ocultat el nom d&apos;usuari i la contrasenya </translation>
     </message>

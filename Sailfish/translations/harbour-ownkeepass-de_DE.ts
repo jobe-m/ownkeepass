@@ -158,7 +158,7 @@
         <translation>Suche in Passworteinträgen</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="356"/>
+        <location filename="../qml/cover/CoverPage.qml" line="358"/>
         <source>Username and password are hidden</source>
         <translation>Benutzername und Passwort sind versteckt</translation>
     </message>

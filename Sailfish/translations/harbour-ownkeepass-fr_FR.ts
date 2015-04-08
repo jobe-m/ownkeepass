@@ -158,7 +158,7 @@
         <translation>Rechercher de doonées de mots de passe</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="356"/>
+        <location filename="../qml/cover/CoverPage.qml" line="358"/>
         <source>Username and password are hidden</source>
         <translation>Nom d&apos;utilisateur et mot de passe sont cachés</translation>
     </message>

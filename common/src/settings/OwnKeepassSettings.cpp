@@ -124,6 +124,9 @@ void OwnKeepassSettings::checkSettingsVersion()
                                          m_recentDatabaseList[i]["keyFileLocation"].toInt(),
                                          m_recentDatabaseList[i]["keyFilePath"].toString());
     }
+
+    // Update database details on main page in QML UI after version check
+    loadDatabaseDetails();
 }
 
 void OwnKeepassSettings::loadSettings() {

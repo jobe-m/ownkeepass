@@ -158,7 +158,7 @@
         <translation>Søk etter oppføringer</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="356"/>
+        <location filename="../qml/cover/CoverPage.qml" line="358"/>
         <source>Username and password are hidden</source>
         <translation>Brukernavn og passord er skjult</translation>
     </message>

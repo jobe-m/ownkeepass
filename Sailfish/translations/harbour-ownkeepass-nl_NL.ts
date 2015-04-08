@@ -158,7 +158,7 @@
         <translation>Zoeken naar wachtwoordvermeldingen</translation>
     </message>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="356"/>
+        <location filename="../qml/cover/CoverPage.qml" line="358"/>
         <source>Username and password are hidden</source>
         <translation>Gebruikersnaam en wachtwoord zijn verborgen</translation>
     </message>
