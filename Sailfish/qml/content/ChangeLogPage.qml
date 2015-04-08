@@ -55,25 +55,22 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.1.4 Show hidden files in file browser</b>\
-<ul>\
-<li>Now it is also possible to select hidden files and folders from file browser</li>\
-<li>Bugfix for language seletion: English could not be selected if system language was not set to English</li>\
-</ul>\
-<br>\
-<b>v1.1.3 Unified start page</b>\
+<b>v1.1.4 Unified start page and hidden files in file browser</b>\
 <ul>\
 <li>Enabled handling of multiple databases on start page per default. In fact after introducing the file \
 browser it is not neccessary to hide the database opening dialogs from the average user any more ;) So \
 \"expert mode\" is gone for now.</li>\
+<li>Now it is also possible to select hidden files and folders from file browser</li>\
 <li>Fix a bug in recent database list with localization of database location</li>\
+<li>Bugfix for language seletion: English could not be selected if system language was not set to English</li>\
+<li>Fixed a bug on start page where after app start always the default database \"Documents/ownkeepass/notes.kdb\" was preloaded in database details</li>\
 </ul>\
 <br>\
 <b>v1.1.1 Bugfix release</b>\
 <ul>\
 <li>Bugfix: File browser doesn't allow SD card selection</li>\
 <li>Update French and Danish translations</li>\
-<li>Added new translation for Norwegian Bokmål (not yet finished)</li>\
+<li>Added new translation for Norwegian Bokmål</li>\
 </ul>\
 <br>\
 <b>v1.1.0 Database fast unlock and file browser</b>\
@@ -85,19 +82,18 @@ lock it you can unlock quickly with a partial password which consists of the fir
 <li>Added file browser in order to select database file when opening or creating a new Keepass database. \
 The recent opened database list needs to be reinitialized and thus is set to empty.</li>\
 <li>Added new translations for Chinese, Danish, French, Italian and Russian</li>\
-<li>Czech, French, Russian and Danish translations are not finished yet. Help to get them done :)</li>\
 </ul>\
 <br>\
 <b>v1.0.24 Translation update</b>\
 <ul>\
 <li>Added new translation for Spanish</li>\
-<li>Many translation updates and bugfixes, Czech and Finish are not finished yet</li>\
+<li>Many translation updates and bugfixes</li>\
 </ul>\
 <br>\
 <b>v1.0.23 Bugfixes and new translations</b>\
 <ul>\
 <li>Translation updates and bugfixes for Finnish and Swedish</li>\
-<li>New translations for German, Catalan, Czech and Dutch. The last two are not finished yet. Help to get them done. Thanks :)</li>\
+<li>New translations for German, Catalan, Czech and Dutch.</li>\
 </ul>\
 <br>\
 <b>v1.0.22 Translation update</b>\
