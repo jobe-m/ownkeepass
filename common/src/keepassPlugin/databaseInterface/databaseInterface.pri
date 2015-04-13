@@ -27,17 +27,26 @@ INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
 
 SOURCES += \
-    ../common/src/keepassPlugin/databaseInterface/private/KdbInterface.cpp \
-    ../common/src/keepassPlugin/databaseInterface/private/KdbInterfaceWorker.cpp \
     ../common/src/keepassPlugin/databaseInterface/KdbDatabase.cpp \
     ../common/src/keepassPlugin/databaseInterface/KdbListModel.cpp \
     ../common/src/keepassPlugin/databaseInterface/KdbEntry.cpp \
-    ../common/src/keepassPlugin/databaseInterface/KdbGroup.cpp
+    ../common/src/keepassPlugin/databaseInterface/KdbGroup.cpp \
+    ../common/src/keepassPlugin/databaseInterface/private/DatabaseClient.cpp \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseFactory.cpp \
+#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.cpp \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.cpp \
+#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.cpp \
 
 HEADERS += \
-    ../common/src/keepassPlugin/databaseInterface/private/KdbInterface.h \
-    ../common/src/keepassPlugin/databaseInterface/private/KdbInterfaceWorker.h \
     ../common/src/keepassPlugin/databaseInterface/KdbDatabase.h \
     ../common/src/keepassPlugin/databaseInterface/KdbListModel.h \
     ../common/src/keepassPlugin/databaseInterface/KdbEntry.h \
-    ../common/src/keepassPlugin/databaseInterface/KdbGroup.h
+    ../common/src/keepassPlugin/databaseInterface/KdbGroup.h \
+    ../common/src/keepassPlugin/databaseInterface/private/DatabaseClient.h \
+    ../common/src/keepassPlugin/databaseInterface/private/AbstractDatabaseFactory.h \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseFactory.h \
+#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.h \
+    ../common/src/keepassPlugin/databaseInterface/private/AbstractDatabaseInterface.h \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.h \
+#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.h \
+

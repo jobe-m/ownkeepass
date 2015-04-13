@@ -22,7 +22,7 @@
 
 #include <QDebug>
 #include "KdbListModel.h"
-#include "private/KdbInterface.h"
+#include "private/DatabaseClient.h"
 
 using namespace kpxPublic;
 using namespace kpxPrivate;
@@ -35,33 +35,33 @@ KdbListModel::KdbListModel(QObject *parent)
 {
     // connect signals to backend
     bool ret = connect(this, SIGNAL(loadMasterGroups()),
-                       KdbInterface::getInstance()->getWorker(), SLOT(slot_loadMasterGroups()));
+                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadMasterGroups()));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(loadGroupsAndEntries(int)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_loadGroupsAndEntries(int)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadGroupsAndEntries(int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(groupsAndEntriesLoaded(int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupsAndEntriesLoaded(int)),
                   this, SIGNAL(groupsAndEntriesLoaded(int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(addItemToListModel(QString, QString, int, int, int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int)),
                   this, SLOT(slot_addItemToListModel(QString, QString, int, int, int)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(unregisterFromKdbInterface(int)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_unregisterListModel(int)));
+    ret = connect(this, SIGNAL(unregisterFromDatabaseClient(int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_unregisterListModel(int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(updateItemInListModel(QString,QString,int,int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(updateItemInListModel(QString,QString,int,int)),
                   this, SLOT(slot_updateItemInListModel(QString,QString,int,int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(masterGroupsLoaded(int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(masterGroupsLoaded(int)),
                   this, SIGNAL(masterGroupsLoaded(int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(deleteItemInListModel(int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(deleteItemInListModel(int)),
                   this, SLOT(slot_deleteItem(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(searchEntries(QString,int)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_searchEntries(QString,int)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_searchEntries(QString,int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(searchEntriesCompleted(int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(searchEntriesCompleted(int)),
                   this, SIGNAL(searchEntriesCompleted(int)));
     Q_ASSERT(ret);
 }
@@ -69,7 +69,7 @@ KdbListModel::KdbListModel(QObject *parent)
 KdbListModel::~KdbListModel()
 {
     if (m_registered) {
-        emit unregisterFromKdbInterface(m_modelId);
+        emit unregisterFromDatabaseClient(m_modelId);
     }
 }
 
@@ -146,7 +146,7 @@ void KdbListModel::loadMasterGroupsFromDatabase()
         clear();
     }
     if (m_registered) {
-        emit unregisterFromKdbInterface(m_modelId);
+        emit unregisterFromDatabaseClient(m_modelId);
         m_registered = false;
     }
     // send signal to global interface of keepass database to get master groups
@@ -160,7 +160,7 @@ void KdbListModel::loadGroupsAndEntriesFromDatabase(int groupId)
         clear();
     }
     if (m_registered) {
-        emit unregisterFromKdbInterface(m_modelId);
+        emit unregisterFromDatabaseClient(m_modelId);
         m_registered = false;
     }
     // send signal to global interface of keepass database to get entries and subgroups
@@ -232,7 +232,7 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
         clear();
     }
     if (m_registered) {
-        emit unregisterFromKdbInterface(m_modelId);
+        emit unregisterFromDatabaseClient(m_modelId);
     }
 
     // list model for searching is -1 per default, so set it here already

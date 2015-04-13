@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2012 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -20,25 +20,27 @@
 **
 ***************************************************************************/
 
-#ifndef KDBINTERFACEWORKER_H
-#define KDBINTERFACEWORKER_H
+#ifndef KEEPASS2DATABASEINTERFACE_H
+#define KEEPASS2DATABASEINTERFACE_H
 
 #include <QObject>
-#include "database/Kdb3Database.h"
+#include "AbstractDatabaseInterface.h"
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
+#include "core/Database.h"
 
 using namespace kpxPublic;
 
 namespace kpxPrivate {
 
-class KdbInterfaceWorker : public QObject
+class Keepass2DatabaseInterface : public QObject, public AbstractDatabaseInterface
 {
     Q_OBJECT
+    Q_INTERFACES(AbstractDatabaseInterface)
 
 public:
-    explicit KdbInterfaceWorker(QObject* parent = 0);
-    virtual ~KdbInterfaceWorker();
+    explicit Keepass2DatabaseInterface(QObject* parent = 0);
+    virtual ~Keepass2DatabaseInterface();
 
 signals:
     // signals to KdbDatabase object
@@ -123,13 +125,13 @@ public slots:
     void slot_createNewGroup(QString title, quint32 iconId, int parentGroupId);
 
 private:
-    void initKdbDatabase();
-    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
-    inline QString getUserAndPassword(IEntryHandle* entry);
+    void initDatabase();
+//    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
+//    inline QString getUserAndPassword(IEntryHandle* entry);
 
 private:
     // Keepass database handler
-    Kdb3Database* m_kdb3Database;
+    Database* m_Database;
 
     // settings
     bool m_setting_showUserNamePasswordsInListView;
@@ -140,4 +142,4 @@ private:
 };
 
 }
-#endif // KDBINTERFACEWORKER_H
+#endif // KEEPASS2DATABASEINTERFACE_H

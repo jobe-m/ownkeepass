@@ -21,7 +21,8 @@
 ############################################################################
 
 # Sources of the keepass QML plugins
-include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
+include(../common/src/keepassPlugin/keepass1_database/keepass1_database.pri)
+#include(../common/src/keepassPlugin/keepass2_database/keepass2_database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 include(../common/src/fileBrowserPlugin/fileBrowserPlugin.pri)
 
@@ -148,7 +149,7 @@ OTHER_FILES += \
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
+#CONFIG += sailfishapp_i18n
 
 TRANSLATIONS += \
     translations/harbour-ownkeepass-ca.ts \
@@ -162,8 +163,8 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-de_DE.ts \
     translations/harbour-ownkeepass-it.ts \
     translations/harbour-ownkeepass-nb_NO.ts \
-#    translations/harbour-ownkeepass-pl_PL.ts
+    #translations/harbour-ownkeepass-pl_PL.ts
     translations/harbour-ownkeepass-ru.ts \
     translations/harbour-ownkeepass-es.ts \
     translations/harbour-ownkeepass-sv_SE.ts
-#    translations/harbour-ownkeepass-uk_UA.ts
+    #translations/harbour-ownkeepass-uk_UA.ts
