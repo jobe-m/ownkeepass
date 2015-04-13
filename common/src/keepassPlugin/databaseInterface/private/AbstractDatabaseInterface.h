@@ -3,10 +3,10 @@
 #define DATABASEINTERFACE_H
 
 // Interface for accessing a database
-class DatabaseInterface
+class AbstractDatabaseInterface
 {
 public:
-    virtual ~DatabaseInterface(){}
+    virtual ~AbstractDatabaseInterface(){}
 
 protected: // signals
     // signals to KdbDatabase object
@@ -91,6 +91,6 @@ public: // slots
     virtual void slot_createNewGroup(QString title, quint32 iconId, int parentGroupId) = 0;
 };
 
-Q_DECLARE_INTERFACE(DatabaseInterface, "harbour.ownkeepass.DatabaseInterface")
+Q_DECLARE_INTERFACE(AbstractDatabaseInterface, "harbour.ownkeepass.AbstractDatabaseInterface")
 
 #endif // DATABASEINTERFACE_H

@@ -36,7 +36,7 @@
 #include "KdbListModel.h"
 #include "KdbEntry.h"
 #include "KdbGroup.h"
-#include "private/KdbInterface.h"
+#include "private/DatabaseClient.h"
 #include "OwnKeepassHelper.h"
 #include "OwnKeepassSettings.h"
 #include "RecentDatabaseListModel.h"

@@ -33,7 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
-#include "private/KdbxInterfaceWorker.h"
+#include "private/Keepass1DatabaseInterface.h"
 
 int main(int argc, char *argv[])
 {
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    DatabaseInterface* dbInterface = new keepass2Format::KdbxInterfaceWorker();
+    AbstractDatabaseInterface* dbInterface = new kpxPrivate::Keepass1DatabaseInterface();
 
     int res = SailfishApp::main(argc, argv);
 

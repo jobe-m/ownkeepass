@@ -85,7 +85,7 @@ public:
     bool showUserNamePasswordsInListView() const { return m_showUserNamePasswordsInListView; }
 
 signals:
-    // signals to KdbInterface backend thread
+    // signals to DatabaseClient backend thread
     void openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
     void createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
     void closeDatabase();
@@ -104,7 +104,7 @@ signals:
     void errorOccured(int result, QString errorMsg);
 
 private slots:
-    // signals from KdbInterface backend thread
+    // signals from DatabaseClient backend thread
     void slot_databaseKeyTransfRoundsChanged(int value) {
         qDebug("slot_databaseKeyTransfRoundsChanged(%d)", value);
         if (value != m_keyTransfRounds) {

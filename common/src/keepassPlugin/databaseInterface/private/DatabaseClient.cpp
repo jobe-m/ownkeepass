@@ -20,44 +20,77 @@
 **
 ***************************************************************************/
 
-#include "KdbInterface.h"
-//#include "KdbInterfaceWorker.h"
-#include "KdbxInterfaceWorker.h"
+#include "DatabaseClient.h"
+#include "Keepass1DatabaseFactory.h"
+//#include "Keepass2DatabaseFactory.h"
 
 using namespace kpxPrivate;
 
+#define KEEPASS_1 1
+#define KEEPASS_2 2
+
 // Global static pointer used to ensure a single instance of the class
 // It is used by KdbDatabase, KdbListModel, KdbGroup and KdbEntry classes to access data of the Keepass database
-KdbInterface* KdbInterface::m_Instance = new KdbInterface;
+DatabaseClient* DatabaseClient::m_Instance = new DatabaseClient;
 
-KdbInterface::KdbInterface(QObject *parent)
+DatabaseClient::DatabaseClient(QObject *parent)
     : QObject(parent),
+      m_factory(NULL),
+      m_interface(NULL),
       m_workerThread()
 {
-    // Here a interface worker will be instantiated which operates on a Keepass version 1 database
-    // To enable other database formats just load here another worker
-    // TODO for KeepassX2
-//    m_worker = new keepassClassic::KdbInterfaceWorker;
-    m_worker = new keepass2Format::KdbxInterfaceWorker;
-    // m_worker as hidden QObject has got no parent because it must be moved to another thread
-
-    // DatabaseInterface object m_worker is also a QObject, so in order to use functions from it cast it before
-    dynamic_cast<QObject*>(m_worker)->moveToThread(&m_workerThread);
-    m_workerThread.start();
+    // Currently support for Keepass 1 is hardcoded
+    initDatabaseInterface(KEEPASS_1);
 }
 
-KdbInterface::~KdbInterface()
+int DatabaseClient::initDatabaseInterface(const int type)
 {
     if (m_workerThread.isRunning()) {
         m_workerThread.quit();
         m_workerThread.wait();
         m_workerThread.terminate();
     }
-    delete m_worker;
-    m_worker = NULL;
+
+    // Here a interface will be instantiated which operates on a specific Keepass database version
+    // To enable other database formats just load here another interface
+
+    switch(type) {
+    case KEEPASS_1:
+        m_factory = new Keepass1DatabaseFactory();
+        m_interface = m_factory->factoryMethod();
+        break;
+    case KEEPASS_2:
+//        m_factory = new Keepass2DatabaseFactory();
+//        m_interface = m_factory->factoryMethod();
+        break;
+    default:
+// TODO add error handling
+        m_factory = NULL;
+        m_interface = NULL;
+        break;
+    }
+
+    // DatabaseInterface object m_worker is also a QObject, so in order to use functions from it cast it before
+    dynamic_cast<QObject*>(m_interface)->moveToThread(&m_workerThread);
+    m_workerThread.start();
+
+    return 0;
 }
 
-KdbInterface* KdbInterface::getInstance()
+DatabaseClient::~DatabaseClient()
+{
+    if (m_workerThread.isRunning()) {
+        m_workerThread.quit();
+        m_workerThread.wait();
+        m_workerThread.terminate();
+    }
+    delete m_interface;
+    m_interface = NULL;
+    delete m_factory;
+    m_factory = NULL;
+}
+
+DatabaseClient* DatabaseClient::getInstance()
 {
     Q_ASSERT(m_Instance);
     return m_Instance;

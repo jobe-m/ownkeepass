@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2012 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -20,30 +20,27 @@
 **
 ***************************************************************************/
 
-#ifndef KDBXINTERFACEWORKER_H
-#define KDBXINTERFACEWORKER_H
+#ifndef KEEPASS1DATABASEINTERFACE_H
+#define KEEPASS1DATABASEINTERFACE_H
 
 #include <QObject>
-#include "DatabaseInterface.h"
+#include "AbstractDatabaseInterface.h"
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
-
-// KeepassX 2 related includes
-#include "core/Database.h"
-
+#include "database/Kdb3Database.h"
 
 using namespace kpxPublic;
 
-namespace keepass2Format {
+namespace kpxPrivate {
 
-class KdbxInterfaceWorker : public QObject, public DatabaseInterface
+class Keepass1DatabaseInterface : public QObject, public AbstractDatabaseInterface
 {
     Q_OBJECT
-    Q_INTERFACES(DatabaseInterface)
+    Q_INTERFACES(AbstractDatabaseInterface)
 
 public:
-    explicit KdbxInterfaceWorker(QObject* parent = 0);
-    virtual ~KdbxInterfaceWorker();
+    explicit Keepass1DatabaseInterface(QObject* parent = 0);
+    virtual ~Keepass1DatabaseInterface();
 
 signals:
     // signals to KdbDatabase object
@@ -128,13 +125,13 @@ public slots:
     void slot_createNewGroup(QString title, quint32 iconId, int parentGroupId);
 
 private:
-    void initKdbDatabase();
-//    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
-//    inline QString getUserAndPassword(IEntryHandle* entry);
+    void initDatabase();
+    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
+    inline QString getUserAndPassword(IEntryHandle* entry);
 
 private:
     // Keepass database handler
-    Database* m_kdbxDatabase;
+    Kdb3Database* m_kdb3Database;
 
     // settings
     bool m_setting_showUserNamePasswordsInListView;
@@ -145,4 +142,4 @@ private:
 };
 
 }
-#endif // KDBXINTERFACEWORKER_H
+#endif // KEEPASS1DATABASEINTERFACE_H

@@ -25,30 +25,38 @@
 
 #include <QObject>
 #include <QThread>
-#include "DatabaseInterface.h"
+#include "AbstractDatabaseInterface.h"
+#include "AbstractDatabaseFactory.h"
+
 
 namespace kpxPrivate {
 
-class KdbInterface : public QObject
+class DatabaseClient : public QObject
 {
     Q_OBJECT
 
 public:
-    virtual ~KdbInterface();
+    virtual ~DatabaseClient();
 
-    static KdbInterface* getInstance();
+    // get Singleton
+    static DatabaseClient* getInstance();
 
-    // access to internal worker needed to connect to its slots
-    QObject* getWorker() { return dynamic_cast<QObject*>(m_worker); }
+    // init interface for specific database type
+    int initDatabaseInterface(const int type);
+
+    // access to internal database interface needed to connect to its slots
+    QObject* getInterface() { return dynamic_cast<QObject*>(m_interface); }
 
 private:
-    // Prevent object creation, it will be created as singleton object
-    KdbInterface(QObject* parent = 0);
-    Q_DISABLE_COPY(KdbInterface)
+    // prevent object creation, it will be created as singleton object
+    DatabaseClient(QObject* parent = 0);
+    Q_DISABLE_COPY(DatabaseClient)
+
+    AbstractDatabaseFactory* m_factory;
+    AbstractDatabaseInterface* m_interface;
 
     QThread m_workerThread;
-    DatabaseInterface* m_worker;
-    static KdbInterface* m_Instance;
+    static DatabaseClient* m_Instance;
 };
 
 }

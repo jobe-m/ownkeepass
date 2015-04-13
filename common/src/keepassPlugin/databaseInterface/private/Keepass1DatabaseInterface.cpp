@@ -25,13 +25,13 @@
 #include <QDir>
 #include <QDebug>
 
-#include "KdbInterfaceWorker.h"
+#include "Keepass1DatabaseInterface.h"
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
 #include "crypto/yarrow.h"
 
 //using namespace kpxPrivate;
-using namespace keepassClassic;
+using namespace kpxPrivate;
 using namespace kpxPublic;
 
 // KeepassX internal stuff
@@ -43,24 +43,24 @@ QPixmap* EntryIcons;
 IIconTheme* IconLoader;
 // End of KeepassX internal stuff
 
-KdbInterfaceWorker::KdbInterfaceWorker(QObject *parent)
-    : QObject(parent),
+Keepass1DatabaseInterface::Keepass1DatabaseInterface(QObject *parent)
+    : QObject(parent), AbstractDatabaseInterface(),
       m_kdb3Database(NULL),
       m_setting_showUserNamePasswordsInListView(false)
 {
-    initKdbDatabase();
+    initDatabase();
 }
 
-KdbInterfaceWorker::~KdbInterfaceWorker()
+Keepass1DatabaseInterface::~Keepass1DatabaseInterface()
 {
-    qDebug("Destructor KdbInterfaceWorker");
+    qDebug("Destructor Keepass1DatabaseInterface");
     delete m_kdb3Database;
     delete config;
     SecString::deleteSessionKey();
 
 }
 
-void KdbInterfaceWorker::initKdbDatabase()
+void Keepass1DatabaseInterface::initDatabase()
 {
     qDebug("init Yarrow");
     initYarrow();
@@ -76,9 +76,9 @@ void KdbInterfaceWorker::initKdbDatabase()
     m_kdb3Database = NULL; \
     return;
 
-void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
+void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
 {
-//    qDebug() << "KdbInterfaceWorker::slot_openDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
+//    qDebug() << "Keepass1DatabaseInterface::slot_openDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
     // check if there is an already opened database and close it
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
@@ -120,7 +120,7 @@ void KdbInterfaceWorker::slot_openDatabase(QString filePath, QString password, Q
     emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
 }
 
-void KdbInterfaceWorker::slot_closeDatabase()
+void Keepass1DatabaseInterface::slot_closeDatabase()
 {
     // check if database is already closed
     if (!m_kdb3Database) {
@@ -144,9 +144,9 @@ void KdbInterfaceWorker::slot_closeDatabase()
     emit databaseClosed();
 }
 
-void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
+void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
 {
-//    qDebug() << "KdbInterfaceWorker::slot_createNewDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
+//    qDebug() << "Keepass1DatabaseInterface::slot_createNewDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
     // check if there is an already opened database and close it
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
@@ -208,9 +208,9 @@ void KdbInterfaceWorker::slot_createNewDatabase(QString filePath, QString passwo
     emit newDatabaseCreated();
 }
 
-void KdbInterfaceWorker::slot_changePassKey(QString password, QString keyFile)
+void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString keyFile)
 {
-    qDebug() << "KdbInterfaceWorker::slot_changePassKey";
+    qDebug() << "Keepass1DatabaseInterface::slot_changePassKey";
     Q_ASSERT(m_kdb3Database);
     if (!m_kdb3Database->setKey(password, keyFile)) {
         // send signal with error
@@ -227,7 +227,7 @@ void KdbInterfaceWorker::slot_changePassKey(QString password, QString keyFile)
     emit passwordChanged();
 }
 
-void KdbInterfaceWorker::slot_loadMasterGroups()
+void Keepass1DatabaseInterface::slot_loadMasterGroups()
 {
     Q_ASSERT(m_kdb3Database);
     for (int i = 0; i < m_kdb3Database->groups().count(); i++) {
@@ -255,7 +255,7 @@ void KdbInterfaceWorker::slot_loadMasterGroups()
     emit masterGroupsLoaded(kpxPublic::KdbListModel::RE_OK);
 }
 
-void KdbInterfaceWorker::slot_loadGroupsAndEntries(int groupId)
+void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
 {
     qDebug("start KdbListModel::slot_loadGroupsAndEntries");
     Q_ASSERT(m_kdb3Database);
@@ -295,7 +295,7 @@ void KdbInterfaceWorker::slot_loadGroupsAndEntries(int groupId)
     emit groupsAndEntriesLoaded(kpxPublic::KdbListModel::RE_OK);
 }
 
-void KdbInterfaceWorker::slot_loadEntry(int entryId)
+void Keepass1DatabaseInterface::slot_loadEntry(int entryId)
 {
     // get entry handler for entryId
     IEntryHandle* entry = (IEntryHandle*)(entryId);
@@ -322,14 +322,14 @@ void KdbInterfaceWorker::slot_loadEntry(int entryId)
     password.lock();
 }
 
-void KdbInterfaceWorker::slot_loadGroup(int groupId)
+void Keepass1DatabaseInterface::slot_loadGroup(int groupId)
 {
     // get group handler for groupId
     IGroupHandle* group = (IGroupHandle*)(groupId);
     emit groupLoaded(group->title());
 }
 
-void KdbInterfaceWorker::slot_saveGroup(int groupId, QString title)
+void Keepass1DatabaseInterface::slot_saveGroup(int groupId, QString title)
 {
     qDebug("slot_saveGroup() groupID: %d", groupId);
     Q_ASSERT(m_kdb3Database);
@@ -358,16 +358,16 @@ void KdbInterfaceWorker::slot_saveGroup(int groupId, QString title)
     emit groupSaved(kpxPublic::KdbGroup::RE_OK);
 }
 
-void KdbInterfaceWorker::slot_unregisterListModel(int modelId)
+void Keepass1DatabaseInterface::slot_unregisterListModel(int modelId)
 {
     // delete all groups and entries which are associated with given modelId
     m_groups_modelId.remove(modelId);
     m_entries_modelId.remove(modelId);
 }
 
-void KdbInterfaceWorker::slot_createNewGroup(QString title, quint32 iconId, int parentGroupId)
+void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconId, int parentGroupId)
 {
-    qDebug() << "KdbInterfaceWorker::slot_createNewGroup";
+    qDebug() << "Keepass1DatabaseInterface::slot_createNewGroup";
     Q_ASSERT(m_kdb3Database);
 
     // get parent group handle and identify IDs of list model
@@ -409,7 +409,7 @@ void KdbInterfaceWorker::slot_createNewGroup(QString title, quint32 iconId, int 
     emit newGroupCreated(kpxPublic::KdbGroup::RE_OK, int(newGroup));
 }
 
-void KdbInterfaceWorker::slot_saveEntry(int entryId,
+void Keepass1DatabaseInterface::slot_saveEntry(int entryId,
                                         QString title,
                                         QString url,
                                         QString username,
@@ -466,7 +466,7 @@ void KdbInterfaceWorker::slot_saveEntry(int entryId,
     s_password.lock();
 }
 
-void KdbInterfaceWorker::slot_createNewEntry(QString title,
+void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
                                              QString url,
                                              QString username,
                                              QString password,
@@ -507,7 +507,7 @@ void KdbInterfaceWorker::slot_createNewEntry(QString title,
     emit newEntryCreated(kpxPublic::KdbGroup::RE_OK, int(newEntry));
 }
 
-void KdbInterfaceWorker::slot_deleteGroup(int groupId)
+void Keepass1DatabaseInterface::slot_deleteGroup(int groupId)
 {
     Q_ASSERT(groupId);
     // get group handles
@@ -533,9 +533,9 @@ void KdbInterfaceWorker::slot_deleteGroup(int groupId)
     emit groupDeleted(kpxPublic::KdbGroup::RE_OK);
 }
 
-void KdbInterfaceWorker::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
+void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
 {
-    qDebug() << "KdbInterfaceWorker::updateGrandParentGroupInListModel";
+    qDebug() << "Keepass1DatabaseInterface::updateGrandParentGroupInListModel";
 
     IGroupHandle* grandParentGroup = parentGroup->parent();
     int numberOfSubgroups = parentGroup->children().count();
@@ -546,19 +546,19 @@ void KdbInterfaceWorker::updateGrandParentGroupInListModel(IGroupHandle* parentG
                                .arg(numberOfSubgroups).arg(numberOfEntries),        // subtitle
                                int(parentGroup),                                    // identifier for group item in list model
                                int(grandParentGroup));                              // identifier for list model
-    qDebug() << "KdbInterfaceWorker::updateGrandParentGroupInListModel end";
+    qDebug() << "Keepass1DatabaseInterface::updateGrandParentGroupInListModel end";
 }
 
-void KdbInterfaceWorker::slot_deleteEntry(int entryId)
+void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
 {
-    qDebug() << "KdbInterfaceWorker::slot_deleteEntry - entryId: " << entryId;
+    qDebug() << "Keepass1DatabaseInterface::slot_deleteEntry - entryId: " << entryId;
 
     // get handles
     IEntryHandle* entry = (IEntryHandle*)(entryId);
     Q_ASSERT(entry);
     IGroupHandle* parentGroup = entry->group();
 
-    qDebug() << "KdbInterfaceWorker::slot_deleteEntry got parent group";
+    qDebug() << "Keepass1DatabaseInterface::slot_deleteEntry got parent group";
 
     Q_ASSERT(m_kdb3Database);
     // delete entry from database
@@ -577,7 +577,7 @@ void KdbInterfaceWorker::slot_deleteEntry(int entryId)
     emit entryDeleted(kpxPublic::KdbGroup::RE_OK);
 }
 
-void KdbInterfaceWorker::slot_searchEntries(QString searchString, int rootGroupId)
+void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, int rootGroupId)
 {
     // get group handle
     IGroupHandle* rootGroup = (IGroupHandle*)(rootGroupId);
@@ -607,7 +607,7 @@ void KdbInterfaceWorker::slot_searchEntries(QString searchString, int rootGroupI
     emit searchEntriesCompleted(kpxPublic::KdbListModel::RE_OK);
 }
 
-inline QString KdbInterfaceWorker::getUserAndPassword(IEntryHandle* entry)
+inline QString Keepass1DatabaseInterface::getUserAndPassword(IEntryHandle* entry)
 {
     if (m_setting_showUserNamePasswordsInListView) {
         SecString password = entry->password();
@@ -619,12 +619,12 @@ inline QString KdbInterfaceWorker::getUserAndPassword(IEntryHandle* entry)
     }
 }
 
-void KdbInterfaceWorker::slot_setting_showUserNamePasswordsInListView(bool value)
+void Keepass1DatabaseInterface::slot_setting_showUserNamePasswordsInListView(bool value)
 {
     m_setting_showUserNamePasswordsInListView = value;
 }
 
-void KdbInterfaceWorker::slot_changeKeyTransfRounds(int value)
+void Keepass1DatabaseInterface::slot_changeKeyTransfRounds(int value)
 {
     // do nothing if no database is opened database
     if (!m_kdb3Database) return;
@@ -640,7 +640,7 @@ void KdbInterfaceWorker::slot_changeKeyTransfRounds(int value)
     }
 }
 
-void KdbInterfaceWorker::slot_changeCryptAlgorithm(int value)
+void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
 {
     // do nothing if no database is opened database
     if (!m_kdb3Database) return;

@@ -20,28 +20,27 @@
 **
 ***************************************************************************/
 
-#ifndef KDBINTERFACEWORKER_H
-#define KDBINTERFACEWORKER_H
+#ifndef KEEPASS2DATABASEINTERFACE_H
+#define KEEPASS2DATABASEINTERFACE_H
 
 #include <QObject>
-#include "DatabaseInterface.h"
+#include "AbstractDatabaseInterface.h"
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
+#include "core/Database.h"
 
 using namespace kpxPublic;
 
-namespace keepassClassic {
+namespace kpxPrivate {
 
-#include "database/Kdb3Database.h"
-
-class KdbInterfaceWorker : public QObject, public DatabaseInterface
+class Keepass2DatabaseInterface : public QObject, public AbstractDatabaseInterface
 {
     Q_OBJECT
-    Q_INTERFACES(DatabaseInterface)
+    Q_INTERFACES(AbstractDatabaseInterface)
 
 public:
-    explicit KdbInterfaceWorker(QObject* parent = 0);
-    virtual ~KdbInterfaceWorker();
+    explicit Keepass2DatabaseInterface(QObject* parent = 0);
+    virtual ~Keepass2DatabaseInterface();
 
 signals:
     // signals to KdbDatabase object
@@ -126,13 +125,13 @@ public slots:
     void slot_createNewGroup(QString title, quint32 iconId, int parentGroupId);
 
 private:
-    void initKdbDatabase();
-    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
-    inline QString getUserAndPassword(IEntryHandle* entry);
+    void initDatabase();
+//    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
+//    inline QString getUserAndPassword(IEntryHandle* entry);
 
 private:
     // Keepass database handler
-    Kdb3Database* m_kdb3Database;
+    Database* m_Database;
 
     // settings
     bool m_setting_showUserNamePasswordsInListView;
@@ -143,4 +142,4 @@ private:
 };
 
 }
-#endif // KDBINTERFACEWORKER_H
+#endif // KEEPASS2DATABASEINTERFACE_H

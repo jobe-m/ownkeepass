@@ -24,7 +24,7 @@
 
 #include "KdbDatabase.h"
 #include "KdbListModel.h"
-#include "private/KdbInterface.h"
+#include "private/DatabaseClient.h"
 
 using namespace std;
 using namespace kpxPublic;
@@ -41,47 +41,47 @@ KdbDatabase::KdbDatabase(QObject *parent):
     m_keyFilePath(""),
     m_readOnly(false)
 {
-    // connect signals and slots to global KdbInterface class
+    // connect signals and slots to global DatabaseClient class
     bool ret = connect(this, SIGNAL(openDatabase(QString,QString,QString,bool)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_openDatabase(QString,QString,QString,bool)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_openDatabase(QString,QString,QString,bool)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseOpened()),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(databaseOpened()),
                   this, SIGNAL(databaseOpened()));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(createNewDatabase(QString,QString,QString,int,int)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_createNewDatabase(QString,QString,QString,int,int)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_createNewDatabase(QString,QString,QString,int,int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(newDatabaseCreated()),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(newDatabaseCreated()),
                   this, SIGNAL(newDatabaseCreated()));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(closeDatabase()),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_closeDatabase()));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_closeDatabase()));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseClosed()),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(databaseClosed()),
                   this, SIGNAL(databaseClosed()));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(setting_showUserNamePasswordsInListView(bool)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_setting_showUserNamePasswordsInListView(bool)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_setting_showUserNamePasswordsInListView(bool)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(changeDatabasePassword(QString,QString)),
-                  KdbInterface::getInstance()->getWorker(), SLOT(slot_changePassKey(QString,QString)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_changePassKey(QString,QString)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(passwordChanged()),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(passwordChanged()),
                   this, SIGNAL(databasePasswordChanged()));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(changeDatabaseKeyTransfRounds(int)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_changeKeyTransfRounds(int)));
+                     DatabaseClient::getInstance()->getInterface(), SLOT(slot_changeKeyTransfRounds(int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseKeyTransfRoundsChanged(int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(databaseKeyTransfRoundsChanged(int)),
                      this, SLOT(slot_databaseKeyTransfRoundsChanged(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(changeDatabaseCryptAlgorithm(int)),
-                     KdbInterface::getInstance()->getWorker(), SLOT(slot_changeCryptAlgorithm(int)));
+                     DatabaseClient::getInstance()->getInterface(), SLOT(slot_changeCryptAlgorithm(int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(databaseCryptAlgorithmChanged(int)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(databaseCryptAlgorithmChanged(int)),
                      this, SLOT(slot_databaseCryptAlgorithmChanged(int)));
     Q_ASSERT(ret);
-    ret = connect(KdbInterface::getInstance()->getWorker(), SIGNAL(errorOccured(int,QString)),
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(errorOccured(int,QString)),
                      this, SIGNAL(errorOccured(int,QString)));
     Q_ASSERT(ret);
 }

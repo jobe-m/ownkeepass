@@ -21,8 +21,8 @@
 ############################################################################
 
 # Sources of the keepass QML plugins
-#include(../common/src/keepassPlugin/kdb3database/kdb3database.pri)
-include(../common/src/keepassPlugin/kdbxdatabase/kdbxdatabase.pri)
+include(../common/src/keepassPlugin/keepass1_database/keepass1_database.pri)
+include(../common/src/keepassPlugin/keepass2_database/keepass2_database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 include(../common/src/fileBrowserPlugin/fileBrowserPlugin.pri)
 

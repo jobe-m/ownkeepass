@@ -95,10 +95,10 @@ public:
     // Overwrite function to set role names
     virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
 signals:
-    // signals to KdbInterface global object
+    // signals to DatabaseClient global object
     void loadMasterGroups();
     void loadGroupsAndEntries(int groupId);
-    void unregisterFromKdbInterface(int modelId);
+    void unregisterFromDatabaseClient(int modelId);
     void searchEntries(QString searchString, int rootGroupId);
 
     // signals to QML
@@ -111,7 +111,7 @@ signals:
     void isEmptyChanged();
 
 public slots:
-    // signal from KdbInterfaceWorker
+    // signal from DatabaseClientWorker
     void slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId);
     void slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId);
     void slot_deleteItem(int itemId);
