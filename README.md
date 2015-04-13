@@ -6,24 +6,18 @@ ownKeepass
 Status
 ------
 
-Release 1.1.4 available from [openrepos.net] [1] and warehouse app
+Release 1.1.4 available from [openrepos.net] [1] / warehouse app and jolla store
 
 - Enabled handling of multiple databases on start page per default. In fact after introducing the file browser it is not neccessary to hide the database opening dialogs from the average user any more ;) So "expert mode" is gone for now.
 - Now it is also possible to select hidden files and folders from file browser
 - Fix a bug in recent database list with localization of database location
 - Bugfix for language seletion: English could not be selected if system language was not set to English
 - Fixed a bug on start page where after app start always the default database "Documents/ownkeepass/notes.kdb" was preloaded in database details.
-
-Release 1.1.1 available in Jolla store
-
-* Bugfix: File browser doesn't allow SD card selection
-* Update French and Danish translations
-* Added new translation for Norwegian Bokmål (not yet finished)
+- Various translation updates
 
 Status of Keepass 2 database support:
 * Database code from KeepassX 2 is already compiling in my sandbox. KeepassX 2 database writer and reader needs to be integrated, too.
-* Due to name space conflicts with the old KeepassX 0.4.3 code base I need to setup an abstract factory to separate both database implementations. This would also enable some sort of database plugin system later on...
-* The new code currently lives inside a separate module test project
+* Due to name space conflicts with the old KeepassX 0.4.3 code base I need to put the database code into separate libs
 
 Roadmap
 -------
