@@ -37,9 +37,8 @@ public:
 
     Q_PROPERTY(int keyTransfRounds READ keyTransfRounds WRITE setKeyTransfRounds NOTIFY keyTransfRoundsChanged)
     Q_PROPERTY(int cryptAlgorithm READ cryptAlgorithm WRITE setCryptAlgorithm NOTIFY cryptAlgorithmChanged)
-    Q_PROPERTY(bool showUserNamePasswordsInListView
-               READ showUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView
-               STORED true SCRIPTABLE true)
+    Q_PROPERTY(bool showUserNamePasswordsInListView READ showUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView STORED true SCRIPTABLE true)
+    Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView STORED true SCRIPTABLE true)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
     Q_INVOKABLE void open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
@@ -72,17 +71,14 @@ public:
     KdbDatabase(QObject* parent=0);
     virtual ~KdbDatabase() {}
 
-    void setKeyTransfRounds(const int value) { emit changeDatabaseKeyTransfRounds(value); }
     int keyTransfRounds() const { return m_keyTransfRounds; }
-
-    void setCryptAlgorithm(const int value) { emit changeDatabaseCryptAlgorithm(value); }
+    void setKeyTransfRounds(const int value) { emit changeDatabaseKeyTransfRounds(value); }
     int cryptAlgorithm() const { return m_cryptAlgorithm; }
-
-    void setShowUserNamePasswordsInListView(bool value) {
-        m_showUserNamePasswordsInListView = value;
-        emit setting_showUserNamePasswordsInListView(value);
-    }
+    void setCryptAlgorithm(const int value) { emit changeDatabaseCryptAlgorithm(value); }
     bool showUserNamePasswordsInListView() const { return m_showUserNamePasswordsInListView; }
+    void setShowUserNamePasswordsInListView(bool value) { m_showUserNamePasswordsInListView = value; emit setting_showUserNamePasswordsInListView(value); }
+    bool sortAlphabeticallyInListView() const { return m_sortAlphabeticallyInListView; }
+    void setSortAlphabeticallyInListView(const bool value) { m_sortAlphabeticallyInListView = value; emit setting_sortAlphabeticallyInListView(value); }
 
 signals:
     // signals to DatabaseClient backend thread
@@ -93,6 +89,7 @@ signals:
     void changeDatabaseKeyTransfRounds(int value);
     void changeDatabaseCryptAlgorithm(int value);
     void setting_showUserNamePasswordsInListView(bool value);
+    void setting_sortAlphabeticallyInListView(bool value);
 
     // signals to QML
     void databaseOpened();
@@ -126,6 +123,7 @@ private:
     int m_cryptAlgorithm;
     // Settings are simply passed over to the backend thread
     bool m_showUserNamePasswordsInListView;
+    bool m_sortAlphabeticallyInListView;
 
     // Save database details for unlocking
     bool m_isLocked;

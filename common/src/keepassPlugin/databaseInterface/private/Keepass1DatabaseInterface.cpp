@@ -46,7 +46,8 @@ IIconTheme* IconLoader;
 Keepass1DatabaseInterface::Keepass1DatabaseInterface(QObject *parent)
     : QObject(parent), AbstractDatabaseInterface(),
       m_kdb3Database(NULL),
-      m_setting_showUserNamePasswordsInListView(false)
+      m_setting_showUserNamePasswordsInListView(false),
+      m_setting_sortAlphabeticallyInListView(true)
 {
     initDatabase();
 }
@@ -279,7 +280,12 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
         }
     }
 
-    QList<IEntryHandle*> entries = m_kdb3Database->entries(group);
+    QList<IEntryHandle*> entries;
+    if (m_setting_sortAlphabeticallyInListView) {
+        entries = m_kdb3Database->entriesSortedStd(group);
+    } else {
+        entries = m_kdb3Database->entries(group);
+    }
     for (int i = 0; i < entries.count(); i++) {
         IEntryHandle* entry = entries.at(i);
         if (entry->isValid()) {
@@ -612,16 +618,14 @@ inline QString Keepass1DatabaseInterface::getUserAndPassword(IEntryHandle* entry
     if (m_setting_showUserNamePasswordsInListView) {
         SecString password = entry->password();
         password.unlock();
-        return QString("%1 | %2").arg(entry->username()).arg(password.string());
-        password.lock();
+        if (entry->username().length() == 0 && password.string().length() == 0) {
+            return QString("");
+        } else {
+            return QString("%1 | %2").arg(entry->username()).arg(password.string());
+        }
     } else {
-        return "Entry";
+        return QString("");
     }
-}
-
-void Keepass1DatabaseInterface::slot_setting_showUserNamePasswordsInListView(bool value)
-{
-    m_setting_showUserNamePasswordsInListView = value;
 }
 
 void Keepass1DatabaseInterface::slot_changeKeyTransfRounds(int value)

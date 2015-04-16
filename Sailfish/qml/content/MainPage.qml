@@ -438,6 +438,7 @@ Page {
         function init() {
             // load settings into kdbDatabase
             kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
+            kdbDatabase.sortAlphabeticallyInListView = ownKeepassSettings.sortAlphabeticallyInListView
             // load details about most recently used database
             ownKeepassSettings.loadDatabaseDetails()
         }
@@ -641,7 +642,7 @@ Page {
           already existing entry and to check if the user has done changes to an entry in the UI
           after he canceled the edit dialog. In that case a query dialog is shown to let the user
           save the entry details if he has canceled the edit dialog unintentionally or because he
-          did not understand the whole UI paradigma at all...
+          did not understand the whole UI paradigma at all... well now the UX evolved quite nicely;)
           */
         property string originalEntryTitle: ""
         property string originalEntryUrl: ""
@@ -678,6 +679,7 @@ Page {
         property int defaultCryptAlgorithm
         property int defaultKeyTransfRounds
         property int inactivityLockTime
+        property bool sortAlphabeticallyInListView
         property bool showUserNamePasswordInListView
         property bool focusSearchBarOnStartup
         property bool showUserNamePasswordOnCover
@@ -833,11 +835,13 @@ Page {
         }
 
         function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
+                                    aSortAlphabeticallyInListView,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
                                     aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage, aFastUnlock, aFastUnlockRetryCount) {
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
+            sortAlphabeticallyInListView = aSortAlphabeticallyInListView
             showUserNamePasswordInListView = aShowUserNamePasswordInListView
             focusSearchBarOnStartup = aFocusSearchBarOnStartup
             showUserNamePasswordOnCover = aShowUserNamePasswordOnCover
@@ -854,6 +858,7 @@ Page {
                     ownKeepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
                     ownKeepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     ownKeepassSettings.locktime !== inactivityLockTime ||
+                    ownKeepassSettings.sortAlphabeticallyInListView !== sortAlphabeticallyInListView ||
                     ownKeepassSettings.showUserNamePasswordInListView !== showUserNamePasswordInListView ||
                     ownKeepassSettings.focusSearchBarOnStartup !== focusSearchBarOnStartup ||
                     ownKeepassSettings.showUserNamePasswordOnCover !== showUserNamePasswordOnCover ||
@@ -872,6 +877,7 @@ Page {
             ownKeepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm
             ownKeepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             ownKeepassSettings.locktime = inactivityLockTime
+            ownKeepassSettings.sortAlphabeticallyInListView = sortAlphabeticallyInListView
             ownKeepassSettings.showUserNamePasswordInListView = showUserNamePasswordInListView
             ownKeepassSettings.focusSearchBarOnStartup = focusSearchBarOnStartup
             ownKeepassSettings.showUserNamePasswordOnCover = showUserNamePasswordOnCover

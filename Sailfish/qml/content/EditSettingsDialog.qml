@@ -38,6 +38,7 @@ Dialog {
     property bool inactivityLockTimeChanged: false
     property bool fastUnlockChanged: false
     property bool fastUnlockRetryCountChanged: false
+    property bool sortAlphabeticallyInListViewChanged: true
     property bool showUserNamePasswordInListViewChanged: false
     property bool focusSearchBarOnStartupChanged: false
     property bool showUserNamePasswordOnCoverChanged: false
@@ -54,6 +55,7 @@ Dialog {
             saveCoverTitle = applicationWindow.cover.title
         if (expertModeChanged || defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
                 inactivityLockTimeChanged || fastUnlockChanged || fastUnlockRetryCountChanged ||
+                sortAlphabeticallyInListViewChanged ||
                 showUserNamePasswordInListViewChanged || focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged || clearClipboardChanged || languageChanged) {
@@ -270,10 +272,22 @@ Dialog {
             }
 
             TextSwitch {
+                id: sortAlphabeticallyInListView
+                checked: ownKeepassSettings.sortAlphabeticallyInListView
+                text: qsTr("Sort alphabetically")
+                description: qsTr("Switching this on will sort all entries in the list view alphabetically (reopen database to activate this setting)")
+                onCheckedChanged: {
+                    editSettingsDialog.sortAlphabeticallyInListViewChanged =
+                            sortAlphabeticallyInListView.checked !== ownKeepassSettings.sortAlphabeticallyInListView
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
+            TextSwitch {
                 id: showUserNamePasswordInListView
                 checked: ownKeepassSettings.showUserNamePasswordInListView
                 text: qsTr("Extended list liew")
-                description: qsTr("If you switch this on username and password are shown below entry title in list views")
+                description: qsTr("If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)")
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordInListViewChanged =
                             showUserNamePasswordInListView.checked !== ownKeepassSettings.showUserNamePasswordInListView
@@ -307,19 +321,17 @@ Dialog {
                         MenuItem { text: "Catalan" } // 1
                         MenuItem { text: "Chinese" } // 2
                         MenuItem { text: "Czech" } // 3
-                        MenuItem { text: "Danish (partly)" } // 4
+                        MenuItem { text: "Danish" } // 4
                         MenuItem { text: "Dutch" } // 5
                         MenuItem { text: "English" } // 6
                         MenuItem { text: "Finnish" } // 7
                         MenuItem { text: "French " } // 8
                         MenuItem { text: "German" } // 9
                         MenuItem { text: "Italian" } // 10
-                        MenuItem { text: "Norwegian Bokmål (partly)" } // 11
-//                        MenuItem { text: "Polish" } // -1 -- not yet started
+                        MenuItem { text: "Norwegian Bokmål" } // 11
                         MenuItem { text: "Russian" } // 12
                         MenuItem { text: "Spanish" }  // 13
                         MenuItem { text: "Swedish" } // 14
-//                        MenuItem { text: "Ukrainian" } // -1 -- not yet started
                     }
 
                     // The next two converter functions decouple the alphabetic language list
@@ -485,6 +497,7 @@ Dialog {
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
+                    sortAlphabeticallyInListView.checked,
                     showUserNamePasswordInListView.checked,
                     focusSearchBarOnStartup.checked,
                     showUserNamePasswordOnCover.checked,
@@ -503,6 +516,7 @@ Dialog {
                     defaultCryptAlgorithm.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
+                    sortAlphabeticallyInListView.checked,
                     showUserNamePasswordInListView.checked,
                     focusSearchBarOnStartup.checked,
                     showUserNamePasswordOnCover.checked,

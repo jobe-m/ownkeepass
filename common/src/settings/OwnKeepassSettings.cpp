@@ -36,6 +36,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_defaultCryptAlgorithm(0),
     m_defaultKeyTransfRounds(50000),
     m_locktime(3),
+    m_sortAlphabeticallyInListView(true),
     m_showUserNamePasswordInListView(false),
     m_showSearchBar(true),
     m_focusSearchBarOnStartup(true),
@@ -133,6 +134,7 @@ void OwnKeepassSettings::loadSettings() {
     m_defaultCryptAlgorithm          = (m_settings->getValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm))).toInt();
     m_defaultKeyTransfRounds         = (m_settings->getValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds))).toInt();
     m_locktime                       = (m_settings->getValue("settings/locktime", QVariant(m_locktime))).toInt();
+    m_sortAlphabeticallyInListView   = (m_settings->getValue("settings/sortAlphabeticallyInListView", QVariant(m_sortAlphabeticallyInListView))).toBool();
     m_showUserNamePasswordInListView = (m_settings->getValue("settings/showUserNamePasswordInListView", QVariant(m_showUserNamePasswordInListView))).toBool();
     m_showSearchBar                  = (m_settings->getValue("settings/showSearchBar", QVariant(m_showSearchBar))).toBool();
     m_focusSearchBarOnStartup        = (m_settings->getValue("settings/focusSearchBarOnStartup", QVariant(m_focusSearchBarOnStartup))).toBool();
@@ -155,6 +157,7 @@ void OwnKeepassSettings::loadSettings() {
     emit defaultCryptAlgorithmChanged();
     emit defaultKeyTransfRoundsChanged();
     emit locktimeChanged();
+    emit sortAlphabeticallyInListViewChanged();
     emit showUserNamePasswordInListViewChanged();
     emit showUserNamePasswordOnCoverChanged();
     emit lockDatabaseFromCoverChanged();
@@ -262,6 +265,15 @@ void OwnKeepassSettings::setLocktime(const int value)
         m_locktime = value;
         m_settings->setValue("settings/locktime", QVariant(m_locktime));
         emit locktimeChanged();
+    }
+}
+
+void OwnKeepassSettings::setSortAlphabeticallyInListView(const bool value)
+{
+    if (value != m_sortAlphabeticallyInListView) {
+        m_sortAlphabeticallyInListView = value;
+        m_settings->setValue("settings/sortAlphabeticallyInListView", QVariant(m_sortAlphabeticallyInListView));
+        emit sortAlphabeticallyInListViewChanged();
     }
 }
 

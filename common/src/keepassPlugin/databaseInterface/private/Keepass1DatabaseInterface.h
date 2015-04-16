@@ -94,7 +94,8 @@ public slots:
     void slot_changePassKey(QString password, QString keyFile);
     void slot_changeKeyTransfRounds(int value);
     void slot_changeCryptAlgorithm(int value);
-    void slot_setting_showUserNamePasswordsInListView(bool value);
+    void slot_setting_showUserNamePasswordsInListView(bool value) { m_setting_showUserNamePasswordsInListView = value; }
+    void slot_setting_sortAlphabeticallyInListView(bool value) { m_setting_sortAlphabeticallyInListView = value; }
 
     // signal from KdbListModel object
     void slot_loadMasterGroups();
@@ -135,6 +136,7 @@ private:
 
     // settings
     bool m_setting_showUserNamePasswordsInListView;
+    bool m_setting_sortAlphabeticallyInListView;
 
     // The following two hash tables store information about which list models are showing a dedicated entry or group in the UI
     QHash<int, int> m_entries_modelId;

@@ -61,6 +61,7 @@ public: // slots
     virtual void slot_changeKeyTransfRounds(int value) = 0;
     virtual void slot_changeCryptAlgorithm(int value) = 0;
     virtual void slot_setting_showUserNamePasswordsInListView(bool value) = 0;
+    virtual void slot_setting_sortAlphabeticallyInListView(bool value) = 0;
 
     // signal from KdbListModel object
     virtual void slot_loadMasterGroups() = 0;

@@ -70,6 +70,7 @@ public:
     Q_PROPERTY(int defaultCryptAlgorithm READ defaultCryptAlgorithm WRITE setDefaultCryptAlgorithm NOTIFY defaultCryptAlgorithmChanged)
     Q_PROPERTY(int defaultKeyTransfRounds READ defaultKeyTransfRounds WRITE setDefaultKeyTransfRounds NOTIFY defaultKeyTransfRoundsChanged)
     Q_PROPERTY(int locktime READ locktime WRITE setLocktime NOTIFY locktimeChanged)
+    Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView NOTIFY sortAlphabeticallyInListViewChanged)
     Q_PROPERTY(bool showUserNamePasswordInListView READ showUserNamePasswordInListView WRITE setShowUserNamePasswordInListView NOTIFY showUserNamePasswordInListViewChanged)
     Q_PROPERTY(bool showSearchBar READ showSearchBar WRITE setShowSearchBar NOTIFY showSearchBarChanged)
     Q_PROPERTY(bool focusSearchBarOnStartup READ focusSearchBarOnStartup WRITE setFocusSearchBarOnStartup NOTIFY focusSearchBarOnStartupChanged)
@@ -109,6 +110,8 @@ public:
     void setDefaultKeyTransfRounds(const int value);
     int locktime() const { return m_locktime; }
     void setLocktime(const int value);
+    bool sortAlphabeticallyInListView() const { return m_sortAlphabeticallyInListView; }
+    void setSortAlphabeticallyInListView(const bool value);
     bool showUserNamePasswordInListView() const { return m_showUserNamePasswordInListView; }
     void setShowUserNamePasswordInListView(const bool value);
     bool showSearchBar() const { return m_showSearchBar; }
@@ -162,6 +165,7 @@ signals:
     void defaultCryptAlgorithmChanged();
     void defaultKeyTransfRoundsChanged();
     void locktimeChanged();
+    void sortAlphabeticallyInListViewChanged();
     void showUserNamePasswordInListViewChanged();
     void showSearchBarChanged();
     void focusSearchBarOnStartupChanged();
@@ -196,6 +200,7 @@ private:
     int m_defaultCryptAlgorithm;
     int m_defaultKeyTransfRounds;
     int m_locktime;  // min = 0, max = 10, default = 3
+    bool m_sortAlphabeticallyInListView;
     bool m_showUserNamePasswordInListView;
     bool m_showSearchBar;
     bool m_focusSearchBarOnStartup;
