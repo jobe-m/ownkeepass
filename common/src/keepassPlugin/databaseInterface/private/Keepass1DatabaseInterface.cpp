@@ -231,10 +231,16 @@ void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString key
 void Keepass1DatabaseInterface::slot_loadMasterGroups()
 {
     Q_ASSERT(m_kdb3Database);
-    for (int i = 0; i < m_kdb3Database->groups().count(); i++) {
-        IGroupHandle* masterGroup = m_kdb3Database->groups().at(i);
+    QList<IGroupHandle*> masterGroups;
+    if (m_setting_sortAlphabeticallyInListView) {
+        masterGroups = m_kdb3Database->sortedGroups();
+    } else {
+        masterGroups = m_kdb3Database->groups();
+    }
+    for (int i = 0; i < masterGroups.count(); i++) {
+        IGroupHandle* masterGroup = masterGroups.at(i);
         if (masterGroup->isValid()) {
-            qDebug("Group %d: %s", i, CSTR(masterGroup->title()));
+            qDebug("Mastergroup %d: %s", i, CSTR(masterGroup->title()));
             qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
 
             int item_level = masterGroup->level();
@@ -262,11 +268,16 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
     Q_ASSERT(m_kdb3Database);
     // load sub groups and entries
     IGroupHandle* group = (IGroupHandle*)(groupId);
-    QList<IGroupHandle*> subGroups(group->children());
+    QList<IGroupHandle*> subGroups;
+    if (m_setting_sortAlphabeticallyInListView) {
+        subGroups = m_kdb3Database->sortedGroups();
+    } else {
+        subGroups = m_kdb3Database->groups();
+    }
     for (int i = 0; i < subGroups.count(); i++) {
         IGroupHandle* subGroup = subGroups.at(i);
-        if (subGroup->isValid()) {
-            qDebug("Entry %d: %s", i, CSTR(subGroup->title()));
+        if (subGroup->isValid() && subGroup->parent() == group) {
+            qDebug("Group %d: %s", i, CSTR(subGroup->title()));
             int numberOfSubgroups = subGroup->children().count();
             int numberOfEntries = m_kdb3Database->entries(subGroup).count();
             emit addItemToListModel(subGroup->title(),                              // group name

@@ -98,7 +98,7 @@ public:
 		public:
 			virtual void setTitle(const QString& Title);
 			virtual void setImage(const quint32& ImageId);
-			virtual QString title();
+            virtual QString title()const;
 			virtual quint32 image();
 			virtual bool isValid();
 			virtual IGroupHandle* parent();
@@ -223,7 +223,8 @@ private:
 	//void copyTree(Kdb3Database* db, GroupHandle* orgGroup, IGroupHandle* parent);
 	static bool EntryHandleLessThan(const IEntryHandle* This,const IEntryHandle* Other);
 	static bool EntryHandleLessThanStd(const IEntryHandle* This,const IEntryHandle* Other);
-	static bool StdEntryLessThan(const Kdb3Database::StdEntry& This,const Kdb3Database::StdEntry& Other);
+    static bool GroupHandleLessThanStd(const IGroupHandle* This,const IGroupHandle* Other);
+    static bool StdEntryLessThan(const Kdb3Database::StdEntry& This,const Kdb3Database::StdEntry& Other);
 
 	StdEntry* getEntry(const KpxUuid& uuid);
 	StdEntry* getEntry(EntryHandle* handle);

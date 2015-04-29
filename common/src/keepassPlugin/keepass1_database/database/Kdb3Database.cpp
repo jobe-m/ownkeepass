@@ -50,7 +50,13 @@ bool Kdb3Database::EntryHandleLessThanStd(const IEntryHandle* This,const IEntryH
 	if (comp < 0) return true;
 	else if (comp > 0) return false;
 	
-	return true;
+    return true;
+}
+
+bool Kdb3Database::GroupHandleLessThanStd(const IGroupHandle* This,const IGroupHandle* Other){
+    int comp = This->title().compare(Other->title());
+    if (comp > 0) return false;
+    else return true;
 }
 
 bool Kdb3Database::StdEntryLessThan(const Kdb3Database::StdEntry& This,const Kdb3Database::StdEntry& Other){
@@ -1271,7 +1277,7 @@ Kdb3Database::EntryHandle::EntryHandle(Kdb3Database* db){
 
 
 bool Kdb3Database::GroupHandle::isValid(){return valid;}
-QString Kdb3Database::GroupHandle::title(){return Group->Title;}
+QString Kdb3Database::GroupHandle::title()const{return Group->Title;}
 quint32	Kdb3Database::GroupHandle::image(){return Group->Image;}
 int Kdb3Database::GroupHandle::index(){return Group->Index;}
 void Kdb3Database::GroupHandle::setTitle(const QString& Title){Group->Title=Title;}
@@ -1616,7 +1622,8 @@ void Kdb3Database::createCustomIconsMetaStream(StdEntry* e){
 QList<IGroupHandle*> Kdb3Database::sortedGroups(){
 	QList<IGroupHandle*> SortedGroups;
 	appendChildrenToGroupList(SortedGroups,RootGroup);
-	return SortedGroups;
+    qSort(SortedGroups.begin(),SortedGroups.end(),GroupHandleLessThanStd);
+    return SortedGroups;
 }
 
 

@@ -205,8 +205,8 @@ public:
 	virtual void setTitle(const QString& Title)=0;
 	virtual void setImage(const quint32& ImageID)=0;
 
-	virtual QString title()=0;
-	virtual quint32 image()=0;
+    virtual QString title()const=0;
+    virtual quint32 image()=0;
 
 	//! \return a pointer to the handle of the parent group or NULL if the group has no parent.
 	virtual IGroupHandle* parent()=0;
