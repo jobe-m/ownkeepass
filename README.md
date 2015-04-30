@@ -32,7 +32,6 @@ in descending order.
 I am searching for contributors who want and can work on specific additional features. Below are some of the requirements which I marked as contribution on the issue page. That means that I won't work for a while on that topics due to missing time thus you can be sure that we don't do double work there.
 *   Delete a Keepass database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/64)
 *   Import and export functionality -> [REQ](https://github.com/jobe-m/ownkeepass/issues/44)
-*   Change sorting of password groups and entries in database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/82)
 *   Move a password entry from one group to another group -> [REQ](https://github.com/jobe-m/ownkeepass/issues/69)
 
 The status of all requirements, feature requests and found bugs can be looked up [here] [6].
