@@ -55,6 +55,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.5 Alphabetic sorting</b>\
+<ul>\
+<li>Password entries and groups are now sorted alphabetically per default</li>\
+<li>Sorting (aphabetically or custom order) is switchable in application settings</li>\
+</ul>\
+<br>\
 <b>v1.1.4 Unified start page and hidden files in file browser</b>\
 <ul>\
 <li>Enabled handling of multiple databases on start page per default. In fact after introducing the file \

@@ -30,6 +30,8 @@ using namespace kpxPrivate;
 KdbListModel::KdbListModel(QObject *parent)
     : QAbstractListModel(parent),
       m_modelId(0),
+      m_numGroups(0),
+      m_numEntries(0),
       m_registered(false),
       m_searchRootGroupId(0)
 {
@@ -43,14 +45,14 @@ KdbListModel::KdbListModel(QObject *parent)
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupsAndEntriesLoaded(int)),
                   this, SIGNAL(groupsAndEntriesLoaded(int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int)),
-                  this, SLOT(slot_addItemToListModel(QString, QString, int, int, int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int, bool)),
+                  this, SLOT(slot_addItemToListModel(QString, QString, int, int, int, bool)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(unregisterFromDatabaseClient(int)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_unregisterListModel(int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(updateItemInListModel(QString,QString,int,int)),
-                  this, SLOT(slot_updateItemInListModel(QString,QString,int,int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(updateItemInListModel(QString, QString, int, int, bool)),
+                  this, SLOT(slot_updateItemInListModel(QString, QString, int, int, bool)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(masterGroupsLoaded(int)),
                   this, SIGNAL(masterGroupsLoaded(int)));
@@ -74,34 +76,61 @@ KdbListModel::~KdbListModel()
 }
 
 /// slot which adds a new item to the data model
-void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId)
+void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId, bool sortAbc)
 {
-//    qDebug() << "KdbListModel::slot_addItemToListModel (m_modelId: " << m_modelId << " modelId: " << modelId << ")";
     if (!m_registered) {
         m_modelId = modelId;
         m_registered = true;
     }
+
     if (m_modelId == modelId) {
         KdbItem item(title, subtitle, id, itemType);
-        if (itemType == kpxPublic::KdbListModel::ENTRY) {
-            // append new entry to end of list
-            beginInsertRows(QModelIndex(), rowCount(), rowCount());
-            m_items << item;
-            endInsertRows();
-        } else {
-            // insert new group after last group in list
+        if (sortAbc) {
+            // compare and insert alphabetically into list model depending if it is an password entry or group
+            // groups are put at the beginning of the list view before entries
             int i = 0;
-            while (i < m_items.count() && m_items[i].m_itemType == kpxPublic::KdbListModel::GROUP) ++i;
+            int max = 0;
+            if (itemType == kpxPublic::KdbListModel::ENTRY) {
+                i = m_numGroups;
+                max = m_items.length();
+                ++m_numEntries;
+                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries;
+            } else {
+                i = 0;
+                max = m_numGroups;
+                ++m_numGroups;
+                qDebug() << "insert group i: " << i << " max: " << max << " numEntries: " << m_numGroups;
+            }
+            while (i < max && m_items[i].m_name.toLower().compare(title.toLower()) < 0) {
+                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
+                ++i;
+            }
             beginInsertRows(QModelIndex(), i, i);
             m_items.insert(i, item);
             endInsertRows();
+
+        } else {
+            // don't sort items, just add them as they drop in the list model
+            if (itemType == kpxPublic::KdbListModel::ENTRY) {
+                // append new entry to end of list
+                beginInsertRows(QModelIndex(), rowCount(), rowCount());
+                m_items << item;
+                endInsertRows();
+                m_numEntries++;
+            } else {
+                // insert new group after last group in list
+                int i = 0;
+                while (i < m_items.count() && m_items[i].m_itemType == kpxPublic::KdbListModel::GROUP) { ++i; }
+                beginInsertRows(QModelIndex(), i, i);
+                m_items.insert(i, item);
+                endInsertRows();
+                m_numGroups++;
+            }
         }
         // emit isEmptyChanged signal if list view was empty before
         if (m_items.length() == 1) {
             emit isEmptyChanged();
         }
-
-//        qDebug("slot_addItemToListModel - added: %s", CSTR(title));
     }
 
     // signal to property to update itself in QML
@@ -116,21 +145,32 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
  * \param groupId Identifier for the item inside of the list model.
  * \param modelId Identifier for list model, which needs to be changed.
  */
-void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId)
+void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId, bool sortAbc)
 
 {
-    qDebug() << "KdbListModel::slot_deleteItem (m_modelId: " << m_modelId << " modelId: " << modelId << " groupId: " << groupId << ")";
-
     // check if we need to do anything
     if (m_modelId == modelId) {
         // look at each item in list model
         for (int i = 0; i < m_items.count(); i++) {
             if (m_items[i].m_id == groupId) {
-                // set new title name
-                beginResetModel();
-                m_items[i].m_name = title;
-                m_items[i].m_subtitle = subTitle;
-                endResetModel();
+                // if list view is sorted alphabetically a new title might change the position of the item
+                if (sortAbc) {
+                    qDebug() << "adding in sorted mode: " << title;
+                    // now remove and insert item again, this makes sure that the new item will appear
+                    // in the correct position in the alphabetically sorted list view
+                    int itemId = m_items[i].m_id;
+                    int itemType = m_items[i].m_itemType;
+                    slot_deleteItem(itemId);
+                    slot_addItemToListModel(title, subTitle, itemId, itemType, modelId, sortAbc);
+                } else {
+                    qDebug() << "adding in non sorted mode: " << title;
+                    // list view has custom sorting so position of item will stay the same and item just needs an update
+                    beginResetModel();
+                    // set new title name
+                    m_items[i].m_name = title;
+                    m_items[i].m_subtitle = subTitle;
+                    endResetModel();
+                }
             }
         }
 
@@ -191,6 +231,8 @@ void KdbListModel::clear()
     beginResetModel();
     m_items.clear();
     endResetModel();
+    m_numGroups = 0;
+    m_numEntries = 0;
 
     // signal to QML and for property update
     emit modelDataChanged();
@@ -204,12 +246,17 @@ void KdbListModel::clearListModel()
 
 void KdbListModel::slot_deleteItem(int itemId)
 {
-    qDebug() << "KdbListModel::slot_deleteItem (modelId: " << m_modelId << " itemId: " << itemId << ")";
-
     // look at each item in list model
     for (int i = 0; i < m_items.count(); i++) {
         if (m_items[i].m_id == itemId) {
-            // found it, delete it from list model
+            qDebug() << "delete item: " << m_items[i].m_name;
+            // check item type and decrease appropriate item number counter
+            if (m_items[i].m_itemType == kpxPublic::KdbListModel::ENTRY) {
+                m_numEntries--;
+            } else {
+                m_numGroups--;
+            }
+            // now delete it from list model
             beginRemoveRows(QModelIndex(), i, i);
             m_items.removeAt(i);
             endRemoveRows();
@@ -225,8 +272,6 @@ void KdbListModel::slot_deleteItem(int itemId)
 
 void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
 {
-    qDebug("KdbListModel::searchEntriesInKdbDatabase()");
-
     // make list view empty and unregister if necessary
     if (!isEmpty()) {
         clear();

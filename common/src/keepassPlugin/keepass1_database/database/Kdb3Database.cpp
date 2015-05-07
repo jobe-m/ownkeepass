@@ -42,11 +42,11 @@ bool Kdb3Database::EntryHandleLessThan(const IEntryHandle* This,const IEntryHand
 }
 
 bool Kdb3Database::EntryHandleLessThanStd(const IEntryHandle* This,const IEntryHandle* Other){
-	int comp = This->title().compare(Other->title());
+    int comp = This->title().toLower().compare(Other->title().toLower());
 	if (comp < 0) return true;
 	else if (comp > 0) return false;
 	
-	comp = This->username().compare(Other->username());
+    comp = This->username().toLower().compare(Other->username().toLower());
 	if (comp < 0) return true;
 	else if (comp > 0) return false;
 	
@@ -54,7 +54,7 @@ bool Kdb3Database::EntryHandleLessThanStd(const IEntryHandle* This,const IEntryH
 }
 
 bool Kdb3Database::GroupHandleLessThanStd(const IGroupHandle* This,const IGroupHandle* Other){
-    int comp = This->title().compare(Other->title());
+    int comp = This->title().toLower().compare(Other->title().toLower());
     if (comp > 0) return false;
     else return true;
 }

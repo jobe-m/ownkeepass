@@ -112,12 +112,16 @@ signals:
 
 public slots:
     // signal from DatabaseClientWorker
-    void slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId);
-    void slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId);
+    void slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId, bool sortAbc);
+    void slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId, bool sortAbc);
     void slot_deleteItem(int itemId);
 
 private:
     QList<KdbItem> m_items;
+    // number of groups and items in the list view
+    int m_numGroups;
+    int m_numEntries;
+    // identifier for this list model
     int m_modelId;
     // indicator if this list model has registered at the global keepass database object
     bool m_registered;
