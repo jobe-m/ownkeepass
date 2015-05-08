@@ -435,12 +435,17 @@
         <translation>Je-li povoleno, schránka bude vyprázdněna po 10 sekundách, až bude uživatelské jméno a heslo zkopírováno.</translation>
     </message>
     <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
+        <source>Extended list view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="430"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="429"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>Změna jazyka se v ownKeepass projeví po opětovném spuštění programu</translation>
     </message>
@@ -506,9 +511,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>Extended list liew</source>
-        <translation>Zobrazení rozšířeného seznamu</translation>
+        <translation type="vanished">Zobrazení rozšířeného seznamu</translation>
     </message>
     <message>
         <source>If you switch this on username and password are shown below entry title in list views</source>
@@ -530,37 +534,37 @@
         <translation>Jazyk:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="437"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="436"/>
         <source>Cover settings</source>
         <translation>Nastavení činností pro pohyb prsty nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="442"/>
         <source>Show username and password</source>
         <translation>Ukázat uživatelské jméno a heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="444"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Pokud toto zapnete, jsou na krytu ukázány uživatelské jméno a heslo nyní otevřeného záznamu Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="454"/>
         <source>Lock database from cover</source>
         <translation>Uzamknout databázi švihnutím prsty nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="456"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Toto vám umožní databázi zamknout pomocí činnosti švihnutí prsty vlevo nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopírovat a vložit švihnutím prsty nad krytem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="468"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Toto povolte pro zkopírování uživatelského jména a hesla do schránky švihnutím prsty nad krytem</translation>
     </message>
@@ -661,81 +665,81 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="306"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="310"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="326"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="373"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="378"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="304"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="308"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="329"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <source>Password groups</source>
         <translation>Heslové skupiny</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="71"/>
         <source>Load Error</source>
         <translation>Chyba při nahrávání</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="71"/>
         <source>Could not load all items from Keepass database file. That&apos;s strange.</source>
         <translation>Nepodařilo se nahrát všechny položky ze souboru s databází Keepass. To je divné.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="77"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="75"/>
         <source>Save Error</source>
         <translation>Chyba při ukládání</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="77"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="75"/>
         <source>Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.</source>
         <translation>Nepodařilo se uložit vaše změny do souboru s databází Keepass. Buď je umístění souboru chráněno proti zápisu, nebo byl tento odstraněn.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="108"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="106"/>
         <source>Search</source>
         <translation>Hledat</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="165"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="163"/>
         <source>No entries found</source>
         <translation>Nenalezeny žádné záznamy</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="183"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="181"/>
         <source>Decrypting Keepass database</source>
         <translation>Dešifrování databáze Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="204"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="202"/>
         <source>Group is empty</source>
         <translation>Skupina je prázdná</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="205"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="203"/>
         <source>Pull down to add password groups</source>
         <translation>Stáhněte dolů pro přidání heslových skupin</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="206"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="204"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Stáhněte dolů pro přidání heslových skupin nebo záznamů</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="290"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="288"/>
         <source>Loading</source>
         <translation>Nahrává se</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="346"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="350"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="383"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="348"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
         <source>Search in all groups</source>
         <translation>Hledat ve všech skupinách</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="351"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="345"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="349"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="382"/>
         <source>Search in</source>
         <translation>Hledat v</translation>
     </message>
@@ -1009,125 +1013,125 @@
         <translation>Soubor s databází neexistuje. Prověřte, prosím, cestu k souboru s databází:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="576"/>
+        <location filename="../qml/content/MainPage.qml" line="575"/>
         <source>Password changed</source>
         <translation>Heslo změněno</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="576"/>
+        <location filename="../qml/content/MainPage.qml" line="575"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Hlavní heslo k vaší databázi bylo úspěšně změněno.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="585"/>
-        <location filename="../qml/content/MainPage.qml" line="605"/>
+        <location filename="../qml/content/MainPage.qml" line="582"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Internal database error</source>
         <translation>Vnitřní chyba databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="585"/>
+        <location filename="../qml/content/MainPage.qml" line="582"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Nepodařilo se zavřít předchozí otevřenou databázi. Zkuste to, prosím, znovu. Hlášení o chybě:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="589"/>
+        <location filename="../qml/content/MainPage.qml" line="586"/>
         <source>Internal key error</source>
         <translation>Vnitřní chyba klíče</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="589"/>
-        <location filename="../qml/content/MainPage.qml" line="593"/>
+        <location filename="../qml/content/MainPage.qml" line="586"/>
+        <location filename="../qml/content/MainPage.qml" line="590"/>
         <source>The following error occured during opening of database:</source>
         <translation>Při otevírání databáze se vyskytla následující chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="593"/>
+        <location filename="../qml/content/MainPage.qml" line="590"/>
         <source>Internal key file error</source>
         <translation>Vnitřní chyba souboru s klíčem</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="597"/>
+        <location filename="../qml/content/MainPage.qml" line="594"/>
         <source>Error loading database</source>
         <translation>Chyba při nahrávání databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="597"/>
+        <location filename="../qml/content/MainPage.qml" line="594"/>
         <source>Please try again.</source>
         <translation>Zkuste to, prosím, znovu.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="601"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>Internal file error</source>
         <translation>Vnitřní chyba souboru</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="601"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>The following error occured during creation of database:</source>
         <translation>Při vytváření databáze se vyskytla následující chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="605"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Vytvoření záložní skupiny se nezdařilo. Chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="609"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>Save database error</source>
         <translation>Chyba při ukládání databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="609"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>Could not save database with following error:</source>
         <translation>Nepodařilo se uložit databázi. Chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
-        <location filename="../qml/content/MainPage.qml" line="617"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>Database error</source>
         <translation>Chyba v databázi</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
         <translation>Databáze již byla zavřena. Nic vážného. Odešlete však, prosím, hlášení o chybě.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="617"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>An error occured on closing your database:</source>
         <translation>Při zavírání databáze se vyskytla chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1032"/>
+        <location filename="../qml/content/MainPage.qml" line="1028"/>
         <source>Yes</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1033"/>
+        <location filename="../qml/content/MainPage.qml" line="1029"/>
         <source>No</source>
         <translation>Ne</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1034"/>
+        <location filename="../qml/content/MainPage.qml" line="1030"/>
         <source>Unsaved changes</source>
         <translation>Neuložené změny</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1062"/>
+        <location filename="../qml/content/MainPage.qml" line="1058"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Chcete uložit změny do heslového záznamu?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1067"/>
+        <location filename="../qml/content/MainPage.qml" line="1063"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Chcete uložit změny do heslové skupiny?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1072"/>
+        <location filename="../qml/content/MainPage.qml" line="1068"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Chcete uložit změny do nastavení databáze?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1077"/>
+        <location filename="../qml/content/MainPage.qml" line="1073"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Chcete uložit změněné hodnoty nastavení?</translation>
     </message>
