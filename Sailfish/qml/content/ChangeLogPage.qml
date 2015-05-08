@@ -59,6 +59,8 @@ Page {
 <ul>\
 <li>Password entries and groups in list view are now sorted alphabetically per default</li>\
 <li>Sorting of list view is switchable in application settings</li>\
+<li>Other various code cleanup done including some small bugfixes</li>\
+<li>Started to prepare code base for integratation of KeepassX 2 backend</li>\
 </ul>\
 <br>\
 <b>v1.1.4 Unified start page and hidden files in file browser</b>\
