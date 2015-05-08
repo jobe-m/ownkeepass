@@ -76,7 +76,6 @@ Dialog {
         VerticalScrollDecorator {}
 
         ApplicationMenu {
-            helpContent: "Settings"
             disableSettingsItem: true
         }
 
