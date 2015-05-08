@@ -286,7 +286,7 @@ Dialog {
             TextSwitch {
                 id: showUserNamePasswordInListView
                 checked: ownKeepassSettings.showUserNamePasswordInListView
-                text: qsTr("Extended list liew")
+                text: qsTr("Extended list view")
                 description: qsTr("If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)")
                 onCheckedChanged: {
                     editSettingsDialog.showUserNamePasswordInListViewChanged =
@@ -337,7 +337,6 @@ Dialog {
                     // The next two converter functions decouple the alphabetical language list
                     // index from the internal settings index, which cannot be changed for legacy reasons
                     function toCurrentIndex(value) {
-                        console.log("Lang de: " + Languages.DE_DE)
                         switch (value) {
                         case Languages.SYSTEM_DEFAULT:
                             return Global.system_default
