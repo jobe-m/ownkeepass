@@ -274,8 +274,8 @@ Dialog {
             TextSwitch {
                 id: sortAlphabeticallyInListView
                 checked: ownKeepassSettings.sortAlphabeticallyInListView
-                text: qsTr("Sort alphabetically")
-                description: qsTr("Switching this on will sort all entries in the list view alphabetically (reopen database to activate this setting)")
+                text: qsTr("Sort in alphabetical order")
+                description: qsTr("Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)")
                 onCheckedChanged: {
                     editSettingsDialog.sortAlphabeticallyInListViewChanged =
                             sortAlphabeticallyInListView.checked !== ownKeepassSettings.sortAlphabeticallyInListView
@@ -334,7 +334,7 @@ Dialog {
                         MenuItem { text: "Swedish" } // 14
                     }
 
-                    // The next two converter functions decouple the alphabetic language list
+                    // The next two converter functions decouple the alphabetical language list
                     // index from the internal settings index, which cannot be changed for legacy reasons
                     function toCurrentIndex(value) {
                         console.log("Lang de: " + Languages.DE_DE)
