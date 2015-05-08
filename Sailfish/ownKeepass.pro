@@ -149,7 +149,7 @@ OTHER_FILES += \
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-#CONFIG += sailfishapp_i18n
+CONFIG += sailfishapp_i18n
 
 TRANSLATIONS += \
     translations/harbour-ownkeepass-ca.ts \
