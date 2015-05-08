@@ -370,183 +370,197 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="87"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
         <source>Save</source>
         <translation>Desa</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="90"/>
         <source>Discard</source>
         <translation>Descarta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="91"/>
         <source>ownKeepass Settings</source>
         <translation>Configuració d&apos;ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="95"/>
         <source>Change default settings of your ownKeepass application here</source>
         <translation>Canvieu aquí la configuració per defecte del vostre ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="97"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="99"/>
         <source>Database</source>
         <translation>Base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="105"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="107"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
         <translation>Aquesta és l&apos;encriptació que s&apos;utilitzarà per defecte en crear una nova base de dades Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="113"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="115"/>
         <source>Default encryption:</source>
         <translation>Encriptació per defecte:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="137"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="139"/>
         <source>Default key transformation rounds</source>
         <translation>Rutina per defecte de transformació de clau</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="151"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="153"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Apujar aquest valor incrementa el temps d&apos;arrencada de la base de dades de Keepass però la fa molt més robusta contra atacs de força bruta. </translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="158"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="160"/>
         <source>Security</source>
         <translation>Seguretat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="229"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
         <translation>Habiliteu això per poder desbloquejar la vostra base de dades amb només els 3 primers caràcters de la contrasenya principal.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="258"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Clear clipboard</source>
         <translation>Neteja el porta-retalls</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="259"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="261"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
         <translation>Si s&apos;habilita, el porta-retalls es netejarà després de 10 segons d&apos;haver copiat una contrasenya o un nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="418"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
+        <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="430"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>El canvi d&apos;idioma serà efectiu després de reiniciar l&apos;aplicació</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="170"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="172"/>
         <source>Inactivity lock time</source>
         <translation>Bloqueig per inactivitat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="187"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
         <source>Immediately</source>
         <translation>Immediatament</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="191"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="193"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
         <source>seconds</source>
         <translation>segons</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="197"/>
         <source>minute</source>
         <translation>minut</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="197"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="199"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="201"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
         <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
         <source>minutes</source>
         <translation>minuts</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="209"/>
         <source>Unlimited</source>
         <translation>Il·limitat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="226"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="228"/>
         <source>Fast unlock</source>
         <translation>Desbloqueig ràpid</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="247"/>
         <source>Number of fast unlock retries</source>
         <translation>Número d&apos;intents del desbloqueig ràpid</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="269"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="271"/>
         <source>UI settings</source>
         <translation>Configuració de la IU</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
+        <source>Sort in alphabetical order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="278"/>
+        <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>Extended list liew</source>
         <translation>Vista ampliada de llistes</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation>Si s&apos;activa, el nom d&apos;usuari i la contrasenya es mostren sota el títol de cada registre</translation>
+        <translation type="vanished">Si s&apos;activa, el nom d&apos;usuari i la contrasenya es mostren sota el títol de cada registre</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="287"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="301"/>
         <source>Focus search bar</source>
         <translation>Situa el cursor a la barra de cerca</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Si s&apos;activa, quan arrenqui l&apos;aplicació el cursor es situarà a la barra de cerca</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="303"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
         <source>Language:</source>
         <translation>Idioma:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="425"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="437"/>
         <source>Cover settings</source>
         <translation>Configuració de portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="431"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
         <source>Show username and password</source>
         <translation>Mostra el nom d&apos;usuari i la contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="432"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="444"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Si s&apos;activa, es mostraran el nom d&apos;usuari i la contrasenya el registre Keepass que estigui obert a la vista de portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
         <source>Lock database from cover</source>
         <translation>Bloca la base de dades des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="444"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="456"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Això us permet blocar la base de dades amb l&apos;acció de portada de l&apos;esquerra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Copiar i enganxar des de la portada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="456"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="468"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Això us permet copiar i enganxar noms d&apos;usuari i contrasenyes al porta-retalls des de la portada</translation>
     </message>
@@ -953,167 +967,167 @@
         <translation>Ruta i nom de la base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="499"/>
+        <location filename="../qml/content/MainPage.qml" line="500"/>
         <source>Permission error</source>
         <translation>Error de permisos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="499"/>
+        <location filename="../qml/content/MainPage.qml" line="500"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>No es pot ubicar el fitxer de la base de dades Keepass a la ruta seleccionada. Cal que reviseu els permisos de l&apos;usuari &apos;nemo&apos; sobre el directori seleccionat.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="504"/>
-        <location filename="../qml/content/MainPage.qml" line="521"/>
+        <location filename="../qml/content/MainPage.qml" line="505"/>
+        <location filename="../qml/content/MainPage.qml" line="522"/>
         <source>Key file error</source>
         <translation>Error al fitxer de clau</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="504"/>
-        <location filename="../qml/content/MainPage.qml" line="521"/>
+        <location filename="../qml/content/MainPage.qml" line="505"/>
+        <location filename="../qml/content/MainPage.qml" line="522"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>No s&apos;ha trobat el fitxer de la base de dades. Comproveu la ruta del fitxer:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="510"/>
         <source>Database file already exists</source>
         <translation>El fitxer de la base de dades ja existeix</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="510"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Especifiqueu una altra ruta i nom per la base de dades Keepass o elimineu l&apos;antiga des d&apos;un navegador de fitxers.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="526"/>
+        <location filename="../qml/content/MainPage.qml" line="527"/>
         <source>Database file error</source>
         <translation>Error a la base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="526"/>
+        <location filename="../qml/content/MainPage.qml" line="527"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>No s&apos;ha trobat el fitxer de la base de dades. Comproveu la ruta del fitxer:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="576"/>
         <source>Password changed</source>
         <translation>La contrasenya ha canviat</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="576"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>S&apos;ha canviat correctament la contrasenya principal de la base de dades.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="584"/>
-        <location filename="../qml/content/MainPage.qml" line="604"/>
+        <location filename="../qml/content/MainPage.qml" line="585"/>
+        <location filename="../qml/content/MainPage.qml" line="605"/>
         <source>Internal database error</source>
         <translation>Error intern de la base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="584"/>
+        <location filename="../qml/content/MainPage.qml" line="585"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>No s&apos;ha pogut tancar la base dades oberta anteriorment. Torneu a intentar-ho. Missatge d&apos;error:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
+        <location filename="../qml/content/MainPage.qml" line="589"/>
         <source>Internal key error</source>
         <translation>Error intern de la clau</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
-        <location filename="../qml/content/MainPage.qml" line="592"/>
+        <location filename="../qml/content/MainPage.qml" line="589"/>
+        <location filename="../qml/content/MainPage.qml" line="593"/>
         <source>The following error occured during opening of database:</source>
         <translation>S&apos;ha produït aquest error en intentar obrir la base de dades:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="592"/>
+        <location filename="../qml/content/MainPage.qml" line="593"/>
         <source>Internal key file error</source>
         <translation>Error intern al fitxer de clau</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="596"/>
+        <location filename="../qml/content/MainPage.qml" line="597"/>
         <source>Error loading database</source>
         <translation>Error en carregar la base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="596"/>
+        <location filename="../qml/content/MainPage.qml" line="597"/>
         <source>Please try again.</source>
         <translation>Torneu-ho a intentar.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="600"/>
+        <location filename="../qml/content/MainPage.qml" line="601"/>
         <source>Internal file error</source>
         <translation>Error intern del fitxer</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="600"/>
+        <location filename="../qml/content/MainPage.qml" line="601"/>
         <source>The following error occured during creation of database:</source>
         <translation>S&apos;ha produït aquest error mentre es creava la base de dades:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="604"/>
+        <location filename="../qml/content/MainPage.qml" line="605"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>S&apos;ha produït aquest error en intentar crear el fitxer de còpia de seguretat del grup:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
+        <location filename="../qml/content/MainPage.qml" line="609"/>
         <source>Save database error</source>
         <translation>Desa l&apos;error de la base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
+        <location filename="../qml/content/MainPage.qml" line="609"/>
         <source>Could not save database with following error:</source>
         <translation>No s&apos;ha pogut desar la base de dades amb aquest error:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="612"/>
-        <location filename="../qml/content/MainPage.qml" line="616"/>
+        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="617"/>
         <source>Database error</source>
         <translation>Error de la base de dades</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="612"/>
+        <location filename="../qml/content/MainPage.qml" line="613"/>
         <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
         <translation>La base de dades ja estava tancada. Malgrat ser un error poc important, agraïríem que ens n&apos;informeu.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="616"/>
+        <location filename="../qml/content/MainPage.qml" line="617"/>
         <source>An error occured on closing your database:</source>
         <translation>S&apos;ha produït un error mentre es tancava la base de dades:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1026"/>
+        <location filename="../qml/content/MainPage.qml" line="1032"/>
         <source>Yes</source>
         <translation>Sí</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1027"/>
+        <location filename="../qml/content/MainPage.qml" line="1033"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1028"/>
+        <location filename="../qml/content/MainPage.qml" line="1034"/>
         <source>Unsaved changes</source>
         <translation>Canvis no desats</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1056"/>
+        <location filename="../qml/content/MainPage.qml" line="1062"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Voleu desar els canvis al registre de contrasenya?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1061"/>
+        <location filename="../qml/content/MainPage.qml" line="1067"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Voleu desar els canvis al grup de contrasenyes?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1066"/>
+        <location filename="../qml/content/MainPage.qml" line="1072"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Voleu desar els canvis a la configuració de la base de dades?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1071"/>
+        <location filename="../qml/content/MainPage.qml" line="1077"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Voleu desar els canvis a la configuració?</translation>
     </message>
