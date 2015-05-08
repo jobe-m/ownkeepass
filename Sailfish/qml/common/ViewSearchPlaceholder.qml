@@ -99,6 +99,6 @@ Item {
             }
             parentItem = parentItem.parent
         }
-        console.log("ViewPlaceholder requires a SilicaFlickable parent")
+        console.log("ERROR: ViewPlaceholder requires a SilicaFlickable parent")
     }
 }

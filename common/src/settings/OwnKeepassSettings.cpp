@@ -77,7 +77,7 @@ void OwnKeepassSettings::checkSettingsVersion()
 
         QRegExp rx("(\\d+).(\\d+).(\\d+)");
         if ((rx.indexIn(m_previousVersion)) == -1) {
-            qDebug() << "ERROR: Cannot extract version number.";
+            qDebug() << "ERROR: Cannot extract release version number";
             return;
         }
         int major = rx.cap(1).toInt();
@@ -100,7 +100,7 @@ void OwnKeepassSettings::checkSettingsVersion()
             // save changed recent Database list
             m_settings->removeArray("main/recentDatabases");
             for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
-                qDebug() << "changed: " << i << " - " << m_recentDatabaseList[i]["uiPath"];
+//                qDebug() << "changed: " << i << " - " << m_recentDatabaseList[i]["uiPath"];
                 m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
             }
         }

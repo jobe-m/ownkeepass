@@ -36,7 +36,6 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-//import "private/Util.js" as Util
 
 Item {
     id: placeholder
@@ -158,14 +157,13 @@ Item {
     }
 
     Component.onCompleted: {
-// Workaround for private Silical stuff not accessable from here
-//        var item = Util.findFlickable(placeholder)
+        // Workaround for private Silical stuff not accessable from here
         var item = findFlickable(placeholder)
         if (item) {
             flickable = item
             parent = item.contentItem
         } else {
-            console.log("ViewPlaceholder requires a SilicaFlickable parent")
+            console.log("ERROR: ViewPlaceholder requires a SilicaFlickable parent")
         }
     }
 }

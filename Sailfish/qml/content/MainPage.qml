@@ -572,13 +572,10 @@ Page {
         }
 
         function databasePasswordChangedHandler() {
-            console.log("Database password changed successfully")
             Global.env.infoPopup.show(Global.info, qsTr("Password changed"), qsTr("The master password of your database was changed successfully."), 3)
-
         }
 
         function errorHandler(result, errorMsg) {
-            console.log("Database Error occured: " + result)
             // show error to the user
             switch (result) {
             case KdbDatabase.RE_DB_CLOSE_FAILED:
@@ -698,7 +695,6 @@ Page {
         property int parentGroupId: 0
 
         function saveKdbGroupDetails() {
-            console.log("Group name: " + groupName)
             // Set group ID and create or save Kdb Group
             kdbGroup.groupId = itemId
             if (createNewItem) {
@@ -1049,7 +1045,7 @@ Page {
                     kdbListItemInternal.saveKeepassSettings()
                     break
                 default:
-                    console.log("ERROR in query for unsaved changes")
+                    console.log("ERROR: unknown query for unsaved changes")
                     break
                 }
             }

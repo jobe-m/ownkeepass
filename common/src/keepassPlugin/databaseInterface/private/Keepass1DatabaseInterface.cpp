@@ -54,7 +54,6 @@ Keepass1DatabaseInterface::Keepass1DatabaseInterface(QObject *parent)
 
 Keepass1DatabaseInterface::~Keepass1DatabaseInterface()
 {
-    qDebug("Destructor Keepass1DatabaseInterface");
     delete m_kdb3Database;
     delete config;
     SecString::deleteSessionKey();
@@ -63,9 +62,7 @@ Keepass1DatabaseInterface::~Keepass1DatabaseInterface()
 
 void Keepass1DatabaseInterface::initDatabase()
 {
-    qDebug("init Yarrow");
     initYarrow();
-    qDebug("generate session key");
     SecString::generateSessionKey();
 
     // init config
@@ -211,7 +208,6 @@ void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString
 
 void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString keyFile)
 {
-    qDebug() << "Keepass1DatabaseInterface::slot_changePassKey";
     Q_ASSERT(m_kdb3Database);
     if (!m_kdb3Database->setKey(password, keyFile)) {
         // send signal with error
@@ -240,8 +236,8 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups()
     for (int i = 0; i < masterGroups.count(); i++) {
         IGroupHandle* masterGroup = masterGroups.at(i);
         if (masterGroup->isValid()) {
-            qDebug("Mastergroup %d: %s", i, CSTR(masterGroup->title()));
-            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
+//            qDebug("Mastergroup %d: %s", i, CSTR(masterGroup->title()));
+//            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
 
             int item_level = masterGroup->level();
             int level = 0;
@@ -265,7 +261,6 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups()
 
 void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
 {
-    qDebug("start KdbListModel::slot_loadGroupsAndEntries");
     Q_ASSERT(m_kdb3Database);
     // load sub groups and entries
     IGroupHandle* group = (IGroupHandle*)(groupId);
@@ -278,7 +273,7 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
     for (int i = 0; i < subGroups.count(); i++) {
         IGroupHandle* subGroup = subGroups.at(i);
         if (subGroup->isValid() && subGroup->parent() == group) {
-            qDebug("Group %d: %s", i, CSTR(subGroup->title()));
+//            qDebug("Group %d: %s", i, CSTR(subGroup->title()));
             int numberOfSubgroups = subGroup->children().count();
             int numberOfEntries = m_kdb3Database->entries(subGroup).count();
             emit addItemToListModel(subGroup->title(),                              // group name
@@ -351,7 +346,7 @@ void Keepass1DatabaseInterface::slot_loadGroup(int groupId)
 
 void Keepass1DatabaseInterface::slot_saveGroup(int groupId, QString title)
 {
-    qDebug("slot_saveGroup() groupID: %d", groupId);
+//    qDebug("groupID: %d", groupId);
     Q_ASSERT(m_kdb3Database);
     Q_ASSERT(groupId != 0); // master group cannot be changed or saved
 
@@ -388,7 +383,6 @@ void Keepass1DatabaseInterface::slot_unregisterListModel(int modelId)
 
 void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconId, int parentGroupId)
 {
-    qDebug() << "Keepass1DatabaseInterface::slot_createNewGroup";
     Q_ASSERT(m_kdb3Database);
 
     // get parent group handle and identify IDs of list model
@@ -559,8 +553,6 @@ void Keepass1DatabaseInterface::slot_deleteGroup(int groupId)
 
 void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
 {
-    qDebug() << "Keepass1DatabaseInterface::updateGrandParentGroupInListModel";
-
     IGroupHandle* grandParentGroup = parentGroup->parent();
     int numberOfSubgroups = parentGroup->children().count();
     Q_ASSERT(m_kdb3Database);
@@ -571,19 +563,14 @@ void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* 
                                int(parentGroup),                                    // identifier for group item in list model
                                int(grandParentGroup),                               // identifier for list model
                                m_setting_sortAlphabeticallyInListView);             // sort alphabetically
-    qDebug() << "Keepass1DatabaseInterface::updateGrandParentGroupInListModel end";
 }
 
 void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
 {
-    qDebug() << "Keepass1DatabaseInterface::slot_deleteEntry - entryId: " << entryId;
-
     // get handles
     IEntryHandle* entry = (IEntryHandle*)(entryId);
     Q_ASSERT(entry);
     IGroupHandle* parentGroup = entry->group();
-
-    qDebug() << "Keepass1DatabaseInterface::slot_deleteEntry got parent group";
 
     Q_ASSERT(m_kdb3Database);
     // delete entry from database

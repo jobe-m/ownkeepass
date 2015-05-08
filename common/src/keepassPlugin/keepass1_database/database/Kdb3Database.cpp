@@ -117,7 +117,7 @@ int Kdb3Database::numIcons(){
 
 bool Kdb3Database::parseMetaStream(const StdEntry& entry){
 
-	qDebug("Found Metastream: %s", CSTR(entry.Comment));
+//	qDebug("Found Metastream: %s", CSTR(entry.Comment));
 
 	if(entry.Comment=="KPX_GROUP_TREE_STATE"){
 		parseGroupTreeStateMetaStream(entry.Binary);

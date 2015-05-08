@@ -91,7 +91,6 @@ KdbDatabase::KdbDatabase(QObject *parent):
 
 void KdbDatabase::open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly)
 {
-    qDebug() << "KdbDatabase::open()";
     // send signal to the global Keepass database interface component
     emit openDatabase(dbFilePath, password, keyFilePath, readonly);
     m_dbFilePath = dbFilePath;
@@ -101,7 +100,6 @@ void KdbDatabase::open(const QString& dbFilePath, const QString &keyFilePath, co
 
 void KdbDatabase::create(const QString& dbFilePath, const QString &keyFilePath, const QString& password)
 {
-    qDebug() << "KdbDatabase::create()";
     // send signal to the global Keepass database interface component
     emit createNewDatabase(dbFilePath, password, keyFilePath, m_cryptAlgorithm, m_keyTransfRounds);
     m_dbFilePath = dbFilePath;

@@ -103,14 +103,12 @@ signals:
 private slots:
     // signals from DatabaseClient backend thread
     void slot_databaseKeyTransfRoundsChanged(int value) {
-        qDebug("slot_databaseKeyTransfRoundsChanged(%d)", value);
         if (value != m_keyTransfRounds) {
             m_keyTransfRounds = value;
             emit keyTransfRoundsChanged();
         }
     }
     void slot_databaseCryptAlgorithmChanged(int value) {
-        qDebug("slot_databaseCryptAlgorithmChanged(%d)", value);
         if (value != m_cryptAlgorithm) {
             m_cryptAlgorithm = value;
             emit cryptAlgorithmChanged();

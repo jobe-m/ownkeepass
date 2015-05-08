@@ -94,15 +94,15 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
                 i = m_numGroups;
                 max = m_items.length();
                 ++m_numEntries;
-                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries;
+//                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries;
             } else {
                 i = 0;
                 max = m_numGroups;
                 ++m_numGroups;
-                qDebug() << "insert group i: " << i << " max: " << max << " numEntries: " << m_numGroups;
+//                qDebug() << "insert group i: " << i << " max: " << max << " numEntries: " << m_numGroups;
             }
             while (i < max && m_items[i].m_name.toLower().compare(title.toLower()) < 0) {
-                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
+//                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
                 ++i;
             }
             beginInsertRows(QModelIndex(), i, i);
@@ -155,7 +155,7 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, i
             if (m_items[i].m_id == groupId) {
                 // if list view is sorted alphabetically a new title might change the position of the item
                 if (sortAbc) {
-                    qDebug() << "adding in sorted mode: " << title;
+//                    qDebug() << "adding in sorted mode: " << title;
                     // now remove and insert item again, this makes sure that the new item will appear
                     // in the correct position in the alphabetically sorted list view
                     int itemId = m_items[i].m_id;
@@ -163,7 +163,7 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, i
                     slot_deleteItem(itemId);
                     slot_addItemToListModel(title, subTitle, itemId, itemType, modelId, sortAbc);
                 } else {
-                    qDebug() << "adding in non sorted mode: " << title;
+//                    qDebug() << "adding in non sorted mode: " << title;
                     // list view has custom sorting so position of item will stay the same and item just needs an update
                     beginResetModel();
                     // set new title name
@@ -249,7 +249,7 @@ void KdbListModel::slot_deleteItem(int itemId)
     // look at each item in list model
     for (int i = 0; i < m_items.count(); i++) {
         if (m_items[i].m_id == itemId) {
-            qDebug() << "delete item: " << m_items[i].m_name;
+//            qDebug() << "delete item: " << m_items[i].m_name;
             // check item type and decrease appropriate item number counter
             if (m_items[i].m_itemType == kpxPublic::KdbListModel::ENTRY) {
                 m_numEntries--;

@@ -203,7 +203,6 @@ Page {
     }
 
     Component.onCompleted: {
-        console.log("showEntryDetailsPage" + pageTitle)
         // set reference in kdbListItemInternal object
         kdbListItemInternal.showEntryDetailsPageRef = showEntryDetailsPage
         // set entry ID and load entry details to show in this page

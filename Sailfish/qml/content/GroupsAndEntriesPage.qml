@@ -68,12 +68,10 @@ Page {
     property bool __closeOnError: false
     property string __saveState: state
     function __showLoadErrorPage() {
-        console.log("ERROR: Could not load")
         Global.env.infoPopup.show(Global.error, qsTr("Load Error"), qsTr("Could not load all items from Keepass database file. That's strange."))
     }
 
     function __showSaveErrorPage() {
-        console.log("ERROR: Could not save")
         Global.env.infoPopup.show(Global.error, qsTr("Save Error"), qsTr("Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed."))
     }
 
@@ -132,10 +130,10 @@ Page {
 
             onFocusChanged: {
                 if (focus) {
-                    console.log("Search bar has focus")
+//                    console.log("Search bar has focus")
                     groupsAndEntriesPage.state = "SEARCHING"
                 } else {
-                    console.log("Search bar lost focus")
+//                    console.log("Search bar lost focus")
                     if (text.length === 0 && groupsAndEntriesPage.state === "SEARCHING") {
                         groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
                     }

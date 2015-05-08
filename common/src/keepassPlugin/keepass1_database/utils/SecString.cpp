@@ -98,7 +98,7 @@ void SecString::overwrite(QString& str){
 void SecString::generateSessionKey(){
 	sessionkey = new quint8[32];
 	if (!lockPage(sessionkey, 32))
-		qDebug("Failed to lock session key page");
+        qDebug("ERROR: Failed to lock session key page");
 	randomize(sessionkey, 32);
 	RC4.setKey(sessionkey, 32);
 }
