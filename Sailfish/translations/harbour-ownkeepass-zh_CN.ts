@@ -370,143 +370,143 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="88"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="90"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
         <source>Discard</source>
         <translation>放弃</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="91"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="90"/>
         <source>ownKeepass Settings</source>
         <translation>ownKeepass设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="95"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="94"/>
         <source>Change default settings of your ownKeepass application here</source>
         <translation>在这里修改ownKeepass的默认设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="99"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="98"/>
         <source>Database</source>
         <translation>数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="107"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="106"/>
         <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
         <translation>创建新Keepass数据库的默认加密方式：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="115"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="114"/>
         <source>Default encryption:</source>
         <translation>默认加密方式：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="138"/>
         <source>Default key transformation rounds</source>
         <translation>默认关键字转换算法</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="153"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="152"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>增加这个值将延长打开Keepass数据库的时间，但可以更好地防范暴力破解</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="160"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="159"/>
         <source>Security</source>
         <translation>安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="229"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="228"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
         <translation>开启后，只需输入主密码前三位即可快速解锁数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="259"/>
         <source>Clear clipboard</source>
         <translation>清空剪切板</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="261"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>If enabled the clipboard will be cleared after 10 seconds when username or password is copied</source>
         <translation>如果开启，将在复制用户名或密码10秒后清空剪贴板</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="429"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>修改语言将在ownKeepass重启后生效</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="172"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="171"/>
         <source>Inactivity lock time</source>
         <translation>无动作锁定时间</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="189"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="188"/>
         <source>Immediately</source>
         <translation>立刻</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="191"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="193"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="195"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="190"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="192"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="194"/>
         <source>seconds</source>
         <translation>秒</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="197"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="196"/>
         <source>minute</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="199"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="201"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="203"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="205"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="198"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="200"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="202"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="204"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="206"/>
         <source>minutes</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="209"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="208"/>
         <source>Unlimited</source>
         <translation>无限</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="228"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
         <source>Fast unlock</source>
         <translation>快速解锁</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="247"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="246"/>
         <source>Number of fast unlock retries</source>
         <translation>快速解锁剩余尝试次数</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="271"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="270"/>
         <source>UI settings</source>
         <translation>界面设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="278"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -519,52 +519,52 @@
         <translation type="vanished">开启此项将在列表视图的词条下显示用户名和密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="301"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
         <source>Focus search bar</source>
         <translation>聚焦搜索框</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="301"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>如果开启将在应用启动时自动聚焦在搜索栏上</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
         <source>Language:</source>
         <translation>语言：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="436"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="435"/>
         <source>Cover settings</source>
         <translation>封面设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="442"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="441"/>
         <source>Show username and password</source>
         <translation>显示用户名和密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="443"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="442"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>开启此项将在封面上显示当前Keepass词条的用户名和密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="454"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="453"/>
         <source>Lock database from cover</source>
         <translation>从封面锁定数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="454"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>允许你通过封面向左扫来锁定数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="465"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>从封面复制粘贴</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>开启此项以从封面复制用户名和密码到剪贴板</translation>
     </message>
@@ -811,10 +811,9 @@
 <context>
     <name>HelpSettings</name>
     <message>
-        <location filename="../qml/help/HelpSettings.qml" line="28"/>
         <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password. You can choose the number of wrong attempts from zero to 5 after which the database will be closed and the full master password is needed again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changes: Added part for fast unlock and changed description to first 3 chars</extracomment>
-        <translation>在这个页面你可以修改ownKeepass应用的默认设置
+        <translation type="vanished">在这个页面你可以修改ownKeepass应用的默认设置
 &lt;br&gt;&lt;br&gt;&lt;b&gt;数据库&lt;/b&gt;&lt;br&gt;&lt;br&gt;修改这个将修改你正在使用的和新建的Keepass数据库的默认加密算法。加密算法可以在你创建完你的数据库后在设置中修改。&lt;br&gt;&lt;br&gt;设置新Keepass数据库的关键字转换算法的默认值。这个值控制主密码加密计算循环。调整这个值将直接影响载入时解密数据库的时间。但提高这个值可以使数据库更好地防范暴力破解。一个在安全性和可用性之前的不错权衡是调整这个值直到在你手机上打开数据库需要一秒的时间。&lt;br&gt;&lt;br&gt;&lt;b&gt;安全&lt;/b&gt;&lt;br&gt;&lt;br&gt;无活动锁定时间用来在ownKeepass转到后台时，在指定时间后自动锁定数据库。因此无活动计时器将在ownKeepass最小化到主屏幕封面状态后继续计时。&lt;br&gt;&lt;br&gt;快速解锁允许你在使用强主密码时依然能快速进入数据库。当你第一次打开密码安全时你需要数据完整的密码。但在随后的锁定中，你可以通过主密码的前三位进行快速解锁。你可以选择从0到5的尝试次数,密码输入错误超过这个次数后，数据库将被关闭，你需要输入完整的主密码。&lt;br&gt;&lt;br&gt;你可以开启在复制用户名和密码后10秒清空剪贴板。&lt;br&gt;&lt;br&gt;&lt;b&gt;界面设置&lt;/b&gt;&lt;br&gt;&lt;br&gt;如果你希望在列表中显示所有密码词条的用户名和密码，请开启“扩展的列表视图”。&lt;br&gt;&lt;br&gt;开启“聚焦搜索栏”，将在你打开Keepass数据库时自动聚焦到主密码组页面的搜索栏，并显示屏幕键盘。这将使你通过搜索功能更快地寻找你想要的密码。&lt;br&gt;&lt;br&gt;&lt;b&gt;封面设置&lt;/b&gt;&lt;br&gt;&lt;br&gt;这里你可以调整封面页面的功能和显示的信息。你可以开启在封面上明文显示当前打开词条的用户名和密码。同时，你也可以开启或关闭两个封面动作。第一个动作是锁定数据库。第二个触发器用来复制用户名和密码到剪贴板或者清空剪贴板内容。&lt;br&gt;&lt;br&gt;&lt;b&gt;高级设置&lt;/b&gt;&lt;br&gt;&lt;br&gt;“专家用户模式”允许你开启一些数据库处理的高级模式。如果noi开启这个选项你可以打开不同的Keepass数据库并在主页面看到和快速进入至少五个打开的Keepass数据库。&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
