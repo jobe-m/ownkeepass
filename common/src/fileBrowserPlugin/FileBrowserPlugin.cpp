@@ -32,10 +32,13 @@ FileBrowserListModel::FileBrowserListModel(QObject *parent)
       m_breadcrum_path(""),
       m_showDirsOnly(false),
       m_valid_dir(false),
-      m_showHiddenFiles(false)
+      m_showHiddenFiles(false),
+      m_fileFilter()
 {
     m_dir.setSorting(QDir::DirsFirst);
     m_dir.setFilter(QDir::AllEntries | QDir::NoDot);
+    m_fileFilter.append(QString("*"));
+    m_dir.setNameFilters(m_fileFilter);
     appendRootElements();
 }
 
@@ -84,11 +87,25 @@ void FileBrowserListModel::setShowHiddenFiles(bool value)
     if (m_showHiddenFiles != value) {
         m_showHiddenFiles = value;
 
-        // Do not update list view on root page
+        // Update list view but only when not on root page
         if (m_dir.path() != "root") {
             listDir();
         }
         emit showHiddenFilesChanged();
+    }
+}
+
+void FileBrowserListModel::setFileFilter(QStringList value)
+{
+    if (m_fileFilter != value) {
+        m_fileFilter = value;
+        m_dir.setNameFilters(m_fileFilter);
+
+        // Update list view but only when not on root page
+        if (m_dir.path() != "root") {
+            listDir();
+        }
+        emit fileFilterChanged();
     }
 }
 
@@ -97,17 +114,18 @@ void FileBrowserListModel::listDir()
     clear();
     if (m_dir.exists()) {
         QFileInfoList list;
+        // list always all dirs, but apply filter to files below
         if (m_showDirsOnly) {
             if (m_showHiddenFiles) {
-                list = m_dir.entryInfoList(QDir::Dirs | QDir::NoDot | QDir::Hidden, QDir::DirsFirst);
+                list = m_dir.entryInfoList(QDir::AllDirs | QDir::NoDot | QDir::Hidden, QDir::DirsFirst);
             } else {
-                list = m_dir.entryInfoList(QDir::Dirs | QDir::NoDot, QDir::DirsFirst);
+                list = m_dir.entryInfoList(QDir::AllDirs | QDir::NoDot, QDir::DirsFirst);
             }
         } else {
             if (m_showHiddenFiles) {
-                list = m_dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDot | QDir::Hidden, QDir::DirsFirst);
+                list = m_dir.entryInfoList(QDir::AllDirs | QDir::Files | QDir::NoDot | QDir::Hidden, QDir::DirsFirst);
             } else {
-                list = m_dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDot, QDir::DirsFirst);
+                list = m_dir.entryInfoList(QDir::AllDirs | QDir::Files | QDir::NoDot, QDir::DirsFirst);
             }
         }
         foreach (const QFileInfo &info, list) {
@@ -126,6 +144,7 @@ void FileBrowserListModel::listDir()
             m_items.append(item);
             endInsertRows();
         }
+
         m_breadcrum_path = m_dir.path();
         emit breadcrumPathChanged();
         m_valid_dir = true;
