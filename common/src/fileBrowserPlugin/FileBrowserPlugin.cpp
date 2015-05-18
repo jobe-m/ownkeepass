@@ -33,6 +33,7 @@ FileBrowserListModel::FileBrowserListModel(QObject *parent)
       m_showDirsOnly(false),
       m_valid_dir(false),
       m_showHiddenFiles(false),
+      m_showFileFilter(false),
       m_fileFilter()
 {
     m_dir.setSorting(QDir::DirsFirst);
@@ -92,6 +93,27 @@ void FileBrowserListModel::setShowHiddenFiles(bool value)
             listDir();
         }
         emit showHiddenFilesChanged();
+    }
+}
+
+void FileBrowserListModel::setShowFileFilter(bool value)
+{
+    if (m_showFileFilter != value) {
+        m_showFileFilter = value;
+        if (m_showFileFilter) {
+            m_dir.setNameFilters(m_fileFilter);
+        } else {
+            // If file filter is disabled just show everything
+            QStringList fileFilters;
+            fileFilters.append(QString("*"));
+            m_dir.setNameFilters(fileFilters);
+        }
+
+        // Update list view but only when not on root page
+        if (m_dir.path() != "root") {
+            listDir();
+        }
+        emit showFileFilterChanged();
     }
 }
 

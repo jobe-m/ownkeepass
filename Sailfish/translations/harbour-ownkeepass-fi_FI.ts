@@ -594,44 +594,66 @@
         <translation>Näytä järjestelmätiedostot</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="122"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
+        <source>Hide file filter</source>
+        <extracomment>Used in file browser to hide the file name filter</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
+        <source>Show file filter</source>
+        <extracomment>Used in file browser to show the file name filter</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
         <translation>Valitse</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="136"/>
         <source>Cancel</source>
         <translation>Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="138"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="151"/>
         <source>New file name</source>
         <translation>Uusi tiedostonimi</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="139"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="152"/>
         <source>Enter new file name</source>
         <translation>Anna uusi tiedostonimi</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="206"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
+        <source>File filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
+        <source>Set file filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Laitteen muisti</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="207"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
         <source>SD Card</source>
         <translation>SD-kortti</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
         <source>Android Storage</source>
         <translation>Android-muisti</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="204"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
         <source>Back</source>
         <translation>Takaisin</translation>
     </message>

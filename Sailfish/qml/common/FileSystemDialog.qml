@@ -34,7 +34,7 @@ Dialog {
     // 2 - SD Card
     // 3 - Android Storage
     property int locationIndex: 0
-    // Relative path of file to location including file name
+    // Relative path of file inside location including file name
     property string relativePath: ""
     // Absolute path of file including file name
     property string absolutePath: ""
@@ -106,12 +106,25 @@ Dialog {
         PullDownMenu {
             MenuItem {
                 text: fileBrowserListModel.showHiddenFiles ?
-                    //: Used in file browser to hide the system files
-                    qsTr("Hide system files") :
-                    //: Used in file browser to show the hidden system files
-                    qsTr("Show system files")
+                          //: Used in file browser to hide the system files
+                          qsTr("Hide system files") :
+                          //: Used in file browser to show the hidden system files
+                          qsTr("Show system files")
                 onClicked: {
                     fileBrowserListModel.showHiddenFiles = !fileBrowserListModel.showHiddenFiles
+                }
+            }
+
+            MenuItem {
+                id: showFileFilterMenuItem
+                visible: enabled
+                text: fileBrowserListModel.showFileFilter ?
+                          //: Used in file browser to hide the file name filter
+                          qsTr("Hide file filter") :
+                          //: Used in file browser to show the file name filter
+                          qsTr("Show file filter")
+                onClicked: {
+                    fileBrowserListModel.showFileFilter = !fileBrowserListModel.showFileFilter
                 }
             }
         }
@@ -163,6 +176,48 @@ Dialog {
                 wrapMode: Text.Wrap
             }
 */
+        }
+
+        Item {
+            id: fileFilter
+            visible: enabled
+            opacity: enabled ? 1.0 : 0.0
+            y: header.y + header.height
+            width: parent.width
+            height: enabled ? fileFilterField.height : 0
+            onEnabledChanged: {
+                if (enabled) {
+                    var array = fileFilterField.text.split(" ")
+                    fileBrowserListModel.fileFilter = array
+                }
+            }
+
+            Behavior on height {
+                NumberAnimation { duration: 500 }
+            }
+
+            Behavior on opacity {
+                FadeAnimation { duration: 500 }
+            }
+
+            TextField {
+                id: fileFilterField
+                width: parent.width
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+                errorHighlight: text.length === 0
+                label: qsTr("File filter")
+                placeholderText: qsTr("Set file filter")
+                text: "*.kdb"
+                EnterKey.enabled: !errorHighlight
+                EnterKey.highlighted: text !== ""
+                EnterKey.onClicked: {
+                    parent.focus = true
+                    var array = text.split(" ")
+                    fileBrowserListModel.fileFilter = array
+                    console.log(array)
+                }
+                focusOutBehavior: -1
+            }
         }
 
         SilicaListView {
@@ -252,8 +307,13 @@ Dialog {
             name: "OPEN_FILE"
             PropertyChanges { target: fileSystemDialog; canAccept: absolutePath !== "" }
             PropertyChanges { target: newFileName; enabled: false }
-            PropertyChanges { target: listView; y: header.y + header.height }
+            PropertyChanges { target: listView; y: header.y + header.height + fileFilter.height }
+//                y: fileFilter.enabled ? header.y + header.height + fileFilter.height :
+//                                        header.y + header.height
+//            }
             PropertyChanges { target: fileBrowserListModel; showDirsOnly: false }
+            PropertyChanges { target: showFileFilterMenuItem; enabled: true }
+            PropertyChanges { target: fileFilter; enabled: fileBrowserListModel.showFileFilter}
         },
         State {
             name: "CREATE_NEW_FILE"
@@ -261,6 +321,8 @@ Dialog {
             PropertyChanges { target: newFileName; enabled: true }
             PropertyChanges { target: listView; y: header.y + header.height + newFileName.height }
             PropertyChanges { target: fileBrowserListModel; showDirsOnly: true }
+            PropertyChanges { target: showFileFilterMenuItem; enabled: false }
+            PropertyChanges { target: fileFilter; enabled: false }
         }
     ]
 }

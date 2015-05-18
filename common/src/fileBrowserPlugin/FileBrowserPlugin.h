@@ -91,6 +91,7 @@ public:
     Q_PROPERTY(bool showDirsOnly READ showDirsOnly WRITE setShowDirsOnly NOTIFY showDirsOnlyChanged)
     Q_PROPERTY(bool validDir READ validDir NOTIFY validDirChanged)
     Q_PROPERTY(bool showHiddenFiles READ showHiddenFiles WRITE setShowHiddenFiles NOTIFY showHiddenFilesChanged)
+    Q_PROPERTY(bool showFileFilter READ showFileFilter WRITE setShowFileFilter NOTIFY showFileFilterChanged)
     Q_PROPERTY(QStringList fileFilter READ fileFilter WRITE setFileFilter NOTIFY fileFilterChanged)
     Q_INVOKABLE void clear();
     Q_INVOKABLE void loadFilePath(QString path);
@@ -111,6 +112,8 @@ public:
     bool validDir() const { return m_valid_dir; }
     void setShowHiddenFiles(const bool value);
     bool showHiddenFiles() const { return m_showHiddenFiles; }
+    void setShowFileFilter(const bool value);
+    bool showFileFilter() const { return m_showFileFilter; }
     void setFileFilter(const QStringList value);
     QStringList fileFilter() const { return m_fileFilter; }
 
@@ -121,6 +124,7 @@ signals:
     void showDirsOnlyChanged();
     void validDirChanged();
     void showHiddenFilesChanged();
+    void showFileFilterChanged();
     void fileFilterChanged();
 
 private:
@@ -139,6 +143,7 @@ private:
     bool m_showDirsOnly;
     bool m_valid_dir;
     bool m_showHiddenFiles;
+    bool m_showFileFilter;
     QStringList m_fileFilter;
 };
 
