@@ -6,6 +6,13 @@ ownKeepass
 Status
 ------
 
+Release 1.1.5 (coming shortly to [openrepos.net] [1] and jolla store)
+
+- Password entries and groups in list view are now sorted alphabetically per default
+- Sorting of list view is switchable in application settings
+- File browser updated with a file filter which can be optionally used to filter for file types
+- Other various code cleanup done including some small bugfixes
+
 Release 1.1.4 available from [openrepos.net] [1] / warehouse app and jolla store
 
 - Enabled handling of multiple databases on start page per default. In fact after introducing the file browser it is not neccessary to hide the database opening dialogs from the average user any more ;) So "expert mode" is gone for now.
@@ -17,7 +24,7 @@ Release 1.1.4 available from [openrepos.net] [1] / warehouse app and jolla store
 
 Status of Keepass 2 database support:
 * Database code from KeepassX 2 is already compiling in my sandbox. KeepassX 2 database writer and reader needs to be integrated, too.
-* Due to name space conflicts with the old KeepassX 0.4.3 code base I need to put the database code into separate libs
+* Due to name space conflicts with the old KeepassX 0.4.3 code base I need to rework some parts of the old database code
 
 Roadmap
 -------
