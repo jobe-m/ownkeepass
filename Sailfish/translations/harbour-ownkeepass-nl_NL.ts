@@ -206,7 +206,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerpen</translation>
+        <translation>Verwerpen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerpen</translation>
+        <translation>Verwerpen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerpen</translation>
+        <translation>Verwerpen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
@@ -437,12 +437,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitgebreide lijstweergave</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Als u dit inschakelt zullen de gebruikersnaam en het wachtwoord worden weergegeven onder de invoertitel in lijstweergaven (heropen de database om deze instelling te activeren)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
@@ -503,20 +503,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorteren op alfabetische volgorde</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extended list liew</source>
-        <translation type="vanished">Uitgebreide lijstweergave</translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Als dit wordt ingeschakeld zullen gebruikersnaam en wachtwoord zichtbaar zijn onder de titel in lijstweergaven</translation>
+        <translation>Als u dit inschakelt zullen alle invoeren op alfabetische volgorde worden weergegeven in lijstweergaven i.p.v. de interne sortering (heropen de database om deze instelling te activeren)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
@@ -585,31 +577,31 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Systeembestanden verbergen</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Systeembestanden weergeven</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsfilter verbergen</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsfilter weergeven</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Selecteren</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="136"/>
@@ -629,31 +621,31 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsfilter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsfilter instellen</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
-        <source>SD Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
-        <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparaatgeheugen</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <source>SD Card</source>
+        <translation>SD-kaart</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
+        <source>Android Storage</source>
+        <translation>Android-opslag</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Terug</translation>
     </message>
@@ -670,17 +662,17 @@
         <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Apparaatgeheugen</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-kaart</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Android-opslag</translation>
     </message>
 </context>
 <context>
@@ -1159,7 +1151,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerpen</translation>
+        <translation>Verwerpen</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
@@ -1212,7 +1204,7 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuleren</translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>

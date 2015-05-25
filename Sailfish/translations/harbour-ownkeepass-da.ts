@@ -51,7 +51,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="125"/>
         <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Kreditér&lt;/ b&gt;&lt;br&gt;Jolla (for at fortsætte arbejdet, hvor Nokia stoppede)&lt;br&gt;KeepassX projektet (for en Qt implementering af Keepass)&lt;br&gt;Alle oversættere: % 1&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;Jeg håber du har lige så meget sjov ved at bruge ownKeepass som jeg har at skabe den!</translation>
     </message>
 </context>
 <context>
@@ -206,27 +206,27 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Discard</source>
-        <translation type="unfinished">Kassér</translation>
+        <translation>Kassér</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
         <source>Change settings of your currently opened Keepass database here</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændr indstillinger for den åbne Keepass database her</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
-        <translation>Bemærk: Ved at ændre den primære adganskode her, skal du huske det den næste gang du åbner KeePass databasen!</translation>
+        <translation>Bemærk: Ved at ændre den primære adgangskode her, skal du huske det den næste gang du åbner KeePass databasen!</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
         <source>Master password</source>
-        <translation type="unfinished">Primær adgangskode</translation>
+        <translation>Primært kodeord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="102"/>
         <source>Change master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre primært kodeord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
@@ -242,7 +242,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="143"/>
         <source>Encryption currently in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kryptering i brug:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="166"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
         <source>Discard</source>
-        <translation type="unfinished">Kassér</translation>
+        <translation>Kassér</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
@@ -290,12 +290,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>URL</source>
-        <translation>Enhedsressourcefinder</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set URL</source>
-        <translation>Sæt Enhedsressourcefinder</translation>
+        <translation>Definer URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="145"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
         <source>Discard</source>
-        <translation type="unfinished">Kassér</translation>
+        <translation>Kassér</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
@@ -422,7 +422,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="228"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiver dette for hurtigt at kunne låse din database op med de første 3 tegn af din primære adgangskode.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="259"/>
@@ -437,17 +437,17 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
-        <translation type="unfinished"></translation>
+        <translation>Udvidet listevisning</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvis du slår dette til, vil brugernavn og adgangskode blive vist under titlen i listevisning (genåben database for at aktivere denne indstilling)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændring af sprog vil først blive aktiveret efter genstart af ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="171"/>
@@ -498,21 +498,17 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="270"/>
         <source>UI settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Indstillinger for brugergrænseflade</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortér i alfabetisk orden</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Hvis du slår dette til, vil brugernavn og kodeord blive vist under posttitel i listevisning.</translation>
+        <translation>Hvis du slår dette til, vil alle poster i listevisningen blive sorteret i alfabetisk orden, ellers vil databasens interne orden blive brugt (genåben databasen for at aktivere denne indstilling)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
@@ -557,7 +553,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="465"/>
         <source>Copy&apos;n&apos;paste from cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiér fra miniature</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
@@ -581,13 +577,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Gem systemfiler</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Vis systemfiler</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
@@ -605,7 +601,7 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Vælg</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="136"/>
@@ -633,23 +629,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
-        <source>SD Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
-        <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhedshukommelse</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <source>SD Card</source>
+        <translation>SD-kort</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
+        <source>Android Storage</source>
+        <translation>Androidlager</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Tilbage</translation>
     </message>
@@ -666,17 +662,17 @@
         <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Enhedshukommelse</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-kort</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Androidlager</translation>
     </message>
 </context>
 <context>
@@ -768,7 +764,7 @@
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changed &quot;home drive on the phone&quot; to &quot;Device Memory&quot;, removed section for &quot;Open automatically&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>På denne side kan du oprette en ny database, hvor ownKeepass vil gemme dine følsomme data.&lt;br&gt;&lt;br&gt;Åbn filhåndteringen, og vælg et filnavn og en folder. Du kan vælge at placere din database i enhedens hukommelse, på SD-kortet eller i Android Storage. Hvis posten SD kortet er gråt, er der ikke isat et SD-kort, eller kortet er ikke korrekt registreret af systemet. Der bør kun være én formateret partition på SD-kortet. SD-kort med flere partitioner er i øjeblikket ikke understøttet af ownKeepass. &quot;Android Storage&quot; findes for at muliggøre deling af databasen med Androidprogrammer. Men deling af filer med Android verden kan være irriterende på grund af andre filrettigheder og tilladelser. Vær opmærksom på dette.&lt;br&gt;&lt;br&gt;Rådgivning:. Hvis du overfører din KeePass database til en cloud-tjeneste. Så vær sikker på at du bruger en lokalt lagret nøglefil, ud over en primær adgangskode. Denne nøglefil bør ikke overføres til nogen form for cloud-tjeneste. &lt;br&gt;&lt;br&gt;&lt;B&gt;Brug nøglefil&lt;/ b&gt;&lt;br&gt;&lt;br&gt;En nøglefil kan bruges som tillæg til en primær adgangskode for ekstra beskyttelse af Keepass databasen. Begge anvendes sammen til at generere en adgangsnøgle, som vil åbne databasen. Så ved hjælp af en fil med masser af data i den genererede adgangsnøgle bliver databasen i princippet mere modstandsdygtige overfor angreb. Du kan for eksempel bruge et tilfældigt billede som nøglefil.&lt;br&gt;&lt;br&gt;&lt;b&gt;Primær adgangskode&lt;/ b&gt;&lt;br&gt;&lt;br&gt;Dette er adgangskoden til din nye KeePass database. Sørg for at vælge en lang adgangskode på omkring 10 - 15 tegn og brug en blanding af små og store bogstaver, tal og specialtegn. Gentag adgangskode i &quot;Bekræft adgangskode&quot; feltet.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -809,7 +805,7 @@
     <message>
         <location filename="../qml/help/HelpOpenRecentDatabase.qml" line="27"/>
         <source>Type in here the password for opening the database. If you chose a key file it will be automatically loaded from the path you specified earlier. If you get an error on opening the database and you are sure that your provided password is correct check if the key file is still in the same place when you opened the database the last time successfully.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens the password query dialog again for this database when you start the application the next time.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast adgangskoden her, for åbning af databasen. Hvis du vælger en nøglefil vil den automatisk blive indlæst fra den sti, du tidligere har angivet. Hvis du får en fejl ved åbning af databasen, og du er sikker på at den indtastede adgangskode er korrekt, så kontrollér om nøglefilen er stadig på samme sted, som da du sidst åbnede databasen med succes.&lt;br&gt;&lt;br&gt;&lt;B&gt;Åbn automatisk&lt;/B&gt;&lt;br&gt;&lt;br&gt;Markér denne valgmulighed, hvis du ønsker at ownKeepass automatisk åbner adgangskode dialogen igen for denne database, næste gang ownKeepass startes.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -830,7 +826,7 @@
     <message>
         <location filename="../qml/help/HelpSubGroupsPage.qml" line="27"/>
         <source>This page is showing password entries and sub-groups of your Keepass database. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;It is possible to show username and password for each password entry already in the list view. To enable that feature open the ownKeepass settings and check the &quot;Extended list view&quot; switch.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search only in the specific password group and all its sub-groups.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Denne side viser adgangskodeposter og undergrupper i din KeePass-database. En adgangskodepost gemmer din information sikkert i databasen.&lt;br&gt;&lt;br&gt;Det er muligt få vist brugernavn og adgangskode for hver post, allerede i listevisningen. For at aktivere denne funktionalitet, skal du åbne ownKeepass indstillinger og sæt et hak ved &quot;Udvidet listevisning&quot;.&lt;br&gt;&lt;br&gt;En søgebar kan ligeledes aktiveres fra topmenuen, der vises over adgangskodegruppe listen. Med den kan du kun søge i den aktuelle adgangskodegruppe og dens undergrupper.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -965,7 +961,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="333"/>
         <source>Recent databases</source>
-        <translation type="unfinished"></translation>
+        <translation>Seneste databaser</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="353"/>
@@ -977,17 +973,17 @@
         <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sti og navn på database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="500"/>
         <source>Permission error</source>
-        <translation type="unfinished"></translation>
+        <translation>Rettighedsfejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="500"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke oprette stien til Keepass databasefilen. Du skal muligvis angive foldertilladelser for brugeren &apos;nemo&apos;.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="505"/>
@@ -1081,7 +1077,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Creation of backup group failed with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprettelse af sikkerhedsgruppe fejlede med følgende fejl:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="606"/>
@@ -1155,7 +1151,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
         <source>Discard</source>
-        <translation type="unfinished">Kassér</translation>
+        <translation>Kassér</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
@@ -1165,7 +1161,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
         <source>No char group selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen tegngruppe udvalgt</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="117"/>
@@ -1175,12 +1171,12 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="179"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Udeluk look-alike tegn</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="190"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"></translation>
+        <translation>Sørg for, at adgangskoden indeholder tegn fra alle grupper</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="200"/>
@@ -1208,7 +1204,7 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
         <source>Cancel</source>
-        <translation type="unfinished">Afbryd</translation>
+        <translation>Afbryd</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
@@ -1218,7 +1214,7 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
         <source>Master password</source>
-        <translation type="unfinished">Primær adgangskode</translation>
+        <translation>Primært kodeord</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
@@ -1274,12 +1270,12 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
         <source>Pull down to add URL, username, password and comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Træk ned for at tilføje URL, brugernavn, adgangskode og kommentar</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="65"/>
         <source>Copy URL</source>
-        <translation>Kopier Enhedsressourcefinder</translation>
+        <translation>Kopier URL</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
@@ -1299,7 +1295,7 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="129"/>
         <source>URL</source>
-        <translation>Enhedsressourcefinder</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="139"/>

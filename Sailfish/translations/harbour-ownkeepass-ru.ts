@@ -26,7 +26,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="73"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass распространяется на условиях лицензии GNU General Public License (GPL) версии 2 или (на ваше усмотрение) версии 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="86"/>
@@ -206,7 +206,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
         <source>Discard</source>
-        <translation type="unfinished">Отменить</translation>
+        <translation>Отменить</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
         <source>Discard</source>
-        <translation type="unfinished">Отменить</translation>
+        <translation>Отменить</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
         <source>Discard</source>
-        <translation type="unfinished">Отменить</translation>
+        <translation>Отменить</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
@@ -437,12 +437,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
-        <translation type="unfinished"></translation>
+        <translation>Расширенный вид списков</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать имя пользователя и пароль в списке записей (для применения требуется открыть базу заново)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
@@ -503,20 +503,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
-        <translation type="unfinished"></translation>
+        <translation>Сортировать в алфавитном порядке</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extended list liew</source>
-        <translation type="vanished">Расширенный вид списков</translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Позволяет выводить вместе с названием записи также имя пользователя и пароль</translation>
+        <translation>Позволяет сортировать записи в списках в алфавитном порядке. Иначе будет использован внутренний порядок базы паролей.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
@@ -585,31 +577,31 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="110"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Скрыть системные файлы</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="112"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Показать системные файлы</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Скрыть фильтр</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Показать фильтр</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Выбрать</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="136"/>
@@ -629,31 +621,31 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Фильтр по маске</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите маску для фильтрации</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
-        <source>SD Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
-        <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Память устройства</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <source>SD Card</source>
+        <translation>SD-карта</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
+        <source>Android Storage</source>
+        <translation>Память Android</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
@@ -670,17 +662,17 @@
         <location filename="../qml/scripts/Global.js" line="112"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Память устройства</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="114"/>
         <source>SD Card</source>
-        <translation type="unfinished"></translation>
+        <translation>SD-карта</translation>
     </message>
     <message>
         <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Android Storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Память Android</translation>
     </message>
 </context>
 <context>
@@ -975,13 +967,13 @@
         <location filename="../qml/content/MainPage.qml" line="353"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу новой базы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу базы паролей</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="500"/>
@@ -1159,7 +1151,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
         <source>Discard</source>
-        <translation type="unfinished">Отменить</translation>
+        <translation>Отменить</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>
@@ -1212,7 +1204,7 @@
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
         <source>Cancel</source>
-        <translation type="unfinished">Отмена</translation>
+        <translation>Отменить</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>

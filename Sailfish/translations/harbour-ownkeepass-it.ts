@@ -511,14 +511,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Extended list liew</source>
-        <translation type="vanished">Vista lista estesa</translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Visualizza il nome utente e la password al di sotto del titolo dell&apos;elemento nella vista lista</translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
         <source>Focus search bar</source>
         <translation>Focus barra ricerca</translation>
@@ -637,23 +629,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
         <source>SD Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Indietro</translation>
     </message>
@@ -827,14 +819,6 @@
         <location filename="../qml/help/HelpPage.qml" line="53"/>
         <source>Help</source>
         <translation>Aiuto</translation>
-    </message>
-</context>
-<context>
-    <name>HelpSettings</name>
-    <message>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password. You can choose the number of wrong attempts from zero to 5 after which the database will be closed and the full master password is needed again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Changes: Added part for fast unlock and changed description to first 3 chars</extracomment>
-        <translation type="vanished">In questa pagina è possibile modificare le impostazioni predefinite dell&apos;applicazione ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Puoi impostare qui anche l&apos;algoritmo di crittografia predefinito utilizzato quando si crea un nuovo database Keepass. L&apos;algoritmo di cifratura può essere modificata anche in seguito, dopo la creazione del database, nelle impostazioni del database.&lt;br&gt;&lt;br&gt;Imposta il valore predefinito per i cicli di trasformazione della chiave per un nuovo database Keepass; questo valore controlla la quantità di cicli di crittografia calcolati sulla password principale. La regolazione di questo valore ha effetto diretto sul tempo necessario per decifrare il database, ma impostando un valore più alto, il database è più robusto contro gli attacchi brute force. Come un buon compromesso tra sicurezza e usabilità dovresti regolare il valore in modo che l&apos;apertura del database impieghi un secondo sul dispositivo.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sicurezza&lt;/b&gt;&lt;br&gt;&lt;br&gt;Il valore del tempo di blocco di inattività viene utilizzato per bloccare automaticamente il database Keepass dopo il periodo di tempo specificato se l&apos;app è in background. &lt;br&gt;&lt;br&gt;Lo sblocco rapido consente di utilizzare la password principale e al contempo rendere più veloce l&apos;accesso al database. Quando si apre il gestore password viene richiesta la password completa, ma dopo averlo successivamente bloccarlo è possibile sbloccare rapidamente con una password parziale che consiste dei primi 3 caratteri della password principale. È possibile scegliere il numero di tentativi errati da zero a 5 dopo i quali il database viene chiuso e sarà necessario inserire nuovamente la password principale completa.&lt;br&gt;&lt;br&gt;Puoi anche decidere se pulire gli appunti 10 secondi dopo la copia del nome utente e della password.&lt;br&gt;&lt;br&gt;&lt;b&gt;Impostazioni UI&lt;/b&gt;&lt;br&gt;&lt;br&gt;Se vuoi visualizzare il nome utente e la password di tutti gli elementi già nella lista principale, puoi selezionare &quot;Vista lista estesa&quot;.&lt;br&gt;&lt;br&gt;Selezionando Focus barra ricerca&quot; la barra di ricerca verrà selezionata automaticamente mostrando la tastiera all&apos;accesso del database; potrai così cercare le tue password ancora più velocemente.&lt;br&gt;&lt;br&gt;&lt;b&gt;Impostazioni cover&lt;/b&gt;&lt;br&gt;&lt;br&gt;Qui puoi selezionare le funzionalità e le informazioni mostrare sulla cover. Puoi scegliere se mostrare il nome utente e la password dell&apos;elemento corrente e attivare le azioni rapide (blocco del database e copia nome utente/password negli appunti).&lt;br&gt;&lt;br&gt;&lt;b&gt;Impostazioni avanzate&lt;/b&gt;&lt;br&gt;&lt;br&gt;Con la &quot;modalità utente esperto&quot; puoi attivare una modalità avanzata per la gestione dei database. Selezionando questa opzione, puoi visualizzare e aprire gli ultimi cinque database utilizzati direttamente nella schermata principale per un più rapido accesso.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>

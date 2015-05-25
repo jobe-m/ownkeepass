@@ -437,12 +437,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
-        <translation type="unfinished"></translation>
+        <translation>Utökad listvy</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vid aktivering visas användarnamn och lösenord under postens namn i listvyer (öppna databasen igen, för att aktivera inställningen)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
@@ -503,20 +503,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortera i alfabetisk ordning</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extended list liew</source>
-        <translation type="vanished">Utökad listvy</translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Vid aktivering kommer användarnamn och lösenord att visas under rubriken, i listvyn.</translation>
+        <translation>Vid aktivering sorteras listvyn i alfabetisk ordning. Annars används intern ordning (öppna databasen igen, för att aktivera inställningen)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
@@ -597,13 +589,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dölj filfilter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Visa filfilter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
@@ -629,31 +621,31 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filfilter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange filfilter</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Enhetslagring</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
         <source>SD Card</source>
         <translation>SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
         <source>Android Storage</source>
         <translation>Android-lagring</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Tillbaka</translation>
     </message>
@@ -827,14 +819,6 @@
         <location filename="../qml/help/HelpPage.qml" line="53"/>
         <source>Help</source>
         <translation>Hjälp</translation>
-    </message>
-</context>
-<context>
-    <name>HelpSettings</name>
-    <message>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password. You can choose the number of wrong attempts from zero to 5 after which the database will be closed and the full master password is needed again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Changes: Added part for fast unlock and changed description to first 3 chars</extracomment>
-        <translation type="vanished">På den här sidan kan du ändra standardinställningarna för ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Databas&lt;/b&gt;&lt;br&gt;&lt;br&gt;Här justerar du också krypteringsalgoritmen som används för att skapa en ny Keepass-databas. Krypteringsalgoritmen kan också ändras i efterhand, i databasinställningarna.&lt;br&gt;&lt;br&gt;Ange standardvärde för nyckeltransformeringsrundor, för en ny Keepass-databas. Detta värde kontrollerar antalet krypteringsrundor som utförs på huvudlösenordet. Justering av värdet har direkt effekt på den tid som krävs för att dekryptera databasen vid inläsning. Ett högre värde gör dock databasen mer motståndskraftig mot så kallade &quot;brute force-attacker&quot;. Som en bra kompromiss mellan säkerhet och användarvänlighet bör du justera värdet så att det tar en sekund att öppna databasen på din telefon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Säkerhet&lt;/b&gt;&lt;br&gt;&lt;br&gt;Inaktivitetslåsets tidsvärde används till att automatiskt låsa Keepass-databasen efter, efter att programmet körts i bakgrunden en specificerad tid. Inaktivitetslåset aktiveras också när ownKeepass försätts i miniatyrläge på startskärmen.&lt;br&gt;&lt;br&gt;Snabb upplåsning låter dig använda ett starkt lösenord samtidigt som du får snabb tillgång till Keepass-databasen. När du öppnar din lösenordsförvaring ombeds du först ange ditt huvudlösenord men efter att du därefter låst den igen, kan du snabbt låsa upp den med ett partiellt lösenord som består av de 3 första tecknen i ditt huvudlösenord.&lt;br&gt;Du kan välja från noll till 5 felaktiga upplåsningsförsök innan databasen låses och du återigen måste ange hela huvudlösenordet.&lt;br&gt;&lt;br&gt;Du kan aktivera rensning av Urklipp, 10 sekunder efter att du kopierat ditt användarnamn eller lösenord.&lt;br&gt;&lt;br&gt;&lt;b&gt;Användargränssnitt&lt;/b&gt;&lt;br&gt;&lt;br&gt;Vill du se användarnamn och lösenord för alla lösenordsposter redan i listvyn, kan du aktivera &quot;Utökad listvy&quot;.&lt;br&gt;&lt;br&gt;Genom att aktivera &quot;Fokusera sökfältet&quot; kommer sökfältet på sidan för lösenordsgrupper att automatiskt hamna i fokus och tangentbordet visas, när du öppnar Keepass-databasen. Det ger dig tillgång till söktjänsten som hjälper dig hitta det önskade lösenordet fortare.&lt;br&gt;&lt;br&gt;&lt;b&gt;Miniatyrinställningar&lt;/b&gt;&lt;br&gt;&lt;br&gt;Här kan du justera funktionerna och den information som visas på telefonens startsida. Du kan aktivera visning av användarnamn och lösenord i klartext, för den öppnade lösenordsposten, på programminiatyren. Du kan också aktivera/inaktivera de båda miniatyrfunktionerna. Första funktionen är databaslåset. Den andra miniatyrfunktionen triggar antingen kopiering av aktuellt användarnamn och lösenord, eller rensning av Urklipp.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avancerade inställningar&lt;/b&gt;&lt;br&gt;&lt;br&gt;Med &quot;Expertläget&quot; aktiverar du det avancerade läget för databashantering. Vid aktivering kan du öppna flera olika Keepass-databaser och se de 5 senast öppnade databaserna i en lista på programmets huvudsida, för snabb åtkomst.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>

@@ -437,12 +437,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaillierte Liste</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn diese Einstellung gesetzt ist, werden Benutzername und Passwort unter dem  Passworteintrag in der Liste angezeigt. (Zum aktivieren dieser Einstellung bitte die Datenbank nochmal neu öffnen.)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
@@ -503,20 +503,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
-        <translation type="unfinished"></translation>
+        <translation>Alphabetische Sortierung</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extended list liew</source>
-        <translation type="vanished">Detaillierte Liste</translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Wenn diese Einstellung gesetzt ist, werden Benutzername und Passwort unter dem Passworteintrag in der Liste angezeigt.</translation>
+        <translation>Wenn diese Einstellung gesetzt ist, werden alle Passworteinträge alphabetisch sortiert angezeigt. Ansonsten werden die Einträge anhand der Datenbankstruktur angeordnet. (Zum aktivieren dieser Einstellung bitte die Datenbank nochmal neu öffnen.)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
@@ -597,13 +589,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Verstecke Dateifilter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Zeige Dateifilter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
@@ -629,31 +621,31 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateifilter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateifilter setzen</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Gerätespeicher</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
         <source>SD Card</source>
         <translation>Speicherkarte</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
         <source>Android Storage</source>
         <translation>Android Umgebung</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Zurück</translation>
     </message>
@@ -694,7 +686,7 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <source>Password groups</source>
-        <translation>Passwortgruppe</translation>
+        <translation>Passwortgruppen</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="71"/>
@@ -739,12 +731,12 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="203"/>
         <source>Pull down to add password groups</source>
-        <translation>Pull-down um Passwortgruppen hinzuzufügen</translation>
+        <translation>Öffne das obere Menü um Passwortgruppen hinzuzufügen</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="204"/>
         <source>Pull down to add password groups or entries</source>
-        <translation>Pull-down um Passwortgruppen oder Passworteinträge hinzuzufügen</translation>
+        <translation>Öffne das obere Menü um Passwortgruppen oder Passworteinträge hinzuzufügen</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="288"/>
@@ -827,14 +819,6 @@
         <location filename="../qml/help/HelpPage.qml" line="53"/>
         <source>Help</source>
         <translation>Hilfe</translation>
-    </message>
-</context>
-<context>
-    <name>HelpSettings</name>
-    <message>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password. You can choose the number of wrong attempts from zero to 5 after which the database will be closed and the full master password is needed again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Changes: Added part for fast unlock and changed description to first 3 chars</extracomment>
-        <translation type="vanished">Auf dieser Seite können Voreinstellungen für die ownKeepass Applikation geändert werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Datenbank&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier kann der Verschlüsselungsalgorithmus ausgewählt werden, der standardmäßig für eine neue Keepass Datenbank benutzt werden soll. Dieser kann auch später in den Datenbankeinstellungen geändert werden.&lt;br&gt;&lt;br&gt;Die Anzahl der Schlüsselumwandlungen kann hier ebenfalls für eine neue Keepass Datenbank angegeben werden. Dieser Wert gibt an wie häufig das Zugangspasswort der Datenbank verschlüsselt wird bevor es selbst zur Entschlüsselung der Keepass Datenbank verwendet wird. Wenn der Wert für diese Einstellung erhöht wird, erhöht sich auch die Zeit um die Keepass Datenbank zu öffnen. Gleichzeitig wird die Datenbank auch robuster gegenüber Brute-Force-Angriffen. Als ein guter Kompromiss zwischen Sicherheit und Bequemlichkeit solltest Du den Wert so einstellen, dass das Öffnen der Keepass Datenbank etwa ein bis zwei Sekunden auf dem Smartphone benötigt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sicherheit&lt;/b&gt;&lt;br&gt;&lt;br&gt;Die Einstellung für Sperre bei Inaktivität kontrolliert ob und nach welcher Zeit die Applikation die Keepass Datenbank wieder schliessen soll. Der Zeitzähler für die Inaktivität startet wenn die Applikation in den Hintergrund geschickt wird und auf dem Homescreen als Cover sichtbar wird.&lt;br&gt;&lt;br&gt;Die Funktion &quot;Schnelles entsperren&quot; sorgt dafür, dass du ein langes und sicheres Passwort  verwenden kannst und trotzdem schnellen Zugriff auf deine Keepass Datenbank hast. Zum Öffnen der Datenbank fragt ownKeepass nach dem vollen Zugangspasswort für die Datenbank. Nach dem Sperren der Datenbank kannst du durch die Eingabe nur der ersten 3 Stellen des Zugangspasswortes wieder auf die Datenbank zugreifen. Dabei kannst du einstellen ob bei einer falschen Eingabe die Datenbank sofort oder erst nach bis zu 5 Versuchen geschlossen werden soll und man wieder das volle Zugangspasswort eingeben muss.&lt;br&gt;&lt;br&gt;Mit dieser Einstellung kannst Du festlegen, dass die Daten in der Zwischenablage 10 Sekunden nach der letzten Benutzung gelöscht werden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Benutzerschnittstelle&lt;/b&gt;&lt;br&gt;&lt;br&gt;Wenn Du den Bentzernamen und das Passwort eines Eintrages bereits in der Passwortliste sehen möchtest, wähle die Einstellung &quot;Detailierte Liste&quot; aus.&lt;br&gt;&lt;br&gt;Mit der Einstellung &quot;Aktiviere Suchfeld&quot; kann das Suchfeld über der Passwortliste automatisch beim öffnen der Datenbank ausgewählt werden. Auf diese Weise kannst Du noch schneller in deiner Keepass Datenbank einen Eintrag finden.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hier kannst Du die Funktionalität und das Erscheinungsbild des Covers beeinflussen. Der Benutzername und das Passwort eines im Hintergrund geöffneten Passworteintrags kann auf dem Cover angezeigt werden. Darüberhinaus kannst Du beide Cover-Aktionen einzeln aktivieren oder deaktivieren. Die erste Cover-Aktion sperrt eine geöffnete Datenbank. Die zweite Cover-Aktion kopiert entweder den Benutzernamen oder das Passwort in die Zwischenablage oder löscht den Inhalt der Zwischenablage wieder.&lt;br&gt;&lt;br&gt;&lt;b&gt;Erweiterte Einstellungen&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mit &quot;Expertenmodus&quot; kann zwischen zwei Einstellungen für die Startseite der Applikation gewählt werden. Wenn Du diese Einstellung aktivierst, kannst Du auf der Startseite eine von fünf zuletzt geöffneten Keepass Datenbanken zum Öffnen auswählen. Ist der &quot;Expertenmodus&quot; inaktiv erscheint eine vereinfachte Startseite mit nur den allernötigsten Informationen.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1286,7 +1270,7 @@
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
         <source>Pull down to add URL, username, password and comment</source>
-        <translation>Pull-down um Internetadresse, Benutzername, Passowrt und ein Kommentar hinzuzufügen</translation>
+        <translation>Öffne das obere Menü um Internetadresse, Benutzername, Passwort und ein Kommentar hinzuzufügen</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="65"/>

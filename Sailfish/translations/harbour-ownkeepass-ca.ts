@@ -437,12 +437,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista ampliada de llista</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Si activeu això, el nom d&apos;usuari i la contrasenya es mostren sota el títol de cada registre (requereix reiniciar)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
@@ -503,20 +503,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordena alfabèticament</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extended list liew</source>
-        <translation type="vanished">Vista ampliada de llistes</translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Si s&apos;activa, el nom d&apos;usuari i la contrasenya es mostren sota el títol de cada registre</translation>
+        <translation>Si s&apos;activa, ordenarà els registres alfabèticament a la vista de llista (requereix reiniciar)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
@@ -597,13 +589,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Amaga el filtre de fitxer</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Mostra el filtre del fitxer</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
@@ -629,31 +621,31 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtre de fitxer</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Estableix un filtre de fitxer</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Memòria interna</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
         <source>SD Card</source>
         <translation>Targeta SD</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
         <source>Android Storage</source>
         <translation>Android Storage</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Enrere</translation>
     </message>
@@ -827,14 +819,6 @@
         <location filename="../qml/help/HelpPage.qml" line="53"/>
         <source>Help</source>
         <translation>Ajuda</translation>
-    </message>
-</context>
-<context>
-    <name>HelpSettings</name>
-    <message>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password. You can choose the number of wrong attempts from zero to 5 after which the database will be closed and the full master password is needed again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Changes: Added part for fast unlock and changed description to first 3 chars</extracomment>
-        <translation type="vanished">Aquesta pàgina us permet canviar la configuració per defecte d&apos;ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Base de dades&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar l&apos;algoritme d&apos;encriptació per defecte que s&apos;utilitzar en crear una nova base de dades. L&apos;algoritme d&apos;encriptació també es pot canviar un cop ja s&apos;hagi creat la base de dades, des de la configuració de la base dades.&lt;br&gt;&lt;br&gt;Establiu el valor per efecte de les rondes de transformació de clau per una nova base de dades. Aquest valor control·la el número de rondes d&apos;encriptació que es computen sobre la contrasenya principal. L&apos;ajustament d&apos;aquest valor té un impacte directe sobre el temps que es necessita per desencriptar la base de dades per carregar-la. Valors més alts fan la base de dades més robusta contra atacs de força bruta. A manera de compromís entre seguretat i velocitat de càrrega, us suggerim un valor que situï el temps de càrrega a l&apos;entorn d&apos;un segon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Seguretat&lt;/b&gt;&lt;br&gt;&lt;br&gt;El valor del temps de bloqueig per inactivitat s&apos;utilitza per bloquejar la base de dades Keepass un cop transcorregut el temps establert amb l&apos;aplicació funcionant en segon pla. El temps d&apos;inactivitat també es compta quan l&apos;aplicació apareix minimitzada a la portada de la pantall d&apos;inici. &lt;br&gt;&lt;br&gt;El desbloqueig ràpid us permet utilitzar una contrasenya principal forta i un accés ràpid alhora. El primer accés que es fa a la base de dades l&apos;aplicació exigirà la contrasenya completa. Pels bloquejos i desbloquejos següents podreu utilitzar els 3 primers caràcters de la contrasenya principal. Podreu escollir el número d&apos;intents d&apos;entrada entre 0 i 5. En cas d&apos;esgotar-los, l&apos;aplicació demanarà la contrasenya principal completa una altra vegada.&lt;br&gt;&lt;br&gt;Podeu habilitar l&apos;opció de netejar el porta-retalls un cop transcorreguts 10 segons des que s&apos;hi hagin copiat un nom d&apos;usuari o contrasenya.&lt;br&gt;&lt;br&gt;El temps d&apos;inactivitat s&apos;utilitza per tancar la base de dades Keepass un cop transcorregut el temps establert amb l&apos;aplicació en segon pla. El temporitzador d&apos;inactivitat també és actiu quan es minimitza l&apos;aplicació a la vista de portada de la pantalla d&apos;inici del telèfon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració IU&lt;/b&gt;&lt;br&gt;&lt;br&gt;Si voleu veure els noms d&apos;usuari i contrasenyes de tots els registres, habiliteu la &quot;Vista de llista ampliada&quot; per mostrar-los a la llista.&lt;br&gt;&lt;br&gt;Si habiliteu &quot;Situa el cursor a la barra de cerca&quot; tindreu el cursor i el teclat a punt per fer una cerca ràpidament en accedir a la pàgina.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració de portada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Això us permet ajustar les funcions i la informació que es mostra la pàgina de portada. Podeu habilitar que es mostri el nom d&apos;usuari i la contrasenya en un text clar del registre que estigui obert en aquell moment. També podeu habilitar dues accions de portada: tancar la base de dades, o bé copiar un registre o netejar, segons convingui, al porta-retalls.&lt;br&gt;&lt;br&gt;&lt;b&gt;Configuració avancçada&lt;/b&gt;&lt;br&gt;&lt;br&gt;Amb el &quot;Mode d&apos;usuari expert&quot; podreu habilitar les opcions de configuració avançades per gestionar bases de dades simultàniament i poder veure&apos;n les últimes cinc que s&apos;hagin obert en una llista a la pàgina principal per accedir-hi ràpidament.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>

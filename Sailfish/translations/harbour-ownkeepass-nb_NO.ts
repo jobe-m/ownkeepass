@@ -437,12 +437,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="288"/>
         <source>Extended list view</source>
-        <translation type="unfinished"></translation>
+        <translation>Utvidet listevisning</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
+        <translation>Skrur du på dette vises brukernavn og passord under oppføringens tittel i listevisning (gjelder fra neste gangdatabasen åpnes)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="428"/>
@@ -503,20 +503,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Sort in alphabetical order</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorter alfabetisk</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extended list liew</source>
-        <translation type="vanished">Utvidet listevisning</translation>
-    </message>
-    <message>
-        <source>If you switch this on username and password are shown below entry title in list views</source>
-        <translation type="vanished">Slår du på dette vises brukernavn og passord nedenfor oppføringens tittel i listevisninger</translation>
+        <translation>Skrur du på dette vises alle oppføringer i alfabetisk rekkefølge, ellers vises de i databasens rekkefølge (gjelder fra neste gang databasen åpnes)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="300"/>
@@ -566,7 +558,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="466"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
-        <translation>Aktiver dette for å kunne kopiere brukernavn og passord til utklippstavle fra omslaget</translation>
+        <translation>Aktiver dette for å kopiere brukernavn og passord til utklippstavle fra omslaget</translation>
     </message>
 </context>
 <context>
@@ -637,23 +629,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Enhetsminne</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
         <source>SD Card</source>
         <translation>SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="263"/>
         <source>Android Storage</source>
         <translation>Android-lagringsplass</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="259"/>
         <source>Back</source>
         <translation>Tilbake</translation>
     </message>
@@ -788,7 +780,7 @@
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. The used database format is compatible to Keepass version 1. That means you can use Keepass [1] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is planned for a future release of ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass especially on the settings pages.&lt;br&gt;&lt;br&gt;&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like Advanced Encryption Standard (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords. Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of: &lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sharing Keepass database between your Jolla phone and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your phone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.&lt;br&gt;&lt;br&gt;&lt;b&gt;What to expect in future versions of ownKeepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;I don&apos;t want to set it in stone yet but here is a list of features you might see in future versions of ownKeepass:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Built-in sync of database file with a WebDAV server like ownCloud&lt;/li&gt;&lt;li&gt;If feasible auto-type of username and passwords into web page&lt;/li&gt;&lt;li&gt;Support for Keepass version 2 database files&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</source>
-        <translation>ownKeepass er et passordsafeprogram med formål å beskytte sensitive data som passord til nettsider, kredittkortnummer, PIN-koder, TAN-koder og annen informasjon som bør holdes hemmelig. All informasjonen lagres i en databasefil som krypteres og lagres lokalt på telefonen. For å åpne databasen må du kjenne hovedpassordet. Databaseformatet er kompatibelt med Keepass versjon 1. Det betyr at du kan bruke Keepass[1] på datamaskinen med samme databasefil.&lt;br&gt;&lt;br&gt;Merk at ownKeepass ikke kan lese eller lagre databaser for Keepass versjon 2. Støtte for dette planlegges for en fremtidig versjon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Hjelp&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hver side har eget &apos;Hjelp&apos;-innhold. Bruk det og lær om funksjonene ownKeepass tilbyr, spesielt på sidene for innstillinger.&lt;br&gt;&lt;br&gt;&lt;b&gt;Keepass databasesikkerhet&lt;/b&gt;&lt;br&gt;&lt;br&gt;Databasedelen av programmet er basert på KeepassX-prosjektet{2] og inneholder en rekke sikkerhetsrettede funksjoner. Den bruker velprøvde krypteringsalgoritmer som Advanced Encryption Standard (AES/Rijndael) eller Twofish med 128-bits blokkstørrelse og 256-bits nøkkel, SHA-256 som algoritme for nøkler (hash) og kryptering av alle passord i minne. I tillegg beskyttes hovedpassordet mot knekking (brute force-angrep) og ordbokbaserte angrep ved å bruke nøkkel (hash) og kryptere det før det brukes til å dekryptere databasen. Denne funksjonen kalles nøkkeltransformering og antall runder med nøkkeltransformering kan justeres i databaseinnstillingene. Alt dette legger bare ekstra sikkerhet til to punkter du bør være klar over:&lt;br&gt;(1) Bruk alltid et passord av tilstrekkelig lengde og som er vanskelig å gjette.&lt;br&gt;(2) Beskytt systemet ditt mot spionprogramvare som kan være spesialisert på å angripe ownKeepass. Det andre punktet er lov nr. 1 av de 10 uforanderlige sikkerhetslover[3]: «Hvis en slem person kan overtale deg til å kjøre sitt program på din datamaskin er det ikke din datamaskin lenger».&lt;br&gt;&lt;br&gt;&lt;b&gt;Deling av Keepass-database mellom telefon og datamaskin&lt;/b&gt;&lt;br&gt;&lt;br&gt;Databasefilformatet til Keepass er perfekt for å dele passordsafen din mellom forskjellige systemer som telefoner, nettbrett og andre datamaskiner. Det er fordi det finnes en rekke Keepass-implementeringer tilgjengelige for forskjellige plattformer. Besøk nedlastingssiden for Keepass[4] for å få den klassiske Keepass 1-versjonen for stasjonære datamaskiner. Det er også en liste av alternative Keepass-implementeringer. Jeg vil også vise til KeepassX versjon 0.4.3 [2] som også er kompatibel med Keepass versjon 1.&lt;br&gt;Du kan dele databasefila med SD-kort eller via internettbaserte tjenester som Dropbox. Om du bruker en internettbasert tjeneste anbefaler jeg å bruke en nøkkelfil i tillegg til hovedpassordet. Nøkkelfila brukes av ownKeepass til å dekryptere databasen. Lagre nøkkelfila bare lokalt på telefonen og datamaskinen, ikke last den opp på den internettbaserte tjenesten. En angriper som bryter seg inn hos tjenesteleverandøren din vil da stå uten nøkkelfila. Ved å gjøre dette gjør du det enda vanskeligere for en angriper å knekke Keepassdatabasen din fordi nøkkelfilas innhold vanligvis er umulig å gjette seg til.&lt;br&gt;&lt;br&gt;&lt;b&gt;Hva kan ventes i fremtidige versjoner&lt;/b&lt;br&gt;&lt;br&gt;Jeg vil ikke skrive det i stein ennå, men dette er en liste av funksjoner du kan komme til å finne i fremtidige versjoner av ownKeepass:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Innebygget synkronisering av databasefil med en WebDAV-tjener som ownCloud&lt;/li&gt;&lt;li&gt;Om mulig, automatisk innfylling av brukernavn og passord på nettsider&lt;/li&gt;&lt;li&gt;Støtte for Keepass versjon 2 databasefiler&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</translation>
+        <translation>ownKeepass er et passordsafeprogram med formål å beskytte sensitive data som passord til nettsider, kredittkortnummer, PIN-koder, TAN-koder og annen informasjon som bør holdes hemmelig. All informasjonen lagres i en databasefil som krypteres og lagres lokalt på telefonen. For å åpne databasen må du kjenne hovedpassordet. Databaseformatet er kompatibelt med Keepass versjon 1. Det betyr at du kan bruke Keepass[1] på datamaskinen med samme databasefil.&lt;br&gt;&lt;br&gt;Merk at ownKeepass ikke kan lese eller lagre databaser for Keepass versjon 2. Støtte for dette planlegges for en fremtidig versjon.&lt;br&gt;&lt;br&gt;&lt;b&gt;Hjelp&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hver side har eget &apos;Hjelp&apos;-innhold. Bruk det og lær om funksjonene ownKeepass tilbyr, spesielt på sidene for innstillinger.&lt;br&gt;&lt;br&gt;&lt;b&gt;Keepass databasesikkerhet&lt;/b&gt;&lt;br&gt;&lt;br&gt;Databasedelen av programmet er basert på KeepassX-prosjektet{2] og inneholder en rekke sikkerhetsrettede funksjoner. Den bruker velprøvde krypteringsalgoritmer som Advanced Encryption Standard (AES/Rijndael) eller Twofish med 128-bits blokkstørrelse og 256-bits nøkkel, SHA-256 som algoritme for nøkler (hash) og kryptering av alle passord i minne. I tillegg beskyttes hovedpassordet mot knekking (brute force-angrep) og ordbokbaserte angrep ved å bruke nøkkel (hash) og kryptere det før det brukes til å dekryptere databasen. Denne funksjonen kalles nøkkeltransformering og antall runder med nøkkeltransformering kan justeres i databaseinnstillingene. Alt dette legger bare ekstra sikkerhet til to punkter du bør være klar over:&lt;br&gt;(1) Bruk alltid et passord av tilstrekkelig lengde og som er vanskelig å gjette.&lt;br&gt;(2) Beskytt systemet ditt mot spionprogramvare som kan være spesialisert på å angripe ownKeepass. Det andre punktet er lov nr. 1 av de 10 uforanderlige sikkerhetslover[3]: «Hvis en slem person kan overtale deg til å kjøre sitt program på din datamaskin er det ikke din datamaskin lenger».&lt;br&gt;&lt;br&gt;&lt;b&gt;Deling av Keepass-database mellom telefon og datamaskin&lt;/b&gt;&lt;br&gt;&lt;br&gt;Databasefilformatet til Keepass er perfekt for å dele passordsafen din mellom forskjellige systemer som telefoner, nettbrett og andre datamaskiner. Det er fordi det finnes en rekke Keepass-implementeringer tilgjengelige for forskjellige plattformer. Besøk nedlastingssiden for Keepass[4] for å få den klassiske Keepass 1-versjonen for stasjonære datamaskiner. Det er også en liste av alternative Keepass-implementeringer. Jeg vil også vise til KeepassX versjon 0.4.3 [2] som også er kompatibel med Keepass versjon 1.&lt;br&gt;Du kan dele databasefila med SD-kort eller via internettbaserte tjenester som Dropbox. Om du bruker en internettbasert tjeneste anbefaler jeg å bruke en nøkkelfil i tillegg til hovedpassordet. Nøkkelfila brukes av ownKeepass til å dekryptere databasen. Lagre nøkkelfila bare lokalt på telefonen og datamaskinen, ikke last den opp på den internettbaserte tjenesten. En angriper som bryter seg inn hos tjenesteleverandøren din vil da stå uten nøkkelfila. Ved å gjøre dette gjør du det enda vanskeligere for en angriper å knekke Keepassdatabasen din fordi nøkkelfilas innhold vanligvis er umulig å gjette seg til.&lt;br&gt;&lt;br&gt;&lt;b&gt;Hva kan ventes i fremtidige versjoner&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jeg vil ikke skrive det i stein ennå, men dette er en liste av funksjoner du kan komme til å finne i fremtidige versjoner av ownKeepass:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Innebygget synkronisering av databasefil med en WebDAV-tjener som ownCloud&lt;/li&gt;&lt;li&gt;Om mulig, automatisk innfylling av brukernavn og passord på nettsider&lt;/li&gt;&lt;li&gt;Støtte for Keepass versjon 2 databasefiler&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -830,19 +822,11 @@
     </message>
 </context>
 <context>
-    <name>HelpSettings</name>
-    <message>
-        <source>On this page you can change default settings of the ownKeepass application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Adjust here also the default encryption algorithm which is used when you create a new Keepass database. The encryption algorithm can be changed also later after creation of your database in the database settings.&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for a new Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The inactivity lock time value is used to automatically lock the Keepass database after the specified amount of time has elapsed after the ownKeepass application went in background. Thus the inactivity timer is also active when ownKeepass is minimized to the cover state on home screen.&lt;br&gt;&lt;br&gt;Fast unlock lets you use a strong master password and still allows quick access to your Keepass database. When you first open your password safe you are asked for your full password. But after you subsequently lock it you can unlock quickly with a partial password which consists of the first 3 characters of the master password. You can choose the number of wrong attempts from zero to 5 after which the database will be closed and the full master password is needed again.&lt;br&gt;&lt;br&gt;You can enable clearing of the clipboard 10 seconds after you copied the username or password into it.&lt;br&gt;&lt;br&gt;&lt;b&gt;UI settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you want to see username and password of all password entries already in the list views you can switch &quot;Extended list view&quot; on.&lt;br&gt;&lt;br&gt;By enabling &quot;Focus search bar&quot; the search bar on the master password groups page will be automatically focused and the on-screen keyboard is shown when you open the Keepass database. That let you access the search functionality to find your desired password even faster.&lt;br&gt;&lt;br&gt;&lt;b&gt;Cover settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can adjust functionality and information shown on the cover page. You can enable showing username and password in cleartext of the currently opened password entry on the cover. Moreover you can also enable or disable both cover actions. The first action is to lock the database. The second cover action triggers either copying of the username and password into the clipboard or deleting of the clipboard content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Advanced settings&lt;/b&gt;&lt;br&gt;&lt;br&gt;With &quot;Expert user mode&quot; you can enable an advanced mode for database handling. If you check this switch you are able to open different Keepass databases and see the last five opened Keepass databases in a list on the main page for fast access.&lt;br&gt;&lt;br&gt;</source>
-        <extracomment>Changes: Added part for fast unlock and changed description to first 3 chars</extracomment>
-        <translation type="vanished">På denne siden kan du endre standardinnstillingene for ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Database&lt;/b&gt;&lt;br&gt;&lt;br&gt;Endre standard krypteringsalgoritme som brukes for nye databaser. Krypteringsalgorimen kan også endres etter at du har laget databasen, i databaseinnstillingene.&lt;br&gt;&lt;br&gt;Sett standardverdien for antall nøkkeltransformasjonsrunder for hovedpassordet i nye databaser. Høyere verdier forlenger tiden det tar å åpne databasen, men gjør databasen mer robust mot forsøk på å knekke passordet (brute force-angrep). Et godt kompromiss mellom sikkerhet og brukervennlighet er å justere verdien slik at ownKeepass bruker omtrent ett sekund på å åpne databasen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sikkerhet&lt;/b&gt;&lt;br&gt;&lt;br&gt;Verdien for passivtidslås brukes til å låse databasen automatisk etter at ownKeepass har vært i bakgrunnen i angitt tid. Passivtiden går altså også når ownKeepass er i omslagmodus på hjemskjermen.&lt;br&gt;&lt;br&gt;Hurtigopplåsing lar deg bruke et sterkt hovedpassord samtidig som du har rask tilgang til databasen. Når du først åpner passordsafen må du oppgi hovedpassordet, men etter at du har låst databasen kan du åpne den raskt med de første 3 tegnene i hovedpassordet. Du kan velge antall forsøk med ugyldig kode mellom null og 5 som kan gjøres før databasen lukkes og må åpnes med hovedpassord igjen.&lt;br&gt;&lt;br&gt;Du kan aktivere sletting av utklippstavlen 10 sekunder etter at du kopierte brukernavn eller passord til den.&lt;br&gt;&lt;br&gt;&lt;b&gt;Innstillinger for brukergrensesnitt&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hvis du vil se brukernavn og passord for alle oppføringer allerede i listevisning kan du skru på «Utvidet listemodus».&lt;br&gt;&lt;br&gt;Ved å aktivere «Søkefelt i fokus» vil søkefeltet på sida for passordgrupper vises og få fokus automatisk når du åpner databasen slik at du kan søke etter og finne passordet ditt raskt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Omslagsinnstillinger&lt;/b&gt;&lt;br&gt;&lt;br&gt;Her kan du tilpasse funksjonaliteten og informasjonen som vises på omslaget. Du kan aktivisere visning av brukernavn og passord i klartekst for den valgte passordoppføringen. Videre kan du aktivere eller deaktivere begge omslagsfunksjonene. Den første funksjonen er å låse databasen. Den andre utløser enten kopiering av brukernavn og passord til utklippstavlen eller sletting av utklippstavlens innhold.&lt;br&gt;&lt;br&gt;&lt;b&gt;Avanserte innstillinger&lt;/b&gt;&lt;br&gt;&lt;br&gt;Med «ekspertbrukermodus» kan du aktivere utvidet databasehåndtering. Om du skrur på dette valget kan du åpne forskjellige databaser og se de siste fem åpnede databasene i ei liste på hovedsiden for rask tilgang.&lt;br&gt;&lt;br&gt;</translation>
-    </message>
-</context>
-<context>
     <name>HelpSubGroupsPage</name>
     <message>
         <location filename="../qml/help/HelpSubGroupsPage.qml" line="27"/>
         <source>This page is showing password entries and sub-groups of your Keepass database. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;It is possible to show username and password for each password entry already in the list view. To enable that feature open the ownKeepass settings and check the &quot;Extended list view&quot; switch.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search only in the specific password group and all its sub-groups.&lt;br&gt;&lt;br&gt;</source>
-        <translation>Denne siden viser passordoppføringer og undergrupper i Keepass-databasen. En passordoppføring lagrer informasjonen kryptert i databasen.&lt;br&gt;&lt;br&gt;Det er mulig å vise brukernavn og passord for hver passordoppføring i listevisning. Åpne innstillingene og velg «utvidet listevisning» for å aktivere denne funksjonen.&lt;br&gt;&lt;br&gt;Et søkefelt kan aktiveres fra rullegardinmenyen vist på toppen, over passordgruppelista. Med den kan du søke i den aktive passordgruppa og alle undergruppene.&lt;br&gt;&lt;br&gt;</translation>
+        <translation>Denne siden viser passordoppføringer og undergrupper i Keepass-databasen. En passordoppføring lagrer informasjonen kryptert i databasen.&lt;br&gt;&lt;br&gt;Det er mulig å vise brukernavn og passord for hver passordoppføring i listevisning. Åpne innstillingene og velg «utvidet listevisning» for å aktivere denne funksjonen.&lt;br&gt;&lt;br&gt;Et søkefelt kan aktiveres fra rullegardinmenyen og vises over passordgruppelista. Med den kan du søke i den aktive passordgruppa og alle undergruppene.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -881,7 +865,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="71"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
-        <translation>Lås ooo databasw</translation>
+        <translation>Lås opp passordsafen med de første 3 tegnene i hovedpassordet:</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="167"/>
@@ -909,7 +893,7 @@
     <message>
         <location filename="../qml/Main.qml" line="73"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation>Ny versjon %1 er nåinstallert på telefonen din. Ta en kikk på endringsloggen for detaljert informasjon.</translation>
+        <translation>Ny versjon %1 er nåinstallert. Ta en kikk på endringsloggen for detaljert informasjon.</translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="82"/>
@@ -999,7 +983,7 @@
     <message>
         <location filename="../qml/content/MainPage.qml" line="500"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
-        <translation>Kan ikke opprette sti for databasefil. Du må kanskje definere tilganger for brukeren &apos;nemo&apos;.</translation>
+        <translation>Kan ikke opprette sti for databasefil. Du må kanskje endre filsystemtilganger for brukeren &apos;nemo&apos;.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="505"/>
@@ -1187,7 +1171,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="179"/>
         <source>Exclude look-alike characters</source>
-        <translation>Fjern tegn som likner hverandre</translation>
+        <translation>Fjern tegn som ligner hverandre</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="190"/>
@@ -1267,7 +1251,7 @@
         <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
         <source>Password Safe</source>
-        <translation>Passordseif</translation>
+        <translation>Passordsafe</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
