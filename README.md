@@ -6,14 +6,14 @@ ownKeepass
 Status
 ------
 
-Release 1.1.5 (coming shortly to [openrepos.net] [1] and jolla store)
+Release 1.1.5 available from [openrepos.net] [1] / warehouse app (shortly coming to jolla store)
 
 - Password entries and groups in list view are now sorted alphabetically per default
 - Sorting of list view is switchable in application settings
 - File browser updated with a file filter which can be optionally used to filter for file types
 - Other various code cleanup done including some small bugfixes
 
-Release 1.1.4 available from [openrepos.net] [1] / warehouse app and jolla store
+Release 1.1.4 available from jolla store
 
 - Enabled handling of multiple databases on start page per default. In fact after introducing the file browser it is not neccessary to hide the database opening dialogs from the average user any more ;) So "expert mode" is gone for now.
 - Now it is also possible to select hidden files and folders from file browser
