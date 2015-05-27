@@ -832,14 +832,35 @@
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="133"/>
+        <location filename="../qml/content/KdbListItem.qml" line="134"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="148"/>
+        <location filename="../qml/content/KdbListItem.qml" line="149"/>
         <source>Delete</source>
         <translation>Borrar</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <source>Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="209"/>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="unfinished">Aceptar</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="210"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="217"/>
+        <source>Choose new parent group for password entry:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
