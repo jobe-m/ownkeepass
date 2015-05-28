@@ -29,7 +29,8 @@ in descending order.
 I am searching for contributors who want and can work on specific additional features. Below are some of the requirements which I marked as contribution on the issue page. That means that I won't work for a while on that topics due to missing time thus you can be sure that we don't do double work there.
 *   Delete a Keepass database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/64)
 *   Import and export functionality -> [REQ](https://github.com/jobe-m/ownkeepass/issues/44)
-*   Move a password entry from one group to another group -> [REQ](https://github.com/jobe-m/ownkeepass/issues/69)
+*   Add support for yubikey with challenge response -> [REQ](https://github.com/jobe-m/ownkeepass/issues/95)
+*   Select the substring freely from the master password for the fast unlock pass code -> [REQ](https://github.com/jobe-m/ownkeepass/issues/85)
 
 The status of all requirements, feature requests and found bugs can be looked up [here] [6].
 
