@@ -987,6 +987,130 @@ Page {
     }
 
     Component {
+        id: movePasswordEntryDialogComponent
+        Dialog {
+            id: movePasswordEntryDialog
+
+            // ID of the keepass entry to be moved into another group
+            property int itemId: 0
+            // ID of group where item is currently placed. This is used to filter out the parent group from the list of groups.
+            property int parentGroupId: 0
+            // ID of the new parent group of the password item
+            property int newGroupId: 0
+
+            // forbit page navigation if new group is not yet selected
+            canNavigateForward: true /* FIXME */
+
+            KdbListModel {
+                id: movePasswordEntryListModel
+            }
+
+            SilicaFlickable {
+                anchors.fill: parent
+
+                PullDownMenu {
+                    MenuLabel {
+                        enabled: text !== ""
+                        text: applicationWindow.databaseUiName
+                    }
+                }
+
+                DialogHeader {
+                    id: header
+                    //: "Accept" in dialog for choosing group to move password entry into
+                    acceptText: qsTr("Accept")
+                    cancelText: qsTr("Cancel")
+                }
+
+                SilicaLabel {
+                    id: dialogLabel
+                    y: header.y + header.height
+                    width: parent.width
+                    text: qsTr("Move password entry to group:")
+                }
+
+                SilicaListView {
+                    id: listView
+                    y: header.y + header.height + dialogLabel.height
+                    width: parent.width
+                    height: parent.height - y
+                    model: movePasswordEntryListModel
+                    clip: true
+
+                    VerticalScrollDecorator {}
+
+                    delegate: BackgroundItem {
+                        id: movePasswordEntryListItem
+
+                        Rectangle {
+                            color: Theme.highlightColor
+                            visible: model.id === movePasswordEntryDialog.newGroupId
+                            anchors.fill: parent
+                            opacity: 0.5
+                        }
+
+                        Image {
+                            id: moveItemIcon
+                            x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: Theme.iconSizeMedium
+                            height: Theme.iconSizeMedium
+                            source: "../../entryicons/_49.png"
+                            fillMode: Image.PreserveAspectFit
+                            asynchronous: true
+                            opacity: highlighted ? 0.5 : 1.0
+                        }
+
+                        Item {
+                            anchors.left: moveItemIcon.right
+                            anchors.leftMargin: Theme.paddingSmall
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - moveItemIcon.width
+                            height: itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
+
+                            Label {
+                                id: itemTitle
+                                anchors.left: parent.left
+                                anchors.top: parent.top
+                                width: parent.width
+                                text: model.name
+                                horizontalAlignment: Text.AlignLeft
+                                font.pixelSize: Theme.fontSizeMedium
+                                color: movePasswordEntryListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                                truncationMode: TruncationMode.Fade
+                            }
+
+                            Label {
+                                id: itemDescription
+                                anchors.left: parent.left
+                                anchors.top: itemTitle.bottom
+                                anchors.topMargin: Theme.paddingSmall / 2
+                                width: parent.width
+                                text: model.subtitle
+                                horizontalAlignment: Text.AlignLeft
+                                font.pixelSize: Theme.fontSizeExtraSmall
+                                color: movePasswordEntryListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
+                            }
+                        }
+
+                        onClicked: {
+                            if(model.id === movePasswordEntryDialog.newGroupId) {
+                                movePasswordEntryDialog.newGroupId = 0;
+                            } else {
+                                movePasswordEntryDialog.newGroupId = model.id;
+                            }
+                        }
+                    }
+                }
+            }
+
+            Component.onCompleted: {
+                movePasswordEntryListModel.loadMasterGroupsFromDatabase()
+            }
+        }
+    } // end movePasswordEntryDialogComponent
+
+    Component {
         id: showEntryDetailsPageComponent
         ShowEntryDetailsPage {
             id: showEntryDetailsPage

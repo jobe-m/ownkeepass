@@ -45,8 +45,8 @@ KdbListModel::KdbListModel(QObject *parent)
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupsAndEntriesLoaded(int)),
                   this, SIGNAL(groupsAndEntriesLoaded(int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int, bool)),
-                  this, SLOT(slot_addItemToListModel(QString, QString, int, int, int, bool)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int, int, bool)),
+                  this, SLOT(slot_addItemToListModel(QString, QString, int, int, int, int, bool)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(unregisterFromDatabaseClient(int)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_unregisterListModel(int)));
@@ -76,7 +76,7 @@ KdbListModel::~KdbListModel()
 }
 
 /// slot which adds a new item to the data model
-void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId, bool sortAbc)
+void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int itemLevel, int modelId, bool sortAbc)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -84,7 +84,7 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
     }
 
     if (m_modelId == modelId) {
-        KdbItem item(title, subtitle, id, itemType);
+        KdbItem item(title, subtitle, id, itemType, itemLevel);
         if (sortAbc) {
             // compare and insert alphabetically into list model depending if it is an password entry or group
             // groups are put at the beginning of the list view before entries
@@ -94,15 +94,15 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
                 i = m_numGroups;
                 max = m_items.length();
                 ++m_numEntries;
-//                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries;
+                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries << "name: " << title;
             } else {
                 i = 0;
                 max = m_numGroups;
                 ++m_numGroups;
-//                qDebug() << "insert group i: " << i << " max: " << max << " numEntries: " << m_numGroups;
+                qDebug() << "insert group i: " << i << " max: " << max << " numGroups: " << m_numGroups << "name: " << title;
             }
             while (i < max && m_items[i].m_name.toLower().compare(title.toLower()) < 0) {
-//                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
+                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
                 ++i;
             }
             beginInsertRows(QModelIndex(), i, i);
@@ -160,8 +160,9 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, i
                     // in the correct position in the alphabetically sorted list view
                     int itemId = m_items[i].m_id;
                     int itemType = m_items[i].m_itemType;
+                    int itemLevel = m_items[i].m_itemLevel;
                     slot_deleteItem(itemId);
-                    slot_addItemToListModel(title, subTitle, itemId, itemType, modelId, sortAbc);
+                    slot_addItemToListModel(title, subTitle, itemId, itemType, itemLevel, modelId, sortAbc);
                 } else {
 //                    qDebug() << "adding in non sorted mode: " << title;
                     // list view has custom sorting so position of item will stay the same and item just needs an update

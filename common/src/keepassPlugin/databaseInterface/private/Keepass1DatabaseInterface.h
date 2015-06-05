@@ -53,7 +53,7 @@ signals:
     void errorOccured(int result, QString errorMsg);
 
     // signals to KdbListModel object
-    void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId, bool sortAbc);
+    void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId, bool sortAbc);
     void masterGroupsLoaded(int result);
     void groupsAndEntriesLoaded(int result);
     void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId, bool sortAbc);

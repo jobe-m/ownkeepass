@@ -32,10 +32,13 @@ ListItem {
     property string subText: model.subtitle
     property bool selected: false
     property bool groupItem: model.itemType === KdbListModel.GROUP
+    property int showLevel: 0
 
     menu: contextMenuComponent
-    contentHeight: Theme.itemSizeMedium
+    contentHeight: enabled ? Theme.itemSizeMedium : 0
     width: parent ? parent.width : screen.width
+    enabled: showLevel === model.itemLevel
+    visible: enabled
 
     function listItemRemoveGroup() {
         kdbGroupForDeletion.groupId = model.id
@@ -68,18 +71,25 @@ ListItem {
 
     Rectangle {
         id: itemIcon
-        x: Theme.paddingLarge
+        x: model.itemLevel * (parent.width / 20)
         anchors.verticalCenter: parent.verticalCenter
-        width: 80
-        height: 80
-        radius: 5
+        width: Theme.itemSizeMedium
+        height: Theme.itemSizeMedium
         color: "white"
-        opacity: 0.1
+    }
+
+    OpacityRampEffect {
+        sourceItem: itemIcon
+        slope: 0.25
+        offset: 0.0
+        clampFactor: -0.75
+        direction: OpacityRamp.BottomToTop
     }
 
     Image {
-        x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
-        anchors.verticalCenter: parent.verticalCenter
+//        x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
+//        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: itemIcon
         width: Theme.iconSizeMedium
         height: Theme.iconSizeMedium
         source: model.itemType === KdbListModel.ENTRY ? "../../entryicons/_0.png" : "../../entryicons/_49.png"
@@ -169,130 +179,4 @@ ListItem {
             }
         }
     } // end contextMenuComponent
-
-    Component {
-        id: movePasswordEntryDialogComponent
-        Dialog {
-            id: movePasswordEntryDialog
-
-            // ID of the keepass entry to be moved into another group
-            property int itemId: 0
-            // ID of group where item is currently placed. This is used to filter out the parent group from the list of groups.
-            property int parentGroupId: 0
-            // ID of the new parent group of the password item
-            property int newGroupId: 0
-
-            // forbit page navigation if new group is not yet selected
-            canNavigateForward: true /* FIXME */
-
-            KdbListModel {
-                id: movePasswordEntryListModel
-            }
-
-            SilicaFlickable {
-                anchors.fill: parent
-
-                PullDownMenu {
-                    MenuLabel {
-                        enabled: text !== ""
-                        text: applicationWindow.databaseUiName
-                    }
-                }
-
-                ApplicationMenu {
-                    disableSettingsItem: true
-                }
-
-                DialogHeader {
-                    id: header
-                    //: "Accept" in dialog for choosing group to move password entry into
-                    acceptText: qsTr("Accept")
-                    cancelText: qsTr("Cancel")
-                }
-
-                SilicaLabel {
-                    id: dialogLabel
-                    y: header.y + header.height
-                    width: parent.width
-                    text: qsTr("Choose new parent group for password entry:")
-                }
-
-                SilicaListView {
-                    id: listView
-                    width: parent.width
-                    height: parent.height - y
-                    model: movePasswordEntryListModel
-                    clip: true
-
-                    VerticalScrollDecorator {}
-
-                    delegate: BackgroundItem {
-                        id: movePasswordEntryListItem
-
-                        Rectangle {
-                            color: Theme.highlightColor
-                            visible: model.id === editEntryDetailsDialog.newGroupId
-                            anchors.fill: parent
-                            opacity: 0.5
-                        }
-
-                        Image {
-                            x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: Theme.iconSizeMedium
-                            height: Theme.iconSizeMedium
-                            source: "../../entryicons/_49.png"
-                            fillMode: Image.PreserveAspectFit
-                            asynchronous: true
-                            opacity: highlighted ? 0.5 : 1.0
-                        }
-
-                        Item {
-                            anchors.left: itemIcon.right
-                            anchors.leftMargin: Theme.paddingSmall
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
-                            height: itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
-
-                            Label {
-                                id: itemTitle
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                width: parent.width
-                                text: model.name
-                                horizontalAlignment: Text.AlignLeft
-                                font.pixelSize: Theme.fontSizeMedium
-                                color: highlighted ? Theme.highlightColor : Theme.primaryColor
-                                truncationMode: TruncationMode.Fade
-                            }
-
-                            Label {
-                                id: itemDescription
-                                anchors.left: parent.left
-                                anchors.top: itemTitle.bottom
-                                anchors.topMargin: Theme.paddingSmall / 2
-                                width: parent.width
-                                text: model.subtitle
-                                horizontalAlignment: Text.AlignLeft
-                                font.pixelSize: Theme.fontSizeExtraSmall
-                                color: highlighted ? Theme.highlightColor : Theme.secondaryColor
-                            }
-                        }
-
-                        onClicked: {
-                            if(model.id === editEntryDetailsDialog.newGroupId) {
-                                editEntryDetailsDialog.newGroupId = 0;
-                            } else {
-                                editEntryDetailsDialog.newGroupId = model.id;
-                            }
-                        }
-                    }
-                }
-            }
-
-            Component.onCompleted: {
-                movePasswordEntryListModel.loadMasterGroupsFromDatabase()
-            }
-        }
-    } // end movePasswordEntryDialogComponent
 }

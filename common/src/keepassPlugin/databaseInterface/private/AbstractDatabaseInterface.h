@@ -19,7 +19,7 @@ protected: // signals
     virtual void errorOccured(int result, QString errorMsg) = 0;
 
     // signals to KdbListModel object
-    virtual void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId, bool sortAbc) = 0;
+    virtual void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId, bool sortAbc) = 0;
     virtual void masterGroupsLoaded(int result) = 0;
     virtual void groupsAndEntriesLoaded(int result) = 0;
     virtual void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId, bool sortAbc) = 0;
