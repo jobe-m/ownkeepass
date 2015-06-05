@@ -997,6 +997,8 @@ Page {
             property int parentGroupId: 0
             // ID of the new parent group of the password item
             property int newGroupId: 0
+            //
+            property string groupName: ""
 
             // forbit page navigation if new group is not yet selected
             canNavigateForward: true /* FIXME */
@@ -1026,12 +1028,12 @@ Page {
                     id: dialogLabel
                     y: header.y + header.height
                     width: parent.width
-                    text: qsTr("Move password entry to group:")
+                    text: qsTr("Move \"%1\" to group:").arg(movePasswordEntryDialog.groupName)
                 }
 
                 SilicaListView {
                     id: listView
-                    y: header.y + header.height + dialogLabel.height
+                    y: header.y + header.height + dialogLabel.height + Theme.paddingMedium
                     width: parent.width
                     height: parent.height - y
                     model: movePasswordEntryListModel
@@ -1041,6 +1043,7 @@ Page {
 
                     delegate: BackgroundItem {
                         id: movePasswordEntryListItem
+                        height: Theme.itemSizeMedium
 
                         Rectangle {
                             color: Theme.highlightColor
@@ -1049,10 +1052,25 @@ Page {
                             opacity: 0.5
                         }
 
-                        Image {
-                            id: moveItemIcon
-                            x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
+                        Rectangle {
+                            id: itemIcon
+                            x: model.itemLevel * (parent.width / 20)
                             anchors.verticalCenter: parent.verticalCenter
+                            width: Theme.itemSizeMedium
+                            height: Theme.itemSizeMedium
+                            color: "white"
+                        }
+
+                        OpacityRampEffect {
+                            sourceItem: itemIcon
+                            slope: 0.25
+                            offset: 0.0
+                            clampFactor: -0.75
+                            direction: OpacityRamp.BottomToTop
+                        }
+
+                        Image {
+                            anchors.centerIn: itemIcon
                             width: Theme.iconSizeMedium
                             height: Theme.iconSizeMedium
                             source: "../../entryicons/_49.png"
@@ -1062,10 +1080,10 @@ Page {
                         }
 
                         Item {
-                            anchors.left: moveItemIcon.right
+                            anchors.left: itemIcon.right
                             anchors.leftMargin: Theme.paddingSmall
                             anchors.verticalCenter: parent.verticalCenter
-                            width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - moveItemIcon.width
+                            width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
                             height: itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
 
                             Label {

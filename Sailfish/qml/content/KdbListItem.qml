@@ -87,8 +87,6 @@ ListItem {
     }
 
     Image {
-//        x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
-//        anchors.verticalCenter: parent.verticalCenter
         anchors.centerIn: itemIcon
         width: Theme.iconSizeMedium
         height: Theme.iconSizeMedium
@@ -174,7 +172,7 @@ ListItem {
                 text: qsTr("Move")
                 onClicked: {
                     pageStack.push(movePasswordEntryDialogComponent,
-                                   { "itemId": model.id, "parentGroupId": 0 /* FIXME */ })
+                                   { "itemId": model.id, "parentGroupId": 0 /* FIXME */, "groupName": model.name })
                 }
             }
         }
