@@ -47,7 +47,8 @@ Keepass1DatabaseInterface::Keepass1DatabaseInterface(QObject *parent)
     : QObject(parent), AbstractDatabaseInterface(),
       m_kdb3Database(NULL),
       m_setting_showUserNamePasswordsInListView(false),
-      m_setting_sortAlphabeticallyInListView(true)
+      m_setting_sortAlphabeticallyInListView(true),
+      m_rootGroupId(0)
 {
     initDatabase();
 }
@@ -224,7 +225,7 @@ void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString key
     emit passwordChanged();
 }
 
-void Keepass1DatabaseInterface::slot_loadMasterGroups()
+void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 {
     Q_ASSERT(m_kdb3Database);
     QList<IGroupHandle*> masterGroups;
@@ -236,23 +237,28 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups()
     for (int i = 0; i < masterGroups.count(); i++) {
         IGroupHandle* masterGroup = masterGroups.at(i);
         if (masterGroup->isValid()) {
-            qDebug("Mastergroup %d: %s", i, CSTR(masterGroup->title()));
-            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
+//            qDebug("Mastergroup %d: %s", i, CSTR(masterGroup->title()));
+//            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
 
             int item_level = masterGroup->level();
             if (masterGroup->title() != "Backup") {
                 int numberOfSubgroups = masterGroup->children().count();
                 int numberOfEntries = m_kdb3Database->entries(masterGroup).count();
+                int listModelId = -1;
+                if (registerListModel) {
+                    // save modelId and master group only if needed
+                    // i.e. save model list id for master group page and don't do it for list models used in dialogs
+                    listModelId = 0;
+                    m_groups_modelId.insertMulti(listModelId, int(masterGroup));
+                }
                 emit addItemToListModel(masterGroup->title(),                           // group name
                                         QString("Subgroups: %1 | Entries: %2")
                                         .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
                                         int(masterGroup),                               // item id
                                         kpxPublic::KdbListModel::GROUP,                 // item type
                                         item_level,                                     // item level (0 = root, 1 = first level, etc.
-                                        0,                                              // list model of root group
-                                        m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
-                // save modelId and master group
-                m_groups_modelId.insertMulti(0, int(masterGroup));
+                                        listModelId,                                    // list model of root group
+                                        false); //m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
             }
         }
     }

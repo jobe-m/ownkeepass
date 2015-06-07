@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.ownkeepass.KeepassX1 1.0
 import "../common"
+import "../scripts/Global.js" as Global
 
 ListItem {
     id: kdbListItem
@@ -172,7 +173,7 @@ ListItem {
                 text: qsTr("Move")
                 onClicked: {
                     pageStack.push(movePasswordEntryDialogComponent,
-                                   { "itemId": model.id, "parentGroupId": 0 /* FIXME */, "groupName": model.name })
+                                   { "itemId": model.id, "oldGroupId": Global.activeGroupId, "groupName": model.name })
                 }
             }
         }

@@ -64,7 +64,7 @@ public: // slots
     virtual void slot_setting_sortAlphabeticallyInListView(bool value) = 0;
 
     // signal from KdbListModel object
-    virtual void slot_loadMasterGroups() = 0;
+    virtual void slot_loadMasterGroups(bool registerListModel) = 0;
     virtual void slot_loadGroupsAndEntries(int groupId) = 0;
     virtual void slot_unregisterListModel(int modelId) = 0;
     virtual void slot_searchEntries(QString searchString, int rootGroupId) = 0;

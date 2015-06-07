@@ -215,8 +215,9 @@ private:
 	void serializeEntries(QList<StdEntry>& EntryList,char* buffer,unsigned int& pos);
 	void serializeGroups(char* buffer,unsigned int& pos);
 	void appendChildrenToGroupList(QList<StdGroup*>& list,StdGroup& group);
-	void appendChildrenToGroupList(QList<IGroupHandle*>& list,StdGroup& group);
-	bool searchStringContains(const QString& search, const QString& string,bool Cs, bool RegExp);
+    void appendChildrenToGroupList(QList<IGroupHandle*>& list,StdGroup& group);
+    void appendChildrenToGroupListSorted(QList<IGroupHandle*>& list, IGroupHandle *group);
+    bool searchStringContains(const QString& search, const QString& string,bool Cs, bool RegExp);
 	void getEntriesRecursive(IGroupHandle* Group, QList<IEntryHandle*>& EntryList);
 	void rebuildIndices(QList<StdGroup*>& list);
 	void restoreGroupTreeState();

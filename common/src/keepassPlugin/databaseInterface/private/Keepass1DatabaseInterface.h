@@ -98,7 +98,7 @@ public slots:
     void slot_setting_sortAlphabeticallyInListView(bool value) { m_setting_sortAlphabeticallyInListView = value; }
 
     // signal from KdbListModel object
-    void slot_loadMasterGroups();
+    void slot_loadMasterGroups(bool registerListModel);
     void slot_loadGroupsAndEntries(int groupId);
     void slot_unregisterListModel(int modelId);
     void slot_searchEntries(QString searchString, int rootGroupId);
@@ -141,6 +141,7 @@ private:
     // The following two hash tables store information about which list models are showing a dedicated entry or group in the UI
     QHash<int, int> m_entries_modelId;
     QHash<int, int> m_groups_modelId;
+    int m_rootGroupId;
 };
 
 }

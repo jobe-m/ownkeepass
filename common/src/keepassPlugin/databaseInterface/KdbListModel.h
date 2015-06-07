@@ -79,6 +79,7 @@ public:
 
 public:
     Q_INVOKABLE void loadMasterGroupsFromDatabase();
+    Q_INVOKABLE void loadGroupListFromDatabase();
     Q_INVOKABLE void loadGroupsAndEntriesFromDatabase(int groupId);
     Q_INVOKABLE void searchEntriesInKdbDatabase(QString searchString);
     Q_INVOKABLE void clearListModel();
@@ -98,7 +99,7 @@ public:
     virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
 signals:
     // signals to DatabaseClient global object
-    void loadMasterGroups();
+    void loadMasterGroups(bool registerListModel);
     void loadGroupsAndEntries(int groupId);
     void unregisterFromDatabaseClient(int modelId);
     void searchEntries(QString searchString, int rootGroupId);

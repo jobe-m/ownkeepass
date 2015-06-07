@@ -36,8 +36,8 @@ KdbListModel::KdbListModel(QObject *parent)
       m_searchRootGroupId(0)
 {
     // connect signals to backend
-    bool ret = connect(this, SIGNAL(loadMasterGroups()),
-                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadMasterGroups()));
+    bool ret = connect(this, SIGNAL(loadMasterGroups(bool)),
+                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadMasterGroups(bool)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(loadGroupsAndEntries(int)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadGroupsAndEntries(int)));
@@ -94,15 +94,15 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
                 i = m_numGroups;
                 max = m_items.length();
                 ++m_numEntries;
-                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries << "name: " << title;
+//                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries << "name: " << title;
             } else {
                 i = 0;
                 max = m_numGroups;
                 ++m_numGroups;
-                qDebug() << "insert group i: " << i << " max: " << max << " numGroups: " << m_numGroups << "name: " << title;
+//                qDebug() << "insert group i: " << i << " max: " << max << " numGroups: " << m_numGroups << "name: " << title;
             }
             while (i < max && m_items[i].m_name.toLower().compare(title.toLower()) < 0) {
-                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
+//                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
                 ++i;
             }
             beginInsertRows(QModelIndex(), i, i);
@@ -191,7 +191,25 @@ void KdbListModel::loadMasterGroupsFromDatabase()
         m_registered = false;
     }
     // send signal to global interface of keepass database to get master groups
-    emit loadMasterGroups();
+    emit loadMasterGroups(true);
+}
+
+void KdbListModel::loadGroupListFromDatabase()
+{
+    // make list view empty and unregister if necessary
+    if (!isEmpty()) {
+        clear();
+    }
+    if (m_registered) {
+        emit unregisterFromDatabaseClient(m_modelId);
+        m_registered = false;
+    }
+    // this list model is only used in a dialog and is thrown away afterwards, so it does not need to be registered
+    // i.e. changes on the database which are normally reflecte to list models are not needed here
+    m_registered = true;
+    m_modelId = -1;
+    // send signal to global interface of keepass database to get master groups
+    emit loadMasterGroups(false);
 }
 
 void KdbListModel::loadGroupsAndEntriesFromDatabase(int groupId)

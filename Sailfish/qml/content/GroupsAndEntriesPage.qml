@@ -388,6 +388,8 @@ Page {
                     break
                 }
             }
+            // set ID of currently viewed group
+            Global.activeGroupId = groupId
         }
     }
 
