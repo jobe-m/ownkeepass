@@ -653,24 +653,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
+        <location filename="../qml/scripts/Global.js" line="113"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Nessuna selezione</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="112"/>
+        <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="114"/>
+        <location filename="../qml/scripts/Global.js" line="118"/>
         <source>SD Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="116"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>Android Storage</source>
         <translation type="unfinished"></translation>
     </message>
@@ -832,14 +832,29 @@
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="133"/>
+        <location filename="../qml/content/KdbListItem.qml" line="143"/>
         <source>Edit</source>
         <translation>Modifica</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="148"/>
+        <location filename="../qml/content/KdbListItem.qml" line="158"/>
         <source>Delete</source>
         <translation>Elimina</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <source>Move</source>
+        <extracomment>used in menu to move the password entry into another group</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="obsolete">Accetta</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">Annulla</translation>
     </message>
 </context>
 <context>
@@ -1106,39 +1121,67 @@
         <translation>Errore durante la chiusura del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1028"/>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="obsolete">Accetta</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">Annulla</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Yes</source>
         <translation>Sì</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1029"/>
+        <location filename="../qml/content/MainPage.qml" line="1043"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1030"/>
+        <location filename="../qml/content/MainPage.qml" line="1044"/>
         <source>Unsaved changes</source>
         <translation>Modifiche non salvate</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1058"/>
+        <location filename="../qml/content/MainPage.qml" line="1072"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Vuoi salvare le modifiche all&apos;elemento?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1063"/>
+        <location filename="../qml/content/MainPage.qml" line="1077"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Vuoi salvare le modifiche al gruppo?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1068"/>
+        <location filename="../qml/content/MainPage.qml" line="1082"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Vuoi salvare le modifiche alle impostazioni del database?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1073"/>
+        <location filename="../qml/content/MainPage.qml" line="1087"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Vuoi salvare le modifiche alle impostazioni?</translation>
+    </message>
+</context>
+<context>
+    <name>MovePasswordEntryDialog</name>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="69"/>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="unfinished">Accetta</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annulla</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="77"/>
+        <source>Move &quot;%1&quot; into following group:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

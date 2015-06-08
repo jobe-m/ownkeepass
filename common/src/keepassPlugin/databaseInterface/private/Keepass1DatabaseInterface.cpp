@@ -47,7 +47,8 @@ Keepass1DatabaseInterface::Keepass1DatabaseInterface(QObject *parent)
     : QObject(parent), AbstractDatabaseInterface(),
       m_kdb3Database(NULL),
       m_setting_showUserNamePasswordsInListView(false),
-      m_setting_sortAlphabeticallyInListView(true)
+      m_setting_sortAlphabeticallyInListView(true),
+      m_rootGroupId(0)
 {
     initDatabase();
 }
@@ -224,7 +225,7 @@ void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString key
     emit passwordChanged();
 }
 
-void Keepass1DatabaseInterface::slot_loadMasterGroups()
+void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 {
     Q_ASSERT(m_kdb3Database);
     QList<IGroupHandle*> masterGroups;
@@ -240,19 +241,24 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups()
 //            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
 
             int item_level = masterGroup->level();
-            int level = 0;
-            if (item_level == level && masterGroup->title() != "Backup") {
+            if (masterGroup->title() != "Backup") {
                 int numberOfSubgroups = masterGroup->children().count();
                 int numberOfEntries = m_kdb3Database->entries(masterGroup).count();
+                int listModelId = -1;
+                if (registerListModel) {
+                    // save modelId and master group only if needed
+                    // i.e. save model list id for master group page and don't do it for list models used in dialogs
+                    listModelId = 0;
+                    m_groups_modelId.insertMulti(listModelId, int(masterGroup));
+                }
                 emit addItemToListModel(masterGroup->title(),                           // group name
                                         QString("Subgroups: %1 | Entries: %2")
                                         .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
                                         int(masterGroup),                               // item id
                                         kpxPublic::KdbListModel::GROUP,                 // item type
-                                        0,                                              // list model of root group
-                                        m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
-                // save modelId and master group
-                m_groups_modelId.insertMulti(0, int(masterGroup));
+                                        item_level,                                     // item level (0 = root, 1 = first level, etc.
+                                        listModelId,                                    // list model of root group
+                                        false); //m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
             }
         }
     }
@@ -281,6 +287,7 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
                                     .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
                                     int(subGroup),                                  // item id
                                     kpxPublic::KdbListModel::GROUP,                 // item type
+                                    0,                                              // item level (not used here)
                                     groupId,                                        // list model gets groupId as its unique ID
                                     m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
             // save modelId and group
@@ -301,6 +308,7 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
                                     getUserAndPassword(entry),                      // subtitle
                                     int(entry),                                     // item id
                                     kpxPublic::KdbListModel::ENTRY,                 // item type
+                                    0,                                              // item level (not used here)
                                     groupId,                                        // list model gets groupId as its unique ID
                                     m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
             // save modelId and entry
@@ -410,6 +418,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
                             "Subgroups: 0 | Entries: 0",                    // subtitle
                             int(newGroup),                                  // item id
                             kpxPublic::KdbListModel::GROUP,                 // item type
+                            0,                                              // item level (not used here)
                             parentGroupId,                                  // for distinguishing different models
                             m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
     // save modelid and group
@@ -433,9 +442,9 @@ void Keepass1DatabaseInterface::slot_saveEntry(int entryId,
                                         QString comment)
 {
     Q_ASSERT(m_kdb3Database);
-    Q_ASSERT(entryId);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)(entryId);
+    Q_ASSERT(entry);
 
     entry->setTitle(title);
     entry->setUrl(url);
@@ -514,6 +523,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
                             getUserAndPassword(newEntry),                   // subtitle
                             int(newEntry),                                  // item id
                             kpxPublic::KdbListModel::ENTRY,                 // item type
+                            0,                                              // item level (not used here)
                             parentGroupId,                                  // id of list model where to put this entry in
                             m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
     // save modelId and entry
@@ -589,6 +599,49 @@ void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
     emit entryDeleted(kpxPublic::KdbGroup::RE_OK);
 }
 
+void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
+{
+    IEntryHandle* entry = (IEntryHandle*)(entryId);
+    Q_ASSERT(entry);
+    IGroupHandle* parentGroup = entry->group();
+    Q_ASSERT(parentGroup);
+    IGroupHandle* newGroup = (IGroupHandle*)(newGroupId);
+    Q_ASSERT(newGroup);
+    Q_ASSERT(m_kdb3Database);
+
+    // move entry to new group within the database
+    m_kdb3Database->moveEntry(entry, newGroup);
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit entryMoved(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        return;
+    }
+
+    // remove entry from all active list models where it might be added
+    emit deleteItemInListModel(entryId);
+    // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
+    updateGrandParentGroupInListModel(parentGroup);
+
+    // add entry item in list model of new group if this group is actually visible in UI
+    if (m_groups_modelId.contains(newGroupId)) {
+        // register entry to list model of parent group
+        m_entries_modelId.insertMulti(newGroupId, entryId);
+        // now update list model with moved entry
+        emit addItemToListModel(entry->title(),                             // entry name
+                                getUserAndPassword(entry),                  // subtitle
+                                entryId,                                    // identifier for entry item in list model
+                                kpxPublic::KdbListModel::ENTRY,             // item type
+                                0,                                          // item level (not used here)
+                                newGroupId,                                 // identifier for list model where this item should be inserted
+                                m_setting_sortAlphabeticallyInListView);    // indicate if alphabetical sorting should be done
+    }
+    // update subtitle of parent list model where password entry was moved to
+    parentGroup = entry->group();
+    updateGrandParentGroupInListModel(parentGroup);
+    // signal to QML
+    emit entryMoved(kpxPublic::KdbGroup::RE_OK);
+}
+
 void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, int rootGroupId)
 {
     // get group handle
@@ -610,6 +663,7 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, int roo
                                     getUserAndPassword(entry),                      // subtitle
                                     int(entry),                                     // item id
                                     kpxPublic::KdbListModel::ENTRY,                 // item type
+                                    0,                                              // item level (not used here)
                                     -1,                                             // specifying model where entry should be added (search list model gets -1)
                                     m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
             // save modelId and entry

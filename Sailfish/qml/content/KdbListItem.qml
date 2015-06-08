@@ -23,6 +23,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.ownkeepass.KeepassX1 1.0
+import "../common"
+import "../scripts/Global.js" as Global
 
 ListItem {
     id: kdbListItem
@@ -31,10 +33,13 @@ ListItem {
     property string subText: model.subtitle
     property bool selected: false
     property bool groupItem: model.itemType === KdbListModel.GROUP
+    property int showLevel: 0
 
     menu: contextMenuComponent
-    contentHeight: Theme.itemSizeMedium
+    contentHeight: enabled ? Theme.itemSizeMedium : 0
     width: parent ? parent.width : screen.width
+    enabled: showLevel === model.itemLevel
+    visible: enabled
 
     function listItemRemoveGroup() {
         kdbGroupForDeletion.groupId = model.id
@@ -67,18 +72,23 @@ ListItem {
 
     Rectangle {
         id: itemIcon
-        x: Theme.paddingLarge
+        x: model.itemLevel * (parent.width / 20)
         anchors.verticalCenter: parent.verticalCenter
-        width: 80
-        height: 80
-        radius: 5
+        width: Theme.itemSizeMedium
+        height: Theme.itemSizeMedium
         color: "white"
-        opacity: 0.1
+    }
+
+    OpacityRampEffect {
+        sourceItem: itemIcon
+        slope: 0.25
+        offset: 0.0
+        clampFactor: -0.75
+        direction: OpacityRamp.BottomToTop
     }
 
     Image {
-        x: Theme.paddingLarge + 8 // 8 = (80-Theme.iconSizeMedium)/2
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: itemIcon
         width: Theme.iconSizeMedium
         height: Theme.iconSizeMedium
         source: model.itemType === KdbListModel.ENTRY ? "../../entryicons/_0.png" : "../../entryicons/_49.png"
@@ -155,6 +165,26 @@ ListItem {
                         listItemRemoveEntry()
                         break
                     }
+                }
+            }
+            MenuItem {
+//                id: moveMenuItem
+//                property KdbEntry kdbEntryToMoveRef: kdbEntryToMove
+                enabled: model.itemType === KdbListModel.ENTRY
+                visible: enabled
+                //: used in menu to move the password entry into another group
+                text: qsTr("Move")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("MovePasswordEntryDialog.qml").toString(), {
+                                       "itemId": model.id,
+                                       "oldGroupId": Global.activeGroupId,
+                                       "nameOfPasswordEntry": model.name,
+                                       "kdbEntryToMove": kdbEntryToMove
+                                   })
+//                    dialog.accepted.connect(function() {
+//                        moveMenuItem.kdbEntryToMoveRef.entryId = dialog.itemId
+//                        moveMenuItem.kdbEntryToMoveRef.moveEntry(dialog.newGroupId)
+//                    })
                 }
             }
         }

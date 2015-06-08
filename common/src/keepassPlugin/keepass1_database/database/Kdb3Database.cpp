@@ -17,6 +17,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDebug>
+
 #include <QBuffer>
 #include <algorithm>
 
@@ -1619,19 +1621,46 @@ void Kdb3Database::createCustomIconsMetaStream(StdEntry* e){
 	}
 }
 
+
 QList<IGroupHandle*> Kdb3Database::sortedGroups(){
-	QList<IGroupHandle*> SortedGroups;
-	appendChildrenToGroupList(SortedGroups,RootGroup);
-    qSort(SortedGroups.begin(),SortedGroups.end(),GroupHandleLessThanStd);
-    return SortedGroups;
+    QList<IGroupHandle*> sortedGroups;
+    // first sort the list of all children from the root group
+    QList<IGroupHandle*> sortedChildren;
+    for(int i=0;i<RootGroup.Children.size();i++){
+        sortedChildren << RootGroup.Children[i]->Handle;
+    }
+    qDebug() << "befor sort: " << sortedChildren;
+    qSort(sortedChildren.begin(),sortedChildren.end(),GroupHandleLessThanStd);
+    qDebug() << "after sort: " << sortedChildren;
+    // now go through the list of sorted children
+    for(int i=0;i<sortedChildren.size();i++){
+        sortedGroups << sortedChildren[i];
+        appendChildrenToGroupListSorted(sortedGroups,sortedChildren[i]);
+    }
+    return sortedGroups;
+}
+
+
+void Kdb3Database::appendChildrenToGroupListSorted(QList<IGroupHandle*>& list,IGroupHandle* group){
+    // first sort the list of all children
+    QList<IGroupHandle*> sortedChildren;
+    for(int i=0;i<group->children().size();i++){
+        sortedChildren << group->children()[i];
+    }
+    qSort(sortedChildren.begin(),sortedChildren.end(),GroupHandleLessThanStd);
+    // now go through the list of sorted children
+    for(int i=0;i<sortedChildren.size();i++){
+        list << sortedChildren[i];
+        appendChildrenToGroupListSorted(list,sortedChildren[i]);
+    }
 }
 
 
 void Kdb3Database::appendChildrenToGroupList(QList<IGroupHandle*>& list,StdGroup& group){
-	for(int i=0;i<group.Children.size();i++){
-		list << group.Children[i]->Handle;
-		appendChildrenToGroupList(list,*group.Children[i]);
-	}
+    for(int i=0;i<group.Children.size();i++){
+        list << group.Children[i]->Handle;
+        appendChildrenToGroupList(list,*group.Children[i]);
+    }
 }
 
 

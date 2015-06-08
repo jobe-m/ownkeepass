@@ -653,24 +653,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="109"/>
+        <location filename="../qml/scripts/Global.js" line="113"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Nog niets geselecteerd</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="112"/>
+        <location filename="../qml/scripts/Global.js" line="116"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Apparaatgeheugen</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="114"/>
+        <location filename="../qml/scripts/Global.js" line="118"/>
         <source>SD Card</source>
         <translation>SD-kaart</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="116"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>Android Storage</source>
         <translation>Android-opslag</translation>
     </message>
@@ -832,14 +832,29 @@
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="133"/>
+        <location filename="../qml/content/KdbListItem.qml" line="143"/>
         <source>Edit</source>
         <translation>Bewerken</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="148"/>
+        <location filename="../qml/content/KdbListItem.qml" line="158"/>
         <source>Delete</source>
         <translation>Verwijderen</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <source>Move</source>
+        <extracomment>used in menu to move the password entry into another group</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="obsolete">Accepteren</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">Annuleren</translation>
     </message>
 </context>
 <context>
@@ -1106,39 +1121,67 @@
         <translation>Er is een fout opgetreden tijdens het sluiten van uw database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1028"/>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="obsolete">Accepteren</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">Annuleren</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1029"/>
+        <location filename="../qml/content/MainPage.qml" line="1043"/>
         <source>No</source>
         <translation>Nee</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1030"/>
+        <location filename="../qml/content/MainPage.qml" line="1044"/>
         <source>Unsaved changes</source>
         <translation>Niet-opgeslagen wijzigingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1058"/>
+        <location filename="../qml/content/MainPage.qml" line="1072"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Wilt u de wijzigingen aan het wachtwoordveld opslaan?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1063"/>
+        <location filename="../qml/content/MainPage.qml" line="1077"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Wilt u de wijzigingen opslaan naar de wachtwoordgroep?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1068"/>
+        <location filename="../qml/content/MainPage.qml" line="1082"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Wilt u de wijzigingen in de database-instellingen opslaan?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1073"/>
+        <location filename="../qml/content/MainPage.qml" line="1087"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Wilt u de wijzigingen in de instellingen opslaan?</translation>
+    </message>
+</context>
+<context>
+    <name>MovePasswordEntryDialog</name>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="69"/>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="unfinished">Accepteren</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuleren</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="77"/>
+        <source>Move &quot;%1&quot; into following group:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

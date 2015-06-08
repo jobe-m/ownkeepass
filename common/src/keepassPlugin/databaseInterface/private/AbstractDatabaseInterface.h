@@ -19,7 +19,7 @@ protected: // signals
     virtual void errorOccured(int result, QString errorMsg) = 0;
 
     // signals to KdbListModel object
-    virtual void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId, bool sortAbc) = 0;
+    virtual void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId, bool sortAbc) = 0;
     virtual void masterGroupsLoaded(int result) = 0;
     virtual void groupsAndEntriesLoaded(int result) = 0;
     virtual void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId, bool sortAbc) = 0;
@@ -44,6 +44,7 @@ protected: // signals
     virtual void entrySaved(int result) = 0;
     virtual void newEntryCreated(int result, int entryId) = 0;
     virtual void entryDeleted(int result) = 0;
+    virtual void entryMoved(int result) = 0;
 
     // signal to KdbGroup object
     virtual void groupLoaded(QString title) = 0;
@@ -64,7 +65,7 @@ public: // slots
     virtual void slot_setting_sortAlphabeticallyInListView(bool value) = 0;
 
     // signal from KdbListModel object
-    virtual void slot_loadMasterGroups() = 0;
+    virtual void slot_loadMasterGroups(bool registerListModel) = 0;
     virtual void slot_loadGroupsAndEntries(int groupId) = 0;
     virtual void slot_unregisterListModel(int modelId) = 0;
     virtual void slot_searchEntries(QString searchString, int rootGroupId) = 0;
@@ -84,6 +85,7 @@ public: // slots
                              QString comment,
                              int parentGroupId) = 0;
     virtual void slot_deleteEntry(int entryId) = 0;
+    virtual void slot_moveEntry(int entryId, int newGroupId) = 0;
 
     // signal from KdbGroup object
     virtual void slot_loadGroup(int groupId) = 0;

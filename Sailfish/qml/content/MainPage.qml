@@ -915,6 +915,13 @@ Page {
         onEntryDeleted: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
     }
 
+    KdbEntry {
+        id: kdbEntryToMove
+        onEntryMoved: {
+            if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+        }
+    }
+
     Component {
         id: queryPasswordDialogComponent
         QueryPasswordDialog {
@@ -986,6 +993,13 @@ Page {
         }
     }
 
+/*    Component {
+        id: movePasswordEntryDialogComponent
+        MovePasswordEntryDialog {
+            id: movePasswordEntryDialog
+        }
+    }
+*/
     Component {
         id: showEntryDetailsPageComponent
         ShowEntryDetailsPage {

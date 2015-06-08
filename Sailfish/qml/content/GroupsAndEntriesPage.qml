@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -388,6 +388,8 @@ Page {
                     break
                 }
             }
+            // set ID of currently viewed group
+            Global.activeGroupId = groupId
         }
     }
 

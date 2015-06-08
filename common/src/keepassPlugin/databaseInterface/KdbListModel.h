@@ -35,11 +35,12 @@ static const int baseRole = Qt::UserRole + 1;
 class KdbItem
 {
 public:
-    KdbItem(QString name, QString subtitle, int id, int itemType)
+    KdbItem(QString name, QString subtitle, int id, int itemType, int itemLevel)
         : m_name(name),
           m_subtitle(subtitle),
           m_id(id),
-          m_itemType(itemType)
+          m_itemType(itemType),
+          m_itemLevel(itemLevel)
     {}
     virtual ~KdbItem() {}
 
@@ -50,6 +51,7 @@ public:
     QString m_subtitle;
     int m_id;
     int m_itemType;
+    int m_itemLevel;
 };
 
 class KdbListModel : public QAbstractListModel
@@ -77,6 +79,7 @@ public:
 
 public:
     Q_INVOKABLE void loadMasterGroupsFromDatabase();
+    Q_INVOKABLE void loadGroupListFromDatabase();
     Q_INVOKABLE void loadGroupsAndEntriesFromDatabase(int groupId);
     Q_INVOKABLE void searchEntriesInKdbDatabase(QString searchString);
     Q_INVOKABLE void clearListModel();
@@ -96,7 +99,7 @@ public:
     virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
 signals:
     // signals to DatabaseClient global object
-    void loadMasterGroups();
+    void loadMasterGroups(bool registerListModel);
     void loadGroupsAndEntries(int groupId);
     void unregisterFromDatabaseClient(int modelId);
     void searchEntries(QString searchString, int rootGroupId);
@@ -112,7 +115,7 @@ signals:
 
 public slots:
     // signal from DatabaseClientWorker
-    void slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId, bool sortAbc);
+    void slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int itemLevel, int modelId, bool sortAbc);
     void slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId, bool sortAbc);
     void slot_deleteItem(int itemId);
 
@@ -141,6 +144,8 @@ inline QVariant KdbItem::get(const int role) const
         return m_id;
     case baseRole + 3:
         return m_itemType;
+    case baseRole + 4:
+        return m_itemLevel;
     }
     return QVariant();
 }
@@ -152,6 +157,7 @@ inline QHash<int, QByteArray> KdbItem::createRoles()
     roles[baseRole + 1] = "subtitle";
     roles[baseRole + 2] = "id";
     roles[baseRole + 3] = "itemType";
+    roles[baseRole + 4] = "itemLevel";
     return roles;
 }
 

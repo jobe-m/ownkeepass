@@ -73,6 +73,10 @@ var constants = {
 // false: Database is already locked by user, so that inactivity timer does not lock a second time
 var enableDatabaseLock = false
 
+// This is the ID of the current shown password group
+// 0 means the master groups are shown
+var activeGroupId = 0
+
 
 var env = {
     mainPage: undefined,

@@ -36,8 +36,8 @@ KdbListModel::KdbListModel(QObject *parent)
       m_searchRootGroupId(0)
 {
     // connect signals to backend
-    bool ret = connect(this, SIGNAL(loadMasterGroups()),
-                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadMasterGroups()));
+    bool ret = connect(this, SIGNAL(loadMasterGroups(bool)),
+                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadMasterGroups(bool)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(loadGroupsAndEntries(int)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadGroupsAndEntries(int)));
@@ -45,8 +45,8 @@ KdbListModel::KdbListModel(QObject *parent)
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupsAndEntriesLoaded(int)),
                   this, SIGNAL(groupsAndEntriesLoaded(int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int, bool)),
-                  this, SLOT(slot_addItemToListModel(QString, QString, int, int, int, bool)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int, int, bool)),
+                  this, SLOT(slot_addItemToListModel(QString, QString, int, int, int, int, bool)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(unregisterFromDatabaseClient(int)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_unregisterListModel(int)));
@@ -76,7 +76,7 @@ KdbListModel::~KdbListModel()
 }
 
 /// slot which adds a new item to the data model
-void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int modelId, bool sortAbc)
+void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int itemLevel, int modelId, bool sortAbc)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -84,7 +84,7 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
     }
 
     if (m_modelId == modelId) {
-        KdbItem item(title, subtitle, id, itemType);
+        KdbItem item(title, subtitle, id, itemType, itemLevel);
         if (sortAbc) {
             // compare and insert alphabetically into list model depending if it is an password entry or group
             // groups are put at the beginning of the list view before entries
@@ -94,16 +94,18 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
                 i = m_numGroups;
                 max = m_items.length();
                 ++m_numEntries;
-//                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries;
+//                qDebug() << "insert entry i: " << i << " max: " << max << " numEntries: " << m_numEntries << "name: " << title;
             } else {
                 i = 0;
                 max = m_numGroups;
                 ++m_numGroups;
-//                qDebug() << "insert group i: " << i << " max: " << max << " numEntries: " << m_numGroups;
+//                qDebug() << "insert group i: " << i << " max: " << max << " numGroups: " << m_numGroups << "name: " << title;
             }
-            while (i < max && m_items[i].m_name.toLower().compare(title.toLower()) < 0) {
-//                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
-                ++i;
+            // now find the position in the list model to insert the item sorted by name
+            // take itemLevel into account so that group names are only compared within the same level
+            while (i < max && (itemLevel != m_items[i].m_itemLevel || m_items[i].m_name.toLower().compare(title.toLower()) < 0)) {
+//               qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
+               ++i;
             }
             beginInsertRows(QModelIndex(), i, i);
             m_items.insert(i, item);
@@ -160,8 +162,9 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, i
                     // in the correct position in the alphabetically sorted list view
                     int itemId = m_items[i].m_id;
                     int itemType = m_items[i].m_itemType;
+                    int itemLevel = m_items[i].m_itemLevel;
                     slot_deleteItem(itemId);
-                    slot_addItemToListModel(title, subTitle, itemId, itemType, modelId, sortAbc);
+                    slot_addItemToListModel(title, subTitle, itemId, itemType, itemLevel, modelId, sortAbc);
                 } else {
 //                    qDebug() << "adding in non sorted mode: " << title;
                     // list view has custom sorting so position of item will stay the same and item just needs an update
@@ -190,7 +193,25 @@ void KdbListModel::loadMasterGroupsFromDatabase()
         m_registered = false;
     }
     // send signal to global interface of keepass database to get master groups
-    emit loadMasterGroups();
+    emit loadMasterGroups(true);
+}
+
+void KdbListModel::loadGroupListFromDatabase()
+{
+    // make list view empty and unregister if necessary
+    if (!isEmpty()) {
+        clear();
+    }
+    if (m_registered) {
+        emit unregisterFromDatabaseClient(m_modelId);
+        m_registered = false;
+    }
+    // this list model is only used in a dialog and is thrown away afterwards, so it does not need to be registered
+    // i.e. changes on the database which are normally reflecte to list models are not needed here
+    m_registered = true;
+    m_modelId = -1;
+    // send signal to global interface of keepass database to get master groups
+    emit loadMasterGroups(false);
 }
 
 void KdbListModel::loadGroupsAndEntriesFromDatabase(int groupId)

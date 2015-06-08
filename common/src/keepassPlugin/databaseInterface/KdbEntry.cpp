@@ -31,28 +31,34 @@ KdbEntry::KdbEntry(QObject *parent)
 {
     // connect signals to backend
     bool ret = connect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
-                     DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadEntry(int)));
+                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadEntry(int)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
-                     this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
+                  this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(saveEntrytoKdbDatabase(int,QString,QString,QString,QString,QString)),
-                     DatabaseClient::getInstance()->getInterface(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
-                     DatabaseClient::getInstance()->getInterface(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entrySaved(int)),
-                     this, SIGNAL(entryDataSaved(int)));
+                  this, SIGNAL(entryDataSaved(int)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryDeleted(int)),
-                     this, SIGNAL(entryDeleted(int)));
+                  this, SIGNAL(entryDeleted(int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(deleteEntryFromKdbDatabase(int)),
-                     DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteEntry(int)));
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteEntry(int)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(newEntryCreated(int, int)),
-                     this, SIGNAL(newEntryCreated(int, int)));
+                  this, SIGNAL(newEntryCreated(int, int)));
+    Q_ASSERT(ret);
+    ret = connect(this, SIGNAL(moveEntryInKdbDatabase(int,int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_moveEntry(int,int)));
+    Q_ASSERT(ret);
+    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryMoved(int)),
+                  this, SIGNAL(entryMoved(int)));
     Q_ASSERT(ret);
 }
 
@@ -79,6 +85,7 @@ void KdbEntry::createNewEntry(QString title,
                               QString comment,
                               int parentgroupId)
 {
+    Q_ASSERT(parentgroupId != 0);
     emit createNewEntryInKdbDatabase(title, url, username, password, comment, parentgroupId);
 }
 
@@ -94,7 +101,15 @@ void KdbEntry::setEntryId(int entryId)
 
 void KdbEntry::deleteEntry()
 {
+    Q_ASSERT(m_entryId != 0);
     emit deleteEntryFromKdbDatabase(m_entryId);
+}
+
+void KdbEntry::moveEntry(int newGroupId)
+{
+    Q_ASSERT(m_entryId != 0);
+    Q_ASSERT(newGroupId != 0);
+    emit moveEntryInKdbDatabase(m_entryId, newGroupId);
 }
 
 void KdbEntry::slot_entryDataLoaded(int entryId,
