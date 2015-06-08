@@ -622,33 +622,22 @@ void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
     // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
     updateGrandParentGroupInListModel(parentGroup);
 
-    // add entry item in list model of new group if this group is anywhere used
-// TODO
-/*
-    // update all list models which contain the changed group
-    QList<int> modelIds = m_groups_modelId.keys(groupId);
-    int numberOfSubgroups = group->children().count();
-    int numberOfEntries = m_kdb3Database->entries(group).count();
-    for (int i = 0; i < modelIds.count(); i++) {
-        emit updateItemInListModel(title,                                           // update group name
-                                   QString("Subgroups: %1 | Entries: %2")
-                                   .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
-                                   groupId,                                         // identifier for group item in list model
-                                   modelIds[i],                                     // identifier for list model
-                                   m_setting_sortAlphabeticallyInListView);         // sort alphabetically
+    // add entry item in list model of new group if this group is actually visible in UI
+    if (m_groups_modelId.contains(newGroupId)) {
+        // register entry to list model of parent group
+        m_entries_modelId.insertMulti(newGroupId, entryId);
+        // now update list model with moved entry
+        emit addItemToListModel(entry->title(),                             // entry name
+                                getUserAndPassword(entry),                  // subtitle
+                                entryId,                                    // identifier for entry item in list model
+                                kpxPublic::KdbListModel::ENTRY,             // item type
+                                0,                                          // item level (not used here)
+                                newGroupId,                                 // identifier for list model where this item should be inserted
+                                m_setting_sortAlphabeticallyInListView);    // indicate if alphabetical sorting should be done
     }
-
-
-    QList<int> modelIds = m_groups_modelId.keys(newGroup)  //entries_modelId.keys(entryId);
-    for (int i = 0; i < modelIds.count(); i++) {
-        emit updateItemInListModel(title,                                       // group name
-                                   getUserAndPassword(entry),                   // subtitle
-                                   entryId,                                     // identifier for item in list model
-                                   modelIds[i],                                 // identifier for list model of master group
-                                   m_setting_sortAlphabeticallyInListView);     // sort alphabetically
-    }
-*/
-
+    // update subtitle of parent list model where password entry was moved to
+    parentGroup = entry->group();
+    updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
     emit entryMoved(kpxPublic::KdbGroup::RE_OK);
 }

@@ -101,9 +101,11 @@ void KdbListModel::slot_addItemToListModel(QString title, QString subtitle, int 
                 ++m_numGroups;
 //                qDebug() << "insert group i: " << i << " max: " << max << " numGroups: " << m_numGroups << "name: " << title;
             }
-            while (i < max && m_items[i].m_name.toLower().compare(title.toLower()) < 0) {
-//                qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
-                ++i;
+            // now find the position in the list model to insert the item sorted by name
+            // take itemLevel into account so that group names are only compared within the same level
+            while (i < max && (itemLevel != m_items[i].m_itemLevel || m_items[i].m_name.toLower().compare(title.toLower()) < 0)) {
+//               qDebug() << "sort item " << i << " m_name: " << m_items[i].m_name << " =?= " << title << " result: " << m_items[i].m_name.toLower().compare(title.toLower());
+               ++i;
             }
             beginInsertRows(QModelIndex(), i, i);
             m_items.insert(i, item);
