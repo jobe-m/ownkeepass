@@ -144,7 +144,8 @@ OTHER_FILES += \
     qml/content/LicensePage.qml \
     qml/content/ChangeLogPage.qml \
     qml/content/LockPage.qml \
-    qml/common/FileSystemDialog.qml
+    qml/common/FileSystemDialog.qml \
+    qml/content/MovePasswordEntryDialog.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

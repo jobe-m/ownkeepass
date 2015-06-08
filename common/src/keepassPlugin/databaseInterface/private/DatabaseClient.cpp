@@ -51,7 +51,7 @@ int DatabaseClient::initDatabaseInterface(const int type)
         m_workerThread.terminate();
     }
 
-    // Here a interface will be instantiated which operates on a specific Keepass database version
+    // Here an interface will be instantiated which operates on a specific Keepass database version
     // To enable other database formats just load here another interface
 
     switch(type) {

@@ -56,6 +56,7 @@ public:
                                     QString comment,
                                     int parentgroupId);
     Q_INVOKABLE void deleteEntry();
+    Q_INVOKABLE void moveEntry(int newGroupId);
 
 signals:
     // signal to QML
@@ -75,6 +76,7 @@ signals:
     void entryDataSaved(int result);
     void newEntryCreated(int result, int newEntryId);
     void entryDeleted(int result);
+    void entryMoved(int result);
 
     // signal to global interface object of the keepass database
     void loadEntryFromKdbDatabase(int entryId);
@@ -91,6 +93,7 @@ signals:
                                      QString comment,
                                      int parentgroupId);
     void deleteEntryFromKdbDatabase(int entryId);
+    void moveEntryInKdbDatabase(int entryId, int newGroupId);
 
 public slots:
     void slot_entryDataLoaded(int entryId,

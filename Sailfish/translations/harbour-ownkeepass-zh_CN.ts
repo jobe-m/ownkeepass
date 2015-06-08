@@ -843,8 +843,9 @@
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="173"/>
+        <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Move</source>
+        <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1121,55 +1122,67 @@
         <translation>关闭数据库时发生了一个错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1023"/>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="obsolete">接收</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">取消</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1042"/>
+        <source>Yes</source>
+        <translation>是</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1043"/>
+        <source>No</source>
+        <translation>否</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1044"/>
+        <source>Unsaved changes</source>
+        <translation>未保存的更改</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1072"/>
+        <source>Do you want to save changes to the password entry?</source>
+        <translation>你想保存修改的密码词条吗？</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1077"/>
+        <source>Do you want to save changes to the password group?</source>
+        <translation>你想保存修改的密码组吗？</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1082"/>
+        <source>Do you want to save changes to database settings?</source>
+        <translation>你想保存修改的数据库设置吗？</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1087"/>
+        <source>Do you want to save changed settings values?</source>
+        <translation>你想保存修改的设置吗？</translation>
+    </message>
+</context>
+<context>
+    <name>MovePasswordEntryDialog</name>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="69"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
         <translation type="unfinished">接收</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1024"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1031"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="77"/>
         <source>Move &quot;%1&quot; into following group:</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1186"/>
-        <source>Yes</source>
-        <translation>是</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1187"/>
-        <source>No</source>
-        <translation>否</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1188"/>
-        <source>Unsaved changes</source>
-        <translation>未保存的更改</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1216"/>
-        <source>Do you want to save changes to the password entry?</source>
-        <translation>你想保存修改的密码词条吗？</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1221"/>
-        <source>Do you want to save changes to the password group?</source>
-        <translation>你想保存修改的密码组吗？</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1226"/>
-        <source>Do you want to save changes to database settings?</source>
-        <translation>你想保存修改的数据库设置吗？</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1231"/>
-        <source>Do you want to save changed settings values?</source>
-        <translation>你想保存修改的设置吗？</translation>
     </message>
 </context>
 <context>

@@ -168,12 +168,23 @@ ListItem {
                 }
             }
             MenuItem {
+//                id: moveMenuItem
+//                property KdbEntry kdbEntryToMoveRef: kdbEntryToMove
                 enabled: model.itemType === KdbListModel.ENTRY
                 visible: enabled
+                //: used in menu to move the password entry into another group
                 text: qsTr("Move")
                 onClicked: {
-                    pageStack.push(movePasswordEntryDialogComponent,
-                                   { "itemId": model.id, "oldGroupId": Global.activeGroupId, "groupName": model.name })
+                    pageStack.push(Qt.resolvedUrl("MovePasswordEntryDialog.qml").toString(), {
+                                       "itemId": model.id,
+                                       "oldGroupId": Global.activeGroupId,
+                                       "nameOfPasswordEntry": model.name,
+                                       "kdbEntryToMove": kdbEntryToMove
+                                   })
+//                    dialog.accepted.connect(function() {
+//                        moveMenuItem.kdbEntryToMoveRef.entryId = dialog.itemId
+//                        moveMenuItem.kdbEntryToMoveRef.moveEntry(dialog.newGroupId)
+//                    })
                 }
             }
         }

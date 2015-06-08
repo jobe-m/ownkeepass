@@ -78,6 +78,7 @@ signals:
     void entrySaved(int result);
     void newEntryCreated(int result, int entryId);
     void entryDeleted(int result);
+    void entryMoved(int result);
 
     // signal to KdbGroup object
     void groupLoaded(QString title);
@@ -118,6 +119,7 @@ public slots:
                              QString comment,
                              int parentGroupId);
     void slot_deleteEntry(int entryId);
+    void slot_moveEntry(int entryId, int newGroupId);
 
     // signal from KdbGroup object
     void slot_loadGroup(int groupId);

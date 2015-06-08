@@ -442,9 +442,9 @@ void Keepass1DatabaseInterface::slot_saveEntry(int entryId,
                                         QString comment)
 {
     Q_ASSERT(m_kdb3Database);
-    Q_ASSERT(entryId);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)(entryId);
+    Q_ASSERT(entry);
 
     entry->setTitle(title);
     entry->setUrl(url);
@@ -597,6 +597,60 @@ void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
     emit entryDeleted(kpxPublic::KdbGroup::RE_OK);
+}
+
+void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
+{
+    IEntryHandle* entry = (IEntryHandle*)(entryId);
+    Q_ASSERT(entry);
+    IGroupHandle* parentGroup = entry->group();
+    Q_ASSERT(parentGroup);
+    IGroupHandle* newGroup = (IGroupHandle*)(newGroupId);
+    Q_ASSERT(newGroup);
+    Q_ASSERT(m_kdb3Database);
+
+    // move entry to new group within the database
+    m_kdb3Database->moveEntry(entry, newGroup);
+    // save changes to database
+    if (!m_kdb3Database->save()) {
+        emit entryMoved(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        return;
+    }
+
+    // remove entry from all active list models where it might be added
+    emit deleteItemInListModel(entryId);
+    // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
+    updateGrandParentGroupInListModel(parentGroup);
+
+    // add entry item in list model of new group if this group is anywhere used
+// TODO
+/*
+    // update all list models which contain the changed group
+    QList<int> modelIds = m_groups_modelId.keys(groupId);
+    int numberOfSubgroups = group->children().count();
+    int numberOfEntries = m_kdb3Database->entries(group).count();
+    for (int i = 0; i < modelIds.count(); i++) {
+        emit updateItemInListModel(title,                                           // update group name
+                                   QString("Subgroups: %1 | Entries: %2")
+                                   .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
+                                   groupId,                                         // identifier for group item in list model
+                                   modelIds[i],                                     // identifier for list model
+                                   m_setting_sortAlphabeticallyInListView);         // sort alphabetically
+    }
+
+
+    QList<int> modelIds = m_groups_modelId.keys(newGroup)  //entries_modelId.keys(entryId);
+    for (int i = 0; i < modelIds.count(); i++) {
+        emit updateItemInListModel(title,                                       // group name
+                                   getUserAndPassword(entry),                   // subtitle
+                                   entryId,                                     // identifier for item in list model
+                                   modelIds[i],                                 // identifier for list model of master group
+                                   m_setting_sortAlphabeticallyInListView);     // sort alphabetically
+    }
+*/
+
+    // signal to QML
+    emit entryMoved(kpxPublic::KdbGroup::RE_OK);
 }
 
 void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, int rootGroupId)

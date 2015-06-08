@@ -44,6 +44,7 @@ protected: // signals
     virtual void entrySaved(int result) = 0;
     virtual void newEntryCreated(int result, int entryId) = 0;
     virtual void entryDeleted(int result) = 0;
+    virtual void entryMoved(int result) = 0;
 
     // signal to KdbGroup object
     virtual void groupLoaded(QString title) = 0;
@@ -84,6 +85,7 @@ public: // slots
                              QString comment,
                              int parentGroupId) = 0;
     virtual void slot_deleteEntry(int entryId) = 0;
+    virtual void slot_moveEntry(int entryId, int newGroupId) = 0;
 
     // signal from KdbGroup object
     virtual void slot_loadGroup(int groupId) = 0;

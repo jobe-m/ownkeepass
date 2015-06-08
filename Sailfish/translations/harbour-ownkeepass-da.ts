@@ -842,8 +842,9 @@
         <translation>Slet</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="173"/>
+        <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Move</source>
+        <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1120,55 +1121,67 @@
         <translation>En fejl opstod ved lukningen af din database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1023"/>
+        <source>Accept</source>
+        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
+        <translation type="obsolete">Accepter</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">Afbryd</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1042"/>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1043"/>
+        <source>No</source>
+        <translation>Nej</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1044"/>
+        <source>Unsaved changes</source>
+        <translation>Ikke gemte ændringer</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1072"/>
+        <source>Do you want to save changes to the password entry?</source>
+        <translation>Vil du gemme ændringer til denne kodeordspost?</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1077"/>
+        <source>Do you want to save changes to the password group?</source>
+        <translation>Vil du gemme ændringer til denne kodeordsgruppe?</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1082"/>
+        <source>Do you want to save changes to database settings?</source>
+        <translation>Vil du gemme ændringer til databaseindstillinger?</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1087"/>
+        <source>Do you want to save changed settings values?</source>
+        <translation>Ønsker du at gemme de ændrede indstillinger?</translation>
+    </message>
+</context>
+<context>
+    <name>MovePasswordEntryDialog</name>
+    <message>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="69"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
         <translation type="unfinished">Accepter</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1024"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Cancel</source>
         <translation type="unfinished">Afbryd</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1031"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="77"/>
         <source>Move &quot;%1&quot; into following group:</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1186"/>
-        <source>Yes</source>
-        <translation>Ja</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1187"/>
-        <source>No</source>
-        <translation>Nej</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1188"/>
-        <source>Unsaved changes</source>
-        <translation>Ikke gemte ændringer</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1216"/>
-        <source>Do you want to save changes to the password entry?</source>
-        <translation>Vil du gemme ændringer til denne kodeordspost?</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1221"/>
-        <source>Do you want to save changes to the password group?</source>
-        <translation>Vil du gemme ændringer til denne kodeordsgruppe?</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1226"/>
-        <source>Do you want to save changes to database settings?</source>
-        <translation>Vil du gemme ændringer til databaseindstillinger?</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="1231"/>
-        <source>Do you want to save changed settings values?</source>
-        <translation>Ønsker du at gemme de ændrede indstillinger?</translation>
     </message>
 </context>
 <context>

@@ -4,7 +4,7 @@
 #include "AbstractDatabaseInterface.h"
 
 // This abstract class is used to specify a factory method which creates a database instance.
-// Due to separating the name spaces of each database implementation (Keepass 1 and Keepass 2)
+// Due to separating code bases of each database implementation (Keepass 1 and Keepass 2)
 // the actual instance of the specific database object is done in the contrete
 // implementation of the different database factories.
 
