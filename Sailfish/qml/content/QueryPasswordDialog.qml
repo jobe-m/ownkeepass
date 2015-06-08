@@ -52,8 +52,9 @@ Dialog {
 
         PullDownMenu {
             id: queryPasswordMenu
-            MenuLabel {
-                text: applicationWindow.databaseUiName
+            SilicaMenuLabel {
+                text: Global.activeDatabase
+                elide: Text.ElideMiddle
             }
         }
 
@@ -235,7 +236,7 @@ Dialog {
                             confirmPasswordField.focus = true
                         } else {
                             // set database name for pulley menu on opening database
-                            applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + dbFilePath
+                            Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
                             parent.focus = true
                             accept()
                             close()
@@ -277,7 +278,7 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked: {
                     // set database name for pulley menu on creating database
-                    applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + dbFilePath
+                    Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
                     parent.focus = true
                     accept()
                     close()

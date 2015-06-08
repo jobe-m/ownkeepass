@@ -166,27 +166,27 @@
 <context>
     <name>DatabaseMenu</name>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="44"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
         <source>Hide search</source>
         <translation>隐藏搜索</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="44"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
         <source>Show search</source>
         <translation>显示搜索</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="53"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="54"/>
         <source>Database settings</source>
         <translation>数据库设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="62"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="63"/>
         <source>New password group</source>
         <translation>新密码组</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="71"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="72"/>
         <source>New password entry</source>
         <translation>新密码词条</translation>
     </message>
@@ -653,24 +653,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>尚未选择</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="116"/>
+        <location filename="../qml/scripts/Global.js" line="118"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>设备存储</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="118"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>SD Card</source>
         <translation>SD卡</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="122"/>
         <source>Android Storage</source>
         <translation>安卓存储：</translation>
     </message>
@@ -874,27 +874,32 @@
 <context>
     <name>LockPage</name>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="61"/>
+        <location filename="../qml/content/LockPage.qml" line="52"/>
+        <source>Close Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="75"/>
         <source>Password Safe</source>
         <translation>密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="71"/>
+        <location filename="../qml/content/LockPage.qml" line="85"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>使用主密码前3位解锁你的“密码安全”：</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="167"/>
+        <location filename="../qml/content/LockPage.qml" line="181"/>
         <source>You have %1 tries left</source>
         <translation>剩余%1次尝试机会</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="169"/>
+        <location filename="../qml/content/LockPage.qml" line="183"/>
         <source>You have one try left</source>
         <translation>剩余一次尝试机会</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="171"/>
+        <location filename="../qml/content/LockPage.qml" line="185"/>
         <source>Wrong unlock code</source>
         <translation>解锁码错误</translation>
     </message>
@@ -902,22 +907,22 @@
 <context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="72"/>
+        <location filename="../qml/Main.qml" line="69"/>
         <source>ownKeepass got updated</source>
         <translation>ownKeepass已升级</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="73"/>
+        <location filename="../qml/Main.qml" line="70"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
         <translation>新版本%1已经安装到你的手机。你可以在修改日志中查看详细信息。</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="82"/>
+        <location filename="../qml/Main.qml" line="79"/>
         <source>Problem with SD card</source>
         <translation>SD卡错误</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="83"/>
+        <location filename="../qml/Main.qml" line="80"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>不支持多分区的SD卡</translation>
     </message>
@@ -1231,75 +1236,75 @@
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>请指定新的Keepass数据库文件：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>请选择一个已存在的Keepass数据库文件：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
         <source>Use key file</source>
         <translation>使用关键字文件</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="75"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="152"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>开启此项以对你的新Keepass数据库同时使用关键字文件和主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
         <source>Master password</source>
         <translation>主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="227"/>
         <source>Enter master password</source>
         <translation>输入主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="273"/>
         <source>Confirm password</source>
         <translation>确认密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
         <source>Create</source>
         <translation>创建</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
         <source>New Password Safe</source>
         <translation>新的密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="299"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="300"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>输入主密码来锁定新的Keepass“密码安全”：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="313"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="332"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
         <source>Open</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="334"/>
         <source>Password Safe</source>
         <translation>密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="320"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="337"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>输入主密码来解锁你的Keepass“密码安全”：</translation>
     </message>

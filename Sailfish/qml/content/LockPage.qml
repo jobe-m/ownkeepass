@@ -47,6 +47,20 @@ Page {
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Close Database")
+                onClicked: {
+                    pageStack.pop(mainPage)
+                }
+            }
+
+            SilicaMenuLabel {
+                text: Global.activeDatabase
+                elide: Text.ElideMiddle
+            }
+        }
+
         ApplicationMenu {
             disableSettingsItem: true
         }
@@ -54,7 +68,7 @@ Page {
         Column {
             id: col
             width: parent.width
-            spacing: -20
+            spacing: -23
 
             PageHeaderExtended {
                 title: "ownKeepass"

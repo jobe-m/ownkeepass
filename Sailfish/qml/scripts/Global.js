@@ -77,6 +77,8 @@ var enableDatabaseLock = false
 // 0 means the master groups are shown
 var activeGroupId = 0
 
+// String which is shown as label in top pulley menu
+var activeDatabase = ""
 
 var env = {
     mainPage: undefined,

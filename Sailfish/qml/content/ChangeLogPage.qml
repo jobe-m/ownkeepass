@@ -55,6 +55,14 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.6 Move password entries</b>\
+<ul>\
+<li>Password entries can be moved between groups now</li>\
+<li>Updated icon look in list views</li>\
+<li>Database can be directly closed from lock screen</li>\
+<li>Added elide mode to top menu label (fixes too long database path running out of the screen)</li>\
+</ul>\
+<br>\
 <b>v1.1.5 Sorting and file filter</b>\
 <ul>\
 <li>Password entries and groups in list view are now sorted alphabetically per default</li>\

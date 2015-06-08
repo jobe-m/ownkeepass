@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../common"
 import "../scripts/Global.js" as Global
 
 PullDownMenu {
@@ -74,8 +75,9 @@ PullDownMenu {
         }
     }
 
-    MenuLabel {
+    SilicaMenuLabel {
         id: databaseMenuLabel
         enabled: text !== ""
+        elide: Text.ElideMiddle
     }
 }

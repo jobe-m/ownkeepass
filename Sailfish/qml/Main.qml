@@ -36,9 +36,6 @@ ApplicationWindow
     // For accessing info popup from everywhere make it global for the application
     property InfoPopup infoPopupRef: infoPopup
 
-    // application global properties
-    property string databaseUiName: ""
-
     initialPage: mainPageContainer
     cover: coverPage
 

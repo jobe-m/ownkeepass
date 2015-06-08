@@ -166,27 +166,27 @@
 <context>
     <name>DatabaseMenu</name>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="44"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
         <source>Hide search</source>
         <translation>Ocultar búsqueda</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="44"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
         <source>Show search</source>
         <translation>Mostrar búsqueda</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="53"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="54"/>
         <source>Database settings</source>
         <translation>Ajustes de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="62"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="63"/>
         <source>New password group</source>
         <translation>Nuevo grupo de contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="71"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="72"/>
         <source>New password entry</source>
         <translation>Nuevo registro de contraseña</translation>
     </message>
@@ -653,24 +653,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>No hay nada seleccionado aún</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="116"/>
+        <location filename="../qml/scripts/Global.js" line="118"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Memoria del teléfono</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="118"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>SD Card</source>
         <translation>Tarjeta SD</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="122"/>
         <source>Android Storage</source>
         <translation>Almacenamiento Android</translation>
     </message>
@@ -873,27 +873,32 @@
 <context>
     <name>LockPage</name>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="61"/>
+        <location filename="../qml/content/LockPage.qml" line="52"/>
+        <source>Close Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="75"/>
         <source>Password Safe</source>
         <translation>Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="71"/>
+        <location filename="../qml/content/LockPage.qml" line="85"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Desbloquea tu Protección de Contraseñas con los tres primeros caracteres de tu contraseña maestra:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="167"/>
+        <location filename="../qml/content/LockPage.qml" line="181"/>
         <source>You have %1 tries left</source>
         <translation>Te quedan %1 intentos</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="169"/>
+        <location filename="../qml/content/LockPage.qml" line="183"/>
         <source>You have one try left</source>
         <translation>Te queda un intento</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="171"/>
+        <location filename="../qml/content/LockPage.qml" line="185"/>
         <source>Wrong unlock code</source>
         <translation>Código de desbloqueo erróneo</translation>
     </message>
@@ -901,22 +906,22 @@
 <context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="72"/>
+        <location filename="../qml/Main.qml" line="69"/>
         <source>ownKeepass got updated</source>
         <translation>ownKeepass se ha actualizado</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="73"/>
+        <location filename="../qml/Main.qml" line="70"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
         <translation>La nueva versión %1 ya está instalada en tu móvil. Echa un visazo al registro de cambios para más detalles. </translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="82"/>
+        <location filename="../qml/Main.qml" line="79"/>
         <source>Problem with SD card</source>
         <translation>Problema con la tarjeta SD</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="83"/>
+        <location filename="../qml/Main.qml" line="80"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>Las tarjetas SD con varias particiones no están soportadas.</translation>
     </message>
@@ -1230,75 +1235,75 @@
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Por favor, especifica un nuevo fichero de la base de datos de Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Por favor, elige un fichero existente de la base de datos de Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
         <source>Use key file</source>
         <translation>Usar fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="75"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="152"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Activa esta opción para usar un fichero de clave conjuntamente con la contraseña maestra en tu nueva base de datos de Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
         <source>Master password</source>
         <translation>Contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="227"/>
         <source>Enter master password</source>
         <translation>Introduce la contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="273"/>
         <source>Confirm password</source>
         <translation>Confirmar contraseña</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
         <source>Create</source>
         <translation>Crear</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
         <source>New Password Safe</source>
         <translation>Nueva Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="299"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="300"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Introduce una contraseña maestra para bloquear tu nueva Protección de Contraseñas Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="313"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="332"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="334"/>
         <source>Password Safe</source>
         <translation>Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="320"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="337"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Introduce la contraseña maestra para desbloquear tu Protección de Contraseñas Keepass:</translation>
     </message>

@@ -378,7 +378,7 @@ Page {
         onDatabaseDetailsLoaded: { // returns: databaseExists, ...
             if (databaseExists) {
                 // Set database name in global object for pulley menu on query password page
-                applicationWindow.databaseUiName = Global.getLocationName(dbLocation) + " " + dbFilePath
+                Global.activeDatabase = Global.getLocationName(dbLocation) + " " + dbFilePath
                 mainPageFlickable.state = "OPEN_DATABASE"
                 // set db location, path and keyfile stuff
                 internal.setDatabaseInfo(dbLocation,
@@ -387,7 +387,7 @@ Page {
                                          keyFileLocation,
                                          keyFilePath)
             } else {
-                applicationWindow.databaseUiName = Global.getLocationName(1) + " Documents/ownkeepass/notes.kdb"
+                Global.activeDatabase = Global.getLocationName(1) + " Documents/ownkeepass/notes.kdb"
                 mainPageFlickable.state = "CREATE_NEW_DATABASE"
                 // set default db location, path and no keyfile
                 internal.setDatabaseInfo(1,
@@ -542,7 +542,7 @@ Page {
                                                  internal.keyFileLocation,
                                                  internal.keyFilePath)
             // Set database name in global object for pulley menu on groups and entries pages
-            applicationWindow.databaseUiName = Global.getLocationName(dbFileLocation) + " " + databasePath
+            Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + databasePath
             // Get database name and set on cover page for create new and open database states
             applicationWindow.cover.title = databasePath.substring(
                         databasePath.lastIndexOf("/") + 1, databasePath.length)
@@ -973,7 +973,7 @@ Page {
 
             onClicked: {
                 // Set database name in global object for pulley menu on query password page
-                applicationWindow.databaseUiName = Global.getLocationName(model.databaseLocation) + " " + model.databaseFilePath
+                Global.activeDatabase = Global.getLocationName(model.databaseLocation) + " " + model.databaseFilePath
                 pageStack.push(queryPasswordDialogComponent,
                                { "state": "OpenRecentDatabase",
                                  "dbFileLocation": model.databaseLocation,

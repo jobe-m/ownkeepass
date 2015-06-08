@@ -98,9 +98,9 @@ Page {
                 }
             }
 
-            MenuLabel {
-                enabled: text !== ""
-                text: applicationWindow.databaseUiName
+            SilicaMenuLabel {
+                text: Global.activeDatabase
+                elide: Text.ElideMiddle
             }
         }
 

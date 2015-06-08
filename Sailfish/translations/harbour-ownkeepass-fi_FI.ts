@@ -166,27 +166,27 @@
 <context>
     <name>DatabaseMenu</name>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="44"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
         <source>Hide search</source>
         <translation>Piilota haku</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="44"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
         <source>Show search</source>
         <translation>Näytä haku</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="53"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="54"/>
         <source>Database settings</source>
         <translation>Tietokannan asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="62"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="63"/>
         <source>New password group</source>
         <translation>Uusi salasanaryhmä</translation>
     </message>
     <message>
-        <location filename="../qml/content/DatabaseMenu.qml" line="71"/>
+        <location filename="../qml/content/DatabaseMenu.qml" line="72"/>
         <source>New password entry</source>
         <translation>Uusi salasana-tiedosto</translation>
     </message>
@@ -653,24 +653,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="113"/>
+        <location filename="../qml/scripts/Global.js" line="115"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Mitään ei ole vielä merkitty valituksi</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="116"/>
+        <location filename="../qml/scripts/Global.js" line="118"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Laitteen muisti</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="118"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>SD Card</source>
         <translation>SD-kortti</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="122"/>
         <source>Android Storage</source>
         <translation>Android-muisti</translation>
     </message>
@@ -875,27 +875,32 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>LockPage</name>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="61"/>
+        <location filename="../qml/content/LockPage.qml" line="52"/>
+        <source>Close Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/LockPage.qml" line="75"/>
         <source>Password Safe</source>
         <translation>Salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="71"/>
+        <location filename="../qml/content/LockPage.qml" line="85"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Avaa salasanasovellus antamalla 3 ensimmäistä merkkiä pääsalasanasta:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="167"/>
+        <location filename="../qml/content/LockPage.qml" line="181"/>
         <source>You have %1 tries left</source>
         <translation>Sinulla on %1 yritystä jäljellä</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="169"/>
+        <location filename="../qml/content/LockPage.qml" line="183"/>
         <source>You have one try left</source>
         <translation>sinulla on yksi yritys jäljellä</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="171"/>
+        <location filename="../qml/content/LockPage.qml" line="185"/>
         <source>Wrong unlock code</source>
         <translation>Väärä avauskoodi</translation>
     </message>
@@ -903,22 +908,22 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="72"/>
+        <location filename="../qml/Main.qml" line="69"/>
         <source>ownKeepass got updated</source>
         <translation>ownKeepass on päivitetty</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="73"/>
+        <location filename="../qml/Main.qml" line="70"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
         <translation>Uusi version %1 on nyt asennettu puhelimeesi.  Katso muutoslokia lisätietojen saamiseksi.</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="82"/>
+        <location filename="../qml/Main.qml" line="79"/>
         <source>Problem with SD card</source>
         <translation>Ongelma SD-kortin kanssa</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="83"/>
+        <location filename="../qml/Main.qml" line="80"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>SD-kortteja, joissa on useampi kuin yksi osio, ei tueta</translation>
     </message>
@@ -1232,75 +1237,75 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Valitse uusi Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Valitse Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="150"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
         <source>Use key file</source>
         <translation>Käytä avaintiedostoa</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="74"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="75"/>
         <source>Cancel</source>
         <translation>Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="151"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="152"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Aseta tämä käyttääksesi avaintiedosta pääsalasanan kanssa uuden Keepass tietokannan luomisessa</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
         <source>Master password</source>
         <translation>Pääsalasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="226"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="227"/>
         <source>Enter master password</source>
         <translation>Anna pääsalasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="272"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="273"/>
         <source>Confirm password</source>
         <translation>Vahvista salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
         <source>Create</source>
         <translation>Luo</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="294"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="295"/>
         <source>New Password Safe</source>
         <translation>Uusi salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="299"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="300"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Anna pääsalasana lukitaksesi uusi Keepass salasanatiedostosi:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="313"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="332"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
         <source>Open</source>
         <translation>Avaa</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="333"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="334"/>
         <source>Password Safe</source>
         <translation>Salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="320"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="337"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Anna pääsalasana avataksesi Keepass salasanatiedostosi:</translation>
     </message>

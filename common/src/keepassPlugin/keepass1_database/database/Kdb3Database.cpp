@@ -1629,9 +1629,7 @@ QList<IGroupHandle*> Kdb3Database::sortedGroups(){
     for(int i=0;i<RootGroup.Children.size();i++){
         sortedChildren << RootGroup.Children[i]->Handle;
     }
-    qDebug() << "befor sort: " << sortedChildren;
     qSort(sortedChildren.begin(),sortedChildren.end(),GroupHandleLessThanStd);
-    qDebug() << "after sort: " << sortedChildren;
     // now go through the list of sorted children
     for(int i=0;i<sortedChildren.size();i++){
         sortedGroups << sortedChildren[i];

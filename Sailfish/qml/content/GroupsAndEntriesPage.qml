@@ -206,7 +206,7 @@ Page {
 
         DatabaseMenu {
             id: databaseMenu
-            menuLabelText: applicationWindow.databaseUiName
+            menuLabelText: Global.activeDatabase
 
             onNewPasswordGroupClicked: {
                 // empty searchField

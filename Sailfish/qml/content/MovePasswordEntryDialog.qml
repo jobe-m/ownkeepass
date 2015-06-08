@@ -38,7 +38,7 @@ Dialog {
     // Name of password entry to show in dialog cation text
     property string nameOfPasswordEntry: ""
     //
-    property KdbEntry kdbEntryToMove: null
+    property KdbEntry kdbEntryToMove
 
     // forbit page navigation if new group is not yet selected
     canNavigateForward: newGroupId !== 0
@@ -57,9 +57,9 @@ Dialog {
         anchors.fill: parent
 
         PullDownMenu {
-            MenuLabel {
-                enabled: text !== ""
-                text: applicationWindow.databaseUiName
+            SilicaMenuLabel {
+                text: Global.activeDatabase
+                elide: Text.ElideMiddle
             }
         }
 
