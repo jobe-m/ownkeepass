@@ -194,63 +194,63 @@
 <context>
     <name>EditDatabaseSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="78"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="85"/>
         <source>Database Settings</source>
         <translation>Paramètres de la base de données</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="76"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="83"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="84"/>
         <source>Discard</source>
         <translation>Rejeter</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="89"/>
         <source>Change settings of your currently opened Keepass database here</source>
         <translation>Modifier ici les paramètres de votre base de données Keepass ouverte</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="97"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
         <translation>Remarque : en modifiant le mot de passe principal ici, vous devrez vous en souvenir lorsque vous ouvrirez la base de données Keepass !</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="107"/>
         <source>Master password</source>
         <translation>Mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="102"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="109"/>
         <source>Change master password</source>
         <translation>Changer le mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="134"/>
         <source>Master password confirmed</source>
         <translation>Mot de passe principal confirmé</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="129"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
         <source>Confirm master password</source>
         <translation>Confirmer le mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="143"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="150"/>
         <source>Encryption currently in use:</source>
         <translation>Chiffrement en cours d&apos;utilisation :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="166"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="173"/>
         <source>Key transformation rounds</source>
         <translation>Cycles de transformation de la clé</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="180"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="187"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>En augmentant cette valeur, vous augmentez le délai d&apos;ouverture de la base de données Keepass mais vous la rendez plus robuste contre les attaques par force brute.</translation>
     </message>
@@ -1173,19 +1173,19 @@
 <context>
     <name>MovePasswordEntryDialog</name>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="69"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
         <translation type="unfinished">Accepter</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
         <source>Cancel</source>
         <translation type="unfinished">Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="77"/>
-        <source>Move &quot;%1&quot; into following group:</source>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="78"/>
+        <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

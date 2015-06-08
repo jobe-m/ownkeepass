@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import harbour.ownkeepass.KeepassX1 1.0
+import "../scripts/Global.js" as Global
 
 
 Dialog {
@@ -74,7 +75,7 @@ Dialog {
             id: dialogLabel
             y: header.y + header.height
             width: parent.width
-            text: qsTr("Move \"%1\" into following group:").arg(movePasswordEntryDialog.nameOfPasswordEntry)
+            text: qsTr("Move password entry \"%1\" into following group:").arg(movePasswordEntryDialog.nameOfPasswordEntry)
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
 

@@ -62,6 +62,13 @@ Dialog {
 
         VerticalScrollDecorator {}
 
+        PullDownMenu {
+            SilicaMenuLabel {
+                text: Global.activeDatabase
+                elide: Text.ElideMiddle
+            }
+        }
+
         ApplicationMenu {
             helpContent: "DatabaseSettings"
             disableSettingsItem: true

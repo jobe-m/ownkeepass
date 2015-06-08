@@ -194,63 +194,63 @@
 <context>
     <name>EditDatabaseSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="78"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="85"/>
         <source>Database Settings</source>
         <translation>数据库设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="76"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="83"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="84"/>
         <source>Discard</source>
         <translation>放弃</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="82"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="89"/>
         <source>Change settings of your currently opened Keepass database here</source>
         <translation>在这里修改你当前打开的Keepass数据库设定</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="97"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
         <translation>注：请记住在这里修改的主密码，你需要在下次打开Keepass数据库时用到它！</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="107"/>
         <source>Master password</source>
         <translation>主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="102"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="109"/>
         <source>Change master password</source>
         <translation>修改主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="134"/>
         <source>Master password confirmed</source>
         <translation>主密码已确认</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="127"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="129"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
         <source>Confirm master password</source>
         <translation>确认主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="143"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="150"/>
         <source>Encryption currently in use:</source>
         <translation>当前使用的加密方式</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="166"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="173"/>
         <source>Key transformation rounds</source>
         <translation>关键字转换算法</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="180"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="187"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>增加这个值将延长打开Keepass数据库的时间，但可以更好地防范暴力破解</translation>
     </message>
@@ -1174,19 +1174,19 @@
 <context>
     <name>MovePasswordEntryDialog</name>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="69"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
         <translation type="unfinished">接收</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="77"/>
-        <source>Move &quot;%1&quot; into following group:</source>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="78"/>
+        <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
