@@ -154,12 +154,12 @@ Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more 
 Screenshots
 -----------
 
-![ownKeepass main mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_MainPage2.jpg)
-![ownKeepass main page expert mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_MainPageExpertMode2.jpg)
-![ownKeepass query master password](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_QueryMasterPassword2.jpg)
-![ownKeepass group view](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_GroupView2.jpg)
-![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_SearchPage2.jpg)
-![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_ShowEntryPage2.jpg)
-![ownKeepass password generator page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_PasswordGeneratorPage2.jpg)
-![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_DatabaseSettings2.jpg)
-![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownKeepass_Cover2.jpg)
+![ownKeepass main mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_1.png)
+![ownKeepass main page expert mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_2.png)
+![ownKeepass query master password](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_3.png)
+![ownKeepass group view](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_4.png)
+![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_5.png)
+![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_6.png)
+![ownKeepass password generator page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_7.png)
+![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_8.png)
+![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_9.png)
