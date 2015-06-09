@@ -847,15 +847,6 @@
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Přijmout</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Zrušit</translation>
-    </message>
 </context>
 <context>
     <name>LicensePage</name>
@@ -1124,15 +1115,6 @@
         <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>An error occured on closing your database:</source>
         <translation>Při zavírání databáze se vyskytla chyba:</translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Přijmout</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Zrušit</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>

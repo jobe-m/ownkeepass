@@ -452,7 +452,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="171"/>
         <source>Inactivity lock time</source>
-        <translation type="unfinished"></translation>
+        <translation>Inaktivitet låsetid</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="188"/>
@@ -589,13 +589,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Skjul fil filter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Vis fil filter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
@@ -621,12 +621,12 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil filter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Sæt fil filter</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
@@ -846,15 +846,6 @@
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Accepter</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Afbryd</translation>
     </message>
 </context>
 <context>
@@ -1124,15 +1115,6 @@
         <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>An error occured on closing your database:</source>
         <translation>En fejl opstod ved lukningen af din database:</translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Accepter</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Afbryd</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>

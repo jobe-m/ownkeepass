@@ -589,13 +589,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Piilota tiedostosuodatin</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Näytä tiedostosuodatin</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
@@ -621,12 +621,12 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostosuodatin</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Aseta tiedostosuodatin</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
@@ -847,16 +847,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Hyväksy</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Peruuta</translation>
+        <translation>Siirrä</translation>
     </message>
 </context>
 <context>
@@ -877,7 +868,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/LockPage.qml" line="52"/>
         <source>Close Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Sulje tietokanta</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="75"/>
@@ -1128,15 +1119,6 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Virhe tapahtui sulkiessa tietokantaasi:</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Hyväksy</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Peruuta</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Yes</source>
         <translation>Kyllä</translation>
@@ -1178,17 +1160,17 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="unfinished">Hyväksy</translation>
+        <translation>Hyväksy</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
         <source>Cancel</source>
-        <translation type="unfinished">Peruuta</translation>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="78"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä salasana &quot;%1&quot;  tähän ryhmään:</translation>
     </message>
 </context>
 <context>

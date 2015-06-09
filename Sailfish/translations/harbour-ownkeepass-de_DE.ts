@@ -845,12 +845,7 @@
         <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Übernehmen</translation>
+        <translation>Verschieben</translation>
     </message>
 </context>
 <context>
@@ -871,7 +866,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="52"/>
         <source>Close Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbank schließen</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="75"/>
@@ -1122,11 +1117,6 @@
         <translation>Beim Schliessen der Datenbank ist ein Fehler aufgetreten:</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Übernehmen</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Yes</source>
         <translation>Ja</translation>
@@ -1168,17 +1158,17 @@
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="unfinished">Übernehmen</translation>
+        <translation>Übernehmen</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="78"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Den Passworteintrag &quot;%1&quot; in folgende Gruppe verschieben:</translation>
     </message>
 </context>
 <context>

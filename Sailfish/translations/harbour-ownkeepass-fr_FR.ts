@@ -16,7 +16,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="57"/>
         <source>ownKeepass is a Keepass 1.x compatible password safe application</source>
-        <translation>ownKeepass est une application de gestion de mot de passe compatbile Keepass 1.x</translation>
+        <translation>ownKeepass est une application de gestion de mot de passe compatible Keepass 1.x</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="65"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="73"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation>ownKeepass est distribué confromément aux règles de Licence Publique Générale GNU (GPL) version 2 ou (au choix) version 3</translation>
+        <translation>ownKeepass est distribué conformément aux règles de Licence Publique Générale GNU (GPL) version 2 ou (au choix) version 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="86"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="345"/>
         <source>Search for password entries</source>
-        <translation>Rechercher de doonées de mots de passe</translation>
+        <translation>Rechercher un de mot de passe</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="358"/>
@@ -206,7 +206,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="84"/>
         <source>Discard</source>
-        <translation>Rejeter</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="89"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
         <source>Discard</source>
-        <translation>Rejeter</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
@@ -321,7 +321,7 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="211"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
         <source>Verify password</source>
-        <translation>Vérifier un mot de passe</translation>
+        <translation>Confirmez le mot de passe</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="246"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
         <source>Discard</source>
-        <translation>Rejeter</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
@@ -377,7 +377,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="89"/>
         <source>Discard</source>
-        <translation>Rejeter</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="90"/>
@@ -788,7 +788,7 @@
     <message>
         <location filename="../qml/help/HelpMasterGroupsPage.qml" line="27"/>
         <source>This page is showing main password groups of your Keepass database. A password group is a container for password entries. Thus in order to store a password entry you need to create at least one group first.&lt;br&gt;&lt;br&gt;You can use main password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette page affiche les groupes de mots de passe principaux de votre base de données Keepass. Un groupe de mots de passe contient vos mots de passe et des sous-groupes. Pour stocker un mot de passe, vous devez tout d&apos;abord créer un groupe.&lt;br&gt;&lt;br&gt;Les groupes permettent d&apos;organiser vos mots de passe. Par exemple, créez un groupe pour vos &quot;Sites de e-commerce&quot;, &quot;Comptes Email&quot;, &quot;Réseaux sociaux&quot;, etc.&lt;br&gt;&lt;br&gt;Un champ de recherche peut être affiché depuis le Pulley menu, il apparaitra en haut de la liste des groupes. Il permet de chercher des mots de passe dans toute la base de données Keepass. Si vous voulez que le champ de recherche soit automatiquement sélectionné quand vous ouvrez la base de données Keepass, une option est disponible dans les paramètres.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -845,16 +845,7 @@
         <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Accepter</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Annuler</translation>
+        <translation>Déplacer</translation>
     </message>
 </context>
 <context>
@@ -875,7 +866,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="52"/>
         <source>Close Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer la base de donnée</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="75"/>
@@ -1126,15 +1117,6 @@
         <translation>Une erreur est survenue en fermant la base de données :</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Accepter</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Annuler</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Yes</source>
         <translation>Oui</translation>
@@ -1176,17 +1158,17 @@
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="unfinished">Accepter</translation>
+        <translation>Accepter</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="78"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Déplacer le mot de passe &quot;%1&quot; dans le groupe suivant :</translation>
     </message>
 </context>
 <context>
@@ -1199,7 +1181,7 @@
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
         <source>Discard</source>
-        <translation>Rejeter</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="87"/>

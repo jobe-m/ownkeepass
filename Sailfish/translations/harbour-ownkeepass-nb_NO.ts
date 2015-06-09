@@ -168,7 +168,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
         <source>Hide search</source>
-        <translation>Skjul søk</translation>
+        <translation>Skjul søkefelt</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="45"/>
@@ -349,7 +349,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="67"/>
         <source>Type in a name for the new group:</source>
-        <translation>Angi et navn for den nye gruppa:</translation>
+        <translation>Angi navn for den nye gruppa:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="68"/>
@@ -589,13 +589,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="123"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Skjul filmaske</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="125"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Vis filmaske</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="135"/>
@@ -621,12 +621,12 @@
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="208"/>
         <source>File filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Filmaske</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="209"/>
         <source>Set file filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Sett filmaske</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="261"/>
@@ -764,7 +764,7 @@
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changed &quot;home drive on the phone&quot; to &quot;Device Memory&quot;, removed section for &quot;Open automatically&quot;</extracomment>
-        <translation>På denne siden kan du lage en ny database der ownKeepass vil lagre dine sensitive data.&lt;br&gt;&lt;br&gt;Åpne filbehandleren og velg en katalog, og angi et filnavn. Du kan velge å plassere databasen i enhetsminnet, på SD-kortet eller i Android-lagringsplassen. Hvis &apos;SD-kort&apos; er deaktivert er det ikke satt inn noe SD-kort eller kortet blir ikke oppfattet korrekt av systemet. Det må være bare en formattert partisjon på SD-kortet. SD-kort med flere partisjoner støttes ikke av ownKeepass. &apos;Android-lagringsplass&apos; kan velges for å dele databasen med Androidprogrammer. Vær imidlertid klar over at det kan være problematisk å dele filer med Androidprogrammer på grunn av ulikt eierskap og ulike rettigheter til filene.&lt;br&gt;&lt;br&gt;Råd: Hvis du lagrer databasen på internett (i skyen), bruk en en lokalt lagret nøkkelfil i tillegg til hovedpassordet. Nøkkelfila bør du ikke laste opp til internett (skytjenesten)..&lt;br&gt;&lt;br&gt;&lt;b&gt;Bruk nøkkelfil&lt;/b&gt;&lt;br&gt;&lt;br&gt;En nøkkelfil kan brukes i tillegg til hovedpassord for å beskytte databasen. De to brukes sammen for å generere en nøkkel som åpner databasen. Ved å bruke en fil med stor datamengde blir den genererte nøkkelen i prinsippet bedre. Du kan for eksempel bruke et tilfeldig bilde som nøkkelfil.&lt;br&gt;&lt;b&gt;Hovedpassord&lt;/b&gt;&lt;br&gt;&lt;br&gt;Her skriver du passordet for din nye Keepass-database. Bruk et passord på minst 10-15 tegn med en blanding av små og store bokstaver, tall, og spesialtegn. Gjenta passordet i feltet &apos;Bekreft passord&apos;.&lt;br&gt;&lt;br&gt;</translation>
+        <translation>På denne siden kan du lage en ny database der ownKeepass vil lagre dine sensitive data.&lt;br&gt;&lt;br&gt;Åpne filbehandleren velg katalog, og angi filnavn. Du kan velge å plassere databasen i enhetsminnet, på SD-kortet eller i Android-lagringsplassen. Hvis &apos;SD-kort&apos; er deaktivert er det ikke satt inn noe SD-kort eller kortet blir ikke oppfattet korrekt av systemet. Det må være bare en formattert partisjon på SD-kortet. SD-kort med flere partisjoner støttes ikke av ownKeepass. &apos;Android-lagringsplass&apos; kan velges for å dele databasen med Androidprogrammer. Vær imidlertid klar over at det kan være problematisk å dele filer med Androidprogrammer på grunn av ulikt eierskap og ulike rettigheter til filene.&lt;br&gt;&lt;br&gt;Råd: Hvis du lagrer databasen på internett (i skyen), bruk en en lokalt lagret nøkkelfil i tillegg til hovedpassordet. Nøkkelfila bør du ikke laste opp til internett (skytjenesten)..&lt;br&gt;&lt;br&gt;&lt;b&gt;Bruk nøkkelfil&lt;/b&gt;&lt;br&gt;&lt;br&gt;En nøkkelfil kan brukes i tillegg til hovedpassord for å beskytte databasen. De to brukes sammen for å generere en nøkkel som åpner databasen. Ved å bruke en fil med stor datamengde blir den genererte nøkkelen i prinsippet bedre. Du kan for eksempel bruke et tilfeldig bilde som nøkkelfil.&lt;br&gt;&lt;b&gt;Hovedpassord&lt;/b&gt;&lt;br&gt;&lt;br&gt;Her skriver du passordet for din nye Keepass-database. Bruk et passord på minst 10-15 tegn med en blanding av små og store bokstaver, tall, og spesialtegn. Gjenta passordet i feltet &apos;Bekreft passord&apos;.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -845,16 +845,7 @@
         <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Godta</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Avbryt</translation>
+        <translation>Flytt</translation>
     </message>
 </context>
 <context>
@@ -875,7 +866,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="52"/>
         <source>Close Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Lukk database</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="75"/>
@@ -1126,15 +1117,6 @@
         <translation>En feil oppsto når databasen skulle lukkes:</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Godta</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Avbryt</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Yes</source>
         <translation>Ja</translation>
@@ -1176,17 +1158,17 @@
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="unfinished">Godta</translation>
+        <translation>Godkjenn</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
         <source>Cancel</source>
-        <translation type="unfinished">Avbryt</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="78"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytt passordoppføring &quot;%1&quot; til følgende gruppe:</translation>
     </message>
 </context>
 <context>

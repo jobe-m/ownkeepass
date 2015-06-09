@@ -845,16 +845,7 @@
         <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Aceptar</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Cancelar</translation>
+        <translation>Mover</translation>
     </message>
 </context>
 <context>
@@ -875,7 +866,7 @@
     <message>
         <location filename="../qml/content/LockPage.qml" line="52"/>
         <source>Close Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar base de datos</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="75"/>
@@ -913,7 +904,7 @@
     <message>
         <location filename="../qml/Main.qml" line="70"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation>La nueva versión %1 ya está instalada en tu móvil. Echa un visazo al registro de cambios para más detalles. </translation>
+        <translation>La nueva versión %1 ya está instalada en tu móvil. Echa un vistazo al registro de cambios para más detalles. </translation>
     </message>
     <message>
         <location filename="../qml/Main.qml" line="79"/>
@@ -1126,15 +1117,6 @@
         <translation>Ha ocurrido un error al cerrar tu base de datos:</translation>
     </message>
     <message>
-        <source>Accept</source>
-        <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="obsolete">Aceptar</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Cancelar</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Yes</source>
         <translation>Sí</translation>
@@ -1176,17 +1158,17 @@
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="70"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
-        <translation type="unfinished">Aceptar</translation>
+        <translation>Aceptar</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="78"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover el registro de contraseña &quot;%1&quot; al siguiente grupo:</translation>
     </message>
 </context>
 <context>
