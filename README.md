@@ -154,12 +154,12 @@ Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more 
 Screenshots
 -----------
 
-![ownKeepass main mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_1.png)
-![ownKeepass main page expert mode](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_2.png)
-![ownKeepass query master password](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_3.png)
-![ownKeepass group view](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_4.png)
-![ownKeepass search page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_5.png)
-![ownKeepass show entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_6.png)
-![ownKeepass password generator page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_7.png)
-![ownKeepass database settings](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_8.png)
-![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_9.png)
+![ownKeepass main page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_1.png)
+![ownKeepass search in all groups page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_2.png)
+![ownKeepass password generator dialog](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_3.png)
+![ownKeepass lock page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_4.png)
+![ownKeepass move password entry dialog](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_5.png)
+![ownKeepass open new database dialog](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_6.png)
+![ownKeepass password entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_7.png)
+![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_8.png)
+![ownKeepass change log page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_9.png)
