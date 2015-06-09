@@ -6,7 +6,15 @@ ownKeepass
 Status
 ------
 
-Release 1.1.5 available from [openrepos.net] [1] / warehouse app and jolla store
+
+
+Release 1.1.6 available from [openrepos.net] [1] / warehouse app (will be shortly also in jolla store)
+* Password entries can be moved between groups now
+* Updated icon look in list views
+* Database can be directly closed from lock screen
+* Added elide mode to top menu label (fixes too long database path running out of the screen)
+
+Release 1.1.5 available from jolla store
 * Password entries and groups in list view are now sorted alphabetically per default
 * Sorting of list view is switchable in application settings
 * File browser updated with a file filter which can be optionally used to filter for file types
