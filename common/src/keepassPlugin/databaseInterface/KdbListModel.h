@@ -98,7 +98,7 @@ public:
     // Overwrite function to set role names
     virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
 signals:
-    // signals to DatabaseClient global object
+    // signals to database client
     void loadMasterGroups(bool registerListModel);
     void loadGroupsAndEntries(int groupId);
     void unregisterFromDatabaseClient(int modelId);
@@ -110,26 +110,33 @@ signals:
     void searchEntriesCompleted(int result);
     void modelDataChanged();
 
-    // signal for property
+    // signals for properties
     void isEmptyChanged();
 
 public slots:
-    // signal from DatabaseClientWorker
+    // signal from database client
     void slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int itemLevel, int modelId, bool sortAbc);
     void slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId, bool sortAbc);
     void slot_deleteItem(int itemId);
+    void slot_disconnectFromDatabaseClient();
+
+private:
+    void connectToDatabaseClient();
+    void disconnectFromDatabaseClient();
 
 private:
     QList<KdbItem> m_items;
+    // identifier for this list model
+    int m_modelId;
     // number of groups and items in the list view
     int m_numGroups;
     int m_numEntries;
-    // identifier for this list model
-    int m_modelId;
     // indicator if this list model has registered at the global keepass database object
     bool m_registered;
     // identifier of the group from which a search for entries should be performed
     int m_searchRootGroupId;
+    // identifies if this object is conntected to a loaded keepass database
+    bool m_connected;
 };
 
 // inline implementations

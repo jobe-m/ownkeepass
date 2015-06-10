@@ -59,7 +59,7 @@ public:
     Q_INVOKABLE void moveEntry(int newGroupId);
 
 signals:
-    // signal to QML
+    // signals to QML
     void entryDataLoaded(QString title,
                          QString url,
                          QString username,
@@ -78,9 +78,9 @@ signals:
     void entryDeleted(int result);
     void entryMoved(int result);
 
-    // signal to global interface object of the keepass database
+    // signals to interface of database client
     void loadEntryFromKdbDatabase(int entryId);
-    void saveEntrytoKdbDatabase(int entryId,
+    void saveEntryToKdbDatabase(int entryId,
                                 QString title,
                                 QString url,
                                 QString username,
@@ -96,6 +96,7 @@ signals:
     void moveEntryInKdbDatabase(int entryId, int newGroupId);
 
 public slots:
+    // signals from interface of database client
     void slot_entryDataLoaded(int entryId,
                               QString title,
                               QString url,
@@ -110,15 +111,24 @@ public slots:
                               quint32 binarySize,
                               QString friendlySize
                               );
+    void slot_newEntryCreated(int result, int newEntryId);
+    void slot_disconnectFromDatabaseClient();
+
 public:
     KdbEntry(QObject *parent = 0);
     virtual ~KdbEntry() {}
 
-    int getEntryId() const;
-    void setEntryId(int entryId);
+    int getEntryId() const { return m_entryId; }
+    void setEntryId(const int value) { m_entryId = value; }
+
+private:
+    void connectToDatabaseClient();
+    void disconnectFromDatabaseClient();
 
 private:
     int m_entryId;
+    bool m_connected;
+    bool m_new_entry_triggered;
 };
 
 }

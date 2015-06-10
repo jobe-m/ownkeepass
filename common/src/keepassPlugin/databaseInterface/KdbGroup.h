@@ -71,6 +71,8 @@ public:
 
 private:
     int m_groupId;
+    bool m_connected;
+    bool m_new_group_triggered;
 };
 
 }

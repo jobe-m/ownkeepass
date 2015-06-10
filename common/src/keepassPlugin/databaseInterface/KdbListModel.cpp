@@ -33,7 +33,11 @@ KdbListModel::KdbListModel(QObject *parent)
       m_numGroups(0),
       m_numEntries(0),
       m_registered(false),
-      m_searchRootGroupId(0)
+      m_searchRootGroupId(0),
+      m_connected(false)
+{}
+
+void KdbListModel::connectToDatabaseClient()
 {
     // connect signals to backend
     bool ret = connect(this, SIGNAL(loadMasterGroups(bool)),
@@ -66,12 +70,59 @@ KdbListModel::KdbListModel(QObject *parent)
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(searchEntriesCompleted(int)),
                   this, SIGNAL(searchEntriesCompleted(int)));
     Q_ASSERT(ret);
+
+    m_connected = true;
+}
+
+void KdbListModel::disconnectFromDatabaseClient()
+{
+    // connect signals to backend
+    bool ret = disconnect(this, SIGNAL(loadMasterGroups(bool)),
+                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadMasterGroups(bool)));
+    Q_ASSERT(ret);
+    ret = disconnect(this, SIGNAL(loadGroupsAndEntries(int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadGroupsAndEntries(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupsAndEntriesLoaded(int)),
+                  this, SIGNAL(groupsAndEntriesLoaded(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(addItemToListModel(QString, QString, int, int, int, int, bool)),
+                  this, SLOT(slot_addItemToListModel(QString, QString, int, int, int, int, bool)));
+    Q_ASSERT(ret);
+    ret = disconnect(this, SIGNAL(unregisterFromDatabaseClient(int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_unregisterListModel(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(updateItemInListModel(QString, QString, int, int, bool)),
+                  this, SLOT(slot_updateItemInListModel(QString, QString, int, int, bool)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(masterGroupsLoaded(int)),
+                  this, SIGNAL(masterGroupsLoaded(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(deleteItemInListModel(int)),
+                  this, SLOT(slot_deleteItem(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(this, SIGNAL(searchEntries(QString,int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_searchEntries(QString,int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(searchEntriesCompleted(int)),
+                  this, SIGNAL(searchEntriesCompleted(int)));
+    Q_ASSERT(ret);
+
+    m_connected = false;
+    m_registered = false;
 }
 
 KdbListModel::~KdbListModel()
 {
     if (m_registered) {
         emit unregisterFromDatabaseClient(m_modelId);
+    }
+}
+
+void KdbListModel::slot_disconnectFromDatabaseClient()
+{
+    if (m_connected) {
+        disconnectFromDatabaseClient();
     }
 }
 
@@ -188,6 +239,9 @@ void KdbListModel::loadMasterGroupsFromDatabase()
     if (!isEmpty()) {
         clear();
     }
+    if (!m_connected) {
+        connectToDatabaseClient();
+    }
     if (m_registered) {
         emit unregisterFromDatabaseClient(m_modelId);
         m_registered = false;
@@ -201,6 +255,9 @@ void KdbListModel::loadGroupListFromDatabase()
     // make list view empty and unregister if necessary
     if (!isEmpty()) {
         clear();
+    }
+    if (!m_connected) {
+        connectToDatabaseClient();
     }
     if (m_registered) {
         emit unregisterFromDatabaseClient(m_modelId);
@@ -219,6 +276,9 @@ void KdbListModel::loadGroupsAndEntriesFromDatabase(int groupId)
     // make list view empty and unregister if necessary
     if (!isEmpty()) {
         clear();
+    }
+    if (!m_connected) {
+        connectToDatabaseClient();
     }
     if (m_registered) {
         emit unregisterFromDatabaseClient(m_modelId);
@@ -296,6 +356,9 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
     // make list view empty and unregister if necessary
     if (!isEmpty()) {
         clear();
+    }
+    if (!m_connected) {
+        connectToDatabaseClient();
     }
     if (m_registered) {
         emit unregisterFromDatabaseClient(m_modelId);

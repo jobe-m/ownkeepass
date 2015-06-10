@@ -25,6 +25,7 @@
 
 #include <QObject>
 #include <QFile>
+#include "private/AbstractDatabaseFactory.h"
 
 namespace kpxPublic {
 
@@ -33,6 +34,7 @@ class KdbDatabase : public QObject
     Q_OBJECT
 
 public:
+    Q_ENUMS(eDatabaseType)
     Q_ENUMS(eResult)
 
     Q_PROPERTY(int keyTransfRounds READ keyTransfRounds WRITE setKeyTransfRounds NOTIFY keyTransfRoundsChanged)
@@ -41,14 +43,18 @@ public:
     Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView STORED true SCRIPTABLE true)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
-    Q_INVOKABLE void open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
-    Q_INVOKABLE void create(const QString& dbFilePath, const QString &keyFilePath, const QString& password);
+    Q_INVOKABLE void open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
+    Q_INVOKABLE void create(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password);
     Q_INVOKABLE void close();
-    Q_INVOKABLE void lock();
-    Q_INVOKABLE void unlock(const QString& password);
     Q_INVOKABLE void changePassword(const QString& password, const QString &keyFile);
 
 public:
+    enum eDatabaseType {
+        DB_TYPE_UNKNOWN = DATABASE_UNKNOWN_TYPE,
+        DB_TYPE_KEEPASS_1 = DATABASE_KEEPASS_1,
+        DB_TYPE_KEEPASS_2 = DATABASE_KEEPASS_2,
+    };
+
     enum eResult {
         RE_OK = 0,                                  // no error
         RE_DB_OPEN,                                 // other database is currently open, close it first
@@ -114,6 +120,10 @@ private slots:
             emit cryptAlgorithmChanged();
         }
     }
+    void slot_databaseClosed();
+
+private:
+    void connectToDatabaseClient();
 
 private:
     // The following properties are read from backend and therefore there are slots for it
@@ -123,12 +133,10 @@ private:
     bool m_showUserNamePasswordsInListView;
     bool m_sortAlphabeticallyInListView;
 
-    // Save database details for unlocking
-    bool m_isLocked;
-    QString m_dbFilePath;
-    QString m_keyFilePath;
     bool m_readOnly;
 
+    bool m_connected;
+    int m_database_type;
     Q_DISABLE_COPY(KdbDatabase)
 };
 

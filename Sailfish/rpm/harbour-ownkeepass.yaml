@@ -17,8 +17,10 @@ PkgConfigBR:
 - Qt5Core
 - Qt5Qml
 - Qt5Quick
+- libgcrypt
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
+- libgcrypt
 Files:
 - /usr/share/icons/hicolor/86x86/apps
 - /usr/share/applications

@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2012 - 2015 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -53,10 +53,10 @@ signals:
     void errorOccured(int result, QString errorMsg);
 
     // signals to KdbListModel object
-    void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int modelId);
+    void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId, bool sortAbc);
     void masterGroupsLoaded(int result);
     void groupsAndEntriesLoaded(int result);
-    void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId);
+    void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId, bool sortAbc);
     void deleteItemInListModel(int itemId);
     void searchEntriesCompleted(int result);
 
@@ -78,6 +78,7 @@ signals:
     void entrySaved(int result);
     void newEntryCreated(int result, int entryId);
     void entryDeleted(int result);
+    void entryMoved(int result);
 
     // signal to KdbGroup object
     void groupLoaded(QString title);
@@ -94,10 +95,11 @@ public slots:
     void slot_changePassKey(QString password, QString keyFile);
     void slot_changeKeyTransfRounds(int value);
     void slot_changeCryptAlgorithm(int value);
-    void slot_setting_showUserNamePasswordsInListView(bool value);
+    void slot_setting_showUserNamePasswordsInListView(bool value) { m_setting_showUserNamePasswordsInListView = value; }
+    void slot_setting_sortAlphabeticallyInListView(bool value) { m_setting_sortAlphabeticallyInListView = value; }
 
     // signal from KdbListModel object
-    void slot_loadMasterGroups();
+    void slot_loadMasterGroups(bool registerListModel);
     void slot_loadGroupsAndEntries(int groupId);
     void slot_unregisterListModel(int modelId);
     void slot_searchEntries(QString searchString, int rootGroupId);
@@ -117,6 +119,7 @@ public slots:
                              QString comment,
                              int parentGroupId);
     void slot_deleteEntry(int entryId);
+    void slot_moveEntry(int entryId, int newGroupId);
 
     // signal from KdbGroup object
     void slot_loadGroup(int groupId);
@@ -135,10 +138,12 @@ private:
 
     // settings
     bool m_setting_showUserNamePasswordsInListView;
+    bool m_setting_sortAlphabeticallyInListView;
 
     // The following two hash tables store information about which list models are showing a dedicated entry or group in the UI
     QHash<int, int> m_entries_modelId;
     QHash<int, int> m_groups_modelId;
+    int m_rootGroupId;
 };
 
 }

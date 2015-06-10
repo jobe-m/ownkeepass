@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -44,8 +44,18 @@ public:
     // init interface for specific database type
     int initDatabaseInterface(const int type);
 
+    // close interface so that it can be initalized again
+    void closeDatabaseInterface();
+
     // access to internal database interface needed to connect to its slots
-    QObject* getInterface() { return dynamic_cast<QObject*>(m_interface); }
+    QObject* getInterface() {
+        if (m_initialized) {
+            return dynamic_cast<QObject*>(m_interface);
+        } else {
+            Q_ASSERT(false);
+            return NULL;
+        }
+    }
 
 private:
     // prevent object creation, it will be created as singleton object
@@ -57,6 +67,9 @@ private:
 
     QThread m_workerThread;
     static DatabaseClient* m_Instance;
+
+    // indicator for an initialized and ready to use database interface
+    bool m_initialized;
 };
 
 }

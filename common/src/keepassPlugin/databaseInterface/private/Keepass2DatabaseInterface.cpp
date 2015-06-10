@@ -33,7 +33,9 @@ using namespace kpxPublic;
 Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
     : QObject(parent),
       m_Database(NULL),
-      m_setting_showUserNamePasswordsInListView(false)
+      m_setting_showUserNamePasswordsInListView(false),
+      m_setting_sortAlphabeticallyInListView(true),
+      m_rootGroupId(0)
 {
     initDatabase();
 }
@@ -70,7 +72,7 @@ void Keepass2DatabaseInterface::slot_changePassKey(QString password, QString key
 {
 }
 
-void Keepass2DatabaseInterface::slot_loadMasterGroups()
+void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 {
 }
 
@@ -133,6 +135,10 @@ void Keepass2DatabaseInterface::slot_deleteEntry(int entryId)
 {
 }
 
+void Keepass2DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
+{
+}
+
 void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, int rootGroupId)
 {
 }
@@ -140,11 +146,6 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, int roo
 //inline QString Keepass2DatabaseInterface::getUserAndPassword(IEntryHandle* entry)
 //{
 //}
-
-void Keepass2DatabaseInterface::slot_setting_showUserNamePasswordsInListView(bool value)
-{
-    m_setting_showUserNamePasswordsInListView = value;
-}
 
 void Keepass2DatabaseInterface::slot_changeKeyTransfRounds(int value)
 {

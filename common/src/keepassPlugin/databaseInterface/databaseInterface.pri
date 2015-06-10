@@ -33,9 +33,9 @@ SOURCES += \
     ../common/src/keepassPlugin/databaseInterface/KdbGroup.cpp \
     ../common/src/keepassPlugin/databaseInterface/private/DatabaseClient.cpp \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseFactory.cpp \
-#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.cpp \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.cpp \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.cpp \
-#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.cpp \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.cpp \
 
 HEADERS += \
     ../common/src/keepassPlugin/databaseInterface/KdbDatabase.h \
@@ -45,8 +45,8 @@ HEADERS += \
     ../common/src/keepassPlugin/databaseInterface/private/DatabaseClient.h \
     ../common/src/keepassPlugin/databaseInterface/private/AbstractDatabaseFactory.h \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseFactory.h \
-#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.h \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.h \
     ../common/src/keepassPlugin/databaseInterface/private/AbstractDatabaseInterface.h \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.h \
-#    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.h \
+    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.h \
 

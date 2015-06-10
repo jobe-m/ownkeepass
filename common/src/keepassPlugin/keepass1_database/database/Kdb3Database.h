@@ -22,7 +22,7 @@
 
 #include <QThread>
 #include <QMap>
-#include "database/Database.h"
+#include "database/Database_keepassx1.h"
 #include "config/keepassx.h"
 
 #define DB_HEADER_SIZE	124

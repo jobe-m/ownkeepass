@@ -153,11 +153,12 @@ signals:
     // Signal to QML
     void showChangeLogBanner();
     void databaseDetailsLoaded(bool databaseExists,
-                              int dbLocation,
-                              QString dbFilePath,
-                              bool useKeyFile,
-                              int keyFileLocation,
-                              QString keyFilePath);
+                               int dbLocation,
+                               QString dbFilePath,
+                               bool useKeyFile,
+                               int keyFileLocation,
+                               QString keyFilePath,
+                               int databaseType);
 
     // Signals for property
     void recentDatabaseModelChanged();

@@ -27,7 +27,6 @@ DEPENDPATH  += $$PWD
 
 SOURCES += \
     ../common/src/keepassPlugin/keepass1_database/config/KpxConfig.cpp \
-    ../common/src/keepassPlugin/keepass1_database/database/Database.cpp \
     ../common/src/keepassPlugin/keepass1_database/database/Kdb3Database.cpp \
     ../common/src/keepassPlugin/keepass1_database/utils/SecString.cpp \
     ../common/src/keepassPlugin/keepass1_database/utils/tools.cpp \
@@ -41,12 +40,12 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass1_database/crypto/sha256.cpp \
     ../common/src/keepassPlugin/keepass1_database/crypto/twoclass.cpp \
     ../common/src/keepassPlugin/keepass1_database/crypto/twofish.cpp \
-    ../common/src/keepassPlugin/keepass1_database/crypto/yarrow.cpp
+    ../common/src/keepassPlugin/keepass1_database/crypto/yarrow.cpp \
+    ../common/src/keepassPlugin/keepass1_database/database/Database_keepassx1.cpp
 
 HEADERS += \
     ../common/src/keepassPlugin/keepass1_database/config/KpxConfig.h \
     ../common/src/keepassPlugin/keepass1_database/config/keepassx.h \
-    ../common/src/keepassPlugin/keepass1_database/database/Database.h \
     ../common/src/keepassPlugin/keepass1_database/database/Kdb3Database.h \
     ../common/src/keepassPlugin/keepass1_database/utils/SecString.h \
     ../common/src/keepassPlugin/keepass1_database/utils/tools.h \
@@ -63,4 +62,5 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass1_database/crypto/twoclass.h \
     ../common/src/keepassPlugin/keepass1_database/crypto/twofish.h \
     ../common/src/keepassPlugin/keepass1_database/crypto/yarrow.h \
-    ../common/src/keepassPlugin/keepass1_database/plugins/interfaces/IIconTheme.h
+    ../common/src/keepassPlugin/keepass1_database/plugins/interfaces/IIconTheme.h \
+    ../common/src/keepassPlugin/keepass1_database/database/Database_keepassx1.h

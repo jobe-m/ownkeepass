@@ -21,7 +21,7 @@
 #include <QCoreApplication>
 #include <QLocale>
 #include "crypto/yarrow.h"
-#include "Database.h"
+#include "Database_keepassx1.h"
 
 KpxUuid::KpxUuid() : Data(16,0){
 }

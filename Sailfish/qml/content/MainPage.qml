@@ -385,16 +385,18 @@ Page {
                                          dbFilePath,
                                          useKeyFile,
                                          keyFileLocation,
-                                         keyFilePath)
+                                         keyFilePath,
+                                         databaseType)
             } else {
                 Global.activeDatabase = Global.getLocationName(1) + " Documents/ownkeepass/notes.kdb"
                 mainPageFlickable.state = "CREATE_NEW_DATABASE"
-                // set default db location, path and no keyfile
+                // set default db location, path, no keyfile and Keepass 1 as database type
                 internal.setDatabaseInfo(1,
                                          "Documents/ownkeepass/notes.kdb",
                                          false,
                                          "",
-                                         "")
+                                         "",
+                                         KdbDatabase.DB_TYPE_KEEPASS_1)
             }
         }
     }
@@ -433,6 +435,7 @@ Page {
         property bool useKeyFile: false
         property int keyFileLocation: 0
         property string keyFilePath: ""
+        property int databaseType: KdbDatabase.DB_TYPE_UNKNOWN
         property Page masterGroupsPage
 
         function init() {
@@ -447,12 +450,14 @@ Page {
                                  dbFilePath,
                                  useKeyFile,
                                  keyFileLocation,
-                                 keyFilePath) {
+                                 keyFilePath,
+                                 databaseType) {
             internal.dbFileLocation = dbFileLocation
             internal.databasePath =  dbFilePath
             internal.useKeyFile = useKeyFile
             internal.keyFileLocation = keyFileLocation
             internal.keyFilePath = keyFilePath
+            internal.databaseType = databaseType
         }
 
         function openKeepassDatabase(password,
@@ -493,7 +498,7 @@ Page {
                             kdbDatabase.keyTransfRounds = ownKeepassSettings.defaultKeyTransfRounds
                             kdbDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
-                            kdbDatabase.create(completeDbFilePath, completeKeyFilePath, password, true)
+                            kdbDatabase.create(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, true)
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
@@ -515,7 +520,7 @@ Page {
                 if (ownKeepassHelper.fileExists(completeDbFilePath)) {
                     if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
-                        kdbDatabase.open(completeDbFilePath, completeKeyFilePath, password, false)
+                        kdbDatabase.open(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, false)
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
@@ -930,7 +935,8 @@ Page {
                                          dbFilePath,
                                          useKeyFile,
                                          keyFileLocation,
-                                         keyFilePath)
+                                         keyFilePath,
+                                         databaseType)
                 internal.openKeepassDatabase(password,
                                              state === "CreateNewDatabase",
                                              acceptDestinationInstance)

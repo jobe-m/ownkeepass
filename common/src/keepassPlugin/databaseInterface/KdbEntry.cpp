@@ -27,7 +27,13 @@ using namespace kpxPublic;
 using namespace kpxPrivate;
 
 KdbEntry::KdbEntry(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_entryId(0),
+      m_connected(false),
+      m_new_entry_triggered(false)
+{}
+
+void KdbEntry::connectToDatabaseClient()
 {
     // connect signals to backend
     bool ret = connect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
@@ -36,7 +42,7 @@ KdbEntry::KdbEntry(QObject *parent)
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
                   this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(saveEntrytoKdbDatabase(int,QString,QString,QString,QString,QString)),
+    ret = connect(this, SIGNAL(saveEntryToKdbDatabase(int,QString,QString,QString,QString,QString)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
@@ -52,7 +58,7 @@ KdbEntry::KdbEntry(QObject *parent)
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteEntry(int)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(newEntryCreated(int, int)),
-                  this, SIGNAL(newEntryCreated(int, int)));
+                  this, SLOT(slot_newEntryCreated(int, int)));
     Q_ASSERT(ret);
     ret = connect(this, SIGNAL(moveEntryInKdbDatabase(int,int)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_moveEntry(int,int)));
@@ -60,11 +66,53 @@ KdbEntry::KdbEntry(QObject *parent)
     ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryMoved(int)),
                   this, SIGNAL(entryMoved(int)));
     Q_ASSERT(ret);
+
+    m_connected = true;
+}
+
+void KdbEntry::disconnectFromDatabaseClient()
+{
+    // disconnect signals to backend
+    bool ret = disconnect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
+                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadEntry(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
+                  this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
+    Q_ASSERT(ret);
+    ret = disconnect(this, SIGNAL(saveEntryToKdbDatabase(int,QString,QString,QString,QString,QString)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
+    Q_ASSERT(ret);
+    ret = disconnect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entrySaved(int)),
+                  this, SIGNAL(entryDataSaved(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryDeleted(int)),
+                  this, SIGNAL(entryDeleted(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(this, SIGNAL(deleteEntryFromKdbDatabase(int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteEntry(int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(newEntryCreated(int, int)),
+                  this, SLOT(slot_newEntryCreated(int, int)));
+    Q_ASSERT(ret);
+    ret = disconnect(this, SIGNAL(moveEntryInKdbDatabase(int,int)),
+                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_moveEntry(int,int)));
+    Q_ASSERT(ret);
+    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryMoved(int)),
+                  this, SIGNAL(entryMoved(int)));
+    Q_ASSERT(ret);
+
+    m_connected = false;
 }
 
 void KdbEntry::loadEntryData()
 {
     Q_ASSERT(m_entryId != 0);
+    if (!m_connected) {
+        connectToDatabaseClient();
+    }
     emit loadEntryFromKdbDatabase(m_entryId);
 }
 
@@ -75,7 +123,10 @@ void KdbEntry::saveEntryData(QString title,
                              QString comment)
 {
     Q_ASSERT(m_entryId != 0);
-    emit saveEntrytoKdbDatabase(m_entryId, title, url, username, password, comment);
+    if (!m_connected) {
+        connectToDatabaseClient();
+    }
+    emit saveEntryToKdbDatabase(m_entryId, title, url, username, password, comment);
 }
 
 void KdbEntry::createNewEntry(QString title,
@@ -86,22 +137,19 @@ void KdbEntry::createNewEntry(QString title,
                               int parentgroupId)
 {
     Q_ASSERT(parentgroupId != 0);
+    if (!m_connected) {
+        connectToDatabaseClient();
+    }
+    m_new_entry_triggered = true;
     emit createNewEntryInKdbDatabase(title, url, username, password, comment, parentgroupId);
-}
-
-int KdbEntry::getEntryId() const
-{
-    return m_entryId;
-}
-
-void KdbEntry::setEntryId(int entryId)
-{
-    m_entryId = entryId;
 }
 
 void KdbEntry::deleteEntry()
 {
     Q_ASSERT(m_entryId != 0);
+    if (!m_connected) {
+        connectToDatabaseClient();
+    }
     emit deleteEntryFromKdbDatabase(m_entryId);
 }
 
@@ -109,6 +157,9 @@ void KdbEntry::moveEntry(int newGroupId)
 {
     Q_ASSERT(m_entryId != 0);
     Q_ASSERT(newGroupId != 0);
+    if (!m_connected) {
+        connectToDatabaseClient();
+    }
     emit moveEntryInKdbDatabase(m_entryId, newGroupId);
 }
 
@@ -131,5 +182,24 @@ void KdbEntry::slot_entryDataLoaded(int entryId,
         emit entryDataLoaded(title, url, username, password, comment,
                              binaryDesc, creation, lastMod, lastAccess,
                              expire, binarySize, friendlySize);
+    }
+}
+
+void KdbEntry::slot_newEntryCreated(int result, int newEntryId)
+{
+    if (m_new_entry_triggered) {
+        if (result == RE_OK) {
+            m_entryId = newEntryId;
+        }
+        m_new_entry_triggered = false;
+        // forward signal to QML
+        emit newEntryCreated(result, newEntryId);
+    }
+}
+
+void KdbEntry::slot_disconnectFromDatabaseClient()
+{
+    if (m_connected) {
+        disconnectFromDatabaseClient();
     }
 }

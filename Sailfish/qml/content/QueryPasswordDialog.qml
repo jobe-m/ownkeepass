@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
+import harbour.ownkeepass.KeepassX1 1.0
 
 Dialog {
     id: queryPasswordDialog
@@ -38,6 +39,7 @@ Dialog {
     property alias useKeyFile: useKeyFileSwitch.checked
     property alias keyFileLocation: keyLoading.locationIndex
     property alias keyFilePath: keyLoading.relativePath
+    property int databaseType: KdbDatabase.DB_TYPE_KEEPASS_1
     // Password is only going out and will be passed to kdbDatabase object open the database
     property alias password: passwordField.text
 

@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -22,12 +22,9 @@
 
 #include "DatabaseClient.h"
 #include "Keepass1DatabaseFactory.h"
-//#include "Keepass2DatabaseFactory.h"
+#include "Keepass2DatabaseFactory.h"
 
 using namespace kpxPrivate;
-
-#define KEEPASS_1 1
-#define KEEPASS_2 2
 
 // Global static pointer used to ensure a single instance of the class
 // It is used by KdbDatabase, KdbListModel, KdbGroup and KdbEntry classes to access data of the Keepass database
@@ -37,37 +34,38 @@ DatabaseClient::DatabaseClient(QObject *parent)
     : QObject(parent),
       m_factory(NULL),
       m_interface(NULL),
-      m_workerThread()
+      m_workerThread(),
+      m_initialized(false)
 {
     // Currently support for Keepass 1 is hardcoded
-    initDatabaseInterface(KEEPASS_1);
+//    initDatabaseInterface(KEEPASS_1);
 }
 
 int DatabaseClient::initDatabaseInterface(const int type)
 {
-    if (m_workerThread.isRunning()) {
-        m_workerThread.quit();
-        m_workerThread.wait();
-        m_workerThread.terminate();
+    if (m_initialized) {
+        closeDatabaseInterface();
     }
 
     // Here an interface will be instantiated which operates on a specific Keepass database version
     // To enable other database formats just load here another interface
 
     switch(type) {
-    case KEEPASS_1:
+    case DATABASE_KEEPASS_1:
         m_factory = new Keepass1DatabaseFactory();
         m_interface = m_factory->factoryMethod();
+        m_initialized = true;
         break;
-    case KEEPASS_2:
-//        m_factory = new Keepass2DatabaseFactory();
-//        m_interface = m_factory->factoryMethod();
+    case DATABASE_KEEPASS_2:
+        m_factory = new Keepass2DatabaseFactory();
+        m_interface = m_factory->factoryMethod();
+        m_initialized = true;
         break;
     default:
-// TODO add error handling
         m_factory = NULL;
         m_interface = NULL;
-        break;
+        m_initialized = false;
+        return 1;
     }
 
     // DatabaseInterface object m_worker is also a QObject, so in order to use functions from it cast it before
@@ -77,17 +75,30 @@ int DatabaseClient::initDatabaseInterface(const int type)
     return 0;
 }
 
-DatabaseClient::~DatabaseClient()
+void DatabaseClient::closeDatabaseInterface()
 {
+    // first terminate background thread
     if (m_workerThread.isRunning()) {
         m_workerThread.quit();
         m_workerThread.wait();
         m_workerThread.terminate();
     }
-    delete m_interface;
-    m_interface = NULL;
-    delete m_factory;
-    m_factory = NULL;
+    // then delete interface and factory objects
+    if (m_interface) {
+        delete m_interface;
+        m_interface = NULL;
+    }
+    if (m_factory) {
+        delete m_factory;
+        m_factory = NULL;
+    }
+    // now indicate that interface can be initialized again
+    m_initialized = false;
+}
+
+DatabaseClient::~DatabaseClient()
+{
+    closeDatabaseInterface();
 }
 
 DatabaseClient* DatabaseClient::getInstance()

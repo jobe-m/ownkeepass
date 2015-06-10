@@ -29,7 +29,7 @@ using namespace kpxPrivate;
 KdbGroup::KdbGroup(QObject *parent)
     : QObject(parent)
 {
-    // connect signals to backend
+/*    // connect signals to backend
     bool ret = connect(this, SIGNAL(loadGroupFromKdbDatabase(int)),
                        DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadGroup(int)));
     Q_ASSERT(ret);
@@ -54,6 +54,7 @@ KdbGroup::KdbGroup(QObject *parent)
     ret = connect(this, SIGNAL(deleteGroupFromKdbDatabase(int)),
                   DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteGroup(int)));
     Q_ASSERT(ret);
+*/
 }
 
 void KdbGroup::loadGroupData()

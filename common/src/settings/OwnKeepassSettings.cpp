@@ -22,6 +22,7 @@
 
 #include <QDebug>
 #include "OwnKeepassSettings.h"
+#include "KdbDatabase.h"
 
 using namespace settingsPublic;
 
@@ -441,17 +442,19 @@ void OwnKeepassSettings::loadDatabaseDetails()
             emit databaseDetailsLoaded(true, dbLocationInt, dbFilePath,
                     m_recentDatabaseList[0]["useKeyFile"].toBool(),
                     m_recentDatabaseList[0]["keyFileLocation"].toInt(),
-                    m_recentDatabaseList[0]["keyFilePath"].toString());
+                    m_recentDatabaseList[0]["keyFilePath"].toString(),
+// TODO load database type from recent database list
+                    kpxPublic::KdbDatabase::DB_TYPE_KEEPASS_1);
             return;
         }
     } else {
         // check if default database exists
         QString dbLocation(m_helper->getLocationRootPath(1));
         if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
-            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "");
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "", kpxPublic::KdbDatabase::DB_TYPE_KEEPASS_1);
             return;
         }
     }
     // no database found
-    emit databaseDetailsLoaded(false, 0, "", false, 0, "");
+    emit databaseDetailsLoaded(false, 0, "", false, 0, "", kpxPublic::KdbDatabase::DB_TYPE_UNKNOWN);
 }

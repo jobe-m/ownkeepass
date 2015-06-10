@@ -35,7 +35,6 @@
 
 const QDateTime Date_Never(QDate(2999,12,28),QTime(23,59,59));
 
-
 bool Kdb3Database::EntryHandleLessThan(const IEntryHandle* This,const IEntryHandle* Other){
 	if(!This->isValid() && Other->isValid())return true;
 	if(This->isValid() && !Other->isValid())return false;
