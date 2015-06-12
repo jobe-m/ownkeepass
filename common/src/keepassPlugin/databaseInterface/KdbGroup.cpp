@@ -27,66 +27,191 @@ using namespace kpxPublic;
 using namespace kpxPrivate;
 
 KdbGroup::KdbGroup(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_groupId(0),
+      m_connected(false),
+      m_new_group_triggered(false)
+{}
+
+bool KdbGroup::connectToDatabaseClient()
 {
-/*    // connect signals to backend
-    bool ret = connect(this, SIGNAL(loadGroupFromKdbDatabase(int)),
-                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadGroup(int)));
+    // check if database backend is already initialized and available
+    if (DatabaseClient::getInstance()->getInterface() == NULL) {
+        return false;
+    }
+    // if OK then connect signals to backend
+    bool ret = connect(this,
+                       SIGNAL(loadGroupFromKdbDatabase(int)),
+                       DatabaseClient::getInstance()->getInterface(),
+                       SLOT(slot_loadGroup(int)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(saveGroupToKdbDatabase(int, QString)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_saveGroup(int, QString)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(groupLoaded(int, int, QString)),
+                  this,
+                  SLOT(slot_groupDataLoaded(int,int,QString)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupLoaded(QString)),
-                  this, SIGNAL(groupDataLoaded(QString)));
+    ret = connect(this,
+                  SIGNAL(saveGroupToKdbDatabase(int, QString)),
+                  DatabaseClient::getInstance()->getInterface(),
+                  SLOT(slot_saveGroup(int, QString)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupSaved(int)),
-                  this, SIGNAL(groupDataSaved(int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(groupSaved(int,int)),
+                  this,
+                  SIGNAL(groupDataSaved(int,int)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(createNewGroupInKdbDatabase(QString,quint32,int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_createNewGroup(QString,quint32,int)));
+    ret = connect(this,
+                  SIGNAL(createNewGroupInKdbDatabase(QString,quint32,int)),
+                  DatabaseClient::getInstance()->getInterface(),
+                  SLOT(slot_createNewGroup(QString,quint32,int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(newGroupCreated(int, int)),
-                  this, SIGNAL(newGroupCreated(int, int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(newGroupCreated(int, int)),
+                  this,
+                  SIGNAL(newGroupCreated(int, int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(groupDeleted(int)),
-                  this, SIGNAL(groupDeleted(int)));
+    ret = connect(this,
+                  SIGNAL(deleteGroupFromKdbDatabase(int)),
+                  DatabaseClient::getInstance()->getInterface(),
+                  SLOT(slot_deleteGroup(int)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(deleteGroupFromKdbDatabase(int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteGroup(int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(groupDeleted(int,int)),
+                  this,
+                  SIGNAL(groupDeleted(int,int)));
     Q_ASSERT(ret);
-*/
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(disconnectAllClients()),
+                  this,
+                  SLOT(slot_disconnectFromDatabaseClient()));
+    Q_ASSERT(ret);
+
+    m_connected = true;
+    return true;
+}
+
+void KdbGroup::disconnectFromDatabaseClient()
+{
+    // disconnect all signals to backend
+    bool ret = disconnect(this, 0, 0, 0);
+    Q_ASSERT(ret);
+
+    m_connected = false;
 }
 
 void KdbGroup::loadGroupData()
 {
     Q_ASSERT(m_groupId != 0);
-    emit loadGroupFromKdbDatabase(m_groupId);
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit groupDataLoaded(RE_DATABASE_NOT_OPENED, "");
+    } else {
+        // trigger loading from database client
+        emit loadGroupFromKdbDatabase(m_groupId);
+    }
 }
 
 void KdbGroup::saveGroupData(QString title)
 {
     Q_ASSERT(m_groupId != 0);
-    emit saveGroupToKdbDatabase(m_groupId, title);
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit groupDataSaved(RE_DATABASE_NOT_OPENED);
+    } else {
+        // trigger loading from database client
+        emit saveGroupToKdbDatabase(m_groupId, title);
+    }
 }
 
 void KdbGroup::createNewGroup(QString title, int parentGroupId)
 {
-    // set iconId to 0 (quint32 iconId)
-    emit createNewGroupInKdbDatabase(title, 1, parentGroupId);
-}
-
-int KdbGroup::getGroupId()
-{
-    return m_groupId;
-}
-
-void KdbGroup::setGroupId(int groupId)
-{
-    m_groupId = groupId;
+    Q_ASSERT(parentGroupId != 0);
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit newGroupCreated(RE_DATABASE_NOT_OPENED, 0);
+    } else {
+        // trigger creation of new entry in database client
+        m_new_group_triggered = true;
+        quint32 iconId = 1;
+        emit createNewGroupInKdbDatabase(title, iconId, parentGroupId);
+    }
 }
 
 
 void KdbGroup::deleteGroup()
 {
-    emit deleteGroupFromKdbDatabase(m_groupId);
+    Q_ASSERT(m_groupId != 0);
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit groupDeleted(RE_DATABASE_NOT_OPENED);
+    } else {
+        // trigger deletion of entry in database client
+        emit deleteGroupFromKdbDatabase(m_groupId);
+    }
+}
+
+void KdbGroup::moveGroup(int newParentGroupId)
+{
+    Q_ASSERT(m_groupId != 0);
+    Q_ASSERT(newParentGroupId != 0);
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit groupMoved(RE_DATABASE_NOT_OPENED);
+    } else {
+        // trigger moving of entry in database client
+        emit moveGroupInKdbDatabase(m_groupId, newParentGroupId);
+    }
+}
+
+void KdbGroup::slot_groupDataLoaded(int result, int groupId, QString title)
+{
+    // forward signal to QML only if the signal is for us
+    if (groupId == m_groupId) {
+        emit groupDataLoaded(result, title);
+    }
+}
+
+void KdbGroup::slot_groupDataSaved(int result, int groupId)
+{
+    // forward signal to QML only if the signal is for us
+    if (groupId == m_groupId) {
+        emit groupDataSaved(result);
+    }
+}
+
+void KdbGroup::slot_newGroupCreated(int result, int groupId)
+{
+    if (m_new_group_triggered) {
+        if (result == RE_OK) {
+            m_groupId = groupId;
+        }
+        m_new_group_triggered = false;
+        // forward signal to QML
+        emit newGroupCreated(result, groupId);
+    }
+}
+
+void KdbGroup::slot_groupDeleted(int result, int groupId)
+{
+    // forward signal to QML only if the signal is for us
+    if (groupId == m_groupId) {
+        emit groupDeleted(result);
+        m_groupId = 0;
+    }
+}
+
+void KdbGroup::slot_groupMoved(int result, int groupId)
+{
+    // forward signal to QML only if the signal is for us
+    if (groupId == m_groupId) {
+        emit groupMoved(result);
+    }
+}
+
+void KdbGroup::slot_disconnectFromDatabaseClient()
+{
+    // database client has requested to disconnect so do accordingly if we have connected at all
+    if (m_connected) {
+        disconnectFromDatabaseClient();
+    }
 }

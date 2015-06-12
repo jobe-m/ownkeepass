@@ -111,7 +111,7 @@ void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 // TODO check if .lock file exists and ask user if he wants to open the database in read only mode or discard and open in read/write mode
 // TODO create .lock file if it does not exist yet
 
-    // database was opened successful
+    // database was opened successfully
     emit databaseOpened();
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
@@ -139,8 +139,11 @@ void Keepass1DatabaseInterface::slot_closeDatabase()
 
 // TODO delete .lock file
 
-    // database was opened successful
+    // database was closed successfully
     emit databaseClosed();
+    // trigger disconnect from database client, because reopening will reinitalize the whole interfase
+    // this makes it possible to load keepass 1 or 2 databases
+    emit disconnectAllClients();
 }
 
 void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
@@ -327,7 +330,8 @@ void Keepass1DatabaseInterface::slot_loadEntry(int entryId)
     password.unlock();
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if the updated data is interesting to it
-    emit entryLoaded(entryId,
+    emit entryLoaded(RE_OK,
+                     entryId,
                      entry->title(),
                      entry->url(),
                      entry->username(),
@@ -349,7 +353,8 @@ void Keepass1DatabaseInterface::slot_loadGroup(int groupId)
 {
     // get group handler for groupId
     IGroupHandle* group = (IGroupHandle*)(groupId);
-    emit groupLoaded(group->title());
+    Q_ASSERT(group);
+    emit groupLoaded(RE_OK, groupId, group->title());
 }
 
 void Keepass1DatabaseInterface::slot_saveGroup(int groupId, QString title)
@@ -360,9 +365,10 @@ void Keepass1DatabaseInterface::slot_saveGroup(int groupId, QString title)
 
     //  save changes on group details to database
     IGroupHandle* group = (IGroupHandle*)(groupId);
+    Q_ASSERT(group);
     group->setTitle(title);
     if (!m_kdb3Database->save()) {
-        emit groupSaved(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        emit groupSaved(RE_SAVE_ERROR, groupId);
         return;
     }
 
@@ -379,7 +385,7 @@ void Keepass1DatabaseInterface::slot_saveGroup(int groupId, QString title)
                                    m_setting_sortAlphabeticallyInListView);         // sort alphabetically
     }
     // signal to QML
-    emit groupSaved(kpxPublic::KdbGroup::RE_OK);
+    emit groupSaved(RE_OK, groupId);
 }
 
 void Keepass1DatabaseInterface::slot_unregisterListModel(int modelId)
@@ -409,7 +415,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
     Q_ASSERT(newGroup);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newGroupCreated(kpxPublic::KdbGroup::RE_SAVE_ERROR, int(newGroup));
+        emit newGroupCreated(RE_SAVE_ERROR, int(newGroup));
         return;
     }
 
@@ -431,7 +437,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
     }
 
     // signal to QML
-    emit newGroupCreated(kpxPublic::KdbGroup::RE_OK, int(newGroup));
+    emit newGroupCreated(RE_OK, int(newGroup));
 }
 
 void Keepass1DatabaseInterface::slot_saveEntry(int entryId,
@@ -456,7 +462,7 @@ void Keepass1DatabaseInterface::slot_saveEntry(int entryId,
     entry->setComment(comment);
     // save changes to database and send signal with result
     if (!m_kdb3Database->save()) {
-        emit entrySaved(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        emit entrySaved(RE_SAVE_ERROR, entryId);
         return;
     }
 
@@ -470,12 +476,13 @@ void Keepass1DatabaseInterface::slot_saveEntry(int entryId,
                                    m_setting_sortAlphabeticallyInListView);     // sort alphabetically
     }
     // signal to QML
-    emit entrySaved(kpxPublic::KdbGroup::RE_OK);
+    emit entrySaved(RE_OK, entryId);
     // update all entry objects, there might be two instances open
     // decrypt password which is usually stored encrypted in memory
     s_password = entry->password();
     s_password.unlock();
-    emit entryLoaded(entryId,
+    emit entryLoaded(RE_OK,
+                     entryId,
                      entry->title(),
                      entry->url(),
                      entry->username(),
@@ -501,6 +508,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
 {
     // create new entry in specified group
     IGroupHandle* parentGroup = (IGroupHandle*)(parentGroupId);
+    Q_ASSERT(parentGroup);
     Q_ASSERT(m_kdb3Database);
     IEntryHandle* newEntry = m_kdb3Database->newEntry(parentGroup);
     // add data to new entry
@@ -514,7 +522,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     newEntry->setComment(comment);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newEntryCreated(kpxPublic::KdbGroup::RE_SAVE_ERROR, int(newEntry));
+        emit newEntryCreated(RE_SAVE_ERROR, int(newEntry));
         return;
     }
 
@@ -532,7 +540,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
-    emit newEntryCreated(kpxPublic::KdbGroup::RE_OK, int(newEntry));
+    emit newEntryCreated(RE_OK, int(newEntry));
 }
 
 void Keepass1DatabaseInterface::slot_deleteGroup(int groupId)
@@ -546,7 +554,7 @@ void Keepass1DatabaseInterface::slot_deleteGroup(int groupId)
     m_kdb3Database->deleteGroup(group);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit groupDeleted(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        emit groupDeleted(RE_SAVE_ERROR, groupId);
         return;
     }
 
@@ -558,7 +566,7 @@ void Keepass1DatabaseInterface::slot_deleteGroup(int groupId)
         updateGrandParentGroupInListModel(parentGroup);
     }
     // signal to QML
-    emit groupDeleted(kpxPublic::KdbGroup::RE_OK);
+    emit groupDeleted(RE_OK, groupId);
 }
 
 void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
@@ -587,7 +595,7 @@ void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
     m_kdb3Database->deleteEntry(entry);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit entryDeleted(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        emit entryDeleted(RE_SAVE_ERROR, entryId);
         return;
     }
 
@@ -596,7 +604,7 @@ void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
     // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
-    emit entryDeleted(kpxPublic::KdbGroup::RE_OK);
+    emit entryDeleted(RE_OK, entryId);
 }
 
 void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
@@ -613,7 +621,7 @@ void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
     m_kdb3Database->moveEntry(entry, newGroup);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit entryMoved(kpxPublic::KdbGroup::RE_SAVE_ERROR);
+        emit entryMoved(RE_SAVE_ERROR, entryId);
         return;
     }
 
@@ -639,7 +647,12 @@ void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
     parentGroup = entry->group();
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
-    emit entryMoved(kpxPublic::KdbGroup::RE_OK);
+    emit entryMoved(RE_OK, entryId);
+}
+
+void Keepass1DatabaseInterface::slot_moveGroup(int groupId, int newParentGroupId)
+{
+    // TODO
 }
 
 void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, int rootGroupId)

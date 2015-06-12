@@ -24,21 +24,17 @@
 #define KDBENTRY_H
 
 #include <QObject>
+#include "private/AbstractDatabaseInterface.h"
 
 namespace kpxPublic {
 
-class KdbEntry : public QObject
+class KdbEntry : public QObject, public DatabaseDefines
 {
     Q_OBJECT
+    Q_INTERFACES(DatabaseDefines)
 
 public:
-    Q_ENUMS(eResult)
-    enum eResult {
-        RE_OK = 0,                  // no error
-        RE_SAVE_ERROR,              // error saving ...
-
-        RE_LAST
-    };
+    Q_ENUMS(eDatabaseAccessResult)
 
     Q_PROPERTY(int entryId READ getEntryId WRITE setEntryId STORED true SCRIPTABLE true)
 
@@ -60,7 +56,8 @@ public:
 
 signals:
     // signals to QML
-    void entryDataLoaded(QString title,
+    void entryDataLoaded(int result,
+                         QString title,
                          QString url,
                          QString username,
                          QString password,
@@ -97,7 +94,8 @@ signals:
 
 public slots:
     // signals from interface of database client
-    void slot_entryDataLoaded(int entryId,
+    void slot_entryDataLoaded(int result,
+                              int entryId,
                               QString title,
                               QString url,
                               QString username,
@@ -109,9 +107,11 @@ public slots:
                               QString lastAccess,
                               QString expire,
                               quint32 binarySize,
-                              QString friendlySize
-                              );
-    void slot_newEntryCreated(int result, int newEntryId);
+                              QString friendlySize);
+    void slot_entryDataSaved(int result, int entryId);
+    void slot_entryDeleted(int result, int entryId);
+    void slot_entryMoved(int result, int entryId);
+    void slot_newEntryCreated(int result, int entryId);
     void slot_disconnectFromDatabaseClient();
 
 public:
@@ -122,7 +122,7 @@ public:
     void setEntryId(const int value) { m_entryId = value; }
 
 private:
-    void connectToDatabaseClient();
+    bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
 
 private:

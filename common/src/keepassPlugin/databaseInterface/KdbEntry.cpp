@@ -33,75 +33,77 @@ KdbEntry::KdbEntry(QObject *parent)
       m_new_entry_triggered(false)
 {}
 
-void KdbEntry::connectToDatabaseClient()
+bool KdbEntry::connectToDatabaseClient()
 {
-    // connect signals to backend
-    bool ret = connect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
-                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadEntry(int)));
+    // check if database backend is already initialized and available
+    if (DatabaseClient::getInstance()->getInterface() == NULL) {
+        return false;
+    }
+    // if OK then connect signals to backend
+    bool ret = connect(this,
+                       SIGNAL(loadEntryFromKdbDatabase(int)),
+                       DatabaseClient::getInstance()->getInterface(),
+                       SLOT(slot_loadEntry(int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
-                  this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(entryLoaded(int,int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
+                  this,
+                  SLOT(slot_entryDataLoaded(int,int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(saveEntryToKdbDatabase(int,QString,QString,QString,QString,QString)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
+    ret = connect(this,
+                  SIGNAL(saveEntryToKdbDatabase(int,QString,QString,QString,QString,QString)),
+                  DatabaseClient::getInstance()->getInterface(),
+                  SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(entrySaved(int,int)),
+                  this,
+                  SLOT(slot_entryDataSaved(int,int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entrySaved(int)),
-                  this, SIGNAL(entryDataSaved(int)));
+    ret = connect(this,
+                  SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
+                  DatabaseClient::getInstance()->getInterface(),
+                  SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryDeleted(int)),
-                  this, SIGNAL(entryDeleted(int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(newEntryCreated(int, int)),
+                  this,
+                  SLOT(slot_newEntryCreated(int, int)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(deleteEntryFromKdbDatabase(int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteEntry(int)));
+    ret = connect(this,
+                  SIGNAL(deleteEntryFromKdbDatabase(int)),
+                  DatabaseClient::getInstance()->getInterface(),
+                  SLOT(slot_deleteEntry(int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(newEntryCreated(int, int)),
-                  this, SLOT(slot_newEntryCreated(int, int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(entryDeleted(int,int)),
+                  this,
+                  SLOT(slot_entryDeleted(int,int)));
     Q_ASSERT(ret);
-    ret = connect(this, SIGNAL(moveEntryInKdbDatabase(int,int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_moveEntry(int,int)));
+    ret = connect(this,
+                  SIGNAL(moveEntryInKdbDatabase(int,int)),
+                  DatabaseClient::getInstance()->getInterface(),
+                  SLOT(slot_moveEntry(int,int)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryMoved(int)),
-                  this, SIGNAL(entryMoved(int)));
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(entryMoved(int,int)),
+                  this,
+                  SLOT(slot_entryMoved(int,int)));
+    Q_ASSERT(ret);
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(disconnectAllClients()),
+                  this,
+                  SLOT(slot_disconnectFromDatabaseClient()));
     Q_ASSERT(ret);
 
     m_connected = true;
+    return true;
 }
 
 void KdbEntry::disconnectFromDatabaseClient()
 {
-    // disconnect signals to backend
-    bool ret = disconnect(this, SIGNAL(loadEntryFromKdbDatabase(int)),
-                       DatabaseClient::getInstance()->getInterface(), SLOT(slot_loadEntry(int)));
-    Q_ASSERT(ret);
-    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
-                  this, SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
-    Q_ASSERT(ret);
-    ret = disconnect(this, SIGNAL(saveEntryToKdbDatabase(int,QString,QString,QString,QString,QString)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
-    Q_ASSERT(ret);
-    ret = disconnect(this, SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
-    Q_ASSERT(ret);
-    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entrySaved(int)),
-                  this, SIGNAL(entryDataSaved(int)));
-    Q_ASSERT(ret);
-    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryDeleted(int)),
-                  this, SIGNAL(entryDeleted(int)));
-    Q_ASSERT(ret);
-    ret = disconnect(this, SIGNAL(deleteEntryFromKdbDatabase(int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_deleteEntry(int)));
-    Q_ASSERT(ret);
-    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(newEntryCreated(int, int)),
-                  this, SLOT(slot_newEntryCreated(int, int)));
-    Q_ASSERT(ret);
-    ret = disconnect(this, SIGNAL(moveEntryInKdbDatabase(int,int)),
-                  DatabaseClient::getInstance()->getInterface(), SLOT(slot_moveEntry(int,int)));
-    Q_ASSERT(ret);
-    ret = disconnect(DatabaseClient::getInstance()->getInterface(), SIGNAL(entryMoved(int)),
-                  this, SIGNAL(entryMoved(int)));
+    // disconnect all signals to backend
+    bool ret = disconnect(this, 0, 0, 0);
     Q_ASSERT(ret);
 
     m_connected = false;
@@ -110,10 +112,13 @@ void KdbEntry::disconnectFromDatabaseClient()
 void KdbEntry::loadEntryData()
 {
     Q_ASSERT(m_entryId != 0);
-    if (!m_connected) {
-        connectToDatabaseClient();
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit entryDataLoaded(RE_DATABASE_NOT_OPENED, "", "", "", "", "", "", "", "", "", "", 0, "");
+    } else {
+        // trigger loading from database client
+        emit loadEntryFromKdbDatabase(m_entryId);
     }
-    emit loadEntryFromKdbDatabase(m_entryId);
 }
 
 void KdbEntry::saveEntryData(QString title,
@@ -123,10 +128,13 @@ void KdbEntry::saveEntryData(QString title,
                              QString comment)
 {
     Q_ASSERT(m_entryId != 0);
-    if (!m_connected) {
-        connectToDatabaseClient();
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit entryDataSaved(RE_DATABASE_NOT_OPENED);
+    } else {
+        // trigger saving to database client
+        emit saveEntryToKdbDatabase(m_entryId, title, url, username, password, comment);
     }
-    emit saveEntryToKdbDatabase(m_entryId, title, url, username, password, comment);
 }
 
 void KdbEntry::createNewEntry(QString title,
@@ -137,33 +145,42 @@ void KdbEntry::createNewEntry(QString title,
                               int parentgroupId)
 {
     Q_ASSERT(parentgroupId != 0);
-    if (!m_connected) {
-        connectToDatabaseClient();
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit newEntryCreated(RE_DATABASE_NOT_OPENED, 0);
+    } else {
+        // trigger creation of new entry in database client
+        m_new_entry_triggered = true;
+        emit createNewEntryInKdbDatabase(title, url, username, password, comment, parentgroupId);
     }
-    m_new_entry_triggered = true;
-    emit createNewEntryInKdbDatabase(title, url, username, password, comment, parentgroupId);
 }
 
 void KdbEntry::deleteEntry()
 {
     Q_ASSERT(m_entryId != 0);
-    if (!m_connected) {
-        connectToDatabaseClient();
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit entryDeleted(RE_DATABASE_NOT_OPENED);
+    } else {
+        // trigger deletion of entry in database client
+        emit deleteEntryFromKdbDatabase(m_entryId);
     }
-    emit deleteEntryFromKdbDatabase(m_entryId);
 }
 
 void KdbEntry::moveEntry(int newGroupId)
 {
     Q_ASSERT(m_entryId != 0);
     Q_ASSERT(newGroupId != 0);
-    if (!m_connected) {
-        connectToDatabaseClient();
+    if (!m_connected && !connectToDatabaseClient()) {
+        // if not successfully connected just return an error
+        emit entryMoved(RE_DATABASE_NOT_OPENED);
+    } else {
+        // trigger moving of entry in database client
+        emit moveEntryInKdbDatabase(m_entryId, newGroupId);
     }
-    emit moveEntryInKdbDatabase(m_entryId, newGroupId);
 }
 
-void KdbEntry::slot_entryDataLoaded(int entryId,
+void KdbEntry::slot_entryDataLoaded(int result, int entryId,
                                     QString title,
                                     QString url,
                                     QString username,
@@ -179,26 +196,52 @@ void KdbEntry::slot_entryDataLoaded(int entryId,
 {
     // forward signal to QML only if the signal is for us
     if (entryId == m_entryId) {
-        emit entryDataLoaded(title, url, username, password, comment,
+        emit entryDataLoaded(result, title, url, username, password, comment,
                              binaryDesc, creation, lastMod, lastAccess,
                              expire, binarySize, friendlySize);
     }
 }
 
-void KdbEntry::slot_newEntryCreated(int result, int newEntryId)
+void KdbEntry::slot_entryDataSaved(int result, int entryId)
+{
+    // forward signal to QML only if the signal is for us
+    if (entryId == m_entryId) {
+        emit entryDataSaved(result);
+    }
+}
+
+void KdbEntry::slot_newEntryCreated(int result, int entryId)
 {
     if (m_new_entry_triggered) {
         if (result == RE_OK) {
-            m_entryId = newEntryId;
+            m_entryId = entryId;
         }
         m_new_entry_triggered = false;
         // forward signal to QML
-        emit newEntryCreated(result, newEntryId);
+        emit newEntryCreated(result, entryId);
+    }
+}
+
+void KdbEntry::slot_entryDeleted(int result, int entryId)
+{
+    // forward signal to QML only if the signal is for us
+    if (entryId == m_entryId) {
+        emit entryDeleted(result);
+        m_entryId = 0;
+    }
+}
+
+void KdbEntry::slot_entryMoved(int result, int entryId)
+{
+    // forward signal to QML only if the signal is for us
+    if (entryId == m_entryId) {
+        emit entryMoved(result);
     }
 }
 
 void KdbEntry::slot_disconnectFromDatabaseClient()
 {
+    // database client has requested to disconnect so do accordingly if we have connected at all
     if (m_connected) {
         disconnectFromDatabaseClient();
     }

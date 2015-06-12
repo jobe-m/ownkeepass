@@ -43,6 +43,9 @@ public:
     virtual ~Keepass2DatabaseInterface();
 
 signals:
+    // signals to all objects
+    void disconnectAllClients();
+
     // signals to KdbDatabase object
     void databaseOpened();
     void newDatabaseCreated();
@@ -50,18 +53,30 @@ signals:
     void passwordChanged();
     void databaseKeyTransfRoundsChanged(int value);
     void databaseCryptAlgorithmChanged(int value);
-    void errorOccured(int result, QString errorMsg);
+    void errorOccured(int result,
+                      QString errorMsg);
 
     // signals to KdbListModel object
-    void addItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId, bool sortAbc);
+    void addItemToListModel(QString title,
+                            QString subtitle,
+                            int itemId,
+                            int itemType,
+                            int itemLevel,
+                            int modelId,
+                            bool sortAbc);
     void masterGroupsLoaded(int result);
     void groupsAndEntriesLoaded(int result);
-    void updateItemInListModel(QString title, QString subTitle, int itemId, int modelId, bool sortAbc);
+    void updateItemInListModel(QString title,
+                               QString subTitle,
+                               int itemId,
+                               int modelId,
+                               bool sortAbc);
     void deleteItemInListModel(int itemId);
     void searchEntriesCompleted(int result);
 
     // signal to KdbEntry object
-    void entryLoaded(int entryId,
+    void entryLoaded(int result,
+                     int entryId,
                      QString title,
                      QString url,
                      QString username,
@@ -75,24 +90,43 @@ signals:
                      quint32 binarySize,
                      QString friendlySize
                      );
-    void entrySaved(int result);
-    void newEntryCreated(int result, int entryId);
-    void entryDeleted(int result);
-    void entryMoved(int result);
+    void entrySaved(int result,
+                    int entryId);
+    void newEntryCreated(int result,
+                         int entryId);
+    void entryDeleted(int result,
+                      int entryId);
+    void entryMoved(int result,
+                    int entryId);
 
     // signal to KdbGroup object
-    void groupLoaded(QString title);
-    void groupSaved(int result);
-    void newGroupCreated(int result, int groupId);
-    void groupDeleted(int result);
+    void groupLoaded(int result,
+                     int groupId,
+                     QString title);
+    void groupSaved(int result,
+                    int groupId);
+    void newGroupCreated(int result,
+                         int groupId);
+    void groupDeleted(int result,
+                      int groupId);
+    void groupMoved(int result,
+                    int groupId);
 
 
 public slots:
     // signals from KdbDatabase object
-    void slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
-    void slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
+    void slot_openDatabase(QString filePath,
+                           QString password,
+                           QString keyfile,
+                           bool readonly);
+    void slot_createNewDatabase(QString filePath,
+                                QString password,
+                                QString keyfile,
+                                int cryptAlgorithm,
+                                int keyTransfRounds);
     void slot_closeDatabase();
-    void slot_changePassKey(QString password, QString keyFile);
+    void slot_changePassKey(QString password,
+                            QString keyFile);
     void slot_changeKeyTransfRounds(int value);
     void slot_changeCryptAlgorithm(int value);
     void slot_setting_showUserNamePasswordsInListView(bool value) { m_setting_showUserNamePasswordsInListView = value; }
@@ -102,7 +136,8 @@ public slots:
     void slot_loadMasterGroups(bool registerListModel);
     void slot_loadGroupsAndEntries(int groupId);
     void slot_unregisterListModel(int modelId);
-    void slot_searchEntries(QString searchString, int rootGroupId);
+    void slot_searchEntries(QString searchString,
+                            int rootGroupId);
 
     // signal from KdbEntry object
     void slot_loadEntry(int entryId);
@@ -119,13 +154,19 @@ public slots:
                              QString comment,
                              int parentGroupId);
     void slot_deleteEntry(int entryId);
-    void slot_moveEntry(int entryId, int newGroupId);
+    void slot_moveEntry(int entryId,
+                        int newGroupId);
 
     // signal from KdbGroup object
     void slot_loadGroup(int groupId);
-    void slot_saveGroup(int groupId, QString title);
+    void slot_saveGroup(int groupId,
+                        QString title);
+    void slot_createNewGroup(QString title,
+                             quint32 iconId,
+                             int parentGroupId);
     void slot_deleteGroup(int groupId);
-    void slot_createNewGroup(QString title, quint32 iconId, int parentGroupId);
+    void slot_moveGroup(int groupId,
+                        int newParentGroupId);
 
 private:
     void initDatabase();

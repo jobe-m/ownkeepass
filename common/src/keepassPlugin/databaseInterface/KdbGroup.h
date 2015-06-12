@@ -24,21 +24,17 @@
 #define KDBGROUP_H
 
 #include <QObject>
+#include "private/AbstractDatabaseInterface.h"
 
 namespace kpxPublic {
 
-class KdbGroup : public QObject
+class KdbGroup : public QObject, public DatabaseDefines
 {
     Q_OBJECT
+    Q_INTERFACES(DatabaseDefines)
 
 public:
-    Q_ENUMS(eResult)
-    enum eResult {
-        RE_OK = 0,                  // no error
-        RE_SAVE_ERROR,              // error saving ...
-
-        RE_LAST
-    };
+    Q_ENUMS(eDatabaseAccessResult)
 
 public:
     Q_PROPERTY(int groupId READ getGroupId WRITE setGroupId STORED true SCRIPTABLE true)
@@ -48,26 +44,42 @@ public:
     Q_INVOKABLE void createNewGroup(QString title, int parentGroupId);
     Q_INVOKABLE void saveGroupData(QString title);
     Q_INVOKABLE void deleteGroup();
+    Q_INVOKABLE void moveGroup(int newParentGroupId);
 
 signals:
-    // signal to QML
-    void groupDataLoaded(QString title);
+    // signals to QML
+    void groupDataLoaded(int result, QString title);
     void groupDataSaved(int result);
-    void newGroupCreated(int result, int newGroupId);
+    void newGroupCreated(int result, int newParentGroupId);
     void groupDeleted(int result);
+    void groupMoved(int result);
 
-    // signal to global interface object of the keepass database
+    // signals to database client
     void loadGroupFromKdbDatabase(int groupId);
     void saveGroupToKdbDatabase(int groupId, QString title);
     void createNewGroupInKdbDatabase(QString title, quint32 iconId, int parentGroupId);
     void deleteGroupFromKdbDatabase(int groupId);
+    void moveGroupInKdbDatabase(int groupId, int newGroupId);
+
+public slots:
+    // signals from database client
+    void slot_groupDataLoaded(int result, int groupId, QString title);
+    void slot_groupDataSaved(int result, int groupId);
+    void slot_newGroupCreated(int result, int groupId);
+    void slot_groupDeleted(int result, int groupId);
+    void slot_groupMoved(int result, int groupId);
+    void slot_disconnectFromDatabaseClient();
 
 public:
     KdbGroup(QObject *parent = 0);
     virtual ~KdbGroup() {}
 
-    int getGroupId();
-    void setGroupId(int groupId);
+    int getGroupId() const { return m_groupId; }
+    void setGroupId(const int value) { m_groupId = value; }
+
+private:
+    bool connectToDatabaseClient();
+    void disconnectFromDatabaseClient();
 
 private:
     int m_groupId;

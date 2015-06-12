@@ -139,6 +139,10 @@ void Keepass2DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
 {
 }
 
+void Keepass2DatabaseInterface::slot_moveGroup(int groupId, int newParentGroupId)
+{
+}
+
 void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, int rootGroupId)
 {
 }
