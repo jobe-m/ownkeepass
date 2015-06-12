@@ -894,15 +894,15 @@ Page {
     KdbGroup {
         id: kdbGroup
         onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title)
-        onGroupDataSaved: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
-        onNewGroupCreated: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDataSaved: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onNewGroupCreated: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntry
         onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(title, url, username, password, comment)
-        onEntryDataSaved: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
-        onNewEntryCreated: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDataSaved: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onNewEntryCreated: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
 
@@ -912,18 +912,18 @@ Page {
     // objects here
     KdbGroup {
         id: kdbGroupForDeletion
-        onGroupDeleted: if (result === KdbGroup.RE_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDeleted: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryForDeletion
-        onEntryDeleted: if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDeleted: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryToMove
         onEntryMoved: {
-            if (result === KdbEntry.RE_SAVE_ERROR) __showSaveErrorPage()
+            if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
         }
     }
 

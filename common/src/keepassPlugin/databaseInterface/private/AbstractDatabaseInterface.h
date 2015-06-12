@@ -25,10 +25,6 @@
 
 #include <QString>
 
-// to be used as type in initDatabaseInterface()
-#define DATABASE_UNKNOWN_TYPE 0
-#define DATABASE_KEEPASS_1    1
-#define DATABASE_KEEPASS_2    2
 
 class DatabaseDefines
 {
@@ -37,13 +33,39 @@ public:
 
     // enumerations
     enum eDatabaseAccessResult {
-        RE_OK = 0,                  // no error
-        RE_SAVE_ERROR,              // error saving database
-        RE_DATABASE_NOT_OPENED,     // database is not opened
+        RE_OK = 0,                                  // no error
+        RE_DB_LOAD_ERROR,                           // error loading data from database
+        RE_DB_SAVE_ERROR,                           // error saving data into database
+        RE_DB_NOT_OPENED,                           // database is not opened
+        RE_DB_OPEN,                                 // other database is currently open, close it first
+        RE_DB_ALREADY_CLOSED,                       // database already closed, no harm
+        RE_DB_CLOSE_FAILED,                         // database closing failed
+        RE_DB_FILE_ERROR,                           // file path error for new database
+        RE_DB_SETKEY_ERROR,                         // error setting key (consisting of password and/or keyfile
+        RE_DB_SETPW_ERROR,                          // error setting password for database
+        RE_DB_SETKEYFILE_ERROR,                     // error setting key file for database
+        RE_DB_CREATE_BACKUPGROUP_ERROR,             // error creating backup group
+        RE_PRECHECK_DB_PATH_ERROR,                  // database file does not exists on precheck
+        RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
+        RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
 
         RE_LAST
     };
+
+    enum eDatabaseItemType {
+        UNKNOWN = 0,
+        GROUP = 1,
+        ENTRY = 2
+    };
+
+    // to be used as type in initDatabaseInterface()
+    enum eDatabaseType {
+        DB_TYPE_UNKNOWN = 0,
+        DB_TYPE_KEEPASS_1 = 1,
+        DB_TYPE_KEEPASS_2 = 2,
+    };
 };
+
 
 // Interface for accessing a database
 class AbstractDatabaseInterface
@@ -66,20 +88,28 @@ protected: // signals
                               QString errorMsg) = 0;
 
     // signals to KdbListModel object
-    virtual void addItemToListModel(QString title,
-                                    QString subtitle,
-                                    int itemId,
-                                    int itemType,
-                                    int itemLevel,
-                                    int modelId,
-                                    bool sortAbc) = 0;
-    virtual void masterGroupsLoaded(int result) = 0;
-    virtual void groupsAndEntriesLoaded(int result) = 0;
+    virtual void appendItemToListModel(QString title,
+                                       QString subtitle,
+                                       int itemId,
+                                       int itemType,
+                                       int itemLevel,
+                                       int modelId) = 0;
+    virtual void addItemToListModelSorted(QString title,
+                                          QString subtitle,
+                                          int itemId,
+                                          int itemType,
+                                          int itemLevel,
+                                          int modelId) = 0;
     virtual void updateItemInListModel(QString title,
                                        QString subTitle,
                                        int itemId,
-                                       int modelId,
-                                       bool sortAbc) = 0;
+                                       int modelId) = 0;
+    virtual void updateItemInListModelSorted(QString title,
+                                             QString subTitle,
+                                             int itemId,
+                                             int modelId) = 0;
+    virtual void masterGroupsLoaded(int result) = 0;
+    virtual void groupsAndEntriesLoaded(int result) = 0;
     virtual void deleteItemInListModel(int itemId) = 0;
     virtual void searchEntriesCompleted(int result) = 0;
 

@@ -23,6 +23,7 @@
 #include "DatabaseClient.h"
 #include "Keepass1DatabaseFactory.h"
 #include "Keepass2DatabaseFactory.h"
+#include "private/AbstractDatabaseInterface.h"
 
 using namespace kpxPrivate;
 
@@ -36,10 +37,7 @@ DatabaseClient::DatabaseClient(QObject *parent)
       m_interface(NULL),
       m_workerThread(),
       m_initialized(false)
-{
-    // Currently support for Keepass 1 is hardcoded
-//    initDatabaseInterface(KEEPASS_1);
-}
+{}
 
 int DatabaseClient::initDatabaseInterface(const int type)
 {
@@ -51,12 +49,12 @@ int DatabaseClient::initDatabaseInterface(const int type)
     // To enable other database formats just load here another interface
 
     switch(type) {
-    case DATABASE_KEEPASS_1:
+    case DatabaseDefines::DB_TYPE_KEEPASS_1:
         m_factory = new Keepass1DatabaseFactory();
         m_interface = m_factory->factoryMethod();
         m_initialized = true;
         break;
-    case DATABASE_KEEPASS_2:
+    case DatabaseDefines::DB_TYPE_KEEPASS_2:
         m_factory = new Keepass2DatabaseFactory();
         m_interface = m_factory->factoryMethod();
         m_initialized = true;

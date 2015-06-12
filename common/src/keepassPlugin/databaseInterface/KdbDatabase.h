@@ -29,13 +29,14 @@
 
 namespace kpxPublic {
 
-class KdbDatabase : public QObject
+class KdbDatabase : public QObject, public DatabaseDefines
 {
     Q_OBJECT
+    Q_INTERFACES(DatabaseDefines)
 
 public:
     Q_ENUMS(eDatabaseType)
-    Q_ENUMS(eResult)
+    Q_ENUMS(eDatabaseAccessResult)
 
     Q_PROPERTY(int keyTransfRounds READ keyTransfRounds WRITE setKeyTransfRounds NOTIFY keyTransfRoundsChanged)
     Q_PROPERTY(int cryptAlgorithm READ cryptAlgorithm WRITE setCryptAlgorithm NOTIFY cryptAlgorithmChanged)
@@ -49,31 +50,6 @@ public: // QtQuick 1.1 needs here a public keyword otherwise if does not find th
     Q_INVOKABLE void changePassword(const QString& password, const QString &keyFile);
 
 public:
-    enum eDatabaseType {
-        DB_TYPE_UNKNOWN = DATABASE_UNKNOWN_TYPE,
-        DB_TYPE_KEEPASS_1 = DATABASE_KEEPASS_1,
-        DB_TYPE_KEEPASS_2 = DATABASE_KEEPASS_2,
-    };
-
-    enum eResult {
-        RE_OK = 0,                                  // no error
-        RE_DB_OPEN,                                 // other database is currently open, close it first
-        RE_DB_ALREADY_CLOSED,                       // database already closed, no harm
-        RE_DB_CLOSE_FAILED,                         // database closing failed
-        RE_DB_FILE_ERROR,                           // file path error for new database
-        RE_DB_SETKEY_ERROR,                         // error setting key (consisting of password and/or keyfile
-        RE_DB_SETPW_ERROR,                          // error setting password for database
-        RE_DB_SETKEYFILE_ERROR,                     // error setting key file for database
-        RE_DB_LOAD_ERROR,                           // error during loading and reading from database
-        RE_DB_SAVE_ERROR,                           // error saving database on creation
-        RE_DB_CREATE_BACKUPGROUP_ERROR,             // error creating backup group
-        RE_PRECHECK_DB_PATH_ERROR,                  // database file does not exists on precheck
-        RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
-        RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
-
-        RE_LAST
-    };
-
     KdbDatabase(QObject* parent=0);
     virtual ~KdbDatabase() {}
 

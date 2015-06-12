@@ -25,8 +25,8 @@
 
 #include <QAbstractListModel>
 #include <QStringList>
+#include "private/AbstractDatabaseInterface.h"
 
-//#include "database/Kdb3Database.h"
 
 namespace kpxPublic {
 
@@ -54,25 +54,14 @@ public:
     int m_itemLevel;
 };
 
-class KdbListModel : public QAbstractListModel
+class KdbListModel : public QAbstractListModel, public DatabaseDefines
 {
     Q_OBJECT
+    Q_INTERFACES(DatabaseDefines)
 
 public:
-    Q_ENUMS(eItemType)
-    enum eItemType {
-        UNKNOWN = 0,
-        GROUP = 1,
-        ENTRY = 2
-    };
-
-    Q_ENUMS(eResult)
-    enum eResult {
-        RE_OK = 0,                  // no error
-        RE_LOAD_ERROR,              // error loading ...
-
-        RE_LAST
-    };
+    Q_ENUMS(eDatabaseItemType)
+    Q_ENUMS(eDatabaseAccessResult)
 
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
     Q_PROPERTY(int searchRootGroupId READ getSearchRootGroupId WRITE setSearchRootGroupId STORED true SCRIPTABLE true)
@@ -97,6 +86,7 @@ public:
 
     // Overwrite function to set role names
     virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
+
 signals:
     // signals to database client
     void loadMasterGroups(bool registerListModel);
@@ -115,13 +105,15 @@ signals:
 
 public slots:
     // signal from database client
-    void slot_addItemToListModel(QString title, QString subtitle, int id, int itemType, int itemLevel, int modelId, bool sortAbc);
-    void slot_updateItemInListModel(QString title, QString subTitle, int groupId, int modelId, bool sortAbc);
+    void slot_appendItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId);
+    void slot_addItemToListModelSorted(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId);
+    void slot_updateItemInListModel(QString title, QString subTitle, int itemId, int modelId);
+    void slot_updateItemInListModelSorted(QString title, QString subTitle, int itemId, int modelId);
     void slot_deleteItem(int itemId);
     void slot_disconnectFromDatabaseClient();
 
 private:
-    void connectToDatabaseClient();
+    bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
 
 private:

@@ -57,20 +57,28 @@ signals:
                       QString errorMsg);
 
     // signals to KdbListModel object
-    void addItemToListModel(QString title,
-                            QString subtitle,
-                            int itemId,
-                            int itemType,
-                            int itemLevel,
-                            int modelId,
-                            bool sortAbc);
-    void masterGroupsLoaded(int result);
-    void groupsAndEntriesLoaded(int result);
+    void appendItemToListModel(QString title,
+                               QString subtitle,
+                               int itemId,
+                               int itemType,
+                               int itemLevel,
+                               int modelId);
+    void addItemToListModelSorted(QString title,
+                                  QString subtitle,
+                                  int itemId,
+                                  int itemType,
+                                  int itemLevel,
+                                  int modelId);
     void updateItemInListModel(QString title,
                                QString subTitle,
                                int itemId,
-                               int modelId,
-                               bool sortAbc);
+                               int modelId);
+    void updateItemInListModelSorted(QString title,
+                                     QString subTitle,
+                                     int itemId,
+                                     int modelId);
+    void masterGroupsLoaded(int result);
+    void groupsAndEntriesLoaded(int result);
     void deleteItemInListModel(int itemId);
     void searchEntriesCompleted(int result);
 

@@ -31,7 +31,7 @@
 #include <QSet>
 
 #include "config/keepassx.h"
-#include "database/Database.h"
+#include "database/Database_keepassx1.h"
 #include "crypto/yarrow.h"
 
 //#if defined(Q_WS_X11) || defined(Q_WS_MAC)

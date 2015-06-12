@@ -82,7 +82,7 @@ void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
             // send signal with error
-            emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+            emit errorOccured(RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
             qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
             OPEN_DB_CLEANUP
         }
@@ -96,14 +96,14 @@ void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     // set master password and key file to decrypt database
     if (!m_kdb3Database->setKey(password, keyfile)) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SETKEY_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_SETKEY_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         OPEN_DB_CLEANUP
     }
     // open database
     if (!m_kdb3Database->load(filePath, readonly)) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_LOAD_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_LOAD_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         OPEN_DB_CLEANUP
     }
@@ -123,12 +123,12 @@ void Keepass1DatabaseInterface::slot_closeDatabase()
 {
     // check if database is already closed
     if (!m_kdb3Database) {
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_ALREADY_CLOSED, "");
+        emit errorOccured(RE_DB_ALREADY_CLOSED, "");
         return;
     }
     // close database
     if (!m_kdb3Database->close()) {
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -153,7 +153,7 @@ void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
             // send signal with error
-            emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
+            emit errorOccured(RE_DB_CLOSE_FAILED, m_kdb3Database->getError());
             qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
             delete m_kdb3Database;
             m_kdb3Database = NULL;
@@ -169,7 +169,7 @@ void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString
     m_kdb3Database->create();
     if (!m_kdb3Database->changeFile(filePath)) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_FILE_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_FILE_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -179,7 +179,7 @@ void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString
     m_kdb3Database->setKeyTransfRounds(keyTransfRounds);
     if (!m_kdb3Database->setKey(password, keyfile)) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SETKEY_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_SETKEY_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -189,7 +189,7 @@ void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString
     // a new database needs at least one group, so create backup group
     if (!m_kdb3Database->backupGroup(true)) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_CREATE_BACKUPGROUP_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_CREATE_BACKUPGROUP_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -197,7 +197,7 @@ void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString
     }
     if (!m_kdb3Database->save()) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_SAVE_ERROR, m_kdb3Database->getError());
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         delete m_kdb3Database;
         m_kdb3Database = NULL;
@@ -215,14 +215,14 @@ void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString key
     Q_ASSERT(m_kdb3Database);
     if (!m_kdb3Database->setKey(password, keyFile)) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_SETPW_ERROR, m_kdb3Database->getError());
         return;
     }
     m_kdb3Database->generateMasterKey();
     // save database
     if (!m_kdb3Database->save()) {
         // send signal with error
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
+        emit errorOccured(RE_DB_SAVE_ERROR, m_kdb3Database->getError());
         return;
     }
     emit passwordChanged();
@@ -254,18 +254,17 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
                     listModelId = 0;
                     m_groups_modelId.insertMulti(listModelId, int(masterGroup));
                 }
-                emit addItemToListModel(masterGroup->title(),                           // group name
-                                        QString("Subgroups: %1 | Entries: %2")
-                                        .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
-                                        int(masterGroup),                               // item id
-                                        kpxPublic::KdbListModel::GROUP,                 // item type
-                                        item_level,                                     // item level (0 = root, 1 = first level, etc.
-                                        listModelId,                                    // list model of root group
-                                        false); //m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
+                emit appendItemToListModel(masterGroup->title(),                           // group name
+                                           QString("Subgroups: %1 | Entries: %2")
+                                           .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
+                                           int(masterGroup),                               // item id
+                                           GROUP,                                          // item type
+                                           item_level,                                     // item level (0 = root, 1 = first level, etc.
+                                           listModelId);                                   // list model of root group
             }
         }
     }
-    emit masterGroupsLoaded(kpxPublic::KdbListModel::RE_OK);
+    emit masterGroupsLoaded(RE_OK);
 }
 
 void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
@@ -285,14 +284,13 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
 //            qDebug("Group %d: %s", i, CSTR(subGroup->title()));
             int numberOfSubgroups = subGroup->children().count();
             int numberOfEntries = m_kdb3Database->entries(subGroup).count();
-            emit addItemToListModel(subGroup->title(),                              // group name
-                                    QString("Subgroups: %1 | Entries: %2")
-                                    .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
-                                    int(subGroup),                                  // item id
-                                    kpxPublic::KdbListModel::GROUP,                 // item type
-                                    0,                                              // item level (not used here)
-                                    groupId,                                        // list model gets groupId as its unique ID
-                                    m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
+            emit appendItemToListModel(subGroup->title(),                              // group name
+                                       QString("Subgroups: %1 | Entries: %2")
+                                       .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
+                                       int(subGroup),                                  // item id
+                                       GROUP,                                          // item type
+                                       0,                                              // item level (not used here)
+                                       groupId);                                       // list model gets groupId as its unique ID
             // save modelId and group
             m_groups_modelId.insertMulti(groupId, int(subGroup));
         }
@@ -307,18 +305,17 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
     for (int i = 0; i < entries.count(); i++) {
         IEntryHandle* entry = entries.at(i);
         if (entry->isValid()) {
-            emit addItemToListModel(entry->title(),                                 // group name
-                                    getUserAndPassword(entry),                      // subtitle
-                                    int(entry),                                     // item id
-                                    kpxPublic::KdbListModel::ENTRY,                 // item type
-                                    0,                                              // item level (not used here)
-                                    groupId,                                        // list model gets groupId as its unique ID
-                                    m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
+            emit appendItemToListModel(entry->title(),                                 // group name
+                                       getUserAndPassword(entry),                      // subtitle
+                                       int(entry),                                     // item id
+                                       ENTRY,                                          // item type
+                                       0,                                              // item level (not used here)
+                                       groupId);                                       // list model gets groupId as its unique ID
             // save modelId and entry
             m_entries_modelId.insertMulti(groupId, int(entry));
         }
     }
-    emit groupsAndEntriesLoaded(kpxPublic::KdbListModel::RE_OK);
+    emit groupsAndEntriesLoaded(RE_OK);
 }
 
 void Keepass1DatabaseInterface::slot_loadEntry(int entryId)
@@ -368,7 +365,7 @@ void Keepass1DatabaseInterface::slot_saveGroup(int groupId, QString title)
     Q_ASSERT(group);
     group->setTitle(title);
     if (!m_kdb3Database->save()) {
-        emit groupSaved(RE_SAVE_ERROR, groupId);
+        emit groupSaved(RE_DB_SAVE_ERROR, groupId);
         return;
     }
 
@@ -377,12 +374,19 @@ void Keepass1DatabaseInterface::slot_saveGroup(int groupId, QString title)
     int numberOfSubgroups = group->children().count();
     int numberOfEntries = m_kdb3Database->entries(group).count();
     for (int i = 0; i < modelIds.count(); i++) {
-        emit updateItemInListModel(title,                                           // update group name
-                                   QString("Subgroups: %1 | Entries: %2")
-                                   .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
-                                   groupId,                                         // identifier for group item in list model
-                                   modelIds[i],                                     // identifier for list model
-                                   m_setting_sortAlphabeticallyInListView);         // sort alphabetically
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit updateItemInListModelSorted(title,                                           // update group name
+                                             QString("Subgroups: %1 | Entries: %2")
+                                             .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
+                                             groupId,                                         // identifier for group item in list model
+                                             modelIds[i]);                                    // identifier for list model
+        } else {
+            emit updateItemInListModel(title,                                           // update group name
+                                       QString("Subgroups: %1 | Entries: %2")
+                                       .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
+                                       groupId,                                         // identifier for group item in list model
+                                       modelIds[i]);                                    // identifier for list model
+        }
     }
     // signal to QML
     emit groupSaved(RE_OK, groupId);
@@ -415,18 +419,26 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
     Q_ASSERT(newGroup);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newGroupCreated(RE_SAVE_ERROR, int(newGroup));
+        emit newGroupCreated(RE_DB_SAVE_ERROR, int(newGroup));
         return;
     }
 
     // update all list model of parent groups where new group was added
-    emit addItemToListModel(title,                                          // group name
-                            "Subgroups: 0 | Entries: 0",                    // subtitle
-                            int(newGroup),                                  // item id
-                            kpxPublic::KdbListModel::GROUP,                 // item type
-                            0,                                              // item level (not used here)
-                            parentGroupId,                                  // for distinguishing different models
-                            m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
+    if (m_setting_sortAlphabeticallyInListView) {
+        emit addItemToListModelSorted(title,                                       // group name
+                                      "Subgroups: 0 | Entries: 0",                 // subtitle
+                                      int(newGroup),                               // item id
+                                      GROUP,                                       // item type
+                                      0,                                           // item level (not used here)
+                                      parentGroupId);                              // for distinguishing different models
+    } else {
+        emit appendItemToListModel(title,                                          // group name
+                                   "Subgroups: 0 | Entries: 0",                    // subtitle
+                                   int(newGroup),                                  // item id
+                                   GROUP,                                          // item type
+                                   0,                                              // item level (not used here)
+                                   parentGroupId);                                 // for distinguishing different models
+    }
     // save modelid and group
     m_groups_modelId.insertMulti(parentGroupId, int(newGroup));
 
@@ -462,18 +474,24 @@ void Keepass1DatabaseInterface::slot_saveEntry(int entryId,
     entry->setComment(comment);
     // save changes to database and send signal with result
     if (!m_kdb3Database->save()) {
-        emit entrySaved(RE_SAVE_ERROR, entryId);
+        emit entrySaved(RE_DB_SAVE_ERROR, entryId);
         return;
     }
 
     // update entry item in list model
     QList<int> modelIds = m_entries_modelId.keys(entryId);
     for (int i = 0; i < modelIds.count(); i++) {
-        emit updateItemInListModel(title,                                       // group name
-                                   getUserAndPassword(entry),                   // subtitle
-                                   entryId,                                     // identifier for item in list model
-                                   modelIds[i],                                 // identifier for list model of master group
-                                   m_setting_sortAlphabeticallyInListView);     // sort alphabetically
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit updateItemInListModelSorted(title,                                 // group name
+                                             getUserAndPassword(entry),             // subtitle
+                                             entryId,                               // identifier for item in list model
+                                             modelIds[i]);                          // identifier for list model of master group
+        } else {
+            emit updateItemInListModel(title,                                       // group name
+                                       getUserAndPassword(entry),                   // subtitle
+                                       entryId,                                     // identifier for item in list model
+                                       modelIds[i]);                                // identifier for list model of master group
+        }
     }
     // signal to QML
     emit entrySaved(RE_OK, entryId);
@@ -522,18 +540,26 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     newEntry->setComment(comment);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newEntryCreated(RE_SAVE_ERROR, int(newEntry));
+        emit newEntryCreated(RE_DB_SAVE_ERROR, int(newEntry));
         return;
     }
 
     // add entry to list model in order to update UI by sending signal to list models with identifier modelId
-    emit addItemToListModel(title,                                          // title
-                            getUserAndPassword(newEntry),                   // subtitle
-                            int(newEntry),                                  // item id
-                            kpxPublic::KdbListModel::ENTRY,                 // item type
-                            0,                                              // item level (not used here)
-                            parentGroupId,                                  // id of list model where to put this entry in
-                            m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
+    if (m_setting_sortAlphabeticallyInListView) {
+        emit addItemToListModelSorted(title,                                       // title
+                                      getUserAndPassword(newEntry),                // subtitle
+                                      int(newEntry),                               // item id
+                                      ENTRY,                                       // item type
+                                      0,                                           // item level (not used here)
+                                      parentGroupId);                              // id of list model where to put this entry in
+    } else {
+        emit appendItemToListModel(title,                                          // title
+                                   getUserAndPassword(newEntry),                   // subtitle
+                                   int(newEntry),                                  // item id
+                                   ENTRY,                                          // item type
+                                   0,                                              // item level (not used here)
+                                   parentGroupId);                                 // id of list model where to put this entry in
+    }
     // save modelId and entry
     m_entries_modelId.insertMulti(parentGroupId, int(newEntry));
 
@@ -554,7 +580,7 @@ void Keepass1DatabaseInterface::slot_deleteGroup(int groupId)
     m_kdb3Database->deleteGroup(group);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit groupDeleted(RE_SAVE_ERROR, groupId);
+        emit groupDeleted(RE_DB_SAVE_ERROR, groupId);
         return;
     }
 
@@ -571,16 +597,15 @@ void Keepass1DatabaseInterface::slot_deleteGroup(int groupId)
 
 void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
 {
+    Q_ASSERT(m_kdb3Database);
     IGroupHandle* grandParentGroup = parentGroup->parent();
     int numberOfSubgroups = parentGroup->children().count();
-    Q_ASSERT(m_kdb3Database);
     int numberOfEntries = m_kdb3Database->entries(parentGroup).count();
     emit updateItemInListModel(parentGroup->title(),                                // group name
                                QString("Subgroups: %1 | Entries: %2")
                                .arg(numberOfSubgroups).arg(numberOfEntries),        // subtitle
                                int(parentGroup),                                    // identifier for group item in list model
-                               int(grandParentGroup),                               // identifier for list model
-                               m_setting_sortAlphabeticallyInListView);             // sort alphabetically
+                               int(grandParentGroup));                              // identifier for list model
 }
 
 void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
@@ -595,7 +620,7 @@ void Keepass1DatabaseInterface::slot_deleteEntry(int entryId)
     m_kdb3Database->deleteEntry(entry);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit entryDeleted(RE_SAVE_ERROR, entryId);
+        emit entryDeleted(RE_DB_SAVE_ERROR, entryId);
         return;
     }
 
@@ -621,7 +646,7 @@ void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
     m_kdb3Database->moveEntry(entry, newGroup);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit entryMoved(RE_SAVE_ERROR, entryId);
+        emit entryMoved(RE_DB_SAVE_ERROR, entryId);
         return;
     }
 
@@ -635,13 +660,21 @@ void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
         // register entry to list model of parent group
         m_entries_modelId.insertMulti(newGroupId, entryId);
         // now update list model with moved entry
-        emit addItemToListModel(entry->title(),                             // entry name
-                                getUserAndPassword(entry),                  // subtitle
-                                entryId,                                    // identifier for entry item in list model
-                                kpxPublic::KdbListModel::ENTRY,             // item type
-                                0,                                          // item level (not used here)
-                                newGroupId,                                 // identifier for list model where this item should be inserted
-                                m_setting_sortAlphabeticallyInListView);    // indicate if alphabetical sorting should be done
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit addItemToListModelSorted(entry->title(),                          // entry name
+                                          getUserAndPassword(entry),               // subtitle
+                                          entryId,                                 // identifier for entry item in list model
+                                          ENTRY,                                   // item type
+                                          0,                                       // item level (not used here)
+                                          newGroupId);                             // identifier for list model where this item should be inserted
+        } else {
+            emit appendItemToListModel(entry->title(),                             // entry name
+                                       getUserAndPassword(entry),                  // subtitle
+                                       entryId,                                    // identifier for entry item in list model
+                                       ENTRY,                                      // item type
+                                       0,                                          // item level (not used here)
+                                       newGroupId);                                // identifier for list model where this item should be inserted
+        }
     }
     // update subtitle of parent list model where password entry was moved to
     parentGroup = entry->group();
@@ -652,6 +685,8 @@ void Keepass1DatabaseInterface::slot_moveEntry(int entryId, int newGroupId)
 
 void Keepass1DatabaseInterface::slot_moveGroup(int groupId, int newParentGroupId)
 {
+    Q_UNUSED(groupId);
+    Q_UNUSED(newParentGroupId);
     // TODO
 }
 
@@ -672,19 +707,27 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, int roo
     for (int i = 0; i < entries.count(); i++) {
         IEntryHandle* entry = entries.at(i);
         if (entry->isValid()) {
-            emit addItemToListModel(entry->title(),                                 // entry name
-                                    getUserAndPassword(entry),                      // subtitle
-                                    int(entry),                                     // item id
-                                    kpxPublic::KdbListModel::ENTRY,                 // item type
-                                    0,                                              // item level (not used here)
-                                    -1,                                             // specifying model where entry should be added (search list model gets -1)
-                                    m_setting_sortAlphabeticallyInListView);        // indicate if alphabetical sorting should be done
+            if (m_setting_sortAlphabeticallyInListView) {
+                emit addItemToListModelSorted(entry->title(),                              // entry name
+                                              getUserAndPassword(entry),                   // subtitle
+                                              int(entry),                                  // item id
+                                              ENTRY,                                       // item type
+                                              0,                                           // item level (not used here)
+                                              -1);                                         // specifying model where entry should be added (search list model gets -1)
+            } else {
+                emit appendItemToListModel(entry->title(),                                 // entry name
+                                           getUserAndPassword(entry),                      // subtitle
+                                           int(entry),                                     // item id
+                                           ENTRY,                                          // item type
+                                           0,                                              // item level (not used here)
+                                           -1);                                            // specifying model where entry should be added (search list model gets -1)
+            }
             // save modelId and entry
             m_entries_modelId.insertMulti(-1, int(entry));
         }
     }
     // signal to QML
-    emit searchEntriesCompleted(kpxPublic::KdbListModel::RE_OK);
+    emit searchEntriesCompleted(RE_OK);
 }
 
 inline QString Keepass1DatabaseInterface::getUserAndPassword(IEntryHandle* entry)
@@ -713,7 +756,7 @@ void Keepass1DatabaseInterface::slot_changeKeyTransfRounds(int value)
     emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, "");
+        emit errorOccured(RE_DB_SAVE_ERROR, "");
         return;
     }
 }
@@ -728,7 +771,7 @@ void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
     emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit errorOccured(kpxPublic::KdbDatabase::RE_DB_SAVE_ERROR, "");
+        emit errorOccured(RE_DB_SAVE_ERROR, "");
         return;
     }
 }

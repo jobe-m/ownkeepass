@@ -72,7 +72,7 @@ public:
     Q_ENUMS(eResult)
     enum eResult {
         RE_OK = 0,                  // no error
-        RE_LOAD_ERROR,              // error loading ...
+        RE_DB_LOAD_ERROR,              // error loading ...
         RE_LAST
     };
 

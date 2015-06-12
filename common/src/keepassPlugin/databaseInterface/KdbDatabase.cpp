@@ -101,7 +101,7 @@ void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const 
         return;
     }
     // first set up interface to database client
-    Q_ASSERT((databaseType > DATABASE_UNKNOWN_TYPE) && (databaseType <= DATABASE_KEEPASS_2));
+    Q_ASSERT((databaseType > DB_TYPE_UNKNOWN) && (databaseType <= DB_TYPE_KEEPASS_2));
     DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
     connectToDatabaseClient();
     m_database_type = databaseType;
@@ -121,7 +121,7 @@ void KdbDatabase::create(const int databaseType, const QString& dbFilePath, cons
         return;
     }
     // first set up interface to database client
-    Q_ASSERT((databaseType > DATABASE_UNKNOWN_TYPE) && (databaseType >= DATABASE_KEEPASS_2));
+    Q_ASSERT((databaseType > DB_TYPE_UNKNOWN) && (databaseType >= DB_TYPE_KEEPASS_2));
     DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
     connectToDatabaseClient();
     m_database_type = databaseType;
@@ -193,5 +193,5 @@ void KdbDatabase::slot_databaseClosed()
     Q_ASSERT(ret);
 
     m_connected = false;
-    m_database_type = DATABASE_UNKNOWN_TYPE;
+    m_database_type = DB_TYPE_UNKNOWN;
 }

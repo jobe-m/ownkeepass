@@ -104,7 +104,7 @@ void KdbGroup::loadGroupData()
     Q_ASSERT(m_groupId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDataLoaded(RE_DATABASE_NOT_OPENED, "");
+        emit groupDataLoaded(RE_DB_NOT_OPENED, "");
     } else {
         // trigger loading from database client
         emit loadGroupFromKdbDatabase(m_groupId);
@@ -116,7 +116,7 @@ void KdbGroup::saveGroupData(QString title)
     Q_ASSERT(m_groupId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDataSaved(RE_DATABASE_NOT_OPENED);
+        emit groupDataSaved(RE_DB_NOT_OPENED);
     } else {
         // trigger loading from database client
         emit saveGroupToKdbDatabase(m_groupId, title);
@@ -128,7 +128,7 @@ void KdbGroup::createNewGroup(QString title, int parentGroupId)
     Q_ASSERT(parentGroupId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit newGroupCreated(RE_DATABASE_NOT_OPENED, 0);
+        emit newGroupCreated(RE_DB_NOT_OPENED, 0);
     } else {
         // trigger creation of new entry in database client
         m_new_group_triggered = true;
@@ -143,7 +143,7 @@ void KdbGroup::deleteGroup()
     Q_ASSERT(m_groupId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDeleted(RE_DATABASE_NOT_OPENED);
+        emit groupDeleted(RE_DB_NOT_OPENED);
     } else {
         // trigger deletion of entry in database client
         emit deleteGroupFromKdbDatabase(m_groupId);
@@ -156,7 +156,7 @@ void KdbGroup::moveGroup(int newParentGroupId)
     Q_ASSERT(newParentGroupId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupMoved(RE_DATABASE_NOT_OPENED);
+        emit groupMoved(RE_DB_NOT_OPENED);
     } else {
         // trigger moving of entry in database client
         emit moveGroupInKdbDatabase(m_groupId, newParentGroupId);

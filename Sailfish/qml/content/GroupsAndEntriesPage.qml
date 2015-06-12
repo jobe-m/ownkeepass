@@ -256,10 +256,10 @@ Page {
     KdbListModel {
         id: kdbListModel
         onGroupsAndEntriesLoaded: {
-            if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
+            if (result === KdbListModel.RE_DB_LOAD_ERROR) __showLoadErrorPage()
         }
         onMasterGroupsLoaded: {
-            if (result === KdbListModel.RE_LOAD_ERROR) __showLoadErrorPage()
+            if (result === KdbListModel.RE_DB_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
             if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true

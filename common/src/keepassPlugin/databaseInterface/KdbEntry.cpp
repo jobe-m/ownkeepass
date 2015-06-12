@@ -114,7 +114,7 @@ void KdbEntry::loadEntryData()
     Q_ASSERT(m_entryId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryDataLoaded(RE_DATABASE_NOT_OPENED, "", "", "", "", "", "", "", "", "", "", 0, "");
+        emit entryDataLoaded(RE_DB_NOT_OPENED, "", "", "", "", "", "", "", "", "", "", 0, "");
     } else {
         // trigger loading from database client
         emit loadEntryFromKdbDatabase(m_entryId);
@@ -130,7 +130,7 @@ void KdbEntry::saveEntryData(QString title,
     Q_ASSERT(m_entryId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryDataSaved(RE_DATABASE_NOT_OPENED);
+        emit entryDataSaved(RE_DB_NOT_OPENED);
     } else {
         // trigger saving to database client
         emit saveEntryToKdbDatabase(m_entryId, title, url, username, password, comment);
@@ -147,7 +147,7 @@ void KdbEntry::createNewEntry(QString title,
     Q_ASSERT(parentgroupId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit newEntryCreated(RE_DATABASE_NOT_OPENED, 0);
+        emit newEntryCreated(RE_DB_NOT_OPENED, 0);
     } else {
         // trigger creation of new entry in database client
         m_new_entry_triggered = true;
@@ -160,7 +160,7 @@ void KdbEntry::deleteEntry()
     Q_ASSERT(m_entryId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryDeleted(RE_DATABASE_NOT_OPENED);
+        emit entryDeleted(RE_DB_NOT_OPENED);
     } else {
         // trigger deletion of entry in database client
         emit deleteEntryFromKdbDatabase(m_entryId);
@@ -173,7 +173,7 @@ void KdbEntry::moveEntry(int newGroupId)
     Q_ASSERT(newGroupId != 0);
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryMoved(RE_DATABASE_NOT_OPENED);
+        emit entryMoved(RE_DB_NOT_OPENED);
     } else {
         // trigger moving of entry in database client
         emit moveEntryInKdbDatabase(m_entryId, newGroupId);
