@@ -49,12 +49,12 @@ int DatabaseClient::initDatabaseInterface(const int type)
     // To enable other database formats just load here another interface
 
     switch(type) {
-    case DatabaseDefines::DB_TYPE_KEEPASS_1:
+    case AbstractDatabaseInterface::DB_TYPE_KEEPASS_1:
         m_factory = new Keepass1DatabaseFactory();
         m_interface = m_factory->factoryMethod();
         m_initialized = true;
         break;
-    case DatabaseDefines::DB_TYPE_KEEPASS_2:
+    case AbstractDatabaseInterface::DB_TYPE_KEEPASS_2:
         m_factory = new Keepass2DatabaseFactory();
         m_interface = m_factory->factoryMethod();
         m_initialized = true;

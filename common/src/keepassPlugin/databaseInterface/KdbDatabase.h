@@ -29,14 +29,39 @@
 
 namespace kpxPublic {
 
-class KdbDatabase : public QObject, public DatabaseDefines
+class KdbDatabase : public QObject
 {
     Q_OBJECT
-    Q_INTERFACES(DatabaseDefines)
+    Q_ENUMS(eDatabaseTypeWrapper)
+    Q_ENUMS(eDatabaseAccessResultWrapper)
 
 public:
-    Q_ENUMS(eDatabaseType)
-    Q_ENUMS(eDatabaseAccessResult)
+    enum eDatabaseTypeWrapper {
+        DB_TYPE_UNKNOWN = AbstractDatabaseInterface::DB_TYPE_UNKNOWN,
+        DB_TYPE_KEEPASS_1 = AbstractDatabaseInterface::DB_TYPE_KEEPASS_1,
+        DB_TYPE_KEEPASS_2 = AbstractDatabaseInterface::DB_TYPE_KEEPASS_2
+    };
+
+    enum eDatabaseAccessResultWrapper {
+        RE_OK = AbstractDatabaseInterface::RE_OK,                                                           // no error
+        RE_DB_LOAD_ERROR = AbstractDatabaseInterface::RE_DB_LOAD_ERROR,                                     // error loading data from database
+        RE_DB_SAVE_ERROR = AbstractDatabaseInterface::RE_DB_SAVE_ERROR,                                     // error saving data into database
+        RE_DB_NOT_OPENED = AbstractDatabaseInterface::RE_DB_NOT_OPENED,                                     // database is not opened
+        RE_DB_OPEN = AbstractDatabaseInterface::RE_DB_OPEN,                                                 // other database is currently open, close it first
+        RE_DB_ALREADY_CLOSED = AbstractDatabaseInterface::RE_DB_ALREADY_CLOSED,                             // database already closed, no harm
+        RE_DB_CLOSE_FAILED = AbstractDatabaseInterface::RE_DB_CLOSE_FAILED,                                 // database closing failed
+        RE_DB_FILE_ERROR = AbstractDatabaseInterface::RE_DB_FILE_ERROR,                                     // file path error for new database
+        RE_DB_SETKEY_ERROR = AbstractDatabaseInterface::RE_DB_SETKEY_ERROR,                                 // error setting key (consisting of password and/or keyfile
+        RE_DB_SETPW_ERROR = AbstractDatabaseInterface::RE_DB_SETPW_ERROR,                                   // error setting password for database
+        RE_DB_SETKEYFILE_ERROR = AbstractDatabaseInterface::RE_DB_SETKEYFILE_ERROR,                         // error setting key file for database
+        RE_DB_CREATE_BACKUPGROUP_ERROR = AbstractDatabaseInterface::RE_DB_CREATE_BACKUPGROUP_ERROR,         // error creating backup group
+        RE_PRECHECK_DB_PATH_ERROR = AbstractDatabaseInterface::RE_PRECHECK_DB_PATH_ERROR,                   // database file does not exists on precheck
+        RE_PRECHECK_KEY_FILE_PATH_ERROR = AbstractDatabaseInterface::RE_PRECHECK_KEY_FILE_PATH_ERROR,       // key file does not exists on precheck
+        RE_PRECHECK_DB_PATH_CREATION_ERROR = AbstractDatabaseInterface::RE_PRECHECK_DB_PATH_CREATION_ERROR, // path to database file could not be created
+
+        RE_LAST = AbstractDatabaseInterface::RE_LAST
+    };
+
 
     Q_PROPERTY(int keyTransfRounds READ keyTransfRounds WRITE setKeyTransfRounds NOTIFY keyTransfRoundsChanged)
     Q_PROPERTY(int cryptAlgorithm READ cryptAlgorithm WRITE setCryptAlgorithm NOTIFY cryptAlgorithmChanged)
@@ -100,6 +125,7 @@ private slots:
 
 private:
     void connectToDatabaseClient();
+    void disconnectFromDatabaseClient();
 
 private:
     // The following properties are read from backend and therefore there are slots for it

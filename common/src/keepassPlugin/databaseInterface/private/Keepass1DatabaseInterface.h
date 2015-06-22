@@ -33,10 +33,10 @@ using namespace kpxPublic;
 
 namespace kpxPrivate {
 
-class Keepass1DatabaseInterface : public QObject, public AbstractDatabaseInterface, public DatabaseDefines
+class Keepass1DatabaseInterface : public QObject, public AbstractDatabaseInterface
 {
     Q_OBJECT
-    Q_INTERFACES(AbstractDatabaseInterface DatabaseDefines)
+    Q_INTERFACES(AbstractDatabaseInterface)
 
 public:
     explicit Keepass1DatabaseInterface(QObject* parent = 0);

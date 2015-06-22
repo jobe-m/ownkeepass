@@ -439,6 +439,8 @@ Page {
         property Page masterGroupsPage
 
         function init() {
+            // make sure database is closed
+            kdbDatabase.close()
             // load settings into kdbDatabase
             kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
             kdbDatabase.sortAlphabeticallyInListView = ownKeepassSettings.sortAlphabeticallyInListView
@@ -612,8 +614,7 @@ Page {
                 masterGroupsPage.closeOnError()
                 break
             case KdbDatabase.RE_DB_ALREADY_CLOSED:
-                Global.env.infoPopup.show(Global.error, qsTr("Database error"), qsTr("Database was already closed. Nothing serious, but please submit a bug report."))
-                masterGroupsPage.closeOnError()
+                console.log("Database was already closed. Nothing serious.")
                 break
             case KdbDatabase.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show(Global.error, qsTr("Database error"), qsTr("An error occured on closing your database:") + " " + errorMsg)

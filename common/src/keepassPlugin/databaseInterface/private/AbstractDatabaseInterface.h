@@ -26,12 +26,14 @@
 #include <QString>
 
 
-class DatabaseDefines
+// Interface for accessing a database
+class AbstractDatabaseInterface
 {
 public:
-    virtual ~DatabaseDefines(){}
+    virtual ~AbstractDatabaseInterface(){}
 
-    // enumerations
+public:
+    // Whenever changing here enums don't forget to update the enum wrappers in KdbDatabase, KdbEntry, KdbGroup and KdbListModel !!!
     enum eDatabaseAccessResult {
         RE_OK = 0,                                  // no error
         RE_DB_LOAD_ERROR,                           // error loading data from database
@@ -54,24 +56,16 @@ public:
 
     enum eDatabaseItemType {
         UNKNOWN = 0,
-        GROUP = 1,
-        ENTRY = 2
+        GROUP,
+        ENTRY,
     };
 
     // to be used as type in initDatabaseInterface()
     enum eDatabaseType {
         DB_TYPE_UNKNOWN = 0,
-        DB_TYPE_KEEPASS_1 = 1,
-        DB_TYPE_KEEPASS_2 = 2,
+        DB_TYPE_KEEPASS_1,
+        DB_TYPE_KEEPASS_2,
     };
-};
-
-
-// Interface for accessing a database
-class AbstractDatabaseInterface
-{
-public:
-    virtual ~AbstractDatabaseInterface(){}
 
 protected: // signals
     // signals to all objects
@@ -208,6 +202,6 @@ public: // slots
 };
 
 Q_DECLARE_INTERFACE(AbstractDatabaseInterface, "harbour.ownkeepass.AbstractDatabaseInterface")
-Q_DECLARE_INTERFACE(DatabaseDefines, "harbour.ownkeepass.DatabaseDefines")
+//Q_DECLARE_INTERFACE(DatabaseDefines, "harbour.ownkeepass.DatabaseDefines")
 
 #endif // DATABASEINTERFACE_H
