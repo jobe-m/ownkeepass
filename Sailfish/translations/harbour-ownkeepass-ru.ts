@@ -970,138 +970,143 @@
         <translation>Открыть базу</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="333"/>
+        <location filename="../qml/content/MainPage.qml" line="342"/>
+        <source>Database type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="364"/>
         <source>Recent databases</source>
         <translation>Недавно открытые</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="353"/>
+        <location filename="../qml/content/MainPage.qml" line="384"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>Путь к файлу новой базы паролей</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="362"/>
+        <location filename="../qml/content/MainPage.qml" line="393"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>Путь к файлу базы паролей</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="540"/>
         <source>Permission error</source>
         <translation>Ошибка прав доступа</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="540"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Невозможно создать путь к файлу базы паролей. Проверьте права для пользователя &apos;nemo&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="514"/>
-        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="545"/>
+        <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Key file error</source>
         <translation>Ошибка файла-ключа</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="514"/>
-        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="545"/>
+        <location filename="../qml/content/MainPage.qml" line="562"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Путь к файлу базы верен, но файл ключа не найден. Проверьте путь к файлу ключа:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="519"/>
+        <location filename="../qml/content/MainPage.qml" line="550"/>
         <source>Database file already exists</source>
         <translation>Файл базы уже существует</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="519"/>
+        <location filename="../qml/content/MainPage.qml" line="550"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Укажите другой путь и имя для файла базы паролей или удалите старую базу через файловый менеджер.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="567"/>
         <source>Database file error</source>
         <translation>Ошибка файла базы паролей</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="536"/>
+        <location filename="../qml/content/MainPage.qml" line="567"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Файл базы паролей не существует. Проверьте путь к файлу:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="584"/>
+        <location filename="../qml/content/MainPage.qml" line="616"/>
         <source>Password changed</source>
         <translation>Пароль изменен</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="584"/>
+        <location filename="../qml/content/MainPage.qml" line="616"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Мастер-пароль для базы паролей изменен успешно.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="591"/>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="623"/>
+        <location filename="../qml/content/MainPage.qml" line="643"/>
         <source>Internal database error</source>
         <translation>Внутренняя ошибка базы данных</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="591"/>
+        <location filename="../qml/content/MainPage.qml" line="623"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Невозможно закрыть предыдущую базу. Попробуйте еще раз. Код ошибки:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
+        <location filename="../qml/content/MainPage.qml" line="627"/>
         <source>Internal key error</source>
         <translation>Внутренняя ошибка ключа</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
+        <location filename="../qml/content/MainPage.qml" line="627"/>
+        <location filename="../qml/content/MainPage.qml" line="631"/>
         <source>The following error occured during opening of database:</source>
         <translation>Ошибка при открытии базы паролей:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
+        <location filename="../qml/content/MainPage.qml" line="631"/>
         <source>Internal key file error</source>
         <translation>Внутренняя ошибка файла ключа</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="635"/>
         <source>Error loading database</source>
         <translation>Ошибка загрузки базы паролей</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="635"/>
         <source>Please try again.</source>
         <translation>Пожалуйста, попробуйте снова.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="639"/>
         <source>Internal file error</source>
         <translation>Внутренняя ошибка файла</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="639"/>
         <source>The following error occured during creation of database:</source>
         <translation>Ошибка при создании базы паролей:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="643"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Ошибка при создании резервной копии группы:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
+        <location filename="../qml/content/MainPage.qml" line="647"/>
         <source>Save database error</source>
         <translation>Ошибка сохранения базы</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
+        <location filename="../qml/content/MainPage.qml" line="647"/>
         <source>Could not save database with following error:</source>
         <translation>Ошибка сохранения базы паролей:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="622"/>
+        <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>Database error</source>
         <translation>Ошибка базы паролей</translation>
     </message>
@@ -1110,42 +1115,42 @@
         <translation type="vanished">База паролей уже закрыта. Ничего серьезного, но отправьте отчет об ошибке.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="622"/>
+        <location filename="../qml/content/MainPage.qml" line="654"/>
         <source>An error occured on closing your database:</source>
         <translation>Ошибка при закрытии базы паролей:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1051"/>
+        <location filename="../qml/content/MainPage.qml" line="1084"/>
         <source>Yes</source>
         <translation>Да</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1052"/>
+        <location filename="../qml/content/MainPage.qml" line="1085"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1053"/>
+        <location filename="../qml/content/MainPage.qml" line="1086"/>
         <source>Unsaved changes</source>
         <translation>Есть изменения</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1081"/>
+        <location filename="../qml/content/MainPage.qml" line="1114"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Сохранить изменения в записи?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1086"/>
+        <location filename="../qml/content/MainPage.qml" line="1119"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Сохранить изменения в группе паролей?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1091"/>
+        <location filename="../qml/content/MainPage.qml" line="1124"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Сохранить изменения в настройках базы паролей?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1096"/>
+        <location filename="../qml/content/MainPage.qml" line="1129"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Сохранить изменения в настройках?</translation>
     </message>

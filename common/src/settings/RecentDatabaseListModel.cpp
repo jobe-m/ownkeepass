@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2014 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2014-2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -40,11 +40,12 @@ void RecentDatabaseListModel::addRecent(QString uiName,
                                         QString dbFilePath,
                                         bool useKeyFile,
                                         int keyFileLocation,
-                                        QString keyFilePath)
+                                        QString keyFilePath,
+                                        int databaseType)
 {
 //    qDebug() << "addRecent - added: " << uiName;
 
-    DatabaseItem item(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
+    DatabaseItem item(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath, databaseType);
     beginInsertRows(QModelIndex(), 0, 0);
     m_items.insert(0, item);
     endInsertRows();

@@ -53,7 +53,7 @@ public:
         IT,    // Italian
         RU,    // Russian
         DA,    // Danish
-        PL_PL, // Plish - not yet started
+        PL_PL, // Polish - not yet started
         ZH_CN, // Chinese
         UK_UA, // Ukrainian - not yet started
         NB_NO, // Norwegian Bogmål
@@ -95,7 +95,8 @@ public:
                                        QString dbFilePath,
                                        bool useKeyFile,
                                        int keyFileLocation,
-                                       QString keyFilePath);
+                                       QString keyFilePath,
+                                       int databaseType);
     Q_INVOKABLE void loadDatabaseDetails();
 
 public:

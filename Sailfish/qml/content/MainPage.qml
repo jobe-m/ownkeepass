@@ -327,6 +327,37 @@ Page {
                         text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
                     }
 
+                    Item {
+                        x: Theme.paddingLarge
+                        width: parent.width - Theme.paddingLarge * 2
+                        height: databaseTypeLabel.height
+
+                        Label {
+                            id: databaseTypeLabel
+                            anchors.top: parent.top
+                            anchors.left: parent.left
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.secondaryColor
+                            horizontalAlignment: Text.AlignLeft
+                            text: qsTr("Database type:")
+                        }
+
+                        Label {
+                            anchors.top: parent.top
+                            anchors.left: databaseTypeLabel.right
+                            anchors.leftMargin: Theme.paddingMedium
+                            anchors.right: parent.right
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.primaryColor
+                            horizontalAlignment: Text.AlignLeft
+                            elide: Qt.ElideMiddle
+                            text: internal.databaseType === KdbDatabase.DB_TYPE_KEEPASS_1 ?
+                                      "Keepass 1" :
+                                      internal.databaseType === KdbDatabase.DB_TYPE_KEEPASS_2 ?
+                                          "Keepass 2 (Read only)" : "Unknown"
+                        }
+                    }
+
                     SectionHeader {
                         enabled: !recentDatabaseModel.isEmpty
                         visible: enabled
@@ -549,7 +580,8 @@ Page {
                                                  internal.databasePath,
                                                  internal.useKeyFile,
                                                  internal.keyFileLocation,
-                                                 internal.keyFilePath)
+                                                 internal.keyFilePath,
+                                                 internal.databaseType)
             // Set database name in global object for pulley menu on groups and entries pages
             Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + databasePath
             // Get database name and set on cover page for create new and open database states
@@ -990,6 +1022,7 @@ Page {
                                  "useKeyFile": model.useKeyFile,
                                  "keyFileLocation": model.keyFileLocation,
                                  "keyFilePath": model.keyFilePath,
+                                 "databaseType": model.databaseType,
                                  "password": "" })
             }
         }
