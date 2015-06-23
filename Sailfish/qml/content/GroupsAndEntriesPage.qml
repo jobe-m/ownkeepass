@@ -390,6 +390,8 @@ Page {
             }
             // set ID of currently viewed group
             Global.activeGroupId = groupId
+            // set menu label, it will have changed after initialization of this page in QueryPasswordDialog
+            databaseMenu.menuLabelText = Global.activeDatabase
         }
     }
 

@@ -170,7 +170,7 @@ void KdbDatabase::create(const int databaseType, const QString& dbFilePath, cons
     }
 
     // first set up interface to database client
-    Q_ASSERT((databaseType > DB_TYPE_UNKNOWN) && (databaseType >= DB_TYPE_KEEPASS_2));
+    Q_ASSERT((databaseType > DB_TYPE_UNKNOWN) && (databaseType <= DB_TYPE_KEEPASS_2));
     DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
     connectToDatabaseClient();
     m_database_type = databaseType;
