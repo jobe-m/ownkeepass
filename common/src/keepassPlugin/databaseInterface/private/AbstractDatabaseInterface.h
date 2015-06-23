@@ -62,9 +62,9 @@ public:
 
     // to be used as type in initDatabaseInterface()
     enum eDatabaseType {
-        DB_TYPE_UNKNOWN = 0,
-        DB_TYPE_KEEPASS_1,
-        DB_TYPE_KEEPASS_2,
+        DB_TYPE_UNKNOWN = -1,
+        DB_TYPE_KEEPASS_1 = 0,
+        DB_TYPE_KEEPASS_2 = 1,
     };
 
 protected: // signals

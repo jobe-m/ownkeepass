@@ -207,7 +207,7 @@ Dialog {
                 errorHighlight: text.length === 0
                 label: qsTr("File filter")
                 placeholderText: qsTr("Set file filter")
-                text: "*.kdb"
+                text: "*.kdb *.kdbx"
                 EnterKey.enabled: !errorHighlight
                 EnterKey.highlighted: text !== ""
                 EnterKey.onClicked: {

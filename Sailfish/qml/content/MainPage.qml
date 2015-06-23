@@ -490,6 +490,8 @@ Page {
                 completeKeyFilePath = ""
             }
 
+            console.log("Database type: " + internal.databaseType)
+
             if (createNewDatabase) {
                 // Check if database file already exists and if key file is present if it should be used
                 if (!ownKeepassHelper.fileExists(completeDbFilePath)) {
