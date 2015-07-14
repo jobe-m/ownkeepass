@@ -6,23 +6,16 @@ ownKeepass
 Status
 ------
 
-
-
-Release 1.1.6 available from [openrepos.net] [1] / warehouse app (will be shortly also in jolla store)
+Release 1.1.6 available from jolla store and [openrepos.net] [1] / warehouse app
 * Password entries can be moved between groups now
 * Updated icon look in list views
 * Database can be directly closed from lock screen
 * Added elide mode to top menu label (fixes too long database path running out of the screen)
 
-Release 1.1.5 available from jolla store
-* Password entries and groups in list view are now sorted alphabetically per default
-* Sorting of list view is switchable in application settings
-* File browser updated with a file filter which can be optionally used to filter for file types
-* Other various code cleanup done including some small bugfixes
-
 Status of Keepass 2 database support:
-* Database code from KeepassX 2 is already compiling in my sandbox. KeepassX 2 database writer and reader needs to be integrated, too.
-* Due to name space conflicts with the old KeepassX 0.4.3 code base I need to rework some parts of the old database code
+* Updated the application UI and C++-interface wrapper to support Keepass 2 database type.
+* Next step is to integrate reading Keepass 2 database with the KeepassX reader component.
+* I need also to update the UI to support read-only database mode (I plan to release first a version which can only read Keepass 2 database files).
 
 Roadmap
 -------
@@ -138,7 +131,7 @@ Features
 
 That's it so far.
 
-11-Mar-2015
+08-Jul-2015
 
 Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
