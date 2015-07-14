@@ -25,6 +25,8 @@
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
 #include "crypto/Crypto.h"
+#include "format/KeePass2Reader.h"
+
 
 using namespace kpxPrivate;
 using namespace kpxPublic;
@@ -58,6 +60,8 @@ void Keepass2DatabaseInterface::initDatabase()
 
 void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
 {
+    KeePass2Reader reader;
+
 }
 
 void Keepass2DatabaseInterface::slot_closeDatabase()
