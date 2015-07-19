@@ -62,7 +62,9 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/SymmetricCipherStream.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/LayeredStream.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/HashedBlockStream.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/qtiocompressor.cpp
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/qtiocompressor.cpp \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.cpp \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.cpp
 
 
 HEADERS += \
@@ -108,4 +110,6 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/LayeredStream.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/HashedBlockStream.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/qtiocompressor.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/QtIOCompressor
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/QtIOCompressor \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.h \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.h
