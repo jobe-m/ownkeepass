@@ -16,7 +16,7 @@ Release 1.1.7 will add landscape support
 
 Status of Keepass 2 database support:
 * Reading of password group list from a Keepass 2 database is mostly finished
-* Next steps: Reading password entries and pdate the UI to support read-only database mode (I plan to release first a version which can only read Keepass 2 database files)
+* Next steps: Reading password entries and update the UI to support read-only database mode (I plan to release first a version which can only read Keepass 2 database files)
 
 Roadmap
 -------
