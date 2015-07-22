@@ -12,10 +12,11 @@ Release 1.1.6 available from jolla store and [openrepos.net] [1] / warehouse app
 * Database can be directly closed from lock screen
 * Added elide mode to top menu label (fixes too long database path running out of the screen)
 
+Release 1.1.7 will add landscape support
+
 Status of Keepass 2 database support:
-* Updated the application UI and C++-interface wrapper to support Keepass 2 database type.
-* Next step is to integrate reading Keepass 2 database with the KeepassX reader component.
-* I need also to update the UI to support read-only database mode (I plan to release first a version which can only read Keepass 2 database files).
+* Reading of password group list from a Keepass 2 database is mostly finished
+* Next steps: Reading password entries and pdate the UI to support read-only database mode (I plan to release first a version which can only read Keepass 2 database files)
 
 Roadmap
 -------
