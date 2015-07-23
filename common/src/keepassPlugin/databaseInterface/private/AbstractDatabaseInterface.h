@@ -51,6 +51,9 @@ public:
         RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
         RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
 
+        // Keepass 2 specific
+        RE_ERR_UUID_CONVERSION,                     // conversion of uuid to integer failed (for passing a reference to QML)
+
         RE_LAST
     };
 

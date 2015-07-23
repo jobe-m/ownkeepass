@@ -129,6 +129,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 {
     Q_ASSERT(m_Database);
 
+    int listModelId = 0; // root group has list model ID 0
     QList<Group*> masterGroups = m_Database->rootGroup()->children();
     for (int i = 0; i < masterGroups.count(); i++) {
         Group* masterGroup = masterGroups.at(i);
@@ -138,37 +139,96 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         int numberOfSubgroups = masterGroup->children().count();
         int numberOfEntries = masterGroup->entries().count();
 
-        int listModelId = 0; // root group has list model ID 0
-        bool ok;
-        int masterGroupId = masterGroup->uuid().toByteArray().toInt(&ok, 16);
-        if (registerListModel) {
-            // save modelId and master group only if needed
-            // i.e. save model list id for master group page and don't do it for list models used in dialogs
-            if (ok) {
+        int masterGroupId = uuidToInt(masterGroup->uuid().toByteArray());
+        qDebug() << "QByteArray: " << masterGroup->uuid().toByteArray();
+        qDebug() << "to Int: " << masterGroupId;
+        if (-1 != masterGroupId) {
+            if (registerListModel) {
+                // save modelId and master group only if needed
+                // i.e. save model list id for master group page and don't do it for list models used in dialogs
                 m_groups_modelId.insertMulti(listModelId, masterGroupId);
-                qDebug() << "QByteArray: " << masterGroup->uuid().toByteArray();
-                qDebug() << "to Int: " << masterGroupId;
-            } else {
-                qDebug() << "Error: UUID conversation was not successfull!";
-// TODO: add error handling
-//                emit masterGroupsLoaded(RE_ERR_UUID_HANDLING);
             }
+            emit appendItemToListModel(masterGroup->name(),                           // group name
+                                       QString("Subgroups: %1 | Entries: %2")
+                                       .arg(numberOfSubgroups)
+                                       .arg(numberOfEntries),                          // subtitle
+                                       masterGroupId,                                  // item id
+                                       GROUP,                                          // item type
+                                       0,                                              // item level (0 = root, 1 = first level, etc.
+                                       listModelId);                                   // list model of root group
         }
-        emit appendItemToListModel(masterGroup->name(),                           // group name
-                                   QString("Subgroups: %1 | Entries: %2 | %3")
-                                   .arg(numberOfSubgroups)
-                                   .arg(numberOfEntries)
-                                   .arg(masterGroup->notes()),                     // subtitle
-                                   masterGroupId,                                  // item id
-                                   GROUP,                                          // item type
-                                   0,                                              // item level (0 = root, 1 = first level, etc.
-                                   listModelId);                                   // list model of root group
+    }
+
+    QList<Entry*> masterEntries = m_Database->rootGroup()->entries();
+    for (int i = 0; i < masterEntries.count(); i++) {
+        Entry* entry = masterEntries.at(i);
+        int itemId = uuidToInt(entry->uuid().toByteArray());
+        if (-1 != itemId) {
+            // only append to list model if item ID is valid
+            emit appendItemToListModel(entry->title(),                                 // group name
+                                       getUserAndPassword(entry),                      // subtitle
+                                       itemId,                                         // item id
+                                       ENTRY,                                          // item type
+                                       0,                                              // item level (not used here)
+                                       listModelId);                                   // list model gets groupId as its unique ID (here 0 because of root group)
+            // save modelId and entry
+            m_entries_modelId.insertMulti(listModelId, itemId);
+        }
     }
     emit masterGroupsLoaded(RE_OK);
 }
 
 void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(int groupId)
 {
+    Q_ASSERT(m_Database);
+    // load sub groups and entries
+    Group* group = m_Database->resolveGroup(Uuid(QByteArray::number(groupId, 16)));
+    QList<Group*> subGroups = group->children();
+/*
+    if (m_setting_sortAlphabeticallyInListView) {
+        subGroups = m_kdb3Database->sortedGroups();
+    } else {
+        subGroups = m_kdb3Database->groups();
+    }
+*/
+
+    for (int i = 0; i < subGroups.count(); i++) {
+        Group* subGroup = subGroups.at(i);
+        int numberOfSubgroups = subGroup->children().count();
+        int numberOfEntries = subGroup->entries().count();
+        int itemId = uuidToInt(subGroup->uuid().toByteArray());
+        emit appendItemToListModel(subGroup->name(),                               // group name
+                                   QString("Subgroups: %1 | Entries: %2")
+                                   .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
+                                   itemId,      // item id
+                                   GROUP,                                          // item type
+                                   0,                                              // item level (not used here)
+                                   groupId);                                       // list model gets groupId as its unique ID
+        // save modelId and group
+        m_groups_modelId.insertMulti(groupId, itemId);
+    }
+
+    QList<Entry*> entries = group->entries();
+/*
+    if (m_setting_sortAlphabeticallyInListView) {
+        entries = m_kdb3Database->entriesSortedStd(group);
+    } else {
+        entries = m_kdb3Database->entries(group);
+    }
+*/
+    for (int i = 0; i < entries.count(); i++) {
+        Entry* entry = entries.at(i);
+        int itemId = uuidToInt(entry->uuid().toByteArray());
+        emit appendItemToListModel(entry->title(),                                 // group name
+                                   getUserAndPassword(entry),                      // subtitle
+                                   itemId,                                         // item id
+                                   ENTRY,                                          // item type
+                                   0,                                              // item level (not used here)
+                                   groupId);                                       // list model gets groupId as its unique ID
+        // save modelId and entry
+        m_entries_modelId.insertMulti(groupId, itemId);
+    }
+    emit groupsAndEntriesLoaded(RE_OK);
 }
 
 void Keepass2DatabaseInterface::slot_loadEntry(int entryId)
@@ -238,9 +298,32 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, int roo
 {
 }
 
-//inline QString Keepass2DatabaseInterface::getUserAndPassword(IEntryHandle* entry)
-//{
-//}
+inline QString Keepass2DatabaseInterface::getUserAndPassword(Entry* entry)
+{
+    if (m_setting_showUserNamePasswordsInListView) {
+        QString username = entry->username();
+        QString password = entry->password();
+        if (username.length() == 0 && password.length() == 0) {
+            return QString("");
+        } else {
+            return QString("%1 | %2").arg(username).arg(password);
+        }
+    } else {
+        return QString("");
+    }
+}
+
+inline int Keepass2DatabaseInterface::uuidToInt(QByteArray value)
+{
+    bool ok = false;
+    int intValue = value.toInt(&ok, 16);
+    if (ok) {
+        emit errorOccured(RE_ERR_UUID_CONVERSION,"");
+        return intValue;
+    } else {
+        return -1;
+    }
+}
 
 void Keepass2DatabaseInterface::slot_changeKeyTransfRounds(int value)
 {

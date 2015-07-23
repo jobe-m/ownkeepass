@@ -179,7 +179,17 @@ public slots:
 private:
     void initDatabase();
 //    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
-//    inline QString getUserAndPassword(IEntryHandle* entry);
+    inline QString getUserAndPassword(Entry* entry);
+
+    /*! \brief Convert QByteArray to integer
+     *
+     * Integer numbers are used to pass a "handle" of each Keepass object to the QML side.
+     * From QML size is is possible to rever to dedicated Keepass objects like password group or entry in function calls to the backend.
+     *
+     * \return positive number if conversion went ok
+     *         -1 if conversion was not ok
+     */
+    inline int uuidToInt(QByteArray value);
 
 private:
     // Keepass database handler
