@@ -14,9 +14,10 @@ Release 1.1.6 available from jolla store and [openrepos.net] [1] / warehouse app
 
 Release 1.1.7 will add landscape support
 
-Status of Keepass 2 database support:
+Status of Keepass 2 database support
+* Development is done on keepass2 branch
 * Reading of password group list from a Keepass 2 database is mostly finished
-* Next steps: Reading password entries and update the UI to support read-only database mode (I plan to release first a version which can only read Keepass 2 database files)
+* Next steps: Reading password entries and update the UI to support read-only database mode (At first there will be a release which can only read Keepass 2 database files)
 
 Roadmap
 -------
@@ -132,7 +133,7 @@ Features
 
 That's it so far.
 
-08-Jul-2015
+25-Jul-2015
 
 Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
