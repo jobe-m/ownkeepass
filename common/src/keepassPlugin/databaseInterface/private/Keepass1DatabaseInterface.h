@@ -120,7 +120,7 @@ signals:
                     QString groupId);
 
 
-public: // slots
+public slots:
     // signals from KdbDatabase object
     void slot_openDatabase(QString filePath,
                            QString password,
