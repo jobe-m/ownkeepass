@@ -51,8 +51,11 @@ public:
         RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
         RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
 
+        // Keepass 1 specific
+        RE_ERR_QSTRING_TO_INT,                      // conversion of QString to int failed
+
         // Keepass 2 specific
-        RE_ERR_UUID_CONVERSION,                     // conversion of uuid to integer failed (for passing a reference to QML)
+        RE_ERR_UUID_TO_QSTRING,                     // conversion of uuid to QString failed (for passing a reference to QML)
 
         RE_LAST
     };
@@ -87,32 +90,32 @@ protected: // signals
     // signals to KdbListModel object
     virtual void appendItemToListModel(QString title,
                                        QString subtitle,
-                                       int itemId,
+                                       QString itemId,
                                        int itemType,
                                        int itemLevel,
-                                       int modelId) = 0;
+                                       QString modelId) = 0;
     virtual void addItemToListModelSorted(QString title,
                                           QString subtitle,
-                                          int itemId,
+                                          QString itemId,
                                           int itemType,
                                           int itemLevel,
-                                          int modelId) = 0;
+                                          QString modelId) = 0;
     virtual void updateItemInListModel(QString title,
                                        QString subTitle,
-                                       int itemId,
-                                       int modelId) = 0;
+                                       QString itemId,
+                                       QString modelId) = 0;
     virtual void updateItemInListModelSorted(QString title,
                                              QString subTitle,
-                                             int itemId,
-                                             int modelId) = 0;
+                                             QString itemId,
+                                             QString modelId) = 0;
     virtual void masterGroupsLoaded(int result) = 0;
     virtual void groupsAndEntriesLoaded(int result) = 0;
-    virtual void deleteItemInListModel(int itemId) = 0;
+    virtual void deleteItemInListModel(QString itemId) = 0;
     virtual void searchEntriesCompleted(int result) = 0;
 
     // signal to KdbEntry object
     virtual void entryLoaded(int result,
-                             int entryId,
+                             QString entryId,
                              QString title,
                              QString url,
                              QString username,
@@ -126,26 +129,26 @@ protected: // signals
                              quint32 binarySize,
                              QString friendlySize) = 0;
     virtual void entrySaved(int result,
-                            int entryId) = 0;
+                            QString entryId) = 0;
     virtual void newEntryCreated(int result,
-                                 int entryId) = 0;
+                                 QString entryId) = 0;
     virtual void entryDeleted(int result,
-                              int entryId) = 0;
+                              QString entryId) = 0;
     virtual void entryMoved(int result,
-                            int entryId) = 0;
+                            QString entryId) = 0;
 
     // signal to KdbGroup object
     virtual void groupLoaded(int result,
-                             int groupId,
+                             QString groupId,
                              QString title) = 0;
     virtual void groupSaved(int result,
-                            int groupId) = 0;
+                            QString groupId) = 0;
     virtual void newGroupCreated(int result,
-                                 int groupId) = 0;
+                                 QString groupId) = 0;
     virtual void groupDeleted(int result,
-                              int groupId) = 0;
+                              QString groupId) = 0;
     virtual void groupMoved(int result,
-                            int groupId) = 0;
+                            QString groupId) = 0;
 
 
 public: // slots
@@ -169,14 +172,14 @@ public: // slots
 
     // signal from KdbListModel object
     virtual void slot_loadMasterGroups(bool registerListModel) = 0;
-    virtual void slot_loadGroupsAndEntries(int groupId) = 0;
-    virtual void slot_unregisterListModel(int modelId) = 0;
+    virtual void slot_loadGroupsAndEntries(QString groupId) = 0;
+    virtual void slot_unregisterListModel(QString modelId) = 0;
     virtual void slot_searchEntries(QString searchString,
-                                    int rootGroupId) = 0;
+                                    QString rootGroupId) = 0;
 
     // signal from KdbEntry object
-    virtual void slot_loadEntry(int entryId) = 0;
-    virtual void slot_saveEntry(int entryId,
+    virtual void slot_loadEntry(QString entryId) = 0;
+    virtual void slot_saveEntry(QString entryId,
                         QString title,
                         QString url,
                         QString username,
@@ -187,21 +190,21 @@ public: // slots
                              QString username,
                              QString password,
                              QString comment,
-                             int parentGroupId) = 0;
-    virtual void slot_deleteEntry(int entryId) = 0;
-    virtual void slot_moveEntry(int entryId,
-                                int newGroupId) = 0;
+                             QString parentGroupId) = 0;
+    virtual void slot_deleteEntry(QString entryId) = 0;
+    virtual void slot_moveEntry(QString entryId,
+                                QString newGroupId) = 0;
 
     // signal from KdbGroup object
-    virtual void slot_loadGroup(int groupId) = 0;
-    virtual void slot_saveGroup(int groupId,
+    virtual void slot_loadGroup(QString groupId) = 0;
+    virtual void slot_saveGroup(QString groupId,
                                 QString title) = 0;
     virtual void slot_createNewGroup(QString title,
                                      quint32 iconId,
-                                     int parentGroupId) = 0;
-    virtual void slot_deleteGroup(int groupId) = 0;
-    virtual void slot_moveGroup(int groupId,
-                                int newParentGroupId) = 0;
+                                     QString parentGroupId) = 0;
+    virtual void slot_deleteGroup(QString groupId) = 0;
+    virtual void slot_moveGroup(QString groupId,
+                                QString newParentGroupId) = 0;
 };
 
 Q_DECLARE_INTERFACE(AbstractDatabaseInterface, "harbour.ownkeepass.AbstractDatabaseInterface")
