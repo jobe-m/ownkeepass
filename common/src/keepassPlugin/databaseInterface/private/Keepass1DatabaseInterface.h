@@ -59,32 +59,32 @@ signals:
     // signals to KdbListModel object
     void appendItemToListModel(QString title,
                                QString subtitle,
-                               int itemId,
+                               QString itemId,
                                int itemType,
                                int itemLevel,
-                               int modelId);
+                               QString modelId);
     void addItemToListModelSorted(QString title,
                                   QString subtitle,
-                                  int itemId,
+                                  QString itemId,
                                   int itemType,
                                   int itemLevel,
-                                  int modelId);
+                                  QString modelId);
     void updateItemInListModel(QString title,
                                QString subTitle,
-                               int itemId,
-                               int modelId);
+                               QString itemId,
+                               QString modelId);
     void updateItemInListModelSorted(QString title,
                                      QString subTitle,
-                                     int itemId,
-                                     int modelId);
+                                     QString itemId,
+                                     QString modelId);
     void masterGroupsLoaded(int result);
     void groupsAndEntriesLoaded(int result);
-    void deleteItemInListModel(int itemId);
+    void deleteItemInListModel(QString itemId);
     void searchEntriesCompleted(int result);
 
     // signal to KdbEntry object
     void entryLoaded(int result,
-                     int entryId,
+                     QString entryId,
                      QString title,
                      QString url,
                      QString username,
@@ -98,29 +98,29 @@ signals:
                      quint32 binarySize,
                      QString friendlySize);
     void entrySaved(int result,
-                    int entryId);
+                    QString entryId);
     void newEntryCreated(int result,
-                         int entryId);
+                         QString entryId);
     void entryDeleted(int result,
-                      int entryId);
+                      QString entryId);
     void entryMoved(int result,
-                    int entryId);
+                    QString entryId);
 
     // signal to KdbGroup object
     void groupLoaded(int result,
-                     int groupId,
+                     QString groupId,
                      QString title);
     void groupSaved(int result,
-                    int groupId);
+                    QString groupId);
     void newGroupCreated(int result,
-                         int groupId);
+                         QString groupId);
     void groupDeleted(int result,
-                      int groupId);
+                      QString groupId);
     void groupMoved(int result,
-                    int groupId);
+                    QString groupId);
 
 
-public slots:
+public: // slots
     // signals from KdbDatabase object
     void slot_openDatabase(QString filePath,
                            QString password,
@@ -141,14 +141,14 @@ public slots:
 
     // signal from KdbListModel object
     void slot_loadMasterGroups(bool registerListModel);
-    void slot_loadGroupsAndEntries(int groupId);
-    void slot_unregisterListModel(int modelId);
+    void slot_loadGroupsAndEntries(QString groupId);
+    void slot_unregisterListModel(QString modelId);
     void slot_searchEntries(QString searchString,
-                            int rootGroupId);
+                            QString rootGroupId);
 
     // signal from KdbEntry object
-    void slot_loadEntry(int entryId);
-    void slot_saveEntry(int entryId,
+    void slot_loadEntry(QString entryId);
+    void slot_saveEntry(QString entryId,
                         QString title,
                         QString url,
                         QString username,
@@ -159,26 +159,28 @@ public slots:
                              QString username,
                              QString password,
                              QString comment,
-                             int parentGroupId);
-    void slot_deleteEntry(int entryId);
-    void slot_moveEntry(int entryId,
-                        int newGroupId);
+                             QString parentGroupId);
+    void slot_deleteEntry(QString entryId);
+    void slot_moveEntry(QString entryId,
+                        QString newGroupId);
 
     // signal from KdbGroup object
-    void slot_loadGroup(int groupId);
-    void slot_saveGroup(int groupId,
+    void slot_loadGroup(QString groupId);
+    void slot_saveGroup(QString groupId,
                         QString title);
     void slot_createNewGroup(QString title,
                              quint32 iconId,
-                             int parentGroupId);
-    void slot_deleteGroup(int groupId);
-    void slot_moveGroup(int groupId,
-                        int newParentGroupId);
+                             QString parentGroupId);
+    void slot_deleteGroup(QString groupId);
+    void slot_moveGroup(QString groupId,
+                        QString newParentGroupId);
 
 private:
     void initDatabase();
     void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
     inline QString getUserAndPassword(IEntryHandle* entry);
+    inline QString int2QString(int value);
+    inline int qString2Int(QString value);
 
 private:
     // Keepass database handler
