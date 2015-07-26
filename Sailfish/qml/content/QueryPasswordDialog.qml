@@ -44,7 +44,7 @@ Dialog {
     property alias password: passwordField.text
 
     acceptDestination: Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString()
-    acceptDestinationProperties: { "initOnPageConstruction": false, "groupId": 0 }
+    acceptDestinationProperties: { "initOnPageConstruction": false, "groupId": "0" }
     acceptDestinationAction: PageStackAction.Replace
 
     SilicaFlickable {

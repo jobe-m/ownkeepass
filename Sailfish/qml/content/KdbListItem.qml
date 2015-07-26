@@ -137,8 +137,6 @@ ListItem {
         id: contextMenuComponent
         ContextMenu {
             id: contextMenu
-            property int itemTypeFromModel: 0
-            property int itemIdFromModel: 0
             MenuItem {
                 text: qsTr("Edit")
                 onClicked: {

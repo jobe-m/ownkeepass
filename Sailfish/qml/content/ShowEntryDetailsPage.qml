@@ -30,7 +30,7 @@ Page {
 
     property string pageTitle: ""
     // ID of the keepass entry to be shown
-    property int entryId: 0
+    property string entryId: ""
 
     function setTextFields(title, url, username, password, comment) {
         pageHeader.title = title

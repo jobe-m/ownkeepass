@@ -31,18 +31,18 @@ Dialog {
     id: movePasswordEntryDialog
 
     // ID of the keepass entry to be moved into another group
-    property int itemId: 0
+    property string itemId: ""
     // ID of group where item is currently placed. This is used to filter out the parent group from the list of groups.
-    property int oldGroupId: 0
+    property string oldGroupId: ""
     // ID of the new parent group of the password item
-    property int newGroupId: 0
+    property string newGroupId: ""
     // Name of password entry to show in dialog cation text
     property string nameOfPasswordEntry: ""
     //
     property KdbEntry kdbEntryToMove
 
     // forbit page navigation if new group is not yet selected
-    canNavigateForward: newGroupId !== 0
+    canNavigateForward: newGroupId !== ""
 
     onAccepted: {
         // Now trigger moving of password entry

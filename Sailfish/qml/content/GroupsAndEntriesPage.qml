@@ -34,8 +34,8 @@ Page {
     // from the KdbListModel on startup. So the init() function is invoked later when the database could
     // be opened successfully with the master password.
     property bool initOnPageConstruction: true
-    // ID of the keepass group which should be shown (0 for master groups)
-    property int groupId: 0
+    // ID of the keepass group which should be shown ("0" for master groups)
+    property string groupId: "0"
     property string pageTitle: qsTr("Password groups")
 
     function init() {
@@ -52,7 +52,7 @@ Page {
         // "Loading" state is initially active when database is currently opening from QueryPasswordDialog.
         // Depending how long it takes to calculate the master key by doing keyTransfomationRounds the init
         // function is called with a significant delay. During that time the busy indicator is shown.
-        if (groupId === 0) {
+        if (groupId === "0") {
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
             kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)

@@ -211,7 +211,7 @@ Page {
                             parent.focus = true
                             // open master groups page and load database in background
                             var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                                  { "initOnPageConstruction": false, "groupId": 0 })
+                                                                  { "initOnPageConstruction": false, "groupId": "0" })
                             var createNewDatabase =  false
                             internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
                             passwordField.text = ""
@@ -257,7 +257,7 @@ Page {
                     if (text.length !== 0) {
                         // open master groups page and load database in background
                         var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                              { "initOnPageConstruction": false, "groupId": 0 })
+                                                              { "initOnPageConstruction": false, "groupId": "0" })
                         var createNewDatabase = true
                         internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
                         passwordField.text = ""
@@ -731,8 +731,8 @@ Page {
           Commonly used for manipulation and creation of entries and groups
           */
         property bool createNewItem: false
-        property int itemId: 0
-        property int parentGroupId: 0
+        property string itemId: ""
+        property string parentGroupId: ""
 
         function saveKdbGroupDetails() {
             // Set group ID and create or save Kdb Group

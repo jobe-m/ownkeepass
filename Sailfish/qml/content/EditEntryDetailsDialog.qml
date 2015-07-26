@@ -30,9 +30,9 @@ Dialog {
 
     property bool createNewEntry: false
     // ID of the keepass entry to be edited
-    property int entryId: 0
+    property string entryId: ""
     // creation of new entry needs parent group ID
-    property int parentGroupId: 0
+    property string parentGroupId: ""
 
     // The following properties are used to check if text of any entry detail was changed. If so,
     // set cover page accordingly to signal the user unsaved changes
