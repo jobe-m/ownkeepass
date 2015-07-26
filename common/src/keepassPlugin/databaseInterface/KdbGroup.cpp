@@ -28,7 +28,7 @@ using namespace kpxPrivate;
 
 KdbGroup::KdbGroup(QObject *parent)
     : QObject(parent),
-      m_groupId(0),
+      m_groupId(""),
       m_connected(false),
       m_new_group_triggered(false)
 {}
@@ -41,44 +41,44 @@ bool KdbGroup::connectToDatabaseClient()
     }
     // if OK then connect signals to backend
     bool ret = connect(this,
-                       SIGNAL(loadGroupFromKdbDatabase(int)),
+                       SIGNAL(loadGroupFromKdbDatabase(QString)),
                        DatabaseClient::getInstance()->getInterface(),
-                       SLOT(slot_loadGroup(int)));
+                       SLOT(slot_loadGroup(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(groupLoaded(int, int, QString)),
+                  SIGNAL(groupLoaded(int, QString, QString)),
                   this,
-                  SLOT(slot_groupDataLoaded(int,int,QString)));
+                  SLOT(slot_groupDataLoaded(int,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(saveGroupToKdbDatabase(int, QString)),
+                  SIGNAL(saveGroupToKdbDatabase(QString, QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_saveGroup(int, QString)));
+                  SLOT(slot_saveGroup(QString, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(groupSaved(int,int)),
+                  SIGNAL(groupSaved(int,QString)),
                   this,
-                  SIGNAL(groupDataSaved(int,int)));
+                  SIGNAL(groupDataSaved(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(createNewGroupInKdbDatabase(QString,quint32,int)),
+                  SIGNAL(createNewGroupInKdbDatabase(QString,quint32,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_createNewGroup(QString,quint32,int)));
+                  SLOT(slot_createNewGroup(QString,quint32,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(newGroupCreated(int, int)),
+                  SIGNAL(newGroupCreated(int, QString)),
                   this,
-                  SIGNAL(newGroupCreated(int, int)));
+                  SIGNAL(newGroupCreated(int, QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(deleteGroupFromKdbDatabase(int)),
+                  SIGNAL(deleteGroupFromKdbDatabase(QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_deleteGroup(int)));
+                  SLOT(slot_deleteGroup(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(groupDeleted(int,int)),
+                  SIGNAL(groupDeleted(int,QString)),
                   this,
-                  SIGNAL(groupDeleted(int,int)));
+                  SIGNAL(groupDeleted(int,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(disconnectAllClients()),
@@ -101,7 +101,7 @@ void KdbGroup::disconnectFromDatabaseClient()
 
 void KdbGroup::loadGroupData()
 {
-    Q_ASSERT(m_groupId != 0);
+    Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit groupDataLoaded(RE_DB_NOT_OPENED, "");
@@ -113,7 +113,7 @@ void KdbGroup::loadGroupData()
 
 void KdbGroup::saveGroupData(QString title)
 {
-    Q_ASSERT(m_groupId != 0);
+    Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit groupDataSaved(RE_DB_NOT_OPENED);
@@ -123,9 +123,9 @@ void KdbGroup::saveGroupData(QString title)
     }
 }
 
-void KdbGroup::createNewGroup(QString title, int parentGroupId)
+void KdbGroup::createNewGroup(QString title, QString parentGroupId)
 {
-    Q_ASSERT(parentGroupId != 0);
+    Q_ASSERT(parentGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit newGroupCreated(RE_DB_NOT_OPENED, 0);
@@ -140,7 +140,7 @@ void KdbGroup::createNewGroup(QString title, int parentGroupId)
 
 void KdbGroup::deleteGroup()
 {
-    Q_ASSERT(m_groupId != 0);
+    Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit groupDeleted(RE_DB_NOT_OPENED);
@@ -150,10 +150,10 @@ void KdbGroup::deleteGroup()
     }
 }
 
-void KdbGroup::moveGroup(int newParentGroupId)
+void KdbGroup::moveGroup(QString newParentGroupId)
 {
-    Q_ASSERT(m_groupId != 0);
-    Q_ASSERT(newParentGroupId != 0);
+    Q_ASSERT(m_groupId != "");
+    Q_ASSERT(newParentGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit groupMoved(RE_DB_NOT_OPENED);
@@ -163,7 +163,7 @@ void KdbGroup::moveGroup(int newParentGroupId)
     }
 }
 
-void KdbGroup::slot_groupDataLoaded(int result, int groupId, QString title)
+void KdbGroup::slot_groupDataLoaded(int result, QString groupId, QString title)
 {
     // forward signal to QML only if the signal is for us
     if (groupId == m_groupId) {
@@ -171,7 +171,7 @@ void KdbGroup::slot_groupDataLoaded(int result, int groupId, QString title)
     }
 }
 
-void KdbGroup::slot_groupDataSaved(int result, int groupId)
+void KdbGroup::slot_groupDataSaved(int result, QString groupId)
 {
     // forward signal to QML only if the signal is for us
     if (groupId == m_groupId) {
@@ -179,7 +179,7 @@ void KdbGroup::slot_groupDataSaved(int result, int groupId)
     }
 }
 
-void KdbGroup::slot_newGroupCreated(int result, int groupId)
+void KdbGroup::slot_newGroupCreated(int result, QString groupId)
 {
     if (m_new_group_triggered) {
         if (result == RE_OK) {
@@ -191,16 +191,16 @@ void KdbGroup::slot_newGroupCreated(int result, int groupId)
     }
 }
 
-void KdbGroup::slot_groupDeleted(int result, int groupId)
+void KdbGroup::slot_groupDeleted(int result, QString groupId)
 {
     // forward signal to QML only if the signal is for us
     if (groupId == m_groupId) {
         emit groupDeleted(result);
-        m_groupId = 0;
+        m_groupId = "";
     }
 }
 
-void KdbGroup::slot_groupMoved(int result, int groupId)
+void KdbGroup::slot_groupMoved(int result, QString groupId)
 {
     // forward signal to QML only if the signal is for us
     if (groupId == m_groupId) {

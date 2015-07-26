@@ -54,7 +54,7 @@ public:
         RE_LAST = AbstractDatabaseInterface::RE_LAST
     };
 
-    Q_PROPERTY(int entryId READ getEntryId WRITE setEntryId STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString entryId READ getEntryId WRITE setEntryId STORED true SCRIPTABLE true)
 
 public:
     Q_INVOKABLE void loadEntryData();
@@ -68,9 +68,9 @@ public:
                                     QString username,
                                     QString password,
                                     QString comment,
-                                    int parentgroupId);
+                                    QString parentgroupId);
     Q_INVOKABLE void deleteEntry();
-    Q_INVOKABLE void moveEntry(int newGroupId);
+    Q_INVOKABLE void moveEntry(QString newGroupId);
 
 signals:
     // signals to QML
@@ -89,13 +89,13 @@ signals:
                          QString friendlySize
                          );
     void entryDataSaved(int result);
-    void newEntryCreated(int result, int newEntryId);
+    void newEntryCreated(int result, QString newEntryId);
     void entryDeleted(int result);
     void entryMoved(int result);
 
     // signals to interface of database client
-    void loadEntryFromKdbDatabase(int entryId);
-    void saveEntryToKdbDatabase(int entryId,
+    void loadEntryFromKdbDatabase(QString entryId);
+    void saveEntryToKdbDatabase(QString entryId,
                                 QString title,
                                 QString url,
                                 QString username,
@@ -106,14 +106,14 @@ signals:
                                      QString username,
                                      QString password,
                                      QString comment,
-                                     int parentgroupId);
-    void deleteEntryFromKdbDatabase(int entryId);
-    void moveEntryInKdbDatabase(int entryId, int newGroupId);
+                                     QString parentgroupId);
+    void deleteEntryFromKdbDatabase(QString entryId);
+    void moveEntryInKdbDatabase(QString entryId, QString newGroupId);
 
 public slots:
     // signals from interface of database client
     void slot_entryDataLoaded(int result,
-                              int entryId,
+                              QString entryId,
                               QString title,
                               QString url,
                               QString username,
@@ -126,25 +126,25 @@ public slots:
                               QString expire,
                               quint32 binarySize,
                               QString friendlySize);
-    void slot_entryDataSaved(int result, int entryId);
-    void slot_entryDeleted(int result, int entryId);
-    void slot_entryMoved(int result, int entryId);
-    void slot_newEntryCreated(int result, int entryId);
+    void slot_entryDataSaved(int result, QString entryId);
+    void slot_entryDeleted(int result, QString entryId);
+    void slot_entryMoved(int result, QString entryId);
+    void slot_newEntryCreated(int result, QString entryId);
     void slot_disconnectFromDatabaseClient();
 
 public:
     KdbEntry(QObject *parent = 0);
     virtual ~KdbEntry() {}
 
-    int getEntryId() const { return m_entryId; }
-    void setEntryId(const int value) { m_entryId = value; }
+    QString getEntryId() const { return m_entryId; }
+    void setEntryId(const QString value) { m_entryId = value; }
 
 private:
     bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
 
 private:
-    int m_entryId;
+    QString m_entryId;
     bool m_connected;
     bool m_new_entry_triggered;
 };

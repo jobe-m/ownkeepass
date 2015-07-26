@@ -28,7 +28,7 @@ using namespace kpxPrivate;
 
 KdbEntry::KdbEntry(QObject *parent)
     : QObject(parent),
-      m_entryId(0),
+      m_entryId(""),
       m_connected(false),
       m_new_entry_triggered(false)
 {}
@@ -41,54 +41,54 @@ bool KdbEntry::connectToDatabaseClient()
     }
     // if OK then connect signals to backend
     bool ret = connect(this,
-                       SIGNAL(loadEntryFromKdbDatabase(int)),
+                       SIGNAL(loadEntryFromKdbDatabase(QString)),
                        DatabaseClient::getInstance()->getInterface(),
-                       SLOT(slot_loadEntry(int)));
+                       SLOT(slot_loadEntry(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(entryLoaded(int,int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
+                  SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
                   this,
-                  SLOT(slot_entryDataLoaded(int,int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
+                  SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(saveEntryToKdbDatabase(int,QString,QString,QString,QString,QString)),
+                  SIGNAL(saveEntryToKdbDatabase(QString,QString,QString,QString,QString,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_saveEntry(int,QString,QString,QString,QString,QString)));
+                  SLOT(slot_saveEntry(QString,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(entrySaved(int,int)),
+                  SIGNAL(entrySaved(int,QString)),
                   this,
-                  SLOT(slot_entryDataSaved(int,int)));
+                  SLOT(slot_entryDataSaved(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,int)),
+                  SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,int)));
+                  SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(newEntryCreated(int, int)),
+                  SIGNAL(newEntryCreated(int, QString)),
                   this,
-                  SLOT(slot_newEntryCreated(int, int)));
+                  SLOT(slot_newEntryCreated(int, QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(deleteEntryFromKdbDatabase(int)),
+                  SIGNAL(deleteEntryFromKdbDatabase(QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_deleteEntry(int)));
+                  SLOT(slot_deleteEntry(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(entryDeleted(int,int)),
+                  SIGNAL(entryDeleted(int,QString)),
                   this,
-                  SLOT(slot_entryDeleted(int,int)));
+                  SLOT(slot_entryDeleted(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(moveEntryInKdbDatabase(int,int)),
+                  SIGNAL(moveEntryInKdbDatabase(QString,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_moveEntry(int,int)));
+                  SLOT(slot_moveEntry(QString,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(entryMoved(int,int)),
+                  SIGNAL(entryMoved(int,QString)),
                   this,
-                  SLOT(slot_entryMoved(int,int)));
+                  SLOT(slot_entryMoved(int,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(disconnectAllClients()),
@@ -111,7 +111,7 @@ void KdbEntry::disconnectFromDatabaseClient()
 
 void KdbEntry::loadEntryData()
 {
-    Q_ASSERT(m_entryId != 0);
+    Q_ASSERT(m_entryId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit entryDataLoaded(RE_DB_NOT_OPENED, "", "", "", "", "", "", "", "", "", "", 0, "");
@@ -127,7 +127,7 @@ void KdbEntry::saveEntryData(QString title,
                              QString password,
                              QString comment)
 {
-    Q_ASSERT(m_entryId != 0);
+    Q_ASSERT(m_entryId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit entryDataSaved(RE_DB_NOT_OPENED);
@@ -142,9 +142,9 @@ void KdbEntry::createNewEntry(QString title,
                               QString username,
                               QString password,
                               QString comment,
-                              int parentgroupId)
+                              QString parentgroupId)
 {
-    Q_ASSERT(parentgroupId != 0);
+    Q_ASSERT(parentgroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit newEntryCreated(RE_DB_NOT_OPENED, 0);
@@ -157,7 +157,7 @@ void KdbEntry::createNewEntry(QString title,
 
 void KdbEntry::deleteEntry()
 {
-    Q_ASSERT(m_entryId != 0);
+    Q_ASSERT(m_entryId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit entryDeleted(RE_DB_NOT_OPENED);
@@ -167,10 +167,10 @@ void KdbEntry::deleteEntry()
     }
 }
 
-void KdbEntry::moveEntry(int newGroupId)
+void KdbEntry::moveEntry(QString newGroupId)
 {
-    Q_ASSERT(m_entryId != 0);
-    Q_ASSERT(newGroupId != 0);
+    Q_ASSERT(m_entryId != "");
+    Q_ASSERT(newGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit entryMoved(RE_DB_NOT_OPENED);
@@ -180,7 +180,8 @@ void KdbEntry::moveEntry(int newGroupId)
     }
 }
 
-void KdbEntry::slot_entryDataLoaded(int result, int entryId,
+void KdbEntry::slot_entryDataLoaded(int result,
+                                    QString entryId,
                                     QString title,
                                     QString url,
                                     QString username,
@@ -202,7 +203,7 @@ void KdbEntry::slot_entryDataLoaded(int result, int entryId,
     }
 }
 
-void KdbEntry::slot_entryDataSaved(int result, int entryId)
+void KdbEntry::slot_entryDataSaved(int result, QString entryId)
 {
     // forward signal to QML only if the signal is for us
     if (entryId == m_entryId) {
@@ -210,7 +211,7 @@ void KdbEntry::slot_entryDataSaved(int result, int entryId)
     }
 }
 
-void KdbEntry::slot_newEntryCreated(int result, int entryId)
+void KdbEntry::slot_newEntryCreated(int result, QString entryId)
 {
     if (m_new_entry_triggered) {
         if (result == RE_OK) {
@@ -222,16 +223,16 @@ void KdbEntry::slot_newEntryCreated(int result, int entryId)
     }
 }
 
-void KdbEntry::slot_entryDeleted(int result, int entryId)
+void KdbEntry::slot_entryDeleted(int result, QString entryId)
 {
     // forward signal to QML only if the signal is for us
     if (entryId == m_entryId) {
         emit entryDeleted(result);
-        m_entryId = 0;
+        m_entryId = "";
     }
 }
 
-void KdbEntry::slot_entryMoved(int result, int entryId)
+void KdbEntry::slot_entryMoved(int result, QString entryId)
 {
     // forward signal to QML only if the signal is for us
     if (entryId == m_entryId) {

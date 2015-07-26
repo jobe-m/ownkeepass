@@ -29,11 +29,11 @@ using namespace kpxPrivate;
 
 KdbListModel::KdbListModel(QObject *parent)
     : QAbstractListModel(parent),
-      m_modelId(0),
+      m_modelId(""),
       m_numGroups(0),
       m_numEntries(0),
       m_registered(false),
-      m_searchRootGroupId(0),
+      m_searchRootGroupId(""),
       m_connected(false)
 {}
 
@@ -51,9 +51,9 @@ bool KdbListModel::connectToDatabaseClient()
                   SIGNAL(masterGroupsLoaded(int)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(loadGroupsAndEntries(int)),
+                  SIGNAL(loadGroupsAndEntries(QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_loadGroupsAndEntries(int)));
+                  SLOT(slot_loadGroupsAndEntries(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(groupsAndEntriesLoaded(int)),
@@ -61,9 +61,9 @@ bool KdbListModel::connectToDatabaseClient()
                   SIGNAL(groupsAndEntriesLoaded(int)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(searchEntries(QString,int)),
+                  SIGNAL(searchEntries(QString,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_searchEntries(QString,int)));
+                  SLOT(slot_searchEntries(QString,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(searchEntriesCompleted(int)),
@@ -71,34 +71,34 @@ bool KdbListModel::connectToDatabaseClient()
                   SIGNAL(searchEntriesCompleted(int)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(appendItemToListModel(QString, QString, int, int, int, int)),
+                  SIGNAL(appendItemToListModel(QString, QString, QString, int, int, QString)),
                   this,
-                  SLOT(slot_appendItemToListModel(QString, QString, int, int, int, int)));
+                  SLOT(slot_appendItemToListModel(QString, QString, QString, int, int, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(addItemToListModelSorted(QString, QString, int, int, int, int)),
+                  SIGNAL(addItemToListModelSorted(QString, QString, QString, int, int, QString)),
                   this,
-                  SLOT(slot_addItemToListModelSorted(QString, QString, int, int, int, int)));
+                  SLOT(slot_addItemToListModelSorted(QString, QString, QString, int, int, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(updateItemInListModel(QString, QString, int, int)),
+                  SIGNAL(updateItemInListModel(QString, QString, QString, QString)),
                   this,
-                  SLOT(slot_updateItemInListModel(QString, QString, int, int)));
+                  SLOT(slot_updateItemInListModel(QString, QString, QString, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(updateItemInListModelSorted(QString, QString, int, int)),
+                  SIGNAL(updateItemInListModelSorted(QString, QString, QString, QString)),
                   this,
-                  SLOT(slot_updateItemInListModelSorted(QString, QString, int, int)));
+                  SLOT(slot_updateItemInListModelSorted(QString, QString, QString, QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(unregisterFromDatabaseClient(int)),
+                  SIGNAL(unregisterFromDatabaseClient(QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_unregisterListModel(int)));
+                  SLOT(slot_unregisterListModel(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(deleteItemInListModel(int)),
+                  SIGNAL(deleteItemInListModel(QString)),
                   this,
-                  SLOT(slot_deleteItem(int)));
+                  SLOT(slot_deleteItem(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(disconnectAllClients()),
@@ -168,7 +168,7 @@ void KdbListModel::loadGroupListFromDatabase()
     }
 }
 
-void KdbListModel::loadGroupsAndEntriesFromDatabase(int groupId)
+void KdbListModel::loadGroupsAndEntriesFromDatabase(QString groupId)
 {
     // make list view empty and unregister if necessary
     if (!isEmpty()) {
@@ -247,7 +247,7 @@ void KdbListModel::clearListModel()
     clear();
 }
 
-void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId)
+void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -280,7 +280,7 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, i
     }
 }
 
-void KdbListModel::slot_addItemToListModelSorted(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId)
+void KdbListModel::slot_addItemToListModelSorted(QString title, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -322,15 +322,16 @@ void KdbListModel::slot_addItemToListModelSorted(QString title, QString subtitle
     }
 }
 
-/*!
- * \brief KdbListModel::slot_updateItemInListModel
- * This function updates a single groups item in the list model data.
- *
- * \param title The detail that should be changed in the item.
- * \param groupId Identifier for the item inside of the list model.
- * \param modelId Identifier for list model, which needs to be changed.
- */
-void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, int itemId, int modelId)
+/******************************************************************************
+\brief KdbListModel::slot_updateItemInListModel
+
+This function updates a single groups item in the list model data.
+
+\param title The detail that should be changed in the item.
+\param groupId Identifier for the item inside of the list model.
+\param modelId Identifier for list model, which needs to be changed.
+******************************************************************************/
+void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, QString itemId, QString modelId)
 {
     // check if we need to do anything
     if (m_modelId == modelId) {
@@ -351,7 +352,7 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, i
     }
 }
 
-void KdbListModel::slot_updateItemInListModelSorted(QString title, QString subTitle, int itemId, int modelId)
+void KdbListModel::slot_updateItemInListModelSorted(QString title, QString subTitle, QString itemId, QString modelId)
 {
     // check if we need to do anything
     if (m_modelId == modelId) {
@@ -371,7 +372,7 @@ void KdbListModel::slot_updateItemInListModelSorted(QString title, QString subTi
     }
 }
 
-void KdbListModel::slot_deleteItem(int itemId)
+void KdbListModel::slot_deleteItem(QString itemId)
 {
     // look at each item in list model
     for (int i = 0; i < m_items.count(); i++) {

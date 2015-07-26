@@ -54,52 +54,52 @@ public:
         RE_LAST = AbstractDatabaseInterface::RE_LAST
     };
 
-    Q_PROPERTY(int groupId READ getGroupId WRITE setGroupId STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString groupId READ getGroupId WRITE setGroupId STORED true SCRIPTABLE true)
 
 public:
     Q_INVOKABLE void loadGroupData();
-    Q_INVOKABLE void createNewGroup(QString title, int parentGroupId);
+    Q_INVOKABLE void createNewGroup(QString title, QString parentGroupId);
     Q_INVOKABLE void saveGroupData(QString title);
     Q_INVOKABLE void deleteGroup();
-    Q_INVOKABLE void moveGroup(int newParentGroupId);
+    Q_INVOKABLE void moveGroup(QString newParentGroupId);
 
 signals:
     // signals to QML
     void groupDataLoaded(int result, QString title);
     void groupDataSaved(int result);
-    void newGroupCreated(int result, int newParentGroupId);
+    void newGroupCreated(int result, QString newParentGroupId);
     void groupDeleted(int result);
     void groupMoved(int result);
 
     // signals to database client
-    void loadGroupFromKdbDatabase(int groupId);
-    void saveGroupToKdbDatabase(int groupId, QString title);
-    void createNewGroupInKdbDatabase(QString title, quint32 iconId, int parentGroupId);
-    void deleteGroupFromKdbDatabase(int groupId);
-    void moveGroupInKdbDatabase(int groupId, int newGroupId);
+    void loadGroupFromKdbDatabase(QString groupId);
+    void saveGroupToKdbDatabase(QString groupId, QString title);
+    void createNewGroupInKdbDatabase(QString title, quint32 iconId, QString parentGroupId);
+    void deleteGroupFromKdbDatabase(QString groupId);
+    void moveGroupInKdbDatabase(QString groupId, QString newGroupId);
 
 public slots:
     // signals from database client
-    void slot_groupDataLoaded(int result, int groupId, QString title);
-    void slot_groupDataSaved(int result, int groupId);
-    void slot_newGroupCreated(int result, int groupId);
-    void slot_groupDeleted(int result, int groupId);
-    void slot_groupMoved(int result, int groupId);
+    void slot_groupDataLoaded(int result, QString groupId, QString title);
+    void slot_groupDataSaved(int result, QString groupId);
+    void slot_newGroupCreated(int result, QString groupId);
+    void slot_groupDeleted(int result, QString groupId);
+    void slot_groupMoved(int result, QString groupId);
     void slot_disconnectFromDatabaseClient();
 
 public:
     KdbGroup(QObject *parent = 0);
     virtual ~KdbGroup() {}
 
-    int getGroupId() const { return m_groupId; }
-    void setGroupId(const int value) { m_groupId = value; }
+    QString getGroupId() const { return m_groupId; }
+    void setGroupId(const QString value) { m_groupId = value; }
 
 private:
     bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
 
 private:
-    int m_groupId;
+    QString m_groupId;
     bool m_connected;
     bool m_new_group_triggered;
 };
