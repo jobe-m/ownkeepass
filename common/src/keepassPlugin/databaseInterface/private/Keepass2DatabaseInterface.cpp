@@ -182,6 +182,10 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
     QList<Group*> subGroups = group->children();
+
+    qDebug() << "group uuid: " << groupUuid.toByteArray();
+    qDebug() << "group toHex: " << groupUuid.toHex();
+
 /*
     if (m_setting_sortAlphabeticallyInListView) {
         subGroups = m_kdb3Database->sortedGroups();
@@ -231,6 +235,31 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 
 void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 {
+    // get entry handler for entryId
+    Entry* entry = m_Database->resolveEntry(qString2Uuid(entryId));
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
+// TODO add error handling
+//        emit entryLoaded(DB_ENTRY_NOT_FOUND,...);
+        return;
+    } else {
+        // send signal with all entry data to all connected entry objects
+        // each object will check with entryId if the updated data is interesting to it
+        emit entryLoaded(RE_OK,
+                         entryId,
+                         entry->title(),
+                         entry->url(),
+                         entry->username(),
+                         entry->password(),
+                         entry->notes(),
+                         "",
+                         entry->timeInfo().creationTime().toString(),
+                         entry->timeInfo().lastModificationTime().toString(),
+                         entry->timeInfo().lastAccessTime().toString(),
+                         entry->timeInfo().expiryTime().toString(),
+                         0,
+                         "");
+    }
 }
 
 void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
