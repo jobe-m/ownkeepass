@@ -30,6 +30,9 @@
 #include "../KdbGroup.h"
 #include "crypto/yarrow.h"
 
+// the next is for using defined keys from Keepass2 in loadEntry function
+#include "../../keepass2_database/keepassx/src/core/EntryAttributes.h"
+
 //using namespace kpxPrivate;
 using namespace kpxPrivate;
 using namespace kpxPublic;
@@ -325,23 +328,29 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
     // decrypt password which is usually stored encrypted in memory
     SecString password = entry->password();
     password.unlock();
+
+    QList<QString> keys;
+    QList<QString> values;
+
+    // Add default keys and values (Keepass 1 does not provide custom keys and values as supported in Keepass 2)
+    keys.append(EntryAttributes::TitleKey);
+    keys.append(EntryAttributes::URLKey);
+    keys.append(EntryAttributes::UserNameKey);
+    keys.append(EntryAttributes::PasswordKey);
+    keys.append(EntryAttributes::NotesKey);
+    values.append(entry->title());
+    values.append(entry->url());
+    values.append(entry->username());
+    values.append(password.string());
+    values.append(entry->comment());
+
     // send signal with all entry data to all connected entry objects
-    // each object will check with entryId if the updated data is interesting to it
-    emit entryLoaded(RE_OK,
+    // each object will check with entryId if it needs to update the details
+    emit entryLoaded((int)RE_OK,
                      entryId,
-                     entry->title(),
-                     entry->url(),
-                     entry->username(),
-                     password.string(),
-                     entry->comment(),
-                     entry->binaryDesc(),
-                     entry->creation().toString(),
-                     entry->lastMod().toString(),
-                     entry->lastAccess().toString(),
-                     entry->expire().toString(),
-                     entry->binarySize(),
-                     entry->friendlySize()
-                     );
+                     keys,
+                     values);
+
     // encrypt password in memory again
     password.lock();
 }
@@ -492,21 +501,28 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
     // decrypt password which is usually stored encrypted in memory
     s_password = entry->password();
     s_password.unlock();
-    emit entryLoaded(RE_OK,
+
+    QList<QString> keys;
+    QList<QString> values;
+
+    // Add default keys and values (Keepass 1 does not provide custom keys and values as supported in Keepass 2)
+    keys.append(EntryAttributes::TitleKey);
+    keys.append(EntryAttributes::URLKey);
+    keys.append(EntryAttributes::UserNameKey);
+    keys.append(EntryAttributes::PasswordKey);
+    keys.append(EntryAttributes::NotesKey);
+    values.append(entry->title());
+    values.append(entry->url());
+    values.append(entry->username());
+    values.append(s_password.string());
+    values.append(entry->comment());
+
+    // send signal with all entry data to all connected entry objects
+    // each object will check with entryId if it needs to update the details
+    emit entryLoaded((int)RE_OK,
                      entryId,
-                     entry->title(),
-                     entry->url(),
-                     entry->username(),
-                     s_password.string(),
-                     entry->comment(),
-                     entry->binaryDesc(),
-                     entry->creation().toString(),
-                     entry->lastMod().toString(),
-                     entry->lastAccess().toString(),
-                     entry->expire().toString(),
-                     entry->binarySize(),
-                     entry->friendlySize()
-                     );
+                     keys,
+                     values);
     s_password.lock();
 }
 

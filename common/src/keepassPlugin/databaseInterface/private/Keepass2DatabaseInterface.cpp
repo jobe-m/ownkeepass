@@ -243,22 +243,33 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 //        emit entryLoaded(DB_ENTRY_NOT_FOUND,...);
         return;
     } else {
+        QList<QString> keys; //entry->attributes()->customKeys();
+        QList<QString> values;
+
+        // First add default keys and values
+        keys.append(EntryAttributes::TitleKey);
+        keys.append(EntryAttributes::URLKey);
+        keys.append(EntryAttributes::UserNameKey);
+        keys.append(EntryAttributes::PasswordKey);
+        keys.append(EntryAttributes::NotesKey);
+        values.append(entry->title());
+        values.append(entry->url());
+        values.append(entry->username());
+        values.append(entry->password());
+        values.append(entry->notes());
+
+        // Now add additional custom keys and values
+        Q_FOREACH (const QString& key, entry->attributes()->customKeys()) {
+            keys.append(key);
+            values.append(entry->attributes()->value(key));
+        }
+
         // send signal with all entry data to all connected entry objects
-        // each object will check with entryId if the updated data is interesting to it
+        // each object will check with entryId if it needs to update the details
         emit entryLoaded(RE_OK,
                          entryId,
-                         entry->title(),
-                         entry->url(),
-                         entry->username(),
-                         entry->password(),
-                         entry->notes(),
-                         "",
-                         entry->timeInfo().creationTime().toString(),
-                         entry->timeInfo().lastModificationTime().toString(),
-                         entry->timeInfo().lastAccessTime().toString(),
-                         entry->timeInfo().expiryTime().toString(),
-                         0,
-                         "");
+                         keys,
+                         values);
     }
 }
 

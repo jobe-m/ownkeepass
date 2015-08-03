@@ -85,18 +85,8 @@ signals:
     // signal to KdbEntry object
     void entryLoaded(int result,
                      QString entryId,
-                     QString title,
-                     QString url,
-                     QString username,
-                     QString password,
-                     QString comment,
-                     QString binaryDesc,
-                     QString creation,
-                     QString lastMod,
-                     QString lastAccess,
-                     QString expire,
-                     quint32 binarySize,
-                     QString friendlySize);
+                     QList<QString> keys,
+                     QList<QString> values);
     void entrySaved(int result,
                     QString entryId);
     void newEntryCreated(int result,
