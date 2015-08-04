@@ -75,19 +75,8 @@ public:
 signals:
     // signals to QML
     void entryDataLoaded(int result,
-                         QString title,
-                         QString url,
-                         QString username,
-                         QString password,
-                         QString comment,
-                         QString binaryDesc,
-                         QString creation,
-                         QString lastMod,
-                         QString lastAccess,
-                         QString expire,
-                         quint32 binarySize,
-                         QString friendlySize
-                         );
+                         QList<QString> keys,
+                         QList<QString> values);
     void entryDataSaved(int result);
     void newEntryCreated(int result, QString newEntryId);
     void entryDeleted(int result);
@@ -114,18 +103,8 @@ public slots:
     // signals from interface of database client
     void slot_entryDataLoaded(int result,
                               QString entryId,
-                              QString title,
-                              QString url,
-                              QString username,
-                              QString password,
-                              QString comment,
-                              QString binaryDesc,
-                              QString creation,
-                              QString lastMod,
-                              QString lastAccess,
-                              QString expire,
-                              quint32 binarySize,
-                              QString friendlySize);
+                              QList<QString> keys,
+                              QList<QString> values);
     void slot_entryDataSaved(int result, QString entryId);
     void slot_entryDeleted(int result, QString entryId);
     void slot_entryMoved(int result, QString entryId);

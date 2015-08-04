@@ -46,9 +46,9 @@ bool KdbEntry::connectToDatabaseClient()
                        SLOT(slot_loadEntry(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(entryLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)),
+                  SIGNAL(entryLoaded(int,QString,QList<QString>,QList<QString>)),
                   this,
-                  SLOT(slot_entryDataLoaded(int,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,QString,quint32,QString)));
+                  SLOT(slot_entryDataLoaded(int,QString,QList<QString>,QList<QString>)));
     Q_ASSERT(ret);
     ret = connect(this,
                   SIGNAL(saveEntryToKdbDatabase(QString,QString,QString,QString,QString,QString)),
@@ -114,7 +114,8 @@ void KdbEntry::loadEntryData()
     Q_ASSERT(m_entryId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryDataLoaded(RE_DB_NOT_OPENED, "", "", "", "", "", "", "", "", "", "", 0, "");
+        QList<QString> emptyList;
+        emit entryDataLoaded(RE_DB_NOT_OPENED, emptyList, emptyList);
     } else {
         // trigger loading from database client
         emit loadEntryFromKdbDatabase(m_entryId);
@@ -182,24 +183,12 @@ void KdbEntry::moveEntry(QString newGroupId)
 
 void KdbEntry::slot_entryDataLoaded(int result,
                                     QString entryId,
-                                    QString title,
-                                    QString url,
-                                    QString username,
-                                    QString password,
-                                    QString comment,
-                                    QString binaryDesc,
-                                    QString creation,
-                                    QString lastMod,
-                                    QString lastAccess,
-                                    QString expire,
-                                    quint32 binarySize,
-                                    QString friendlySize)
+                                    QList<QString> keys,
+                                    QList<QString> values)
 {
     // forward signal to QML only if the signal is for us
     if (entryId == m_entryId) {
-        emit entryDataLoaded(result, title, url, username, password, comment,
-                             binaryDesc, creation, lastMod, lastAccess,
-                             expire, binarySize, friendlySize);
+        emit entryDataLoaded(result, keys, values);
     }
 }
 

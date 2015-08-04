@@ -679,7 +679,7 @@ Page {
           already existing entry and to check if the user has done changes to an entry in the UI
           after he canceled the edit dialog. In that case a query dialog is shown to let the user
           save the entry details if he has canceled the edit dialog unintentionally or because he
-          did not understand the whole UI paradigma at all... well now the UX evolved quite nicely;)
+          did not understand the whole UI paradigma at all... well recently the UX evolved quite nicely;)
           */
         property string originalEntryTitle: ""
         property string originalEntryUrl: ""
@@ -786,26 +786,19 @@ Page {
             }
         }
 
-        function loadKdbEntryDetails(title, url, username, password, comment) {
-//                    console.log("binaryDesc: " + binaryDesc)
-//                    console.log("creation: " + creation)
-//                    console.log("lastMod: " + lastMod)
-//                    console.log("lastAccess: " + lastAccess)
-//                    console.log("expire: " + expire)
-//                    console.log("binarySize: " + binarySize)
-//                    console.log("friendlySize: " + friendlySize)
-            entryTitle    = originalEntryTitle    = title
-            entryUrl      = originalEntryUrl      = url
-            entryUsername = originalEntryUsername = username
-            entryPassword = originalEntryPassword = password
-            entryComment  = originalEntryComment  = comment
+        function loadKdbEntryDetails(keys, values) {
+            entryTitle    = originalEntryTitle    = values[0]
+            entryUrl      = originalEntryUrl      = values[1]
+            entryUsername = originalEntryUsername = values[2]
+            entryPassword = originalEntryPassword = values[3]
+            entryComment  = originalEntryComment  = values[4]
 
             // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
             // depending on which is currently active
             if(editEntryDetailsDialogRef)
-                editEntryDetailsDialogRef.setTextFields(title, url, username, password, comment)
+                editEntryDetailsDialogRef.setTextFields(keys, values)
             if(showEntryDetailsPageRef)
-                showEntryDetailsPageRef.setTextFields(title, url, username, password, comment)
+                showEntryDetailsPageRef.setTextFields(keys, values)
         }
 
         function loadKdbGroupDetails(name) {
@@ -935,7 +928,7 @@ Page {
 
     KdbEntry {
         id: kdbEntry
-        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(title, url, username, password, comment)
+        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values)
         onEntryDataSaved: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
         onNewEntryCreated: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }

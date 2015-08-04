@@ -47,12 +47,12 @@ Dialog {
     property bool passwordChanged: false
     property bool commentChanged: false
 
-    function setTextFields(title, url, username, password, comment) {
-        entryTitleTextField.text = origTitle = title
-        entryUrlTextField.text = origUrl = url
-        entryUsernameTextField.text = origUsername = username
-        entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = password
-        entryCommentTextField.text = origComment = comment
+    function setTextFields(keys, values) {
+        entryTitleTextField.text = origTitle = values[0]
+        entryUrlTextField.text = origUrl = values[1]
+        entryUsernameTextField.text = origUsername = values[2]
+        entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = values[3]
+        entryCommentTextField.text = origComment = values[4]
     }
 
     // This function should be called when any text is changed to check if the

@@ -32,17 +32,29 @@ Page {
     // ID of the keepass entry to be shown
     property string entryId: ""
 
-    function setTextFields(title, url, username, password, comment) {
-        pageHeader.title = title
-        entryUrlTextArea.text = url
-        entryUsernameTextArea.text = username
-        entryPasswordTextField.text = password
-        entryCommentTextArea.text = comment
+    function setTextFields(keys, values) {
+        var maxKeys = keys.length
+        var i = 5
+        customKeyValueList.clear()
+        while (i < maxKeys) {
+            console.log(keys[i] + " " + values[i])
+            customKeyValueList.append({"key": keys[i], "value": values[i]})
+            ++i
+        }
+        pageHeader.title = values[0]
+        entryUrlTextArea.text = values[1]
+        entryUsernameTextArea.text = values[2]
+        entryPasswordTextField.text = values[3]
+        entryCommentTextArea.text = values[4]
 
         // set also cover
-        applicationWindow.cover.title = title
-        applicationWindow.cover.username = username
-        applicationWindow.cover.password = password
+        applicationWindow.cover.title = values[0]
+        applicationWindow.cover.username = values[2]
+        applicationWindow.cover.password = values[3]
+    }
+
+    ListModel {
+        id: customKeyValueList
     }
 
     SilicaFlickable {
@@ -198,6 +210,18 @@ Page {
                 readOnly: true
                 label: qsTr("Comment")
                 color: Theme.primaryColor
+            }
+
+            Repeater {
+                model: customKeyValueList
+
+                TextArea {
+                    width: parent.width
+                    readOnly: true
+                    label: key
+                    text: value
+                    color: Theme.primaryColor
+                }
             }
         }
     }
