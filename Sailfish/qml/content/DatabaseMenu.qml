@@ -40,6 +40,12 @@ PullDownMenu {
     signal newPasswordGroupClicked
 
     MenuItem {
+        enabled: false
+        visible: ownKeepassDatabase.readOnly
+        text: qsTr("Read only mode")
+    }
+
+    MenuItem {
         enabled: enableSearchMenuItem
         visible: enabled
         text: isTextHideSearch ? qsTr("Hide search") : qsTr("Show search")

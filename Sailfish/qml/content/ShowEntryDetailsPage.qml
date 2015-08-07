@@ -73,6 +73,12 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                enabled: false
+                visible: ownKeepassDatabase.readOnly
+                text: qsTr("Read only mode")
+            }
+
+            MenuItem {
                 enabled: entryUrlTextArea.text !== ""
                 visible: enabled
                 text: qsTr("Copy URL")
