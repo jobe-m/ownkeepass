@@ -37,12 +37,49 @@ protected: // signals
     virtual void disconnectAllClients() = 0;
 
     // signals to KdbDatabase object
-    virtual void databaseOpened(int result) = 0;
+    /*!
+     * \brief databaseOpened
+     * \param result is set to one of the following error codes:
+     *        RE_OK if no error happened, database can be opened
+     *        RE_DB_READ_ONLY if database file is read-only, database can be
+     *          opened
+     *        RE_NOT_A_KEEPASS_DB if the file is not a KeePass database
+     *          (Keepass 2 only)
+     *        RE_NOT_SUPPORTED_DB_VERSION if the file contains an unsupported
+     *          KeePass database version (Keepass 2 only)
+     *        RE_MISSING_DB_HEADERS if database headers are missing (Keepass 2
+     *          only)
+     *        RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT if wrong master password was
+     *          specified or if database file is corrupt (Keepass 2 only)
+     *        RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT if wrong master
+     *          password or wrong keyfile was specified or if either keyfile or
+     *          database file is corrupt (Keepass 2 only)
+     *        RE_HEAD_HASH_MISMATCH if database head doesn't match corresponding
+     *          hash value (Keepass 2 only)
+     *        RE_DBFILE_OPEN_ERROR if database file cannot be opened, more
+     *          detailed error message available in errorMsg (Keepass 2 only)
+     *        RE_KEYFILE_OPEN_ERROR if key file cannot be opened, more detailed
+     *          error message available in errorMsg (Keepass 2 only)
+     * \param errorMsg is a string containing more details about the error or
+     *        is empty if no further details are available.
+     */
+    virtual void databaseOpened(int result, QString errorMsg) = 0;
     virtual void newDatabaseCreated() = 0;
     virtual void databaseClosed() = 0;
     virtual void passwordChanged() = 0;
     virtual void databaseKeyTransfRoundsChanged(int value) = 0;
     virtual void databaseCryptAlgorithmChanged(int value) = 0;
+    /*!
+     * \brief
+     * \param result is one from the folloing list:
+     *        RE_ERR_QSTRING_TO_UUID QString value is not exactly 16 characters
+     *          long and cannot be converted successfully (Keepass 2 only)
+     *        RE_ERR_QSTRING_TO_INT Conversion from QString to integer number
+     *          failed (Keepass 1 only)
+     *        RE_CRYPTO_INIT_ERROR Cryptographic algorithms could not be
+     *          initialized successfully, abort opening of any Keepass database
+     *          for safety (Keepass 2 only)
+     */
     virtual void errorOccured(int result,
                               QString errorMsg) = 0;
 

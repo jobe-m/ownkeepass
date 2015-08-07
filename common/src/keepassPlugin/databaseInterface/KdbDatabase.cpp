@@ -53,9 +53,9 @@ void KdbDatabase::connectToDatabaseClient()
                        SLOT(slot_openDatabase(QString,QString,QString,bool)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(databaseOpened(int)),
+                  SIGNAL(databaseOpened(int,QString)),
                   this,
-                  SLOT(slot_databaseOpened(int)));
+                  SLOT(slot_databaseOpened(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
                   SIGNAL(createNewDatabase(QString,QString,QString,int,int)),
@@ -164,7 +164,7 @@ void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const 
     }
 }
 
-void KdbDatabase::slot_databaseOpened(int result)
+void KdbDatabase::slot_databaseOpened(int result, QString errorMsg)
 {
     if (result == DatabaseAccessResult::RE_DB_READ_ONLY) {
         if (!m_readOnly) {
@@ -177,7 +177,7 @@ void KdbDatabase::slot_databaseOpened(int result)
             emit readOnlyChanged();
         }
     }
-    emit databaseOpened(result);
+    emit databaseOpened(result, errorMsg);
 }
 
 void KdbDatabase::create(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password)

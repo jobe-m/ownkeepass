@@ -51,13 +51,24 @@ public:
         RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
         RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
 
+        // new and reviewed error codes
         RE_DB_READ_ONLY,                            // database file is read-only
+        RE_CRYPTO_INIT_ERROR,                       // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety
+        RE_NOT_A_KEEPASS_DB,                        // Not a KeePass database
+        RE_NOT_SUPPORTED_DB_VERSION,                // Unsupported KeePass database version
+        RE_MISSING_DB_HEADERS,                      // missing database headers
+        RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT,         // Wrong password or database file is corrupt
+        RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, // Wrong password or wrong keyfile or either keyfile or database file is corrupt
+        RE_HEAD_HASH_MISMATCH,                      // Database head doesn't match hash
+        RE_DBFILE_OPEN_ERROR,                       // Cannot open database file, more detailed error message available as attached string in signal
+        RE_KEYFILE_OPEN_ERROR,                      // Cannot open key file, more detailed error message available as attached string in signal
+
 
         // Keepass 1 specific
         RE_ERR_QSTRING_TO_INT,                      // conversion of QString to int failed
 
         // Keepass 2 specific
-        RE_ERR_QString_TO_UUID,                     // conversion of uuid to QString failed (for passing a reference to QML)
+        RE_ERR_QSTRING_TO_UUID,                     // conversion of uuid to QString failed (for passing a reference to QML)
 
         RE_LAST
     };

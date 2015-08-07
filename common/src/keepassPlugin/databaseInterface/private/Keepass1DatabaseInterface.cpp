@@ -116,7 +116,7 @@ void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 // TODO create .lock file if it does not exist yet
 
     // database was opened successfully
-    emit databaseOpened(DatabaseAccessResult::RE_OK);
+    emit databaseOpened(DatabaseAccessResult::RE_OK, "");
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
@@ -787,7 +787,7 @@ void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
     }
 }
 
-/******************************************************************************
+/*!
 \brief Convert integer number to QString
 
 The integer number is converted into a 4 byte long hexadecimal QString.
@@ -795,24 +795,23 @@ The integer number is converted into a 4 byte long hexadecimal QString.
 \param value This is the integer value which shall be converted to QString
 
 \return Hexadecimal QString representation of the integer number
-******************************************************************************/
+*/
 inline QString Keepass1DatabaseInterface::int2QString(int value)
 {
     return QString(QByteArray::number(value, 16));
 }
 
-/******************************************************************************
+/*!
 \brief Convert QString to integer
 
 Convert a 4 byte long hexadecimal number in string format to a integer number.
+It emits errorOccured signal with result RE_ERR_QSTRING_TO_INT and QString value
+if conversion from QString to integer number fails.
 
 \param value This is the QString value which shall be converted to integer
-
-\emit errorOccured signal with result RE_ERR_QSTRING_TO_INT and QString value
-       if conversion from QString to integer number fails
-\return positive number if conversion went ok
-        -1 if conversion was not ok
-******************************************************************************/
+\return positive number if conversion succeeded
+        -1 if conversion did not succeed
+*/
 inline int Keepass1DatabaseInterface::qString2Int(QString value)
 {
     bool ok = false;

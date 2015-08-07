@@ -47,7 +47,7 @@ signals:
     void disconnectAllClients();
 
     // signals to KdbDatabase object
-    void databaseOpened(int result);
+    void databaseOpened(int result, QString errorMsg);
     void newDatabaseCreated();
     void databaseClosed();
     void passwordChanged();

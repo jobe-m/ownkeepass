@@ -399,7 +399,7 @@ Page {
 
     Connections {
         target: ownKeepassDatabase
-        onDatabaseOpened: internal.databaseOpenedHandler(result)
+        onDatabaseOpened: internal.databaseOpenedHandler(result, errorMsg)
         onNewDatabaseCreated: internal.newDatabaseCreatedHandler()
         onDatabaseClosed: internal.databaseClosedHandler()
         onDatabasePasswordChanged: internal.databasePasswordChangedHandler()
@@ -591,20 +591,79 @@ Page {
                         databasePath.lastIndexOf("/") + 1, databasePath.length)
         }
 
-        function databaseOpenedHandler(result) {
-            console.log("result: " + result)
-            console.log("DatabaseAccessResult.RE_DB_READ_ONLY: " + DatabaseAccessResult.RE_DB_READ_ONLY)
-            if (result === DatabaseAccessResult.RE_DB_READ_ONLY) {
-                // display popup
+        function databaseOpenedHandler(result, errorMsg) {
+            // display popup if some error occured
+            switch (result) {
+            case DatabaseAccessResult.RE_DB_READ_ONLY:
                 Global.env.infoPopup.show(Global.info,
                                           qsTr("Read only support"),
-                                          qsTr("Keepass 2 database support is currently limited to read only"), 5)
+                                          qsTr("Keepass 2 database support is currently limited to read only."), 5)
+                // Database opened successfully in read only mode, now init master groups page and cover page
+                Global.enableDatabaseLock = true
+                masterGroupsPage.init()
+                updateRecentDatabaseListModel()
+                break
+            case DatabaseAccessResult.RE_OK:
+                // Yeah, database opened successfully, now init master groups page and cover page
+                Global.enableDatabaseLock = true
+                masterGroupsPage.init()
+                updateRecentDatabaseListModel()
+                break
+            case DatabaseAccessResult.RE_NOT_A_KEEPASS_DB:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Database file"),
+                                          qsTr("The specified file is not a Keepass database."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_NOT_SUPPORTED_DB_VERSION:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Database version"),
+                                          qsTr("The specified file has an unsupported Keepass database version."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_MISSING_DB_HEADERS:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Internal database error"),
+                                          qsTr("Database headers are missing."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Wrong password"),
+                                          qsTr("Either your master password is wrong or the database file is corrupt. Please try again."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Wrong password"),
+                                          qsTr("Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_HEAD_HASH_MISMATCH:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Internal database error"),
+                                          qsTr("Database head doesn't match corresponding hash value."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_DBFILE_OPEN_ERROR:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("File I/O error"),
+                                          qsTr("Cannot open database file. Error details: " + errorMsg))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_KEYFILE_OPEN_ERROR:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("File I/O error"),
+                                          qsTr("Cannot open key file. Error details: " + errorMsg))
+                masterGroupsPage.closeOnError()
+                break
+            default:
+                Global.env.infoPopup.show(Global.error,
+                                          "Unknown error code",
+                                          "Error code " + result + " appeared after database was opened.")
+                masterGroupsPage.closeOnError()
+                break
             }
-
-            // Yeah, database opened successfully, now init master groups page and cover page
-            Global.enableDatabaseLock = true
-            masterGroupsPage.init()
-            updateRecentDatabaseListModel()
         }
 
         function newDatabaseCreatedHandler() {
@@ -663,6 +722,13 @@ Page {
                 break
             case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show(Global.error, qsTr("Database error"), qsTr("An error occured on closing your database:") + " " + errorMsg)
+                masterGroupsPage.closeOnError()
+                break
+            // here start new and reviewed error codes
+            case DatabaseAccessResult.RE_CRYPTO_INIT_ERROR:
+                // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety (Keepass 2 only)
+                Global.env.infoPopup.show(Global.error, qsTr("Crypto init error"),
+                                          qsTr("Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer."))
                 masterGroupsPage.closeOnError()
                 break
             default:

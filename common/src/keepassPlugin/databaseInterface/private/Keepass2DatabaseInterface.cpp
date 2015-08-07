@@ -58,26 +58,36 @@ void Keepass2DatabaseInterface::initDatabase()
     // init crypto algorithms
     if (!Crypto::init()) {
         // Fatal error while testing the cryptographic functions
-// TODO add error handling
+        emit errorOccured(DatabaseAccessResult::RE_CRYPTO_INIT_ERROR, "");
+        delete m_Database;
     }
 
 }
 
 void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
 {
-    // check if filePath is readable or read-writable
+    bool db_read_only = false;
+
+    // TODO check if .lock file exists and ask user if he wants to open the database in read only mode or discard and open in read/write mode
+    // TODO create .lock file if it does not exist yet
+
+    // check if file path of database is readable or read-writable
     QFile file(filePath);
     if (readonly) {
         if (!file.open(QIODevice::ReadOnly)) {
-            qDebug() << "ERROR: Keepass 2 database is not readable!";
-// TODO: return signal with error type
+            emit databaseOpened(DatabaseAccessResult::RE_DBFILE_OPEN_ERROR, file.errorString());
             return;
         }
+        db_read_only = true;
     } else {
         if (!file.open(QIODevice::ReadWrite)) {
-            qDebug() << "ERROR: Keepass 2 databasse is not read-writeable!";
-// TODO: return signal with error type
+            if (file.open(QIODevice::ReadOnly)) {
+                // Database can only be read so tell this to UI
+                db_read_only = true;
+            } else {
+            emit databaseOpened(DatabaseAccessResult::RE_DBFILE_OPEN_ERROR, file.errorString());
             return;
+            }
         }
     }
 
@@ -87,9 +97,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
         FileKey key;
         QString errorMsg;
         if (!key.load(keyfile, &errorMsg)) {
-            qDebug() << "ERROR: Cannot open key file for Keepass 2 database. " << errorMsg;
-//            MessageBox::warning(this, tr("Error"), tr("Can't open key file").append(":\n").append(errorMsg));
-// TODO: return signal with error type
+            emit databaseOpened(DatabaseAccessResult::RE_KEYFILE_OPEN_ERROR, errorMsg);
             return;
         }
         masterKey.addKey(key);
@@ -102,18 +110,41 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     KeePass2Reader reader;
     m_Database = reader.readDatabase(&file, masterKey);
 
-// TODO check if .lock file exists and ask user if he wants to open the database in read only mode or discard and open in read/write mode
-// TODO create .lock file if it does not exist yet
+    if (m_Database == Q_NULLPTR) {
+        // an error occured during opening of the database
+        QString errorString = reader.errorString();
+        qDebug() << "Error occured: " << errorString;
+        if (!errorString.compare("Not a KeePass database.", Qt::CaseInsensitive)) {
+            emit databaseOpened(DatabaseAccessResult::RE_NOT_A_KEEPASS_DB, "");
+        } else if (!errorString.compare("Unsupported KeePass database version.", Qt::CaseInsensitive)) {
+            emit databaseOpened(DatabaseAccessResult::RE_NOT_SUPPORTED_DB_VERSION, "");
+        } else if (!errorString.compare("missing database headers", Qt::CaseInsensitive)) {
+            emit databaseOpened(DatabaseAccessResult::RE_MISSING_DB_HEADERS, "");
+        } else if (!errorString.compare("Wrong key or database file is corrupt.", Qt::CaseInsensitive)) {
+            if (keyfile.isEmpty()) {
+                emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT, "");
+            } else {
+                emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, "");
+            }
+        } else if (!errorString.compare("Head doesn't match hash", Qt::CaseInsensitive)) {
+            emit databaseOpened(DatabaseAccessResult::RE_HEAD_HASH_MISMATCH, "");
+        }
+        return;
+    }
+
+    // currently Keepass 2 database support is limited to read only, so set it here explicitly
+    db_read_only = true;
 
     // database was opened successfully
-//    emit databaseOpened(DatabaseAccessResult::RE_OK);
-    emit databaseOpened(DatabaseAccessResult::RE_DB_READ_ONLY);
+    if (db_read_only) {
+        emit databaseOpened(DatabaseAccessResult::RE_DB_READ_ONLY, "");
+    } else {
+        emit databaseOpened(DatabaseAccessResult::RE_OK, "");
+    }
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     emit databaseCryptAlgorithmChanged(0); // Keepass2 only supports Rijndael_Cipher = 0
     emit databaseKeyTransfRoundsChanged(m_Database->transformRounds());
-
-    qDebug() << "Keepass 2 database successfully opened!";
 }
 
 void Keepass2DatabaseInterface::slot_closeDatabase()
@@ -353,24 +384,25 @@ inline QString Keepass2DatabaseInterface::getUserAndPassword(Entry* entry)
     }
 }
 
-/******************************************************************************
+/*!
 \brief Convert QString to Uuid
 
-This function converts a 16 character long QString into a Uuid.
+This function converts a 16 character long QString into a Uuid. If the
+conversion is not successful it emits signal errorOccured with parameter
+RE_ERR_QSTRING_TO_UUID. That happens if the QString value is not exactly 16
+characters long.
 
 \param QString value to be converted to Uuid
-\emit RE_ERR_QSTRING_TO_UUID if the conversion was not successful because the
-      QString value was not exactly 16 characters long
 \return Uuid representation of the QString content or
         an empty Uuid if an error occured during conversion
-+******************************************************************************/
+*/
 inline Uuid Keepass2DatabaseInterface::qString2Uuid(QString value)
 {
     QByteArray baValue = QByteArray::fromHex(value.toLatin1());
     if (baValue.size() == Uuid::Length) {
         return Uuid(baValue);
     } else {
-        emit errorOccured(DatabaseAccessResult::RE_ERR_QString_TO_UUID, value);
+        emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_UUID, value);
         return Uuid();
     }
 }

@@ -72,7 +72,7 @@ signals:
     void setting_sortAlphabeticallyInListView(bool value);
 
     // signals to QML
-    void databaseOpened(int result);
+    void databaseOpened(int result, QString errorMsg);
     void newDatabaseCreated();
     void databaseClosed();
     void databasePasswordChanged();
@@ -96,7 +96,7 @@ private slots:
         }
     }
     void slot_databaseClosed();
-    void slot_databaseOpened(int result);
+    void slot_databaseOpened(int result, QString errorMsg);
 
 private:
     void connectToDatabaseClient();
