@@ -32,53 +32,12 @@ class AbstractDatabaseInterface
 public:
     virtual ~AbstractDatabaseInterface(){}
 
-public:
-    // Whenever changing here enums don't forget to update the enum wrappers in KdbDatabase, KdbEntry, KdbGroup and KdbListModel !!!
-    enum eDatabaseAccessResult {
-        RE_OK = 0,                                  // no error
-        RE_DB_LOAD_ERROR,                           // error loading data from database
-        RE_DB_SAVE_ERROR,                           // error saving data into database
-        RE_DB_NOT_OPENED,                           // database is not opened
-        RE_DB_OPEN,                                 // other database is currently open, close it first
-        RE_DB_ALREADY_CLOSED,                       // database already closed, no harm
-        RE_DB_CLOSE_FAILED,                         // database closing failed
-        RE_DB_FILE_ERROR,                           // file path error for new database
-        RE_DB_SETKEY_ERROR,                         // error setting key (consisting of password and/or keyfile
-        RE_DB_SETPW_ERROR,                          // error setting password for database
-        RE_DB_SETKEYFILE_ERROR,                     // error setting key file for database
-        RE_DB_CREATE_BACKUPGROUP_ERROR,             // error creating backup group
-        RE_PRECHECK_DB_PATH_ERROR,                  // database file does not exists on precheck
-        RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
-        RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
-
-        // Keepass 1 specific
-        RE_ERR_QSTRING_TO_INT,                      // conversion of QString to int failed
-
-        // Keepass 2 specific
-        RE_ERR_QString_TO_UUID,                     // conversion of uuid to QString failed (for passing a reference to QML)
-
-        RE_LAST
-    };
-
-    enum eDatabaseItemType {
-        UNKNOWN = 0,
-        GROUP,
-        ENTRY,
-    };
-
-    // to be used as type in initDatabaseInterface()
-    enum eDatabaseType {
-        DB_TYPE_UNKNOWN = -1,
-        DB_TYPE_KEEPASS_1 = 0,
-        DB_TYPE_KEEPASS_2 = 1,
-    };
-
 protected: // signals
     // signals to all objects
     virtual void disconnectAllClients() = 0;
 
     // signals to KdbDatabase object
-    virtual void databaseOpened() = 0;
+    virtual void databaseOpened(int result) = 0;
     virtual void newDatabaseCreated() = 0;
     virtual void databaseClosed() = 0;
     virtual void passwordChanged() = 0;
@@ -198,6 +157,5 @@ public: // slots
 };
 
 Q_DECLARE_INTERFACE(AbstractDatabaseInterface, "harbour.ownkeepass.AbstractDatabaseInterface")
-//Q_DECLARE_INTERFACE(DatabaseDefines, "harbour.ownkeepass.DatabaseDefines")
 
 #endif // DATABASEINTERFACE_H

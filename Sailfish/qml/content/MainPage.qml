@@ -24,7 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 
 Page {
     id: mainPage
@@ -351,10 +351,12 @@ Page {
                             color: Theme.primaryColor
                             horizontalAlignment: Text.AlignLeft
                             elide: Qt.ElideMiddle
-                            text: internal.databaseType === KdbDatabase.DB_TYPE_KEEPASS_1 ?
+                            text: internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_1 ?
                                       "Keepass 1" :
-                                      internal.databaseType === KdbDatabase.DB_TYPE_KEEPASS_2 ?
-                                          "Keepass 2 (Read only)" : "Unknown"
+                                      internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_2 ?
+                                          "Keepass 2" :
+                                          //: Here unknown is used for unknown database type
+                                          qsTr("Unknown")
                         }
                     }
 
@@ -395,14 +397,15 @@ Page {
         ]
     }
 
-    KdbDatabase {
-        id: kdbDatabase
-        onDatabaseOpened: internal.databaseOpenedHandler()
+    Connections {
+        target: ownKeepassDatabase
+        onDatabaseOpened: internal.databaseOpenedHandler(result)
         onNewDatabaseCreated: internal.newDatabaseCreatedHandler()
         onDatabaseClosed: internal.databaseClosedHandler()
         onDatabasePasswordChanged: internal.databasePasswordChangedHandler()
         onErrorOccured: internal.errorHandler(result, errorMsg)
     }
+
 
     Connections {
         target: ownKeepassSettings
@@ -427,7 +430,7 @@ Page {
                                          false,
                                          "",
                                          "",
-                                         KdbDatabase.DB_TYPE_KEEPASS_1)
+                                         DatabaseType.DB_TYPE_KEEPASS_1)
             }
         }
     }
@@ -435,7 +438,6 @@ Page {
     Component.onCompleted: {
         // Init some global variables
         Global.env.setMainPage(mainPage)
-        Global.env.setKdbDatabase(kdbDatabase)
     }
 
     onStatusChanged: {
@@ -466,15 +468,15 @@ Page {
         property bool useKeyFile: false
         property int keyFileLocation: 0
         property string keyFilePath: ""
-        property int databaseType: KdbDatabase.DB_TYPE_UNKNOWN
+        property int databaseType: ownKeepassDatabase.DB_TYPE_UNKNOWN
         property Page masterGroupsPage
 
         function init() {
             // make sure database is closed
-            kdbDatabase.close()
-            // load settings into kdbDatabase
-            kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
-            kdbDatabase.sortAlphabeticallyInListView = ownKeepassSettings.sortAlphabeticallyInListView
+            ownKeepassDatabase.close()
+            // load settings into ownKeepassDatabase
+            ownKeepassDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
+            ownKeepassDatabase.sortAlphabeticallyInListView = ownKeepassSettings.sortAlphabeticallyInListView
             // load details about most recently used database
             ownKeepassSettings.loadDatabaseDetails()
         }
@@ -530,10 +532,10 @@ Page {
                         // Ok, now check if path to file exists if not create it
                         if (ownKeepassHelper.createFilePathIfNotExist(completeDbFilePath)) {
                             // set default values for encryption and key transformation rounds
-                            kdbDatabase.keyTransfRounds = ownKeepassSettings.defaultKeyTransfRounds
-                            kdbDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
+                            ownKeepassDatabase.keyTransfRounds = ownKeepassSettings.defaultKeyTransfRounds
+                            ownKeepassDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
-                            kdbDatabase.create(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, true)
+                            ownKeepassDatabase.create(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, true)
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
@@ -555,7 +557,7 @@ Page {
                 if (ownKeepassHelper.fileExists(completeDbFilePath)) {
                     if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
-                        kdbDatabase.open(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, false)
+                        ownKeepassDatabase.open(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, false)
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
@@ -589,7 +591,16 @@ Page {
                         databasePath.lastIndexOf("/") + 1, databasePath.length)
         }
 
-        function databaseOpenedHandler() {
+        function databaseOpenedHandler(result) {
+            console.log("result: " + result)
+            console.log("DatabaseAccessResult.RE_DB_READ_ONLY: " + DatabaseAccessResult.RE_DB_READ_ONLY)
+            if (result === DatabaseAccessResult.RE_DB_READ_ONLY) {
+                // display popup
+                Global.env.infoPopup.show(Global.info,
+                                          qsTr("Read only support"),
+                                          qsTr("Keepass 2 database support is currently limited to read only"), 5)
+            }
+
             // Yeah, database opened successfully, now init master groups page and cover page
             Global.enableDatabaseLock = true
             masterGroupsPage.init()
@@ -619,38 +630,38 @@ Page {
         function errorHandler(result, errorMsg) {
             // show error to the user
             switch (result) {
-            case KdbDatabase.RE_DB_CLOSE_FAILED:
+            case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Could not close the previous opened database. Please try again. Error message:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_SETKEY_ERROR:
+            case DatabaseAccessResult.RE_DB_SETKEY_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal key error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_SETKEYFILE_ERROR:
+            case DatabaseAccessResult.RE_DB_SETKEYFILE_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal key file error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_LOAD_ERROR:
+            case DatabaseAccessResult.RE_DB_LOAD_ERROR:
                 Global.env.infoPopup.show(Global.warning, qsTr("Error loading database"), errorMsg + " " + qsTr("Please try again."))
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_FILE_ERROR:
+            case DatabaseAccessResult.RE_DB_FILE_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal file error"), qsTr("The following error occured during creation of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR:
+            case DatabaseAccessResult.RE_DB_CREATE_BACKUPGROUP_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Creation of backup group failed with following error:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_SAVE_ERROR:
+            case DatabaseAccessResult.RE_DB_SAVE_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Save database error"), qsTr("Could not save database with following error:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_ALREADY_CLOSED:
+            case DatabaseAccessResult.RE_DB_ALREADY_CLOSED:
                 console.log("Database was already closed. Nothing serious.")
                 break
-            case KdbDatabase.RE_DB_CLOSE_FAILED:
+            case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show(Global.error, qsTr("Database error"), qsTr("An error occured on closing your database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
@@ -703,7 +714,7 @@ Page {
 // TODO                property int groupImageId: 0
 
         /*
-          Data used to save database setting values in KdbDatabase object
+          Data used to save database setting values in ownKeepassDatabase object
           */
         property string databaseKeyFile: ""
         property string databaseMasterPassword: ""
@@ -835,8 +846,8 @@ Page {
         function checkForUnsavedDatabaseSettingsChanges() {
             // check if user gave a new master password or if encryption type or key transformation rounds have changed
             if (databaseMasterPassword !== "" ||
-                    databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm ||
-                    databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
+                    databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm ||
+                    databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_DATABASE_SETTINGS" })
             }
@@ -844,7 +855,7 @@ Page {
 
         function saveDatabaseSettings() {
             if (databaseMasterPassword !== "") {
-                Global.env.kdbDatabase.changePassword(databaseMasterPassword, databaseKeyFile)
+                ownKeepassDatabase.changePassword(databaseMasterPassword, databaseKeyFile)
                 if (databaseMasterPassword.length < 3) {
                     console.log("ERROR: Passwort too short for fast unlock!")
                 } else {
@@ -855,11 +866,11 @@ Page {
                 }
                 databaseMasterPassword = ""
             }
-            if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm) {
-                Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
+            if (databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm) {
+                ownKeepassDatabase.cryptAlgorithm = databaseCryptAlgorithm
             }
-            if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
-                Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
+            if (databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
+                ownKeepassDatabase.keyTransfRounds = databaseKeyTransfRounds
             }
         }
 
@@ -922,15 +933,15 @@ Page {
     KdbGroup {
         id: kdbGroup
         onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title)
-        onGroupDataSaved: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
-        onNewGroupCreated: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onNewGroupCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntry
         onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values)
-        onEntryDataSaved: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
-        onNewEntryCreated: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onNewEntryCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
 
@@ -940,18 +951,18 @@ Page {
     // objects here
     KdbGroup {
         id: kdbGroupForDeletion
-        onGroupDeleted: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryForDeletion
-        onEntryDeleted: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryToMove
         onEntryMoved: {
-            if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+            if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
         }
     }
 

@@ -23,8 +23,10 @@
 #include <QDebug>
 #include "OwnKeepassSettings.h"
 #include "KdbDatabase.h"
+#include "ownKeepassGlobal.h"
 
 using namespace settingsPublic;
+using namespace ownKeepassPublic;
 
 #define INITIAL_VERSION "1.0.0"
 
@@ -112,7 +114,7 @@ void OwnKeepassSettings::checkSettingsVersion()
         if ((major == 1) && (minor <= 1) && (patch <= 6)) {
             m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
             for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-                m_recentDatabaseList[i]["databaseType"] = QVariant(kpxPublic::KdbDatabase::DB_TYPE_KEEPASS_1);
+                m_recentDatabaseList[i]["databaseType"] = QVariant(DatabaseType::DB_TYPE_KEEPASS_1);
             }
             // save changed recent Database list
             m_settings->removeArray("main/recentDatabases");
@@ -425,7 +427,7 @@ void OwnKeepassSettings::setClearClipboard(int value)
 
 void OwnKeepassSettings::setLanguage(const int value)
 {
-    if ((value < Languages::INVALID) && (value != m_language)) {
+    if ((value < Language::INVALID) && (value != m_language)) {
         m_language = value;
         m_settings->setValue("settings/language", QVariant(m_language));
         emit languageChanged();
@@ -470,14 +472,14 @@ void OwnKeepassSettings::loadDatabaseDetails()
         QString dbLocation(m_helper->getLocationRootPath(1));
         // first look for Keepass 2 default database as this will be default when this database type is supported
         if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdbx")) {
-            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdbx", false, 0, "", kpxPublic::KdbDatabase::DB_TYPE_KEEPASS_2);
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdbx", false, 0, "", DatabaseType::DB_TYPE_KEEPASS_2);
             return;
         } else if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
-            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "", kpxPublic::KdbDatabase::DB_TYPE_KEEPASS_1);
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "", DatabaseType::DB_TYPE_KEEPASS_1);
             return;
         } else {
             // no database found
-            emit databaseDetailsLoaded(false, 0, "", false, 0, "", kpxPublic::KdbDatabase::DB_TYPE_UNKNOWN);
+            emit databaseDetailsLoaded(false, 0, "", false, 0, "", DatabaseType::DB_TYPE_UNKNOWN);
         }
     }
 }

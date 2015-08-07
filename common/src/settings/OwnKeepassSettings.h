@@ -33,34 +33,6 @@ namespace settingsPublic {
 
 const QString OWN_KEEPASS_VERSION(PROGRAMVERSION); // get version from yaml/spec file
 
-class Languages : public QObject
-{
-    Q_OBJECT
-
-public:
-    Q_ENUMS(eLanguages)
-    enum eLanguages {
-        SYSTEM_DEFAULT = 0,
-        EN,    // English
-        SV_SE, // Swedish
-        FI_FI, // Finnish
-        DE_DE, // German
-        CS_CZ, // Czech
-        CA,    // Catalan
-        NL_NL, // Dutch
-        ES,    // Spanish
-        FR_FR, // French
-        IT,    // Italian
-        RU,    // Russian
-        DA,    // Danish
-        PL_PL, // Polish - not yet started
-        ZH_CN, // Chinese
-        UK_UA, // Ukrainian - not yet started
-        NB_NO, // Norwegian Bogmål
-        INVALID
-    };
-};
-
 class OwnKeepassSettings : public QObject
 {
     Q_OBJECT

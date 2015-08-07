@@ -23,7 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 import "../scripts/Global.js" as Global
 
 

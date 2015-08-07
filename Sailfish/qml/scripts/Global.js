@@ -82,17 +82,12 @@ var activeDatabase = ""
 
 var env = {
     mainPage: undefined,
-    kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
     coverPage: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
-    },
-
-    setKdbDatabase: function(obj) {
-        this.kdbDatabase = obj
     },
 
     setInfoPopup: function(obj) {

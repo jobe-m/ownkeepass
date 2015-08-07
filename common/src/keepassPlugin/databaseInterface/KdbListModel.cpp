@@ -20,12 +20,14 @@
 **
 ***************************************************************************/
 
+#include "ownKeepassGlobal.h"
 #include <QDebug>
 #include "KdbListModel.h"
 #include "private/DatabaseClient.h"
 
 using namespace kpxPublic;
 using namespace kpxPrivate;
+using namespace ownKeepassPublic;
 
 KdbListModel::KdbListModel(QObject *parent)
     : QAbstractListModel(parent),
@@ -134,7 +136,7 @@ void KdbListModel::loadMasterGroupsFromDatabase()
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit masterGroupsLoaded(RE_DB_NOT_OPENED);
+        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);
@@ -153,7 +155,7 @@ void KdbListModel::loadGroupListFromDatabase()
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit masterGroupsLoaded(RE_DB_NOT_OPENED);
+        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);
@@ -176,7 +178,7 @@ void KdbListModel::loadGroupsAndEntriesFromDatabase(QString groupId)
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupsAndEntriesLoaded(RE_DB_NOT_OPENED);
+        emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);
@@ -195,7 +197,7 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit searchEntriesCompleted(RE_DB_NOT_OPENED);
+        emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);
@@ -256,7 +258,7 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, Q
     // only append if this item is for us
     if (m_modelId == modelId) {
         KdbItem item(title, subtitle, itemId, itemType, itemLevel);
-        if (itemType == kpxPublic::KdbListModel::ENTRY) {
+        if (itemType == DatabaseItemType::ENTRY) {
             // append new entry to end of list
             beginInsertRows(QModelIndex(), rowCount(), rowCount());
             m_items << item;
@@ -265,7 +267,7 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, Q
         } else {
             // insert new group after last group in list
             int i = 0;
-            while (i < m_items.count() && m_items[i].m_itemType == kpxPublic::KdbListModel::GROUP) { ++i; }
+            while (i < m_items.count() && m_items[i].m_itemType == DatabaseItemType::GROUP) { ++i; }
             beginInsertRows(QModelIndex(), i, i);
             m_items.insert(i, item);
             endInsertRows();
@@ -293,7 +295,7 @@ void KdbListModel::slot_addItemToListModelSorted(QString title, QString subtitle
         // groups are put at the beginning of the list view before entries
         int i = 0;
         int max = 0;
-        if (itemType == kpxPublic::KdbListModel::ENTRY) {
+        if (itemType == DatabaseItemType::ENTRY) {
             i = m_numGroups;
             max = m_items.length();
             ++m_numEntries;
@@ -379,7 +381,7 @@ void KdbListModel::slot_deleteItem(QString itemId)
         if (m_items[i].m_id == itemId) {
 //            qDebug() << "delete item: " << m_items[i].m_name;
             // check item type and decrease appropriate item number counter
-            if (m_items[i].m_itemType == kpxPublic::KdbListModel::ENTRY) {
+            if (m_items[i].m_itemType == DatabaseItemType::ENTRY) {
                 m_numEntries--;
             } else {
                 m_numGroups--;

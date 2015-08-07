@@ -148,14 +148,14 @@ Dialog {
                 id: databaseCryptAlgorithm
                 width: parent.width
                 label: qsTr("Encryption currently in use:")
-                currentIndex: Global.env.kdbDatabase.cryptAlgorithm
+                currentIndex: ownKeepassDatabase.cryptAlgorithm
                 menu: ContextMenu {
                     MenuItem { text: "AES/Rijndael" }
                     MenuItem { text: "Twofish" }
                 }
                 onCurrentIndexChanged: {
                     editDatabaseSettingsDialog.cryptAlgorithmChanged =
-                            databaseCryptAlgorithm.currentIndex !== Global.env.kdbDatabase.cryptAlgorithm
+                            databaseCryptAlgorithm.currentIndex !== ownKeepassDatabase.cryptAlgorithm
                     editDatabaseSettingsDialog.updateCoverState()
                 }
             }
@@ -172,13 +172,13 @@ Dialog {
                     errorHighlight: Number(text) === 0
                     label: qsTr("Key transformation rounds")
                     placeholderText: label
-                    text: Global.env.kdbDatabase.keyTransfRounds
+                    text: ownKeepassDatabase.keyTransfRounds
                     EnterKey.enabled: !errorHighlight
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: parent.focus = true
                     onTextChanged: {
                         editDatabaseSettingsDialog.keyTransfRoundsChanged =
-                                Number(databaseKeyTransfRounds.text) !== Global.env.kdbDatabase.keyTransfRounds
+                                Number(databaseKeyTransfRounds.text) !== ownKeepassDatabase.keyTransfRounds
                         editDatabaseSettingsDialog.updateCoverState()
                     }
                 }

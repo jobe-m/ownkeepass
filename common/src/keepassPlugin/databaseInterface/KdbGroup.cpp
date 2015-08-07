@@ -20,11 +20,13 @@
 **
 ***************************************************************************/
 
+#include "ownKeepassGlobal.h"
 #include "KdbGroup.h"
 #include "private/DatabaseClient.h"
 
 using namespace kpxPublic;
 using namespace kpxPrivate;
+using namespace ownKeepassPublic;
 
 KdbGroup::KdbGroup(QObject *parent)
     : QObject(parent),
@@ -104,7 +106,7 @@ void KdbGroup::loadGroupData()
     Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDataLoaded(RE_DB_NOT_OPENED, "");
+        emit groupDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
     } else {
         // trigger loading from database client
         emit loadGroupFromKdbDatabase(m_groupId);
@@ -116,7 +118,7 @@ void KdbGroup::saveGroupData(QString title)
     Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDataSaved(RE_DB_NOT_OPENED);
+        emit groupDataSaved(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         // trigger loading from database client
         emit saveGroupToKdbDatabase(m_groupId, title);
@@ -128,7 +130,7 @@ void KdbGroup::createNewGroup(QString title, QString parentGroupId)
     Q_ASSERT(parentGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit newGroupCreated(RE_DB_NOT_OPENED, 0);
+        emit newGroupCreated(DatabaseAccessResult::RE_DB_NOT_OPENED, 0);
     } else {
         // trigger creation of new entry in database client
         m_new_group_triggered = true;
@@ -143,7 +145,7 @@ void KdbGroup::deleteGroup()
     Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDeleted(RE_DB_NOT_OPENED);
+        emit groupDeleted(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         // trigger deletion of entry in database client
         emit deleteGroupFromKdbDatabase(m_groupId);
@@ -156,7 +158,7 @@ void KdbGroup::moveGroup(QString newParentGroupId)
     Q_ASSERT(newParentGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupMoved(RE_DB_NOT_OPENED);
+        emit groupMoved(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         // trigger moving of entry in database client
         emit moveGroupInKdbDatabase(m_groupId, newParentGroupId);
@@ -182,7 +184,7 @@ void KdbGroup::slot_groupDataSaved(int result, QString groupId)
 void KdbGroup::slot_newGroupCreated(int result, QString groupId)
 {
     if (m_new_group_triggered) {
-        if (result == RE_OK) {
+        if (result == DatabaseAccessResult::RE_OK) {
             m_groupId = groupId;
         }
         m_new_group_triggered = false;

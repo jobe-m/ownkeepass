@@ -103,6 +103,8 @@ Page {
             }
 
             MenuItem {
+                enabled: !ownKeepassDatabase.readOnly
+                visible: enabled
                 text: qsTr("Edit password entry")
                 onClicked: {
                     pageStack.push(editEntryDetailsDialogComponent,

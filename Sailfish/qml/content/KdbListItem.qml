@@ -22,7 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 import "../common"
 import "../scripts/Global.js" as Global
 
@@ -32,10 +32,10 @@ ListItem {
     property string text: model.name
     property string subText: model.subtitle
     property bool selected: false
-    property bool groupItem: model.itemType === KdbListModel.GROUP
+    property bool groupItem: model.itemType === DatabaseItemType.GROUP
     property int showLevel: 0
 
-    menu: contextMenuComponent
+    menu: ownKeepassDatabase.readOnly ? null : contextMenuComponent
     contentHeight: enabled ? Theme.itemSizeMedium : 0
     width: parent ? parent.width : screen.width
     enabled: showLevel === model.itemLevel
@@ -59,11 +59,11 @@ ListItem {
 
     onClicked: {
         switch (model.itemType) {
-        case KdbListModel.GROUP:
+        case DatabaseItemType.GROUP:
             pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                            { "pageTitle": model.name, "groupId": model.id })
             break
-        case KdbListModel.ENTRY:
+        case DatabaseItemType.ENTRY:
             pageStack.push(showEntryDetailsPageComponent,
                            { "pageTitle": model.name, "entryId": model.id })
             break
@@ -91,7 +91,7 @@ ListItem {
         anchors.centerIn: itemIcon
         width: Theme.iconSizeMedium
         height: Theme.iconSizeMedium
-        source: model.itemType === KdbListModel.ENTRY ? "../../entryicons/_0.png" : "../../entryicons/_49.png"
+        source: model.itemType === DatabaseItemType.ENTRY ? "../../entryicons/_0.png" : "../../entryicons/_49.png"
         fillMode: Image.PreserveAspectFit
         asynchronous: true
         opacity: kdbListItem.highlighted ? 0.5 : 1.0
@@ -102,7 +102,7 @@ ListItem {
         anchors.leftMargin: Theme.paddingSmall
         anchors.verticalCenter: parent.verticalCenter
         width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
-        height: model.itemType === KdbListModel.ENTRY && kdbListItem.subText.length === 0 ?
+        height: model.itemType === DatabaseItemType.ENTRY && kdbListItem.subText.length === 0 ?
                     itemTitle.height :
                     itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
 
@@ -135,40 +135,42 @@ ListItem {
 
     Component {
         id: contextMenuComponent
+
         ContextMenu {
             id: contextMenu
+
             MenuItem {
                 text: qsTr("Edit")
                 onClicked: {
                     switch (model.itemType) {
-                    case KdbListModel.GROUP:
+                    case DatabaseItemType.GROUP:
                         pageStack.push(editGroupDetailsDialogComponent,
                                        { "groupId": model.id })
                         break
-                    case KdbListModel.ENTRY:
+                    case DatabaseItemType.ENTRY:
                         pageStack.push(editEntryDetailsDialogComponent,
                                        { "entryId": model.id })
                         break
                     }
                 }
             }
+
             MenuItem {
                 text: qsTr("Delete")
                 onClicked: {
                     switch (model.itemType) {
-                    case KdbListModel.GROUP:
+                    case DatabaseItemType.GROUP:
                         listItemRemoveGroup()
                         break
-                    case KdbListModel.ENTRY:
+                    case DatabaseItemType.ENTRY:
                         listItemRemoveEntry()
                         break
                     }
                 }
             }
+
             MenuItem {
-//                id: moveMenuItem
-//                property KdbEntry kdbEntryToMoveRef: kdbEntryToMove
-                enabled: model.itemType === KdbListModel.ENTRY
+                enabled: model.itemType === DatabaseItemType.ENTRY
                 visible: enabled
                 //: used in menu to move the password entry into another group
                 text: qsTr("Move")
@@ -179,10 +181,6 @@ ListItem {
                                        "nameOfPasswordEntry": model.name,
                                        "kdbEntryToMove": kdbEntryToMove
                                    })
-//                    dialog.accepted.connect(function() {
-//                        moveMenuItem.kdbEntryToMoveRef.entryId = dialog.itemId
-//                        moveMenuItem.kdbEntryToMoveRef.moveEntry(dialog.newGroupId)
-//                    })
                 }
             }
         }

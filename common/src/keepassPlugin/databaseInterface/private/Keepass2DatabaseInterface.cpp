@@ -21,6 +21,8 @@
 ***************************************************************************/
 
 #include <QDebug>
+
+#include "ownKeepassGlobal.h"
 #include "Keepass2DatabaseInterface.h"
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
@@ -33,7 +35,7 @@
 
 using namespace kpxPrivate;
 using namespace kpxPublic;
-
+using namespace ownKeepassPublic;
 
 Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
     : QObject(parent),
@@ -104,7 +106,8 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 // TODO create .lock file if it does not exist yet
 
     // database was opened successfully
-    emit databaseOpened();
+//    emit databaseOpened(DatabaseAccessResult::RE_OK);
+    emit databaseOpened(DatabaseAccessResult::RE_DB_READ_ONLY);
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     emit databaseCryptAlgorithmChanged(0); // Keepass2 only supports Rijndael_Cipher = 0
@@ -153,7 +156,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
                                    .arg(numberOfSubgroups)
                                    .arg(numberOfEntries),                          // subtitle
                                    masterGroupId.toHex(),                          // item id
-                                   (int)GROUP,                                          // item type
+                                   (int)DatabaseItemType::GROUP,                   // item type
                                    0,                                              // item level (0 = root, 1 = first level, etc.
                                    listModelId.toHex());                           // list model of root group
     }
@@ -166,13 +169,13 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         emit appendItemToListModel(entry->title(),                                 // group name
                                    getUserAndPassword(entry),                      // subtitle
                                    itemId.toHex(),                                 // item id
-                                   (int)ENTRY,                                          // item type
+                                   (int)DatabaseItemType::ENTRY,                   // item type
                                    0,                                              // item level (not used here)
                                    listModelId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
         // save modelId and entry
         m_entries_modelId.insertMulti(listModelId, itemId);
     }
-    emit masterGroupsLoaded(RE_OK);
+    emit masterGroupsLoaded(DatabaseAccessResult::RE_OK);
 }
 
 void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
@@ -203,7 +206,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
                                    QString("Subgroups: %1 | Entries: %2")
                                    .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
                                    itemId.toHex(),                                 // item id
-                                   (int)GROUP,                                     // item type
+                                   (int)DatabaseItemType::GROUP,                   // item type
                                    0,                                              // item level (not used here)
                                    groupId);                                       // list model gets groupId as its unique ID
         // save modelId and group
@@ -224,13 +227,13 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         emit appendItemToListModel(entry->title(),                                 // group name
                                    getUserAndPassword(entry),                      // subtitle
                                    itemId.toHex(),                                 // item id
-                                   (int)ENTRY,                                     // item type
+                                   (int)DatabaseItemType::ENTRY,                   // item type
                                    0,                                              // item level (not used here)
                                    groupId);                                       // list model gets groupId as its unique ID
         // save modelId and entry
         m_entries_modelId.insertMulti(groupUuid, itemId);
     }
-    emit groupsAndEntriesLoaded(RE_OK);
+    emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_OK);
 }
 
 void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
@@ -266,7 +269,7 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 
         // send signal with all entry data to all connected entry objects
         // each object will check with entryId if it needs to update the details
-        emit entryLoaded(RE_OK,
+        emit entryLoaded(DatabaseAccessResult::RE_OK,
                          entryId,
                          keys,
                          values);
@@ -367,7 +370,7 @@ inline Uuid Keepass2DatabaseInterface::qString2Uuid(QString value)
     if (baValue.size() == Uuid::Length) {
         return Uuid(baValue);
     } else {
-        emit errorOccured(RE_ERR_QString_TO_UUID, value);
+        emit errorOccured(DatabaseAccessResult::RE_ERR_QString_TO_UUID, value);
         return Uuid();
     }
 }

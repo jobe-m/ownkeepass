@@ -24,7 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 
 Page {
     id: groupsAndEntriesPage
@@ -256,10 +256,10 @@ Page {
     KdbListModel {
         id: kdbListModel
         onGroupsAndEntriesLoaded: {
-            if (result === KdbListModel.RE_DB_LOAD_ERROR) __showLoadErrorPage()
+            if (result === DatabaseAccessResult.RE_DB_LOAD_ERROR) __showLoadErrorPage()
         }
         onMasterGroupsLoaded: {
-            if (result === KdbListModel.RE_DB_LOAD_ERROR) __showLoadErrorPage()
+            if (result === DatabaseAccessResult.RE_DB_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
             if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true

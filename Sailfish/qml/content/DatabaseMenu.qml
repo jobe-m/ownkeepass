@@ -49,7 +49,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableDatabaseSettingsMenuItem
+        enabled: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
         visible: enabled
         text: qsTr("Database settings")
         onClicked: {
@@ -58,7 +58,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordGroupsMenuItem
+        enabled: enableNewPasswordGroupsMenuItem && !ownKeepassDatabase.readOnly
         visible: enabled
         text: qsTr("New password group")
         onClicked: {
@@ -67,7 +67,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordEntryMenuItem
+        enabled: enableNewPasswordEntryMenuItem && !ownKeepassDatabase.readOnly
         visible: enabled
         text: qsTr("New password entry")
         onClicked: {

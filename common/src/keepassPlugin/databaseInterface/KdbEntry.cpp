@@ -20,11 +20,13 @@
 **
 ***************************************************************************/
 
+#include "ownKeepassGlobal.h"
 #include "KdbEntry.h"
 #include "private/DatabaseClient.h"
 
 using namespace kpxPublic;
 using namespace kpxPrivate;
+using namespace ownKeepassPublic;
 
 KdbEntry::KdbEntry(QObject *parent)
     : QObject(parent),
@@ -115,7 +117,7 @@ void KdbEntry::loadEntryData()
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         QList<QString> emptyList;
-        emit entryDataLoaded(RE_DB_NOT_OPENED, emptyList, emptyList);
+        emit entryDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, emptyList, emptyList);
     } else {
         // trigger loading from database client
         emit loadEntryFromKdbDatabase(m_entryId);
@@ -131,7 +133,7 @@ void KdbEntry::saveEntryData(QString title,
     Q_ASSERT(m_entryId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryDataSaved(RE_DB_NOT_OPENED);
+        emit entryDataSaved(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         // trigger saving to database client
         emit saveEntryToKdbDatabase(m_entryId, title, url, username, password, comment);
@@ -148,7 +150,7 @@ void KdbEntry::createNewEntry(QString title,
     Q_ASSERT(parentgroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit newEntryCreated(RE_DB_NOT_OPENED, 0);
+        emit newEntryCreated(DatabaseAccessResult::RE_DB_NOT_OPENED, 0);
     } else {
         // trigger creation of new entry in database client
         m_new_entry_triggered = true;
@@ -161,7 +163,7 @@ void KdbEntry::deleteEntry()
     Q_ASSERT(m_entryId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryDeleted(RE_DB_NOT_OPENED);
+        emit entryDeleted(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         // trigger deletion of entry in database client
         emit deleteEntryFromKdbDatabase(m_entryId);
@@ -174,7 +176,7 @@ void KdbEntry::moveEntry(QString newGroupId)
     Q_ASSERT(newGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit entryMoved(RE_DB_NOT_OPENED);
+        emit entryMoved(DatabaseAccessResult::RE_DB_NOT_OPENED);
     } else {
         // trigger moving of entry in database client
         emit moveEntryInKdbDatabase(m_entryId, newGroupId);
@@ -203,7 +205,7 @@ void KdbEntry::slot_entryDataSaved(int result, QString entryId)
 void KdbEntry::slot_newEntryCreated(int result, QString entryId)
 {
     if (m_new_entry_triggered) {
-        if (result == RE_OK) {
+        if (result == DatabaseAccessResult::RE_OK) {
             m_entryId = entryId;
         }
         m_new_entry_triggered = false;

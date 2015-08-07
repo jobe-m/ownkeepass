@@ -24,7 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 
 Dialog {
     id: queryPasswordDialog
@@ -40,7 +40,7 @@ Dialog {
     property alias keyFileLocation: keyLoading.locationIndex
     property alias keyFilePath: keyLoading.relativePath
     property alias databaseType: databaseTypeChooser.currentIndex
-    // Password is only going out and will be passed to kdbDatabase object open the database
+    // Password is only going out and will be passed to ownKeepassDatabase object to open the database
     property alias password: passwordField.text
 
     acceptDestination: Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString()
@@ -213,8 +213,7 @@ Dialog {
                 id: databaseTypeChooser
                 width: parent.width
                 label: qsTr("Database type:")
-// TODO: Check if next line is needed
-                currentIndex: kdbDatabase.DB_TYPE_KEEPASS_1
+                currentIndex: DatabaseType.DB_TYPE_KEEPASS_1
                 menu: ContextMenu {
                     MenuItem { text: "Keepass 1" }
                     MenuItem { text: "Keepass 2" }

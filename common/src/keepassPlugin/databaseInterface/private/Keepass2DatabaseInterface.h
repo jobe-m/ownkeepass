@@ -48,7 +48,7 @@ signals:
     void disconnectAllClients();
 
     // signals to KdbDatabase object
-    void databaseOpened();
+    void databaseOpened(int result);
     void newDatabaseCreated();
     void databaseClosed();
     void passwordChanged();
