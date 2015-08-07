@@ -200,8 +200,10 @@ Page {
             id: viewPlaceholder
             image.source: "../../wallicons/wall-group.png"
             text: qsTr("Group is empty")
-            hintText: groupId === 0 ? qsTr("Pull down to add password groups") :
-                                      qsTr("Pull down to add password groups or entries")
+            hintText: !ownKeepassDatabase.readOnly ?
+                          (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
+                          groupId === 0 ? qsTr("Pull down to add password groups") :
+                                          qsTr("Pull down to add password groups or entries")) : ""
         }
 
         DatabaseMenu {

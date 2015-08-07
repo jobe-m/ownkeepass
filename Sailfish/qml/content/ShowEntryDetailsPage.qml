@@ -67,7 +67,8 @@ Page {
                      !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
             image.source: "../../wallicons/wall-key.png"
             text: qsTr("No content")
-            hintText: qsTr("Pull down to add URL, username, password and comment")
+            hintText: !ownKeepassDatabase.readOnly ?
+                          qsTr("Pull down to add URL, username, password and comment") : ""
         }
 
         PullDownMenu {

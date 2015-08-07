@@ -134,6 +134,7 @@ void KdbDatabase::disconnectFromDatabaseClient()
 
     m_connected = false;
     m_database_type = DatabaseType::DB_TYPE_UNKNOWN;
+    emit typeChanged();
 }
 
 void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly)
@@ -151,6 +152,7 @@ void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const 
     DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
     connectToDatabaseClient();
     m_database_type = databaseType;
+    emit typeChanged();
 
     // send settings to new created database client interface
     emit setting_showUserNamePasswordsInListView(m_showUserNamePasswordsInListView);
@@ -195,6 +197,7 @@ void KdbDatabase::create(const int databaseType, const QString& dbFilePath, cons
     DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
     connectToDatabaseClient();
     m_database_type = databaseType;
+    emit typeChanged();
 
     // send settings to new created database client interface
     emit setting_showUserNamePasswordsInListView(m_showUserNamePasswordsInListView);

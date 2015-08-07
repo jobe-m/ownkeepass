@@ -39,6 +39,7 @@ public:
     Q_PROPERTY(bool showUserNamePasswordsInListView READ showUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool readOnly READ readOnly NOTIFY readOnlyChanged)
+    Q_PROPERTY(int type READ type NOTIFY typeChanged)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
     Q_INVOKABLE void open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
@@ -59,6 +60,7 @@ public:
     bool sortAlphabeticallyInListView() const { return m_sortAlphabeticallyInListView; }
     void setSortAlphabeticallyInListView(const bool value) { m_sortAlphabeticallyInListView = value; emit setting_sortAlphabeticallyInListView(value); }
     bool readOnly() const { return m_readOnly; }
+    int type() const { return m_database_type; }
 
 signals:
     // signals to DatabaseClient backend thread
@@ -80,6 +82,7 @@ signals:
     void cryptAlgorithmChanged();
     void errorOccured(int result, QString errorMsg);
     void readOnlyChanged();
+    void typeChanged();
 
 private slots:
     // signals from DatabaseClient backend thread
