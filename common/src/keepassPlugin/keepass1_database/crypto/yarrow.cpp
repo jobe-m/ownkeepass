@@ -1,5 +1,5 @@
 /***************************************************************************
- *   The yarrow pseudo-randomness genrator                                 *
+ *   The yarrow pseudo-randomness generator                                 *
  *   extracted from nettle, the low-level cryptographics library           *
  *                                                                         *
  *   Copyright (C) 2007 Tarek Saidi <tarek.saidi@arcor.de>                 * 
