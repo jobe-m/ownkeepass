@@ -57,7 +57,7 @@ Page {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("ownKeepass is a Keepass 1.x compatible password safe application")
+                text: qsTr("ownKeepass is a Keepass 1.x and 2.x compatible password safe application")
             }
 
             SilicaLabel {
