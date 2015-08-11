@@ -271,7 +271,10 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
     emit masterGroupsLoaded(DatabaseAccessResult::RE_OK);
 }
 
-void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId){
+void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
+{
+//    qDebug() << "groupId " << groupId;
+
     Q_ASSERT(m_kdb3Database);
     // load sub groups and entries
     IGroupHandle* group = (IGroupHandle*)qString2Int(groupId);
@@ -324,6 +327,8 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId){
 
 void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 {
+//    qDebug() << "entryId " << entryId;
+
     // get entry handler for entryId
     IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
     // decrypt password which is usually stored encrypted in memory
@@ -358,6 +363,8 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 
 void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
 {
+//    qDebug() << "groupId " << groupId;
+
     // get group handler for groupId
     IGroupHandle* group = (IGroupHandle*)qString2Int(groupId);
     Q_ASSERT(group);
@@ -366,7 +373,8 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
 
 void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)
 {
-//    qDebug("groupID: %d", groupId);
+//    qDebug() << "groupId " << groupId;
+
     Q_ASSERT(m_kdb3Database);
 
     //  save changes on group details to database
@@ -403,6 +411,8 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)
 
 void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
 {
+//    qDebug() << "modelId " << modelId;
+
     // delete all groups and entries which are associated with given modelId
     m_groups_modelId.remove(qString2Int(modelId));
     m_entries_modelId.remove(qString2Int(modelId));
@@ -410,6 +420,8 @@ void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
 
 void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconId, QString parentGroupId)
 {
+//    qDebug() << "parentGroupId " << parentGroupId;
+
     Q_ASSERT(m_kdb3Database);
 
     // get parent group handle and identify IDs of list model
@@ -462,6 +474,8 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
                                                QString password,
                                                QString comment)
 {
+//    qDebug() << "entryId " << entryId;
+
     Q_ASSERT(m_kdb3Database);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
@@ -534,6 +548,8 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
                                              QString comment,
                                              QString parentGroupId)
 {
+//    qDebug() << "parentGroupId " << parentGroupId;
+
     // create new entry in specified group
     IGroupHandle* parentGroup = (IGroupHandle*)qString2Int(parentGroupId);
     Q_ASSERT(parentGroup);
@@ -581,6 +597,8 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
 
 void Keepass1DatabaseInterface::slot_deleteGroup(QString groupId)
 {
+//    qDebug() << "groupId " << groupId;
+
     // get group handles
     IGroupHandle* group = (IGroupHandle*)qString2Int(groupId);
     Q_ASSERT(group);
@@ -620,6 +638,8 @@ void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* 
 
 void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
 {
+//    qDebug() << "entryId " << entryId;
+
     // get handles
     IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
     Q_ASSERT(entry);
@@ -645,6 +665,9 @@ void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
 
 void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroupId)
 {
+//    qDebug() << "entryId " << entryId;
+//    qDebug() << "newGroupId " << newGroupId;
+
     IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
     Q_ASSERT(entry);
     IGroupHandle* parentGroup = entry->group();
@@ -703,6 +726,8 @@ void Keepass1DatabaseInterface::slot_moveGroup(QString groupId, QString newParen
 
 void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString rootGroupId)
 {
+//    qDebug() << "rootGroupId " << rootGroupId;
+
     // get group handle
     IGroupHandle* rootGroup = (IGroupHandle*)qString2Int(rootGroupId);
     // search for entries in database
@@ -718,6 +743,7 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
     for (int i = 0; i < entries.count(); i++) {
         IEntryHandle* entry = entries.at(i);
         if (entry->isValid()) {
+//            qDebug() << "entry found: " << entry->title() << " " << int(entry);
             if (m_setting_sortAlphabeticallyInListView) {
                 emit addItemToListModelSorted(entry->title(),                              // entry name
                                               getUserAndPassword(entry),                   // subtitle
@@ -798,7 +824,13 @@ The integer number is converted into a 4 byte long hexadecimal QString.
 */
 inline QString Keepass1DatabaseInterface::int2QString(int value)
 {
-    return QString(QByteArray::number(value, 16));
+    if (value == 0) {
+        return "0";
+    } else if (value == -1) {
+        return "-1";
+    } else {
+        return QString(QByteArray::number(value, 16));
+    }
 }
 
 /*!
@@ -820,7 +852,13 @@ inline int Keepass1DatabaseInterface::qString2Int(QString value)
     if (ok) {
         return intValue;
     } else {
-        emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_INT, value);
-        return -1;
+        if (value.compare("0")) {
+            return 0;
+        } else if (value.compare("-1")) {
+            return -1;
+        } else {
+            emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_INT, value);
+            return -1;
+        }
     }
 }
