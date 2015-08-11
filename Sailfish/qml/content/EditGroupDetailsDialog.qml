@@ -115,9 +115,9 @@ Dialog {
     onAccepted: {
         // first save locally Kdb entry details then trigger save to backend
         kdbListItemInternal.setKdbGroupDetails(createNewGroup,
-                                    groupId,
-                                    parentGroupId,
-                                    groupTitleTextField.text)
+                                               groupId,
+                                               parentGroupId,
+                                               groupTitleTextField.text)
         kdbListItemInternal.saveKdbGroupDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details

@@ -175,7 +175,7 @@ Dialog {
 
                 onClicked: {
                     if(model.id === movePasswordEntryDialog.newGroupId) {
-                        movePasswordEntryDialog.newGroupId = 0;
+                        movePasswordEntryDialog.newGroupId = "0";
                     } else {
                         movePasswordEntryDialog.newGroupId = model.id;
                     }

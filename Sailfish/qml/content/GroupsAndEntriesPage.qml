@@ -205,7 +205,7 @@ Page {
             text: qsTr("Group is empty")
             hintText: !ownKeepassDatabase.readOnly ?
                           (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
-                          groupId === 0 ? qsTr("Pull down to add password groups") :
+                          groupId === "0" ? qsTr("Pull down to add password groups") :
                                           qsTr("Pull down to add password groups or entries")) : ""
         }
 
@@ -250,7 +250,7 @@ Page {
         }
 
         ApplicationMenu {
-            helpContent: groupId === 0 ? "MasterGroupsPage" : "SubGroupsPage"
+            helpContent: groupId === "0" ? "MasterGroupsPage" : "SubGroupsPage"
         }
 
         VerticalScrollDecorator {}
@@ -300,17 +300,17 @@ Page {
             name: "SEARCH_BAR_HIDDEN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableNewPasswordEntryMenuItem: groupId !== "0"
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: false }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: false }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -320,18 +320,18 @@ Page {
             name: "SEARCH_BAR_SHOWN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableNewPasswordEntryMenuItem: groupId !== "0"
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
                 enabled: !kdbListModel.isEmpty }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -341,16 +341,16 @@ Page {
             name: "SEARCHING"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableNewPasswordEntryMenuItem: groupId !== "0"
                 enableSearchMenuItem: true/*searchField.text.length === 0*/; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? qsTr("Search in all groups") :
+                title: groupId === "0" ? qsTr("Search in all groups") :
                                        qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: true }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? qsTr("Search in all groups") :
+                title: groupId === "0" ? qsTr("Search in all groups") :
                                        qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle
                 state: "SEARCH_VIEW" }
 
@@ -373,17 +373,17 @@ Page {
                 // restore group title and state in cover page
                 switch (state) {
                 case "SEARCH_BAR_HIDDEN":
-                    applicationWindow.cover.title = groupId === 0 ? qsTr("Password groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break
                 case "SEARCH_BAR_SHOWN":
-                    applicationWindow.cover.title = groupId === 0 ? qsTr("Password groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break
                 case "SEARCHING":
-                    applicationWindow.cover.title = groupId === 0 ? qsTr("Search in all groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Search in all groups") :
                                                                     qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "SEARCH_VIEW"
                     break

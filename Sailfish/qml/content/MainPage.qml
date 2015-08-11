@@ -1110,13 +1110,6 @@ Page {
         }
     }
 
-/*    Component {
-        id: movePasswordEntryDialogComponent
-        MovePasswordEntryDialog {
-            id: movePasswordEntryDialog
-        }
-    }
-*/
     Component {
         id: showEntryDetailsPageComponent
         ShowEntryDetailsPage {
