@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
+import harbour.ownkeepass 1.0
 
 PullDownMenu {
     id: databaseMenu
@@ -46,7 +47,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableSearchMenuItem
+        enabled: enableSearchMenuItem && ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
         visible: enabled
         text: isTextHideSearch ? qsTr("Hide search") : qsTr("Show search")
         onClicked: {
