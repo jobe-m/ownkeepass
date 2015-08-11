@@ -204,7 +204,7 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
             m_registered = false;
         }
         // list model for searching is -1 per default, so set it here already
-        m_modelId = -1;
+        m_modelId = "-1";
         m_registered = true;
 
         // send signal to backend to start search in database
