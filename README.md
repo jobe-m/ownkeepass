@@ -15,8 +15,8 @@ Release 1.1.6 available from jolla store and [openrepos.net] [1] / warehouse app
 Release 1.1.7 will add landscape orientation and Keepass 2 database read support. Just needs some minor fixes, translation updates and extensive testing;)
 
 Finally Keepass 2 database support is HERE! Current status:
-* Reading of password group list from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project.
-* Searching in and writing to Keepass 2 database will be done in near future (will be done on keepass2 branch)
+* Reading from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project for that.
+* Searching in and writing to Keepass 2 database will be done in near future (will be done on keepass2 branch). It needs some redesign of the password entry save handling.
 
 Roadmap
 -------
