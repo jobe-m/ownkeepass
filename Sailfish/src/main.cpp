@@ -41,6 +41,7 @@
 #include "OwnKeepassSettings.h"
 #include "RecentDatabaseListModel.h"
 #include "FileBrowserPlugin.h"
+#include "ownKeepassGlobal.h"
 
 int main(int argc, char *argv[])
 {
@@ -63,15 +64,23 @@ int main(int argc, char *argv[])
     app->setOrganizationName(orgName);
     app->setApplicationName(appName);
 
-    // @uri harbour.ownkeepass.KeepassX1
-    const char* uri("harbour.ownkeepass.KeepassX1");
+    // @uri harbour.ownkeepass
+    const char* uri("harbour.ownkeepass");
     // make the following classes available in QML
-    qmlRegisterType<kpxPublic::KdbDatabase>(uri, 1, 0, "KdbDatabase");
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
     qmlRegisterType<FileBrowserListModel>(uri, 1, 0, "FileBrowserListModel");
-    qmlRegisterType<settingsPublic::Languages>(uri, 1, 0, "Languages");
+
+    // provide only one instance of KdbDatabase to QML, only one database can be open at a time
+    QScopedPointer<kpxPublic::KdbDatabase> database(new kpxPublic::KdbDatabase());
+    view->rootContext()->setContextProperty("ownKeepassDatabase", database.data());
+
+    // exporting some enums
+    qmlRegisterType<ownKeepassPublic::Language>(uri, 1, 0, "Language");
+    qmlRegisterType<ownKeepassPublic::DatabaseAccessResult>(uri, 1, 0, "DatabaseAccessResult");
+    qmlRegisterType<ownKeepassPublic::DatabaseItemType>(uri, 1, 0, "DatabaseItemType");
+    qmlRegisterType<ownKeepassPublic::DatabaseType>(uri, 1, 0, "DatabaseType");
 
     // Setup some class as context properties and make them accessible in QML
     QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());
@@ -85,66 +94,66 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("DebugLocale",QVariant(locale));
 
     QTranslator translator;
-    if (settingsPublic::Languages::SYSTEM_DEFAULT != okpSettings->language()) {
+    if (ownKeepassPublic::Language::SYSTEM_DEFAULT != okpSettings->language()) {
         switch (okpSettings->language()) {
         // Catalan
-        case settingsPublic::Languages::CA:
+        case ownKeepassPublic::Language::CA:
             translator.load("harbour-ownkeepass-ca.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Chinese
-        case settingsPublic::Languages::ZH_CN:
+        case ownKeepassPublic::Language::ZH_CN:
             translator.load("harbour-ownkeepass-zh_CN.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Czech
-        case settingsPublic::Languages::CS_CZ:
+        case ownKeepassPublic::Language::CS_CZ:
             translator.load("harbour-ownkeepass-cs_CZ.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Danish
-        case settingsPublic::Languages::DA:
+        case ownKeepassPublic::Language::DA:
             translator.load("harbour-ownkeepass-da.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Dutch
-        case settingsPublic::Languages::NL_NL:
+        case ownKeepassPublic::Language::NL_NL:
             translator.load("harbour-ownkeepass-nl_NL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Finnish
-        case settingsPublic::Languages::FI_FI:
+        case ownKeepassPublic::Language::FI_FI:
             translator.load("harbour-ownkeepass-fi_FI.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // French
-        case settingsPublic::Languages::FR_FR:
+        case ownKeepassPublic::Language::FR_FR:
             translator.load("harbour-ownkeepass-fr_FR.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // German
-        case settingsPublic::Languages::DE_DE:
+        case ownKeepassPublic::Language::DE_DE:
             translator.load("harbour-ownkeepass-de_DE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Italian
-        case settingsPublic::Languages::IT:
+        case ownKeepassPublic::Language::IT:
             translator.load("harbour-ownkeepass-it.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Polish
-        case settingsPublic::Languages::PL_PL:
+        case ownKeepassPublic::Language::PL_PL:
             translator.load("harbour-ownkeepass-pl_PL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Russian
-        case settingsPublic::Languages::RU:
+        case ownKeepassPublic::Language::RU:
             translator.load("harbour-ownkeepass-ru.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Spanish
-        case settingsPublic::Languages::ES:
+        case ownKeepassPublic::Language::ES:
             translator.load("harbour-ownkeepass-es.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Swedish
-        case settingsPublic::Languages::SV_SE:
+        case ownKeepassPublic::Language::SV_SE:
             translator.load("harbour-ownkeepass-sv_SE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Ukrainian
-        case settingsPublic::Languages::UK_UA:
+        case ownKeepassPublic::Language::UK_UA:
             translator.load("harbour-ownkeepass-uk_UA.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // Norwegian Bogmål
-        case settingsPublic::Languages::NB_NO:
+        case ownKeepassPublic::Language::NB_NO:
             translator.load("harbour-ownkeepass-nb_NO.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // English

@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
+import harbour.ownkeepass 1.0
 
 PullDownMenu {
     id: databaseMenu
@@ -40,7 +41,13 @@ PullDownMenu {
     signal newPasswordGroupClicked
 
     MenuItem {
-        enabled: enableSearchMenuItem
+        enabled: false
+        visible: ownKeepassDatabase.readOnly
+        text: qsTr("Read only mode")
+    }
+
+    MenuItem {
+        enabled: enableSearchMenuItem && ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
         visible: enabled
         text: isTextHideSearch ? qsTr("Hide search") : qsTr("Show search")
         onClicked: {
@@ -49,7 +56,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableDatabaseSettingsMenuItem
+        enabled: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
         visible: enabled
         text: qsTr("Database settings")
         onClicked: {
@@ -58,7 +65,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordGroupsMenuItem
+        enabled: enableNewPasswordGroupsMenuItem && !ownKeepassDatabase.readOnly
         visible: enabled
         text: qsTr("New password group")
         onClicked: {
@@ -67,7 +74,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordEntryMenuItem
+        enabled: enableNewPasswordEntryMenuItem && !ownKeepassDatabase.readOnly
         visible: enabled
         text: qsTr("New password entry")
         onClicked: {

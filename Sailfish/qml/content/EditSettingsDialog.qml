@@ -22,7 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 import "../scripts/Global.js" as Global
 import "../common"
 
@@ -66,6 +66,8 @@ Dialog {
             applicationWindow.cover.title = saveCoverTitle
         }
     }
+
+    allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
         anchors.fill: parent
@@ -337,39 +339,39 @@ Dialog {
                     // index from the internal settings index, which cannot be changed for legacy reasons
                     function toCurrentIndex(value) {
                         switch (value) {
-                        case Languages.SYSTEM_DEFAULT:
+                        case Language.SYSTEM_DEFAULT:
                             return Global.system_default
-                        case Languages.EN: // English
+                        case Language.EN: // English
                             return Global.english
-                        case Languages.SV_SE: // Swedish
+                        case Language.SV_SE: // Swedish
                             return Global.swedish
-                        case Languages.FI_FI: // Finnish
+                        case Language.FI_FI: // Finnish
                             return Global.finnish
-                        case Languages.DE_DE: // German
+                        case Language.DE_DE: // German
                             return Global.german
-                        case Languages.CS_CZ: // Czech
+                        case Language.CS_CZ: // Czech
                             return Global.czech
-                        case Languages.CA: // Catalan
+                        case Language.CA: // Catalan
                             return Global.catalan
-                        case Languages.NL_NL: // Dutch
+                        case Language.NL_NL: // Dutch
                             return Global.dutch
-                        case Languages.ES: // Spanish
+                        case Language.ES: // Spanish
                             return Global.spanish
-                        case Languages.FR_FR: // French
+                        case Language.FR_FR: // French
                             return Global.french
-                        case Languages.IT: // Itanian
+                        case Language.IT: // Itanian
                             return Global.italian
-                        case Languages.RU: // Russian
+                        case Language.RU: // Russian
                             return Global.russian
-                        case Languages.DA: // Danish
+                        case Language.DA: // Danish
                             return Global.danish
-                        case Languages.PL_PL: // Polish
+                        case Language.PL_PL: // Polish
                             return Global.polish
-                        case Languages.ZH_CN: // Chinese
+                        case Language.ZH_CN: // Chinese
                             return Global.chinese
-                        case Languages.UK_UA: // Ukrainian
+                        case Language.UK_UA: // Ukrainian
                             return Global.ukrainian
-                        case Languages.NB_NO: // Norwegian Bokmål
+                        case Language.NB_NO: // Norwegian Bokmål
                             return Global.norwegian_bokmal
                         default:
                             return Global.english
@@ -379,41 +381,41 @@ Dialog {
                     function toSettingsIndex(value) {
                         switch (value) {
                         case Global.system_default:
-                            return Languages.SYSTEM_DEFAULT
+                            return Language.SYSTEM_DEFAULT
                         case Global.english:
-                            return Languages.EN // English
+                            return Language.EN // English
                         case Global.swedish:
-                            return Languages.SV_SE // Swedish
+                            return Language.SV_SE // Swedish
                         case Global.finnish:
-                            return Languages.FI_FI // Finnish
+                            return Language.FI_FI // Finnish
                         case Global.german:
-                            return Languages.DE_DE // German
+                            return Language.DE_DE // German
                         case Global.czech:
-                            return Languages.CS_CZ // Czech
+                            return Language.CS_CZ // Czech
                         case Global.catalan:
-                            return Languages.CA // Catalan
+                            return Language.CA // Catalan
                         case Global.dutch:
-                            return Languages.NL_NL // Dutch
+                            return Language.NL_NL // Dutch
                         case Global.spanish:
-                            return Languages.ES // Spanish
+                            return Language.ES // Spanish
                         case Global.french:
-                            return Languages.FR_FR // French
+                            return Language.FR_FR // French
                         case Global.italian:
-                            return Languages.IT // Italian
+                            return Language.IT // Italian
                         case Global.russian:
-                            return Languages.RU // Russian
+                            return Language.RU // Russian
                         case Global.danish:
-                            return Languages.DA // Danish
+                            return Language.DA // Danish
                         case Global.polish:
-                            return Languages.PL_PL // Polish
+                            return Language.PL_PL // Polish
                         case Global.chinese:
-                            return Languages.ZH_CN // Chinese
+                            return Language.ZH_CN // Chinese
                         case Global.ukrainian:
-                            return Languages.UK_UA // Ukrainian
+                            return Language.UK_UA // Ukrainian
                         case Global.norwegian_bokmal:
-                            return Languages.NB_NO // Norwegian Bokmål
+                            return Language.NB_NO // Norwegian Bokmål
                         default:
-                            return Languages.EN // English
+                            return Language.EN // English
                         }
                     }
 

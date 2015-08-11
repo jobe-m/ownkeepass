@@ -22,6 +22,7 @@
 
 #include <QDebug>
 
+#include "ownKeepassGlobal.h"
 #include "KdbDatabase.h"
 #include "KdbListModel.h"
 #include "private/DatabaseClient.h"
@@ -29,6 +30,7 @@
 using namespace std;
 using namespace kpxPublic;
 using namespace kpxPrivate;
+using namespace ownKeepassPublic;
 
 KdbDatabase::KdbDatabase(QObject *parent):
     QObject(parent),
@@ -38,7 +40,7 @@ KdbDatabase::KdbDatabase(QObject *parent):
     m_showUserNamePasswordsInListView(false),
     m_readOnly(false),
     m_connected(false),
-    m_database_type(DB_TYPE_UNKNOWN)
+    m_database_type(DatabaseType::DB_TYPE_UNKNOWN)
 {
 }
 
@@ -51,9 +53,9 @@ void KdbDatabase::connectToDatabaseClient()
                        SLOT(slot_openDatabase(QString,QString,QString,bool)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(databaseOpened()),
+                  SIGNAL(databaseOpened(int,QString)),
                   this,
-                  SIGNAL(databaseOpened()));
+                  SLOT(slot_databaseOpened(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
                   SIGNAL(createNewDatabase(QString,QString,QString,int,int)),
@@ -131,7 +133,8 @@ void KdbDatabase::disconnectFromDatabaseClient()
     Q_ASSERT(ret);
 
     m_connected = false;
-    m_database_type = DB_TYPE_UNKNOWN;
+    m_database_type = DatabaseType::DB_TYPE_UNKNOWN;
+    emit typeChanged();
 }
 
 void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly)
@@ -145,10 +148,11 @@ void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const 
     }
 
     // first set up interface to database client
-    Q_ASSERT((databaseType > DB_TYPE_UNKNOWN) && (databaseType <= DB_TYPE_KEEPASS_2));
+    Q_ASSERT((databaseType > DatabaseType::DB_TYPE_UNKNOWN) && (databaseType <= DatabaseType::DB_TYPE_KEEPASS_2));
     DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
     connectToDatabaseClient();
     m_database_type = databaseType;
+    emit typeChanged();
 
     // send settings to new created database client interface
     emit setting_showUserNamePasswordsInListView(m_showUserNamePasswordsInListView);
@@ -156,7 +160,26 @@ void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const 
 
     // send signal to the global Keepass database interface component
     emit openDatabase(dbFilePath, password, keyFilePath, readonly);
-    m_readOnly = readonly;
+    if (m_readOnly != readonly) {
+        m_readOnly = readonly;
+        emit readOnlyChanged();
+    }
+}
+
+void KdbDatabase::slot_databaseOpened(int result, QString errorMsg)
+{
+    if (result == DatabaseAccessResult::RE_DB_READ_ONLY) {
+        if (!m_readOnly) {
+            m_readOnly = true;
+            emit readOnlyChanged();
+        }
+    } else {
+        if (m_readOnly) {
+            m_readOnly = false;
+            emit readOnlyChanged();
+        }
+    }
+    emit databaseOpened(result, errorMsg);
 }
 
 void KdbDatabase::create(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password)
@@ -170,10 +193,11 @@ void KdbDatabase::create(const int databaseType, const QString& dbFilePath, cons
     }
 
     // first set up interface to database client
-    Q_ASSERT((databaseType > DB_TYPE_UNKNOWN) && (databaseType >= DB_TYPE_KEEPASS_2));
+    Q_ASSERT((databaseType > DatabaseType::DB_TYPE_UNKNOWN) && (databaseType <= DatabaseType::DB_TYPE_KEEPASS_2));
     DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
     connectToDatabaseClient();
     m_database_type = databaseType;
+    emit typeChanged();
 
     // send settings to new created database client interface
     emit setting_showUserNamePasswordsInListView(m_showUserNamePasswordsInListView);

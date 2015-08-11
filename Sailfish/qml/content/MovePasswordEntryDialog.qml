@@ -23,7 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 import "../scripts/Global.js" as Global
 
 
@@ -31,18 +31,19 @@ Dialog {
     id: movePasswordEntryDialog
 
     // ID of the keepass entry to be moved into another group
-    property int itemId: 0
+    property string itemId: ""
     // ID of group where item is currently placed. This is used to filter out the parent group from the list of groups.
-    property int oldGroupId: 0
+    property string oldGroupId: ""
     // ID of the new parent group of the password item
-    property int newGroupId: 0
+    property string newGroupId: ""
     // Name of password entry to show in dialog cation text
     property string nameOfPasswordEntry: ""
     //
     property KdbEntry kdbEntryToMove
 
     // forbit page navigation if new group is not yet selected
-    canNavigateForward: newGroupId !== 0
+    canNavigateForward: newGroupId !== ""
+    allowedOrientations: applicationWindow.orientationSetting
 
     onAccepted: {
         // Now trigger moving of password entry
@@ -174,7 +175,7 @@ Dialog {
 
                 onClicked: {
                     if(model.id === movePasswordEntryDialog.newGroupId) {
-                        movePasswordEntryDialog.newGroupId = 0;
+                        movePasswordEntryDialog.newGroupId = "0";
                     } else {
                         movePasswordEntryDialog.newGroupId = model.id;
                     }

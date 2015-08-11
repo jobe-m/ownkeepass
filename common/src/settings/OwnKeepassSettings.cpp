@@ -23,8 +23,10 @@
 #include <QDebug>
 #include "OwnKeepassSettings.h"
 #include "KdbDatabase.h"
+#include "ownKeepassGlobal.h"
 
 using namespace settingsPublic;
+using namespace ownKeepassPublic;
 
 #define INITIAL_VERSION "1.0.0"
 
@@ -69,9 +71,11 @@ OwnKeepassSettings::~OwnKeepassSettings()
 
 void OwnKeepassSettings::checkSettingsVersion()
 {
-    // Check previous settings file version here and notify usr on new version
+    // Check previous settings file version here and notify user on new version
     m_previousVersion = (m_settings->getValue("settings/version", QVariant(m_previousVersion))).toString();
     if (m_previousVersion != m_version) {
+        // Now do some legacy stuff to update settings from older ownKeepass versions
+
         // Check if no version number was saved, this was a bug until version 1.0.4, from version 1.0.5 the new
         // version is saved every time the app version increases
         m_settings->setValue("settings/version", QVariant(m_version));
@@ -92,7 +96,7 @@ void OwnKeepassSettings::checkSettingsVersion()
         }
 
         // Version 1.1.3 fixes a bug in the recent database list
-        if ((major == 1) && (minor == 1) && (patch < 3)) {
+        if ((major == 1) && (minor <= 1) && (patch <= 2)) {
             m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
             for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
                 QString uiPath = m_recentDatabaseList[i]["uiPath"].toString();
@@ -102,6 +106,19 @@ void OwnKeepassSettings::checkSettingsVersion()
             m_settings->removeArray("main/recentDatabases");
             for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
 //                qDebug() << "changed: " << i << " - " << m_recentDatabaseList[i]["uiPath"];
+                m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
+            }
+        }
+
+        // Version 1.1.7 introduces database type in the recent database list to support Keepass 2 database format
+        if ((major == 1) && (minor <= 1) && (patch <= 6)) {
+            m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
+            for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+                m_recentDatabaseList[i]["databaseType"] = QVariant(DatabaseType::DB_TYPE_KEEPASS_1);
+            }
+            // save changed recent Database list
+            m_settings->removeArray("main/recentDatabases");
+            for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
                 m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
             }
         }
@@ -124,7 +141,8 @@ void OwnKeepassSettings::checkSettingsVersion()
                                          m_recentDatabaseList[i]["dbFilePath"].toString(),
                                          m_recentDatabaseList[i]["useKeyFile"].toBool(),
                                          m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                                         m_recentDatabaseList[i]["keyFilePath"].toString());
+                                         m_recentDatabaseList[i]["keyFilePath"].toString(),
+                                         m_recentDatabaseList[i]["databaseType"].toInt());
     }
 
     // Update database details on main page in QML UI after version check
@@ -182,7 +200,8 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
                                            QString dbFilePath,
                                            bool useKeyFile,
                                            int keyFileLocation,
-                                           QString keyFilePath)
+                                           QString keyFilePath,
+                                           int databaseType)
 {
     // Add first item, it is not in the list because it shall not be visible in the UI
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
@@ -193,7 +212,8 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
                                          m_recentDatabaseList[0]["dbFilePath"].toString(),
                                          m_recentDatabaseList[0]["useKeyFile"].toBool(),
                                          m_recentDatabaseList[0]["keyFileLocation"].toInt(),
-                                         m_recentDatabaseList[0]["keyFilePath"].toString());
+                                         m_recentDatabaseList[0]["keyFilePath"].toString(),
+                                         m_recentDatabaseList[0]["databaseType"].toInt());
     }
 
     bool alreadyOnFirstPosition = false;
@@ -219,8 +239,9 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     recentDatabase["useKeyFile"] = QVariant(useKeyFile);
     recentDatabase["keyFileLocation"] = QVariant(keyFileLocation);
     recentDatabase["keyFilePath"] = QVariant(keyFilePath);
+    recentDatabase["databaseType"] = QVariant(databaseType);
     m_recentDatabaseList.insert(0, recentDatabase);
-    m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
+    m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath, databaseType);
 
     // Check if list is longer than predefined value in settings
     if (m_recentDatabaseList.length() > m_recentDatabaseListLength) {
@@ -406,7 +427,7 @@ void OwnKeepassSettings::setClearClipboard(int value)
 
 void OwnKeepassSettings::setLanguage(const int value)
 {
-    if ((value < Languages::INVALID) && (value != m_language)) {
+    if ((value < Language::INVALID) && (value != m_language)) {
         m_language = value;
         m_settings->setValue("settings/language", QVariant(m_language));
         emit languageChanged();
@@ -443,18 +464,22 @@ void OwnKeepassSettings::loadDatabaseDetails()
                     m_recentDatabaseList[0]["useKeyFile"].toBool(),
                     m_recentDatabaseList[0]["keyFileLocation"].toInt(),
                     m_recentDatabaseList[0]["keyFilePath"].toString(),
-// TODO load database type from recent database list
-                    kpxPublic::KdbDatabase::DB_TYPE_KEEPASS_1);
+                    m_recentDatabaseList[0]["databaseType"].toInt());
             return;
         }
     } else {
         // check if default database exists
         QString dbLocation(m_helper->getLocationRootPath(1));
-        if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
-            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "", kpxPublic::KdbDatabase::DB_TYPE_KEEPASS_1);
+        // first look for Keepass 2 default database as this will be default when this database type is supported
+        if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdbx")) {
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdbx", false, 0, "", DatabaseType::DB_TYPE_KEEPASS_2);
             return;
+        } else if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "", DatabaseType::DB_TYPE_KEEPASS_1);
+            return;
+        } else {
+            // no database found
+            emit databaseDetailsLoaded(false, 0, "", false, 0, "", DatabaseType::DB_TYPE_UNKNOWN);
         }
     }
-    // no database found
-    emit databaseDetailsLoaded(false, 0, "", false, 0, "", kpxPublic::KdbDatabase::DB_TYPE_UNKNOWN);
 }

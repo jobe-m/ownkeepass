@@ -30,9 +30,9 @@ Dialog {
 
     property bool createNewGroup: false
     // ID of the keepass entry which should be edited
-    property int groupId: 0
+    property string groupId: ""
     // creation of new group needs parent group ID
-    property int parentGroupId: 0
+    property string parentGroupId: ""
 
     // The following properties are used to check if text of any entry detail was changed. If so,
     // set cover page accordingly to signal the user unsaved changes
@@ -44,6 +44,7 @@ Dialog {
 
     // forbit page navigation if name of group is empty
     canNavigateForward: groupTitleTextField.text !== ""
+    allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
         anchors.fill: parent
@@ -114,9 +115,9 @@ Dialog {
     onAccepted: {
         // first save locally Kdb entry details then trigger save to backend
         kdbListItemInternal.setKdbGroupDetails(createNewGroup,
-                                    groupId,
-                                    parentGroupId,
-                                    groupTitleTextField.text)
+                                               groupId,
+                                               parentGroupId,
+                                               groupTitleTextField.text)
         kdbListItemInternal.saveKdbGroupDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details

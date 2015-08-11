@@ -28,6 +28,7 @@
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
 #include "core/Database.h"
+#include "core/Uuid.h"
 
 using namespace kpxPublic;
 
@@ -47,7 +48,7 @@ signals:
     void disconnectAllClients();
 
     // signals to KdbDatabase object
-    void databaseOpened();
+    void databaseOpened(int result, QString errorMsg);
     void newDatabaseCreated();
     void databaseClosed();
     void passwordChanged();
@@ -59,67 +60,55 @@ signals:
     // signals to KdbListModel object
     void appendItemToListModel(QString title,
                                QString subtitle,
-                               int itemId,
+                               QString itemId,
                                int itemType,
                                int itemLevel,
-                               int modelId);
+                               QString modelId);
     void addItemToListModelSorted(QString title,
                                   QString subtitle,
-                                  int itemId,
+                                  QString itemId,
                                   int itemType,
                                   int itemLevel,
-                                  int modelId);
+                                  QString modelId);
     void updateItemInListModel(QString title,
                                QString subTitle,
-                               int itemId,
-                               int modelId);
+                               QString itemId,
+                               QString modelId);
     void updateItemInListModelSorted(QString title,
                                      QString subTitle,
-                                     int itemId,
-                                     int modelId);
+                                     QString itemId,
+                                     QString modelId);
     void masterGroupsLoaded(int result);
     void groupsAndEntriesLoaded(int result);
-    void deleteItemInListModel(int itemId);
+    void deleteItemInListModel(QString itemId);
     void searchEntriesCompleted(int result);
 
     // signal to KdbEntry object
     void entryLoaded(int result,
-                     int entryId,
-                     QString title,
-                     QString url,
-                     QString username,
-                     QString password,
-                     QString comment,
-                     QString binaryDesc,
-                     QString creation,
-                     QString lastMod,
-                     QString lastAccess,
-                     QString expire,
-                     quint32 binarySize,
-                     QString friendlySize
-                     );
+                     QString entryId,
+                     QList<QString> keys,
+                     QList<QString> values);
     void entrySaved(int result,
-                    int entryId);
+                    QString entryId);
     void newEntryCreated(int result,
-                         int entryId);
+                         QString entryId);
     void entryDeleted(int result,
-                      int entryId);
+                      QString entryId);
     void entryMoved(int result,
-                    int entryId);
+                    QString entryId);
 
     // signal to KdbGroup object
     void groupLoaded(int result,
-                     int groupId,
+                     QString groupId,
                      QString title);
     void groupSaved(int result,
-                    int groupId);
+                    QString groupId);
     void newGroupCreated(int result,
-                         int groupId);
+                         QString groupId);
     void groupDeleted(int result,
-                      int groupId);
+                      QString groupId);
     void groupMoved(int result,
-                    int groupId);
-
+                    QString groupId);
 
 public slots:
     // signals from KdbDatabase object
@@ -142,14 +131,14 @@ public slots:
 
     // signal from KdbListModel object
     void slot_loadMasterGroups(bool registerListModel);
-    void slot_loadGroupsAndEntries(int groupId);
-    void slot_unregisterListModel(int modelId);
+    void slot_loadGroupsAndEntries(QString groupId);
+    void slot_unregisterListModel(QString modelId);
     void slot_searchEntries(QString searchString,
-                            int rootGroupId);
+                            QString rootGroupId);
 
     // signal from KdbEntry object
-    void slot_loadEntry(int entryId);
-    void slot_saveEntry(int entryId,
+    void slot_loadEntry(QString entryId);
+    void slot_saveEntry(QString entryId,
                         QString title,
                         QString url,
                         QString username,
@@ -160,26 +149,27 @@ public slots:
                              QString username,
                              QString password,
                              QString comment,
-                             int parentGroupId);
-    void slot_deleteEntry(int entryId);
-    void slot_moveEntry(int entryId,
-                        int newGroupId);
+                             QString parentGroupId);
+    void slot_deleteEntry(QString entryId);
+    void slot_moveEntry(QString entryId,
+                        QString newGroupId);
 
     // signal from KdbGroup object
-    void slot_loadGroup(int groupId);
-    void slot_saveGroup(int groupId,
+    void slot_loadGroup(QString groupId);
+    void slot_saveGroup(QString groupId,
                         QString title);
     void slot_createNewGroup(QString title,
                              quint32 iconId,
-                             int parentGroupId);
-    void slot_deleteGroup(int groupId);
-    void slot_moveGroup(int groupId,
-                        int newParentGroupId);
+                             QString parentGroupId);
+    void slot_deleteGroup(QString groupId);
+    void slot_moveGroup(QString groupId,
+                        QString newParentGroupId);
 
 private:
     void initDatabase();
 //    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
-//    inline QString getUserAndPassword(IEntryHandle* entry);
+    inline QString getUserAndPassword(Entry* entry);
+    inline Uuid qString2Uuid(QString value);
 
 private:
     // Keepass database handler
@@ -190,8 +180,8 @@ private:
     bool m_setting_sortAlphabeticallyInListView;
 
     // The following two hash tables store information about which list models are showing a dedicated entry or group in the UI
-    QHash<int, int> m_entries_modelId;
-    QHash<int, int> m_groups_modelId;
+    QHash<Uuid, Uuid> m_entries_modelId;
+    QHash<Uuid, Uuid> m_groups_modelId;
     int m_rootGroupId;
 };
 

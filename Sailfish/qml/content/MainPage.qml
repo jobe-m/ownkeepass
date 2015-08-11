@@ -24,7 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 
 Page {
     id: mainPage
@@ -85,6 +85,8 @@ Page {
             clipboardTimer.restart()
         }
     }
+
+    allowedOrientations: applicationWindow.orientationSetting
 
     Timer {
         id: inactivityTimer
@@ -211,7 +213,7 @@ Page {
                             parent.focus = true
                             // open master groups page and load database in background
                             var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                                  { "initOnPageConstruction": false, "groupId": 0 })
+                                                                  { "initOnPageConstruction": false, "groupId": "0" })
                             var createNewDatabase =  false
                             internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
                             passwordField.text = ""
@@ -257,7 +259,7 @@ Page {
                     if (text.length !== 0) {
                         // open master groups page and load database in background
                         var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                              { "initOnPageConstruction": false, "groupId": 0 })
+                                                              { "initOnPageConstruction": false, "groupId": "0" })
                         var createNewDatabase = true
                         internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
                         passwordField.text = ""
@@ -327,6 +329,39 @@ Page {
                         text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
                     }
 
+                    Item {
+                        x: Theme.paddingLarge
+                        width: parent.width - Theme.paddingLarge * 2
+                        height: databaseTypeLabel.height
+
+                        Label {
+                            id: databaseTypeLabel
+                            anchors.top: parent.top
+                            anchors.left: parent.left
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.secondaryColor
+                            horizontalAlignment: Text.AlignLeft
+                            text: qsTr("Database type:")
+                        }
+
+                        Label {
+                            anchors.top: parent.top
+                            anchors.left: databaseTypeLabel.right
+                            anchors.leftMargin: Theme.paddingMedium
+                            anchors.right: parent.right
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                            color: Theme.primaryColor
+                            horizontalAlignment: Text.AlignLeft
+                            elide: Qt.ElideMiddle
+                            text: internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_1 ?
+                                      "Keepass 1" :
+                                      internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_2 ?
+                                          "Keepass 2" :
+                                          //: Here unknown is used for unknown database type
+                                          qsTr("Unknown")
+                        }
+                    }
+
                     SectionHeader {
                         enabled: !recentDatabaseModel.isEmpty
                         visible: enabled
@@ -364,14 +399,15 @@ Page {
         ]
     }
 
-    KdbDatabase {
-        id: kdbDatabase
-        onDatabaseOpened: internal.databaseOpenedHandler()
+    Connections {
+        target: ownKeepassDatabase
+        onDatabaseOpened: internal.databaseOpenedHandler(result, errorMsg)
         onNewDatabaseCreated: internal.newDatabaseCreatedHandler()
         onDatabaseClosed: internal.databaseClosedHandler()
         onDatabasePasswordChanged: internal.databasePasswordChangedHandler()
         onErrorOccured: internal.errorHandler(result, errorMsg)
     }
+
 
     Connections {
         target: ownKeepassSettings
@@ -396,7 +432,7 @@ Page {
                                          false,
                                          "",
                                          "",
-                                         KdbDatabase.DB_TYPE_KEEPASS_1)
+                                         DatabaseType.DB_TYPE_KEEPASS_1)
             }
         }
     }
@@ -404,7 +440,6 @@ Page {
     Component.onCompleted: {
         // Init some global variables
         Global.env.setMainPage(mainPage)
-        Global.env.setKdbDatabase(kdbDatabase)
     }
 
     onStatusChanged: {
@@ -435,15 +470,15 @@ Page {
         property bool useKeyFile: false
         property int keyFileLocation: 0
         property string keyFilePath: ""
-        property int databaseType: KdbDatabase.DB_TYPE_UNKNOWN
+        property int databaseType: ownKeepassDatabase.DB_TYPE_UNKNOWN
         property Page masterGroupsPage
 
         function init() {
             // make sure database is closed
-            kdbDatabase.close()
-            // load settings into kdbDatabase
-            kdbDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
-            kdbDatabase.sortAlphabeticallyInListView = ownKeepassSettings.sortAlphabeticallyInListView
+            ownKeepassDatabase.close()
+            // load settings into ownKeepassDatabase
+            ownKeepassDatabase.showUserNamePasswordsInListView = ownKeepassSettings.showUserNamePasswordInListView
+            ownKeepassDatabase.sortAlphabeticallyInListView = ownKeepassSettings.sortAlphabeticallyInListView
             // load details about most recently used database
             ownKeepassSettings.loadDatabaseDetails()
         }
@@ -497,10 +532,10 @@ Page {
                         // Ok, now check if path to file exists if not create it
                         if (ownKeepassHelper.createFilePathIfNotExist(completeDbFilePath)) {
                             // set default values for encryption and key transformation rounds
-                            kdbDatabase.keyTransfRounds = ownKeepassSettings.defaultKeyTransfRounds
-                            kdbDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
+                            ownKeepassDatabase.keyTransfRounds = ownKeepassSettings.defaultKeyTransfRounds
+                            ownKeepassDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
-                            kdbDatabase.create(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, true)
+                            ownKeepassDatabase.create(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, true)
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
@@ -522,7 +557,7 @@ Page {
                 if (ownKeepassHelper.fileExists(completeDbFilePath)) {
                     if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
-                        kdbDatabase.open(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, false)
+                        ownKeepassDatabase.open(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, false)
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
@@ -547,7 +582,8 @@ Page {
                                                  internal.databasePath,
                                                  internal.useKeyFile,
                                                  internal.keyFileLocation,
-                                                 internal.keyFilePath)
+                                                 internal.keyFilePath,
+                                                 internal.databaseType)
             // Set database name in global object for pulley menu on groups and entries pages
             Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + databasePath
             // Get database name and set on cover page for create new and open database states
@@ -555,11 +591,79 @@ Page {
                         databasePath.lastIndexOf("/") + 1, databasePath.length)
         }
 
-        function databaseOpenedHandler() {
-            // Yeah, database opened successfully, now init master groups page and cover page
-            Global.enableDatabaseLock = true
-            masterGroupsPage.init()
-            updateRecentDatabaseListModel()
+        function databaseOpenedHandler(result, errorMsg) {
+            // display popup if some error occured
+            switch (result) {
+            case DatabaseAccessResult.RE_DB_READ_ONLY:
+                Global.env.infoPopup.show(Global.info,
+                                          qsTr("Read only support"),
+                                          qsTr("Keepass 2 database support is currently limited to read only."), 5)
+                // Database opened successfully in read only mode, now init master groups page and cover page
+                Global.enableDatabaseLock = true
+                masterGroupsPage.init()
+                updateRecentDatabaseListModel()
+                break
+            case DatabaseAccessResult.RE_OK:
+                // Yeah, database opened successfully, now init master groups page and cover page
+                Global.enableDatabaseLock = true
+                masterGroupsPage.init()
+                updateRecentDatabaseListModel()
+                break
+            case DatabaseAccessResult.RE_NOT_A_KEEPASS_DB:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Database file"),
+                                          qsTr("The specified file is not a Keepass database."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_NOT_SUPPORTED_DB_VERSION:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Database version"),
+                                          qsTr("The specified file has an unsupported Keepass database version."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_MISSING_DB_HEADERS:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Internal database error"),
+                                          qsTr("Database headers are missing."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Wrong password"),
+                                          qsTr("Either your master password is wrong or the database file is corrupt. Please try again."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Wrong password"),
+                                          qsTr("Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_HEAD_HASH_MISMATCH:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("Internal database error"),
+                                          qsTr("Database head doesn't match corresponding hash value."))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_DBFILE_OPEN_ERROR:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("File I/O error"),
+                                          qsTr("Cannot open database file. Error details: " + errorMsg))
+                masterGroupsPage.closeOnError()
+                break
+            case DatabaseAccessResult.RE_KEYFILE_OPEN_ERROR:
+                Global.env.infoPopup.show(Global.error,
+                                          qsTr("File I/O error"),
+                                          qsTr("Cannot open key file. Error details: " + errorMsg))
+                masterGroupsPage.closeOnError()
+                break
+            default:
+                Global.env.infoPopup.show(Global.error,
+                                          "Unknown error code",
+                                          "Error code " + result + " appeared after database was opened.")
+                masterGroupsPage.closeOnError()
+                break
+            }
         }
 
         function newDatabaseCreatedHandler() {
@@ -585,43 +689,53 @@ Page {
         function errorHandler(result, errorMsg) {
             // show error to the user
             switch (result) {
-            case KdbDatabase.RE_DB_CLOSE_FAILED:
+            case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Could not close the previous opened database. Please try again. Error message:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_SETKEY_ERROR:
+            case DatabaseAccessResult.RE_DB_SETKEY_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal key error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_SETKEYFILE_ERROR:
+            case DatabaseAccessResult.RE_DB_SETKEYFILE_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal key file error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_LOAD_ERROR:
+            case DatabaseAccessResult.RE_DB_LOAD_ERROR:
                 Global.env.infoPopup.show(Global.warning, qsTr("Error loading database"), errorMsg + " " + qsTr("Please try again."))
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_FILE_ERROR:
+            case DatabaseAccessResult.RE_DB_FILE_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal file error"), qsTr("The following error occured during creation of database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_CREATE_BACKUPGROUP_ERROR:
+            case DatabaseAccessResult.RE_DB_CREATE_BACKUPGROUP_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Creation of backup group failed with following error:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_SAVE_ERROR:
+            case DatabaseAccessResult.RE_DB_SAVE_ERROR:
                 Global.env.infoPopup.show(Global.error, qsTr("Save database error"), qsTr("Could not save database with following error:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
-            case KdbDatabase.RE_DB_ALREADY_CLOSED:
+            case DatabaseAccessResult.RE_DB_ALREADY_CLOSED:
                 console.log("Database was already closed. Nothing serious.")
                 break
-            case KdbDatabase.RE_DB_CLOSE_FAILED:
+            case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
                 Global.env.infoPopup.show(Global.error, qsTr("Database error"), qsTr("An error occured on closing your database:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
+            // here start new and reviewed error codes
+            case DatabaseAccessResult.RE_CRYPTO_INIT_ERROR:
+                // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety (Keepass 2 only)
+                Global.env.infoPopup.show(Global.error, qsTr("Crypto init error"),
+                                          qsTr("Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer."))
+                masterGroupsPage.closeOnError()
+            case DatabaseAccessResult.RE_ERR_QSTRING_TO_INT:
+                Global.env.infoPopup.show(Global.error, qsTr("Internal database error"),
+                                          qsTr("Conversion of QString \"%1\" to Int failed").arg(errorMsg))
+                break
             default:
-                console.log("ERROR: unknown result on database error occured")
+                console.log("ERROR: unknown result on database error occured: " + result)
                 break
             }
         }
@@ -645,7 +759,7 @@ Page {
           already existing entry and to check if the user has done changes to an entry in the UI
           after he canceled the edit dialog. In that case a query dialog is shown to let the user
           save the entry details if he has canceled the edit dialog unintentionally or because he
-          did not understand the whole UI paradigma at all... well now the UX evolved quite nicely;)
+          did not understand the whole UI paradigma at all... well recently the UX evolved quite nicely;)
           */
         property string originalEntryTitle: ""
         property string originalEntryUrl: ""
@@ -669,7 +783,7 @@ Page {
 // TODO                property int groupImageId: 0
 
         /*
-          Data used to save database setting values in KdbDatabase object
+          Data used to save database setting values in ownKeepassDatabase object
           */
         property string databaseKeyFile: ""
         property string databaseMasterPassword: ""
@@ -697,8 +811,8 @@ Page {
           Commonly used for manipulation and creation of entries and groups
           */
         property bool createNewItem: false
-        property int itemId: 0
-        property int parentGroupId: 0
+        property string itemId: ""
+        property string parentGroupId: ""
 
         function saveKdbGroupDetails() {
             // Set group ID and create or save Kdb Group
@@ -752,26 +866,19 @@ Page {
             }
         }
 
-        function loadKdbEntryDetails(title, url, username, password, comment) {
-//                    console.log("binaryDesc: " + binaryDesc)
-//                    console.log("creation: " + creation)
-//                    console.log("lastMod: " + lastMod)
-//                    console.log("lastAccess: " + lastAccess)
-//                    console.log("expire: " + expire)
-//                    console.log("binarySize: " + binarySize)
-//                    console.log("friendlySize: " + friendlySize)
-            entryTitle    = originalEntryTitle    = title
-            entryUrl      = originalEntryUrl      = url
-            entryUsername = originalEntryUsername = username
-            entryPassword = originalEntryPassword = password
-            entryComment  = originalEntryComment  = comment
+        function loadKdbEntryDetails(keys, values) {
+            entryTitle    = originalEntryTitle    = values[0]
+            entryUrl      = originalEntryUrl      = values[1]
+            entryUsername = originalEntryUsername = values[2]
+            entryPassword = originalEntryPassword = values[3]
+            entryComment  = originalEntryComment  = values[4]
 
             // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
             // depending on which is currently active
             if(editEntryDetailsDialogRef)
-                editEntryDetailsDialogRef.setTextFields(title, url, username, password, comment)
+                editEntryDetailsDialogRef.setTextFields(keys, values)
             if(showEntryDetailsPageRef)
-                showEntryDetailsPageRef.setTextFields(title, url, username, password, comment)
+                showEntryDetailsPageRef.setTextFields(keys, values)
         }
 
         function loadKdbGroupDetails(name) {
@@ -808,8 +915,8 @@ Page {
         function checkForUnsavedDatabaseSettingsChanges() {
             // check if user gave a new master password or if encryption type or key transformation rounds have changed
             if (databaseMasterPassword !== "" ||
-                    databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm ||
-                    databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
+                    databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm ||
+                    databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_DATABASE_SETTINGS" })
             }
@@ -817,7 +924,7 @@ Page {
 
         function saveDatabaseSettings() {
             if (databaseMasterPassword !== "") {
-                Global.env.kdbDatabase.changePassword(databaseMasterPassword, databaseKeyFile)
+                ownKeepassDatabase.changePassword(databaseMasterPassword, databaseKeyFile)
                 if (databaseMasterPassword.length < 3) {
                     console.log("ERROR: Passwort too short for fast unlock!")
                 } else {
@@ -828,11 +935,11 @@ Page {
                 }
                 databaseMasterPassword = ""
             }
-            if (databaseCryptAlgorithm !== Global.env.kdbDatabase.cryptAlgorithm) {
-                Global.env.kdbDatabase.cryptAlgorithm = databaseCryptAlgorithm
+            if (databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm) {
+                ownKeepassDatabase.cryptAlgorithm = databaseCryptAlgorithm
             }
-            if (databaseKeyTransfRounds !== Global.env.kdbDatabase.keyTransfRounds) {
-                Global.env.kdbDatabase.keyTransfRounds = databaseKeyTransfRounds
+            if (databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
+                ownKeepassDatabase.keyTransfRounds = databaseKeyTransfRounds
             }
         }
 
@@ -895,15 +1002,15 @@ Page {
     KdbGroup {
         id: kdbGroup
         onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title)
-        onGroupDataSaved: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
-        onNewGroupCreated: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onNewGroupCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntry
-        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(title, url, username, password, comment)
-        onEntryDataSaved: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
-        onNewEntryCreated: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values)
+        onEntryDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onNewEntryCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
 
@@ -913,18 +1020,18 @@ Page {
     // objects here
     KdbGroup {
         id: kdbGroupForDeletion
-        onGroupDeleted: if (result === KdbGroup.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryForDeletion
-        onEntryDeleted: if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryToMove
         onEntryMoved: {
-            if (result === KdbEntry.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+            if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
         }
     }
 
@@ -988,6 +1095,7 @@ Page {
                                  "useKeyFile": model.useKeyFile,
                                  "keyFileLocation": model.keyFileLocation,
                                  "keyFilePath": model.keyFilePath,
+                                 "databaseType": model.databaseType,
                                  "password": "" })
             }
         }
@@ -1000,13 +1108,6 @@ Page {
         }
     }
 
-/*    Component {
-        id: movePasswordEntryDialogComponent
-        MovePasswordEntryDialog {
-            id: movePasswordEntryDialog
-        }
-    }
-*/
     Component {
         id: showEntryDetailsPageComponent
         ShowEntryDetailsPage {

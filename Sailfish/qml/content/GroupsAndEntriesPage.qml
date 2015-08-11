@@ -24,7 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
 import "../scripts/Global.js" as Global
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 
 Page {
     id: groupsAndEntriesPage
@@ -34,9 +34,13 @@ Page {
     // from the KdbListModel on startup. So the init() function is invoked later when the database could
     // be opened successfully with the master password.
     property bool initOnPageConstruction: true
-    // ID of the keepass group which should be shown (0 for master groups)
-    property int groupId: 0
+    // ID of the keepass group which should be shown ("0" for master groups)
+    property string groupId: "0"
     property string pageTitle: qsTr("Password groups")
+
+    // private properties and funtions
+    property bool __closeOnError: false
+    property string __saveState: state
 
     function init() {
         if (ownKeepassSettings.showSearchBar) {
@@ -52,7 +56,7 @@ Page {
         // "Loading" state is initially active when database is currently opening from QueryPasswordDialog.
         // Depending how long it takes to calculate the master key by doing keyTransfomationRounds the init
         // function is called with a significant delay. During that time the busy indicator is shown.
-        if (groupId === 0) {
+        if (groupId === "0") {
             kdbListModel.loadMasterGroupsFromDatabase()
         } else {
             kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)
@@ -64,9 +68,6 @@ Page {
         if (status === PageStatus.Active) pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
     }
 
-    // private properties and funtions
-    property bool __closeOnError: false
-    property string __saveState: state
     function __showLoadErrorPage() {
         Global.env.infoPopup.show(Global.error, qsTr("Load Error"), qsTr("Could not load all items from Keepass database file. That's strange."))
     }
@@ -74,6 +75,8 @@ Page {
     function __showSaveErrorPage() {
         Global.env.infoPopup.show(Global.error, qsTr("Save Error"), qsTr("Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed."))
     }
+
+    allowedOrientations: applicationWindow.orientationSetting
 
     Item {
         id: headerBox
@@ -200,8 +203,10 @@ Page {
             id: viewPlaceholder
             image.source: "../../wallicons/wall-group.png"
             text: qsTr("Group is empty")
-            hintText: groupId === 0 ? qsTr("Pull down to add password groups") :
-                                      qsTr("Pull down to add password groups or entries")
+            hintText: !ownKeepassDatabase.readOnly ?
+                          (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
+                          groupId === "0" ? qsTr("Pull down to add password groups") :
+                                          qsTr("Pull down to add password groups or entries")) : ""
         }
 
         DatabaseMenu {
@@ -245,7 +250,7 @@ Page {
         }
 
         ApplicationMenu {
-            helpContent: groupId === 0 ? "MasterGroupsPage" : "SubGroupsPage"
+            helpContent: groupId === "0" ? "MasterGroupsPage" : "SubGroupsPage"
         }
 
         VerticalScrollDecorator {}
@@ -256,10 +261,10 @@ Page {
     KdbListModel {
         id: kdbListModel
         onGroupsAndEntriesLoaded: {
-            if (result === KdbListModel.RE_DB_LOAD_ERROR) __showLoadErrorPage()
+            if (result === DatabaseAccessResult.RE_DB_LOAD_ERROR) __showLoadErrorPage()
         }
         onMasterGroupsLoaded: {
-            if (result === KdbListModel.RE_DB_LOAD_ERROR) __showLoadErrorPage()
+            if (result === DatabaseAccessResult.RE_DB_LOAD_ERROR) __showLoadErrorPage()
             // automatically focus search bar on master group page but not on sub-group pages
             if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true
@@ -295,17 +300,17 @@ Page {
             name: "SEARCH_BAR_HIDDEN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableNewPasswordEntryMenuItem: groupId !== "0"
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: false }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: false }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -315,18 +320,18 @@ Page {
             name: "SEARCH_BAR_SHOWN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableNewPasswordEntryMenuItem: groupId !== "0"
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
                 enabled: !kdbListModel.isEmpty }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -336,16 +341,16 @@ Page {
             name: "SEARCHING"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== 0
+                enableNewPasswordEntryMenuItem: groupId !== "0"
                 enableSearchMenuItem: true/*searchField.text.length === 0*/; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: pageHeader
-                title: groupId === 0 ? qsTr("Search in all groups") :
+                title: groupId === "0" ? qsTr("Search in all groups") :
                                        qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: true }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === 0 ? qsTr("Search in all groups") :
+                title: groupId === "0" ? qsTr("Search in all groups") :
                                        qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle
                 state: "SEARCH_VIEW" }
 
@@ -357,8 +362,16 @@ Page {
         if (__closeOnError && status === PageStatus.Active) {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
+
+            // Disable searchbar when Keepass 2 database is opened, searching is not yet implemented
+            if (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2) {
+                state = "SEARCH_BAR_HIDDEN"
+            }
+
             // check if page state needs to change because search bar state was changed on a sub-page
-            if (ownKeepassSettings.showSearchBar && state === "SEARCH_BAR_HIDDEN") {
+            if (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
+                    ownKeepassSettings.showSearchBar &&
+                    state === "SEARCH_BAR_HIDDEN") {
                 state = "SEARCH_BAR_SHOWN"
             } else if (!ownKeepassSettings.showSearchBar && state !== "SEARCH_BAR_HIDDEN") {
                 // steal focus from search bar
@@ -368,17 +381,17 @@ Page {
                 // restore group title and state in cover page
                 switch (state) {
                 case "SEARCH_BAR_HIDDEN":
-                    applicationWindow.cover.title = groupId === 0 ? qsTr("Password groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break
                 case "SEARCH_BAR_SHOWN":
-                    applicationWindow.cover.title = groupId === 0 ? qsTr("Password groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break
                 case "SEARCHING":
-                    applicationWindow.cover.title = groupId === 0 ? qsTr("Search in all groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Search in all groups") :
                                                                     qsTr("Search in") + " " + groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "SEARCH_VIEW"
                     break
@@ -390,6 +403,8 @@ Page {
             }
             // set ID of currently viewed group
             Global.activeGroupId = groupId
+            // set menu label, it will have changed after initialization of this page in QueryPasswordDialog
+            databaseMenu.menuLabelText = Global.activeDatabase
         }
     }
 

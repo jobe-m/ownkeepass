@@ -35,7 +35,7 @@ static const int baseRole = Qt::UserRole + 1;
 class KdbItem
 {
 public:
-    KdbItem(QString name, QString subtitle, int id, int itemType, int itemLevel)
+    KdbItem(QString name, QString subtitle, QString id, int itemType, int itemLevel)
         : m_name(name),
           m_subtitle(subtitle),
           m_id(id),
@@ -49,58 +49,23 @@ public:
 
     QString m_name;
     QString m_subtitle;
-    int m_id;
+    QString m_id;
     int m_itemType;
     int m_itemLevel;
-};
-
-enum eDatabaseItemType {
-    UNKNOWN = 0,
-    GROUP,
-    ENTRY,
 };
 
 class KdbListModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_ENUMS(eDatabaseAccessResultWrapper)
-    Q_ENUMS(eDatabaseItemTypeWrapper)
 
 public:
-    enum eDatabaseAccessResultWrapper {
-        RE_OK = AbstractDatabaseInterface::RE_OK,                                                           // no error
-        RE_DB_LOAD_ERROR = AbstractDatabaseInterface::RE_DB_LOAD_ERROR,                                     // error loading data from database
-        RE_DB_SAVE_ERROR = AbstractDatabaseInterface::RE_DB_SAVE_ERROR,                                     // error saving data into database
-        RE_DB_NOT_OPENED = AbstractDatabaseInterface::RE_DB_NOT_OPENED,                                     // database is not opened
-        RE_DB_OPEN = AbstractDatabaseInterface::RE_DB_OPEN,                                                 // other database is currently open, close it first
-        RE_DB_ALREADY_CLOSED = AbstractDatabaseInterface::RE_DB_ALREADY_CLOSED,                             // database already closed, no harm
-        RE_DB_CLOSE_FAILED = AbstractDatabaseInterface::RE_DB_CLOSE_FAILED,                                 // database closing failed
-        RE_DB_FILE_ERROR = AbstractDatabaseInterface::RE_DB_FILE_ERROR,                                     // file path error for new database
-        RE_DB_SETKEY_ERROR = AbstractDatabaseInterface::RE_DB_SETKEY_ERROR,                                 // error setting key (consisting of password and/or keyfile
-        RE_DB_SETPW_ERROR = AbstractDatabaseInterface::RE_DB_SETPW_ERROR,                                   // error setting password for database
-        RE_DB_SETKEYFILE_ERROR = AbstractDatabaseInterface::RE_DB_SETKEYFILE_ERROR,                         // error setting key file for database
-        RE_DB_CREATE_BACKUPGROUP_ERROR = AbstractDatabaseInterface::RE_DB_CREATE_BACKUPGROUP_ERROR,         // error creating backup group
-        RE_PRECHECK_DB_PATH_ERROR = AbstractDatabaseInterface::RE_PRECHECK_DB_PATH_ERROR,                   // database file does not exists on precheck
-        RE_PRECHECK_KEY_FILE_PATH_ERROR = AbstractDatabaseInterface::RE_PRECHECK_KEY_FILE_PATH_ERROR,       // key file does not exists on precheck
-        RE_PRECHECK_DB_PATH_CREATION_ERROR = AbstractDatabaseInterface::RE_PRECHECK_DB_PATH_CREATION_ERROR, // path to database file could not be created
-
-        RE_LAST = AbstractDatabaseInterface::RE_LAST
-    };
-
-    enum eDatabaseItemTypeWrapper {
-        UNKNOWN = AbstractDatabaseInterface::UNKNOWN,
-        GROUP = AbstractDatabaseInterface::GROUP,
-        ENTRY = AbstractDatabaseInterface::ENTRY
-    };
-
-
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
-    Q_PROPERTY(int searchRootGroupId READ getSearchRootGroupId WRITE setSearchRootGroupId STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString searchRootGroupId READ getSearchRootGroupId WRITE setSearchRootGroupId STORED true SCRIPTABLE true)
 
 public:
     Q_INVOKABLE void loadMasterGroupsFromDatabase();
     Q_INVOKABLE void loadGroupListFromDatabase();
-    Q_INVOKABLE void loadGroupsAndEntriesFromDatabase(int groupId);
+    Q_INVOKABLE void loadGroupsAndEntriesFromDatabase(QString groupId);
     Q_INVOKABLE void searchEntriesInKdbDatabase(QString searchString);
     Q_INVOKABLE void clearListModel();
 
@@ -112,8 +77,8 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     void clear();
     bool isEmpty();
-    int getSearchRootGroupId() const { return m_searchRootGroupId; }
-    void setSearchRootGroupId(int groupId) { m_searchRootGroupId = groupId; }
+    QString getSearchRootGroupId() const { return m_searchRootGroupId; }
+    void setSearchRootGroupId(const QString groupId) { m_searchRootGroupId = groupId; }
 
     // Overwrite function to set role names
     virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
@@ -121,9 +86,9 @@ public:
 signals:
     // signals to database client
     void loadMasterGroups(bool registerListModel);
-    void loadGroupsAndEntries(int groupId);
-    void unregisterFromDatabaseClient(int modelId);
-    void searchEntries(QString searchString, int rootGroupId);
+    void loadGroupsAndEntries(QString groupId);
+    void unregisterFromDatabaseClient(QString modelId);
+    void searchEntries(QString searchString, QString rootGroupId);
 
     // signals to QML
     void groupsAndEntriesLoaded(int result);
@@ -136,11 +101,11 @@ signals:
 
 public slots:
     // signal from database client
-    void slot_appendItemToListModel(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId);
-    void slot_addItemToListModelSorted(QString title, QString subtitle, int itemId, int itemType, int itemLevel, int modelId);
-    void slot_updateItemInListModel(QString title, QString subTitle, int itemId, int modelId);
-    void slot_updateItemInListModelSorted(QString title, QString subTitle, int itemId, int modelId);
-    void slot_deleteItem(int itemId);
+    void slot_appendItemToListModel(QString title, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId);
+    void slot_addItemToListModelSorted(QString title, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId);
+    void slot_updateItemInListModel(QString title, QString subTitle, QString itemId, QString modelId);
+    void slot_updateItemInListModelSorted(QString title, QString subTitle, QString itemId, QString modelId);
+    void slot_deleteItem(QString itemId);
     void slot_disconnectFromDatabaseClient();
 
 private:
@@ -150,14 +115,14 @@ private:
 private:
     QList<KdbItem> m_items;
     // identifier for this list model
-    int m_modelId;
+    QString m_modelId;
     // number of groups and items in the list view
     int m_numGroups;
     int m_numEntries;
     // indicator if this list model has registered at the global keepass database object
     bool m_registered;
     // identifier of the group from which a search for entries should be performed
-    int m_searchRootGroupId;
+    QString m_searchRootGroupId;
     // identifies if this object is conntected to a loaded keepass database
     bool m_connected;
 };

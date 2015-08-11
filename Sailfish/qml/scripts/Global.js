@@ -1,5 +1,8 @@
 .pragma library
 
+.import Sailfish.Silica 1.0 as Silica
+.import QtQuick 2.0 as QQ
+
 /***************************************************************************
 **
 ** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
@@ -82,17 +85,12 @@ var activeDatabase = ""
 
 var env = {
     mainPage: undefined,
-    kdbDatabase: undefined,
     infoPopup: undefined,
     keepassSettings: undefined,
     coverPage: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
-    },
-
-    setKdbDatabase: function(obj) {
-        this.kdbDatabase = obj
     },
 
     setInfoPopup: function(obj) {
@@ -104,6 +102,14 @@ var env = {
     },
     setCoverPage: function(obj) {
         this.coverPage = obj
+    }
+}
+
+// Get display orientation from settings
+function getOrientation(value) {
+    switch (value) {
+    case 0:
+        return 0
     }
 }
 

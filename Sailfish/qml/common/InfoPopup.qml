@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013-2014 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013-2015 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -31,6 +31,13 @@ MouseArea {
     property alias popupTitle: titleLabel.text
     property alias popupMessage: messageLabel.text
 
+    property int allowedOrientations: __silica_applicationwindow_instance._defaultPageOrientations
+
+    // internal
+    property int _timeout: 0
+
+    signal closed
+
     function show(type, title, message, timeout) {
         popupType = type
         popupTitle = title
@@ -55,10 +62,6 @@ MouseArea {
         if (_timeout !== 0) countdown.stop()
         state = ""
     }
-
-    property int _timeout: 0
-
-    signal closed
 
     opacity: 0.0
     visible: false

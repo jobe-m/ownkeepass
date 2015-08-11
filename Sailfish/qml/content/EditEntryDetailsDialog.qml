@@ -30,9 +30,9 @@ Dialog {
 
     property bool createNewEntry: false
     // ID of the keepass entry to be edited
-    property int entryId: 0
+    property string entryId: ""
     // creation of new entry needs parent group ID
-    property int parentGroupId: 0
+    property string parentGroupId: ""
 
     // The following properties are used to check if text of any entry detail was changed. If so,
     // set cover page accordingly to signal the user unsaved changes
@@ -47,12 +47,12 @@ Dialog {
     property bool passwordChanged: false
     property bool commentChanged: false
 
-    function setTextFields(title, url, username, password, comment) {
-        entryTitleTextField.text = origTitle = title
-        entryUrlTextField.text = origUrl = url
-        entryUsernameTextField.text = origUsername = username
-        entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = password
-        entryCommentTextField.text = origComment = comment
+    function setTextFields(keys, values) {
+        entryTitleTextField.text = origTitle = values[0]
+        entryUrlTextField.text = origUrl = values[1]
+        entryUsernameTextField.text = origUsername = values[2]
+        entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = values[3]
+        entryCommentTextField.text = origComment = values[4]
     }
 
     // This function should be called when any text is changed to check if the
@@ -67,6 +67,7 @@ Dialog {
 
     // forbit page navigation if title is not set and password is not verified
     canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight
+    allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
         anchors.fill: parent

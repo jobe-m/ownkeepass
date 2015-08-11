@@ -22,11 +22,14 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 import "../common"
 
 Page {
     id: page
+
+    allowedOrientations: applicationWindow.orientationSetting
+
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -54,7 +57,7 @@ Page {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("ownKeepass is a Keepass 1.x compatible password safe application")
+                text: qsTr("ownKeepass is a Keepass 1.x and 2.x compatible password safe application")
             }
 
             SilicaLabel {
@@ -133,7 +136,7 @@ All translators: %1<br>\
 I hope you have as much fun using ownKeepass as I have creating it!")
                 .arg("Petri Mäkijärvi, Åke Engelbrektson, Agusti Clara, fri, Heimen Stoffels, Rob K, Nathan Follens, \
 carmenfdezb, TylerTemp, Peter Jespersen, Jordi, Guillaume ARIAUX, Sthocs, Francesco Vaccaro, Lorenzo Facca, Alexey, \
-Anton Kalmykov, Sergiy K, Kjetil Kilhavn, Jozef Mlích")
+Anton Kalmykov, Sergiy K, Kjetil Kilhavn, Jozef Mlích, R.G.Sidler, deryo, R Kake, Dimitrios Glentadakis")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }

@@ -23,9 +23,10 @@
 #include "DatabaseClient.h"
 #include "Keepass1DatabaseFactory.h"
 #include "Keepass2DatabaseFactory.h"
-#include "private/AbstractDatabaseInterface.h"
+#include "ownKeepassGlobal.h"
 
 using namespace kpxPrivate;
+using namespace ownKeepassPublic;
 
 // Global static pointer used to ensure a single instance of the class
 // It is used by KdbDatabase, KdbListModel, KdbGroup and KdbEntry classes to access data of the Keepass database
@@ -49,12 +50,12 @@ int DatabaseClient::initDatabaseInterface(const int type)
     // To enable other database formats just load here another interface
 
     switch(type) {
-    case AbstractDatabaseInterface::DB_TYPE_KEEPASS_1:
+    case DatabaseType::DB_TYPE_KEEPASS_1:
         m_factory = new Keepass1DatabaseFactory();
         m_interface = m_factory->factoryMethod();
         m_initialized = true;
         break;
-    case AbstractDatabaseInterface::DB_TYPE_KEEPASS_2:
+    case DatabaseType::DB_TYPE_KEEPASS_2:
         m_factory = new Keepass2DatabaseFactory();
         m_interface = m_factory->factoryMethod();
         m_initialized = true;

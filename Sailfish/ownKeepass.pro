@@ -100,7 +100,8 @@ HEADERS += \
     ../common/src/settings/setting.h \
     ../common/src/settings/RecentDatabaseListModel.h \
     ../common/src/settings/OwnKeepassSettings.h \
-    ../common/src/OwnKeepassHelper.h
+    ../common/src/OwnKeepassHelper.h \
+    ../common/src/ownKeepassGlobal.h
 
 OTHER_FILES += \
     ../README.md \

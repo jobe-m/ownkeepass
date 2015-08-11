@@ -33,14 +33,15 @@ static const int baseRole = Qt::UserRole + 1;
 class DatabaseItem
 {
 public:
-    DatabaseItem(QString uiName, QString uiPath, int dbLocation, QString dbFilePath, bool useKeyFile, int keyFileLocation, QString keyFilePath)
+    DatabaseItem(QString uiName, QString uiPath, int dbLocation, QString dbFilePath, bool useKeyFile, int keyFileLocation, QString keyFilePath, int databaseType)
         : m_ui_name(uiName),
           m_ui_path(uiPath),
           m_database_location(dbLocation),
           m_database_file_path(dbFilePath),
           m_use_key_file(useKeyFile),
           m_key_location(keyFileLocation),
-          m_key_file_path(keyFilePath)
+          m_key_file_path(keyFilePath),
+          m_database_type(databaseType)
     {}
     virtual ~DatabaseItem() {}
 
@@ -54,6 +55,7 @@ public:
     bool m_use_key_file;
     int m_key_location;
     QString m_key_file_path;
+    int m_database_type;
 };
 
 class RecentDatabaseListModel : public QAbstractListModel
@@ -72,7 +74,7 @@ public:
     Q_ENUMS(eResult)
     enum eResult {
         RE_OK = 0,                  // no error
-        RE_DB_LOAD_ERROR,              // error loading ...
+        RE_DB_LOAD_ERROR,           // error loading ...
         RE_LAST
     };
 
@@ -86,7 +88,8 @@ public:
                                QString dbFilePath,
                                bool useKeyFile,
                                int keyFileLocation,
-                               QString keyFilePath);
+                               QString keyFilePath,
+                               int databaseType);
 
 public:
     RecentDatabaseListModel(int lengthOfListModel, QObject *parent = 0);
@@ -126,6 +129,8 @@ inline QVariant DatabaseItem::get(const int role) const
         return m_key_location;
     case baseRole + 6:
         return m_key_file_path;
+    case baseRole + 7:
+        return m_database_type;
     }
     return QVariant();
 }
@@ -140,6 +145,7 @@ inline QHash<int, QByteArray> DatabaseItem::createRoles()
     roles[baseRole + 4] = "useKeyFile";
     roles[baseRole + 5] = "keyFileLocation";
     roles[baseRole + 6] = "keyFilePath";
+    roles[baseRole + 7] = "databaseType";
     return roles;
 }
 

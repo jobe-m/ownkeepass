@@ -32,41 +32,14 @@ namespace kpxPublic {
 class KdbDatabase : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(eDatabaseTypeWrapper)
-    Q_ENUMS(eDatabaseAccessResultWrapper)
 
 public:
-    enum eDatabaseTypeWrapper {
-        DB_TYPE_UNKNOWN = AbstractDatabaseInterface::DB_TYPE_UNKNOWN,
-        DB_TYPE_KEEPASS_1 = AbstractDatabaseInterface::DB_TYPE_KEEPASS_1,
-        DB_TYPE_KEEPASS_2 = AbstractDatabaseInterface::DB_TYPE_KEEPASS_2
-    };
-
-    enum eDatabaseAccessResultWrapper {
-        RE_OK = AbstractDatabaseInterface::RE_OK,                                                           // no error
-        RE_DB_LOAD_ERROR = AbstractDatabaseInterface::RE_DB_LOAD_ERROR,                                     // error loading data from database
-        RE_DB_SAVE_ERROR = AbstractDatabaseInterface::RE_DB_SAVE_ERROR,                                     // error saving data into database
-        RE_DB_NOT_OPENED = AbstractDatabaseInterface::RE_DB_NOT_OPENED,                                     // database is not opened
-        RE_DB_OPEN = AbstractDatabaseInterface::RE_DB_OPEN,                                                 // other database is currently open, close it first
-        RE_DB_ALREADY_CLOSED = AbstractDatabaseInterface::RE_DB_ALREADY_CLOSED,                             // database already closed, no harm
-        RE_DB_CLOSE_FAILED = AbstractDatabaseInterface::RE_DB_CLOSE_FAILED,                                 // database closing failed
-        RE_DB_FILE_ERROR = AbstractDatabaseInterface::RE_DB_FILE_ERROR,                                     // file path error for new database
-        RE_DB_SETKEY_ERROR = AbstractDatabaseInterface::RE_DB_SETKEY_ERROR,                                 // error setting key (consisting of password and/or keyfile
-        RE_DB_SETPW_ERROR = AbstractDatabaseInterface::RE_DB_SETPW_ERROR,                                   // error setting password for database
-        RE_DB_SETKEYFILE_ERROR = AbstractDatabaseInterface::RE_DB_SETKEYFILE_ERROR,                         // error setting key file for database
-        RE_DB_CREATE_BACKUPGROUP_ERROR = AbstractDatabaseInterface::RE_DB_CREATE_BACKUPGROUP_ERROR,         // error creating backup group
-        RE_PRECHECK_DB_PATH_ERROR = AbstractDatabaseInterface::RE_PRECHECK_DB_PATH_ERROR,                   // database file does not exists on precheck
-        RE_PRECHECK_KEY_FILE_PATH_ERROR = AbstractDatabaseInterface::RE_PRECHECK_KEY_FILE_PATH_ERROR,       // key file does not exists on precheck
-        RE_PRECHECK_DB_PATH_CREATION_ERROR = AbstractDatabaseInterface::RE_PRECHECK_DB_PATH_CREATION_ERROR, // path to database file could not be created
-
-        RE_LAST = AbstractDatabaseInterface::RE_LAST
-    };
-
-
     Q_PROPERTY(int keyTransfRounds READ keyTransfRounds WRITE setKeyTransfRounds NOTIFY keyTransfRoundsChanged)
     Q_PROPERTY(int cryptAlgorithm READ cryptAlgorithm WRITE setCryptAlgorithm NOTIFY cryptAlgorithmChanged)
     Q_PROPERTY(bool showUserNamePasswordsInListView READ showUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView STORED true SCRIPTABLE true)
+    Q_PROPERTY(bool readOnly READ readOnly NOTIFY readOnlyChanged)
+    Q_PROPERTY(int type READ type NOTIFY typeChanged)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
     Q_INVOKABLE void open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
@@ -86,6 +59,8 @@ public:
     void setShowUserNamePasswordsInListView(bool value) { m_showUserNamePasswordsInListView = value; emit setting_showUserNamePasswordsInListView(value); }
     bool sortAlphabeticallyInListView() const { return m_sortAlphabeticallyInListView; }
     void setSortAlphabeticallyInListView(const bool value) { m_sortAlphabeticallyInListView = value; emit setting_sortAlphabeticallyInListView(value); }
+    bool readOnly() const { return m_readOnly; }
+    int type() const { return m_database_type; }
 
 signals:
     // signals to DatabaseClient backend thread
@@ -99,13 +74,15 @@ signals:
     void setting_sortAlphabeticallyInListView(bool value);
 
     // signals to QML
-    void databaseOpened();
+    void databaseOpened(int result, QString errorMsg);
     void newDatabaseCreated();
     void databaseClosed();
     void databasePasswordChanged();
     void keyTransfRoundsChanged();
     void cryptAlgorithmChanged();
     void errorOccured(int result, QString errorMsg);
+    void readOnlyChanged();
+    void typeChanged();
 
 private slots:
     // signals from DatabaseClient backend thread
@@ -122,6 +99,7 @@ private slots:
         }
     }
     void slot_databaseClosed();
+    void slot_databaseOpened(int result, QString errorMsg);
 
 private:
     void connectToDatabaseClient();

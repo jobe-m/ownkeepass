@@ -22,7 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.ownkeepass.KeepassX1 1.0
+import harbour.ownkeepass 1.0
 import "../scripts/Global.js" as Global
 
 Dialog {
@@ -38,14 +38,17 @@ Dialog {
     property string relativePath: ""
     // Absolute path of file including file name
     property string absolutePath: ""
-    // Set default state
-    // States: OPEN_FILE, CREATE_NEW_FILE
-    state: "OPEN_FILE"
 
     // internal
     // Name of directory is used to cd into it
     property string __dirName: ""
     property string __absoluteDirPath: ""
+
+    // Set default state
+    // States: OPEN_FILE, CREATE_NEW_FILE
+    state: "OPEN_FILE"
+
+    allowedOrientations: applicationWindow.orientationSetting
 
     onAccepted: {
         // create relative path to location out of absolute path
@@ -207,7 +210,7 @@ Dialog {
                 errorHighlight: text.length === 0
                 label: qsTr("File filter")
                 placeholderText: qsTr("Set file filter")
-                text: "*.kdb"
+                text: "*.kdb *.kdbx"
                 EnterKey.enabled: !errorHighlight
                 EnterKey.highlighted: text !== ""
                 EnterKey.onClicked: {
