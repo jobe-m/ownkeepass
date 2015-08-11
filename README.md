@@ -12,12 +12,11 @@ Release 1.1.6 available from jolla store and [openrepos.net] [1] / warehouse app
 * Database can be directly closed from lock screen
 * Added elide mode to top menu label (fixes too long database path running out of the screen)
 
-Release 1.1.7 will add landscape support
+Release 1.1.7 will add landscape orientation and Keepass 2 database read support. Just needs some minor fixes, translation updates and extensive testing;)
 
-Status of Keepass 2 database support
-* Development is done on keepass2 branch
-* Reading of password group list from a Keepass 2 database is mostly finished
-* Next steps: Reading password entries and update the UI to support read-only database mode (At first there will be a release which can only read Keepass 2 database files)
+Finally Keepass 2 database support is HERE! Current status:
+* Reading of password group list from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project.
+* Searching in and writing to Keepass 2 database will be done in near future (will be done on keepass2 branch)
 
 Roadmap
 -------
@@ -25,7 +24,7 @@ Roadmap
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Keepass 2 database support. Planning to reuse database code from [KeepassX 2][3] project.
+*   Keepass 2 database search and write support
 *   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
 *   Activate password expiration feature which can remind you to change a specific password.
 
@@ -44,12 +43,13 @@ ownKeepass is a password safe application for the Jolla Smartphone with the purp
 protect sensible data like passwords for web pages, credit card numbers,
 PINs, TANs and other bits of information which should be kept secret. All that information
 is saved in a database file which is encrypted and stored locally on your phone. To open
-the database you need to know the master password of the database. The used database
-format is compatible to Keepass version 1. That means you can use [Keepass classic 1.27+] [2] or [KeepassX 0.4.3] [3] on your desktop
+the database you need to know the master password of the database. ownKeepass can use Keepass
+version 1 and 2 databases. That means you can use [Keepass] [2] or [KeepassX] [3] on your desktop 
 system to decrypt and open that database file, too.
 
-Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is
-planned for a future release of ownKeepass.
+Please note that while ownKeepass can read and write to Keepass 1 databases it can currently only
+read from Keepass version 2 databases. It cannot yet change and save Keepass 2 databases.
+This is planned for a future release of ownKeepass.
 
 Why?
 ----
@@ -133,7 +133,7 @@ Features
 
 That's it so far.
 
-25-Jul-2015
+11-Aug-2015
 
 Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
