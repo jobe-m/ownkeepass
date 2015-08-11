@@ -168,15 +168,15 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
     QList<Group*> masterGroups = m_Database->rootGroup()->children();
     for (int i = 0; i < masterGroups.count(); i++) {
         Group* masterGroup = masterGroups.at(i);
-        qDebug() << "Mastergroup " << i << ": " << masterGroup->name();
-        qDebug() << "Expanded: " << masterGroup->isExpanded();
+//        qDebug() << "Mastergroup " << i << ": " << masterGroup->name();
+//        qDebug() << "Expanded: " << masterGroup->isExpanded();
 
         int numberOfSubgroups = masterGroup->children().count();
         int numberOfEntries = masterGroup->entries().count();
 
         Uuid masterGroupId = masterGroup->uuid();
-        qDebug() << "Uuid: " << masterGroupId.toByteArray();
-        qDebug() << "toHex: " << masterGroupId.toHex();
+//        qDebug() << "Uuid: " << masterGroupId.toByteArray();
+//        qDebug() << "toHex: " << masterGroupId.toHex();
         if (registerListModel) {
             // save modelId and master group only if needed
             // i.e. save model list id for master group page and don't do it for list models used in dialogs
@@ -217,8 +217,8 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     Group* group = m_Database->resolveGroup(groupUuid);
     QList<Group*> subGroups = group->children();
 
-    qDebug() << "group uuid: " << groupUuid.toByteArray();
-    qDebug() << "group toHex: " << groupUuid.toHex();
+//    qDebug() << "group uuid: " << groupUuid.toByteArray();
+//    qDebug() << "group toHex: " << groupUuid.toHex();
 
 /*
     if (m_setting_sortAlphabeticallyInListView) {
