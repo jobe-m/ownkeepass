@@ -53,6 +53,8 @@ Page {
         applicationWindow.cover.password = values[3]
     }
 
+    allowedOrientations: applicationWindow.orientationSetting
+
     ListModel {
         id: customKeyValueList
     }

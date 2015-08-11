@@ -67,6 +67,7 @@ Dialog {
 
     // forbit page navigation if title is not set and password is not verified
     canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight
+    allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
         anchors.fill: parent

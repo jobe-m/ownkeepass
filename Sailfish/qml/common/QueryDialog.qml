@@ -32,6 +32,8 @@ Dialog {
     property alias headerTitleText: dialogHeader.title
     property alias message: dialogMessage.text
 
+    allowedOrientations: applicationWindow.orientationSetting
+
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width

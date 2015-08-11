@@ -38,14 +38,17 @@ Dialog {
     property string relativePath: ""
     // Absolute path of file including file name
     property string absolutePath: ""
-    // Set default state
-    // States: OPEN_FILE, CREATE_NEW_FILE
-    state: "OPEN_FILE"
 
     // internal
     // Name of directory is used to cd into it
     property string __dirName: ""
     property string __absoluteDirPath: ""
+
+    // Set default state
+    // States: OPEN_FILE, CREATE_NEW_FILE
+    state: "OPEN_FILE"
+
+    allowedOrientations: applicationWindow.orientationSetting
 
     onAccepted: {
         // create relative path to location out of absolute path

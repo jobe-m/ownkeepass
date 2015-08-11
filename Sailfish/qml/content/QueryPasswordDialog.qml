@@ -32,6 +32,8 @@ Dialog {
     // set default state
     state: "CreateNewDatabase"
 
+    allowedOrientations: applicationWindow.orientationSetting
+
     // These data is coming-in in case for opening a recent database and passed further
     // in all cases/states after accepting this dialog
     property alias dbFileLocation: dbLoading.locationIndex

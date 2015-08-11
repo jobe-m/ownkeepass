@@ -54,6 +54,7 @@ Dialog {
     canNavigateForward: !databaseMasterPassword.errorHighlight &&
                         databaseMasterPassword.text === confirmDatabaseMasterPassword.text &&
                         !databaseKeyTransfRounds.errorHighlight
+    allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
         anchors.fill: parent

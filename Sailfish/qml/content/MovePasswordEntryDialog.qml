@@ -43,6 +43,7 @@ Dialog {
 
     // forbit page navigation if new group is not yet selected
     canNavigateForward: newGroupId !== ""
+    allowedOrientations: applicationWindow.orientationSetting
 
     onAccepted: {
         // Now trigger moving of password entry

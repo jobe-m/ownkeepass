@@ -1,5 +1,8 @@
 .pragma library
 
+.import Sailfish.Silica 1.0 as Silica
+.import QtQuick 2.0 as QQ
+
 /***************************************************************************
 **
 ** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
@@ -99,6 +102,14 @@ var env = {
     },
     setCoverPage: function(obj) {
         this.coverPage = obj
+    }
+}
+
+// Get display orientation from settings
+function getOrientation(value) {
+    switch (value) {
+    case 0:
+        return 0
     }
 }
 

@@ -27,6 +27,9 @@ import "../common"
 
 Page {
     id: page
+
+    allowedOrientations: applicationWindow.orientationSetting
+
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width

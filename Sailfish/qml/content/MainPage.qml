@@ -86,6 +86,8 @@ Page {
         }
     }
 
+    allowedOrientations: applicationWindow.orientationSetting
+
     Timer {
         id: inactivityTimer
         running: false
@@ -730,9 +732,12 @@ Page {
                 Global.env.infoPopup.show(Global.error, qsTr("Crypto init error"),
                                           qsTr("Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer."))
                 masterGroupsPage.closeOnError()
+            case DatabaseAccessResult.RE_ERR_QSTRING_TO_INT:
+                Global.env.infoPopup.show(Global.error, qsTr("Internal database error"),
+                                          qsTr("Conversion of QString \"%1\" to Int failed").arg(errorMsg))
                 break
             default:
-                console.log("ERROR: unknown result on database error occured")
+                console.log("ERROR: unknown result on database error occured: " + result)
                 break
             }
         }

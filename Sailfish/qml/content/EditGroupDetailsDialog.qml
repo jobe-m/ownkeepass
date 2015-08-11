@@ -44,6 +44,7 @@ Dialog {
 
     // forbit page navigation if name of group is empty
     canNavigateForward: groupTitleTextField.text !== ""
+    allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
         anchors.fill: parent

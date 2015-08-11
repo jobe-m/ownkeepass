@@ -31,6 +31,13 @@ MouseArea {
     property alias popupTitle: titleLabel.text
     property alias popupMessage: messageLabel.text
 
+    property int allowedOrientations: __silica_applicationwindow_instance._defaultPageOrientations
+
+    // internal
+    property int _timeout: 0
+
+    signal closed
+
     function show(type, title, message, timeout) {
         popupType = type
         popupTitle = title
@@ -55,10 +62,6 @@ MouseArea {
         if (_timeout !== 0) countdown.stop()
         state = ""
     }
-
-    property int _timeout: 0
-
-    signal closed
 
     opacity: 0.0
     visible: false

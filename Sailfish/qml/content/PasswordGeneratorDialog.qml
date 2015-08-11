@@ -32,6 +32,7 @@ Dialog {
     property string generatedPassword: ""
 
     canNavigateForward: !generatedPasswordField.errorHighlight
+    allowedOrientations: applicationWindow.orientationSetting
 
     PasswordGenerator {
         id: passwordGenerator

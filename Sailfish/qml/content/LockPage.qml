@@ -36,7 +36,9 @@ Page {
 
     // internal
     property int __counter: ownKeepassSettings.fastUnlockRetryCount + 1
+
     backNavigation: false
+    allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
         id: lockView

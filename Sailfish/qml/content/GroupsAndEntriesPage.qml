@@ -38,6 +38,10 @@ Page {
     property string groupId: "0"
     property string pageTitle: qsTr("Password groups")
 
+    // private properties and funtions
+    property bool __closeOnError: false
+    property string __saveState: state
+
     function init() {
         if (ownKeepassSettings.showSearchBar) {
             groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
@@ -64,9 +68,6 @@ Page {
         if (status === PageStatus.Active) pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
     }
 
-    // private properties and funtions
-    property bool __closeOnError: false
-    property string __saveState: state
     function __showLoadErrorPage() {
         Global.env.infoPopup.show(Global.error, qsTr("Load Error"), qsTr("Could not load all items from Keepass database file. That's strange."))
     }
@@ -74,6 +75,8 @@ Page {
     function __showSaveErrorPage() {
         Global.env.infoPopup.show(Global.error, qsTr("Save Error"), qsTr("Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed."))
     }
+
+    allowedOrientations: applicationWindow.orientationSetting
 
     Item {
         id: headerBox

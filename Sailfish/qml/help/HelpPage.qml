@@ -29,6 +29,8 @@ Page {
 
     property alias text: helpTextLabel.text
 
+    allowedOrientations: applicationWindow.orientationSetting
+
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
