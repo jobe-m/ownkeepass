@@ -109,7 +109,6 @@ signals:
     void groupMoved(int result,
                     QString groupId);
 
-
 public slots:
     // signals from KdbDatabase object
     void slot_openDatabase(QString filePath,

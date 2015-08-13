@@ -109,6 +109,8 @@ void KdbEntry::disconnectFromDatabaseClient()
     Q_ASSERT(ret);
 
     m_connected = false;
+    m_entryId = "";
+    m_new_entry_triggered = false;
 }
 
 void KdbEntry::loadEntryData()
@@ -189,7 +191,7 @@ void KdbEntry::slot_entryDataLoaded(int result,
                                     QList<QString> values)
 {
     // forward signal to QML only if the signal is for us
-    if (entryId == m_entryId) {
+    if (entryId.compare(m_entryId) == 0) {
         emit entryDataLoaded(result, keys, values);
     }
 }
@@ -197,7 +199,7 @@ void KdbEntry::slot_entryDataLoaded(int result,
 void KdbEntry::slot_entryDataSaved(int result, QString entryId)
 {
     // forward signal to QML only if the signal is for us
-    if (entryId == m_entryId) {
+    if (entryId.compare(m_entryId) == 0) {
         emit entryDataSaved(result);
     }
 }
@@ -217,7 +219,7 @@ void KdbEntry::slot_newEntryCreated(int result, QString entryId)
 void KdbEntry::slot_entryDeleted(int result, QString entryId)
 {
     // forward signal to QML only if the signal is for us
-    if (entryId == m_entryId) {
+    if (entryId.compare(m_entryId) == 0) {
         emit entryDeleted(result);
         m_entryId = "";
     }
@@ -226,7 +228,7 @@ void KdbEntry::slot_entryDeleted(int result, QString entryId)
 void KdbEntry::slot_entryMoved(int result, QString entryId)
 {
     // forward signal to QML only if the signal is for us
-    if (entryId == m_entryId) {
+    if (entryId.compare(m_entryId) == 0) {
         emit entryMoved(result);
     }
 }
