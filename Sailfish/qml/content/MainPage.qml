@@ -128,8 +128,8 @@ Page {
                     pageStack.push(queryPasswordDialogComponent,
                                    {
                                        "state": "CreateNewDatabase",
-                                       "dbFileLocation": 0,
-                                       // If ownKeepass was opened the very first time give the user a predefined database file path and name
+                                       // If ownKeepass was opened the very first time give the user a predefined database location (1 = Device memory) and file path and name
+                                       "dbFileLocation": recentDatabaseModel.isEmpty ? 1 : 0,
                                        "dbFilePath": recentDatabaseModel.isEmpty ? "Documents/ownkeepass/notes.kdb" : "",
                                                                                    "useKeyFile": false,
                                                                                    "keyFileLocation": 0,
