@@ -12,10 +12,10 @@ Release 1.1.6 available from jolla store and [openrepos.net] [1] / warehouse app
 * Database can be directly closed from lock screen
 * Added elide mode to top menu label (fixes too long database path running out of the screen)
 
-Release 1.1.7 will add landscape orientation and Keepass 2 database read support. Just needs some minor fixes, translation updates and extensive testing;)
+Next upcoming stable release will be 1.2.0 which will add UI landscape orientation and Keepass 2 database read support. The next pre-releases 1.1.7+ will be used for testing and updating translations. If you want to help with testing please build by yourself from master branch or wait for the next pre-release version 1.1.7 on [openrepos.net] [1].
 
 Finally Keepass 2 database support is HERE! Current status:
-* Reading from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project for that.
+* Reading from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project for that which is shared into this repository.
 * Searching in and writing to Keepass 2 database will be done in near future (will be done on keepass2 branch). It needs some redesign of the password entry save handling.
 
 Roadmap
@@ -24,9 +24,8 @@ Roadmap
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Keepass 2 database search and write support
 *   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
-*   Activate password expiration feature which can remind you to change a specific password.
+*   Other features will only come if there is a strong demand ;)
 
 I am searching for contributors who want and can work on specific additional features. Below are some of the requirements which I marked as contribution on the issue page. That means that I won't work for a while on that topics due to missing time thus you can be sure that we don't do double work there.
 *   Delete a Keepass database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/64)
