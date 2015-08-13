@@ -46,7 +46,7 @@ signals:
     // signals to QML
     void groupDataLoaded(int result, QString title);
     void groupDataSaved(int result);
-    void newGroupCreated(int result, QString newParentGroupId);
+    void newGroupCreated(int result);
     void groupDeleted(int result);
     void groupMoved(int result);
 
