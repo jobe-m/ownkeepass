@@ -25,14 +25,10 @@
 
 Keepass2DatabaseFactory::Keepass2DatabaseFactory(QObject *parent) :
     QObject(parent), AbstractDatabaseFactory()
-{
-
-}
+{}
 
 Keepass2DatabaseFactory::~Keepass2DatabaseFactory()
-{
-
-}
+{}
 
 AbstractDatabaseInterface* Keepass2DatabaseFactory::factoryMethod()
 {

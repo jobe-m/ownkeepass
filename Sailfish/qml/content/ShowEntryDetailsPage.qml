@@ -37,7 +37,7 @@ Page {
         var i = 5
         customKeyValueList.clear()
         while (i < maxKeys) {
-            console.log(keys[i] + " " + values[i])
+//            console.log(keys[i] + " " + values[i])
             customKeyValueList.append({"key": keys[i], "value": values[i]})
             ++i
         }

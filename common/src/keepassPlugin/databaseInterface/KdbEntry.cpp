@@ -20,6 +20,7 @@
 **
 ***************************************************************************/
 
+#include "QDebug"
 #include "ownKeepassGlobal.h"
 #include "KdbEntry.h"
 #include "private/DatabaseClient.h"
