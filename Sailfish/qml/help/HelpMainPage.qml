@@ -55,8 +55,8 @@ the master password against Brute-Force and Dictonary Attacks by hashing and \
 encrypting it before using it to decrypt the Keepass database. This feature \
 is called key transformation rounds and can be adjusted in database settings. \
 Anyway that all just adds additional security to two points which \
-you should be aware of: <br>\
-(1) Always use a long enough and difficult to guess master password.<br>\
+you should be aware of:<br><br>\
+(1) Always use a long enough and difficult to guess master password.<br><br>\
 (2) Protect your system from spyware which might be specialized to attack \
 ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: \
 \"If a bad guy can persuade you to run his program on your \
@@ -83,7 +83,7 @@ Store this key file only locally on your smartphone and on your desktop PC. \
 Do not upload it to the cloud service. If an attacker hacks your cloud \
 service he will be left without the key file. By doing so you make it even \
 harder for an attacker to crack your Keepass database because the key \
-file content is usually impossible to guess.") + "<br><br>" +
+file content is usually impossible to guess.") +
 
 "<br><br>\
 [1] <a href=\"http://www.keepass.info\">www.keepass.info</a><br>\
