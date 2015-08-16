@@ -58,6 +58,13 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.7 Landscape orientation and Keepass 2 database read support</b>\
+<ul>\
+<li>Support for landscape orientation added (not only but for all TOHKBD owners :)</li>\
+<li>Orientation can be adjusted in application settings (Portrait / Landscape / Dynamic)</li>\
+<li>Added Support for reading Keepass 2 databases</li>\
+</ul>\
+<br>\
 <b>v1.1.6 Move password entries</b>\
 <ul>\
 <li>Password entries can be moved between groups now</li>\
