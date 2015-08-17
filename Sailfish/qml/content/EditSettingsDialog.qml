@@ -47,6 +47,7 @@ Dialog {
     property bool clearClipboardChanged: false
     property bool expertModeChanged: false
     property bool languageChanged: false
+    property bool orientationChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
@@ -58,7 +59,8 @@ Dialog {
                 sortAlphabeticallyInListViewChanged ||
                 showUserNamePasswordInListViewChanged || focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
-                copyNpasteFromCoverChanged || clearClipboardChanged || languageChanged) {
+                copyNpasteFromCoverChanged || clearClipboardChanged || languageChanged ||
+                orientationChanged ) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
             applicationWindow.cover.title = "Settings"
         } else {
@@ -270,6 +272,35 @@ Dialog {
 
             SectionHeader {
                 text: qsTr("UI settings")
+            }
+
+            Column {
+                width: parent.width
+                spacing: 0
+
+                ComboBox {
+                    id: orientation
+                    width: editSettingsDialog.width
+                    label: qsTr("Orientation:")
+                    currentIndex: ownKeepassSettings.orientation)
+                    menu: ContextMenu {
+                        MenuItem { text: "Dynamic" } // 0
+                        MenuItem { text: "Portrait" } // 1
+                        MenuItem { text: "Landscape" } // 2
+                    }
+
+                    onCurrentIndexChanged: {
+                        editSettingsDialog.orientationChanged =
+                                orientation.currentIndex) !== ownKeepassSettings.orientation
+                        editSettingsDialog.updateCoverState()
+                    }
+                }
+
+                SilicaLabel {
+                    text: qsTr("Change here the display orientation")
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                }
             }
 
             TextSwitch {
@@ -506,7 +537,8 @@ Dialog {
                     clearClipboard.checked ? 10 : 0,
                     language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
-                    fastUnlockRetryCount.value)
+                    fastUnlockRetryCount.value,
+                    orientation.currentIndex)
         kdbListItemInternal.saveKeepassSettings()
     }
 
@@ -525,7 +557,8 @@ Dialog {
                     clearClipboard.checked ? 10 : 0,
                     language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
-                    fastUnlockRetryCount.value)
+                    fastUnlockRetryCount.value,
+                    orientation.currentIndex)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }
