@@ -36,7 +36,7 @@ ApplicationWindow
     // For accessing info popup from everywhere make it global for the application
     property InfoPopup infoPopupRef: infoPopup
 
-    property int orientationSetting: (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
+    property int orientationSetting
 
     initialPage: mainPageContainer
     cover: coverPage
@@ -91,6 +91,19 @@ ApplicationWindow
         } else {
             mainPageRef.inactivityTimerStart()
         }
+    }
+
+    Component.onCompleted: {
+        orientationSetting = Qt.binding(function() {
+            switch (ownKeepassSettings.uiOrientation) {
+            case 1:
+                return Orientation.Portrait
+            case 2:
+                return Orientation.Landscape
+            default:
+                return (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
+            }
+        })
     }
 }
 

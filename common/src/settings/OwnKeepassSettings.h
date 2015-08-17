@@ -60,6 +60,7 @@ public:
     Q_PROPERTY(int language READ language WRITE setLanguage NOTIFY languageChanged)
     Q_PROPERTY(bool fastUnlock READ fastUnlock WRITE setFastUnlock NOTIFY fastUnlockChanged)
     Q_PROPERTY(int fastUnlockRetryCount READ fastUnlockRetryCount WRITE setFastUnlockRetryCount NOTIFY fastUnlockRetryCountChanged)
+    Q_PROPERTY(int uiOrientation READ uiOrientation WRITE setUiOrientation NOTIFY uiOrientationChanged)
 
     Q_INVOKABLE void addRecentDatabase(QString uiName,
                                        QString uiPath,
@@ -119,6 +120,8 @@ public:
     void setFastUnlock(const bool value);
     int fastUnlockRetryCount() const { return m_fastUnlockRetryCount; }
     void setFastUnlockRetryCount(const int value);
+    int uiOrientation() const { return m_uiOrientation; }
+    void setUiOrientation(const int value);
 
     void checkSettingsVersion();
 
@@ -157,6 +160,7 @@ signals:
     void languageChanged();
     void fastUnlockChanged();
     void fastUnlockRetryCountChanged();
+    void uiOrientationChanged();
 
 private:
     void loadSettings();
@@ -198,6 +202,7 @@ private:
     int m_language;
     bool m_fastUnlock;
     int m_fastUnlockRetryCount;
+    int m_uiOrientation;
 
     Settings* m_settings;
 };

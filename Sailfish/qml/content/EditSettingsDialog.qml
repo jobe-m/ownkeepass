@@ -47,7 +47,7 @@ Dialog {
     property bool clearClipboardChanged: false
     property bool expertModeChanged: false
     property bool languageChanged: false
-    property bool orientationChanged: false
+    property bool uiOrientationChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
@@ -60,7 +60,7 @@ Dialog {
                 showUserNamePasswordInListViewChanged || focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged || clearClipboardChanged || languageChanged ||
-                orientationChanged ) {
+                uiOrientationChanged ) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
             applicationWindow.cover.title = "Settings"
         } else {
@@ -102,30 +102,20 @@ Dialog {
                 text: qsTr("Database")
             }
 
-            Column {
-                width: parent.width
-                spacing: 0
-
-                SilicaLabel {
-                    text: qsTr("This is the encryption which will be used as default when creating a new Keepass database:")
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
+            ComboBox {
+                id: defaultCryptAlgorithm
+                width: editSettingsDialog.width
+                label: qsTr("Default encryption")
+                description: qsTr("This is the encryption which will be used as default when creating a new Keepass 1 database.")
+                currentIndex: ownKeepassSettings.defaultCryptAlgorithm
+                menu: ContextMenu {
+                    MenuItem { text: "AES/Rijndael" }
+                    MenuItem { text: "Twofish" }
                 }
-
-                ComboBox {
-                    id: defaultCryptAlgorithm
-                    width: editSettingsDialog.width
-                    label: qsTr("Default encryption:")
-                    currentIndex: ownKeepassSettings.defaultCryptAlgorithm
-                    menu: ContextMenu {
-                        MenuItem { text: "AES/Rijndael" }
-                        MenuItem { text: "Twofish" }
-                    }
-                    onCurrentIndexChanged: {
-                        editSettingsDialog.defaultCryptAlgorithmChanged =
-                                defaultCryptAlgorithm.currentIndex !== ownKeepassSettings.defaultCryptAlgorithm
-                        editSettingsDialog.updateCoverState()
-                    }
+                onCurrentIndexChanged: {
+                    editSettingsDialog.defaultCryptAlgorithmChanged =
+                            defaultCryptAlgorithm.currentIndex !== ownKeepassSettings.defaultCryptAlgorithm
+                    editSettingsDialog.updateCoverState()
                 }
             }
 
@@ -274,32 +264,23 @@ Dialog {
                 text: qsTr("UI settings")
             }
 
-            Column {
-                width: parent.width
-                spacing: 0
-
-                ComboBox {
-                    id: orientation
-                    width: editSettingsDialog.width
-                    label: qsTr("Orientation:")
-                    currentIndex: ownKeepassSettings.orientation)
-                    menu: ContextMenu {
-                        MenuItem { text: "Dynamic" } // 0
-                        MenuItem { text: "Portrait" } // 1
-                        MenuItem { text: "Landscape" } // 2
-                    }
-
-                    onCurrentIndexChanged: {
-                        editSettingsDialog.orientationChanged =
-                                orientation.currentIndex) !== ownKeepassSettings.orientation
-                        editSettingsDialog.updateCoverState()
-                    }
+            ComboBox {
+                id: uiOrientation
+                width: editSettingsDialog.width
+                label: qsTr("Orientation")
+                description: qsTr("Change here orientation of the display")
+                currentIndex: ownKeepassSettings.uiOrientation
+                menu: ContextMenu {
+                    //: Dynamic means that the display orientation is changed according how the device is hold by the user
+                    MenuItem { text: "Dynamic" } // 0
+                    MenuItem { text: "Portrait" } // 1
+                    MenuItem { text: "Landscape" } // 2
                 }
 
-                SilicaLabel {
-                    text: qsTr("Change here the display orientation")
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
+                onCurrentIndexChanged: {
+                    editSettingsDialog.uiOrientationChanged =
+                            uiOrientation.currentIndex !== ownKeepassSettings.uiOrientation
+                    editSettingsDialog.updateCoverState()
                 }
             }
 
@@ -339,128 +320,118 @@ Dialog {
                 }
             }
 
-            Column {
-                width: parent.width
-                spacing: 0
+            ComboBox {
+                id: language
+                width: editSettingsDialog.width
+                label: qsTr("Language")
+                description: qsTr("Change of language will be active in ownKeepass after restarting the application")
+                currentIndex: toCurrentIndex(ownKeepassSettings.language)
+                menu: ContextMenu {
+                    MenuItem { text: qsTr("System default") } // 0
+                    MenuItem { text: "Bokmål" } // 1 (Norwegian Bokmål)
+                    MenuItem { text: "Català" } // 2 (Catalan)
+                    MenuItem { text: "Čeština" } // 3 (Czech)
+                    MenuItem { text: "Dansk" } // 4 (Danish)
+                    MenuItem { text: "Deutsch" } // 5 (German)
+                    MenuItem { text: "English" } // 6 (English)
+                    MenuItem { text: "Español" }  // 7 (Spanish)
+                    MenuItem { text: "Français" } // 8 (French)
+                    MenuItem { text: "Italiano" } // 9 (Italian)
+                    MenuItem { text: "Nederlands" } // 10 (Dutch)
+                    MenuItem { text: "Pу́сский" } // 11 (Russian)
+                    MenuItem { text: "Suomi" } // 12 (Finnish)
+                    MenuItem { text: "Svenska" } // 13 (Swedish)
+                    MenuItem { text: "中文" } // 14 (Chinese)
+                }
 
-                ComboBox {
-                    id: language
-                    width: editSettingsDialog.width
-                    label: qsTr("Language:")
-                    currentIndex: toCurrentIndex(ownKeepassSettings.language)
-                    menu: ContextMenu {
-                        MenuItem { text: "System default" } // 0
-                        MenuItem { text: "Catalan" } // 1
-                        MenuItem { text: "Chinese" } // 2
-                        MenuItem { text: "Czech" } // 3
-                        MenuItem { text: "Danish" } // 4
-                        MenuItem { text: "Dutch" } // 5
-                        MenuItem { text: "English" } // 6
-                        MenuItem { text: "Finnish" } // 7
-                        MenuItem { text: "French " } // 8
-                        MenuItem { text: "German" } // 9
-                        MenuItem { text: "Italian" } // 10
-                        MenuItem { text: "Norwegian Bokmål" } // 11
-                        MenuItem { text: "Russian" } // 12
-                        MenuItem { text: "Spanish" }  // 13
-                        MenuItem { text: "Swedish" } // 14
-                    }
-
-                    // The next two converter functions decouple the alphabetical language list
-                    // index from the internal settings index, which cannot be changed for legacy reasons
-                    function toCurrentIndex(value) {
-                        switch (value) {
-                        case Language.SYSTEM_DEFAULT:
-                            return Global.system_default
-                        case Language.EN: // English
-                            return Global.english
-                        case Language.SV_SE: // Swedish
-                            return Global.swedish
-                        case Language.FI_FI: // Finnish
-                            return Global.finnish
-                        case Language.DE_DE: // German
-                            return Global.german
-                        case Language.CS_CZ: // Czech
-                            return Global.czech
-                        case Language.CA: // Catalan
-                            return Global.catalan
-                        case Language.NL_NL: // Dutch
-                            return Global.dutch
-                        case Language.ES: // Spanish
-                            return Global.spanish
-                        case Language.FR_FR: // French
-                            return Global.french
-                        case Language.IT: // Itanian
-                            return Global.italian
-                        case Language.RU: // Russian
-                            return Global.russian
-                        case Language.DA: // Danish
-                            return Global.danish
-                        case Language.PL_PL: // Polish
-                            return Global.polish
-                        case Language.ZH_CN: // Chinese
-                            return Global.chinese
-                        case Language.UK_UA: // Ukrainian
-                            return Global.ukrainian
-                        case Language.NB_NO: // Norwegian Bokmål
-                            return Global.norwegian_bokmal
-                        default:
-                            return Global.english
-                        }
-                    }
-
-                    function toSettingsIndex(value) {
-                        switch (value) {
-                        case Global.system_default:
-                            return Language.SYSTEM_DEFAULT
-                        case Global.english:
-                            return Language.EN // English
-                        case Global.swedish:
-                            return Language.SV_SE // Swedish
-                        case Global.finnish:
-                            return Language.FI_FI // Finnish
-                        case Global.german:
-                            return Language.DE_DE // German
-                        case Global.czech:
-                            return Language.CS_CZ // Czech
-                        case Global.catalan:
-                            return Language.CA // Catalan
-                        case Global.dutch:
-                            return Language.NL_NL // Dutch
-                        case Global.spanish:
-                            return Language.ES // Spanish
-                        case Global.french:
-                            return Language.FR_FR // French
-                        case Global.italian:
-                            return Language.IT // Italian
-                        case Global.russian:
-                            return Language.RU // Russian
-                        case Global.danish:
-                            return Language.DA // Danish
-                        case Global.polish:
-                            return Language.PL_PL // Polish
-                        case Global.chinese:
-                            return Language.ZH_CN // Chinese
-                        case Global.ukrainian:
-                            return Language.UK_UA // Ukrainian
-                        case Global.norwegian_bokmal:
-                            return Language.NB_NO // Norwegian Bokmål
-                        default:
-                            return Language.EN // English
-                        }
-                    }
-
-                    onCurrentIndexChanged: {
-                        editSettingsDialog.languageChanged =
-                                toSettingsIndex(language.currentIndex) !== ownKeepassSettings.language
-                        editSettingsDialog.updateCoverState()
+                // The next two converter functions decouple the alphabetical language list
+                // index from the internal settings index, which cannot be changed for legacy reasons
+                function toCurrentIndex(value) {
+                    switch (value) {
+                    case Language.SYSTEM_DEFAULT:
+                        return Global.system_default
+                    case Language.EN: // English
+                        return Global.english
+                    case Language.SV_SE: // Swedish
+                        return Global.swedish
+                    case Language.FI_FI: // Finnish
+                        return Global.finnish
+                    case Language.DE_DE: // German
+                        return Global.german
+                    case Language.CS_CZ: // Czech
+                        return Global.czech
+                    case Language.CA: // Catalan
+                        return Global.catalan
+                    case Language.NL_NL: // Dutch
+                        return Global.dutch
+                    case Language.ES: // Spanish
+                        return Global.spanish
+                    case Language.FR_FR: // French
+                        return Global.french
+                    case Language.IT: // Itanian
+                        return Global.italian
+                    case Language.RU: // Russian
+                        return Global.russian
+                    case Language.DA: // Danish
+                        return Global.danish
+                    case Language.PL_PL: // Polish
+                        return Global.polish
+                    case Language.ZH_CN: // Chinese
+                        return Global.chinese
+                    case Language.UK_UA: // Ukrainian
+                        return Global.ukrainian
+                    case Language.NB_NO: // Norwegian Bokmål
+                        return Global.norwegian_bokmal
+                    default:
+                        return Global.english
                     }
                 }
 
-                SilicaLabel {
-                    text: qsTr("Change of language will be active in ownKeepass after restarting the application")
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
+                function toSettingsIndex(value) {
+                    switch (value) {
+                    case Global.system_default:
+                        return Language.SYSTEM_DEFAULT
+                    case Global.english:
+                        return Language.EN // English
+                    case Global.swedish:
+                        return Language.SV_SE // Swedish
+                    case Global.finnish:
+                        return Language.FI_FI // Finnish
+                    case Global.german:
+                        return Language.DE_DE // German
+                    case Global.czech:
+                        return Language.CS_CZ // Czech
+                    case Global.catalan:
+                        return Language.CA // Catalan
+                    case Global.dutch:
+                        return Language.NL_NL // Dutch
+                    case Global.spanish:
+                        return Language.ES // Spanish
+                    case Global.french:
+                        return Language.FR_FR // French
+                    case Global.italian:
+                        return Language.IT // Italian
+                    case Global.russian:
+                        return Language.RU // Russian
+                    case Global.danish:
+                        return Language.DA // Danish
+                    case Global.polish:
+                        return Language.PL_PL // Polish
+                    case Global.chinese:
+                        return Language.ZH_CN // Chinese
+                    case Global.ukrainian:
+                        return Language.UK_UA // Ukrainian
+                    case Global.norwegian_bokmal:
+                        return Language.NB_NO // Norwegian Bokmål
+                    default:
+                        return Language.EN // English
+                    }
+                }
+
+                onCurrentIndexChanged: {
+                    editSettingsDialog.languageChanged =
+                            toSettingsIndex(language.currentIndex) !== ownKeepassSettings.language
+                    editSettingsDialog.updateCoverState()
                 }
             }
 
@@ -538,7 +509,7 @@ Dialog {
                     language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
                     fastUnlockRetryCount.value,
-                    orientation.currentIndex)
+                    uiOrientation.currentIndex)
         kdbListItemInternal.saveKeepassSettings()
     }
 
@@ -558,7 +529,7 @@ Dialog {
                     language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
                     fastUnlockRetryCount.value,
-                    orientation.currentIndex)
+                    uiOrientation.currentIndex)
         kdbListItemInternal.checkForUnsavedKeepassSettingsChanges()
     }
 }

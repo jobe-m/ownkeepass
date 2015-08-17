@@ -806,6 +806,7 @@ Page {
         property int language
         property bool fastUnlock
         property int fastUnlockRetryCount
+        property int uiOrientation
 
         /*
           Commonly used for manipulation and creation of entries and groups
@@ -946,7 +947,8 @@ Page {
         function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
                                     aSortAlphabeticallyInListView,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
-                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage, aFastUnlock, aFastUnlockRetryCount) {
+                                    aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage,
+                                    aFastUnlock, aFastUnlockRetryCount, aOrientation) {
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
@@ -960,6 +962,7 @@ Page {
             language = aLanguage
             fastUnlock = aFastUnlock
             fastUnlockRetryCount = aFastUnlockRetryCount
+            uiOrientation = aOrientation
         }
 
         function checkForUnsavedKeepassSettingsChanges() {
@@ -976,7 +979,8 @@ Page {
                     ownKeepassSettings.clearClipboard !== clearClipboard ||
                     ownKeepassSettings.language !== language ||
                     ownKeepassSettings.fastUnlock !== fastUnlock ||
-                    ownKeepassSettings.fastUnlockRetryCount !== fastUnlockRetryCount) {
+                    ownKeepassSettings.fastUnlockRetryCount !== fastUnlockRetryCount ||
+                    ownKeepassSettings.uiOrientation !== uiOrientation) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_APP_SETTINGS"})
             }
@@ -996,6 +1000,7 @@ Page {
             ownKeepassSettings.language = language
             ownKeepassSettings.fastUnlock = fastUnlock
             ownKeepassSettings.fastUnlockRetryCount = fastUnlockRetryCount
+            ownKeepassSettings.uiOrientation = uiOrientation
         }
     }
 

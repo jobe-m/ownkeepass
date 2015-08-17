@@ -58,6 +58,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_language(0),
     m_fastUnlock(true),
     m_fastUnlockRetryCount(2),
+    m_uiOrientation(0),
     m_settings(new Settings(filePath, parent))
 {
     qDebug() << "ownKeepass version: " << m_version;
@@ -171,6 +172,7 @@ void OwnKeepassSettings::loadSettings() {
     m_language                       = (m_settings->getValue("settings/language", QVariant(m_language))).toInt();
     m_fastUnlock                     = (m_settings->getValue("settings/fastUnlock", QVariant(m_fastUnlock))).toBool();
     m_fastUnlockRetryCount           = (m_settings->getValue("settings/fastUnlockRetryCount", QVariant(m_fastUnlockRetryCount))).toInt();
+    m_uiOrientation                  = (m_settings->getValue("settings/uiOrientation", QVariant(m_uiOrientation))).toInt();
 
     // emit signals for property changes
     emit defaultCryptAlgorithmChanged();
@@ -192,6 +194,7 @@ void OwnKeepassSettings::loadSettings() {
     emit languageChanged();
     emit fastUnlockChanged();
     emit fastUnlockRetryCountChanged();
+    emit uiOrientationChanged();
 }
 
 void OwnKeepassSettings::addRecentDatabase(QString uiName,
@@ -449,6 +452,15 @@ void OwnKeepassSettings::setFastUnlockRetryCount(const int value)
         m_fastUnlockRetryCount = value;
         m_settings->setValue("settings/fastUnlockRetryCount", QVariant(m_fastUnlockRetryCount));
         emit fastUnlockRetryCountChanged();
+    }
+}
+
+void OwnKeepassSettings::setUiOrientation(int value)
+{
+    if (value != m_uiOrientation) {
+        m_uiOrientation = value;
+        m_settings->setValue("settings/uiOrientation", QVariant(m_uiOrientation));
+        emit uiOrientationChanged();
     }
 }
 
