@@ -26,7 +26,7 @@ import harbour.ownkeepass 1.0
 import "../common"
 
 Page {
-    id: page
+    id: aboutPage
 
     allowedOrientations: applicationWindow.orientationSetting
 
@@ -46,6 +46,8 @@ Page {
             PageHeaderExtended {
                 title: qsTr("About ownKeepass")
                 subTitle: qsTr("Password Safe")
+                subTitleOpacity: 0.5
+                subTitleBottomMargin: aboutPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
             }
 
             Image {

@@ -25,7 +25,7 @@ import Sailfish.Silica 1.0
 import "../common"
 
 Page {
-    id: page
+    id: licensePage
 
     allowedOrientations: applicationWindow.orientationSetting
 
@@ -45,6 +45,8 @@ Page {
             PageHeaderExtended {
                 title: "ownKeepass"
                 subTitle: qsTr("Password Safe")
+                subTitleOpacity: 0.5
+                subTitleBottomMargin: licensePage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
             }
 
             SilicaLabel {
@@ -69,8 +71,8 @@ KeepassX database code:<br>\
 Copyright (C) 2005-2006 by Tarek Saidi<br>\
 GPLv2<br><br>\
 \
-KeepassX password generator:<br>\
-Copyright (C) 2013 Felix Geyer<br>\
+KeepassX 2 database and password generator code:<br>\
+Copyright (C) 2013-2015 Felix Geyer<br>\
 GPLv2 or (at your option) GPLv3<br><br>\
 \
 AES crypto:<br>\

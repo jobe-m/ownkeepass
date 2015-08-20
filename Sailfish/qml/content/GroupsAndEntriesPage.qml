@@ -96,6 +96,8 @@ Page {
             anchors.left: parent.left
             width: parent.width
             subTitle: "ownKeepass"
+            subTitleOpacity: 0.5
+            subTitleBottomMargin: groupsAndEntriesPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
         }
 
         SearchField {

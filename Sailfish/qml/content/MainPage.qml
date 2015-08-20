@@ -168,105 +168,137 @@ Page {
             PageHeaderExtended {
                 title: "ownKeepass"
                 subTitle: qsTr("Password Safe")
+                subTitleOpacity: 0.5
+                subTitleBottomMargin: mainPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
             }
 
             Image {
+                enabled: mainPage.orientation === Orientation.Portrait
+                visible: enabled
                 width: 492
                 height: 492
                 source: "../../wallicons/wall-ownKeys.png"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
-            SilicaLabel {
-                enabled: confirmPasswordField.enabled
-                visible: enabled
-                text: qsTr("Type in a master password for locking your new Keepass Password Safe:") + "\n"
-            }
-
             Item {
                 width: parent.width
-                height: passwordField.height
+                height: mainPage.orientation === Orientation.Portrait ?
+                            passwordFieldColumn.height :
+                            (passwordFieldColumn.height + Theme.paddingLarge)
 
-                TextField {
-                    id: passwordField
-                    anchors.top: parent.top
+                Image {
+                    id: smallImage
+                    enabled: mainPage.orientation !== Orientation.Portrait
+                    visible: enabled
+                    width: mainPage.orientation === Orientation.Portrait ? 0 : 250
+                    height: 250
+                    source: "../../wallicons/wall-ownKeys.png"
                     anchors.left: parent.left
-                    anchors.right: showPasswordButton.left
-                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                    echoMode: TextInput.Password
-                    label: qsTr("Master password")
-                    placeholderText: qsTr("Enter master password")
-                    text: ""
-                    EnterKey.enabled: !errorHighlight
-                    EnterKey.highlighted: true
-                    EnterKey.iconSource: text.length === 0 ?
-                                             "image://theme/icon-m-enter-close" :
-                                             mainPageFlickable.state === "CREATE_NEW_DATABASE" ?
-                                                 "image://theme/icon-m-enter-next" :
-                                                 "image://theme/icon-m-enter-accept"
-                    EnterKey.onClicked: {
-                        if (text.length === 0) {
-                            parent.focus = true
-                        } else if (mainPageFlickable.state === "CREATE_NEW_DATABASE") {
-                            confirmPasswordField.focus = true
-                        } else {
-                            parent.focus = true
-                            // open master groups page and load database in background
-                            var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                                  { "initOnPageConstruction": false, "groupId": "0" })
-                            var createNewDatabase =  false
-                            internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
-                            passwordField.text = ""
-                        }
-                    }
-                    focusOutBehavior: -1
+                    anchors.leftMargin: mainPage.orientation === Orientation.Portrait ? 0: Theme.paddingLarge
+                    anchors.bottom: parent.bottom
                 }
 
-                IconButton {
-                    id: showPasswordButton
+                Column {
+                    id: passwordFieldColumn
+                    spacing: 0
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
-                    anchors.verticalCenter: parent.verticalCenter
-                    icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" :
-                                                                               "../../wallicons/icon-l-closeeye.png"
-                    onClicked: {
-                        if (passwordField.echoMode === TextInput.Normal) {
-                            passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Password
-                        } else {
-                            passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Normal
+                    anchors.left: smallImage.right
+                    anchors.leftMargin: mainPage.orientation === Orientation.Portrait ? 0 : Theme.paddingLarge
+                    anchors.bottom: parent.bottom
+
+                    SilicaLabel {
+                        enabled: confirmPasswordField.enabled
+                        visible: enabled
+                        text: qsTr("Type in a master password for locking your new Keepass Password Safe:") + "\n"
+                    }
+
+                    Item {
+                        width: parent.width
+                        height: passwordField.height
+
+                        TextField {
+                            id: passwordField
+                            anchors.top: parent.top
+                            anchors.left: parent.left
+                            anchors.right: showPasswordButton.left
+                            inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                            echoMode: TextInput.Password
+                            label: qsTr("Master password")
+                            placeholderText: qsTr("Enter master password")
+                            text: ""
+                            EnterKey.enabled: !errorHighlight
+                            EnterKey.highlighted: true
+                            EnterKey.iconSource: text.length === 0 ?
+                                                     "image://theme/icon-m-enter-close" :
+                                                     mainPageFlickable.state === "CREATE_NEW_DATABASE" ?
+                                                         "image://theme/icon-m-enter-next" :
+                                                         "image://theme/icon-m-enter-accept"
+                            EnterKey.onClicked: {
+                                if (text.length === 0) {
+                                    parent.focus = true
+                                } else if (mainPageFlickable.state === "CREATE_NEW_DATABASE") {
+                                    confirmPasswordField.focus = true
+                                } else {
+                                    parent.focus = true
+                                    // open master groups page and load database in background
+                                    var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                                                                          { "initOnPageConstruction": false, "groupId": "0" })
+                                    var createNewDatabase =  false
+                                    internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
+                                    passwordField.text = ""
+                                }
+                            }
+                            focusOutBehavior: -1
+                        }
+
+                        IconButton {
+                            id: showPasswordButton
+                            anchors.right: parent.right
+                            anchors.rightMargin: Theme.paddingLarge
+                            anchors.verticalCenter: parent.verticalCenter
+                            icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" :
+                                                                                       "../../wallicons/icon-l-closeeye.png"
+                            onClicked: {
+                                if (passwordField.echoMode === TextInput.Normal) {
+                                    passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Password
+                                } else {
+                                    passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Normal
+                                }
+                            }
                         }
                     }
-                }
-            }
 
-            TextField {
-                id: confirmPasswordField
-                width: parent.width
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                echoMode: TextInput.Password
-                visible: enabled
-                errorHighlight: passwordField.text !== text && text.length !== 0
-                label: qsTr("Confirm master password")
-                placeholderText: label
-                text: ""
-                EnterKey.enabled: text.length === 0 || (passwordField.text.length >= 3 && !errorHighlight)
-                EnterKey.highlighted: text.length === 0 || !errorHighlight
-                EnterKey.iconSource: text.length === 0 ?
-                                         "image://theme/icon-m-enter-close" :
-                                         "image://theme/icon-m-enter-accept"
-                EnterKey.onClicked: {
-                    parent.focus = true
-                    if (text.length !== 0) {
-                        // open master groups page and load database in background
-                        var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                              { "initOnPageConstruction": false, "groupId": "0" })
-                        var createNewDatabase = true
-                        internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
-                        passwordField.text = ""
-                        confirmPasswordField.text = ""
+                    TextField {
+                        id: confirmPasswordField
+                        width: parent.width
+                        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                        echoMode: TextInput.Password
+                        visible: enabled
+                        errorHighlight: passwordField.text !== text && text.length !== 0
+                        label: qsTr("Confirm master password")
+                        placeholderText: label
+                        text: ""
+                        EnterKey.enabled: text.length === 0 || (passwordField.text.length >= 3 && !errorHighlight)
+                        EnterKey.highlighted: text.length === 0 || !errorHighlight
+                        EnterKey.iconSource: text.length === 0 ?
+                                                 "image://theme/icon-m-enter-close" :
+                                                 "image://theme/icon-m-enter-accept"
+                        EnterKey.onClicked: {
+                            parent.focus = true
+                            if (text.length !== 0) {
+                                // open master groups page and load database in background
+                                var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                                                                      { "initOnPageConstruction": false, "groupId": "0" })
+                                var createNewDatabase = true
+                                internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
+                                passwordField.text = ""
+                                confirmPasswordField.text = ""
+                            }
+                        }
+                        focusOutBehavior: -1
                     }
                 }
-                focusOutBehavior: -1
             }
 
             Column {
@@ -285,8 +317,8 @@ Page {
                     width: parent.width
                     spacing: 0
 
-//                    Behavior on opacity { FadeAnimation { duration: 200 } }
-//                    Behavior on height { NumberAnimation { duration: 200 } }
+                    Behavior on opacity { FadeAnimation { duration: 400 } }
+                    Behavior on height { NumberAnimation { duration: 400 } }
 
                     Label {
                         id: databasePathAndName
@@ -440,6 +472,14 @@ Page {
     Component.onCompleted: {
         // Init some global variables
         Global.env.setMainPage(mainPage)
+
+        console.log("Landscape: " + Orientation.Landscape)
+        console.log("LandscapeInverted: " + Orientation.LandscapeInverted)
+        console.log("LandscapeMask: " + Orientation.LandscapeMask)
+    }
+
+    onOrientationChanged: {
+        console.log("page.orientation: " + mainPage.orientation)
     }
 
     onStatusChanged: {

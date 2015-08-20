@@ -36,7 +36,7 @@ ApplicationWindow
     // For accessing info popup from everywhere make it global for the application
     property InfoPopup infoPopupRef: infoPopup
 
-    property int orientationSetting
+    property int orientationSetting: (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
 
     initialPage: mainPageContainer
     cover: coverPage

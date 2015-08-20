@@ -26,15 +26,18 @@ import Sailfish.Silica 1.0
 PageHeader {
 
     property string subTitle: ""
+    property alias subTitleOpacity: subLabel.opacity
+    property real subTitleBottomMargin: Theme.paddingSmall
 
     Label {
+        id: subLabel
         text: subTitle
         color: Theme.highlightColor
         anchors {
             right: parent.right
             rightMargin: Theme.paddingLarge
             bottom: parent.bottom
-            bottomMargin: Theme.paddingSmall
+            bottomMargin: subTitleBottomMargin
         }
         font {
             pixelSize: Theme.fontSizeExtraSmall

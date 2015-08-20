@@ -141,6 +141,8 @@ Page {
                 id: pageHeader
                 title: pageTitle
                 subTitle: "ownKeepass"
+                subTitleOpacity: 0.5
+                subTitleBottomMargin: showEntryDetailsPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
             }
 
             TextArea {

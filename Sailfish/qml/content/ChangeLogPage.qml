@@ -25,7 +25,7 @@ import Sailfish.Silica 1.0
 import "../common"
 
 Page {
-    id: page
+    id: changeLogPage
 
     allowedOrientations: applicationWindow.orientationSetting
 
@@ -45,6 +45,8 @@ Page {
             PageHeaderExtended {
                 title: "ownKeepass"
                 subTitle: qsTr("Password Safe")
+                subTitleOpacity: 0.5
+                subTitleBottomMargin: changeLogPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
             }
 
             SilicaLabel {
