@@ -33,10 +33,12 @@ ApplicationWindow
 
     // For accessing main page to pass further application activity status
     property MainPage mainPageRef: null
-    // For accessing info popup from everywhere make it global for the application
-    property InfoPopup infoPopupRef: infoPopup
 
     property int orientationSetting: (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
+
+    function showInfoPopup(type, title, message, timeout) {
+        infoPopup.show(type, title, message, timeout)
+    }
 
     initialPage: mainPageContainer
     cover: coverPage
@@ -45,9 +47,6 @@ ApplicationWindow
     // application UI elements
     InfoPopup {
         id: infoPopup
-        Component.onCompleted: {
-            Global.env.setInfoPopup(infoPopup)
-        }
     }
 
     Component {
@@ -70,7 +69,7 @@ ApplicationWindow
         onShowChangeLogBanner: {
             var title = qsTr("ownKeepass got updated")
             var message = qsTr("New version %1 now installed on your phone. Have a look in the change log for details.").arg(ownKeepassSettings.version)
-            infoPopup.show(Global.info, title, message)
+            applicationWindow.showInfoPopup(Global.info, title, message)
             pageStack.push(Qt.resolvedUrl("content/ChangeLogPage.qml"))
         }
     }
@@ -80,7 +79,7 @@ ApplicationWindow
         onShowErrorBanner: {
             var title = qsTr("Problem with SD card")
             var message = qsTr("SD cards with multiple partitions are not supported.")
-            infoPopup.show(Global.error, title, message)
+            applicationWindow.showInfoPopup(Global.error, title, message)
         }
     }
 

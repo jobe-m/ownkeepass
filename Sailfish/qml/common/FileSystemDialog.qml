@@ -68,7 +68,7 @@ Dialog {
         onShowErrorBanner: {
             var title = qsTr("Problem with SD card")
             var message = qsTr("SD cards with multiple partitions are not supported.")
-            Global.env.infoPopup.show(Global.info, title, message)
+            applicationWindow.showInfoPopup(Global.info, title, message)
         }
     }
 

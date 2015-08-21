@@ -85,18 +85,12 @@ var activeDatabase = ""
 
 var env = {
     mainPage: undefined,
-    infoPopup: undefined,
     keepassSettings: undefined,
     coverPage: undefined,
 
     setMainPage: function(obj) {
         this.mainPage = obj
     },
-
-    setInfoPopup: function(obj) {
-        this.infoPopup = obj
-    },
-
     setKeepassSettings: function(obj) {
         this.keepassSettings = obj
     },

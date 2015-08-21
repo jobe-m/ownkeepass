@@ -216,7 +216,7 @@ Page {
                                             } else {
                                                 message = qsTr("You have one try left")
                                             }
-                                            Global.env.infoPopup.show(Global.warning, qsTr("Wrong unlock code"), message, 3)
+                                            applicationWindow.showInfoPopup(Global.warning, qsTr("Wrong unlock code"), message, 3)
                                         }
                                     }
                                 }
