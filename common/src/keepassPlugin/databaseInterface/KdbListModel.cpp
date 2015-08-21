@@ -119,6 +119,7 @@ void KdbListModel::disconnectFromDatabaseClient()
 
     m_connected = false;
     m_registered = false;
+    m_modelId = "";
 }
 
 KdbListModel::~KdbListModel()
@@ -164,7 +165,7 @@ void KdbListModel::loadGroupListFromDatabase()
         // this list model is only used in a dialog and is thrown away afterwards, so it does not need to be registered
         // i.e. changes on the database which are normally reflecte to list models are not needed here
         m_registered = true;
-        m_modelId = -1;
+        m_modelId = "-1";
         // send signal to global interface of keepass database to get master groups
         emit loadMasterGroups(false);
     }
@@ -256,7 +257,7 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, Q
         m_registered = true;
     }
     // only append if this item is for us
-    if (m_modelId == modelId) {
+    if (m_modelId.compare(modelId) == 0) {
         KdbItem item(title, subtitle, itemId, itemType, itemLevel);
         if (itemType == DatabaseItemType::ENTRY) {
             // append new entry to end of list
@@ -289,7 +290,7 @@ void KdbListModel::slot_addItemToListModelSorted(QString title, QString subtitle
         m_registered = true;
     }
     // only append if this item is for us
-    if (m_modelId == modelId) {
+    if (m_modelId.compare(modelId) == 0) {
         KdbItem item(title, subtitle, itemId, itemType, itemLevel);
         // compare and insert alphabetically into list model depending if it is an password entry or group
         // groups are put at the beginning of the list view before entries
@@ -336,7 +337,7 @@ This function updates a single groups item in the list model data.
 void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, QString itemId, QString modelId)
 {
     // check if we need to do anything
-    if (m_modelId == modelId) {
+    if (m_modelId.compare(modelId) == 0) {
         // look at each item in list model
         for (int i = 0; i < m_items.count(); i++) {
             if (m_items[i].m_id == itemId) {
@@ -357,7 +358,7 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, Q
 void KdbListModel::slot_updateItemInListModelSorted(QString title, QString subTitle, QString itemId, QString modelId)
 {
     // check if we need to do anything
-    if (m_modelId == modelId) {
+    if (m_modelId.compare(modelId) == 0) {
         // look at each item in list model
         for (int i = 0; i < m_items.count(); i++) {
             if (m_items[i].m_id == itemId) {
