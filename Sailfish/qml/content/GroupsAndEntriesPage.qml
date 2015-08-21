@@ -78,17 +78,27 @@ Page {
 
     allowedOrientations: applicationWindow.orientationSetting
 
+    onOrientationChanged: {
+        // Update header box height when page orientation changes, ie. page header hight also changes
+        if (orientation === Orientation.Portrait) {
+            // Orientation Portrait = -110
+            headerBox.listViewStart = -110
+        } else {
+            // Orientation Landscape = -80
+            headerBox.listViewStart = -80
+        }
+    }
+
     Item {
         id: headerBox
-        property int neutralPos: 0
-        y: 0 - listView.contentY + neutralPos
+        // (deault) Orientation Portrait = -110
+        property int listViewStart: -110
+        // y position of header box is depending of search field hight and list view content start position
+        // it also changes when pulley menu is opened (done with listView.contentY)
+        y: 0 - listView.contentY + listViewStart - searchField.height
         z: 1
         width: parent.width
         height: pageHeader.height + searchField.height
-
-        Component.onCompleted: {
-            neutralPos = listView.contentY
-        }
 
         PageHeaderExtended {
             id: pageHeader
@@ -111,15 +121,6 @@ Page {
             placeholderText: qsTr("Search")
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: listView.focus = true
-
-            onHeightChanged: {
-                // recalculate neutral position when search field appears and disappears
-                if (height === enabledHeight) {
-                    parent.neutralPos -= enabledHeight
-                } else if (height === 0) {
-                    parent.neutralPos += enabledHeight
-                }
-            }
 
             onTextChanged: {
                 if (text.length > 0) {
@@ -165,7 +166,12 @@ Page {
 
         ViewSearchPlaceholder {
             id: searchNoEntriesFoundPlaceholder
+            // we need to bind the y position of the placeholder to the list view content so that it moves when pulley menu is opened
+            y: 0 - listView.contentY
+            height: parent.height - headerBox.height
+            width: parent.width
             text: qsTr("No entries found")
+
             onClicked: {
                 searchField.forceActiveFocus()
             }
@@ -201,14 +207,22 @@ Page {
             }
         }
 
-        SilicaViewPlaceholder {
+        ViewPlaceholder {
             id: viewPlaceholder
-            image.source: "../../wallicons/wall-group.png"
+            verticalOffset: wallImage.height / 2
+
             text: qsTr("Group is empty")
             hintText: !ownKeepassDatabase.readOnly ?
                           (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
                           groupId === "0" ? qsTr("Pull down to add password groups") :
                                           qsTr("Pull down to add password groups or entries")) : ""
+
+            Image {
+                id: wallImage
+                anchors.bottom: parent.top
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "../../wallicons/wall-group.png"
+            }
         }
 
         DatabaseMenu {

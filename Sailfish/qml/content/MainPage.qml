@@ -472,14 +472,6 @@ Page {
     Component.onCompleted: {
         // Init some global variables
         Global.env.setMainPage(mainPage)
-
-        console.log("Landscape: " + Orientation.Landscape)
-        console.log("LandscapeInverted: " + Orientation.LandscapeInverted)
-        console.log("LandscapeMask: " + Orientation.LandscapeMask)
-    }
-
-    onOrientationChanged: {
-        console.log("page.orientation: " + mainPage.orientation)
     }
 
     onStatusChanged: {

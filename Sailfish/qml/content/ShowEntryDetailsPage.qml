@@ -64,13 +64,21 @@ Page {
         contentWidth: parent.width
         contentHeight: col.height
 
-        SilicaViewPlaceholder {
+        ViewPlaceholder {
             enabled: !entryUrlTextArea.enabled && !entryUsernameTextArea.enabled &&
                      !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
-            image.source: "../../wallicons/wall-key.png"
+            verticalOffset: wallImage.height / 2
+
             text: qsTr("No content")
             hintText: !ownKeepassDatabase.readOnly ?
                           qsTr("Pull down to add URL, username, password and comment") : ""
+
+            Image {
+                id: wallImage
+                anchors.bottom: parent.top
+                anchors.horizontalCenter: parent.horizontalCenter
+                source: "../../wallicons/wall-key.png"
+            }
         }
 
         PullDownMenu {

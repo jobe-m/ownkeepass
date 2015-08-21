@@ -128,7 +128,6 @@ OTHER_FILES += \
     qml/content/AboutPage.qml \
     qml/cover/CoverPage.qml \
     qml/scripts/Global.js \
-    qml/common/SilicaViewPlaceholder.qml \
     rpm/harbour-ownkeepass.yaml \
     harbour-ownkeepass.desktop \
     rpm/harbour-ownkeepass.spec \
