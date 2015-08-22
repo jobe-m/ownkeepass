@@ -69,11 +69,11 @@ Page {
     }
 
     function __showLoadErrorPage() {
-        applicationWindow.showInfoPopup(Global.error, qsTr("Load Error"), qsTr("Could not load all items from Keepass database file. That's strange."))
+        infoPopup.show(Global.error, qsTr("Load Error"), qsTr("Could not load all items from Keepass database file. That's strange."))
     }
 
     function __showSaveErrorPage() {
-        applicationWindow.showInfoPopup(Global.error, qsTr("Save Error"), qsTr("Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed."))
+        infoPopup.show(Global.error, qsTr("Save Error"), qsTr("Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed."))
     }
 
     allowedOrientations: applicationWindow.orientationSetting
@@ -162,6 +162,12 @@ Page {
             // list view resetting the input box everytime the model resets,
             // the search entry is defined outside the list view.
             height: headerBox.height
+        }
+
+        // Place info popup outside of page content so that it is shown over all
+        // application UI elements
+        InfoPopup {
+            id: infoPopup
         }
 
         ViewSearchPlaceholder {

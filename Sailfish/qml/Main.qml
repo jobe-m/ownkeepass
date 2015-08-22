@@ -36,18 +36,8 @@ ApplicationWindow
 
     property int orientationSetting: (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
 
-    function showInfoPopup(type, title, message, timeout) {
-        infoPopup.show(type, title, message, timeout)
-    }
-
     initialPage: mainPageContainer
     cover: coverPage
-
-    // Place info popup outside of page stack so that it is shown over all
-    // application UI elements
-    InfoPopup {
-        id: infoPopup
-    }
 
     Component {
         id: mainPageContainer
@@ -69,7 +59,7 @@ ApplicationWindow
         onShowChangeLogBanner: {
             var title = qsTr("ownKeepass got updated")
             var message = qsTr("New version %1 now installed on your phone. Have a look in the change log for details.").arg(ownKeepassSettings.version)
-            applicationWindow.showInfoPopup(Global.info, title, message)
+            mainPage.showInfoPopup(Global.info, title, message)
             pageStack.push(Qt.resolvedUrl("content/ChangeLogPage.qml"))
         }
     }
@@ -79,7 +69,7 @@ ApplicationWindow
         onShowErrorBanner: {
             var title = qsTr("Problem with SD card")
             var message = qsTr("SD cards with multiple partitions are not supported.")
-            applicationWindow.showInfoPopup(Global.error, title, message)
+            mainPage.showInfoPopup(Global.error, title, message)
         }
     }
 

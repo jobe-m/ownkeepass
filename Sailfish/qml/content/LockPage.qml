@@ -46,6 +46,12 @@ Page {
         contentWidth: parent.width
         contentHeight: col.height
 
+        // Place info popup outside of page content so that it is shown over all
+        // application UI elements
+        InfoPopup {
+            id: infoPopup
+        }
+
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
@@ -216,7 +222,7 @@ Page {
                                             } else {
                                                 message = qsTr("You have one try left")
                                             }
-                                            applicationWindow.showInfoPopup(Global.warning, qsTr("Wrong unlock code"), message, 3)
+                                            infoPopup.show(Global.warning, qsTr("Wrong unlock code"), message, 3)
                                         }
                                     }
                                 }
