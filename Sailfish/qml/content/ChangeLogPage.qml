@@ -23,16 +23,30 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
+import "../scripts/Global.js" as Global
 
 Page {
     id: changeLogPage
+    property bool newVersionAvailable: false
 
     allowedOrientations: applicationWindow.orientationSetting
+
+    Component.onCompleted: {
+        if (newVersionAvailable) {
+            var title = qsTr("ownKeepass got updated")
+            var message = qsTr("New version %1 now installed on your phone. Have a look in the change log for details.").arg(ownKeepassSettings.version)
+            infoPopup.show(Global.info, title, message)
+        }
+    }
 
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
         contentHeight: col.height
+
+        InfoPopup {
+            id: infoPopup
+        }
 
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
@@ -64,7 +78,7 @@ Page {
 <ul>\
 <li>Support for landscape orientation added (not only but for all TOHKBD owners :)</li>\
 <li>Orientation can be adjusted in application settings (Portrait / Landscape / Dynamic)</li>\
-<li>Added Support for reading Keepass 2 databases</li>\
+<li>Added support for reading Keepass 2 databases</li>\
 </ul>\
 <br>\
 <b>v1.1.6 Move password entries</b>\

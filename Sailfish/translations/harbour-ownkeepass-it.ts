@@ -79,12 +79,22 @@
 <context>
     <name>ChangeLogPage</name>
     <message>
-        <location filename="../qml/content/ChangeLogPage.qml" line="47"/>
+        <location filename="../qml/content/ChangeLogPage.qml" line="36"/>
+        <source>ownKeepass got updated</source>
+        <translation type="unfinished">ownKeepass aggiornato</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ChangeLogPage.qml" line="37"/>
+        <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
+        <translation type="unfinished">La versione %1 è ora installata. Dai un&apos;occhiata alle novità nel changelog.</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ChangeLogPage.qml" line="61"/>
         <source>Password Safe</source>
         <translation>Gestore password</translation>
     </message>
     <message>
-        <location filename="../qml/content/ChangeLogPage.qml" line="55"/>
+        <location filename="../qml/content/ChangeLogPage.qml" line="69"/>
         <source>Change log</source>
         <translation>Changelog</translation>
     </message>
@@ -715,12 +725,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="329"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="333"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="337"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="353"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="358"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="413"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="349"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="354"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="404"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="409"/>
         <source>Password groups</source>
         <translation>Gruppi password</translation>
     </message>
@@ -750,46 +760,46 @@
         <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="181"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="177"/>
         <source>No entries found</source>
         <translation>Nessuna corrispondenza</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="200"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="196"/>
         <source>Decrypting Keepass database</source>
         <translation>Caricamento database Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="222"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="218"/>
         <source>Group is empty</source>
         <translation>Gruppo vuoto</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="225"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="221"/>
         <source>Pull down to add password groups</source>
         <translation>Trascina per aggiungere un nuovo gruppo di password</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="226"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="222"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Trascina per aggiungere un gruppo di password o un nuovo elemento</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="317"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="313"/>
         <source>Loading</source>
         <translation>Caricamento</translation>
     </message>
     <message>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="373"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="377"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="418"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="414"/>
         <source>Search in all groups</source>
         <translation>Cerca in tutti i gruppi</translation>
     </message>
     <message>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="374"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="378"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="419"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Search in</source>
         <translation>Cerca in</translation>
     </message>
@@ -920,32 +930,32 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>LockPage</name>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="60"/>
+        <location filename="../qml/content/LockPage.qml" line="58"/>
         <source>Close Database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="83"/>
+        <location filename="../qml/content/LockPage.qml" line="81"/>
         <source>Password Safe</source>
         <translation>Gestore password</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="125"/>
+        <location filename="../qml/content/LockPage.qml" line="123"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Sblocca inserendo i primi 3 caratteri della tua password principale:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="221"/>
+        <location filename="../qml/content/LockPage.qml" line="219"/>
         <source>You have %1 tries left</source>
         <translation>Hai %1 tentativi</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="221"/>
         <source>You have one try left</source>
         <translation>Ultimo tentativo</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="223"/>
         <source>Wrong unlock code</source>
         <translation>Codice non corretto</translation>
     </message>
@@ -953,287 +963,293 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>Main</name>
     <message>
-        <location filename="../qml/Main.qml" line="60"/>
         <source>ownKeepass got updated</source>
-        <translation>ownKeepass aggiornato</translation>
+        <translation type="vanished">ownKeepass aggiornato</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="61"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation>La versione %1 è ora installata. Dai un&apos;occhiata alle novità nel changelog.</translation>
+        <translation type="vanished">La versione %1 è ora installata. Dai un&apos;occhiata alle novità nel changelog.</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="70"/>
         <source>Problem with SD card</source>
-        <translation>Problema con la scheda SD</translation>
+        <translation type="vanished">Problema con la scheda SD</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="71"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation>Le schede SD con più partizioni non sono supportate.</translation>
+        <translation type="vanished">Le schede SD con più partizioni non sono supportate.</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="176"/>
+        <location filename="../qml/content/MainPage.qml" line="183"/>
         <source>Password Safe</source>
         <translation>Gestore password</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="219"/>
+        <location filename="../qml/content/MainPage.qml" line="226"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Inserisci una password principale per bloccare il tuo gestore password Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="233"/>
+        <location filename="../qml/content/MainPage.qml" line="240"/>
         <source>Master password</source>
         <translation>Password principale</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="234"/>
+        <location filename="../qml/content/MainPage.qml" line="241"/>
         <source>Enter master password</source>
         <translation>Inserisci password principale</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="285"/>
+        <location filename="../qml/content/MainPage.qml" line="292"/>
         <source>Confirm master password</source>
         <translation>Conferma password principale</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="316"/>
+        <location filename="../qml/content/MainPage.qml" line="323"/>
         <source>Show more details</source>
         <translation>Mostra altri dettagli</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="355"/>
+        <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>Key file path and name</source>
         <translation>Percorso e nome della chiave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="355"/>
+        <location filename="../qml/content/MainPage.qml" line="362"/>
         <source>No key file used</source>
         <translation>Nessuna chiave utilizzata</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="132"/>
+        <location filename="../qml/content/MainPage.qml" line="139"/>
         <source>Create new database</source>
         <translation>Crea nuovo database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="149"/>
+        <location filename="../qml/content/MainPage.qml" line="94"/>
+        <source>Problem with SD card</source>
+        <translation type="unfinished">Problema con la scheda SD</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="95"/>
+        <source>SD cards with multiple partitions are not supported.</source>
+        <translation type="unfinished">Le schede SD con più partizioni non sono supportate.</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="156"/>
         <source>Open database</source>
         <translation>Apri database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="382"/>
+        <location filename="../qml/content/MainPage.qml" line="389"/>
         <source>Database type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="399"/>
+        <location filename="../qml/content/MainPage.qml" line="406"/>
         <source>Unknown</source>
         <extracomment>Here unknown is used for unknown database type</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="406"/>
+        <location filename="../qml/content/MainPage.qml" line="413"/>
         <source>Recent databases</source>
         <translation>Database recenti</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="426"/>
+        <location filename="../qml/content/MainPage.qml" line="433"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="435"/>
+        <location filename="../qml/content/MainPage.qml" line="442"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="580"/>
+        <location filename="../qml/content/MainPage.qml" line="587"/>
         <source>Permission error</source>
         <translation>Errore permesso</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="580"/>
+        <location filename="../qml/content/MainPage.qml" line="587"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Impossibile creare il percorso del tuo database. Prova a impostare i permessi della cartella per l&apos;utente &apos;nemo&apos;</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="585"/>
-        <location filename="../qml/content/MainPage.qml" line="602"/>
+        <location filename="../qml/content/MainPage.qml" line="592"/>
+        <location filename="../qml/content/MainPage.qml" line="609"/>
         <source>Key file error</source>
         <translation>Errore file chiave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="585"/>
-        <location filename="../qml/content/MainPage.qml" line="602"/>
+        <location filename="../qml/content/MainPage.qml" line="592"/>
+        <location filename="../qml/content/MainPage.qml" line="609"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Il percorso del database è ok, ma il file chiave non è presente. Controlla il percorso del file chiave:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="590"/>
+        <location filename="../qml/content/MainPage.qml" line="597"/>
         <source>Database file already exists</source>
         <translation>File database esistente</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="590"/>
+        <location filename="../qml/content/MainPage.qml" line="597"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Specifica un altro percorso o nome per il tuo database o elimina il tuo vecchio databse.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>Database file error</source>
         <translation>Errore file database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Il file del database non esiste. Controlla il percorso del file del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="637"/>
+        <location filename="../qml/content/MainPage.qml" line="644"/>
         <source>Read only support</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="638"/>
+        <location filename="../qml/content/MainPage.qml" line="645"/>
         <source>Keepass 2 database support is currently limited to read only.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="652"/>
+        <location filename="../qml/content/MainPage.qml" line="659"/>
         <source>Database file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="653"/>
+        <location filename="../qml/content/MainPage.qml" line="660"/>
         <source>The specified file is not a Keepass database.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="658"/>
+        <location filename="../qml/content/MainPage.qml" line="665"/>
         <source>Database version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="659"/>
+        <location filename="../qml/content/MainPage.qml" line="666"/>
         <source>The specified file has an unsupported Keepass database version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="665"/>
+        <location filename="../qml/content/MainPage.qml" line="672"/>
         <source>Database headers are missing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="670"/>
-        <location filename="../qml/content/MainPage.qml" line="676"/>
+        <location filename="../qml/content/MainPage.qml" line="677"/>
+        <location filename="../qml/content/MainPage.qml" line="683"/>
         <source>Wrong password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="671"/>
+        <location filename="../qml/content/MainPage.qml" line="678"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="677"/>
+        <location filename="../qml/content/MainPage.qml" line="684"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="683"/>
+        <location filename="../qml/content/MainPage.qml" line="690"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="688"/>
-        <location filename="../qml/content/MainPage.qml" line="694"/>
+        <location filename="../qml/content/MainPage.qml" line="695"/>
+        <location filename="../qml/content/MainPage.qml" line="701"/>
         <source>File I/O error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="724"/>
+        <location filename="../qml/content/MainPage.qml" line="731"/>
         <source>Password changed</source>
         <translation>Password cambiata</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="724"/>
+        <location filename="../qml/content/MainPage.qml" line="731"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>La password principale del tuo database è stata cambiata.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="664"/>
-        <location filename="../qml/content/MainPage.qml" line="682"/>
-        <location filename="../qml/content/MainPage.qml" line="731"/>
-        <location filename="../qml/content/MainPage.qml" line="751"/>
-        <location filename="../qml/content/MainPage.qml" line="773"/>
+        <location filename="../qml/content/MainPage.qml" line="671"/>
+        <location filename="../qml/content/MainPage.qml" line="689"/>
+        <location filename="../qml/content/MainPage.qml" line="738"/>
+        <location filename="../qml/content/MainPage.qml" line="758"/>
+        <location filename="../qml/content/MainPage.qml" line="780"/>
         <source>Internal database error</source>
         <translation>Errore interno database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="731"/>
+        <location filename="../qml/content/MainPage.qml" line="738"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Impossibile chiudere il database aperto, riprova, Errore;</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="735"/>
+        <location filename="../qml/content/MainPage.qml" line="742"/>
         <source>Internal key error</source>
         <translation>Errore interno chiave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="735"/>
-        <location filename="../qml/content/MainPage.qml" line="739"/>
+        <location filename="../qml/content/MainPage.qml" line="742"/>
+        <location filename="../qml/content/MainPage.qml" line="746"/>
         <source>The following error occured during opening of database:</source>
         <translation>Errore durante l&apos;apertura del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="739"/>
+        <location filename="../qml/content/MainPage.qml" line="746"/>
         <source>Internal key file error</source>
         <translation>Errore interno file chiave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="743"/>
+        <location filename="../qml/content/MainPage.qml" line="750"/>
         <source>Error loading database</source>
         <translation>Errore caricamento database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="743"/>
+        <location filename="../qml/content/MainPage.qml" line="750"/>
         <source>Please try again.</source>
         <translation>Riprova.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="747"/>
+        <location filename="../qml/content/MainPage.qml" line="754"/>
         <source>Internal file error</source>
         <translation>Errore interno file</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="747"/>
+        <location filename="../qml/content/MainPage.qml" line="754"/>
         <source>The following error occured during creation of database:</source>
         <translation>Errore durante la creazione del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="751"/>
+        <location filename="../qml/content/MainPage.qml" line="758"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Creazione del gruppo di backup fallita:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="755"/>
+        <location filename="../qml/content/MainPage.qml" line="762"/>
         <source>Save database error</source>
         <translation>Errore salvataggio database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="755"/>
+        <location filename="../qml/content/MainPage.qml" line="762"/>
         <source>Could not save database with following error:</source>
         <translation>Impossibile salvare database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="762"/>
+        <location filename="../qml/content/MainPage.qml" line="769"/>
         <source>Database error</source>
         <translation>Errore database</translation>
     </message>
@@ -1242,57 +1258,57 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation type="vanished">Database già chiuso. Niente di grave, ma per favore segnala questo bug.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="762"/>
+        <location filename="../qml/content/MainPage.qml" line="769"/>
         <source>An error occured on closing your database:</source>
         <translation>Errore durante la chiusura del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="768"/>
+        <location filename="../qml/content/MainPage.qml" line="775"/>
         <source>Crypto init error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="769"/>
+        <location filename="../qml/content/MainPage.qml" line="776"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="774"/>
+        <location filename="../qml/content/MainPage.qml" line="781"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1194"/>
+        <location filename="../qml/content/MainPage.qml" line="1201"/>
         <source>Yes</source>
         <translation>Sì</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1195"/>
+        <location filename="../qml/content/MainPage.qml" line="1202"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1196"/>
+        <location filename="../qml/content/MainPage.qml" line="1203"/>
         <source>Unsaved changes</source>
         <translation>Modifiche non salvate</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1224"/>
+        <location filename="../qml/content/MainPage.qml" line="1231"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Vuoi salvare le modifiche all&apos;elemento?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1229"/>
+        <location filename="../qml/content/MainPage.qml" line="1236"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Vuoi salvare le modifiche al gruppo?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1234"/>
+        <location filename="../qml/content/MainPage.qml" line="1241"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Vuoi salvare le modifiche alle impostazioni del database?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1239"/>
+        <location filename="../qml/content/MainPage.qml" line="1246"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Vuoi salvare le modifiche alle impostazioni?</translation>
     </message>

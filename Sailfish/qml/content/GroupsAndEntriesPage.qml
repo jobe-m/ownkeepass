@@ -164,8 +164,6 @@ Page {
             height: headerBox.height
         }
 
-        // Place info popup outside of page content so that it is shown over all
-        // application UI elements
         InfoPopup {
             id: infoPopup
         }

@@ -57,19 +57,8 @@ ApplicationWindow
     Connections {
         target: ownKeepassSettings
         onShowChangeLogBanner: {
-            var title = qsTr("ownKeepass got updated")
-            var message = qsTr("New version %1 now installed on your phone. Have a look in the change log for details.").arg(ownKeepassSettings.version)
-            mainPage.showInfoPopup(Global.info, title, message)
-            pageStack.push(Qt.resolvedUrl("content/ChangeLogPage.qml"))
-        }
-    }
-
-    Connections {
-        target: ownKeepassHelper
-        onShowErrorBanner: {
-            var title = qsTr("Problem with SD card")
-            var message = qsTr("SD cards with multiple partitions are not supported.")
-            mainPage.showInfoPopup(Global.error, title, message)
+            pageStack.push(Qt.resolvedUrl("content/ChangeLogPage.qml"),
+                           { "newVersionAvailable": true })
         }
     }
 

@@ -88,6 +88,15 @@ Page {
 
     allowedOrientations: applicationWindow.orientationSetting
 
+    Connections {
+        target: ownKeepassHelper
+        onShowErrorBanner: {
+            var title = qsTr("Problem with SD card")
+            var message = qsTr("SD cards with multiple partitions are not supported.")
+            infoPopup.show(Global.error, title, message)
+        }
+    }
+
     Timer {
         id: inactivityTimer
         running: false
@@ -117,8 +126,6 @@ Page {
         contentWidth: parent.width
         contentHeight: col.height
 
-        // Place info popup outside of page content so that it is shown over all
-        // application UI elements
         InfoPopup {
             id: infoPopup
         }
@@ -635,7 +642,7 @@ Page {
             case DatabaseAccessResult.RE_DB_READ_ONLY:
                 infoPopup.show(Global.info,
                                           qsTr("Read only support"),
-                                          qsTr("Keepass 2 database support is currently limited to read only."), 5)
+                                          qsTr("Keepass 2 database support is currently limited to read only."))
                 // Database opened successfully in read only mode, now init master groups page and cover page
                 Global.enableDatabaseLock = true
                 masterGroupsPage.init()
