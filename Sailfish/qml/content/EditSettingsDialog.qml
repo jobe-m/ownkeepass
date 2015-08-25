@@ -272,9 +272,9 @@ Dialog {
                 currentIndex: ownKeepassSettings.uiOrientation
                 menu: ContextMenu {
                     //: Dynamic means that the display orientation is changed according how the device is hold by the user
-                    MenuItem { text: "Dynamic" } // 0
-                    MenuItem { text: "Portrait" } // 1
-                    MenuItem { text: "Landscape" } // 2
+                    MenuItem { text: qsTr("Dynamic") } // 0
+                    MenuItem { text: qsTr("Portrait") } // 1
+                    MenuItem { text: qsTr("Landscape") } // 2
                 }
 
                 onCurrentIndexChanged: {
