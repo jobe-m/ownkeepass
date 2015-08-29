@@ -383,11 +383,6 @@ Page {
             pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
         } else if (status === PageStatus.Active) {
 
-            // Disable searchbar when Keepass 2 database is opened, searching is not yet implemented
-            if (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2) {
-                state = "SEARCH_BAR_HIDDEN"
-            }
-
             // check if page state needs to change because search bar state was changed on a sub-page
             if (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
                     ownKeepassSettings.showSearchBar &&

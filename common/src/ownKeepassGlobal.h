@@ -62,6 +62,7 @@ public:
         RE_HEAD_HASH_MISMATCH,                      // Database head doesn't match hash
         RE_DBFILE_OPEN_ERROR,                       // Cannot open database file, more detailed error message available as attached string in signal
         RE_KEYFILE_OPEN_ERROR,                      // Cannot open key file, more detailed error message available as attached string in signal
+        RE_ERR_SEARCH,                              // search group is invalid
 
 
         // Keepass 1 specific

@@ -31,6 +31,7 @@
 #include "keys/PasswordKey.h"
 #include "keys/FileKey.h"
 #include "core/Group.h"
+#include "core/EntrySearcher.h"
 
 
 using namespace kpxPrivate;
@@ -179,7 +180,8 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 {
     Q_ASSERT(m_Database);
 
-    Uuid listModelId = Uuid(); // root group has list model ID 0
+//    Uuid rootGroupId = Uuid(); // root group has list model ID 0
+    Uuid rootGroupId = m_Database->rootGroup()->uuid();
 
     QList<Group*> masterGroups = m_Database->rootGroup()->children();
     for (int i = 0; i < masterGroups.count(); i++) {
@@ -196,7 +198,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         if (registerListModel) {
             // save modelId and master group only if needed
             // i.e. save model list id for master group page and don't do it for list models used in dialogs
-            m_groups_modelId.insertMulti((const Uuid &)listModelId, (const Uuid &)masterGroupId);
+            m_groups_modelId.insertMulti((const Uuid &)rootGroupId, (const Uuid &)masterGroupId);
         }
         emit appendItemToListModel(masterGroup->name(),                            // group name
                                    QString("Subgroups: %1 | Entries: %2")
@@ -205,7 +207,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
                                    masterGroupId.toHex(),                          // item id
                                    (int)DatabaseItemType::GROUP,                   // item type
                                    0,                                              // item level (0 = root, 1 = first level, etc.
-                                   listModelId.toHex());                           // list model of root group
+                                   rootGroupId.toHex());                           // list model of root group
     }
 
     QList<Entry*> masterEntries = m_Database->rootGroup()->entries();
@@ -218,9 +220,9 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
                                    itemId.toHex(),                                 // item id
                                    (int)DatabaseItemType::ENTRY,                   // item type
                                    0,                                              // item level (not used here)
-                                   listModelId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
+                                   rootGroupId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
         // save modelId and entry
-        m_entries_modelId.insertMulti(listModelId, itemId);
+        m_entries_modelId.insertMulti(rootGroupId, itemId);
     }
     emit masterGroupsLoaded(DatabaseAccessResult::RE_OK);
 }
@@ -383,6 +385,42 @@ void Keepass2DatabaseInterface::slot_moveGroup(QString groupId, QString newParen
 
 void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString rootGroupId)
 {
+    Group* searchGroup;
+    if (rootGroupId.compare("0") == 0) {
+        searchGroup = m_Database->rootGroup();
+    } else {
+        searchGroup = m_Database->resolveGroup(qString2Uuid(rootGroupId));
+    }
+    Q_ASSERT(searchGroup);
+    if (searchGroup != Q_NULLPTR) {
+        EntrySearcher searcher;
+        QString searchId = int2QString(-1);
+        Uuid searchUuid = qString2Uuid(searchId);
+        Q_FOREACH (Entry* entry, searcher.search(searchString, searchGroup, Qt::CaseInsensitive)) {
+            // update list model with found entries
+            if (m_setting_sortAlphabeticallyInListView) {
+                emit addItemToListModelSorted(entry->title(),                              // entry name
+                                              getUserAndPassword(entry),                   // subtitle
+                                              entry->uuid().toHex(),                       // item id
+                                              DatabaseItemType::ENTRY,                     // item type
+                                              0,                                           // item level (not used here)
+                                              searchId);                            // specifying model where entry should be added (search list model gets -1)
+            } else {
+                emit appendItemToListModel(entry->title(),                                 // entry name
+                                           getUserAndPassword(entry),                      // subtitle
+                                           entry->uuid().toHex(),                          // item id
+                                           DatabaseItemType::ENTRY,                        // item type
+                                           0,                                              // item level (not used here)
+                                           searchId);                               // specifying model where entry should be added (search list model gets -1)
+            }
+            // save modelId and entry
+            m_entries_modelId.insertMulti(searchUuid, entry->uuid());
+        }
+        // signal to QML
+        emit searchEntriesCompleted(DatabaseAccessResult::RE_OK);
+    } else {
+        emit searchEntriesCompleted(DatabaseAccessResult::RE_ERR_SEARCH);
+    }
 }
 
 inline QString Keepass2DatabaseInterface::getUserAndPassword(Entry* entry)
@@ -420,6 +458,26 @@ inline Uuid Keepass2DatabaseInterface::qString2Uuid(QString value)
     } else {
         emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_UUID, value);
         return Uuid();
+    }
+}
+
+/*!
+\brief Convert integer number to QString
+
+The integer number is converted into a 4 byte long hexadecimal QString.
+
+\param value This is the integer value which shall be converted to QString
+
+\return Hexadecimal QString representation of the integer number
+*/
+inline QString Keepass2DatabaseInterface::int2QString(int value)
+{
+    if (value == 0) {
+        return "0";
+    } else if (value == -1) {
+        return "-1";
+    } else {
+        return QString(QByteArray::number(value, 16));
     }
 }
 

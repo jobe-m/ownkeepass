@@ -170,6 +170,7 @@ private:
 //    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
     inline QString getUserAndPassword(Entry* entry);
     inline Uuid qString2Uuid(QString value);
+    inline QString int2QString(int value);
 
 private:
     // Keepass database handler
