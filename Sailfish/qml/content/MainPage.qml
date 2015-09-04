@@ -693,13 +693,13 @@ Page {
             case DatabaseAccessResult.RE_DBFILE_OPEN_ERROR:
                 infoPopup.show(Global.error,
                                           qsTr("File I/O error"),
-                                          qsTr("Cannot open database file. Error details: ") + errorMsg)
+                                          qsTr("Cannot open database file. Error details:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             case DatabaseAccessResult.RE_KEYFILE_OPEN_ERROR:
                 infoPopup.show(Global.error,
                                           qsTr("File I/O error"),
-                                          qsTr("Cannot open key file. Error details: ") + errorMsg)
+                                          qsTr("Cannot open key file. Error details:") + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             default:

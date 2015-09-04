@@ -1152,16 +1152,6 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="696"/>
-        <source>Cannot open database file. Error details: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="702"/>
-        <source>Cannot open key file. Error details: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="731"/>
         <source>Password changed</source>
         <translation>Salasana muutettu</translation>
@@ -1179,6 +1169,16 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <location filename="../qml/content/MainPage.qml" line="780"/>
         <source>Internal database error</source>
         <translation>Sisäinen virhe tietokannassa</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="696"/>
+        <source>Cannot open database file. Error details:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="702"/>
+        <source>Cannot open key file. Error details:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="738"/>
