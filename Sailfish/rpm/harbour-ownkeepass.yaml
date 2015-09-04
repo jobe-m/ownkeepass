@@ -1,6 +1,6 @@
 Name: harbour-ownkeepass
 Summary: A password safe application
-Version: 1.1.7
+Version: 1.1.8
 Release: 1
 Group: Qt/Qt
 License: GPL v2
@@ -20,7 +20,6 @@ PkgConfigBR:
 - libgcrypt
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
-- libgcrypt
 Files:
 - /usr/share/icons/hicolor/86x86/apps
 - /usr/share/applications
