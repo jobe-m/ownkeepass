@@ -6,17 +6,24 @@ ownKeepass
 Status
 ------
 
-Release 1.1.6 available from jolla store and [openrepos.net] [1] / warehouse app
+Release 1.1.7 available in [openrepos.net] [1] / warehouse app
+* Support for landscape orientation added (not only but for all TOHKBD owners :)
+* Orientation can be adjusted in application settings (Portrait / Landscape / Dynamic)
+* Added support for reading Keepass 2 databases
+
+Release 1.1.6 available from jolla store
 * Password entries can be moved between groups now
 * Updated icon look in list views
 * Database can be directly closed from lock screen
 * Added elide mode to top menu label (fixes too long database path running out of the screen)
 
-Next upcoming stable release will be 1.2.0 which will add UI landscape orientation and Keepass 2 database read support. The next pre-releases 1.1.7+ will be used for testing and updating translations. If you want to help with testing please build by yourself from master branch or wait for the next pre-release version 1.1.7 on [openrepos.net] [1].
+Next upcoming stable release will be 1.2.0 which will add UI landscape orientation and Keepass 2 database read support.
+The next pre-releases 1.1.7+ will be used for testing and updating translations.
+If you want to help with testing please build by yourself from master branch or take the pre-release version from [openrepos.net] [1].
 
 Finally Keepass 2 database support is HERE! Current status:
-* Reading from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project for that which is shared into this repository.
-* Searching in and writing to Keepass 2 database will be done in near future (will be done on keepass2 branch). It needs some redesign of the password entry save handling.
+* Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project for that which is shared into this repository.
+* Writing to Keepass 2 database will be done in near future (on keepass2 branch). It needs some redesign of the password entry save handling.
 
 Roadmap
 -------
