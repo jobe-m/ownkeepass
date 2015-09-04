@@ -21,6 +21,9 @@
 #include "random.h"
 #include "crypto/yarrow.h"
 
+#include <sys/types.h>
+#include <unistd.h>
+
 //#if defined(Q_WS_X11) || defined(Q_WS_MAC)
 	#include <QFile>
 //#elif defined(Q_WS_WIN)
