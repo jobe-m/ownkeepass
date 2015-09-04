@@ -536,6 +536,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
+        <source>Dynamic</source>
+        <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
+        <source>Portrait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
+        <source>Landscape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
         <source>Sort in alphabetical order</source>
         <translation type="unfinished"></translation>
@@ -713,8 +729,8 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="333"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="349"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="354"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="404"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="409"/>
         <source>Password groups</source>
         <translation type="unfinished"></translation>
     </message>
@@ -776,14 +792,14 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="373"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="414"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="409"/>
         <source>Search in all groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="374"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
         <source>Search in</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1141,6 +1157,16 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="695"/>
         <location filename="../qml/content/MainPage.qml" line="701"/>
         <source>File I/O error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="696"/>
+        <source>Cannot open database file. Error details: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="702"/>
+        <source>Cannot open key file. Error details: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>

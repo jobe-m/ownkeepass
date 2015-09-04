@@ -14,10 +14,6 @@
         <translation>Salasanasovellus</translation>
     </message>
     <message>
-        <source>ownKeepass is a Keepass 1.x compatible password safe application</source>
-        <translation type="vanished">ownKeepass on Keepass 1.x-yhteensopiva salasanasovellus</translation>
-    </message>
-    <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
         <translation type="unfinished"></translation>
@@ -414,14 +410,6 @@
         <translation>Tietokanta</translation>
     </message>
     <message>
-        <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
-        <translation type="vanished">Tämä on salausmenetelmän oletusarvo uuden Keepass-tietokannan luomiseen:</translation>
-    </message>
-    <message>
-        <source>Default encryption:</source>
-        <translation type="vanished">Salausmenetelmän oletusarvo:</translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="108"/>
         <source>Default encryption</source>
         <translation type="unfinished"></translation>
@@ -464,6 +452,22 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="270"/>
         <source>Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
+        <source>Dynamic</source>
+        <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
+        <source>Portrait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
+        <source>Landscape</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -566,10 +570,6 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Jos asetettu, hakukenttä kohdistetaan sovelluksen käynnistyessä</translation>
-    </message>
-    <message>
-        <source>Language:</source>
-        <translation type="vanished">Kieli:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
@@ -729,8 +729,8 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="333"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="349"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="354"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="404"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="409"/>
         <source>Password groups</source>
         <translation>Salasana ryhmät</translation>
     </message>
@@ -792,14 +792,14 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="373"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="414"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="409"/>
         <source>Search in all groups</source>
         <translation>Etsi kaikista ryhmistä</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="374"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
         <source>Search in</source>
         <translation>Etsi ryhmästä</translation>
     </message>
@@ -823,11 +823,6 @@
 </context>
 <context>
     <name>HelpMainPage</name>
-    <message>
-        <source>ownKeepass is a password safe application with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. The used database format is compatible to Keepass version 1. That means you can use Keepass [1] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is planned for a future release of ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass especially on the settings pages.&lt;br&gt;&lt;br&gt;&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like Advanced Encryption Standard (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords. Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of: &lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sharing Keepass database between your Jolla phone and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your phone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.&lt;br&gt;&lt;br&gt;&lt;b&gt;What to expect in future versions of ownKeepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;I don&apos;t want to set it in stone yet but here is a list of features you might see in future versions of ownKeepass:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Built-in sync of database file with a WebDAV server like ownCloud&lt;/li&gt;&lt;li&gt;If feasible auto-type of username and passwords into web page&lt;/li&gt;&lt;li&gt;Support for Keepass version 2 database files&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">ownKeepass on salasanalla varmistettu sovellus, jonka käyttötarkoitus on suojata salassapidettäviä tietoja, kuten verkkosivujen salasanoja, luottokorttien numeroita, pankkisovellusten maksumääräyksen varmistusnumeroita, PIN-koodeja sekä muita pieniä tiedonjyväsiä joiden tulee mielestäsi pysyä salassa. Kaikki tämä tieto talletaan tietokantatiedostoon, joka on salaukoodattu ja joka talletaan puhelimesi muistiin. Voidaksesi avata tietokannan, sinun tulee tietää sen salaamiseen käytetty salasana. Tietokannan formaatti on yhteensopiva Keepass version 1 kanssa. Tämä mahdollistaa sen, että voit myös käyttää Keepass-sovellusta [1] tietokoneellasi salatun tämän tietokannan avaamiseen.&lt;br&gt;&lt;br&gt;Huomaa, että tämä ownKeepass-versio ei voi avata ja tallettaa Keepass version 2 tietokantoja. Tämä ominaisuus on suunniteltu tehtäväksi tuleviin ownKeepass versioihin.&lt;br&gt;&lt;br&gt;&lt;b&gt;Ohjeiden luku&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jokaisella ownKeepass-sivulla on oma ohjesisältönsä. Paras tapa oppia ownKeepass-sovelluksen lukuisten ominaisuuksien käyttöä on lukea näitä ohjesivuja, varsinkin asetussivujen yhteydessä.&lt;br&gt;&lt;br&gt;&lt;b&gt;Muutamia sanoja Keepass tietokannan turvallisuudesta&lt;/b&gt;&lt;br&gt;&lt;br&gt;
-ownKeepass-sovelluksen tietokantaosion lähdekoodi perustuu KeepassX-projektiin [2] ja sisältää sellaisenaan lukuisia turvallisuuden parantamiseen tähtääviä ominaisuuksia. Se käyttää hyväksyttyjä salausalgoritmeja, kuten Advanced Encryption Standard (AES / Rijndael), tai Twofish 128-bittisellä kentällä, 256 bitin avaimella ja SHA-256 sekoitusalgoritmillä. Kaikki salaustoiminnat tapahtuvat työmuistissa. Kirjasto suojaa tietokantaa myös sellaisilta hyökkäyksiltä, kuten Brute-Force Attack ja Dictonary Attack, sekoittamalla ja salaten pääsalasanan ennenkuin se käyttää sitä itse tietokannan suojauksen avaamiseen. Tämän ominaisuuden vahvuutta säädetään tietokannan asetuksissa muuttamalla avaimen muutoskertojen lukumäärää. Ylläolevat ominaisuudet ovat kuitenkin vain osaltaan vahvistamassa kahta tärkeää turvallisuussääntöä, joita sinun tulee itse noudattaa: &lt;br&gt;(1) Käytä aina tarpeeksi pitkää ja vaikeasti arvattavaa pääsalasanaa.&lt;br&gt;(2) Suojaa puhelinta ja konettasi vakoiluohjelmilta, jotka on voitu tehdä siten että ne ovat erikoistuneet ownKeepass-sovelluksen murtamiseen. Tämä toinen sääntö on ensimmäinen lakipykälä Immutable Laws of Security [3] kymmenestä käskystä : “ Jos pahis saa sinut ajamaan omaa ohjelmaansa sinun tietokoneellasi, se ei ole enää sinun koneesi ”.&lt;br&gt;&lt;br&gt;&lt;b&gt;Jaa Keepass tietokantaa Jolla-puhelimesi ja tietokoneesi välillä&lt;/b&gt;&lt;br&gt;&lt;br&gt;Keepass tietokantaformaatti on erinomainen silloin kun haluat ylläpitää salattuja tietojasi useiden laitteiden välillä, kuten puhelin, tietokone, tabletti, jne. Näille kaikille alustoille on olemassa useampiakin Keepass-yhteensopivia sovelluksia, katso Keepass download-sivu [4] ladataksesi Keepass 1 ohjelma tietokoneellesi. Sama sivu listaa myös vaihtoehtoisia sovelluksia. Haluan myös kiinnittää huomiosi KeepassX versioon 0.4.3 [2], joka on myös yhteensopiva Keepass 1 tietokantaversion kanssa.&lt;br&gt;Voit jakaa Keepass tietokantatiedostoa joko SD-muistikortin avulla tai käyttäen pilvipalveluja, kuten Dropbox. Jos käytät pilvipalvelimia, suosittelen avaintiedoston käyttämistä pääsalasanan lisäksi. ownKeepass käyttää sitä tietokannan salauksen purkamiseen. Talleta tämä avaintiedosto sekä puhelimeesi ja tietokoneellesi. Älä talleta sitä pilvipalvelimeen. Tällä tavalla, mikäli tietomurtautuja saa käsiinsä tietokantasi, hänellä ei ole avaintiedostoa. Tietomurtajan toiminta vaikeutuu siten huomattavasti hänen yrittäessää murtaa Keepass tietokantaa, koska avaintiedoston sisältöä on normaalisti mahdotonta arvata.&lt;br&gt;&lt;br&gt;&lt;b&gt;Mitä on odotettavissa tulevilta ownKeepass versioilta&lt;/b&gt;&lt;br&gt;&lt;br&gt;En halua hakata tätä kiveen, mutta tässä on lista ominaisuuksista, jotka tulet todennäköisesti näkemän tulevissa ownKeepass versioissa :&lt;br&gt;&lt;ul&gt;&lt;li&gt;Sisäänrakennettu synkronisointi tietokantatiedoston kanssa, joka sijaitsee WebDAV-serverillä, kuten esimerkiksi ownCloud&lt;/li&gt;&lt;li&gt;Mikäli mahdollista, täytä automaattisesti käyttäjä- ja salasanakentät verkkosivulla&lt;/li&gt;&lt;li&gt;Keepass versio 2 tietokantatiedostojen tuki&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</translation>
-    </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
@@ -963,25 +958,6 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     </message>
 </context>
 <context>
-    <name>Main</name>
-    <message>
-        <source>ownKeepass got updated</source>
-        <translation type="vanished">ownKeepass on päivitetty</translation>
-    </message>
-    <message>
-        <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="vanished">Uusi version %1 on nyt asennettu puhelimeesi.  Katso muutoslokia lisätietojen saamiseksi.</translation>
-    </message>
-    <message>
-        <source>Problem with SD card</source>
-        <translation type="vanished">Ongelma SD-kortin kanssa</translation>
-    </message>
-    <message>
-        <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="vanished">SD-kortteja, joissa on useampi kuin yksi osio, ei tueta</translation>
-    </message>
-</context>
-<context>
     <name>MainPage</name>
     <message>
         <location filename="../qml/content/MainPage.qml" line="183"/>
@@ -1036,7 +1012,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/MainPage.qml" line="95"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ohjelma ei tue SD-kortteja, jotka on ositettu useampaan partitioon,</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="156"/>
@@ -1176,6 +1152,16 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/MainPage.qml" line="696"/>
+        <source>Cannot open database file. Error details: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="702"/>
+        <source>Cannot open key file. Error details: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/MainPage.qml" line="731"/>
         <source>Password changed</source>
         <translation>Salasana muutettu</translation>
@@ -1254,10 +1240,6 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <location filename="../qml/content/MainPage.qml" line="769"/>
         <source>Database error</source>
         <translation>Tietokantavirhe</translation>
-    </message>
-    <message>
-        <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
-        <translation type="vanished">Tietokanta olikin jo suljettu. Ei mitään vakavaa, mutta voisitko ilmoittaa tästä bugina, kiitos.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="769"/>

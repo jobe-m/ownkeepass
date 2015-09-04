@@ -14,10 +14,6 @@
         <translation>Coffre-fort à mots de passe</translation>
     </message>
     <message>
-        <source>ownKeepass is a Keepass 1.x compatible password safe application</source>
-        <translation type="vanished">ownKeepass est une application de gestion de mot de passe compatible Keepass 1.x</translation>
-    </message>
-    <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
         <translation type="unfinished"></translation>
@@ -414,14 +410,6 @@
         <translation>Base de données</translation>
     </message>
     <message>
-        <source>This is the encryption which will be used as default when creating a new Keepass database:</source>
-        <translation type="vanished">Ceci est le chiffrement qui sera utilisé par défaut lors de la création d&apos;une nouvelle base de données Keepass.</translation>
-    </message>
-    <message>
-        <source>Default encryption:</source>
-        <translation type="vanished">Chiffrement par défaut</translation>
-    </message>
-    <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="108"/>
         <source>Default encryption</source>
         <translation type="unfinished"></translation>
@@ -464,6 +452,22 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="270"/>
         <source>Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
+        <source>Dynamic</source>
+        <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
+        <source>Portrait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
+        <source>Landscape</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -566,10 +570,6 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="315"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Si activé, le curseur sera placé sur la barre de recherche au démarrage de l&apos;application</translation>
-    </message>
-    <message>
-        <source>Language:</source>
-        <translation type="vanished">Langue :</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="439"/>
@@ -729,8 +729,8 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="333"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="349"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="354"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="404"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="409"/>
         <source>Password groups</source>
         <translation>Groupes de mot de passe</translation>
     </message>
@@ -792,14 +792,14 @@
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="373"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="414"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="409"/>
         <source>Search in all groups</source>
         <translation>Rechercher dans tous les groupes</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="374"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
         <source>Search in</source>
         <translation>Rechercher dans</translation>
     </message>
@@ -823,10 +823,6 @@
 </context>
 <context>
     <name>HelpMainPage</name>
-    <message>
-        <source>ownKeepass is a password safe application with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. The used database format is compatible to Keepass version 1. That means you can use Keepass [1] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;Please note that currently ownKeepass cannot load or save Keepass version 2 databases. This is planned for a future release of ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass especially on the settings pages.&lt;br&gt;&lt;br&gt;&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like Advanced Encryption Standard (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords. Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of: &lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sharing Keepass database between your Jolla phone and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your phone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.&lt;br&gt;&lt;br&gt;&lt;b&gt;What to expect in future versions of ownKeepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;I don&apos;t want to set it in stone yet but here is a list of features you might see in future versions of ownKeepass:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Built-in sync of database file with a WebDAV server like ownCloud&lt;/li&gt;&lt;li&gt;If feasible auto-type of username and passwords into web page&lt;/li&gt;&lt;li&gt;Support for Keepass version 2 database files&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</source>
-        <translation type="vanished">ownKeepass est une application &quot;coffre-fort&quot; qui a pour but de protéger vos données sensibles comme des mots de passe de sites web, des numéros de carte de crédit, des codes PIN ou toute autre information qui doit rester secrète. Ces informations sont stockées dans un fichier de base de données qui est encrypté et stocké localement sur votre téléphone. Pour ouvrir cette base de données, vous devez en connaître le mot de passe principal. Le format de base de données utilisé est compatible avec Keepass version 1. Cela signifie que vous pouvez également utiliser Keepass [1] sur votre ordinateur pour décrypter et ouvrir ce fichier de base de données.&lt;br&gt;&lt;br&gt;Veuillez noter que pour le moment, ownKeepass ne peut pas ouvrir ou sauvegarder une base de données au format Keepass v2. Ceci est planifié pour une version future de ownKeepass.&lt;br&gt;&lt;br&gt;&lt;b&gt;Utilisation des pages d&apos;aide&lt;/b&gt;&lt;br&gt;&lt;br&gt;Chaque page de ownKeepass contient sa propre rubrique d&apos;aide. N&apos;oubliez pas de vous en servir pour connaître toutes les fonctionnalités offertes par ownKeepass, en particulier sur la page de configuration.&lt;br&gt;&lt;br&gt;&lt;b&gt;Quelques mots sur la sécurité de la base de données Keepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;Le code de la base de données de ownKeepass est basé sur le projet KeepassX [2] et de ce fait contient de nombreuses fonctionnalités relatives à la sécurité. Il utilise des algorithmes de chiffrement éprouvés comme l&apos;Advanced Encryption Standard (AES / Rijndael) ou Towfish avec des blocs de taille 128 bits et une clé de 256 bits, SHA-256 comme algorithme de hachage et chiffre tous les mots de passe présents dans la RAM. De plus, il protège le mot de passe principal contre les attaques de type Brute-Force et Dictionnaire en le hachant et en le chiffrant avant de l&apos;utiliser pour déchiffrer la base de données Keepass. Cette fonctionnalité est appelée tours de transformation de la clé et peut être ajustée dans les paramètres de la base de données. Tout ceci ajoute de la sécurité aux deux points suivant que vous devez respecter :&lt;br&gt;(1) Toujours utiliser un mot de passe suffisamment long et difficile à deviner.&lt;br&gt;(2) Protégez votre système des spywares qui peuvent être spécialisés pour attaquer ownKeepass. Le second point est la loi n°1 des 10 Lois de Sécurité Immuables [3] : &quot;Si une personne mal intentionnée arrive à vous convaincre d’exécuter son programme sur votre ordinateur, ce n&apos;est désormais plus votre ordinateur&quot;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Partager la base de données Keepass entre votre Jolla et votre ordinateur de bureau&lt;/b&gt;&lt;br&gt;&lt;br&gt;Le fichier de base de donnée Keepass est parfait pour partager votre coffre-fort à mots de passe entre différents systèmes comme un téléphone, une tablette, un ordinateur ou autre. Ceci vient du fait qu&apos;il existe de nombreuses implémentations de Keepass disponibles pour ces plateformes. Rendez-vous sur la page de téléchargement de Keepass [4] pour obtenir la version originale de Keepass 1 pour PC. Vous y trouverez également une liste d&apos;implémentations alternatives. Renseignez vous également sur KeepassX version 0.4.3 [2] qui est aussi compatible avec Keepass version 1.&lt;br&gt;Vous pouvez transférer votre fichier de base de données Keepass grâce à une carte SD ou via un service de Cloud type Dropbox. Si vous utilisez un service de Cloud, je recommande d&apos;utiliser un fichier clé en plus du mot de passe principal. Le fichier clé additionnel sera utilisé par ownKeepass pour déchiffrer la base de données. Stockez ce fichier clé uniquement localement sur votre téléphone et votre PC. Ne le mettez pas sur le service de Cloud. Si un pirate parvient à hacker votre service de Cloud, il n&apos;aura pas cette clé. De ce fait, il sera encore plus difficile pour un pirate de cracker votre base de données Keepass, car le contenu du fichier clé est à priori impossible à deviner.&lt;br&gt;&lt;br&gt;&lt;b&gt;Que pouvez vous espérer des futures versions de ownKeepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;Je ne promet rien, mais voici ce que vous pourriez voir dans les futures versions de ownKeepass:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Synchronisation du fichier de base de données avec un serveur WebDAV type ownCloud&lt;/li&gt;&lt;li&gt;Si possible, entrer automatiquement un login et mot de passe dans une page web&lt;/li&gt;&lt;li&gt;Support des fichiers de base de donnée Keepass version 2&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;[1] &lt;a href=&quot;http://www.keepass.info&quot;&gt;www.keepass.info&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;www.keepassx.org&quot;&gt;www.keepassX.org&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;http://technet.microsoft.com/en-us/library/cc722487.aspx&quot;&gt;10 Immutable Laws of Security&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.keepass.info/download.html&quot;&gt;www.keepass.info/download.html&lt;/a&gt;&lt;br&gt;&lt;br&gt;</translation>
-    </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
@@ -958,25 +954,6 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/LockPage.qml" line="223"/>
         <source>Wrong unlock code</source>
         <translation>Code erroné</translation>
-    </message>
-</context>
-<context>
-    <name>Main</name>
-    <message>
-        <source>ownKeepass got updated</source>
-        <translation type="vanished">Mise à jour de ownKeepass</translation>
-    </message>
-    <message>
-        <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="vanished">Nouvelle version %1 installée. Consulter l&apos;historique des modifications pour les détails. </translation>
-    </message>
-    <message>
-        <source>Problem with SD card</source>
-        <translation type="vanished">Problème avec la carte SD</translation>
-    </message>
-    <message>
-        <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="vanished">Les cartes SD avec des partitions multiples ne sont pas prises en charge.</translation>
     </message>
 </context>
 <context>
@@ -1174,6 +1151,16 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/MainPage.qml" line="696"/>
+        <source>Cannot open database file. Error details: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="702"/>
+        <source>Cannot open key file. Error details: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/MainPage.qml" line="731"/>
         <source>Password changed</source>
         <translation>Mot de passe modifié</translation>
@@ -1252,10 +1239,6 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="769"/>
         <source>Database error</source>
         <translation>Erreur de base de données</translation>
-    </message>
-    <message>
-        <source>Database was already closed. Nothing serious, but please submit a bug report.</source>
-        <translation type="vanished">Base de données déjà fermée. Rien de grave mais envoyer le rapport de bug, SVP.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="769"/>
