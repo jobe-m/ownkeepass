@@ -6,6 +6,9 @@ ownKeepass
 Status
 ------
 
+Upcoming release 1.1.8 on master branch
+* Implemented search functionality for Keepass 2 databases
+
 Release 1.1.7 available in [openrepos.net] [1] / warehouse app
 * Support for landscape orientation added (not only but for all TOHKBD owners :)
 * Orientation can be adjusted in application settings (Portrait / Landscape / Dynamic)
@@ -22,7 +25,8 @@ The next pre-releases 1.1.7+ will be used for testing and updating translations.
 If you want to help with testing please build by yourself from master branch or take the pre-release version from [openrepos.net] [1].
 
 Finally Keepass 2 database support is HERE! Current status:
-* Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch). Reusing database code from [KeepassX 2][3] project for that which is shared into this repository.
+* Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch).
+Reusing database code from [KeepassX 2][3] project for that which is shared into this repository.
 * Writing to Keepass 2 database will be done in near future (on keepass2 branch). It needs some redesign of the password entry save handling.
 
 Roadmap
@@ -34,7 +38,9 @@ in descending order.
 *   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
 *   Other features will only come if there is a strong demand ;)
 
-I am searching for contributors who want and can work on specific additional features. Below are some of the requirements which I marked as contribution on the issue page. That means that I won't work for a while on that topics due to missing time thus you can be sure that we don't do double work there.
+I am searching for contributors who want and can work on specific additional features. Below are some of the requirements which
+I marked as contribution on the issue page. That means that I won't work for a while on that topics due to missing time thus you
+can be sure that we don't do double work there.
 *   Delete a Keepass database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/64)
 *   Import and export functionality -> [REQ](https://github.com/jobe-m/ownkeepass/issues/44)
 *   Add support for yubikey with challenge response -> [REQ](https://github.com/jobe-m/ownkeepass/issues/95)
