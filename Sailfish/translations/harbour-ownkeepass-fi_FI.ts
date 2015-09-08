@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -16,7 +14,8 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass on Keepass 1.x ja 2.x yhteensopiva salasanasäilö -sovellus
+by reviewjolla, 5 minutes ago</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
@@ -77,12 +76,12 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="36"/>
         <source>ownKeepass got updated</source>
-        <translation type="unfinished">ownKeepass on päivitetty</translation>
+        <translation>ownKeepass on päivitetty</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="37"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="unfinished">Uusi version %1 on nyt asennettu puhelimeesi.  Katso muutoslokia lisätietojen saamiseksi.</translation>
+        <translation>Uusi version %1 on nyt asennettu puhelimeesi.  Katso muutoslokia lisätietojen saamiseksi.</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="61"/>
@@ -110,7 +109,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="69"/>
         <source>Clipboard now empty</source>
-        <translation>Leikepöytä ei ole tyhjä</translation>
+        <translation>Leikepöytä on nyt tyhjä</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="188"/>
@@ -178,7 +177,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="46"/>
         <source>Read only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Vain luku -tila</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="52"/>
@@ -412,12 +411,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="108"/>
         <source>Default encryption</source>
-        <translation type="unfinished"></translation>
+        <translation>Salausmenetelmän oletusarvo:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="109"/>
         <source>This is the encryption which will be used as default when creating a new Keepass 1 database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä on salausmenetelmän oletusarvo uuden Keepass 1 -tietokannan luomiseen:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="132"/>
@@ -452,23 +451,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="270"/>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
-        <source>Dynamic</source>
-        <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
-        <source>Portrait</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
-        <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientaatio</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
@@ -483,7 +466,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="326"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Kieli</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
@@ -493,7 +476,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
         <source>System default</source>
-        <translation type="unfinished"></translation>
+        <translation>Järjestelmän oletus</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="165"/>
@@ -549,7 +532,23 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="271"/>
         <source>Change here orientation of the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaihda täällä näytön orientaatiota</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
+        <source>Dynamic</source>
+        <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
+        <translation>Dynaaminen</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
+        <source>Portrait</source>
+        <translation>Pystyasento</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
+        <source>Landscape</source>
+        <translation>Vaaka-asento</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
@@ -827,22 +826,24 @@
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
 Please note the following. While ownKeepass can read and write to Keepass 1 databases it can currently only read from Keepass 2 databases. It cannot yet change and save Keepass 2 databases. This is planned for a future release of ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass on salasanasäilö -sovellus Jolla älypuhelimelle. Sen tarkoituksena turvata arkoja tietoja kuten nettisivujen salasanoja, luottokorttien numeroita, PIN- ja TAN -koodeja ja muita salassa pidettäviä tietoja. Tiedot tallennetaan paikalliseen, salattuun tietokantaan puhelimessasi. Tietokannan avaamiseksi tarvitaan pääsalasana. ownKeepass tukee Keepass versioiden 1 ja 2 tietokantoja. Sen myötä voit käyttää myös Keepass [1] tai KeepassX [2] työpöytäversioita tietokannan avaamiseen.
+
+Huomioi: Luku ja kirjoitus toimii Keepass 1 tietokannoissa, mutta toistaiseksi vain luku Keepass 2 tietokannoissa. Et siis voi tallentaa muutoksia Keepass 2 tietokantoihin. Ominaisuus on suunnitteilla ownKeepass -sovelluksen tuleviin versioihin.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="41"/>
         <source>&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Apua -sivujen käyttö&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jokaisella ownKeepass sivulla on oma Apua -sisältönsä. Käytä niitä hyväksesi ja oppiaksesi ownKeepass -salasanasovelluksen ominaisuuksista. </translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
         <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES / Rijndael (supported by Keepass 1 and 2) or Twofish (Supported only by Keepass 1) with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords (in-memory encryption currently only Keepass 1). Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Muutama sana Keepass tietokantojen turvallisuudesta&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tietokantakoodi ownKeepass -salasanasovelluksessa perustuu KeepassX projektiin [2] ja sen myötä se sisältää paljon tietoturvaan liittyviä ominaisuuksia. Se käyttää todennettuja salausmetodeja kuten AES / Rijndael (tuettu Keepass 1 ja 2 tietokannoissa) tai Twofish (tuettu vain Keepass1 tietokannoissa) 128 bitin paketteina ja 256 bitin avaimella, SHA-256 hash algoritmilla ja suoraan muistissa tapahtuvalla salauksella kaikille salasanoille (suoramuistisalaus tuettu vain Keepass 1 -tietokannoissa). Lisäksi pääsalasana suojataan Brute-Force ja Dictionary-hyökkäyksiä vastaan hajauttamalla ja salaamalla se ennen kuin sitä käytetään tietokannan salauksen purkuun. Tätä metodia kutsutaan &quot;avaimen muokkauskierroksiksi&quot; ja sitä voi säätää tietokanta-asetuksissa. Tämä kaikki lisää turvallisuutta, mutta vain näiden kahden pääasian välillä jotka on syytä huomioida:&lt;br&gt;&lt;br&gt;(1) Käytä aina riittävän pitkää ja vaikeasti arvattavaa pääsalasanaa.&lt;br&gt;&lt;br&gt;(2) Suojaa järjestelmäsi sellaisilta vakoiluohjelmilta jotka saattavat olla erikoistuneet ownKeepass hyökkäykseen. Toinen maininta on 1. laki kymmenestä muuttumattomasta turvallisuusprinsiipistä [3]: &quot;Jos pahaa tahtova kaveri saa sinut ajamaan ohjelmansa tietokoneeseesi, se ei ole enää sinun tietokoneesi&quot;.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="65"/>
         <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Keepass tietokannan jakaminen Jolla älypuhelimen / Jolla Tabletin ja tietokoneen välillä&lt;/ b&gt;&lt;br&gt; Keepass -tietokannan tiedostomuoto on täydellinen salasanasäilön turvalliseen jakamiseen eri laitteiden kuten älypuhelimien, tablettien, pöytätietokoneiden ja muiden vastaavien välillä. Näin siksi, että tarjolla on paljon Keepass toteutuksia näille alustoille. Tutustu Keepass lataussivuun [4] saadaksesi klassisen Keepass 1 tai Keepass 2 version pöytätietokoneellesi. Sivulla on myös luetteloitu vaihtoehtoisia KeePass toteutuksia. Haluan lisäksi mainita KeepassX version 0.4.3 [2], joka on myös yhteensopiva Keepass version 1 kanssa. Samalla sivulla voit myös löytää KeepassX 2 Alpha version  joka pystyy käsittelemään KeePass 2 tietokantoja.&lt;br&gt;Voit jakaa Keepass -tietokantatiedoston SD-kortin avulla tai pilvipalvelun, esim. ownCloud tai Dropbox, kautta.  Käytettäessä pilvipalvelimia suosittelen pääsalasanan lisäksi avaintiedostoa. ownKeepass käyttää avaintiedostoa tietokannan purkamiseen. Säilytä avaintiedosto vain paikallisesti älypuhelimessasi ja tietokoneellasi, älä lataa sitä pilvipalveluun. Jos hyökkääjä saa pääsyn pilvipalveluun, hän jää näin ilman avaintiedostoa. Näin teet pääsyn Keepass -tietokantaan vielä vaikeammaksi hyökkääjille, koska avaintiedoston sisältöä on yleensä mahdotonta arvata.</translation>
     </message>
 </context>
 <context>
@@ -960,6 +961,26 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>MainPage</name>
     <message>
+        <location filename="../qml/content/MainPage.qml" line="94"/>
+        <source>Problem with SD card</source>
+        <translation>Ongelma SD-kortin kanssa</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="95"/>
+        <source>SD cards with multiple partitions are not supported.</source>
+        <translation>SD-kortteja, joissa on useampi kuin yksi osio, ei tueta</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="139"/>
+        <source>Create new database</source>
+        <translation>Luo uusi tietokanta</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="156"/>
+        <source>Open database</source>
+        <translation>Avaa tietokanta</translation>
+    </message>
+    <message>
         <location filename="../qml/content/MainPage.qml" line="183"/>
         <source>Password Safe</source>
         <translation>Salasanasovellus</translation>
@@ -1000,35 +1021,15 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Avaintiedosto ei käytössä</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="139"/>
-        <source>Create new database</source>
-        <translation>Luo uusi tietokanta</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="94"/>
-        <source>Problem with SD card</source>
-        <translation type="unfinished">Ongelma SD-kortin kanssa</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="95"/>
-        <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished">Ohjelma ei tue SD-kortteja, jotka on ositettu useampaan partitioon,</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="156"/>
-        <source>Open database</source>
-        <translation>Avaa tietokanta</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="389"/>
         <source>Database type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietokannan tyyppi:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="406"/>
         <source>Unknown</source>
         <extracomment>Here unknown is used for unknown database type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="413"/>
@@ -1092,74 +1093,32 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/MainPage.qml" line="644"/>
         <source>Read only support</source>
-        <translation type="unfinished"></translation>
+        <translation>Vain luku -tuki</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="645"/>
         <source>Keepass 2 database support is currently limited to read only.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keepass 2 tietokannat tukevat parhaillaan vain tietojen lukua.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="659"/>
         <source>Database file</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietokantatiedosto</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="660"/>
         <source>The specified file is not a Keepass database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Määritetty tiedosto ei ole Keepass -tietokanta.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="665"/>
         <source>Database version</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietokantaversio</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="666"/>
         <source>The specified file has an unsupported Keepass database version.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="672"/>
-        <source>Database headers are missing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="677"/>
-        <location filename="../qml/content/MainPage.qml" line="683"/>
-        <source>Wrong password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="678"/>
-        <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="684"/>
-        <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="690"/>
-        <source>Database head doesn&apos;t match corresponding hash value.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="695"/>
-        <location filename="../qml/content/MainPage.qml" line="701"/>
-        <source>File I/O error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="731"/>
-        <source>Password changed</source>
-        <translation>Salasana muutettu</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="731"/>
-        <source>The master password of your database was changed successfully.</source>
-        <translation>Tietokantasi pääsalasana on vaihdettu onnistuneesti.</translation>
+        <translation>Määritetty tiedosto ei käytä tuettua Keepass -tietokantaversiota.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="671"/>
@@ -1171,14 +1130,56 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Sisäinen virhe tietokannassa</translation>
     </message>
     <message>
+        <location filename="../qml/content/MainPage.qml" line="672"/>
+        <source>Database headers are missing.</source>
+        <translation>Tietokannan ylätunniste puuttuu.</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="677"/>
+        <location filename="../qml/content/MainPage.qml" line="683"/>
+        <source>Wrong password</source>
+        <translation>Väärä salasana</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="678"/>
+        <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
+        <translation>Joko pääsalasana on väärä tai tietokanta on vaurioitunut. Yritä uudestaan.</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="684"/>
+        <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
+        <translation>Joko pääsalasana tai avaintiedosto on väärä. Yritä uudestaan. Jos ongelma jatkuu, joko avaintiedosto tai tietokanta on vaurioitunut.</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="690"/>
+        <source>Database head doesn&apos;t match corresponding hash value.</source>
+        <translation>Tietokannan alku ei ole sama sitä vastaavan hajautusarvon kanssa.</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="695"/>
+        <location filename="../qml/content/MainPage.qml" line="701"/>
+        <source>File I/O error</source>
+        <translation>Tiedoston I/O virhe</translation>
+    </message>
+    <message>
         <location filename="../qml/content/MainPage.qml" line="696"/>
         <source>Cannot open database file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietokantatiedoston avaus epäonnistui. Lisätietoja virheestä:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="702"/>
         <source>Cannot open key file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaintiedoston avaus epäonnistui. Lisätietoja virheestä:</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="731"/>
+        <source>Password changed</source>
+        <translation>Salasana muutettu</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="731"/>
+        <source>The master password of your database was changed successfully.</source>
+        <translation>Tietokantasi pääsalasana on vaihdettu onnistuneesti.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="738"/>
@@ -1249,17 +1250,17 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/MainPage.qml" line="775"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"></translation>
+        <translation>Salauksen alustusvirhe</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="776"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Salausalgoritmeja ei voitu alustaa onnistuneesti. Tietokanta suljettiin uudestaan mahdollisten hyökkäysten torjumiseksi. Yritä käynnistää sovellus uudestaan. Jos ongelma toistuu, ota yhteyttä kehittäjään.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="781"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Qstring &quot;%1&quot;:n muuntaminen kokonaisluvuksi epäonnistui</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1201"/>
@@ -1389,7 +1390,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="217"/>
         <source>Database type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietokannan tyyppi:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="243"/>
@@ -1455,7 +1456,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="88"/>
         <source>Read only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Vain luku -tila</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="94"/>
