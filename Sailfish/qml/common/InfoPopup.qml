@@ -30,6 +30,7 @@ MouseArea {
     property int popupType: Global.none
     property alias popupTitle: titleLabel.text
     property alias popupMessage: messageLabel.text
+    property int orientation: Orientation.Portrait
 
     // internal
     property int _timeout: 0
@@ -48,7 +49,7 @@ MouseArea {
         if (_timeout !== 0) {
             countdown.restart()
         }
-        state = "active"
+        fadeInAnimation.start()
     }
 
     function cancel() {
@@ -58,7 +59,7 @@ MouseArea {
 
     function _close() {
         if (_timeout !== 0) countdown.stop()
-        state = ""
+        fadeOutAnimation.start()
     }
 
     opacity: 0.0
@@ -66,28 +67,72 @@ MouseArea {
     width: parent ? parent.width : Screen.width
     height: column.height + Theme.paddingMedium * 2 + colorShadow.height
     z: 1
+    transformOrigin: Item.TopLeft
 
     onClicked: cancel()
 
-    states: State {
-        name: "active"
-        PropertyChanges { target: infoPopup; opacity: 1.0; visible: true }
-    }
-    transitions: [
-        Transition {
-            to: "active"
-            SequentialAnimation {
-                PropertyAction { target: infoPopup; property: "visible" }
-                FadeAnimation {}
+    states: [
+        State {
+            name: "PORTRAIT"
+            PropertyChanges {
+                target: infoPopup
+                width: parent ? parent.width : Screen.width
+                x: 0
+                y: 0
+                rotation: 0
             }
         },
-        Transition {
-            SequentialAnimation {
-                FadeAnimation {}
-                PropertyAction { target: infoPopup; property: "visible" }
+        State {
+            name: "LANDSCAPE"
+            PropertyChanges {
+                target: infoPopup
+                width: parent ? parent.height : Screen.height
+                x: parent ? parent.width : Screen.width
+                y: 0
+                rotation: 90
+            }
+        },
+        State {
+            name: "LANDSCAPE_INVERTED"
+            PropertyChanges {
+                target: infoPopup
+                width: parent ? parent.height : Screen.height
+                x: 0
+                y: parent ? parent.height : Screen.height
+                rotation: -90
             }
         }
     ]
+
+    onOrientationChanged: {
+        switch (orientation) {
+        case Orientation.Landscape:
+            state = "LANDSCAPE"
+            break
+        case Orientation.LandscapeInverted:
+            state = "LANDSCAPE_INVERTED"
+            break
+        default:
+            state = "PORTRAIT"
+            break
+        }
+    }
+
+    transitions: Transition {
+        FadeAnimation { properties: "x,y,rotation" }
+    }
+
+    SequentialAnimation {
+        id: fadeOutAnimation
+        FadeAnimation { target: infoPopup; to: 0.0 }
+        PropertyAction { target: infoPopup; property: "visible"; value: false }
+    }
+
+    SequentialAnimation {
+        id: fadeInAnimation
+        PropertyAction { target: infoPopup; property: "visible"; value: true }
+        FadeAnimation { target: infoPopup; to: 1.0 }
+    }
 
     Rectangle {
         id: infoPopupBackground
