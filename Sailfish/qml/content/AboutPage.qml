@@ -83,18 +83,19 @@ Copyright &#169; 2013-2015 Marko Koschak<br>"
                 anchors.rightMargin: Theme.paddingLarge
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
+                spacing: (width / 2) * 0.1
                 height: Theme.itemSizeMedium + Theme.paddingMedium
 
                 Button {
                     anchors.bottom: parent.bottom
-                    width: parent.width / 2
+                    width: (parent.width / 2) * 0.95
                     text: qsTr("License")
                     onClicked: pageStack.push(Qt.resolvedUrl("LicensePage.qml"))
                 }
 
                 Button {
                     anchors.bottom: parent.bottom
-                    width: parent.width / 2
+                    width: (parent.width / 2) * 0.95
                     text: qsTr("Change log")
                     onClicked: pageStack.push(Qt.resolvedUrl("ChangeLogPage.qml"))
                 }
@@ -105,18 +106,19 @@ Copyright &#169; 2013-2015 Marko Koschak<br>"
                 anchors.rightMargin: Theme.paddingLarge
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.paddingLarge
+                spacing: (width / 2) * 0.1
                 height: Theme.itemSizeMedium + Theme.paddingMedium
 
                 Button {
                     anchors.bottom: parent.bottom
-                    width: parent.width / 2
+                    width: (parent.width / 2) * 0.95
                     text: qsTr("Translate")
                     onClicked: Qt.openUrlExternally("https://www.transifex.com/projects/p/jobe_m-ownKeepass/")
                 }
 
                 Button {
                     anchors.bottom: parent.bottom
-                    width: parent.width / 2
+                    width: (parent.width / 2) * 0.95
                     text: qsTr("Report bugs")
                     onClicked: Qt.openUrlExternally("https://github.com/jobe-m/ownkeepass/issues")
                 }

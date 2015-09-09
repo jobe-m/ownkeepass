@@ -47,8 +47,10 @@ var russian = 11
 var finnish = 12
 var swedish = 13
 var chinese = 14
-var polish = -1 // not yet started
-var ukrainian = -1 // not yet started
+var greek = 15
+var japanese = 16
+var polish = -1 // not yet started, but already defined in ownKeepassGlobal.h
+var ukrainian = -1 // not yet started, but already defined in ownKeepassGlobal.h
 
 
 var constants = {

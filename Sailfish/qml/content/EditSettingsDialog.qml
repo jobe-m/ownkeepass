@@ -342,6 +342,8 @@ Dialog {
                     MenuItem { text: "Suomi" } // 12 (Finnish)
                     MenuItem { text: "Svenska" } // 13 (Swedish)
                     MenuItem { text: "中文" } // 14 (Chinese)
+                    MenuItem { text: "ελληνικά" } // 15 (Greek)
+                    MenuItem { text: "日本語" } // 16 (Japanese)
                 }
 
                 // The next two converter functions decouple the alphabetical language list
@@ -382,6 +384,10 @@ Dialog {
                         return Global.ukrainian
                     case Language.NB_NO: // Norwegian Bokmål
                         return Global.norwegian_bokmal
+                    case Language.EL: // Greek
+                        return Global.greek
+                    case Language.JA_JP: // Japanese
+                        return Global.japanese
                     default:
                         return Global.english
                     }
@@ -423,6 +429,10 @@ Dialog {
                         return Language.UK_UA // Ukrainian
                     case Global.norwegian_bokmal:
                         return Language.NB_NO // Norwegian Bokmål
+                    case Global.greek:
+                        return Language.EL // Greek
+                    case Global.japanese:
+                        return Language.JA_JP // Japanese
                     default:
                         return Language.EN // English
                     }

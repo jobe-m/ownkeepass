@@ -70,6 +70,14 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.8 Searching in Keepass 2 database</b>\
+<ul>\
+<li>Implemented search functionality for Keepass 2 databases</li>\
+<li>Updated translations and added Japanese and Greek as new languages</li>\
+<li>Refactored the info popup to work better with different device orientations</li>\
+<li>Some minor fixes in UI in regard to new Sailfish OS 2.0 look</li>\
+</ul>\
+<br>\
 <b>v1.1.7 Landscape orientation and Keepass 2 database read support</b>\
 <ul>\
 <li>Support for landscape orientation added (not only but for all TOHKBD owners :)</li>\

@@ -111,6 +111,7 @@ class Language : public QObject
 public:
     Q_ENUMS(eLanguage)
 
+    // Never change below order of languages! They are used as index in application settings (ini file).
     enum eLanguage {
         SYSTEM_DEFAULT = 0,
         EN,    // English
@@ -129,6 +130,8 @@ public:
         ZH_CN, // Chinese
         UK_UA, // Ukrainian - not yet started
         NB_NO, // Norwegian Bogmål
+        EL,    // Greek
+        JA_JP, // Japanese
         INVALID
     };
 };
