@@ -63,18 +63,12 @@ Dialog {
         }
     }
 
-    // Place info popup outside of page content so that it is shown over all
-    // application UI elements
-    InfoPopup {
-        id: infoPopup
-    }
-
     FileBrowserListModel {
         id: fileBrowserListModel
         onShowErrorBanner: {
             var title = qsTr("Problem with SD card")
             var message = qsTr("SD cards with multiple partitions are not supported.")
-            infoPopup.show(Global.info, title, message)
+            applicationWindow.infoPopup.show(Global.info, title, message)
         }
     }
 

@@ -46,10 +46,6 @@ Page {
         contentWidth: parent.width
         contentHeight: col.height
 
-        InfoPopup {
-            id: infoPopup
-        }
-
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
@@ -220,7 +216,7 @@ Page {
                                             } else {
                                                 message = qsTr("You have one try left")
                                             }
-                                            infoPopup.show(Global.warning, qsTr("Wrong unlock code"), message, 3)
+                                            applicationWindow.infoPopup.show(Global.warning, qsTr("Wrong unlock code"), message, 3)
                                         }
                                     }
                                 }

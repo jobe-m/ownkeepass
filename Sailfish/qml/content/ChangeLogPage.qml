@@ -35,7 +35,7 @@ Page {
         if (newVersionAvailable) {
             var title = qsTr("ownKeepass got updated")
             var message = qsTr("New version %1 now installed on your phone. Have a look in the change log for details.").arg(ownKeepassSettings.version)
-            infoPopup.show(Global.info, title, message)
+            applicationWindow.infoPopup.show(Global.info, title, message)
         }
     }
 
@@ -43,10 +43,6 @@ Page {
         anchors.fill: parent
         contentWidth: parent.width
         contentHeight: col.height
-
-        InfoPopup {
-            id: infoPopup
-        }
 
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}

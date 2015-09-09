@@ -33,11 +33,19 @@ ApplicationWindow
 
     // For accessing main page to pass further application activity status
     property MainPage mainPageRef: null
+    property InfoPopup infoPopup: infoPopupObj
 
     property int orientationSetting: (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
 
     initialPage: mainPageContainer
     cover: coverPage
+
+    // Place info popup outside of page content so that it is shown over all application UI elements
+    InfoPopup {
+        id: infoPopupObj
+        // pass orientation changes of application window to info popup component so that it can animate itself
+        orientation: applicationWindow.orientation
+    }
 
     Component {
         id: mainPageContainer
@@ -72,6 +80,7 @@ ApplicationWindow
     }
 
     Component.onCompleted: {
+        // This binds the setting for allowed orientations to the property which is used on all sub-pages
         orientationSetting = Qt.binding(function() {
             switch (ownKeepassSettings.uiOrientation) {
             case 1:
