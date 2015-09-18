@@ -138,9 +138,9 @@ All translators: %1<br>\
 <a href=\"https://github.com/jobe-m/ownkeepass\">https://github.com/jobe-m/ownkeepass</a><br><br>\
 \
 I hope you have as much fun using ownKeepass as I have creating it!")
-                .arg("Petri Mäkijärvi, Åke Engelbrektson, Agusti Clara, fri, Heimen Stoffels, Rob K, Nathan Follens, \
+                .arg("Petri Mäkijärvi, Åke Engelbrektson, Agustí Clara, fri, Heimen Stoffels, Rob K, Nathan Follens, \
 carmenfdezb, TylerTemp, Peter Jespersen, Jordi, Guillaume ARIAUX, Sthocs, Francesco Vaccaro, Lorenzo Facca, Alexey, \
-Anton Kalmykov, Sergiy K, Kjetil Kilhavn, Jozef Mlích, R.G.Sidler, deryo, R Kake, Dimitrios Glentadakis")
+Anton Kalmykov, Sergiy K, Kjetil Kilhavn, Jozef Mlích, R.G.Sidler, deryo, R Kake, Dimitrios Glentadakis, André Koot")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }
