@@ -6,52 +6,72 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation>关于ownKeepass</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation>密码安全</translation>
+        <translation type="unfinished">密码安全</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
-        <translation>ownKeepass是一个与Keepass 1.x和Keepass 1.x兼容的密码安全应用</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
         <source>Version</source>
-        <translation>版本</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/AboutPage.qml" line="78"/>
-        <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation>ownKeepass在General Public License （GPL）第二版或（你可以选择）第三版条款下发布。</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="92"/>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="101"/>
+        <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="126"/>
         <source>License</source>
-        <translation>许可协议</translation>
+        <translation type="unfinished">许可协议</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="99"/>
+        <location filename="../qml/content/AboutPage.qml" line="133"/>
         <source>Change log</source>
-        <translation>修改日志</translation>
+        <translation type="unfinished">修改日志</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="115"/>
+        <location filename="../qml/content/AboutPage.qml" line="139"/>
+        <source>Credits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="147"/>
+        <source>My best appreciation goes to:&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators and contributors: %1&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="171"/>
+        <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="163"/>
+        <source>Donate or Contribute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Translate</source>
-        <translation>翻译</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="122"/>
+        <location filename="../qml/content/AboutPage.qml" line="216"/>
         <source>Report bugs</source>
-        <translation>反馈BUG</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/AboutPage.qml" line="132"/>
-        <source>&lt;b&gt;Credits&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation>&lt;b&gt;开发组&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jolla（在诺基亚停止后继续开发）&lt;br&gt;KeepassX项目（Keepass的Qt实现）&lt;br&gt;所有译者: %1&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/jobe-m/ownkeepass&quot;&gt;https://github.com/jobe-m/ownkeepass&lt;/a&gt;&lt;br&gt;&lt;br&gt;希望你在使用ownKeepass时跟我在创造它时一样快乐！</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1088,16 +1108,6 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>数据库文件不存在。请检查数据库文件路径：</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="640"/>
-        <source>Read only support</source>
-        <translation>只读模式支持</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="641"/>
-        <source>Keepass 2 database support is currently limited to read only.</source>
-        <translation>Keepass2数据库仅支持阅读。</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="655"/>
