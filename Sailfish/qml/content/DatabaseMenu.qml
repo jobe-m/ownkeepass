@@ -47,7 +47,7 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableSearchMenuItem && ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
+        enabled: enableSearchMenuItem
         visible: enabled
         text: isTextHideSearch ? qsTr("Hide search") : qsTr("Show search")
         onClicked: {
