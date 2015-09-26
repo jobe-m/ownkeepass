@@ -102,7 +102,7 @@ Copyright &#169; 2013-2015 Marko Koschak"
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: "<br>" + qsTr("ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.")
+                text: qsTr("ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.")
             }
 
             SilicaLabel {
