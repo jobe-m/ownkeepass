@@ -70,6 +70,13 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.9 Some enhancements</b>\
+<ul>\
+<li>Updated and refactored about page</li>\
+<li>Removed warning info popup for Keepass 2 read-only mode</li>\
+<li>Search field switchable from pulley menu now also in Keepass 2 database mode</li>\
+</ul>\
+<br>\
 <b>v1.1.8 Searching in Keepass 2 database</b>\
 <ul>\
 <li>Implemented search functionality for Keepass 2 databases</li>\
