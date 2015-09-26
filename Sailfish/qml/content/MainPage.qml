@@ -636,9 +636,9 @@ Page {
             // display popup if some error occured
             switch (result) {
             case DatabaseAccessResult.RE_DB_READ_ONLY:
-                applicationWindow.infoPopup.show(Global.info,
-                                          qsTr("Read only support"),
-                                          qsTr("Keepass 2 database support is currently limited to read only."))
+//                applicationWindow.infoPopup.show(Global.info,
+//                                          qsTr("Read only support"),
+//                                          qsTr("Keepass 2 database support is currently limited to read only."))
                 // Database opened successfully in read only mode, now init master groups page and cover page
                 Global.enableDatabaseLock = true
                 masterGroupsPage.init()
