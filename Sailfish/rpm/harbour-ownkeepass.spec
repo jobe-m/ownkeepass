@@ -7,7 +7,7 @@ Name:       harbour-ownkeepass
 
 # >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
-%define __requires_exclude ^libgcrypt|libgpg-error.*$
+%define __requires_exclude ^libgcrypt|libgpg-error|libc.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
@@ -60,9 +60,10 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%defattr(644,root,root,-)
 /usr/share/icons/hicolor/86x86/apps
 /usr/share/applications
 /usr/share/harbour-ownkeepass
-/usr/bin
+%attr(655,-,-) %{_bindir}
 # >> files
 # << files
