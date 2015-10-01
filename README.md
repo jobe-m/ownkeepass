@@ -6,15 +6,16 @@ ownKeepass
 Status
 ------
 
-Upcoming release 1.1.8 on master branch
+Release 1.1.8 available in [openrepos.net] [1] / warehouse app
 * Implemented search functionality for Keepass 2 databases
-
-Release 1.1.7 available in [openrepos.net] [1] / warehouse app
+* Updated translations and added Japanese and Greek as new languages
+* Refactored the info popup to work better with different device orientations
+* Some minor fixes in UI in regard to new Sailfish OS 2.0 look
 * Support for landscape orientation added (not only but for all TOHKBD owners :)
 * Orientation can be adjusted in application settings (Portrait / Landscape / Dynamic)
 * Added support for reading Keepass 2 databases
 
-Release 1.1.6 available from jolla store
+Release 1.1.6 available from jolla store, release 1.1.8 is on the way in Harbor QA
 * Password entries can be moved between groups now
 * Updated icon look in list views
 * Database can be directly closed from lock screen

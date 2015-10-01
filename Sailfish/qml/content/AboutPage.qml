@@ -148,7 +148,7 @@ Copyright &#169; 2013-2015 Marko Koschak"
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: qsTr("My best appreciation goes to:<br>\
+                text: qsTr("My best appreciations go to:<br><br>\
 Jolla (for continuing where Nokia stopped)<br>\
 The KeepassX project (for a Qt implementation of Keepass)<br>\
 All translators and contributors: %1<br><br>\
