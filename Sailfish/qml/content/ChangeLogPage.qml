@@ -70,8 +70,9 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.1.9 Some enhancements</b>\
+<b>v1.1.9 First tablet release</b>\
 <ul>\
+<li>First version supporting Jolla Tablet</li>\
 <li>Updated and refactored about page</li>\
 <li>Removed warning info popup for Keepass 2 read-only mode</li>\
 <li>Search field switchable from pulley menu now also in Keepass 2 database mode</li>\
