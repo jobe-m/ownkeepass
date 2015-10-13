@@ -20,8 +20,8 @@
 **
 ***************************************************************************/
 
-#include "ownKeepassGlobal.h"
 #include <QDebug>
+#include "ownKeepassGlobal.h"
 #include "KdbListModel.h"
 #include "private/DatabaseClient.h"
 
@@ -41,6 +41,10 @@ KdbListModel::KdbListModel(QObject *parent)
 
 bool KdbListModel::connectToDatabaseClient()
 {
+    // check if database backend is already initialized and available
+    if (DatabaseClient::getInstance()->getInterface() == NULL) {
+        return false;
+    }
     // connect signals to backend
     bool ret = connect(this,
                        SIGNAL(loadMasterGroups(bool)),
@@ -108,14 +112,20 @@ bool KdbListModel::connectToDatabaseClient()
                   SLOT(slot_disconnectFromDatabaseClient()));
     Q_ASSERT(ret);
 
+    qDebug() << "KdbListModel connected";
+
     m_connected = true;
+    return true;
 }
 
 void KdbListModel::disconnectFromDatabaseClient()
 {
+    qDebug() << "disconnect KdbListModel";
+
     // disconnect all signals to backend
-    bool ret = disconnect(this, 0, 0, 0);
-    Q_ASSERT(ret);
+    // this is not needed ?
+//    bool ret = disconnect(this, 0, 0, 0);
+//    Q_ASSERT(ret);
 
     m_connected = false;
     m_registered = false;
@@ -127,6 +137,7 @@ KdbListModel::~KdbListModel()
     if (m_registered) {
         emit unregisterFromDatabaseClient(m_modelId);
     }
+    qDebug() << "KdbListModel destroyed";
 }
 
 void KdbListModel::loadMasterGroupsFromDatabase()
@@ -165,7 +176,7 @@ void KdbListModel::loadGroupListFromDatabase()
         // this list model is only used in a dialog and is thrown away afterwards, so it does not need to be registered
         // i.e. changes on the database which are normally reflecte to list models are not needed here
         m_registered = true;
-        m_modelId = "-1";
+        m_modelId = "ffffffff";
         // send signal to global interface of keepass database to get master groups
         emit loadMasterGroups(false);
     }
@@ -204,8 +215,8 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
             emit unregisterFromDatabaseClient(m_modelId);
             m_registered = false;
         }
-        // list model for searching is -1 per default, so set it here already
-        m_modelId = "-1";
+        // list model for searching is 0xfffffffe per default, so set it here already
+        m_modelId = "fffffffe";
         m_registered = true;
 
         // send signal to backend to start search in database

@@ -92,7 +92,7 @@ public slots:
 
 public:
     KdbEntry(QObject *parent = 0);
-    virtual ~KdbEntry() {}
+    virtual ~KdbEntry();
 
     QString getEntryId() const { return m_entryId; }
     void setEntryId(const QString value) { m_entryId = value; }

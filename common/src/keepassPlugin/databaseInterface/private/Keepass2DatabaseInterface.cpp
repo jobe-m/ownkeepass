@@ -163,7 +163,7 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
 
     // database was closed successfully
     emit databaseClosed();
-    // trigger disconnect from database client, because reopening will reinitalize the whole interfase
+    // trigger disconnect from database client, because reopening will reinitalize the whole interface
     // this makes it possible to load keepass 1 or 2 databases
     emit disconnectAllClients();
 }
@@ -394,7 +394,7 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
     Q_ASSERT(searchGroup);
     if (searchGroup != Q_NULLPTR) {
         EntrySearcher searcher;
-        QString searchId = int2QString(-1);
+        QString searchId = uInt2QString(0xfffffffe);
         Uuid searchUuid = qString2Uuid(searchId);
         Q_FOREACH (Entry* entry, searcher.search(searchString, searchGroup, Qt::CaseInsensitive)) {
             // update list model with found entries
@@ -404,14 +404,14 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
                                               entry->uuid().toHex(),                       // item id
                                               DatabaseItemType::ENTRY,                     // item type
                                               0,                                           // item level (not used here)
-                                              searchId);                            // specifying model where entry should be added (search list model gets -1)
+                                              searchId);                                   // specifying model where entry should be added (search list model gets 0xfffffffe)
             } else {
                 emit appendItemToListModel(entry->title(),                                 // entry name
                                            getUserAndPassword(entry),                      // subtitle
                                            entry->uuid().toHex(),                          // item id
                                            DatabaseItemType::ENTRY,                        // item type
                                            0,                                              // item level (not used here)
-                                           searchId);                               // specifying model where entry should be added (search list model gets -1)
+                                           searchId);                                      // specifying model where entry should be added (search list model gets 0xfffffffe)
             }
             // save modelId and entry
             m_entries_modelId.insertMulti(searchUuid, entry->uuid());
@@ -470,12 +470,12 @@ The integer number is converted into a 4 byte long hexadecimal QString.
 
 \return Hexadecimal QString representation of the integer number
 */
-inline QString Keepass2DatabaseInterface::int2QString(int value)
+inline QString Keepass2DatabaseInterface::uInt2QString(uint value)
 {
     if (value == 0) {
         return "0";
-    } else if (value == -1) {
-        return "-1";
+    } else if (value == 0xfffffffe) {
+        return "fffffffe";
     } else {
         return QString(QByteArray::number(value, 16));
     }

@@ -20,6 +20,7 @@
 **
 ***************************************************************************/
 
+#include <QDebug>
 #include "ownKeepassGlobal.h"
 #include "KdbGroup.h"
 #include "private/DatabaseClient.h"
@@ -94,9 +95,12 @@ bool KdbGroup::connectToDatabaseClient()
 
 void KdbGroup::disconnectFromDatabaseClient()
 {
+    qDebug() << "disconnect KdbGroup";
+
     // disconnect all signals to backend
-    bool ret = disconnect(this, 0, 0, 0);
-    Q_ASSERT(ret);
+    // this is not needed ?
+//    bool ret = disconnect(this, 0, 0, 0);
+//    Q_ASSERT(ret);
 
     m_connected = false;
     m_groupId = "";

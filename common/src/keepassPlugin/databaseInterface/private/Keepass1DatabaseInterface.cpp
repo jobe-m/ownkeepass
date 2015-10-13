@@ -59,10 +59,10 @@ Keepass1DatabaseInterface::Keepass1DatabaseInterface(QObject *parent)
 
 Keepass1DatabaseInterface::~Keepass1DatabaseInterface()
 {
+    qDebug("Destructor Keepass1DatabaseInterface");
     delete m_kdb3Database;
     delete config;
     SecString::deleteSessionKey();
-
 }
 
 void Keepass1DatabaseInterface::initDatabase()
@@ -145,7 +145,7 @@ void Keepass1DatabaseInterface::slot_closeDatabase()
 
     // database was closed successfully
     emit databaseClosed();
-    // trigger disconnect from database client, because reopening will reinitalize the whole interfase
+    // trigger disconnect from database client, because reopening will reinitalize the whole interface
     // this makes it possible to load keepass 1 or 2 databases
     emit disconnectAllClients();
 }
@@ -243,6 +243,7 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
     }
     for (int i = 0; i < masterGroups.count(); i++) {
         IGroupHandle* masterGroup = masterGroups.at(i);
+//        qDebug() << "int of mastergroup: " << uint(masterGroup);
         if (masterGroup->isValid()) {
 //            qDebug("Mastergroup %d: %s", i, CSTR(masterGroup->title()));
 //            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
@@ -251,20 +252,20 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
             if (masterGroup->title() != "Backup") {
                 int numberOfSubgroups = masterGroup->children().count();
                 int numberOfEntries = m_kdb3Database->entries(masterGroup).count();
-                int listModelId = -1;
+                int listModelId = 0xffffffff;
                 if (registerListModel) {
                     // save modelId and master group only if needed
                     // i.e. save model list id for master group page and don't do it for list models used in dialogs
                     listModelId = 0;
-                    m_groups_modelId.insertMulti(listModelId, int(masterGroup));
+                    m_groups_modelId.insertMulti(listModelId, uint(masterGroup));
                 }
                 emit appendItemToListModel(masterGroup->title(),                           // group name
                                            QString("Subgroups: %1 | Entries: %2")
                                            .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
-                                           int2QString(int(masterGroup)),                  // item id
+                                           uInt2QString(uint(masterGroup)),                  // item id
                                            DatabaseItemType::GROUP,                        // item type
                                            item_level,                                     // item level (0 = root, 1 = first level, etc.
-                                           int2QString(int(listModelId)));                 // list model of root group
+                                           uInt2QString(uint(listModelId)));                 // list model of root group
             }
         }
     }
@@ -277,7 +278,9 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 
     Q_ASSERT(m_kdb3Database);
     // load sub groups and entries
-    IGroupHandle* group = (IGroupHandle*)qString2Int(groupId);
+    IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
+    Q_ASSERT(group);
+//    qDebug() << "int of group: " << uint(group);
 
     QList<IGroupHandle*> subGroups;
     if (m_setting_sortAlphabeticallyInListView) {
@@ -287,6 +290,8 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     }
     for (int i = 0; i < subGroups.count(); i++) {
         IGroupHandle* subGroup = subGroups.at(i);
+//        qDebug() << "int of subgroup: " << uint(subGroup->parent()) << " (title: " << subGroup->parent()->title() << ")";
+
         if (subGroup->isValid() && subGroup->parent() == group) {
 //            qDebug("Group %d: %s", i, CSTR(subGroup->title()));
             int numberOfSubgroups = subGroup->children().count();
@@ -294,12 +299,12 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
             emit appendItemToListModel(subGroup->title(),                              // group name
                                        QString("Subgroups: %1 | Entries: %2")
                                        .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
-                                       int2QString(int(subGroup)),                     // item id
+                                       uInt2QString(uint(subGroup)),                     // item id
                                        DatabaseItemType::GROUP,                        // item type
                                        0,                                              // item level (not used here)
                                        groupId);                                       // list model gets groupId as its unique ID
             // save modelId and group
-            m_groups_modelId.insertMulti(int(group), int(subGroup));
+            m_groups_modelId.insertMulti(uint(group), uint(subGroup));
         }
     }
 
@@ -314,12 +319,12 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         if (entry->isValid()) {
             emit appendItemToListModel(entry->title(),                                 // group name
                                        getUserAndPassword(entry),                      // subtitle
-                                       int2QString(int(entry)),                        // item id
+                                       uInt2QString(uint(entry)),                        // item id
                                        DatabaseItemType::ENTRY,                        // item type
                                        0,                                              // item level (not used here)
                                        groupId);                                       // list model gets groupId as its unique ID
             // save modelId and entry
-            m_entries_modelId.insertMulti(int(group), int(entry));
+            m_entries_modelId.insertMulti(uint(group), uint(entry));
         }
     }
     emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_OK);
@@ -330,7 +335,7 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 //    qDebug() << "entryId " << entryId;
 
     // get entry handler for entryId
-    IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
+    IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     // decrypt password which is usually stored encrypted in memory
     SecString password = entry->password();
     password.unlock();
@@ -366,7 +371,7 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
 //    qDebug() << "groupId " << groupId;
 
     // get group handler for groupId
-    IGroupHandle* group = (IGroupHandle*)qString2Int(groupId);
+    IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
     emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->title());
 }
@@ -378,7 +383,7 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)
     Q_ASSERT(m_kdb3Database);
 
     //  save changes on group details to database
-    IGroupHandle* group = (IGroupHandle*)qString2Int(groupId);
+    IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group); // Master group (0) cannot be changed
     group->setTitle(title);
     if (!m_kdb3Database->save()) {
@@ -387,7 +392,7 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)
     }
 
     // update all list models which contain the changed group
-    QList<int> modelIds = m_groups_modelId.keys(int(group));
+    QList<int> modelIds = m_groups_modelId.keys(uint(group));
     int numberOfSubgroups = group->children().count();
     int numberOfEntries = m_kdb3Database->entries(group).count();
     for (int i = 0; i < modelIds.count(); i++) {
@@ -396,13 +401,13 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)
                                              QString("Subgroups: %1 | Entries: %2")
                                              .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
                                              groupId,                                         // identifier for group item in list model
-                                             int2QString(modelIds[i]));                       // identifier for list model
+                                             uInt2QString(modelIds[i]));                       // identifier for list model
         } else {
             emit updateItemInListModel(title,                                           // update group name
                                        QString("Subgroups: %1 | Entries: %2")
                                        .arg(numberOfSubgroups).arg(numberOfEntries),    // subtitle
                                        groupId,                                         // identifier for group item in list model
-                                       int2QString(modelIds[i]));                       // identifier for list model
+                                       uInt2QString(modelIds[i]));                       // identifier for list model
         }
     }
     // signal to QML
@@ -414,8 +419,8 @@ void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
 //    qDebug() << "modelId " << modelId;
 
     // delete all groups and entries which are associated with given modelId
-    m_groups_modelId.remove(qString2Int(modelId));
-    m_entries_modelId.remove(qString2Int(modelId));
+    m_groups_modelId.remove(qString2UInt(modelId));
+    m_entries_modelId.remove(qString2UInt(modelId));
 }
 
 void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconId, QString parentGroupId)
@@ -425,7 +430,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
     Q_ASSERT(m_kdb3Database);
 
     // get parent group handle and identify IDs of list model
-    IGroupHandle* parentGroup = (IGroupHandle*)qString2Int(parentGroupId);
+    IGroupHandle* parentGroup = (IGroupHandle*)qString2UInt(parentGroupId);
 
     CGroup* groupData = new CGroup(); // ownership will be given to m_kdb3Database object
     groupData->Title = title;
@@ -434,7 +439,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
     Q_ASSERT(newGroup);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newGroupCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, int2QString(int(newGroup)));
+        emit newGroupCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, uInt2QString(uint(newGroup)));
         return;
     }
 
@@ -442,20 +447,20 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
     if (m_setting_sortAlphabeticallyInListView) {
         emit addItemToListModelSorted(title,                                       // group name
                                       "Subgroups: 0 | Entries: 0",                 // subtitle
-                                      int2QString(int(newGroup)),                  // item id
+                                      uInt2QString(uint(newGroup)),                  // item id
                                       DatabaseItemType::GROUP,                     // item type
                                       0,                                           // item level (not used here)
                                       parentGroupId);                              // for distinguishing different models
     } else {
         emit appendItemToListModel(title,                                          // group name
                                    "Subgroups: 0 | Entries: 0",                    // subtitle
-                                   int2QString(int(newGroup)),                     // item id
+                                   uInt2QString(uint(newGroup)),                     // item id
                                    DatabaseItemType::GROUP,                        // item type
                                    0,                                              // item level (not used here)
                                    parentGroupId);                                 // for distinguishing different models
     }
     // save modelid and group
-    m_groups_modelId.insertMulti(int(parentGroup), int(newGroup));
+    m_groups_modelId.insertMulti(uint(parentGroup), uint(newGroup));
 
     // update all grandparent groups subtitle in UI
     // check if parent group is root group, then we don't need to do anything
@@ -464,7 +469,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
     }
 
     // signal to QML
-    emit newGroupCreated(DatabaseAccessResult::RE_OK, int2QString(int(newGroup)));
+    emit newGroupCreated(DatabaseAccessResult::RE_OK, uInt2QString(uint(newGroup)));
 }
 
 void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
@@ -478,7 +483,7 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
 
     Q_ASSERT(m_kdb3Database);
     //  save changes on entry details to database
-    IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
+    IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
 
     entry->setTitle(title);
@@ -496,18 +501,18 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
     }
 
     // update entry item in list model
-    QList<int> modelIds = m_entries_modelId.keys(int(entry));
+    QList<int> modelIds = m_entries_modelId.keys(uint(entry));
     for (int i = 0; i < modelIds.count(); i++) {
         if (m_setting_sortAlphabeticallyInListView) {
             emit updateItemInListModelSorted(title,                                 // group name
                                              getUserAndPassword(entry),             // subtitle
                                              entryId,                               // identifier for item in list model
-                                             int2QString(modelIds[i]));             // identifier for list model of master group
+                                             uInt2QString(modelIds[i]));             // identifier for list model of master group
         } else {
             emit updateItemInListModel(title,                                       // group name
                                        getUserAndPassword(entry),                   // subtitle
                                        entryId,                                     // identifier for item in list model
-                                       int2QString(modelIds[i]));                   // identifier for list model of master group
+                                       uInt2QString(modelIds[i]));                   // identifier for list model of master group
         }
     }
     // signal to QML
@@ -551,7 +556,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
 //    qDebug() << "parentGroupId " << parentGroupId;
 
     // create new entry in specified group
-    IGroupHandle* parentGroup = (IGroupHandle*)qString2Int(parentGroupId);
+    IGroupHandle* parentGroup = (IGroupHandle*)qString2UInt(parentGroupId);
     Q_ASSERT(parentGroup);
     Q_ASSERT(m_kdb3Database);
     IEntryHandle* newEntry = m_kdb3Database->newEntry(parentGroup);
@@ -566,7 +571,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     newEntry->setComment(comment);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newEntryCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, int2QString(int(newEntry)));
+        emit newEntryCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, uInt2QString(uint(newEntry)));
         return;
     }
 
@@ -574,25 +579,25 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     if (m_setting_sortAlphabeticallyInListView) {
         emit addItemToListModelSorted(title,                                       // title
                                       getUserAndPassword(newEntry),                // subtitle
-                                      int2QString(int(newEntry)),                  // item id
+                                      uInt2QString(uint(newEntry)),                  // item id
                                       DatabaseItemType::ENTRY,                     // item type
                                       0,                                           // item level (not used here)
                                       parentGroupId);                              // id of list model where to put this entry in
     } else {
         emit appendItemToListModel(title,                                          // title
                                    getUserAndPassword(newEntry),                   // subtitle
-                                   int2QString(int(newEntry)),                     // item id
+                                   uInt2QString(uint(newEntry)),                     // item id
                                    DatabaseItemType::ENTRY,                        // item type
                                    0,                                              // item level (not used here)
                                    parentGroupId);                                 // id of list model where to put this entry in
     }
     // save modelId and entry
-    m_entries_modelId.insertMulti(int(parentGroup), int(newEntry));
+    m_entries_modelId.insertMulti(uint(parentGroup), uint(newEntry));
 
     // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
-    emit newEntryCreated(DatabaseAccessResult::RE_OK, int2QString(int(newEntry)));
+    emit newEntryCreated(DatabaseAccessResult::RE_OK, uInt2QString(uint(newEntry)));
 }
 
 void Keepass1DatabaseInterface::slot_deleteGroup(QString groupId)
@@ -600,7 +605,7 @@ void Keepass1DatabaseInterface::slot_deleteGroup(QString groupId)
 //    qDebug() << "groupId " << groupId;
 
     // get group handles
-    IGroupHandle* group = (IGroupHandle*)qString2Int(groupId);
+    IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
     IGroupHandle* parentGroup = group->parent();
     // delete group from database
@@ -632,8 +637,8 @@ void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* 
     emit updateItemInListModel(parentGroup->title(),                                // group name
                                QString("Subgroups: %1 | Entries: %2")
                                .arg(numberOfSubgroups).arg(numberOfEntries),        // subtitle
-                               int2QString(int(parentGroup)),                       // identifier for group item in list model
-                               int2QString(int(grandParentGroup)));                 // identifier for list model
+                               uInt2QString(uint(parentGroup)),                       // identifier for group item in list model
+                               uInt2QString(uint(grandParentGroup)));                 // identifier for list model
 }
 
 void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
@@ -641,7 +646,7 @@ void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
 //    qDebug() << "entryId " << entryId;
 
     // get handles
-    IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
+    IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
     IGroupHandle* parentGroup = entry->group();
     Q_ASSERT(parentGroup);
@@ -668,11 +673,11 @@ void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
 //    qDebug() << "entryId " << entryId;
 //    qDebug() << "newGroupId " << newGroupId;
 
-    IEntryHandle* entry = (IEntryHandle*)qString2Int(entryId);
+    IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
     IGroupHandle* parentGroup = entry->group();
     Q_ASSERT(parentGroup);
-    IGroupHandle* newGroup = (IGroupHandle*)qString2Int(newGroupId);
+    IGroupHandle* newGroup = (IGroupHandle*)qString2UInt(newGroupId);
     Q_ASSERT(newGroup);
     Q_ASSERT(m_kdb3Database);
 
@@ -690,9 +695,9 @@ void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
     updateGrandParentGroupInListModel(parentGroup);
 
     // add entry item in list model of new group if this group is actually visible in UI
-    if (m_groups_modelId.contains(int(newGroup))) {
+    if (m_groups_modelId.contains(uint(newGroup))) {
         // register entry to list model of parent group
-        m_entries_modelId.insertMulti(int(newGroup), int(entry));
+        m_entries_modelId.insertMulti(uint(newGroup), uint(entry));
         // now update list model with moved entry
         if (m_setting_sortAlphabeticallyInListView) {
             emit addItemToListModelSorted(entry->title(),                          // entry name
@@ -729,7 +734,7 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
 //    qDebug() << "rootGroupId " << rootGroupId;
 
     // get group handle
-    IGroupHandle* rootGroup = (IGroupHandle*)qString2Int(rootGroupId);
+    IGroupHandle* rootGroup = (IGroupHandle*)qString2UInt(rootGroupId);
     // search for entries in database
     // rootGroup is the groups from which search is performed recursively in the (sub-)tree of the database
     Q_ASSERT(m_kdb3Database);
@@ -743,24 +748,24 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
     for (int i = 0; i < entries.count(); i++) {
         IEntryHandle* entry = entries.at(i);
         if (entry->isValid()) {
-//            qDebug() << "entry found: " << entry->title() << " " << int(entry);
+//            qDebug() << "entry found: " << entry->title() << " " << uint(entry);
             if (m_setting_sortAlphabeticallyInListView) {
                 emit addItemToListModelSorted(entry->title(),                              // entry name
                                               getUserAndPassword(entry),                   // subtitle
-                                              int2QString(int(entry)),                     // item id
+                                              uInt2QString(uint(entry)),                     // item id
                                               DatabaseItemType::ENTRY,                     // item type
                                               0,                                           // item level (not used here)
-                                              int2QString(-1));                            // specifying model where entry should be added (search list model gets -1)
+                                              uInt2QString(0xfffffffe));                            // specifying model where entry should be added (search list model gets 0xfffffffe)
             } else {
                 emit appendItemToListModel(entry->title(),                                 // entry name
                                            getUserAndPassword(entry),                      // subtitle
-                                           int2QString(int(entry)),                        // item id
+                                           uInt2QString(uint(entry)),                        // item id
                                            DatabaseItemType::ENTRY,                        // item type
                                            0,                                              // item level (not used here)
-                                           int2QString(-1));                               // specifying model where entry should be added (search list model gets -1)
+                                           uInt2QString(0xfffffffe));                               // specifying model where entry should be added (search list model gets 0xfffffffe)
             }
             // save modelId and entry
-            m_entries_modelId.insertMulti(-1, int(entry));
+            m_entries_modelId.insertMulti(0xfffffffe, uint(entry));
         }
     }
     // signal to QML
@@ -822,12 +827,12 @@ The integer number is converted into a 4 byte long hexadecimal QString.
 
 \return Hexadecimal QString representation of the integer number
 */
-inline QString Keepass1DatabaseInterface::int2QString(int value)
+inline QString Keepass1DatabaseInterface::uInt2QString(uint value)
 {
     if (value == 0) {
         return "0";
-    } else if (value == -1) {
-        return "-1";
+    } else if (value == 0xfffffffe) {
+        return "fffffffe";
     } else {
         return QString(QByteArray::number(value, 16));
     }
@@ -842,23 +847,24 @@ if conversion from QString to integer number fails.
 
 \param value This is the QString value which shall be converted to integer
 \return positive number if conversion succeeded
-        -1 if conversion did not succeed
+        0xfffffffe placeholder for search group if database search is ongoing
+        0xffffffff if conversion did not succeed
 */
-inline int Keepass1DatabaseInterface::qString2Int(QString value)
+inline uint Keepass1DatabaseInterface::qString2UInt(QString value)
 {
     bool ok = false;
     // threat QString value as hexadecimal number
-    int intValue = value.toLatin1().toInt(&ok, 16);
+    uint uintValue = value.toLatin1().toUInt(&ok, 16);
     if (ok) {
-        return intValue;
+        return uintValue;
     } else {
         if (value.compare("0")) {
             return 0;
-        } else if (value.compare("-1")) {
-            return -1;
+        } else if (value.compare("fffffffe")) {
+            return 0xfffffffe;
         } else {
             emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_INT, value);
-            return -1;
+            return 0xffffffff;
         }
     }
 }

@@ -168,8 +168,8 @@ private:
     void initDatabase();
     void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
     inline QString getUserAndPassword(IEntryHandle* entry);
-    inline QString int2QString(int value);
-    inline int qString2Int(QString value);
+    inline QString uInt2QString(uint value);
+    inline uint qString2UInt(QString value);
 
 private:
     // Keepass database handler

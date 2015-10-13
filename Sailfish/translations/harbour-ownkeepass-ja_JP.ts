@@ -61,7 +61,7 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="175"/>
-        <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it :)</source>
+        <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
