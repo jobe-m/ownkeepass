@@ -6,22 +6,22 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation type="unfinished"></translation>
+        <translation>O programu ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Sejf s hesly</translation>
+        <translation>Sejf s hesly</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass je program slučitelný s Keepass 1.x a 2.x pro bezpečné ukládání hesel</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="92"/>
@@ -32,17 +32,17 @@
         <location filename="../qml/content/AboutPage.qml" line="98"/>
         <location filename="../qml/content/AboutPage.qml" line="130"/>
         <source>License</source>
-        <translation type="unfinished">Licence</translation>
+        <translation>Licence</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="105"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass je šířen za podmínek povolení GNU General Public License (GPL) verze 2 nebo (vaše volba) verze 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="137"/>
         <source>Change log</source>
-        <translation type="unfinished">Seznam změn</translation>
+        <translation>Seznam změn</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="143"/>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="213"/>
         <source>Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="220"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahlásit chyby</translation>
     </message>
 </context>
 <context>

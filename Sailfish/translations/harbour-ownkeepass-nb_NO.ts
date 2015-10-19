@@ -6,43 +6,43 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation type="unfinished"></translation>
+        <translation>Om ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Passordsafe</translation>
+        <translation>Passordsafe</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass er en passordsafe kompatibel med Keepass 1.x og 2.x</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versjon</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="92"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>E-post</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="98"/>
         <location filename="../qml/content/AboutPage.qml" line="130"/>
         <source>License</source>
-        <translation type="unfinished">Lisens</translation>
+        <translation>Lisens</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="105"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass distribueres under betingelsene i GNU General Public License (GPL) versjon 2 eller (om du ønsker) versjon 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="137"/>
         <source>Change log</source>
-        <translation type="unfinished">Endringslogg</translation>
+        <translation>Endringslogg</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="143"/>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="213"/>
         <source>Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Oversett</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="220"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporter feil</translation>
     </message>
 </context>
 <context>

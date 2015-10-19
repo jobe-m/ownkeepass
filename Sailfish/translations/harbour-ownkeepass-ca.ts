@@ -6,58 +6,58 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation type="unfinished"></translation>
+        <translation>Quant a ownKeppass</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation>Protecció de contrasenyes</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass és una aplicació per desar contrasenyes de forma protegida compatible amb Keepass 1.x i 2.x</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versió</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="92"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>Correu electrònic</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="98"/>
         <location filename="../qml/content/AboutPage.qml" line="130"/>
         <source>License</source>
-        <translation type="unfinished">Llicència</translation>
+        <translation>Llicència</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="105"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass es distribueix d&apos;acord amb els termes de la versió 2 o (sota el vostre criteri) la versió 3 de la Llicència Pública General de GNU (GPL).</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="137"/>
         <source>Change log</source>
-        <translation type="unfinished">Llista de canvis</translation>
+        <translation>Llista de canvis</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="143"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Crèdits</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="151"/>
         <source>My best appreciations go to:&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators and contributors: %1&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;autor vol reconèixer la tasca de:&lt;br&gt;&lt;br&gt;Jolla (per continuar allà on Nokia ho havia deixat)&lt;br&gt;El projecte KeepassX (per la implantació Qt de Keepass)&lt;br&gt;Tots els traductors i contribuïdors: %1&lt;br&gt;&lt;br&gt;L&apos;autor espera que tothom gaudeixi amb l&apos;ús de l&apos;aplicació, igual com ell ho fa desenvolupant-la.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="167"/>
         <source>Donate or Contribute</source>
-        <translation type="unfinished"></translation>
+        <translation>Feu una donació o contribuïu</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="175"/>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="213"/>
         <source>Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Traduïu</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="220"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Informeu d&apos;errors</translation>
     </message>
 </context>
 <context>
@@ -98,12 +98,12 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="36"/>
         <source>ownKeepass got updated</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;ha actualitzat ownKeepass </translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="37"/>
         <source>New version %1 now installed on your phone. Have a look in the change log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;ha instal·lat la nova versió %1 al telèfon. Mireu-ne els detalls a la llista de canvis.</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="57"/>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="46"/>
         <source>Read only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode de només lectura</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="52"/>
@@ -433,12 +433,12 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="108"/>
         <source>Default encryption</source>
-        <translation type="unfinished"></translation>
+        <translation>Encriptació per defecte</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="109"/>
         <source>This is the encryption which will be used as default when creating a new Keepass 1 database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquesta és l&apos;encriptació que s&apos;utilitzarà per defecte en crear una nova base de dades Keepass 1.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="132"/>
@@ -473,7 +473,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="270"/>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientació</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
@@ -488,7 +488,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="326"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Idioma</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="327"/>
@@ -498,7 +498,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
         <source>System default</source>
-        <translation type="unfinished"></translation>
+        <translation>Per defecte al sistema</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="165"/>
@@ -554,23 +554,23 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="271"/>
         <source>Change here orientation of the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Canvieu aquí l&apos;orientació de la pantalla</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
         <source>Dynamic</source>
         <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dinàmica</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertical</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Horitzontal</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
@@ -848,22 +848,23 @@
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
 Please note the following. While ownKeepass can read and write to Keepass 1 databases it can currently only read from Keepass 2 databases. It cannot yet change and save Keepass 2 databases. This is planned for a future release of ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass és una aplicació segura per desar contrasenyes per a SailfishOS. El seu propòsit és protegir informació sensible com ara contrasenyes de pàgines web, números de targetes de crèdit, PINs, TANs i altres elements que es vulguin mantenir ocults. Aquesta informació es desa en un fitxer de base de dades emmagatzemat localment i encriptat. Per obrir aquest fitxer cal establir i recordar una contrasenya principal. ownKeepass permet utilitzar les versions 1 i 2 de bases de dades Keepass, de manera que al vostre PC podeu utilitzar Keepass [1] o KeepassX [2] per desencriptar i obrir la vostra base de dades, també.&lt;br&gt;&lt;br&gt;
+Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, actualment, de Keepass 2, només pot llegir. En futures versions d&apos;ownKeepass està previst permetre modificar aquest tipus de bases de dades.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="41"/>
         <source>&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Ús de les pàgines d&apos;ajuda&lt;/b&gt;&lt;br&gt;&lt;br&gt;Cada pàgina dins d&apos;ownKeepass té el seu propi contingut d&apos;ajuda. Podeu fer-ne ús per aprendre totes les funcions que us ofereix aquesta aplicació.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
         <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES / Rijndael (supported by Keepass 1 and 2) or Twofish (Supported only by Keepass 1) with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords (in-memory encryption currently only Keepass 1). Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Informació sobre la seguretat de la base de dades Keepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;El codi de la base de dades d&apos;ownKeepass està basat en el projecte KeepassX [2]. Utilitza algoritmes d&apos;encriptació com AES / Rijndael (suportats per les versions 1 i 2 de Keepass) o Twofish (versió 1 de Keepass) amb blocs de 128 bits i mida de clau de 256 bits, SHA-256 com a algoritme hash i encriptació en-memòria de totes les contrasenyes (només a Keepass 1). A més, protegeix la contrasenya principal contra atacs de força bruta i de diccionari, encriptant-la i fragmentant-la abans d&apos;utilitzar-la per desencriptar la base de dades. Aquesta funció s&apos;anomena iteració de transformació de clau i pot ajustar-se a la configuració. Tot això només fa que afegir seguretat als dos punts que cal tenir més en compte:&lt;br&gt;&lt;br&gt;(1) Cal utilitzar sempre una contrasenya principal prou llarga i difícil d&apos;endevinar &lt;br&gt;&lt;br&gt;(2) Cal protegir el sistema de programari espia expressament dissenyat per atacar ownKeepass. El segon punt es correspon amb la primera de les 10 Lleis Immutables de Seguretat [3]: &quot;Si una persona malintencionada pot persuadir-vos d&apos;instal·lar el seu programari al vostre dispositiu, aquest deixa de ser el vostre dispositiu&quot;. </translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="65"/>
         <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Com compartir la base de dades Keepass entre el vostre telèfon / tablet Jolla i el vostre PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;El format de fitxer de la base de dades Keepass és òptim per compartir la informació segura de contrasenyes entre els vostres dispositius, gràcies a la gran varietat d&apos;implementacions Keepass disponibles per a totes les plataformes. A la pàgina de descàrregues del web de Keepasss [4] podeu obtenir el Keepass 1 clàssic o la versió Keepass 2 per a PC. També hi ha altres alternatives suggerides com ara la versió Keepass X 0.4.3 [2] que és compatible amb Keepass 1 , o bé la versió alfa de KeepassX 2, que és compatbile amb Keepass 2.&lt;br&gt; Podeu compartir el vostre fitxer de base de dades Keepass via targeta SD o via algun servei al núvol com ara ownCloud o Dropbox. En el cas d&apos;utilitzar un servei al núvol, és molt recomanable utilitzar un fitxer de clau a més de la contrasenya principal. ownKeepass utilitzarà aquest fitxer de clau per desencriptar la base de dades. Deseu aquest fitxer només localment al vostre dispositiu i al vostre PC i no el pugeu en cap cas al servei al núvol. Això us protegirà d&apos;un possible atac al vostre servei al núvol, ja que l&apos;atacant no podrà accedir en cap cas a la base de dades sense aquest fitxer de clau.</translation>
     </message>
 </context>
 <context>
@@ -982,12 +983,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="94"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished">Hi ha un problema amb la targeta SD</translation>
+        <translation>Hi ha un problema amb la targeta SD</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="95"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished">Les targetes SD amb particions múltiples no estan suportades.</translation>
+        <translation>Les targetes SD amb particions múltiples no estan suportades.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="135"/>
@@ -1042,13 +1043,13 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="385"/>
         <source>Database type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus de base de dades:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="402"/>
         <source>Unknown</source>
         <extracomment>Here unknown is used for unknown database type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Desconegut</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="409"/>
@@ -1112,22 +1113,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="655"/>
         <source>Database file</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxer de base de dades</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="656"/>
         <source>The specified file is not a Keepass database.</source>
-        <translation type="unfinished"></translation>
+        <translation>El fitxer especificat no és una base de dades Keepass</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="661"/>
         <source>Database version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versió de la base de dades</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="662"/>
         <source>The specified file has an unsupported Keepass database version.</source>
-        <translation type="unfinished"></translation>
+        <translation>El fitxer especificat es correspon amb una versió Keepass no suportada.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="667"/>
@@ -1141,44 +1142,44 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Database headers are missing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Manquen les capçaleres de la base de dades</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="673"/>
         <location filename="../qml/content/MainPage.qml" line="679"/>
         <source>Wrong password</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrasenya incorrecta</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="674"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>La contrasenya principal és incorrecta o el fitxer de la base de dades és corrupte. Reintenteu-ho.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="680"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation type="unfinished"></translation>
+        <translation>La contrasenya principal és incorrecta o el fitxer de clau és incorrecte. Reintenteu-ho. Si l&apos;error persisteix pot indicar corrupció del fitxer de la base de dades.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="686"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
-        <translation type="unfinished"></translation>
+        <translation>La capçalera de la base de dades no es correspon amb el valor de hash.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="691"/>
         <location filename="../qml/content/MainPage.qml" line="697"/>
         <source>File I/O error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error I/O al fitxer</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="692"/>
         <source>Cannot open database file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha pogut obrir la base de dades. Detall de l&apos;error:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="698"/>
         <source>Cannot open key file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha pogut obrir el fitxer de clau. Detall de l&apos;error:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="727"/>
@@ -1259,17 +1260,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="771"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error en l&apos;encriptació</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="772"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;han pogut iniciar els algoritmes criptogràfics. S&apos;ha tancat la base de dades per precaució davant qualsevol atac. Reinicieu l&apos;aplicació. Si l&apos;error persisteix, cal que contacteu el desenvolupador.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="777"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
-        <translation type="unfinished"></translation>
+        <translation>La conversió de QString &quot;%1&quot; a Int ha fallat</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1197"/>
@@ -1399,7 +1400,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="217"/>
         <source>Database type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus de base de dades:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="243"/>
@@ -1465,7 +1466,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="88"/>
         <source>Read only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode de només lectura</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="94"/>

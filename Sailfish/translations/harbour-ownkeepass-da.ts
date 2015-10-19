@@ -6,7 +6,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation type="unfinished"></translation>
+        <translation>Om ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
@@ -21,28 +21,28 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="92"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>E-post</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="98"/>
         <location filename="../qml/content/AboutPage.qml" line="130"/>
         <source>License</source>
-        <translation type="unfinished">Licens</translation>
+        <translation>Licens</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="105"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass distribueres under betingelserne i GNU General Public License (GPL) version 2 eller (efter eget valg) version 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="137"/>
         <source>Change log</source>
-        <translation type="unfinished">Ændringslog</translation>
+        <translation>Ændringslog</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="143"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="167"/>
         <source>Donate or Contribute</source>
-        <translation type="unfinished"></translation>
+        <translation>Donér eller Bidrag</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="175"/>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="213"/>
         <source>Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Oversæt</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="220"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Indrapporter fejl</translation>
     </message>
 </context>
 <context>
@@ -560,17 +560,17 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
         <source>Dynamic</source>
         <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dynamisk</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Portræt</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Landskab</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
@@ -1259,7 +1259,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="771"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"></translation>
+        <translation>Krypto opstartsfejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="772"/>

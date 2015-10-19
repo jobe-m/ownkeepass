@@ -6,12 +6,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικά με το ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Ασφάλιση κωδικών πρόσβασης</translation>
+        <translation>Ασφάλιση κωδικών πρόσβασης</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
@@ -21,7 +21,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Έκδοση</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="92"/>
@@ -32,17 +32,17 @@
         <location filename="../qml/content/AboutPage.qml" line="98"/>
         <location filename="../qml/content/AboutPage.qml" line="130"/>
         <source>License</source>
-        <translation type="unfinished">Άδεια χρήσης</translation>
+        <translation>Άδεια χρήσης</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="105"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το ownKeepass διανέμεται υπό την άδεια χρήσης GNU Γενική άδεια δημόσιας χρήσης (GPL) έκδοση 2 (με τη βούλησή σας) έκδοση 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="137"/>
         <source>Change log</source>
-        <translation type="unfinished">Ιστορικό αλλαγών</translation>
+        <translation>Ιστορικό αλλαγών</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="143"/>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="213"/>
         <source>Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάφραση</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="220"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά σφαμάτων</translation>
     </message>
 </context>
 <context>

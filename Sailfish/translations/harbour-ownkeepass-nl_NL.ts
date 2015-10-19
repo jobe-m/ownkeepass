@@ -6,48 +6,48 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation type="unfinished"></translation>
+        <translation>Over ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Wachtwoordkluis</translation>
+        <translation>Wachtwoordkluis</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="62"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass is een wachtwoordkluis-applicatie, compatibel met Keepass 1.x en 2.x</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="70"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versie</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="92"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>E-mailadres</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="98"/>
         <location filename="../qml/content/AboutPage.qml" line="130"/>
         <source>License</source>
-        <translation type="unfinished">Licentie</translation>
+        <translation>Licentie</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="105"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass wordt verspreid onder de voorwaarden van de GNU General Public License (GPL) versie 2 of (indien dit uw voorkeur heeft) versie 3.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="137"/>
         <source>Change log</source>
-        <translation type="unfinished">Wijzigingslog</translation>
+        <translation>Wijzigingslog</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="143"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedankt aan</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="151"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="167"/>
         <source>Donate or Contribute</source>
-        <translation type="unfinished"></translation>
+        <translation>Doneren of bijdragen</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="175"/>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="213"/>
         <source>Translate</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertalen</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="220"/>
         <source>Report bugs</source>
-        <translation type="unfinished"></translation>
+        <translation>Bugs rapporteren</translation>
     </message>
 </context>
 <context>
@@ -199,7 +199,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="46"/>
         <source>Read only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen-lezen modus</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="52"/>
@@ -473,7 +473,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="270"/>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Oriëntatie</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
@@ -498,7 +498,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
         <source>System default</source>
-        <translation type="unfinished"></translation>
+        <translation>Systeemstandaard</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="165"/>
@@ -554,23 +554,23 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="271"/>
         <source>Change here orientation of the display</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig hier de oriëntatie van het scherm</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="275"/>
         <source>Dynamic</source>
         <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dynamisch</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="276"/>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Portret</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
         <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Landschap</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="290"/>
@@ -1042,7 +1042,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="385"/>
         <source>Database type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Database type:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="402"/>
@@ -1141,7 +1141,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Database headers are missing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database headers ontbreken.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="673"/>
@@ -1152,33 +1152,33 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="674"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Of je hoofdwachtwoord is onjuist, of het databasebestand is corrupt. Probeer het nogmaals.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="680"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Of je hoofdwachtwoord is onjuist, of je sleutelbestand is verkeerd. Als de fout aanhoudt, dan is ofwel het sleutelbestand of het databasebestand corrupt.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="686"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database header komt niet overeen met de bijbehorende hashwaarde.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="691"/>
         <location filename="../qml/content/MainPage.qml" line="697"/>
         <source>File I/O error</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand I/O fout</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="692"/>
         <source>Cannot open database file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan databasebestand niet openen. Foutdetails:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="698"/>
         <source>Cannot open key file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan sleutelbestand niet openen. Foutdetails:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="727"/>
@@ -1259,17 +1259,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="771"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"></translation>
+        <translation>Crypto init fout</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="772"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het crypto algoritme kon niet succesvol worden geïnitialiseerd. De database is weer gesloten om aanvallen te voorkomen. Probeer opnieuw de app te openen. Als de fout aanhoudt, neem dan contact op met de ontwikkelaar.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="777"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversie van QString &quot;%1&quot; naar Int mislukt</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1197"/>
@@ -1399,7 +1399,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="217"/>
         <source>Database type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Database type:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="243"/>
@@ -1465,7 +1465,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="88"/>
         <source>Read only mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen-lezen modus</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="94"/>
