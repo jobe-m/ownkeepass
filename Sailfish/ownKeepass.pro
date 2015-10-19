@@ -39,8 +39,10 @@ isEmpty(VERSION) {
 }
 DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 
-# Following define is a trick to load the desired precompiled version of a plugin
-# Depending if compiling for emulator or the real device
+# Following define is a trick to load the appropriate libraries libgcrypt and libgpg-error
+# Depending if compiled for emulator/jolla tablet (i486) or jolla phone (armv7hl)
+# BE AWARE this only works on Ubuntu Linux, on Mac OS X and Windows you need to specify ARCH_LIBS directly
+# Loading wrong architecture of libs into the rpm package will result in a not working app
 linux-g++-32 {
     message("Loading libs for emulator")
     ARCH_LIBS=i486_x86
