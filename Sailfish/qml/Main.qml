@@ -88,7 +88,13 @@ ApplicationWindow
             case 2:
                 return Orientation.Landscape
             default:
-                return (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
+                if (Screen.sizeCategory >= Screen.Large) {
+                    // Tablet size display
+                    return (Orientation.Portrait | Orientation.PortraitInverted | Orientation.Landscape | Orientation.LandscapeInverted)
+                } else {
+                    // Phone size display
+                    return (Orientation.Portrait | Orientation.Landscape | Orientation.LandscapeInverted)
+                }
             }
         })
     }
