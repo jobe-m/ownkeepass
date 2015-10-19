@@ -70,6 +70,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.10 Translation bugfix</b>\
+<ul>\
+<li>Updated all translation files</li>\
+<li>Fixed bug with missing translations on the Jolla phone</li>\
+</ul>\
+<br>\
 <b>v1.1.9 First tablet release</b>\
 <ul>\
 <li>First version supporting Jolla Tablet</li>\
