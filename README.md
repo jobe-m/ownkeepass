@@ -6,24 +6,15 @@ ownKeepass
 Status
 ------
 
-Release 1.1.9 available in [openrepos.net] [1] / warehouse app (for Jolla phone and tablet)
+Release 1.1.10 available in [openrepos.net] [1] / warehouse app
+* Updated all translation files
+* Fixed bug with missing translations on the Jolla phone
+
+Release 1.1.9 available in Jolla Store
 * First version supporting Jolla Tablet
 * Updated and refactored about page
 * Removed warning info popup for Keepass 2 read-only mode
 * Search field switchable from pulley menu now also in Keepass 2 database mode
-
-Release 1.1.8 available from jolla store, release 1.1.9 is on the way in Harbor QA (for Jolla phone and tablet)
-* Implemented search functionality for Keepass 2 databases
-* Updated translations and added Japanese and Greek as new languages
-* Refactored the info popup to work better with different device orientations
-* Some minor fixes in UI in regard to new Sailfish OS 2.0 look
-* Support for landscape orientation added (not only but for all TOHKBD owners :)
-* Orientation can be adjusted in application settings (Portrait / Landscape / Dynamic)
-* Added support for reading Keepass 2 databases
-
-Next upcoming stable release will be 1.2.0 which will add UI landscape orientation and Keepass 2 database read support.
-The next pre-releases 1.1.7+ will be used for testing and updating translations.
-If you want to help with testing please build by yourself from master branch or take the pre-release version from [openrepos.net] [1].
 
 Finally Keepass 2 database support is HERE! Current status:
 * Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch).
@@ -135,18 +126,22 @@ the Keepass database code is split into four classes which are exposed as object
 Features
 --------
 
-*   Load and save (automatically in background) kdb database file
+*   Load and save (automatically in background) kdb database files (Keepass 1)
+*   Load kdbx database files (Keepass 2)
 *   Create, modify and delete Keepass groups and entries
+*   Move password entries between groups
 *   Create new and open existing keepass files from Phone's Home folder, SD Card or Android Storage
 *   Database settings adjustable like master password, encryption algorithm and key transformation rounds
 *   Search keepass entries in whole database
+*   Fast unlock a database with the first 3 characters of the master password
+*   File browser for selecting a database file for loading and choosing a directory for creating a new database
 *   Copy username and password from within cover page and use cover page to peak from other apps to
     look up username and password
 *   Clear clipboard after 10 seconds and a lot of more
 
 That's it so far.
 
-11-Aug-2015
+19-October-2015
 
 Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
