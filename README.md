@@ -6,7 +6,13 @@ ownKeepass
 Status
 ------
 
-Release 1.1.8 available in [openrepos.net] [1] / warehouse app
+Release 1.1.9 available in [openrepos.net] [1] / warehouse app (for Jolla phone and tablet)
+* First version supporting Jolla Tablet
+* Updated and refactored about page
+* Removed warning info popup for Keepass 2 read-only mode
+* Search field switchable from pulley menu now also in Keepass 2 database mode
+
+Release 1.1.8 available from jolla store, release 1.1.9 is on the way in Harbor QA (for Jolla phone and tablet)
 * Implemented search functionality for Keepass 2 databases
 * Updated translations and added Japanese and Greek as new languages
 * Refactored the info popup to work better with different device orientations
@@ -14,12 +20,6 @@ Release 1.1.8 available in [openrepos.net] [1] / warehouse app
 * Support for landscape orientation added (not only but for all TOHKBD owners :)
 * Orientation can be adjusted in application settings (Portrait / Landscape / Dynamic)
 * Added support for reading Keepass 2 databases
-
-Release 1.1.6 available from jolla store, release 1.1.8 is on the way in Harbor QA
-* Password entries can be moved between groups now
-* Updated icon look in list views
-* Database can be directly closed from lock screen
-* Added elide mode to top menu label (fixes too long database path running out of the screen)
 
 Next upcoming stable release will be 1.2.0 which will add UI landscape orientation and Keepass 2 database read support.
 The next pre-releases 1.1.7+ will be used for testing and updating translations.
