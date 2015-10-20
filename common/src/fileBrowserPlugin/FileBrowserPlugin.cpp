@@ -29,6 +29,7 @@
 FileBrowserListModel::FileBrowserListModel(QObject *parent)
     : QAbstractListModel(parent),
       m_dir("root"),
+      m_dir_previous(""),
       m_breadcrum_path(""),
       m_showDirsOnly(false),
       m_valid_dir(false),
@@ -61,7 +62,7 @@ void FileBrowserListModel::appendRootElements()
     m_items.append(fileBrowserPlugin::FileBrowserItem(3,
                                                       QString("..3"),
                                                       QString("folder"),
-                                                      QString("/data/sdcard"),
+                                                      QStandardPaths::standardLocations(QStandardPaths::HomeLocation)[0] + QString("/android_storage"),
                                                       true));
     endInsertRows();
     m_breadcrum_path = "";
@@ -179,14 +180,20 @@ void FileBrowserListModel::cd(QString path)
     if (path == "..") {
         if (m_dir.path() == QStandardPaths::standardLocations(QStandardPaths::HomeLocation)[0] ||
                 m_dir.path() == getSdCardPath() ||
-                m_dir.path() == "/data/sdcard") {
+                // use previous directory to know if the user opened the android_storage from home folder or from root
+                // Only when he opened it from root it should go back to root view
+                (m_dir.path() == QStandardPaths::standardLocations(QStandardPaths::HomeLocation)[0] + "/android_storage" &&
+                 m_dir_previous.path() == "root")) {
+            m_dir_previous = m_dir;
             m_dir.setPath("root");
             appendRootElements();
         } else {
+            m_dir_previous = m_dir;
             m_dir.cd("..");
             listDir();
         }
     } else {
+        m_dir_previous = m_dir;
         if (m_dir.path() == "root") {
             m_dir.setPath(path);
         } else {

@@ -138,6 +138,7 @@ private:
 private:
     QList<fileBrowserPlugin::FileBrowserItem> m_items;
     QDir m_dir;
+    QDir m_dir_previous;
 
     QString m_breadcrum_path;
     bool m_showDirsOnly;

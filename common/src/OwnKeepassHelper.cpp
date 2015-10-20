@@ -84,7 +84,7 @@ QString OwnKeepassHelper::getSdCardPath()
 
 QString OwnKeepassHelper::getAndroidStoragePath()
 {
-    return "/data/sdcard";
+    return getHomePath() + "/android_storage";
 }
 
 QStringList OwnKeepassHelper::mountPoints() const
