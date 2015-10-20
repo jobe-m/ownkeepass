@@ -83,6 +83,16 @@ MouseArea {
             }
         },
         State {
+            name: "PORTRAIT_INVERTED"
+            PropertyChanges {
+                target: infoPopup
+                width: parent ? parent.width : Screen.width
+                x: parent ? parent.width : Screen.width
+                y: parent ? parent.height : Screen.height
+                rotation: 180
+            }
+        },
+        State {
             name: "LANDSCAPE"
             PropertyChanges {
                 target: infoPopup
@@ -111,6 +121,9 @@ MouseArea {
             break
         case Orientation.LandscapeInverted:
             state = "LANDSCAPE_INVERTED"
+            break
+        case Orientation.PortraitInverted:
+            state = "PORTRAIT_INVERTED"
             break
         default:
             state = "PORTRAIT"
