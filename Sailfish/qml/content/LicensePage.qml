@@ -46,7 +46,7 @@ Page {
                 title: "ownKeepass"
                 subTitle: qsTr("Password Safe")
                 subTitleOpacity: 0.5
-                subTitleBottomMargin: licensePage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
+                subTitleBottomMargin: licensePage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
             SilicaLabel {

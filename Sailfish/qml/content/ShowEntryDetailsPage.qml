@@ -150,7 +150,7 @@ Page {
                 title: pageTitle
                 subTitle: "ownKeepass"
                 subTitleOpacity: 0.5
-                subTitleBottomMargin: showEntryDetailsPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
+                subTitleBottomMargin: showEntryDetailsPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
             TextArea {

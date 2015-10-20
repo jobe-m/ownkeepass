@@ -23,6 +23,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../common"
+import "../components"
 import "../scripts/Global.js" as Global
 import harbour.ownkeepass 1.0
 
@@ -178,33 +179,36 @@ Page {
                 title: "ownKeepass"
                 subTitle: qsTr("Password Safe")
                 subTitleOpacity: 0.5
-                subTitleBottomMargin: mainPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
+                subTitleBottomMargin: mainPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
             Image {
-                enabled: mainPage.orientation === Orientation.Portrait
+                enabled: mainPage.orientation & Orientation.PortraitMask
                 visible: enabled
-                width: 492
-                height: 492
+                // Make image size is dependent on screen size
+                width: Screen.sizeCategory >= Screen.Large ? 850 : 492
+                height: width
                 source: "../../wallicons/wall-ownKeys.png"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
             Item {
                 width: parent.width
-                height: mainPage.orientation === Orientation.Portrait ?
+                height: mainPage.orientation & Orientation.PortraitMask ?
                             passwordFieldColumn.height :
-                            (passwordFieldColumn.height + Theme.paddingLarge)
+                            (passwordFieldColumn.height + (
+                                 Screen.sizeCategory >= Screen.Large ? 3 * Theme.paddingLarge : Theme.paddingLarge
+                                 ))
 
                 Image {
                     id: smallImage
-                    enabled: mainPage.orientation !== Orientation.Portrait
+                    enabled: mainPage.orientation & Orientation.LandscapeMask
                     visible: enabled
-                    width: mainPage.orientation === Orientation.Portrait ? 0 : 250
-                    height: 250
+                    width: mainPage.orientation & Orientation.PortraitMask ? 0 : height
+                    height: Screen.sizeCategory >= Screen.Large ? 492 : 250
                     source: "../../wallicons/wall-ownKeys.png"
                     anchors.left: parent.left
-                    anchors.leftMargin: mainPage.orientation === Orientation.Portrait ? 0: Theme.paddingLarge
+                    anchors.leftMargin: mainPage.orientation & Orientation.PortraitMask ? 0: Theme.paddingLarge
                     anchors.bottom: parent.bottom
                 }
 
@@ -213,7 +217,7 @@ Page {
                     spacing: 0
                     anchors.right: parent.right
                     anchors.left: smallImage.right
-                    anchors.leftMargin: mainPage.orientation === Orientation.Portrait ? 0 : Theme.paddingLarge
+                    anchors.leftMargin: mainPage.orientation & Orientation.PortraitMask ? 0 : Theme.paddingLarge
                     anchors.bottom: parent.bottom
 
                     SilicaLabel {
@@ -310,110 +314,8 @@ Page {
                 }
             }
 
-            Column {
-                spacing: 0
-                width: parent.width
-
-                TextSwitch {
-                    id: showMoreInfoSwitch
-                    text: qsTr("Show more details")
-                }
-
-                Column {
-                    enabled: showMoreInfoSwitch.checked
-                    opacity: enabled ? 1.0 : 0.0
-                    height: enabled ? children.height : 0
-                    width: parent.width
-                    spacing: 0
-
-                    Behavior on opacity { FadeAnimation { duration: 400 } }
-                    Behavior on height { NumberAnimation { duration: 400 } }
-
-                    Label {
-                        id: databasePathAndName
-                        x: Theme.paddingLarge
-                        width: parent.width - Theme.paddingLarge * 2
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        color: Theme.secondaryColor
-                        horizontalAlignment: Text.AlignLeft
-                    }
-
-                    Label {
-                        x: Theme.paddingLarge
-                        width: parent.width - Theme.paddingLarge * 2
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        color: Theme.primaryColor
-                        horizontalAlignment: Text.AlignLeft
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        text: Global.getLocationName(internal.dbFileLocation) + " " + internal.databasePath
-                    }
-
-                    Label {
-                        x: Theme.paddingLarge
-                        width: parent.width - Theme.paddingLarge * 2
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        color: Theme.secondaryColor
-                        horizontalAlignment: Text.AlignLeft
-                        text: internal.keyFilePath.length !== 0 ?
-                                  qsTr("Key file path and name") : qsTr("No key file used")
-                    }
-
-                    Label {
-                        x: Theme.paddingLarge
-                        enabled: internal.keyFilePath.length !== 0
-                        visible: enabled
-                        width: parent.width - Theme.paddingLarge * 2
-                        font.pixelSize: Theme.fontSizeExtraSmall
-                        color: Theme.primaryColor
-                        horizontalAlignment: Text.AlignLeft
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
-                    }
-
-                    Item {
-                        x: Theme.paddingLarge
-                        width: parent.width - Theme.paddingLarge * 2
-                        height: databaseTypeLabel.height
-
-                        Label {
-                            id: databaseTypeLabel
-                            anchors.top: parent.top
-                            anchors.left: parent.left
-                            font.pixelSize: Theme.fontSizeExtraSmall
-                            color: Theme.secondaryColor
-                            horizontalAlignment: Text.AlignLeft
-                            text: qsTr("Database type:")
-                        }
-
-                        Label {
-                            anchors.top: parent.top
-                            anchors.left: databaseTypeLabel.right
-                            anchors.leftMargin: Theme.paddingMedium
-                            anchors.right: parent.right
-                            font.pixelSize: Theme.fontSizeExtraSmall
-                            color: Theme.primaryColor
-                            horizontalAlignment: Text.AlignLeft
-                            elide: Qt.ElideMiddle
-                            text: internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_1 ?
-                                      "Keepass 1" :
-                                      internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_2 ?
-                                          "Keepass 2" :
-                                          //: Here unknown is used for unknown database type
-                                          qsTr("Unknown")
-                        }
-                    }
-
-                    SectionHeader {
-                        enabled: !recentDatabaseModel.isEmpty
-                        visible: enabled
-                        text: qsTr("Recent databases")
-                    }
-
-                    Repeater {
-                        model: recentDatabaseModel
-                        delegate: recentDatabaseListItemComponent
-                    }
-                }
+            MainPageMoreDetails {
+                id: moreDetails
             }
         }
 
@@ -424,18 +326,18 @@ Page {
                 PropertyChanges { target: passwordField; errorHighlight: text.length > 0 && text.length < 3 }
                 PropertyChanges { target: confirmPasswordField; enabled: true }
                 PropertyChanges {
-                    target: databasePathAndName
+                    target: moreDetails
                     //: This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.
-                    text: qsTr("Path and name for new database") }
+                    databasePathAndNameText: qsTr("Path and name for new database") }
             },
             State {
                 name: "OPEN_DATABASE"
                 PropertyChanges { target: passwordField; errorHighlight: false }
                 PropertyChanges { target: confirmPasswordField; enabled: false }
                 PropertyChanges {
-                    target: databasePathAndName
+                    target: moreDetails
                     //: This is on the first page where the user inputs the master password of his Keepass database.
-                    text: qsTr("Path and name of database") }
+                    databasePathAndNameText: qsTr("Path and name for new database") }
             }
         ]
     }

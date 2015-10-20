@@ -47,7 +47,7 @@ Page {
                 title: qsTr("About ownKeepass")
                 subTitle: qsTr("Password Safe")
                 subTitleOpacity: 0.5
-                subTitleBottomMargin: aboutPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
+                subTitleBottomMargin: aboutPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
             Image {

@@ -148,7 +148,8 @@ OTHER_FILES += \
     qml/content/LockPage.qml \
     qml/common/FileSystemDialog.qml \
     qml/content/MovePasswordEntryDialog.qml \
-    qml/common/SilicaMenuLabel.qml
+    qml/common/SilicaMenuLabel.qml \
+    qml/components/MainPageMoreDetails.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

@@ -76,11 +76,11 @@ Page {
                 title: "ownKeepass"
                 subTitle: qsTr("Password Safe")
                 subTitleOpacity: 0.5
-                subTitleBottomMargin: lockPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
+                subTitleBottomMargin: lockPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
             Image {
-                enabled: lockPage.orientation === Orientation.Portrait
+                enabled: lockPage.orientation & Orientation.PortraitMask
                 visible: enabled
                 source: "../../wallicons/wall-key.png"
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -88,7 +88,7 @@ Page {
 
             Item {
                 width: parent.width
-                height: lockPage.orientation === Orientation.Portrait ?
+                height: lockPage.orientation & Orientation.PortraitMask ?
                             fastPasswordFieldsColumn.height :
                             (fastPasswordFieldsColumn.height + Theme.paddingLarge)
 
@@ -96,10 +96,10 @@ Page {
                     id: lockImageLandscape
                     enabled: lockPage.orientation !== Orientation.Portrait
                     visible: enabled
-                    width: lockPage.orientation === Orientation.Portrait ? 0 : implicitWidth
+                    width: lockPage.orientation & Orientation.PortraitMask ? 0 : implicitWidth
                     source: "../../wallicons/wall-key.png"
                     anchors.left: parent.left
-                    anchors.leftMargin: lockPage.orientation === Orientation.Portrait ? 0: (Theme.paddingLarge * 2)
+                    anchors.leftMargin: lockPage.orientation & Orientation.PortraitMask ? 0: (Theme.paddingLarge * 2)
                     anchors.bottom: parent.bottom
                 }
 

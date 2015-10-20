@@ -80,7 +80,7 @@ Page {
 
     onOrientationChanged: {
         // Update header box height when page orientation changes, ie. page header hight also changes
-        if (orientation === Orientation.Portrait) {
+        if (orientation & Orientation.PortraitMask) {
             // Orientation Portrait = -110
             headerBox.listViewStart = -110
         } else {
@@ -107,7 +107,7 @@ Page {
             width: parent.width
             subTitle: "ownKeepass"
             subTitleOpacity: 0.5
-            subTitleBottomMargin: groupsAndEntriesPage.orientation === Orientation.Portrait ? Theme.paddingSmall : 0
+            subTitleBottomMargin: groupsAndEntriesPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
         }
 
         SearchField {
