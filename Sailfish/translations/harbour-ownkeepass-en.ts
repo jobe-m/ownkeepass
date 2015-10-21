@@ -14,63 +14,63 @@
         <translation>Password Safe</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="62"/>
+        <location filename="../qml/content/AboutPage.qml" line="64"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
         <translation>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="70"/>
+        <location filename="../qml/content/AboutPage.qml" line="72"/>
         <source>Version</source>
         <translation>Version</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="92"/>
+        <location filename="../qml/content/AboutPage.qml" line="94"/>
         <source>Email</source>
         <translation>Email</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="98"/>
-        <location filename="../qml/content/AboutPage.qml" line="130"/>
+        <location filename="../qml/content/AboutPage.qml" line="100"/>
+        <location filename="../qml/content/AboutPage.qml" line="132"/>
         <source>License</source>
         <translation>License</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="105"/>
+        <location filename="../qml/content/AboutPage.qml" line="107"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
         <translation>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="137"/>
+        <location filename="../qml/content/AboutPage.qml" line="139"/>
         <source>Change log</source>
         <translation>Change log</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="143"/>
+        <location filename="../qml/content/AboutPage.qml" line="145"/>
         <source>Credits</source>
         <translation>Credits</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="151"/>
+        <location filename="../qml/content/AboutPage.qml" line="153"/>
         <source>My best appreciations go to:&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators and contributors: %1&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>My best appreciations go to:&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators and contributors: %1&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="167"/>
+        <location filename="../qml/content/AboutPage.qml" line="169"/>
         <source>Donate or Contribute</source>
         <translation>Donate or Contribute</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="175"/>
+        <location filename="../qml/content/AboutPage.qml" line="177"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="213"/>
+        <location filename="../qml/content/AboutPage.qml" line="215"/>
         <source>Translate</source>
         <translation>Translate</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="220"/>
+        <location filename="../qml/content/AboutPage.qml" line="222"/>
         <source>Report bugs</source>
         <translation>Report bugs</translation>
     </message>

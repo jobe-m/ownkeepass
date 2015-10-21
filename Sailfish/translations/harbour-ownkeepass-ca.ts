@@ -14,63 +14,63 @@
         <translation>Protecció de contrasenyes</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="62"/>
+        <location filename="../qml/content/AboutPage.qml" line="64"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
         <translation>ownKeepass és una aplicació per desar contrasenyes de forma protegida compatible amb Keepass 1.x i 2.x</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="70"/>
+        <location filename="../qml/content/AboutPage.qml" line="72"/>
         <source>Version</source>
         <translation>Versió</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="92"/>
+        <location filename="../qml/content/AboutPage.qml" line="94"/>
         <source>Email</source>
         <translation>Correu electrònic</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="98"/>
-        <location filename="../qml/content/AboutPage.qml" line="130"/>
+        <location filename="../qml/content/AboutPage.qml" line="100"/>
+        <location filename="../qml/content/AboutPage.qml" line="132"/>
         <source>License</source>
         <translation>Llicència</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="105"/>
+        <location filename="../qml/content/AboutPage.qml" line="107"/>
         <source>ownKeepass is distributed under the terms of the GNU General Public License (GPL) version 2 or (at your option) version 3.</source>
         <translation>ownKeepass es distribueix d&apos;acord amb els termes de la versió 2 o (sota el vostre criteri) la versió 3 de la Llicència Pública General de GNU (GPL).</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="137"/>
+        <location filename="../qml/content/AboutPage.qml" line="139"/>
         <source>Change log</source>
         <translation>Llista de canvis</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="143"/>
+        <location filename="../qml/content/AboutPage.qml" line="145"/>
         <source>Credits</source>
         <translation>Crèdits</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="151"/>
+        <location filename="../qml/content/AboutPage.qml" line="153"/>
         <source>My best appreciations go to:&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators and contributors: %1&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>L&apos;autor vol reconèixer la tasca de:&lt;br&gt;&lt;br&gt;Jolla (per continuar allà on Nokia ho havia deixat)&lt;br&gt;El projecte KeepassX (per la implantació Qt de Keepass)&lt;br&gt;Tots els traductors i contribuïdors: %1&lt;br&gt;&lt;br&gt;L&apos;autor espera que tothom gaudeixi amb l&apos;ús de l&apos;aplicació, igual com ell ho fa desenvolupant-la.</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="167"/>
+        <location filename="../qml/content/AboutPage.qml" line="169"/>
         <source>Donate or Contribute</source>
         <translation>Feu una donació o contribuïu</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="175"/>
+        <location filename="../qml/content/AboutPage.qml" line="177"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="213"/>
+        <location filename="../qml/content/AboutPage.qml" line="215"/>
         <source>Translate</source>
         <translation>Traduïu</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="220"/>
+        <location filename="../qml/content/AboutPage.qml" line="222"/>
         <source>Report bugs</source>
         <translation>Informeu d&apos;errors</translation>
     </message>
