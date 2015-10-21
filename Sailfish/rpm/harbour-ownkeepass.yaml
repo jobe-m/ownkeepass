@@ -1,6 +1,6 @@
 Name: harbour-ownkeepass
 Summary: A password safe application
-Version: 1.1.10
+Version: 1.1.11
 Release: 1
 Group: Qt/Qt
 License: GPL v2
@@ -22,8 +22,11 @@ Requires:
 - sailfishsilica-qt5 >= 0.10.9
 Files:
 - '%defattr(644,root,root,-)'
-- /usr/share/icons/hicolor/86x86/apps
-- /usr/share/applications
-- /usr/share/harbour-ownkeepass
+- '%{_datadir}/icons/hicolor/86x86/apps'
+- '%{_datadir}/icons/hicolor/108x108/apps'
+- '%{_datadir}/icons/hicolor/128x128/apps'
+- '%{_datadir}/icons/hicolor/256x256/apps'
+- '%{_datadir}/applications'
+- '%{_datadir}/harbour-ownkeepass'
 - '%attr(655,-,-) %{_bindir}'
 PkgBR: []

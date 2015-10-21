@@ -64,25 +64,38 @@ linux-g++ {
 TARGET = harbour-ownkeepass
 
 # adding common QML files, QML imports, C++ libs and image files for the app
+common_files.path   = /usr/share/$${TARGET}
 common_files.files += \
     ../common/images/entryicons \
     ../common/images/covericons \
     ../common/images/wallicons
+password_generator_qmldir.path   = /usr/share/$${TARGET}/lib/harbour/ownkeepass/PasswordGenerator
 password_generator_qmldir.files += \
     ../common/qml/imports/PasswordGenerator/qmldir
+password_generator_lib.path   = /usr/share/$${TARGET}/lib
 password_generator_lib.files += \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgcrypt.so.11 \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgpg-error.so.0
 
-common_files.path = /usr/share/$${TARGET}
-password_generator_qmldir.path = /usr/share/$${TARGET}/lib/harbour/ownkeepass/PasswordGenerator
-password_generator_lib.path = /usr/share/$${TARGET}/lib
+# process all application icon sizes
+icon_file_86x86.path    = /usr/share/icons/hicolor/86x86/apps
+icon_file_86x86.files   = icons/86x86/$${TARGET}.png
+icon_file_108x108.path  = /usr/share/icons/hicolor/108x108/apps
+icon_file_108x108.files = icons/108x108/$${TARGET}.png
+icon_file_128x128.path  = /usr/share/icons/hicolor/128x128/apps
+icon_file_128x128.files = icons/128x128/$${TARGET}.png
+icon_file_256x256.path  = /usr/share/icons/hicolor/256x256/apps
+icon_file_256x256.files = icons/256x256/$${TARGET}.png
 
 INSTALLS += \
     common_files \
     password_generator_lib \
-    password_generator_qmldir
+    password_generator_qmldir \
+    icon_file_86x86 \
+    icon_file_108x108 \
+    icon_file_128x128 \
+    icon_file_256x256
 
 # adding standard installation paths for a sailfish OS app
 CONFIG += sailfishapp
