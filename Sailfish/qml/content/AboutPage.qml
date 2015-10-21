@@ -52,7 +52,9 @@ Page {
 
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
-                source: "/usr/share/icons/hicolor/86x86/apps/harbour-ownkeepass.png"
+                source: Screen.sizeCategory >= Screen.Large ?
+                            "/usr/share/icons/hicolor/256x256/apps/harbour-ownkeepass.png" :
+                            "/usr/share/icons/hicolor/128x128/apps/harbour-ownkeepass.png"
             }
 
             SilicaLabel {
