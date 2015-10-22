@@ -77,6 +77,7 @@ Page {
                 id: wallImage
                 anchors.bottom: parent.top
                 anchors.horizontalCenter: parent.horizontalCenter
+//                width: Screen.width * 0.8
                 source: "../../wallicons/wall-key.png"
             }
         }
@@ -202,6 +203,7 @@ Page {
                     label: qsTr("Password")
                     text: entryPasswordTextField.text
                     color: Theme.primaryColor
+                    font.family: "Liberation Mono"  //"Droid Sans Mono"
                     Behavior on opacity { FadeAnimation {} }
                 }
 
