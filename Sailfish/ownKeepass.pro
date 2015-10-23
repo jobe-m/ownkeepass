@@ -39,17 +39,18 @@ isEmpty(VERSION) {
 }
 DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 
-# Following define is a trick to load the appropriate libraries libgcrypt and libgpg-error
-# Depending if compiled for emulator/jolla tablet (i486) or jolla phone (armv7hl)
-# BE AWARE this only works on Ubuntu Linux, on Mac OS X and Windows you need to specify ARCH_LIBS directly
-# Loading wrong architecture of libs into the rpm package will result in a not working app
+# Following define is a trick to load the appropriate libraries of libgcrypt and libgpg-error depending
+#   if compiled for emulator/jolla tablet (i486) or jolla phone (armv7hl)
+#
+# BE AWARE this only works on (Ubuntu) Linux, on Mac OS X and Windows you might need to specify ARCH_LIBS directly
+# Loading wrong architecture of libs into the rpm package will result in a not working app!
+#
 linux-g++-32 {
-    message("Loading libs for emulator")
+    message(Loading libs for emulator / jolla tablet (i486))
     ARCH_LIBS=i486_x86
 }
-
 linux-g++ {
-    message("Loading libs for jolla device")
+    message(Loading libs for jolla phone (arm))
     ARCH_LIBS=armv7hl
 }
 
