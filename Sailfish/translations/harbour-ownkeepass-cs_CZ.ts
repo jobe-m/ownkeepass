@@ -1005,28 +1005,33 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Sejf s hesly</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="226"/>
+        <location filename="../qml/content/MainPage.qml" line="225"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Napište hlavní heslo pro zamknutí vašeho nového sejfu s hesly Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="240"/>
-        <source>Master password</source>
-        <translation>Hlavní heslo</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="241"/>
+        <location filename="../qml/content/MainPage.qml" line="226"/>
         <source>Enter master password</source>
         <translation>Zadat hlavní heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="292"/>
+        <location filename="../qml/content/MainPage.qml" line="227"/>
+        <source>Password</source>
+        <translation type="unfinished">Heslo</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="228"/>
         <source>Confirm master password</source>
         <translation>Potvrdit hlavní heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="331"/>
-        <location filename="../qml/content/MainPage.qml" line="340"/>
+        <location filename="../qml/content/MainPage.qml" line="229"/>
+        <source>Confirm password</source>
+        <translation type="unfinished">Potvrdit heslo</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="266"/>
+        <location filename="../qml/content/MainPage.qml" line="278"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.
 ----------
@@ -1034,241 +1039,241 @@ This is on the first page where the user inputs the master password of his Keepa
         <translation>Cesta a název souboru s novou databází</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="485"/>
+        <location filename="../qml/content/MainPage.qml" line="423"/>
         <source>Permission error</source>
         <translation>Chyba v oprávnění</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="485"/>
+        <location filename="../qml/content/MainPage.qml" line="423"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Nelze vytvořit cestu pro soubor s databází Keepass. Budete muset nastavit přístupová oprávnění k adresáři pro uživatele &apos;nemo&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="490"/>
-        <location filename="../qml/content/MainPage.qml" line="507"/>
+        <location filename="../qml/content/MainPage.qml" line="428"/>
+        <location filename="../qml/content/MainPage.qml" line="445"/>
         <source>Key file error</source>
         <translation>Chyba v souboru s klíčem</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="490"/>
-        <location filename="../qml/content/MainPage.qml" line="507"/>
+        <location filename="../qml/content/MainPage.qml" line="428"/>
+        <location filename="../qml/content/MainPage.qml" line="445"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Cesta k databázi je v pořádku, ale soubor s klíčem není přítomen. Prověřte, prosím, cestu k souboru s klíčem:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="495"/>
+        <location filename="../qml/content/MainPage.qml" line="433"/>
         <source>Database file already exists</source>
         <translation>Soubor s databází již existuje</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="495"/>
+        <location filename="../qml/content/MainPage.qml" line="433"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Zadejte, prosím, jinou cestu a název pro vaši databázi Keepass nebo ve správci souborů smažte starou databázi.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="512"/>
+        <location filename="../qml/content/MainPage.qml" line="450"/>
         <source>Database file error</source>
         <translation>Chyba souboru s databází</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="512"/>
+        <location filename="../qml/content/MainPage.qml" line="450"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Soubor s databází neexistuje. Prověřte, prosím, cestu k souboru s databází:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="557"/>
+        <location filename="../qml/content/MainPage.qml" line="495"/>
         <source>Database file</source>
         <translation>Soubor s databází</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="558"/>
+        <location filename="../qml/content/MainPage.qml" line="496"/>
         <source>The specified file is not a Keepass database.</source>
         <translation>Daný soubor není databáze Keepass.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="563"/>
+        <location filename="../qml/content/MainPage.qml" line="501"/>
         <source>Database version</source>
         <translation>Verze databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="564"/>
+        <location filename="../qml/content/MainPage.qml" line="502"/>
         <source>The specified file has an unsupported Keepass database version.</source>
         <translation>Daný soubor má nepodporovanou verzi databáze Keepass.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="569"/>
-        <location filename="../qml/content/MainPage.qml" line="587"/>
-        <location filename="../qml/content/MainPage.qml" line="636"/>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
-        <location filename="../qml/content/MainPage.qml" line="678"/>
+        <location filename="../qml/content/MainPage.qml" line="507"/>
+        <location filename="../qml/content/MainPage.qml" line="525"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
+        <location filename="../qml/content/MainPage.qml" line="594"/>
+        <location filename="../qml/content/MainPage.qml" line="616"/>
         <source>Internal database error</source>
         <translation>Vnitřní chyba databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="570"/>
+        <location filename="../qml/content/MainPage.qml" line="508"/>
         <source>Database headers are missing.</source>
         <translation>Chybí hlavičky databáze.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
-        <location filename="../qml/content/MainPage.qml" line="581"/>
+        <location filename="../qml/content/MainPage.qml" line="513"/>
+        <location filename="../qml/content/MainPage.qml" line="519"/>
         <source>Wrong password</source>
         <translation>Špatné heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="576"/>
+        <location filename="../qml/content/MainPage.qml" line="514"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
         <translation>Buď je špatné vaše hlavní heslo nebo je soubor s databází poškozen. Zkuste to, prosím, znovu.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="582"/>
+        <location filename="../qml/content/MainPage.qml" line="520"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
         <translation>Buď je špatné vaše hlavní heslo nebo je soubor s klíčem poškozen. Zkuste to, prosím, znovu. Pokud chyba přetrvá, je poškozen buď soubor s klíčem nebo soubor databází.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
+        <location filename="../qml/content/MainPage.qml" line="526"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
         <translation>Hlavička databáze neodpovídá příslušné hodnotě hash.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="593"/>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
+        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="537"/>
         <source>File I/O error</source>
         <translation>Chyba vstupu/výstupu souboru</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="594"/>
+        <location filename="../qml/content/MainPage.qml" line="532"/>
         <source>Cannot open database file. Error details:</source>
         <translation>Nelze otevřít soubor s databází. Podrobnosti chyby:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="600"/>
+        <location filename="../qml/content/MainPage.qml" line="538"/>
         <source>Cannot open key file. Error details:</source>
         <translation>Nelze otevřít soubor s klíčem. Podrobnosti chyby:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="629"/>
+        <location filename="../qml/content/MainPage.qml" line="567"/>
         <source>Password changed</source>
         <translation>Heslo změněno</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="629"/>
+        <location filename="../qml/content/MainPage.qml" line="567"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Hlavní heslo k vaší databázi bylo úspěšně změněno.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="636"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Nepodařilo se zavřít předchozí otevřenou databázi. Zkuste to, prosím, znovu. Hlášení o chybě:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="640"/>
+        <location filename="../qml/content/MainPage.qml" line="578"/>
         <source>Internal key error</source>
         <translation>Vnitřní chyba klíče</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="640"/>
-        <location filename="../qml/content/MainPage.qml" line="644"/>
+        <location filename="../qml/content/MainPage.qml" line="578"/>
+        <location filename="../qml/content/MainPage.qml" line="582"/>
         <source>The following error occured during opening of database:</source>
         <translation>Při otevírání databáze se vyskytla následující chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="644"/>
+        <location filename="../qml/content/MainPage.qml" line="582"/>
         <source>Internal key file error</source>
         <translation>Vnitřní chyba souboru s klíčem</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="648"/>
+        <location filename="../qml/content/MainPage.qml" line="586"/>
         <source>Error loading database</source>
         <translation>Chyba při nahrávání databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="648"/>
+        <location filename="../qml/content/MainPage.qml" line="586"/>
         <source>Please try again.</source>
         <translation>Zkuste to, prosím, znovu.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="652"/>
+        <location filename="../qml/content/MainPage.qml" line="590"/>
         <source>Internal file error</source>
         <translation>Vnitřní chyba souboru</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="652"/>
+        <location filename="../qml/content/MainPage.qml" line="590"/>
         <source>The following error occured during creation of database:</source>
         <translation>Při vytváření databáze se vyskytla následující chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
+        <location filename="../qml/content/MainPage.qml" line="594"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Vytvoření záložní skupiny se nezdařilo. Chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>Save database error</source>
         <translation>Chyba při ukládání databáze</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>Could not save database with following error:</source>
         <translation>Nepodařilo se uložit databázi. Chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="667"/>
+        <location filename="../qml/content/MainPage.qml" line="605"/>
         <source>Database error</source>
         <translation>Chyba v databázi</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="667"/>
+        <location filename="../qml/content/MainPage.qml" line="605"/>
         <source>An error occured on closing your database:</source>
         <translation>Při zavírání databáze se vyskytla chyba:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="673"/>
+        <location filename="../qml/content/MainPage.qml" line="611"/>
         <source>Crypto init error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="674"/>
+        <location filename="../qml/content/MainPage.qml" line="612"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="679"/>
+        <location filename="../qml/content/MainPage.qml" line="617"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation>Převod QString &quot;%1&quot; na Int selhal</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1099"/>
+        <location filename="../qml/content/MainPage.qml" line="1037"/>
         <source>Yes</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1100"/>
+        <location filename="../qml/content/MainPage.qml" line="1038"/>
         <source>No</source>
         <translation>Ne</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1101"/>
+        <location filename="../qml/content/MainPage.qml" line="1039"/>
         <source>Unsaved changes</source>
         <translation>Neuložené změny</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1129"/>
+        <location filename="../qml/content/MainPage.qml" line="1067"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Chcete uložit změny do heslového záznamu?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1134"/>
+        <location filename="../qml/content/MainPage.qml" line="1072"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Chcete uložit změny do heslové skupiny?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1139"/>
+        <location filename="../qml/content/MainPage.qml" line="1077"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Chcete uložit změny do nastavení databáze?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1144"/>
+        <location filename="../qml/content/MainPage.qml" line="1082"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Chcete uložit změněné hodnoty nastavení?</translation>
     </message>
@@ -1463,48 +1468,48 @@ This is on the first page where the user inputs the master password of his Keepa
         <translation>Stáhněte dolů pro přidání adresy (URL), uživatelského jména, hesla a poznámky</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="88"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="89"/>
         <source>Read only mode</source>
         <translation>Režim pouze pro čtení</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="94"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="95"/>
         <source>Copy URL</source>
         <translation>Kopírovat adresu (URL)</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="103"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="104"/>
         <source>Copy username</source>
         <translation>Kopírovat uživatelské jméno</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="114"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="115"/>
         <source>Copy password</source>
         <translation>Kopírovat heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="125"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="126"/>
         <source>Edit password entry</source>
         <translation>Upravit heslový záznam</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="162"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="163"/>
         <source>URL</source>
         <translation>Adresa (URL)</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="172"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="173"/>
         <source>Username</source>
         <translation>Uživatelské jméno</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="190"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="202"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="191"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="203"/>
         <source>Password</source>
         <translation>Heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="232"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="234"/>
         <source>Comment</source>
         <translation>Poznámka</translation>
     </message>

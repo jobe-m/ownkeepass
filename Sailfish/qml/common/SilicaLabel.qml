@@ -37,8 +37,8 @@ import Sailfish.Silica 1.0
    \endqml
 */
 Label {
-    x: Theme.paddingLarge
-    width: (parent ? parent.width : Screen.width) - Theme.paddingLarge * 2
+    x: Theme.horizontalPageMargin
+    width: (parent ? parent.width : Screen.width) - Theme.horizontalPageMargin * 2
     verticalAlignment: Text.AlignVCenter
     horizontalAlignment: Text.AlignLeft
     font.pixelSize: Theme.fontSizeSmall

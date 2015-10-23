@@ -163,7 +163,8 @@ OTHER_FILES += \
     qml/common/FileSystemDialog.qml \
     qml/content/MovePasswordEntryDialog.qml \
     qml/common/SilicaMenuLabel.qml \
-    qml/components/MainPageMoreDetails.qml
+    qml/components/MainPageMoreDetails.qml \
+    qml/common/PasswordFieldCombo.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

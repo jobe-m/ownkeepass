@@ -190,13 +190,16 @@ Page {
                 height: width
                 source: "../../wallicons/wall-ownKeys.png"
                 anchors.horizontalCenter: parent.horizontalCenter
+
+                Tracer {}
             }
 
             Item {
+                Tracer {}
                 width: parent.width
                 height: mainPage.orientation & Orientation.PortraitMask ?
-                            passwordFieldColumn.height :
-                            (passwordFieldColumn.height + (
+                            passwordFieldCombo.height :
+                            (passwordFieldCombo.height + (
                                  Screen.sizeCategory >= Screen.Large ? 3 * Theme.paddingLarge : Theme.paddingLarge
                                  ))
 
@@ -208,108 +211,36 @@ Page {
                     height: Screen.sizeCategory >= Screen.Large ? 492 : 250
                     source: "../../wallicons/wall-ownKeys.png"
                     anchors.left: parent.left
-                    anchors.leftMargin: mainPage.orientation & Orientation.PortraitMask ? 0: Theme.paddingLarge
+                    anchors.leftMargin: mainPage.orientation & Orientation.PortraitMask ? 0: Theme.horizontalPageMargin
                     anchors.bottom: parent.bottom
                 }
 
-                Column {
-                    id: passwordFieldColumn
-                    spacing: 0
+                PasswordFieldCombo {
+                    id: passwordFieldCombo
                     anchors.right: parent.right
                     anchors.left: smallImage.right
-                    anchors.leftMargin: mainPage.orientation & Orientation.PortraitMask ? 0 : Theme.paddingLarge
                     anchors.bottom: parent.bottom
 
-                    SilicaLabel {
-                        enabled: confirmPasswordField.enabled
-                        visible: enabled
-                        text: qsTr("Type in a master password for locking your new Keepass Password Safe:") + "\n"
+                    passwordDescriptionText: qsTr("Type in a master password for locking your new Keepass Password Safe:") + "\n"
+                    passwordLabelText: qsTr("Enter master password")
+                    passwordPlaceholderText: qsTr("Password")
+                    passwordConfirmLabelText: qsTr("Confirm master password")
+                    passwordConfirmPlaceholderText: qsTr("Confirm password")
+
+                    onPasswordClicked: { // returns password
+                        // open master groups page and load database in background
+                        var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                                                              { "initOnPageConstruction": false, "groupId": "0" })
+                        var createNewDatabase =  false
+                        internal.openKeepassDatabase(password, createNewDatabase, masterGroupsPage)
                     }
 
-                    Item {
-                        width: parent.width
-                        height: passwordField.height
-
-                        TextField {
-                            id: passwordField
-                            anchors.top: parent.top
-                            anchors.left: parent.left
-                            anchors.right: showPasswordButton.left
-                            inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                            echoMode: TextInput.Password
-                            label: qsTr("Master password")
-                            placeholderText: qsTr("Enter master password")
-                            text: ""
-                            EnterKey.enabled: !errorHighlight
-                            EnterKey.highlighted: true
-                            EnterKey.iconSource: text.length === 0 ?
-                                                     "image://theme/icon-m-enter-close" :
-                                                     mainPageFlickable.state === "CREATE_NEW_DATABASE" ?
-                                                         "image://theme/icon-m-enter-next" :
-                                                         "image://theme/icon-m-enter-accept"
-                            EnterKey.onClicked: {
-                                if (text.length === 0) {
-                                    parent.focus = true
-                                } else if (mainPageFlickable.state === "CREATE_NEW_DATABASE") {
-                                    confirmPasswordField.focus = true
-                                } else {
-                                    parent.focus = true
-                                    // open master groups page and load database in background
-                                    var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                                          { "initOnPageConstruction": false, "groupId": "0" })
-                                    var createNewDatabase =  false
-                                    internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
-                                    passwordField.text = ""
-                                }
-                            }
-                            focusOutBehavior: -1
-                        }
-
-                        IconButton {
-                            id: showPasswordButton
-                            anchors.right: parent.right
-                            anchors.rightMargin: Theme.paddingLarge
-                            anchors.verticalCenter: parent.verticalCenter
-                            icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" :
-                                                                                       "../../wallicons/icon-l-closeeye.png"
-                            onClicked: {
-                                if (passwordField.echoMode === TextInput.Normal) {
-                                    passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Password
-                                } else {
-                                    passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Normal
-                                }
-                            }
-                        }
-                    }
-
-                    TextField {
-                        id: confirmPasswordField
-                        width: parent.width
-                        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                        echoMode: TextInput.Password
-                        visible: enabled
-                        errorHighlight: passwordField.text !== text && text.length !== 0
-                        label: qsTr("Confirm master password")
-                        placeholderText: label
-                        text: ""
-                        EnterKey.enabled: text.length === 0 || (passwordField.text.length >= 3 && !errorHighlight)
-                        EnterKey.highlighted: text.length === 0 || !errorHighlight
-                        EnterKey.iconSource: text.length === 0 ?
-                                                 "image://theme/icon-m-enter-close" :
-                                                 "image://theme/icon-m-enter-accept"
-                        EnterKey.onClicked: {
-                            parent.focus = true
-                            if (text.length !== 0) {
-                                // open master groups page and load database in background
-                                var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                                                                      { "initOnPageConstruction": false, "groupId": "0" })
-                                var createNewDatabase = true
-                                internal.openKeepassDatabase(passwordField.text, createNewDatabase, masterGroupsPage)
-                                passwordField.text = ""
-                                confirmPasswordField.text = ""
-                            }
-                        }
-                        focusOutBehavior: -1
+                    onPasswordConfirmClicked: { // returns password
+                        // open master groups page and load database in background
+                        var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                                                              { "initOnPageConstruction": false, "groupId": "0" })
+                        var createNewDatabase = true
+                        internal.openKeepassDatabase(password, createNewDatabase, masterGroupsPage)
                     }
                 }
             }
@@ -323,8 +254,11 @@ Page {
         states: [
             State {
                 name: "CREATE_NEW_DATABASE"
-                PropertyChanges { target: passwordField; errorHighlight: text.length > 0 && text.length < 3 }
-                PropertyChanges { target: confirmPasswordField; enabled: true }
+                PropertyChanges {
+                    target: passwordFieldCombo;
+                    passwordErrorHighlight: text.length > 0 && text.length < 3
+                    passwordConfirmEnabled: true
+                }
                 PropertyChanges {
                     target: moreDetails
                     //: This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.
@@ -332,8 +266,11 @@ Page {
             },
             State {
                 name: "OPEN_DATABASE"
-                PropertyChanges { target: passwordField; errorHighlight: false }
-                PropertyChanges { target: confirmPasswordField; enabled: false }
+                PropertyChanges {
+                    target: passwordFieldCombo;
+                    passwordErrorHighlight: false
+                    passwordConfirmEnabled: false
+                }
                 PropertyChanges {
                     target: moreDetails
                     //: This is on the first page where the user inputs the master password of his Keepass database.
