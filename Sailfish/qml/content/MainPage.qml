@@ -190,18 +190,16 @@ Page {
                 height: width
                 source: "../../wallicons/wall-ownKeys.png"
                 anchors.horizontalCenter: parent.horizontalCenter
-
-                Tracer {}
             }
 
             Item {
-                Tracer {}
                 width: parent.width
                 height: mainPage.orientation & Orientation.PortraitMask ?
                             passwordFieldCombo.height :
                             (passwordFieldCombo.height + (
                                  Screen.sizeCategory >= Screen.Large ? 3 * Theme.paddingLarge : Theme.paddingLarge
                                  ))
+                Behavior on height { NumberAnimation{ duration: 400 }}
 
                 Image {
                     id: smallImage
@@ -223,8 +221,9 @@ Page {
 
                     passwordDescriptionText: qsTr("Type in a master password for locking your new Keepass Password Safe:") + "\n"
                     passwordLabelText: qsTr("Enter master password")
-                    passwordPlaceholderText: qsTr("Password")
+                    passwordPlaceholderText: qsTr("Master password")
                     passwordConfirmLabelText: qsTr("Confirm master password")
+                    passwordConfirmedLabelText: qsTr("Master password confirmed")
                     passwordConfirmPlaceholderText: qsTr("Confirm password")
 
                     onPasswordClicked: { // returns password
@@ -274,7 +273,7 @@ Page {
                 PropertyChanges {
                     target: moreDetails
                     //: This is on the first page where the user inputs the master password of his Keepass database.
-                    databasePathAndNameText: qsTr("Path and name for new database") }
+                    databasePathAndNameText: qsTr("Path and name of database") }
             }
         ]
     }

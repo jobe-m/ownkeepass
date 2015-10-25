@@ -31,6 +31,7 @@ Column {
     property string passwordLabelText: ""
     property string passwordPlaceholderText: ""
     property string passwordConfirmLabelText: ""
+    property string passwordConfirmedLabelText: ""
     property string passwordConfirmPlaceholderText: ""
     property bool passwordErrorHighlight: false
     property bool passwordConfirmEnabled: false
@@ -105,12 +106,13 @@ Column {
 
     TextField {
         id: confirmPasswordField
+        enabled: passwordConfirmEnabled
         width: parent.width
         inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
         echoMode: TextInput.Password
         visible: enabled
         errorHighlight: passwordField.text !== text && text.length !== 0
-        label: passwordConfirmLabelText
+        label: errorHighlight ? passwordConfirmLabelText : passwordConfirmedLabelText
         placeholderText: passwordConfirmPlaceholderText
         text: ""
         font.family: 'monospace'
