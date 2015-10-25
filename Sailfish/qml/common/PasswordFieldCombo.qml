@@ -26,15 +26,27 @@ import Sailfish.Silica 1.0
 Column {
     id: passwordFieldCombo
 
-    // Adjust all texts of the password combo
     property string passwordDescriptionText: ""
-    property string passwordLabelText: ""
-    property string passwordPlaceholderText: ""
-    property string passwordConfirmLabelText: ""
-    property string passwordConfirmedLabelText: ""
-    property string passwordConfirmPlaceholderText: ""
-    property bool passwordErrorHighlight: false
+
+    // predefined password field texts
+    property string passwordLabelText: qsTr("Enter master password")
+    property string passwordPlaceholderText: qsTr("Master password")
+    property string passwordConfirmLabelText: qsTr("Confirm master password")
+    property string passwordConfirmedLabelText: qsTr("Master password confirmed")
+    property string passwordConfirmPlaceholderText: qsTr("Confirm password")
+
+    property bool passwordErrorHighlightEnabled: true
+    property bool passwordEnterKeyEnabled: true
     property bool passwordConfirmEnabled: false
+    property bool passwordConfirmEnterKeyEnabled: true
+
+    property alias passwordFieldFocus: passwordField.focus
+
+    readonly property bool passwordFieldHasError: passwordErrorHighlightEnabled ?
+                                                      (passwordField.text.length >= 0 && passwordField.text.length < 3) :
+                                                      passwordField.text.length === 0
+    readonly property bool passwordFieldConfirmHasError:  passwordField.text !== confirmPasswordField.text ||
+                                                          confirmPasswordField.text.length === 0
 
     // These both signals will be issues if the user touches the return button and the whole password field thing is in a well state
     signal passwordClicked(string password)
@@ -43,9 +55,9 @@ Column {
     spacing: 0
 
     SilicaLabel {
-        enabled: confirmPasswordField.enabled
+        enabled: passwordDescriptionText.length !== 0
         visible: enabled
-        text: passwordDescriptionText
+        text: passwordDescriptionText + "\n"
     }
 
     Item {
@@ -59,12 +71,12 @@ Column {
             anchors.right: showPasswordButton.left
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
             echoMode: TextInput.Password
-            errorHighlight: passwordErrorHighlight
+            errorHighlight: passwordErrorHighlightEnabled ? (text.length > 0 && text.length < 3) : false
             label: passwordLabelText
             placeholderText: passwordPlaceholderText
             text: ""
             font.family: 'monospace'
-            EnterKey.enabled: !errorHighlight
+            EnterKey.enabled: text.length === 0 || (!errorHighlight && (passwordEnterKeyEnabled || passwordConfirmEnabled))
             EnterKey.highlighted: true
             EnterKey.iconSource: text.length === 0 ?
                                      "image://theme/icon-m-enter-close" :
@@ -116,8 +128,8 @@ Column {
         placeholderText: passwordConfirmPlaceholderText
         text: ""
         font.family: 'monospace'
-        EnterKey.enabled: text.length === 0 || (passwordField.text.length >= 3 && !errorHighlight)
-        EnterKey.highlighted: text.length === 0 || !errorHighlight
+        EnterKey.enabled: text.length === 0 || (passwordField.text.length >= 3 && !errorHighlight && passwordConfirmEnterKeyEnabled)
+        EnterKey.highlighted: true
         EnterKey.iconSource: text.length === 0 ?
                                  "image://theme/icon-m-enter-close" :
                                  "image://theme/icon-m-enter-accept"

@@ -219,13 +219,6 @@ Page {
                     anchors.left: smallImage.right
                     anchors.bottom: parent.bottom
 
-                    passwordDescriptionText: qsTr("Type in a master password for locking your new Keepass Password Safe:") + "\n"
-                    passwordLabelText: qsTr("Enter master password")
-                    passwordPlaceholderText: qsTr("Master password")
-                    passwordConfirmLabelText: qsTr("Confirm master password")
-                    passwordConfirmedLabelText: qsTr("Master password confirmed")
-                    passwordConfirmPlaceholderText: qsTr("Confirm password")
-
                     onPasswordClicked: { // returns password
                         // open master groups page and load database in background
                         var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
@@ -255,7 +248,8 @@ Page {
                 name: "CREATE_NEW_DATABASE"
                 PropertyChanges {
                     target: passwordFieldCombo;
-                    passwordErrorHighlight: text.length > 0 && text.length < 3
+                    passwordDescriptionText: qsTr("Type in a master password for locking your new Keepass Password Safe:")
+                    passwordErrorHighlightEnabled: true
                     passwordConfirmEnabled: true
                 }
                 PropertyChanges {
@@ -267,7 +261,8 @@ Page {
                 name: "OPEN_DATABASE"
                 PropertyChanges {
                     target: passwordFieldCombo;
-                    passwordErrorHighlight: false
+                    passwordDescriptionText: ""
+                    passwordErrorHighlightEnabled: false
                     passwordConfirmEnabled: false
                 }
                 PropertyChanges {
