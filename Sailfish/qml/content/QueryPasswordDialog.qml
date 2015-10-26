@@ -42,8 +42,9 @@ Dialog {
     property alias keyFileLocation: keyLoading.locationIndex
     property alias keyFilePath: keyLoading.relativePath
     property alias databaseType: databaseTypeChooser.currentIndex
-    // Password is only going out and will be passed to ownKeepassDatabase object to open the database
-    property alias password: passwordField.text
+
+    // Password is only going out and will be passed to ownKeepass database interface to open the database
+    property string password: ""
 
     acceptDestination: Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString()
     acceptDestinationProperties: { "initOnPageConstruction": false, "groupId": "0" }
@@ -104,7 +105,7 @@ Dialog {
                         id: dbFilePathArea
 
                         anchors.left: parent.left
-                        anchors.leftMargin: Theme.paddingLarge
+                        anchors.leftMargin: Theme.horizontalPageMargin
                         anchors.right: dbFilePathIcon.left
                         anchors.rightMargin: Theme.paddingLarge
                         anchors.verticalCenter: parent.verticalCenter
@@ -118,7 +119,7 @@ Dialog {
                         id: dbFilePathIcon
                         source: "image://theme/icon-m-right"
                         anchors.right: parent.right
-                        anchors.rightMargin: Theme.paddingLarge
+                        anchors.rightMargin: Theme.horizontalPageMargin
                         anchors.verticalCenter: parent.verticalCenter
                         fillMode: Image.PreserveAspectFit
                     }
@@ -134,6 +135,8 @@ Dialog {
                                 dbLoading.locationIndex = dialog.locationIndex
                                 dbLoading.relativePath = dialog.relativePath
                                 dbLoading.absolutePath = dialog.absolutePath
+
+                                console.log("Absolute path: " + dialog.absolutePath)
                             })
                         }
                     }
@@ -175,7 +178,7 @@ Dialog {
                         id: keyFilePathArea
 
                         anchors.left: parent.left
-                        anchors.leftMargin: Theme.paddingLarge
+                        anchors.leftMargin: Theme.horizontalPageMargin
                         anchors.right: keyFilePathIcon.left
                         anchors.rightMargin: Theme.paddingLarge
                         anchors.verticalCenter: parent.verticalCenter
@@ -189,7 +192,7 @@ Dialog {
                         id: keyFilePathIcon
                         source: "image://theme/icon-m-right"
                         anchors.right: parent.right
-                        anchors.rightMargin: Theme.paddingLarge
+                        anchors.rightMargin: Theme.horizontalPageMargin
                         anchors.verticalCenter: parent.verticalCenter
                         fillMode: Image.PreserveAspectFit
                     }
@@ -224,83 +227,30 @@ Dialog {
                 }
             }
 
-            SilicaLabel {
-                id: passwordTitle
-            }
-
-            Item {
+            PasswordFieldCombo {
+                id: passwordFieldCombo
                 width: parent.width
-                height: passwordField.height
 
-                TextField {
-                    id: passwordField
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.right: showPasswordButton.left
-                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                    echoMode: TextInput.Password
-                    errorHighlight: text.length === 0
-                    label: qsTr("Master password")
-                    placeholderText: qsTr("Enter master password")
-                    text: ""
-                    EnterKey.enabled: !errorHighlight
-                    EnterKey.highlighted: queryPasswordDialog.state !== "CreateNewDatabase" && text !== ""
-                    EnterKey.iconSource: queryPasswordDialog.state === "CreateNewDatabase" ?
-                                             "image://theme/icon-m-enter-next" :
-                                             "image://theme/icon-m-enter-accept"
-                    EnterKey.onClicked: {
-                        if (queryPasswordDialog.state === "CreateNewDatabase") {
-                            confirmPasswordField.focus = true
-                        } else {
-                            // set database name for pulley menu on opening database
-                            Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
-                            parent.focus = true
-                            accept()
-                            close()
-                        }
-                    }
-                    focusOutBehavior: -1
+                onPasswordClicked: { // returns password
+                    queryPasswordDialog.password = password
+                    // set database name for pulley menu on opening database
+                    Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
+                    parent.focus = true
+                    accept()
+                    close()
                 }
 
-                IconButton {
-                    id: showPasswordButton
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
-                    anchors.verticalCenter: parent.verticalCenter
-                    icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
-                    onClicked: {
-                        if (passwordField.echoMode === TextInput.Normal) {
-                            passwordField.echoMode =
-                                    confirmPasswordField.echoMode = TextInput.Password
-                        } else {
-                            passwordField.echoMode =
-                                    confirmPasswordField.echoMode = TextInput.Normal
-                        }
-                    }
-                }
-            }
-
-            TextField {
-                id: confirmPasswordField
-                width: parent.width
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                echoMode: TextInput.Password
-                visible: enabled
-                errorHighlight: passwordField.text !== text
-                label: qsTr("Confirm password")
-                placeholderText: label
-                text: ""
-                EnterKey.enabled: !passwordField.errorHighlight && !errorHighlight
-                EnterKey.highlighted: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-                EnterKey.onClicked: {
+                onPasswordConfirmClicked: { // returns password
+                    queryPasswordDialog.password = password
                     // set database name for pulley menu on creating database
                     Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
                     parent.focus = true
                     accept()
                     close()
                 }
-                focusOutBehavior: -1
+//                onPasswordConfirmEnterKeyEnabledChanged: console.log("PasswordConfirmEnterKeyEnabledChanged: " + passwordConfirmEnterKeyEnabled)
+//                onPasswordFieldHasErrorChanged: console.log("PasswordFieldHasErrorChanged: " + passwordFieldHasError)
+//                onPasswordFieldConfirmHasErrorChanged: console.log("PasswordFieldConfirmHasErrorChanged: " + passwordFieldConfirmHasError)
             }
         }
     }
@@ -314,14 +264,21 @@ Dialog {
             PropertyChanges { target: dbLoading; createNewFile: true }
             PropertyChanges { target: dbFileColumn; enabled: true }
             PropertyChanges { target: keyFileColumn; enabled: true }
-            PropertyChanges { target: passwordTitle; text: qsTr("Type in a master password for locking your new Keepass Password Safe:") }
-            PropertyChanges { target: confirmPasswordField; enabled: true }
-            PropertyChanges { target: queryPasswordDialog
-                canNavigateForward: !passwordField.errorHighlight &&
-                                    !confirmPasswordField.errorHighlight &&
-                                    !dbLoading.absolutePath !== "" && (useKeyFile ? !keyLoading.absolutePath !== "" : true )
+            PropertyChanges { target: passwordFieldCombo
+                passwordDescriptionText: qsTr("Type in a master password for locking your new Keepass Password Safe:")
+                passwordErrorHighlightEnabled: true
+                passwordConfirmEnabled: true
+                passwordFieldFocus: false
+                passwordEnterKeyEnabled: true
+                passwordConfirmEnterKeyEnabled: dbLoading.absolutePath.length !== 0 &&
+                                                (useKeyFile ? keyLoading.absolutePath.length !== 0 : true )
             }
-            PropertyChanges { target: passwordField; focus: false }
+            PropertyChanges { target: queryPasswordDialog
+                canNavigateForward: !passwordFieldCombo.passwordFieldHasError &&
+                                    !passwordFieldCombo.passwordFieldConfirmHasError &&
+                                    dbLoading.absolutePath.length !== 0 &&
+                                    (useKeyFile ? keyLoading.absolutePath.length !== 0 : true )
+            }
             PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "CreateNewDatabase" }
             PropertyChanges { target: applicationWindow.cover; state: "CREATE_NEW_DATABASE" }
@@ -336,13 +293,19 @@ Dialog {
             PropertyChanges { target: dbLoading; createNewFile: false }
             PropertyChanges { target: dbFileColumn; enabled: true }
             PropertyChanges { target: keyFileColumn; enabled: true }
-            PropertyChanges { target: passwordTitle; text: qsTr("Type in master password for unlocking your Keepass Password Safe:") }
-            PropertyChanges { target: confirmPasswordField; enabled: false }
-            PropertyChanges { target: queryPasswordDialog
-                canNavigateForward: !passwordField.errorHighlight &&
-                                    !dbLoading.absolutePath !== "" && (useKeyFile ? !keyLoading.absolutePath !== "" : true )
+            PropertyChanges { target: passwordFieldCombo;
+                passwordDescriptionText: qsTr("Type in master password for unlocking your Keepass Password Safe:")
+                passwordErrorHighlightEnabled: false
+                passwordConfirmEnabled: false
+                passwordFieldFocus: false
+                passwordEnterKeyEnabled: queryPasswordDialog.canNavigateForward
+                passwordConfirmEnterKeyEnabled: false
             }
-            PropertyChanges { target: passwordField; focus: false }
+            PropertyChanges { target: queryPasswordDialog
+                canNavigateForward: !passwordFieldCombo.passwordFieldHasError &&
+                                    dbLoading.absolutePath.length !== 0 &&
+                                    (useKeyFile ? keyLoading.absolutePath.length !== 0 : true )
+            }
             PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenNewDatabase" }
             PropertyChanges { target: applicationWindow.cover; state: "OPEN_DATABASE" }
@@ -353,10 +316,15 @@ Dialog {
             PropertyChanges { target: queryPasswordDialogHeader; title: qsTr("Password Safe") }
             PropertyChanges { target: dbFileColumn; enabled: false }
             PropertyChanges { target: keyFileColumn; enabled: false }
-            PropertyChanges { target: passwordTitle; text: qsTr("Type in master password for unlocking your Keepass Password Safe:") }
-            PropertyChanges { target: confirmPasswordField; enabled: false }
-            PropertyChanges { target: queryPasswordDialog; canNavigateForward: passwordField.text !== "" }
-            PropertyChanges { target: passwordField; focus: true }
+            PropertyChanges { target: passwordFieldCombo;
+                passwordDescriptionText: qsTr("Type in master password for unlocking your Keepass Password Safe:")
+                passwordErrorHighlightEnabled: false
+                passwordConfirmEnabled: false
+                passwordFieldFocus: true
+                passwordEnterKeyEnabled: true
+                passwordConfirmEnterKeyEnabled: false
+            }
+            PropertyChanges { target: queryPasswordDialog; canNavigateForward: !passwordFieldCombo.passwordFieldHasError }
             PropertyChanges { target: queryPasswordMenu; enabled: true; visible: true }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "OpenRecentDatabase" }
             PropertyChanges { target: applicationWindow.cover; state: "OPEN_DATABASE"
