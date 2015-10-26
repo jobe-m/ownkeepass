@@ -55,8 +55,11 @@ Dialog {
         if (state === "OPEN_FILE") {
             relativePath = absolutePath.replace(ownKeepassHelper.getLocationRootPath(locationIndex), "")
         } else {
+            // state === CREATE_NEW_FILE
             relativePath = __absoluteDirPath.replace(ownKeepassHelper.getLocationRootPath(locationIndex), "") +
                     "/" + fileNameField.text
+            // not set yet but needed if user reopens the file dialog again to show the last position and file name
+            absolutePath = __absoluteDirPath + "/" + fileNameField.text
         }
         if (relativePath.charAt(0) === '/') {
             relativePath = relativePath.slice(1, relativePath.length)
@@ -142,7 +145,7 @@ Dialog {
         Item {
             id: newFileName
             visible: enabled
-            y: header.y + header.height
+            y: header.y + header.height + breadcrum.height
             width: parent.width
             height: fileNameField.height
 
@@ -164,28 +167,13 @@ Dialog {
                 }
                 focusOutBehavior: -1
             }
-
-/*            Label {
-                id: breadcrum
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: Theme.paddingSmall
-                text: fileBrowserListModel.breadcrumPath
-                opacity: 0.6
-                font.pixelSize: Theme.fontSizeExtraSmall
-                wrapMode: Text.Wrap
-            }
-*/
         }
 
         Item {
             id: fileFilter
             visible: enabled
             opacity: enabled ? 1.0 : 0.0
-            y: header.y + header.height
+            y: header.y + header.height + breadcrum.height
             width: parent.width
             height: enabled ? fileFilterField.height : 0
             onEnabledChanged: {
@@ -223,6 +211,25 @@ Dialog {
             }
         }
 
+        Item {
+            id: breadcrum
+            y: header.y + header.height
+            width: parent.width
+            height: breadcrumLabel.height
+
+            Behavior on height { NumberAnimation { duration: 400 }}
+
+            Label {
+                id: breadcrumLabel
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Path: " + fileBrowserListModel.breadcrumPath
+                opacity: 0.6
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+            }
+        }
+
         SilicaListView {
             id: listView
             width: parent.width
@@ -248,26 +255,28 @@ Dialog {
                     id: icon
                     source: "image://theme/icon-m-" + model.icon
                     anchors.left: parent.left
-                    anchors.leftMargin: Theme.paddingLarge
-                    anchors.top: parent.top
-                    anchors.topMargin: 18
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.verticalCenter: parent.verticalCenter
                     height: label.height
                     fillMode: Image.PreserveAspectFit
                 }
 
                 Label {
                     id: label
-                    x: icon.x + icon.width + 6
-                    y: icon.y - icon.height + 6
+                    anchors.left: icon.right
+                    anchors.leftMargin: Theme.paddingLarge
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
+                    anchors.verticalCenter: parent.verticalCenter
+                    elide: TruncationMode.Fade
+                    horizontalAlignment: Text.AlignLeft
                     text: model.file === ".." ? qsTr("Back") :
                               //: "Device Memory" is used in the file browser and means all files which are saved under home folder of the user
                               model.file === "..1" ? qsTr("Device Memory") :
                               model.file === "..2" ? qsTr("SD Card") :
                               model.file === "..3" ? qsTr("Android Storage") :
                               model.file
-                    anchors.verticalCenter: parent.verticalCenter
                     color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
-
                 }
 
                 onClicked: {
@@ -300,8 +309,13 @@ Dialog {
 
     Component.onCompleted: {
         if (absolutePath !== "") {
-            fileBrowserListModel.loadFilePath(absolutePath)
-            absolutePath = ""
+            // open previously visited file path
+            fileBrowserListModel.loadFilePath(absolutePath.slice(0, absolutePath.lastIndexOf('/')))
+
+            if (state === "CREATE_NEW_FILE") {
+                // set previously typed file name to appear in the file name field again
+                fileNameField.text = absolutePath.slice(absolutePath.lastIndexOf('/') + 1)
+            }
         }
     }
 
@@ -310,10 +324,7 @@ Dialog {
             name: "OPEN_FILE"
             PropertyChanges { target: fileSystemDialog; canAccept: absolutePath !== "" }
             PropertyChanges { target: newFileName; enabled: false }
-            PropertyChanges { target: listView; y: header.y + header.height + fileFilter.height }
-//                y: fileFilter.enabled ? header.y + header.height + fileFilter.height :
-//                                        header.y + header.height
-//            }
+            PropertyChanges { target: listView; y: header.y + header.height + fileFilter.height + breadcrum.height }
             PropertyChanges { target: fileBrowserListModel; showDirsOnly: false }
             PropertyChanges { target: showFileFilterMenuItem; enabled: true }
             PropertyChanges { target: fileFilter; enabled: fileBrowserListModel.showFileFilter}
@@ -322,7 +333,7 @@ Dialog {
             name: "CREATE_NEW_FILE"
             PropertyChanges { target: fileSystemDialog; canAccept: fileBrowserListModel.validDir && fileNameField.text }
             PropertyChanges { target: newFileName; enabled: true }
-            PropertyChanges { target: listView; y: header.y + header.height + newFileName.height }
+            PropertyChanges { target: listView; y: header.y + header.height + newFileName.height + breadcrum.height }
             PropertyChanges { target: fileBrowserListModel; showDirsOnly: true }
             PropertyChanges { target: showFileFilterMenuItem; enabled: false }
             PropertyChanges { target: fileFilter; enabled: false }
