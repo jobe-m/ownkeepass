@@ -631,88 +631,88 @@
 <context>
     <name>FileSystemDialog</name>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="69"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="72"/>
         <source>Problem with SD card</source>
         <translation>SD卡错误</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="70"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="73"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>不支持多分区的SD卡</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="113"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="116"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
         <translation>隐藏系统文件</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="115"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
         <translation>显示系统文件</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="126"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="129"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
         <translation>隐藏文件过滤器</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="128"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
         <translation>显示文件过滤器</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="138"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="141"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
         <translation>选择</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="139"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="142"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="154"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="157"/>
         <source>New file name</source>
         <translation>新文件名</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="155"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="158"/>
         <source>Enter new file name</source>
         <translation>输入新文件名</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="211"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
         <source>File filter</source>
         <translation>文件过滤器</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="212"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
         <source>Set file filter</source>
         <translation>设置文件过滤器</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="264"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>设备存储</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="265"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="276"/>
         <source>SD Card</source>
         <translation>SD卡</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="266"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
         <source>Android Storage</source>
         <translation>安卓存储</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="262"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="273"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
@@ -996,268 +996,268 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>新建数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="153"/>
+        <location filename="../qml/content/MainPage.qml" line="152"/>
         <source>Open database</source>
         <translation>打开数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="180"/>
+        <location filename="../qml/content/MainPage.qml" line="179"/>
         <source>Password Safe</source>
         <translation>密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="251"/>
+        <location filename="../qml/content/MainPage.qml" line="250"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>输入主密码来锁定新的Keepass“密码安全”：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="258"/>
+        <location filename="../qml/content/MainPage.qml" line="257"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>新数据库路径和名称</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="271"/>
+        <location filename="../qml/content/MainPage.qml" line="270"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="416"/>
+        <location filename="../qml/content/MainPage.qml" line="415"/>
         <source>Permission error</source>
         <translation>权限错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="416"/>
+        <location filename="../qml/content/MainPage.qml" line="415"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>无法创建Keepass数据库文件路径。你也许需要将这个目录权限设置为用户“nemo”。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="421"/>
-        <location filename="../qml/content/MainPage.qml" line="438"/>
+        <location filename="../qml/content/MainPage.qml" line="420"/>
+        <location filename="../qml/content/MainPage.qml" line="437"/>
         <source>Key file error</source>
         <translation>关键字文件错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="421"/>
-        <location filename="../qml/content/MainPage.qml" line="438"/>
+        <location filename="../qml/content/MainPage.qml" line="420"/>
+        <location filename="../qml/content/MainPage.qml" line="437"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>数据库路径正常，但未找到你的关键字文件。请检查关键字文件路径：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="426"/>
+        <location filename="../qml/content/MainPage.qml" line="425"/>
         <source>Database file already exists</source>
         <translation>数据库文件已存在</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="426"/>
+        <location filename="../qml/content/MainPage.qml" line="425"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>请为Keepass数据库设定另外一个路径和名字，或者在文件管理器中删除旧的数据库。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="443"/>
+        <location filename="../qml/content/MainPage.qml" line="442"/>
         <source>Database file error</source>
         <translation>数据库文件错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="443"/>
+        <location filename="../qml/content/MainPage.qml" line="442"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>数据库文件不存在。请检查数据库文件路径：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="488"/>
+        <location filename="../qml/content/MainPage.qml" line="487"/>
         <source>Database file</source>
         <translation>数据库文件</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="489"/>
+        <location filename="../qml/content/MainPage.qml" line="488"/>
         <source>The specified file is not a Keepass database.</source>
         <translation>指定的文件不是Keepass数据库。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="494"/>
+        <location filename="../qml/content/MainPage.qml" line="493"/>
         <source>Database version</source>
         <translation>数据库版本</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="495"/>
+        <location filename="../qml/content/MainPage.qml" line="494"/>
         <source>The specified file has an unsupported Keepass database version.</source>
         <translation>选择的文件不是Keepass支持的数据库版本。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="500"/>
-        <location filename="../qml/content/MainPage.qml" line="518"/>
-        <location filename="../qml/content/MainPage.qml" line="567"/>
-        <location filename="../qml/content/MainPage.qml" line="587"/>
-        <location filename="../qml/content/MainPage.qml" line="609"/>
+        <location filename="../qml/content/MainPage.qml" line="499"/>
+        <location filename="../qml/content/MainPage.qml" line="517"/>
+        <location filename="../qml/content/MainPage.qml" line="566"/>
+        <location filename="../qml/content/MainPage.qml" line="586"/>
+        <location filename="../qml/content/MainPage.qml" line="608"/>
         <source>Internal database error</source>
         <translation>数据库内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="501"/>
+        <location filename="../qml/content/MainPage.qml" line="500"/>
         <source>Database headers are missing.</source>
         <translation>数据库头信息丢失。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="506"/>
-        <location filename="../qml/content/MainPage.qml" line="512"/>
+        <location filename="../qml/content/MainPage.qml" line="505"/>
+        <location filename="../qml/content/MainPage.qml" line="511"/>
         <source>Wrong password</source>
         <translation>错误的密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="507"/>
+        <location filename="../qml/content/MainPage.qml" line="506"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
         <translation>主密码错误或数据库文件损坏。请重试。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="513"/>
+        <location filename="../qml/content/MainPage.qml" line="512"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
         <translation>主密码或关键字文件错误。请重试。如果该错误再次出现，则关键字文件或数据库文件已损坏。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="519"/>
+        <location filename="../qml/content/MainPage.qml" line="518"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
         <translation>数据库头信息与哈希值不一致。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="524"/>
-        <location filename="../qml/content/MainPage.qml" line="530"/>
+        <location filename="../qml/content/MainPage.qml" line="523"/>
+        <location filename="../qml/content/MainPage.qml" line="529"/>
         <source>File I/O error</source>
         <translation>文件I/O错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="525"/>
+        <location filename="../qml/content/MainPage.qml" line="524"/>
         <source>Cannot open database file. Error details:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="531"/>
+        <location filename="../qml/content/MainPage.qml" line="530"/>
         <source>Cannot open key file. Error details:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="560"/>
+        <location filename="../qml/content/MainPage.qml" line="559"/>
         <source>Password changed</source>
         <translation>密码已修改</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="560"/>
+        <location filename="../qml/content/MainPage.qml" line="559"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>数据库主密码修改成功。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="567"/>
+        <location filename="../qml/content/MainPage.qml" line="566"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>无法关闭之前打开的数据库。请重试。错误信息：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="571"/>
+        <location filename="../qml/content/MainPage.qml" line="570"/>
         <source>Internal key error</source>
         <translation>关键字内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="571"/>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="570"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>The following error occured during opening of database:</source>
         <translation>打开数据库时发生了以下错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="574"/>
         <source>Internal key file error</source>
         <translation>关键字文件内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="579"/>
+        <location filename="../qml/content/MainPage.qml" line="578"/>
         <source>Error loading database</source>
         <translation>载入数据库错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="579"/>
+        <location filename="../qml/content/MainPage.qml" line="578"/>
         <source>Please try again.</source>
         <translation>请重试。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="583"/>
+        <location filename="../qml/content/MainPage.qml" line="582"/>
         <source>Internal file error</source>
         <translation>文件内部错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="583"/>
+        <location filename="../qml/content/MainPage.qml" line="582"/>
         <source>The following error occured during creation of database:</source>
         <translation>创建数据库时发生以下错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="587"/>
+        <location filename="../qml/content/MainPage.qml" line="586"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>创建组备份时发生以下错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="591"/>
+        <location filename="../qml/content/MainPage.qml" line="590"/>
         <source>Save database error</source>
         <translation>保存数据库错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="591"/>
+        <location filename="../qml/content/MainPage.qml" line="590"/>
         <source>Could not save database with following error:</source>
         <translation>无法保存数据库，错误信息：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="598"/>
+        <location filename="../qml/content/MainPage.qml" line="597"/>
         <source>Database error</source>
         <translation>数据库错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="598"/>
+        <location filename="../qml/content/MainPage.qml" line="597"/>
         <source>An error occured on closing your database:</source>
         <translation>关闭数据库时发生了一个错误：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="604"/>
+        <location filename="../qml/content/MainPage.qml" line="603"/>
         <source>Crypto init error</source>
         <translation>加密初始化失败</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="605"/>
+        <location filename="../qml/content/MainPage.qml" line="604"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation>加密算法初始化失败。为防范攻击，数据库已关闭。请尝试重新打开应用。如果该错误再次发生，请联系开发者。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="610"/>
+        <location filename="../qml/content/MainPage.qml" line="609"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation>转换QString &quot;%1&quot; 为Int失败</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1030"/>
+        <location filename="../qml/content/MainPage.qml" line="1029"/>
         <source>Yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1031"/>
+        <location filename="../qml/content/MainPage.qml" line="1030"/>
         <source>No</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1032"/>
+        <location filename="../qml/content/MainPage.qml" line="1031"/>
         <source>Unsaved changes</source>
         <translation>未保存的更改</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1060"/>
+        <location filename="../qml/content/MainPage.qml" line="1059"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>你想保存修改的密码词条吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1065"/>
+        <location filename="../qml/content/MainPage.qml" line="1064"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>你想保存修改的密码组吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1070"/>
+        <location filename="../qml/content/MainPage.qml" line="1069"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>你想保存修改的数据库设置吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1075"/>
+        <location filename="../qml/content/MainPage.qml" line="1074"/>
         <source>Do you want to save changed settings values?</source>
         <translation>你想保存修改的设置吗？</translation>
     </message>
@@ -1389,17 +1389,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="338"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>请指定新的Keepass数据库文件：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="366"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>请选择一个已存在的Keepass数据库文件：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="156"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="158"/>
         <source>Use key file</source>
         <translation>使用关键字文件</translation>
     </message>
@@ -1409,45 +1409,45 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="157"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="159"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>开启此项以对你的新Keepass数据库同时使用关键字文件和主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="218"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="220"/>
         <source>Database type:</source>
         <translation>数据库类型：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="336"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
         <source>Create</source>
         <translation>创建</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="337"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>New Password Safe</source>
         <translation>新的密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="343"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="268"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>输入主密码来锁定新的Keepass“密码安全”：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="364"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="389"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
         <source>Open</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="365"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="390"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Password Safe</source>
         <translation>密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="371"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="394"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="297"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="320"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>输入主密码来解锁你的Keepass“密码安全”：</translation>
     </message>
