@@ -72,7 +72,7 @@ Page {
                 text: "\
 <b>v1.1.11 Tablet UI enhancements</b>\
 <ul>\
-<li>Password fields are now using fixed size font to better distinguish between similar characters</li>\
+<li>Changed Password fields to use fixed size font which should enable to better distinguish between similar characters</li>\
 <li>Updated icons and layout of main page to fit better on the tablet display</li>\
 <li>Corrected a lot of page margins and text alignments due to layout changes for the tablet</li>\
 <li>File browser now shows path of actual browsing directory</li>\

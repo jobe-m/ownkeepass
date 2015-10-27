@@ -746,12 +746,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="397"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="318"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="322"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="338"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="343"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="388"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="393"/>
         <source>Password groups</source>
         <translation>Groupes de mot de passe</translation>
     </message>
@@ -776,51 +776,51 @@
         <translation>Impossible de sauvegarder les modifications du fichier de base de données Keepass. Soit l&apos;emplacement du fichier est protégé en écriture, soit il a été supprimé.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="123"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="107"/>
         <source>Search</source>
         <translation>Recherche</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="175"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="166"/>
         <source>No entries found</source>
         <translation>Aucune entrée trouvée</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="185"/>
         <source>Decrypting Keepass database</source>
         <translation>Base de données Keepass en cours de déchiffrement </translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="216"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="207"/>
         <source>Group is empty</source>
         <translation>Le groupe est vide</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="219"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="210"/>
         <source>Pull down to add password groups</source>
         <translation>Tirez vers le bas pour ajouter un groupe de mots de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="220"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="211"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Tirez vers le bas pour ajouter un groupe de mots de passe ou des saisies</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="302"/>
         <source>Loading</source>
         <translation>Chargement</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="358"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="362"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="398"/>
         <source>Search in all groups</source>
         <translation>Rechercher dans tous les groupes</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="372"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
         <source>Search in</source>
         <translation>Rechercher dans</translation>
     </message>

@@ -746,12 +746,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="397"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="318"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="322"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="338"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="343"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="388"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="393"/>
         <source>Password groups</source>
         <translation>Lösenordsgrupper</translation>
     </message>
@@ -776,51 +776,51 @@
         <translation>Kunde inte spara ändringar i Keepass databasfil. Antingen är platsen för databasfilen skrivskyddad, eller också är filen flyttad.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="123"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="107"/>
         <source>Search</source>
         <translation>Sök</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="175"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="166"/>
         <source>No entries found</source>
         <translation>Inga poster hittades</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="185"/>
         <source>Decrypting Keepass database</source>
         <translation>Dekrypterar Keepass databas</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="216"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="207"/>
         <source>Group is empty</source>
         <translation>Gruppen är tom</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="219"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="210"/>
         <source>Pull down to add password groups</source>
         <translation>Dra neråt för att lägga till lösenordsgrupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="220"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="211"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Dra neråt för att lägga till lösenordsgrupper eller nya lösenordsposter</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="302"/>
         <source>Loading</source>
         <translation>Läser in</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="358"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="362"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="398"/>
         <source>Search in all groups</source>
         <translation>Sök i alla grupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="372"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
         <source>Search in</source>
         <translation>Sök i</translation>
     </message>

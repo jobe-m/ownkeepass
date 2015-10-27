@@ -78,29 +78,14 @@ Page {
 
     allowedOrientations: applicationWindow.orientationSetting
 
-    onOrientationChanged: {
-        // Update header box height when page orientation changes, ie. page header hight also changes
-        if (orientation & Orientation.PortraitMask) {
-            // Orientation Portrait = -110
-            headerBox.listViewStart = -110
-        } else {
-            // Orientation Landscape = -80
-            headerBox.listViewStart = -80
-        }
-    }
-
     Item {
         id: headerBox
-        // (deault) Orientation Portrait = -110
-        property int listViewStart: -110
-        // y position of header box is depending of search field hight and list view content start position
-        // it also changes when pulley menu is opened (done with listView.contentY)
-        y: 0 - listView.contentY + listViewStart - searchField.height
+        // attach y position of header box to list view content y position
+        // that way the header box moves accordingly when pulley menus are opened
+        y: 0 - listView.contentY - height
         z: 1
         width: parent.width
         height: pageHeader.height + searchField.height
-
-        Tracer {}
 
         PageHeaderExtended {
             id: pageHeader
@@ -114,12 +99,11 @@ Page {
 
         SearchField {
             id: searchField
-            property int enabledHeight: 100
+            property int enabledHeight: 0
             anchors.top: pageHeader.bottom
             anchors.left: parent.left
             width: parent.width
             opacity: enabled ? 1.0 : 0.0
-            height: enabled ? enabledHeight : 0
             placeholderText: qsTr("Search")
             EnterKey.iconSource: "image://theme/icon-m-enter-close"
             EnterKey.onClicked: listView.focus = true
@@ -138,18 +122,24 @@ Page {
 
             onFocusChanged: {
                 if (focus) {
-//                    console.log("Search bar has focus")
                     groupsAndEntriesPage.state = "SEARCHING"
                 } else {
-//                    console.log("Search bar lost focus")
                     if (text.length === 0 && groupsAndEntriesPage.state === "SEARCHING") {
                         groupsAndEntriesPage.state = "SEARCH_BAR_SHOWN"
                     }
                 }
             }
 
-            Behavior on height { NumberAnimation {} }
-            Behavior on opacity { FadeAnimation {} }
+            onEnabledChanged: {
+                // save height of search field once it is set to zero so that we can restore it again (when search bar shall appear again triggered by pulley menu item)
+                if (enabledHeight === 0) {
+                    enabledHeight = height
+                }
+                height = enabled ? enabledHeight : 0
+            }
+
+            Behavior on height { NumberAnimation { duration: 400 }}
+            Behavior on opacity { FadeAnimation { duration: 400 }}
         }
     }
 
@@ -164,6 +154,7 @@ Page {
             // list view resetting the input box everytime the model resets,
             // the search entry is defined outside the list view.
             height: headerBox.height
+
         }
 
         ViewSearchPlaceholder {

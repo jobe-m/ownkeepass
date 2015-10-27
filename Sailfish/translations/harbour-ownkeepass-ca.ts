@@ -746,12 +746,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="397"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="318"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="322"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="338"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="343"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="388"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="393"/>
         <source>Password groups</source>
         <translation>Grups de contrasenyes</translation>
     </message>
@@ -776,51 +776,51 @@
         <translation>No s&apos;han pogut desar els canvis al fitxer de base de dades Keepass. O bé la ubicació del fitxer està protegida contra escriptura, o bé ha sigut eliminat.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="123"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="107"/>
         <source>Search</source>
         <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="175"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="166"/>
         <source>No entries found</source>
         <translation>No s&apos;ha trobat cap registre</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="185"/>
         <source>Decrypting Keepass database</source>
         <translation>S&apos;està desencriptant la base de dades Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="216"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="207"/>
         <source>Group is empty</source>
         <translation>El grup és buit</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="219"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="210"/>
         <source>Pull down to add password groups</source>
         <translation>Arrossegueu cap avall per afegir grups de contrasenyes</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="220"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="211"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Arrossegueu cap avall per afegir grups o registres</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="302"/>
         <source>Loading</source>
         <translation>S&apos;està carregant</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="358"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="362"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="398"/>
         <source>Search in all groups</source>
         <translation>Cerca a tots els grups</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="372"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
         <source>Search in</source>
         <translation>Cerca a</translation>
     </message>
