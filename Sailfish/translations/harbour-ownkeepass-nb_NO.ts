@@ -720,24 +720,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="117"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Ingen valgt ennå</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="123"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Enhetsminne</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="122"/>
+        <location filename="../qml/scripts/Global.js" line="125"/>
         <source>SD Card</source>
         <translation>SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="124"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Android Storage</source>
         <translation>Android-lagringsplass</translation>
     </message>
@@ -746,12 +746,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="325"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="329"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="345"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="350"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="395"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="400"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="397"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
         <source>Password groups</source>
         <translation>Passordgrupper</translation>
     </message>
@@ -776,51 +776,51 @@
         <translation>Endringene kunne ikke lagres til databasen. Fila er skrivebeskyttet eller utilgjengelig.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="121"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="123"/>
         <source>Search</source>
         <translation>Søk</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="173"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="175"/>
         <source>No entries found</source>
         <translation>Ingen oppføringer funnet</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="192"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
         <source>Decrypting Keepass database</source>
         <translation>Dekrypterer database</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="214"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="216"/>
         <source>Group is empty</source>
         <translation>Gruppa er tom</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="217"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="219"/>
         <source>Pull down to add password groups</source>
         <translation>Dra ned for å legge til passordgrupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="218"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="220"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Dra ned for å legge til passordgrupper eller -oppføringer</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="309"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
         <source>Loading</source>
         <translation>Laster</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="405"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
         <source>Search in all groups</source>
         <translation>Søk i alle grupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="366"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="372"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
         <source>Search in</source>
         <translation>Søk i</translation>
     </message>
@@ -959,22 +959,22 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <translation>Passordsafe</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="119"/>
+        <location filename="../qml/content/LockPage.qml" line="121"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Lås opp passordsafen med de første 3 tegnene i hovedpassordet:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="215"/>
+        <location filename="../qml/content/LockPage.qml" line="217"/>
         <source>You have %1 tries left</source>
         <translation>Du har %1 forsøk igjen</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="219"/>
         <source>You have one try left</source>
         <translation>Du har ett forsøk igjen</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="221"/>
         <source>Wrong unlock code</source>
         <translation>Feil kode for opplåsing</translation>
     </message>

@@ -720,24 +720,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="117"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Nic ještě nebylo vybráno</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="123"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Paměť zařízení</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="122"/>
+        <location filename="../qml/scripts/Global.js" line="125"/>
         <source>SD Card</source>
         <translation>SD karta</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="124"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Android Storage</source>
         <translation>Úložiště Android</translation>
     </message>
@@ -746,12 +746,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="325"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="329"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="345"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="350"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="395"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="400"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="397"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
         <source>Password groups</source>
         <translation>Heslové skupiny</translation>
     </message>
@@ -776,51 +776,51 @@
         <translation>Nepodařilo se uložit vaše změny do souboru s databází Keepass. Buď je umístění souboru chráněno proti zápisu, nebo byl tento odstraněn.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="121"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="123"/>
         <source>Search</source>
         <translation>Hledat</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="173"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="175"/>
         <source>No entries found</source>
         <translation>Nenalezeny žádné záznamy</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="192"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
         <source>Decrypting Keepass database</source>
         <translation>Dešifrování databáze Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="214"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="216"/>
         <source>Group is empty</source>
         <translation>Skupina je prázdná</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="217"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="219"/>
         <source>Pull down to add password groups</source>
         <translation>Stáhněte dolů pro přidání heslových skupin</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="218"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="220"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Stáhněte dolů pro přidání heslových skupin nebo záznamů</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="309"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
         <source>Loading</source>
         <translation>Nahrává se</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="405"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
         <source>Search in all groups</source>
         <translation>Hledat ve všech skupinách</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="366"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="372"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
         <source>Search in</source>
         <translation>Hledat v</translation>
     </message>
@@ -957,22 +957,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Sejf s hesly</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="119"/>
+        <location filename="../qml/content/LockPage.qml" line="121"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Odemkněte sejf s hesly zadáním tří prvních znaků z hlavního hesla:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="215"/>
+        <location filename="../qml/content/LockPage.qml" line="217"/>
         <source>You have %1 tries left</source>
         <translation>Máte ještě %1 zbylé pokusy</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="219"/>
         <source>You have one try left</source>
         <translation>Zbývá vám jen jeden pokus</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="221"/>
         <source>Wrong unlock code</source>
         <translation>Nesprávný odemykací kód</translation>
     </message>

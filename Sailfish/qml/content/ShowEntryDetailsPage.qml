@@ -210,7 +210,7 @@ Page {
                 IconButton {
                     id: showPasswordButton
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     anchors.verticalCenter: parent.verticalCenter
                     icon.source: entryPasswordTextArea.opacity === 1.0 ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
                     onClicked: {

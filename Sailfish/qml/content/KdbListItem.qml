@@ -72,7 +72,7 @@ ListItem {
 
     Rectangle {
         id: itemIcon
-        x: model.itemLevel * (parent.width / 20)
+        x: model.itemLevel * (width / Global.icon_indent_in_listview)
         anchors.verticalCenter: parent.verticalCenter
         width: Theme.itemSizeMedium
         height: Theme.itemSizeMedium

@@ -99,18 +99,20 @@ Page {
                     width: lockPage.orientation & Orientation.PortraitMask ? 0 : implicitWidth
                     source: "../../wallicons/wall-key.png"
                     anchors.left: parent.left
-                    anchors.leftMargin: lockPage.orientation & Orientation.PortraitMask ? 0: (Theme.paddingLarge * 2)
+                    anchors.leftMargin: lockPage.orientation & Orientation.PortraitMask ? 0 : Theme.horizontalPageMargin
                     anchors.bottom: parent.bottom
                 }
 
                 Column {
                     id: fastPasswordFieldsColumn
                     anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     anchors.left: lockImageLandscape.right
+                    anchors.leftMargin: Theme.paddingLarge
                     anchors.bottom: parent.bottom
 
                     Label {
-                        width: parent.width - Theme.paddingLarge * 2
+                        width: parent.width
                         anchors.horizontalCenter: parent.horizontalCenter
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter

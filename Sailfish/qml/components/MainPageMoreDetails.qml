@@ -49,16 +49,16 @@ Column {
 
         Label {
             id: databasePathAndName
-            x: Theme.paddingLarge
-            width: parent.width - Theme.paddingLarge * 2
+            x: Theme.horizontalPageMargin
+            width: parent.width - Theme.horizontalPageMargin * 2
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
             horizontalAlignment: Text.AlignLeft
         }
 
         Label {
-            x: Theme.paddingLarge
-            width: parent.width - Theme.paddingLarge * 2
+            x: Theme.horizontalPageMargin
+            width: parent.width - Theme.horizontalPageMargin * 2
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
             horizontalAlignment: Text.AlignLeft
@@ -67,8 +67,8 @@ Column {
         }
 
         Label {
-            x: Theme.paddingLarge
-            width: parent.width - Theme.paddingLarge * 2
+            x: Theme.horizontalPageMargin
+            width: parent.width - Theme.horizontalPageMargin * 2
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
             horizontalAlignment: Text.AlignLeft
@@ -77,10 +77,10 @@ Column {
         }
 
         Label {
-            x: Theme.paddingLarge
+            x: Theme.horizontalPageMargin
 //                        enabled: internal.keyFilePath.length !== 0
             visible: internal.keyFilePath.length !== 0
-            width: parent.width - Theme.paddingLarge * 2
+            width: parent.width - Theme.horizontalPageMargin * 2
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
             horizontalAlignment: Text.AlignLeft
@@ -89,8 +89,8 @@ Column {
         }
 
         Item {
-            x: Theme.paddingLarge
-            width: parent.width - Theme.paddingLarge * 2
+            x: Theme.horizontalPageMargin
+            width: parent.width - Theme.horizontalPageMargin * 2
             height: databaseTypeLabel.height
 
             Label {

@@ -945,8 +945,8 @@ Page {
 
                 Label {
                     id: firstLabel
-                    x: Theme.paddingLarge
-                    width: parent.width - Theme.paddingLarge * 2
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - Theme.horizontalPageMargin * 2
                     horizontalAlignment: Text.AlignLeft
                     text: model.uiName
                     font.pixelSize: Theme.fontSizeMedium
@@ -955,8 +955,8 @@ Page {
 
                 Label {
                     id: secondLabel
-                    x: Theme.paddingLarge
-                    width: parent.width - Theme.paddingLarge * 2
+                    x: Theme.horizontalPageMargin
+                    width: parent.width - Theme.horizontalPageMargin * 2
                     horizontalAlignment: Text.AlignLeft
                     text: Global.getLocationName(model.databaseLocation) + " " + model.uiPath
                     font.pixelSize: Theme.fontSizeExtraSmall

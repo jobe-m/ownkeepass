@@ -184,7 +184,7 @@ Dialog {
                     id: showPasswordButton
                     anchors.top: parent.top
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     icon.source: entryPasswordTextField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
                     onClicked: {
                         if (entryPasswordTextField.echoMode === TextInput.Normal) {
@@ -229,7 +229,7 @@ Dialog {
                     id: generatePasswordButton
                     anchors.top: parent.top
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     icon.source: "../../wallicons/icon-l-generator.png"
                     onClicked: {
                         var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")

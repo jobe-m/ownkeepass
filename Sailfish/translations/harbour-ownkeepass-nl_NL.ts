@@ -720,24 +720,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="117"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Nog niets geselecteerd</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="123"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Apparaatgeheugen</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="122"/>
+        <location filename="../qml/scripts/Global.js" line="125"/>
         <source>SD Card</source>
         <translation>SD-kaart</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="124"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Android Storage</source>
         <translation>Android-opslag</translation>
     </message>
@@ -746,12 +746,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="325"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="329"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="345"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="350"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="395"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="400"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="397"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
         <source>Password groups</source>
         <translation>Wachtwoordgroepen</translation>
     </message>
@@ -776,51 +776,51 @@
         <translation>De wijzigingen konden niet worden opgeslagen naar de Keepass-database. Het pad van het bestand is beveiligd of bestaat niet meer.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="121"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="123"/>
         <source>Search</source>
         <translation>Zoeken</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="173"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="175"/>
         <source>No entries found</source>
         <translation>Geen vermeldingen gevonden</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="192"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
         <source>Decrypting Keepass database</source>
         <translation>Bezig met ontsleutelen van de Keepass-database</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="214"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="216"/>
         <source>Group is empty</source>
         <translation>Groep is leeg</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="217"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="219"/>
         <source>Pull down to add password groups</source>
         <translation>Trek naar beneden om wachtwoordgroepen toe te voegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="218"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="220"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Trek naar beneden om wachtwoordgroepen of -invoeren toe te voegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="309"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
         <source>Loading</source>
         <translation>Bezig met laden</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="405"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
         <source>Search in all groups</source>
         <translation>Zoeken in alle groepen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="366"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="372"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
         <source>Search in</source>
         <translation>Zoeken in</translation>
     </message>
@@ -957,22 +957,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Wachtwoordkluis</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="119"/>
+        <location filename="../qml/content/LockPage.qml" line="121"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Ontgrendel de wachtwoordkluis met de eerste 3 tekens van uw hoofdwachtwoord:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="215"/>
+        <location filename="../qml/content/LockPage.qml" line="217"/>
         <source>You have %1 tries left</source>
         <translation>U heeft nog %1 poging(en)</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="219"/>
         <source>You have one try left</source>
         <translation>Dit is de laatste resterende poging</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="221"/>
         <source>Wrong unlock code</source>
         <translation>Onjuiste ontgrendelcode</translation>
     </message>

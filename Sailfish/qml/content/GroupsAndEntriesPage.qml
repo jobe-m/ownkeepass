@@ -100,6 +100,8 @@ Page {
         width: parent.width
         height: pageHeader.height + searchField.height
 
+        Tracer {}
+
         PageHeaderExtended {
             id: pageHeader
             anchors.top: parent.top

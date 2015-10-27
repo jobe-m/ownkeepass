@@ -95,7 +95,7 @@ Dialog {
                     id: showPasswordButton
                     anchors.top: parent.top
                     anchors.right: parent.right
-                    anchors.rightMargin: Theme.paddingLarge
+                    anchors.rightMargin: Theme.horizontalPageMargin
                     icon.source: generatedPasswordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
                     onClicked: {
                         if (generatedPasswordField.echoMode === TextInput.Normal) {

@@ -35,7 +35,7 @@ PageHeader {
         color: Theme.highlightColor
         anchors {
             right: parent.right
-            rightMargin: Theme.paddingLarge
+            rightMargin: Theme.horizontalPageMargin
             bottom: parent.bottom
             bottomMargin: subTitleBottomMargin
         }

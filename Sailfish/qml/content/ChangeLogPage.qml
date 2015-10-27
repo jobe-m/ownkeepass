@@ -70,6 +70,17 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.11 Tablet UI enhancements</b>\
+<ul>\
+<li>Password fields are now using fixed size font to better distinguish between similar characters</li>\
+<li>Updated icons and layout of main page to fit better on the tablet display</li>\
+<li>Corrected a lot of page margins and text alignments due to layout changes for the tablet</li>\
+<li>File browser now shows path of actual browsing directory</li>\
+<li>Updated look of app icon and added scaled icons for tablet display</li>\
+<li></li>\
+<li></li>\
+</ul>\
+<br>\
 <b>v1.1.10 Translation bugfix</b>\
 <ul>\
 <li>Updated all translation files</li>\

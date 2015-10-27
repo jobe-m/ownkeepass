@@ -75,9 +75,9 @@ Copyright &#169; 2013-2015 Marko Koschak"
 
             Row {
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+                anchors.rightMargin: Theme.horizontalPageMargin
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
+                anchors.leftMargin: Theme.horizontalPageMargin
                 spacing: (width / 2) * 0.1
                 height: Theme.itemSizeMedium + Theme.paddingMedium
 
@@ -120,9 +120,9 @@ Copyright &#169; 2013-2015 Marko Koschak"
 
             Row {
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+                anchors.rightMargin: Theme.horizontalPageMargin
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
+                anchors.leftMargin: Theme.horizontalPageMargin
                 spacing: (width / 2) * 0.1
                 height: Theme.itemSizeMedium + Theme.paddingMedium
 
@@ -180,9 +180,9 @@ issue a bug report or improvement idea, send me a café or just like my app and 
 
             Row {
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+                anchors.rightMargin: Theme.horizontalPageMargin
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
+                anchors.leftMargin: Theme.horizontalPageMargin
                 spacing: (width / 2) * 0.1
                 height: Theme.itemSizeMedium + Theme.paddingMedium
 
@@ -203,9 +203,9 @@ issue a bug report or improvement idea, send me a café or just like my app and 
 
             Row {
                 anchors.right: parent.right
-                anchors.rightMargin: Theme.paddingLarge
+                anchors.rightMargin: Theme.horizontalPageMargin
                 anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingLarge
+                anchors.leftMargin: Theme.horizontalPageMargin
                 spacing: (width / 2) * 0.1
                 height: Theme.itemSizeMedium + Theme.paddingMedium
 

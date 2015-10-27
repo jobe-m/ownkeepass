@@ -28,7 +28,7 @@ import Sailfish.Silica 1.0
     \inherits Label
 
     \brief A common label component that has formatting to be used e.g. in Listviews.
-    It fits with its width into a screen and uses default Theme.paddingLarge.
+    It fits with its width into a screen and uses default Theme.horizontalPageMargin.
 
    \qml
    SilicaLabel {

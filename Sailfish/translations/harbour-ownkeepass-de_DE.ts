@@ -720,24 +720,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="117"/>
+        <location filename="../qml/scripts/Global.js" line="120"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Noch nichts ausgewählt</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="123"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Gerätespeicher</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="122"/>
+        <location filename="../qml/scripts/Global.js" line="125"/>
         <source>SD Card</source>
         <translation>Speicherkarte</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="124"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Android Storage</source>
         <translation>Android-Speicher</translation>
     </message>
@@ -746,12 +746,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="325"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="329"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="345"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="350"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="395"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="400"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="347"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="397"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
         <source>Password groups</source>
         <translation>Passwortgruppen</translation>
     </message>
@@ -776,51 +776,51 @@
         <translation>Die Änderungen an deiner Keepass-Datenbank konnten nicht gespeichert werden. Entweder ist das Verzeichnis, wo sich deine Datenbank befindet, schreibgeschützt oder die Datenbank ist zwischenzeitlich gelöscht oder verschoben worden.</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="121"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="123"/>
         <source>Search</source>
         <translation>Suchen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="173"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="175"/>
         <source>No entries found</source>
         <translation>Keine Einträge gefunden</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="192"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
         <source>Decrypting Keepass database</source>
         <translation>Keepass Datenbank wird entschlüsselt</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="214"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="216"/>
         <source>Group is empty</source>
         <translation>Gruppe ist leer</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="217"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="219"/>
         <source>Pull down to add password groups</source>
         <translation>Öffne das obere Menü, um Passwortgruppen hinzuzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="218"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="220"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Öffne das obere Menü um Passwortgruppen oder Passworteinträge hinzuzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="309"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
         <source>Loading</source>
         <translation>Wird geladen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="369"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="405"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
         <source>Search in all groups</source>
         <translation>Suche in allen Gruppen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="366"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="372"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="408"/>
         <source>Search in</source>
         <translation>Suche in</translation>
     </message>
@@ -957,22 +957,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Passwort-Safe</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="119"/>
+        <location filename="../qml/content/LockPage.qml" line="121"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Entsperre deinen Passwort-Safe durch Eingabe der ersten 3 Zeichen des Zugangspasswortes:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="215"/>
+        <location filename="../qml/content/LockPage.qml" line="217"/>
         <source>You have %1 tries left</source>
         <translation>Du hast noch %1 Versuche übrig</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="219"/>
         <source>You have one try left</source>
         <translation>Du hast noch einen Versuch übrig</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="221"/>
         <source>Wrong unlock code</source>
         <translation>Falscher Entsperrcode</translation>
     </message>
