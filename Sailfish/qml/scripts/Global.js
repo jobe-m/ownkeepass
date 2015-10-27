@@ -52,6 +52,9 @@ var japanese = 16
 var polish = -1 // not yet started, but already defined in ownKeepassGlobal.h
 var ukrainian = -1 // not yet started, but already defined in ownKeepassGlobal.h
 
+// Contants used to scale UI components
+var icon_indent_in_listview = 4 // real ident = icon width / 4
+
 
 var constants = {
     _1microsecond: 1,

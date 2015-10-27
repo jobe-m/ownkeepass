@@ -107,14 +107,14 @@ Dialog {
                     id: itemBackground
                     x: 0
                     anchors.verticalCenter: parent.verticalCenter
-                    width: Theme.itemSizeMedium + model.itemLevel * (parent.width / 16)
+                    width: Theme.itemSizeMedium + model.itemLevel * (iconPlacer.width / Global.icon_indent_in_listview)
                     height: Theme.itemSizeMedium
                     color: "white"
                 }
 
                 Item {
                     id: iconPlacer
-                    x: model.itemLevel * (parent.width / 16)
+                    x: model.itemLevel * (width / Global.icon_indent_in_listview)
                     anchors.verticalCenter: parent.verticalCenter
                     width: Theme.itemSizeMedium
                     height: Theme.itemSizeMedium
