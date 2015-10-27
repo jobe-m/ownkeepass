@@ -22,6 +22,39 @@
   <defs
      id="defs4">
     <linearGradient
+       id="linearGradient3905">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.43846154;"
+         offset="0"
+         id="stop3907" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.50769234;"
+         offset="1"
+         id="stop3909" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3897">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.70769233;"
+         offset="0"
+         id="stop3899" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop3901" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3889">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3891" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.46153846;"
+         offset="1"
+         id="stop3893" />
+    </linearGradient>
+    <linearGradient
        inkscape:collect="always"
        id="linearGradient5376">
       <stop
@@ -67,14 +100,13 @@
          id="stop3795" />
     </linearGradient>
     <linearGradient
-       inkscape:collect="always"
        id="linearGradient3783">
       <stop
-         style="stop-color:#b9b9b9;stop-opacity:1;"
+         style="stop-color:#ffffff;stop-opacity:0.8230769;"
          offset="0"
          id="stop3785" />
       <stop
-         style="stop-color:#b9b9b9;stop-opacity:0;"
+         style="stop-color:#ffffff;stop-opacity:0.38461539;"
          offset="1"
          id="stop3787" />
     </linearGradient>
@@ -132,19 +164,10 @@
        inkscape:collect="always"
        xlink:href="#linearGradient3783"
        id="linearGradient3789"
-       x1="38.262314"
-       y1="1006.2757"
-       x2="79.313644"
-       y2="1044.6488"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3791"
-       id="linearGradient3797"
-       x1="19.020393"
-       y1="988.28619"
-       x2="77.816925"
-       y2="1043.193"
+       x1="36.781681"
+       y1="1004.3015"
+       x2="66.234734"
+       y2="1033.174"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -173,8 +196,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="8.1046512"
-     inkscape:cx="29.563132"
-     inkscape:cy="39.637266"
+     inkscape:cx="69.540176"
+     inkscape:cy="34.701828"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -203,7 +226,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -225,7 +248,7 @@
        inkscape:connector-curvature="0"
        id="path4890"
        d="m 68.30149,1048.1705 -0.08569,-7.2128 -6.987825,0.1289 -0.08094,-6.9143 -6.885841,0.099 -0.05191,-6.8858 -8.970506,0.1175 -5.849571,-5.6119 c -6.745749,1.9645 -14.36587,0.3713 -19.771845,-4.9174 -8.035158,-7.8607 -8.236311,-20.69998 -0.449688,-28.70259 7.786622,-8.00259 20.582842,-8.10772 28.618,-0.24698 5.350319,5.23419 7.095574,12.67587 5.461095,19.45517 l 29.172718,28.6681 0.09671,9.7426 c 0.02364,1.5123 -0.674832,2.0965 -2.033484,2.1458 l -13.016502,0.126 M 23.771266,999.95857 c 2.154888,2.10813 5.626825,2.04963 7.715048,-0.0963 2.06131,-2.11845 2.025969,-5.5894 -0.130131,-7.6987 -2.156099,-2.1093 -5.607782,-2.04972 -7.669091,0.0687 -2.088223,2.14615 -2.070717,5.61845 0.08417,7.72659 z"
-       style="fill:none;stroke:url(#linearGradient3797);stroke-width:1.705;stroke-miterlimit:4;stroke-opacity:0.56470587999999999;stroke-dasharray:none;display:inline;enable-background:new"
+       style="fill:none;stroke:none;stroke-width:1.90500000000000003;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;enable-background:new"
        sodipodi:nodetypes="ccccccccssscccccsssss" />
     <path
        inkscape:connector-curvature="0"
@@ -239,7 +262,7 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:7.06808280999999994px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:95.99999785000001395%;letter-spacing:0px;word-spacing:0px;fill:#c5b6e9;fill-opacity:1;stroke:none;display:inline;enable-background:new;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium"
+       style="font-size:7.06808280999999994px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:95.99999785000001395%;letter-spacing:0px;word-spacing:0px;fill:#baa7e5;fill-opacity:1;stroke:none;display:inline;enable-background:new;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium"
        x="-706.41528"
        y="726.9306"
        id="text5019"
@@ -249,11 +272,11 @@
          id="tspan5021"
          x="-706.41528"
          y="726.9306"
-         style="fill:#c5b6e9;fill-opacity:1">    own</tspan><tspan
+         style="fill:#baa7e5;fill-opacity:1">    own</tspan><tspan
          sodipodi:role="line"
          x="-706.41528"
          y="733.71594"
          id="tspan5065"
-         style="fill:#c5b6e9;fill-opacity:1">Keepass</tspan></text>
+         style="fill:#baa7e5;fill-opacity:1">Keepass</tspan></text>
   </g>
 </svg>
