@@ -260,33 +260,33 @@
         <translation>Password principale</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="111"/>
         <source>Change master password</source>
         <translation>Modifica password principale</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
         <source>Master password confirmed</source>
         <translation>Password principale confermata</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="139"/>
         <source>Confirm master password</source>
         <translation>Conferma password principale</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="151"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="153"/>
         <source>Encryption currently in use:</source>
         <translation>Crittografia attualmente in uso:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="174"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="176"/>
         <source>Key transformation rounds</source>
         <translation>Cicli di trasformazione chiave</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="188"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="190"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Aumentando questo valore aumenta il tempo di apertura del database Keepass, ma sarà più sicuro contro gli attacchi brute force </translation>
     </message>
@@ -349,23 +349,23 @@
         <translation>Password</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="172"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
         <source>Set password</source>
         <translation>Inserisci password</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="214"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="216"/>
         <source>Verify password</source>
         <translation>Verifica password</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="247"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
         <source>Comment</source>
         <translation>Commento</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="251"/>
         <source>Set comment</source>
         <translation>Inserisci commento</translation>
     </message>
@@ -916,17 +916,17 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="143"/>
+        <location filename="../qml/content/KdbListItem.qml" line="144"/>
         <source>Edit</source>
         <translation>Modifica</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="159"/>
+        <location filename="../qml/content/KdbListItem.qml" line="160"/>
         <source>Delete</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <location filename="../qml/content/KdbListItem.qml" line="177"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Sposta</translation>
@@ -963,17 +963,17 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
         <translation>Sblocca inserendo i primi 3 caratteri della tua password principale:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="220"/>
         <source>You have %1 tries left</source>
         <translation>Hai %1 tentativi</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="222"/>
         <source>You have one try left</source>
         <translation>Ultimo tentativo</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="221"/>
+        <location filename="../qml/content/LockPage.qml" line="224"/>
         <source>Wrong unlock code</source>
         <translation>Codice non corretto</translation>
     </message>
@@ -1366,22 +1366,22 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
         <translation>Nessun gruppo caratteri selezionato</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="118"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
         <source>Length</source>
         <translation>Lunghezza</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="180"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
         <source>Exclude look-alike characters</source>
         <translation>Escludi caratteri simili</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="191"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation>La password deve contenere caratteri da tutti i gruppi</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="201"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
         <source>Generate</source>
         <translation>Genera</translation>
     </message>
@@ -1501,12 +1501,12 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="191"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="203"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="205"/>
         <source>Password</source>
         <translation>Password</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="234"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="237"/>
         <source>Comment</source>
         <translation>Commenti</translation>
     </message>

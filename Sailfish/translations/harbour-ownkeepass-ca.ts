@@ -260,33 +260,33 @@
         <translation>Contrasenya principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="111"/>
         <source>Change master password</source>
         <translation>Canvia la contrasenya principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
         <source>Master password confirmed</source>
         <translation>S&apos;ha confirmat la contrasenya principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="139"/>
         <source>Confirm master password</source>
         <translation>Confirmeu la contrasenya principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="151"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="153"/>
         <source>Encryption currently in use:</source>
         <translation>Encriptació actualment en ús:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="174"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="176"/>
         <source>Key transformation rounds</source>
         <translation>Rutines de transformació de clau</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="188"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="190"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Apujar aquest valor incrementa el temps d&apos;arrencada de la base de dades de Keepass però la fa molt més robusta contra atacs de força bruta. </translation>
     </message>
@@ -349,23 +349,23 @@
         <translation>Contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="172"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
         <source>Set password</source>
         <translation>Introduïu una contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="214"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="216"/>
         <source>Verify password</source>
         <translation>Verifiqueu la contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="247"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
         <source>Comment</source>
         <translation>Comentaris</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="251"/>
         <source>Set comment</source>
         <translation>Introduïu comentaris</translation>
     </message>
@@ -916,17 +916,17 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="143"/>
+        <location filename="../qml/content/KdbListItem.qml" line="144"/>
         <source>Edit</source>
         <translation>Edita</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="159"/>
+        <location filename="../qml/content/KdbListItem.qml" line="160"/>
         <source>Delete</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <location filename="../qml/content/KdbListItem.qml" line="177"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Mou</translation>
@@ -963,17 +963,17 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
         <translation>Desbloqueu la Protecció de Contrasenyes amb els 3 primers caràcters de la vostra contrasenya principal:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="220"/>
         <source>You have %1 tries left</source>
         <translation>Us queden %1 intents</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="222"/>
         <source>You have one try left</source>
         <translation>Només us queda 1 intent</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="221"/>
+        <location filename="../qml/content/LockPage.qml" line="224"/>
         <source>Wrong unlock code</source>
         <translation>codi de desbloqueig erroni</translation>
     </message>
@@ -1366,22 +1366,22 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
         <translation>No s&apos;ha seleccionat cap grup de caràcters</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="118"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
         <source>Length</source>
         <translation>Longitud</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="180"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
         <source>Exclude look-alike characters</source>
         <translation>Exclou caràcters d&apos;aparença similar</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="191"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation>Assegureu-vos que la contrasenya conté caràcters de cada grup</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="201"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
         <source>Generate</source>
         <translation>Genera</translation>
     </message>
@@ -1501,12 +1501,12 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="191"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="203"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="205"/>
         <source>Password</source>
         <translation>Contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="234"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="237"/>
         <source>Comment</source>
         <translation>Comentari</translation>
     </message>

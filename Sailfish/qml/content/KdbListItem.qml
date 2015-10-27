@@ -130,6 +130,7 @@ ListItem {
             horizontalAlignment: Text.AlignLeft
             font.pixelSize: Theme.fontSizeExtraSmall
             color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
+            font.family: model.itemType === DatabaseItemType.GROUP ? Theme.fontFamily : 'monospace'
         }
     }
 

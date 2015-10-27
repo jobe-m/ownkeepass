@@ -169,6 +169,7 @@ Dialog {
                     echoMode: TextInput.Password
                     label: qsTr("Password")
                     text: ""
+                    font.family: 'monospace'
                     placeholderText: qsTr("Set password")
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
@@ -211,6 +212,7 @@ Dialog {
                     echoMode: TextInput.Password
                     label: qsTr("Verify password")
                     text: ""
+                    font.family: 'monospace'
                     placeholderText: qsTr("Verify password")
                     errorHighlight: entryPasswordTextField.text !== text
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"

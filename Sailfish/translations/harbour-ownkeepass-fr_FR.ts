@@ -260,33 +260,33 @@
         <translation>Mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="111"/>
         <source>Change master password</source>
         <translation>Changer le mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
         <source>Master password confirmed</source>
         <translation>Mot de passe principal confirmé</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="139"/>
         <source>Confirm master password</source>
         <translation>Confirmer le mot de passe principal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="151"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="153"/>
         <source>Encryption currently in use:</source>
         <translation>Chiffrement en cours d&apos;utilisation :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="174"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="176"/>
         <source>Key transformation rounds</source>
         <translation>Cycles de transformation de la clé</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="188"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="190"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>En augmentant cette valeur, vous augmentez le délai d&apos;ouverture de la base de données Keepass mais vous la rendez plus robuste contre les attaques par force brute.</translation>
     </message>
@@ -349,23 +349,23 @@
         <translation>Mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="172"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
         <source>Set password</source>
         <translation>Définir un mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="214"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="216"/>
         <source>Verify password</source>
         <translation>Confirmez le mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="247"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
         <source>Comment</source>
         <translation>Commentaire</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="251"/>
         <source>Set comment</source>
         <translation>Définir commentaire</translation>
     </message>
@@ -918,17 +918,17 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="143"/>
+        <location filename="../qml/content/KdbListItem.qml" line="144"/>
         <source>Edit</source>
         <translation>Modifier</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="159"/>
+        <location filename="../qml/content/KdbListItem.qml" line="160"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <location filename="../qml/content/KdbListItem.qml" line="177"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Déplacer</translation>
@@ -965,17 +965,17 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Déverrouiller votre coffre à mot de passe avec les 3 premiers caractères de votre mot de passe principal :</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="220"/>
         <source>You have %1 tries left</source>
         <translation>Il vous reste %1 tentatives</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="222"/>
         <source>You have one try left</source>
         <translation>1 tentative restante</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="221"/>
+        <location filename="../qml/content/LockPage.qml" line="224"/>
         <source>Wrong unlock code</source>
         <translation>Code erroné</translation>
     </message>
@@ -1368,22 +1368,22 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Pas de groupe de caractères sélectionnés </translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="118"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
         <source>Length</source>
         <translation>Longueur</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="180"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
         <source>Exclude look-alike characters</source>
         <translation>Exclure les caractères qui se ressemble</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="191"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation>Assurez-vous que le mot de contient des caractères de chaque groupe</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="201"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
         <source>Generate</source>
         <translation>Générer</translation>
     </message>
@@ -1503,12 +1503,12 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="191"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="203"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="205"/>
         <source>Password</source>
         <translation>Mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="234"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="237"/>
         <source>Comment</source>
         <translation>Commentaire</translation>
     </message>

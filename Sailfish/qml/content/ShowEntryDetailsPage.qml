@@ -190,6 +190,8 @@ Page {
                     echoMode: TextInput.Password
                     label: qsTr("Password")
                     color: Theme.primaryColor
+                    font.family: 'monospace'
+
                     Behavior on opacity { FadeAnimation {} }
                 }
 
@@ -203,7 +205,8 @@ Page {
                     label: qsTr("Password")
                     text: entryPasswordTextField.text
                     color: Theme.primaryColor
-                    font.family: "Liberation Mono"  //"Droid Sans Mono"
+                    font.family: 'monospace'
+
                     Behavior on opacity { FadeAnimation {} }
                 }
 

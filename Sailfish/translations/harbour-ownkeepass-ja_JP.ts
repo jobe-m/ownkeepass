@@ -260,33 +260,33 @@
         <translation>マスターパスワード</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="111"/>
         <source>Change master password</source>
         <translation>マスターパスワード変更</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
         <source>Master password confirmed</source>
         <translation>マスターパスワードが確認されました</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="135"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="139"/>
         <source>Confirm master password</source>
         <translation>マスターパスワードを確認</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="151"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="153"/>
         <source>Encryption currently in use:</source>
         <translation>現在使用中の暗号方式：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="174"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="176"/>
         <source>Key transformation rounds</source>
         <translation>Key transformation rounds</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="188"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="190"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>この値を高く設定するとデータベースを開くのに時間がかかるようになりますが、Brute Force攻撃に対して強くなります。</translation>
     </message>
@@ -349,23 +349,23 @@
         <translation>パスワード</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="172"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
         <source>Set password</source>
         <translation>パスワードを入力</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="214"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="216"/>
         <source>Verify password</source>
         <translation>パスワードを確認</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="247"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
         <source>Comment</source>
         <translation>コメント</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="251"/>
         <source>Set comment</source>
         <translation>コメントを入力</translation>
     </message>
@@ -916,17 +916,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="143"/>
+        <location filename="../qml/content/KdbListItem.qml" line="144"/>
         <source>Edit</source>
         <translation>編集</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="159"/>
+        <location filename="../qml/content/KdbListItem.qml" line="160"/>
         <source>Delete</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <location filename="../qml/content/KdbListItem.qml" line="177"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>移動</translation>
@@ -963,17 +963,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>マスターパスワードの先頭3文字を入力してアンロックしてください。</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="217"/>
+        <location filename="../qml/content/LockPage.qml" line="220"/>
         <source>You have %1 tries left</source>
         <translation>あと %1 回入力できます</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="219"/>
+        <location filename="../qml/content/LockPage.qml" line="222"/>
         <source>You have one try left</source>
         <translation>あと 1 回入力できます</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="221"/>
+        <location filename="../qml/content/LockPage.qml" line="224"/>
         <source>Wrong unlock code</source>
         <translation>ロック解除コードが違います</translation>
     </message>
@@ -1366,22 +1366,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>文字グループが選択されていません</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="118"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
         <source>Length</source>
         <translation>長さ</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="180"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
         <source>Exclude look-alike characters</source>
         <translation>判別しづらい文字を除外する</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="191"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation>パスワードに全ての種類の文字が含まれていることを確認して下さい。</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="201"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
         <source>Generate</source>
         <translation>生成</translation>
     </message>
@@ -1501,12 +1501,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="191"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="203"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="205"/>
         <source>Password</source>
         <translation>パスワード</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="234"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="237"/>
         <source>Comment</source>
         <translation>コメント</translation>
     </message>

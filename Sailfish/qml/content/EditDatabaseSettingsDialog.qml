@@ -92,7 +92,7 @@ Dialog {
 
             Column {
                 width: parent.width
-                spacing: 0
+                spacing: Theme.paddingMedium
 
                 SilicaLabel {
                     text: qsTr("Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!")
@@ -107,6 +107,7 @@ Dialog {
                     echoMode: TextInput.Password
                     label: qsTr("Master password")
                     text: ""
+                    font.family: 'monospace'
                     placeholderText: qsTr("Change master password")
                     errorHighlight: text.length > 0 && text.length < 3
                     EnterKey.enabled: !errorHighlight
@@ -134,6 +135,7 @@ Dialog {
                 errorHighlight: databaseMasterPassword.text !== text && text.length !== 0
                 label: !errorHighlight ? qsTr("Master password confirmed") : qsTr("Confirm master password")
                 text: ""
+                font.family: 'monospace'
                 placeholderText: qsTr("Confirm master password")
                 EnterKey.enabled: text.length === 0 || (databaseMasterPassword.text.length >= 3 && !errorHighlight)
                 EnterKey.highlighted: databaseMasterPassword.text.length > 0 && !errorHighlight
@@ -141,8 +143,8 @@ Dialog {
                 EnterKey.onClicked: {
                     parent.focus = true
                 }
-                Behavior on opacity { NumberAnimation { duration: 500 } }
-                Behavior on height { NumberAnimation { duration: 500 } }
+                Behavior on opacity { NumberAnimation { duration: 400 } }
+                Behavior on height { NumberAnimation { duration: 400 } }
             }
 
             ComboBox {

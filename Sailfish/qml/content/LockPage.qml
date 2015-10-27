@@ -135,6 +135,7 @@ Page {
                             echoMode: TextInput.Password
                             placeholderText: ""
                             text: ""
+                            font.family: 'monospace'
                             maximumLength: 1
                             focus: true
                             EnterKey.highlighted: false
@@ -162,6 +163,7 @@ Page {
                             echoMode: TextInput.Password
                             placeholderText: ""
                             text: ""
+                            font.family: 'monospace'
                             maximumLength: 1
                             EnterKey.highlighted: false
                             EnterKey.iconSource: "image://theme/icon-m-enter-close"
@@ -188,6 +190,7 @@ Page {
                             echoMode: TextInput.Password
                             placeholderText: ""
                             text: ""
+                            font.family: 'monospace'
                             maximumLength: 1
                             EnterKey.highlighted: false
                             EnterKey.iconSource: "image://theme/icon-m-enter-close"

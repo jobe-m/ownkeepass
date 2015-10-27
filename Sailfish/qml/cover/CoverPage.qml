@@ -222,7 +222,7 @@ CoverBackground {
                     color: Theme.primaryColor
                     horizontalAlignment: Text.AlignLeft
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    font.family: Theme.fontFamily
+                    font.family: 'monospace'
                     font.pixelSize: Theme.fontSizeSmall
                     maximumLineCount: 2
                 }

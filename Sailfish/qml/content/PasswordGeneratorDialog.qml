@@ -89,6 +89,7 @@ Dialog {
                     placeholderText: qsTr("No char group selected")
                     errorHighlight: text.length === 0
                     color: Theme.primaryColor
+                    font.family: 'monospace'
                 }
 
                 IconButton {
