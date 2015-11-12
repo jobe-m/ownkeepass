@@ -41,6 +41,7 @@ Column {
     property bool passwordConfirmEnterKeyEnabled: true
 
     property alias passwordFieldFocus: passwordField.focus
+    property alias password: passwordField.text
 
     readonly property bool passwordFieldHasError: passwordErrorHighlightEnabled ?
                                                       (passwordField.text.length >= 0 && passwordField.text.length < 3) :

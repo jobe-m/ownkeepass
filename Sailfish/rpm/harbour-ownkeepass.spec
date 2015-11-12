@@ -15,7 +15,7 @@ Name:       harbour-ownkeepass
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    A password safe application
-Version:    1.1.11
+Version:    1.1.12
 Release:    1
 Group:      Qt/Qt
 License:    GPL v2

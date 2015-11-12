@@ -70,6 +70,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.12 Bugfix release</b>\
+<ul>\
+<li>Bugfix: Opening or creating a new Keepass database was not working when using accept button in the dialog</li>\
+<li>Updated language files with translations from Transifex</li>\
+</ul>\
+<br>\
 <b>v1.1.11 Fixes for Tablet UI</b>\
 <ul>\
 <li>Changed Password fields to use fixed size font which should enable to better distinguish between similar characters</li>\

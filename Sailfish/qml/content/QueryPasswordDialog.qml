@@ -50,6 +50,14 @@ Dialog {
     acceptDestinationProperties: { "initOnPageConstruction": false, "groupId": "0" }
     acceptDestinationAction: PageStackAction.Replace
 
+    onDone: {
+        if (result === DialogResult.Accepted) {
+            password = passwordFieldCombo.password
+            // set database name for pulley menu on opening database
+            Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
+        }
+    }
+
     SilicaFlickable {
         anchors.fill: parent
         width: parent.width
@@ -231,26 +239,17 @@ Dialog {
                 id: passwordFieldCombo
                 width: parent.width
 
-                onPasswordClicked: { // returns password
-                    queryPasswordDialog.password = password
-                    // set database name for pulley menu on opening database
-                    Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
+                onPasswordClicked: {
                     parent.focus = true
                     accept()
                     close()
                 }
 
-                onPasswordConfirmClicked: { // returns password
-                    queryPasswordDialog.password = password
-                    // set database name for pulley menu on creating database
-                    Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
+                onPasswordConfirmClicked: {
                     parent.focus = true
                     accept()
                     close()
                 }
-//                onPasswordConfirmEnterKeyEnabledChanged: console.log("PasswordConfirmEnterKeyEnabledChanged: " + passwordConfirmEnterKeyEnabled)
-//                onPasswordFieldHasErrorChanged: console.log("PasswordFieldHasErrorChanged: " + passwordFieldHasError)
-//                onPasswordFieldConfirmHasErrorChanged: console.log("PasswordFieldConfirmHasErrorChanged: " + passwordFieldConfirmHasError)
             }
         }
     }
