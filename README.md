@@ -6,15 +6,14 @@ ownKeepass
 Status
 ------
 
-Release 1.1.10 available in [openrepos.net] [1] / warehouse app
+Release 1.1.12 available in [openrepos.net] [1] / warehouse app and submitted to Jolla harbour
+* Bugfix: Opening or creating a new Keepass database was not working when using accept button in the dialog
+* Updated language files with translations from Transifex
+
+
+Release 1.1.11 available in Jolla Store
 * Updated all translation files
 * Fixed bug with missing translations on the Jolla phone
-
-Release 1.1.9 available in Jolla Store
-* First version supporting Jolla Tablet
-* Updated and refactored about page
-* Removed warning info popup for Keepass 2 read-only mode
-* Search field switchable from pulley menu now also in Keepass 2 database mode
 
 Finally Keepass 2 database support is HERE! Current status:
 * Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch).
