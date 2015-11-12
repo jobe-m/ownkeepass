@@ -62,7 +62,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="177"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
-        <translation type="unfinished"></translation>
+        <translation>Si te gusta mi trabajo siéntete libre para mostrarme tu agradecimiento. Colabora en la traducción, informa de errores o envía ideas sobre mejoras de la aplicación, envíame un café o sólo dale a &apos;me gusta&apos; y habla de mi aplicación en la tienda de Jolla :)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="215"/>
@@ -1020,7 +1020,7 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <location filename="../qml/content/MainPage.qml" line="270"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ruta y nombre de la base de datos</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="415"/>
@@ -1267,33 +1267,33 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="37"/>
         <source>Show more details</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar más detalles</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="76"/>
         <source>Key file path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruta y nombre del fichero de clave</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="76"/>
         <source>No key file used</source>
-        <translation type="unfinished"></translation>
+        <translation>No se usa fichero de clave</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="103"/>
         <source>Database type:</source>
-        <translation type="unfinished">Tipo de base de datos:</translation>
+        <translation>Tipo de base de datos</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="120"/>
         <source>Unknown</source>
         <extracomment>Here unknown is used for unknown database type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Desconocido</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="128"/>
         <source>Recent databases</source>
-        <translation type="unfinished"></translation>
+        <translation>Bases de datos recientes</translation>
     </message>
 </context>
 <context>
@@ -1320,27 +1320,27 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="32"/>
         <source>Enter master password</source>
-        <translation type="unfinished">Introduce la contraseña maestra</translation>
+        <translation>Introduce contraseña maestra</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="33"/>
         <source>Master password</source>
-        <translation type="unfinished">Contraseña maestra</translation>
+        <translation>Contraseña maestra</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="34"/>
         <source>Confirm master password</source>
-        <translation type="unfinished">Confirmar la contraseña maestra</translation>
+        <translation>Confirmar contraseña maestra</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="35"/>
         <source>Master password confirmed</source>
-        <translation type="unfinished">Contraseña maestra confirmada</translation>
+        <translation>Contraseña maestra confirmada</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="36"/>
         <source>Confirm password</source>
-        <translation type="unfinished">Confirmar contraseña</translation>
+        <translation>Confirmar contraseña</translation>
     </message>
 </context>
 <context>
@@ -1389,65 +1389,65 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Por favor, especifica un nuevo fichero de la base de datos de Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Por favor, elige un fichero existente de la base de datos de Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="158"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
         <source>Use key file</source>
         <translation>Usar fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="80"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="88"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="159"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Activa esta opción para usar un fichero de clave conjuntamente con la contraseña maestra en tu nueva base de datos de Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="220"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
         <source>Database type:</source>
         <translation>Tipo de base de datos:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="260"/>
         <source>Create</source>
         <translation>Crear</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
         <source>New Password Safe</source>
         <translation>Nueva Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="268"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Introduce una contraseña maestra para bloquear tu nueva Protección de Contraseñas Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
         <source>Password Safe</source>
         <translation>Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="297"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="320"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Introduce la contraseña maestra para desbloquear tu Protección de Contraseñas Keepass:</translation>
     </message>

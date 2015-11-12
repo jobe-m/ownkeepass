@@ -11,12 +11,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Password Safe</translation>
+        <translation>Kodeskab</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="64"/>
         <source>ownKeepass is a Keepass 1.x and 2.x compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass er et Keepass 1.x og 2.x kompatibelt kodeordshåndteringsprogram</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="72"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="145"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreditering</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="153"/>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="177"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvis du kan lide mit arbejde er du velkommen til at vise mig din taknemmelighed. Lav oversættelse, indsend en fejlrapport eller en idé til forbedringer, giv en donation eller giv programmet en god omtale på Jolla Marked :)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="215"/>
@@ -108,7 +108,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="57"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Password Safe</translation>
+        <translation>Kodeskab</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="65"/>
@@ -283,7 +283,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="176"/>
         <source>Key transformation rounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Nøgle-Transformationsrunder</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="190"/>
@@ -443,7 +443,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="132"/>
         <source>Default key transformation rounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard Nøgle-Transformationsrunder</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="146"/>
@@ -539,7 +539,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="221"/>
         <source>Fast unlock</source>
-        <translation>Hurtig tilgang</translation>
+        <translation>Hurtigtilgang</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="240"/>
@@ -853,7 +853,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="41"/>
         <source>&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Brug af hjælpesider&lt;/b&gt;&lt;br&gt;&lt;br&gt;Der findes hjælp til alle sider i  ownKeepass. Så gør brug af hjælpen og lær om alle de muligheder ownKeepass indeholder. </translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
@@ -896,7 +896,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpPage.qml" line="49"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Password Safe</translation>
+        <translation>Kodeskab</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpPage.qml" line="57"/>
@@ -936,7 +936,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/LicensePage.qml" line="47"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Password Safe</translation>
+        <translation>Kodeskab</translation>
     </message>
     <message>
         <location filename="../qml/content/LicensePage.qml" line="55"/>
@@ -954,12 +954,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/LockPage.qml" line="77"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Password Safe</translation>
+        <translation>Kodeskab</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="121"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lås dit Kodeskab op med de tre første tegn i dit primære kodeord.</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="220"/>
@@ -1002,12 +1002,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="179"/>
         <source>Password Safe</source>
-        <translation type="unfinished">Password Safe</translation>
+        <translation>Kodeskab</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="250"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast et primært kodeord for at låse dit nye Keepass Kodeskab:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="257"/>
@@ -1019,7 +1019,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="270"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sti og navn på database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="415"/>
@@ -1081,7 +1081,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="494"/>
         <source>The specified file has an unsupported Keepass database version.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den pågældende fil er en ikke understøttet databaseversion af Keepass.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="499"/>
@@ -1095,7 +1095,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="500"/>
         <source>Database headers are missing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databaseheader mangler:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="505"/>
@@ -1106,17 +1106,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="506"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enten er kodeordet forkert eller også er databasefilen korrupt. Prøv igen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="512"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enten er dit kodeord eller din nøglefil forkert. Prøv venligst igen. Hvis fejlen fortsætter, så er enten nøgle fil eller database-fil beskadiget.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="518"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasehoved, stemmer ikke overens med den tilsvarende hash-værdi.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="523"/>
@@ -1127,12 +1127,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="524"/>
         <source>Cannot open database file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke åbne databasefil. Fejldetaljer:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="530"/>
         <source>Cannot open key file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke åbne nøglefil. Fejldetaljer:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="559"/>
@@ -1266,33 +1266,33 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="37"/>
         <source>Show more details</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis flere detaljer</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="76"/>
         <source>Key file path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Sti og navn på nøglefil</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="76"/>
         <source>No key file used</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen nøglefil er brugt</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="103"/>
         <source>Database type:</source>
-        <translation type="unfinished">Databasetype:</translation>
+        <translation>Databasetype:</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="120"/>
         <source>Unknown</source>
         <extracomment>Here unknown is used for unknown database type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ukendt</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="128"/>
         <source>Recent databases</source>
-        <translation type="unfinished"></translation>
+        <translation>Seneste databaser</translation>
     </message>
 </context>
 <context>
@@ -1319,27 +1319,27 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="32"/>
         <source>Enter master password</source>
-        <translation type="unfinished">Indtast primær adgangskode</translation>
+        <translation>Indtast primært kodeord</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="33"/>
         <source>Master password</source>
-        <translation type="unfinished">Primært kodeord</translation>
+        <translation>Primært kodeord</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="34"/>
         <source>Confirm master password</source>
-        <translation type="unfinished">Bekræft primær adgangskode</translation>
+        <translation>Bekræft primært kodeord</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="35"/>
         <source>Master password confirmed</source>
-        <translation type="unfinished">Primær adgangskode bekræftet</translation>
+        <translation>Primært kodeord er bekræftet</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="36"/>
         <source>Confirm password</source>
-        <translation type="unfinished">Bekræft adgangskode</translation>
+        <translation>Bekræft kodeord</translation>
     </message>
 </context>
 <context>
@@ -1388,67 +1388,67 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Angiv en ny KeePass databasefil:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Vælg en eksisterende Keepass databasefil:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="158"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
         <source>Use key file</source>
         <translation>Brug nøglefil</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="80"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="88"/>
         <source>Cancel</source>
         <translation>Afbryd</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="159"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Bruge både en nøglefil og et primært kodeord til din nye Keepass database</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="220"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
         <source>Database type:</source>
         <translation>Databasetype:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="260"/>
         <source>Create</source>
         <translation>Opret</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
         <source>New Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyt Kodeskab</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="268"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast et primært kodeord for at låse dit nye Keepass Kodeskab:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
         <source>Open</source>
         <translation>Åben</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
         <source>Password Safe</source>
         <translation>Password Safe</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="297"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="320"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
-        <translation type="unfinished"></translation>
+        <translation>Indtast det primære kodeord for at åbne dit Keepass Kodeskab:</translation>
     </message>
 </context>
 <context>
