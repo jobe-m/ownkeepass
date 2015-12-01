@@ -38,6 +38,8 @@ Dialog {
     property string relativePath: ""
     // Absolute path of file including file name
     property string absolutePath: ""
+    // default text in file filter text field
+    property string fileFilter: "*.kdb *.kdbx"
 
     // internal
     // Name of directory is used to cd into it
@@ -198,7 +200,7 @@ Dialog {
                 errorHighlight: text.length === 0
                 label: qsTr("File filter")
                 placeholderText: qsTr("Set file filter")
-                text: "*.kdb *.kdbx"
+                text: fileSystemDialog.fileFilter
                 EnterKey.enabled: !errorHighlight
                 EnterKey.highlighted: text !== ""
                 EnterKey.onClicked: {

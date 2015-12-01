@@ -135,10 +135,11 @@ Dialog {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(),
-                                                        { "locationIndex": dbLoading.locationIndex,
-                                                          "absolutePath": dbLoading.absolutePath,
-                                                          "state": dbLoading.createNewFile ? "CREATE_NEW_FILE" : "OPEN_FILE" })
+                            var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(), {
+                                                            "locationIndex": dbLoading.locationIndex,
+                                                            "absolutePath": dbLoading.absolutePath,
+                                                            "fileFilter": "*.kdb *.kdbx",
+                                                            "state": dbLoading.createNewFile ? "CREATE_NEW_FILE" : "OPEN_FILE" })
                             dialog.accepted.connect(function() {
                                 dbLoading.locationIndex = dialog.locationIndex
                                 dbLoading.relativePath = dialog.relativePath
@@ -208,9 +209,10 @@ Dialog {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(),
-                                                        { "locationIndex": keyLoading.locationIndex,
+                            var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(), {
+                                                            "locationIndex": keyLoading.locationIndex,
                                                             "absolutePath": keyLoading.absolutePath,
+                                                            "fileFilter": "*.key",
                                                             "state": keyLoading.createNewFile ? "CREATE_NEW_FILE" : "OPEN_FILE" })
                             dialog.accepted.connect(function() {
                                 keyLoading.locationIndex = dialog.locationIndex

@@ -70,6 +70,13 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.13 Bugfix release</b>\
+<ul>\
+<li>File browser: When searching for a key file the default value for file filter is *.key</li>\
+<li></li>\
+<li></li>\
+</ul>\
+<br>\
 <b>v1.1.12 Bugfix release</b>\
 <ul>\
 <li>Bugfix: Opening or creating a new Keepass database was not working when using accept button in the dialog</li>\
