@@ -632,88 +632,88 @@ by reviewjolla, 5 minutes ago</translation>
 <context>
     <name>FileSystemDialog</name>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="72"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="74"/>
         <source>Problem with SD card</source>
         <translation>Ongelma SD-kortin kanssa</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="73"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="75"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>Ohjelma ei tue SD-kortteja, jotka on ositettu useampaan partitioon,</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="116"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
         <translation>Piilota järjestelmätiedostot</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="120"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
         <translation>Näytä järjestelmätiedostot</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="129"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
         <translation>Piilota tiedostosuodatin</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="133"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
         <translation>Näytä tiedostosuodatin</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="141"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="143"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
         <translation>Valitse</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="142"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="144"/>
         <source>Cancel</source>
         <translation>Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="157"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="159"/>
         <source>New file name</source>
         <translation>Uusi tiedostonimi</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="158"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="160"/>
         <source>Enter new file name</source>
         <translation>Anna uusi tiedostonimi</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="201"/>
         <source>File filter</source>
         <translation>Tiedostosuodatin</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="202"/>
         <source>Set file filter</source>
         <translation>Aseta tiedostosuodatin</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Laitteen muisti</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="276"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="278"/>
         <source>SD Card</source>
         <translation>SD-kortti</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="279"/>
         <source>Android Storage</source>
         <translation>Android-muisti</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="273"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
         <source>Back</source>
         <translation>Takaisin</translation>
     </message>
@@ -1392,17 +1392,17 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="264"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Valitse uusi Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Valitse Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
         <source>Use key file</source>
         <translation>Käytä avaintiedostoa</translation>
     </message>
@@ -1412,45 +1412,45 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="168"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Aseta tämä käyttääksesi avaintiedosta pääsalasanan kanssa uuden Keepass tietokannan luomisessa</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="230"/>
         <source>Database type:</source>
         <translation>Tietokannan tyyppi:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="260"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>Create</source>
         <translation>Luo</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
         <source>New Password Safe</source>
         <translation>Uusi salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="269"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Anna pääsalasana lukitaksesi uusi Keepass salasanatiedostosi:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Open</source>
         <translation>Avaa</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="317"/>
         <source>Password Safe</source>
         <translation>Salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Anna pääsalasana avataksesi Keepass salasanatiedostosi:</translation>
     </message>

@@ -631,88 +631,88 @@
 <context>
     <name>FileSystemDialog</name>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="72"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="74"/>
         <source>Problem with SD card</source>
         <translation>Проблема с SD-картой</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="73"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="75"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>SD-карты с несколькими разделами не поддерживаются</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="116"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
         <translation>Скрыть системные файлы</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="120"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
         <translation>Показать системные файлы</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="129"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
         <translation>Скрыть фильтр</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="133"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
         <translation>Показать фильтр</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="141"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="143"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
         <translation>Выбрать</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="142"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="144"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="157"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="159"/>
         <source>New file name</source>
         <translation>Имя нового файла</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="158"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="160"/>
         <source>Enter new file name</source>
         <translation>Введите имя файла</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="201"/>
         <source>File filter</source>
         <translation>Фильтр по маске</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="202"/>
         <source>Set file filter</source>
         <translation>Введите маску для фильтрации</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Память устройства</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="276"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="278"/>
         <source>SD Card</source>
         <translation>SD-карта</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="279"/>
         <source>Android Storage</source>
         <translation>Память Android</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="273"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
@@ -1388,17 +1388,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="264"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Укажите новый файл для базы паролей:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Выберите существующий файл базы паролей:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
         <source>Use key file</source>
         <translation>Использовать файл ключа</translation>
     </message>
@@ -1408,45 +1408,45 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Отменить</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="168"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Позволяет использовать файл ключа вместе с мастер-паролем для базы Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="230"/>
         <source>Database type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="260"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
         <source>New Password Safe</source>
         <translation>Новая база паролей</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="269"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Введите мастер-пароль для блокировки создаваемой базы:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="317"/>
         <source>Password Safe</source>
         <translation>База паролей</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Введите мастер-пароль для разблокировки открываемой базы:</translation>
     </message>

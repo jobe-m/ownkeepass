@@ -631,88 +631,88 @@
 <context>
     <name>FileSystemDialog</name>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="72"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="74"/>
         <source>Problem with SD card</source>
         <translation>Potíže s kartou SD</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="73"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="75"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>Karty SD s více diskovými oddíly nejsou podporovány.</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="116"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
         <translation>Skrýt systémové soubory</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="120"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
         <translation>Zobrazit systémové soubory</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="129"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
         <translation>Skrýt filtr souborů</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="133"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
         <translation>Ukázat filtr souborů</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="141"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="143"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
         <translation>Vybrat</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="142"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="144"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="157"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="159"/>
         <source>New file name</source>
         <translation>Nový název souboru</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="158"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="160"/>
         <source>Enter new file name</source>
         <translation>Zadejte nový název souboru</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="201"/>
         <source>File filter</source>
         <translation>Filtr souborů</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="202"/>
         <source>Set file filter</source>
         <translation>Nastavit filtr souborů</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Paměť zařízení</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="276"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="278"/>
         <source>SD Card</source>
         <translation>SD karta</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="279"/>
         <source>Android Storage</source>
         <translation>Úložiště Android</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="273"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
         <source>Back</source>
         <translation>Zpět</translation>
     </message>
@@ -1388,17 +1388,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="264"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Zadejte, prosím, nový soubor s databází Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Vyberte, prosím, stávající soubor s databází Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
         <source>Use key file</source>
         <translation>Použít soubor s klíčem</translation>
     </message>
@@ -1408,45 +1408,45 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="168"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Zapněte toto zde pro použití souboru s klíčem společně s hlavním heslem pro uzamknutí vaší nové databáze Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="230"/>
         <source>Database type:</source>
         <translation>Typ databáze:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="260"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>Create</source>
         <translation>Vytvořit</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
         <source>New Password Safe</source>
         <translation>Nový sejf na hesla</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="269"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Napište hlavní heslo pro zamknutí vašeho nového sejfu s hesly Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Open</source>
         <translation>Otevřít</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="317"/>
         <source>Password Safe</source>
         <translation>Sejf s hesly</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Napište hlavní heslo pro odemknutí vašeho sejfu s hesly Keepass:</translation>
     </message>

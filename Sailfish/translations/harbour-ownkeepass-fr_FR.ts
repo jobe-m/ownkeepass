@@ -631,88 +631,88 @@
 <context>
     <name>FileSystemDialog</name>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="72"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="74"/>
         <source>Problem with SD card</source>
         <translation>Problème avec la carte SD</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="73"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="75"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>Les cartes SD avec des partitions multiples ne sont pas prises en charge.</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="116"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
         <translation>Cacher les fichiers système</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="120"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
         <translation>Afficher les fichiers système</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="129"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
         <source>Hide file filter</source>
         <extracomment>Used in file browser to hide the file name filter</extracomment>
         <translation>Cacher le filtre de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="133"/>
         <source>Show file filter</source>
         <extracomment>Used in file browser to show the file name filter</extracomment>
         <translation>Afficher le filtre de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="141"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="143"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
         <translation>Sélectionner</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="142"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="144"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="157"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="159"/>
         <source>New file name</source>
         <translation>Nouveau nom de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="158"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="160"/>
         <source>Enter new file name</source>
         <translation>Saisir un nouveau nom de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="199"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="201"/>
         <source>File filter</source>
         <translation>Filtre de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="200"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="202"/>
         <source>Set file filter</source>
         <translation>Activer le filtre de fichier</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
         <source>Device Memory</source>
         <extracomment>&quot;Device Memory&quot; is used in the file browser and means all files which are saved under home folder of the user</extracomment>
         <translation>Mémoire de l&apos;appareil</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="276"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="278"/>
         <source>SD Card</source>
         <translation>Carte SD</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="277"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="279"/>
         <source>Android Storage</source>
         <translation>Stockage Android</translation>
     </message>
     <message>
-        <location filename="../qml/common/FileSystemDialog.qml" line="273"/>
+        <location filename="../qml/common/FileSystemDialog.qml" line="275"/>
         <source>Back</source>
         <translation>Retour</translation>
     </message>
@@ -1391,17 +1391,17 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="264"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Veuillez indiquer une nouvelle base de données Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Choisissez une base de données Keepass existante, SVP :</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
         <source>Use key file</source>
         <translation>Utiliser le fichier de clé</translation>
     </message>
@@ -1411,45 +1411,45 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="168"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Activez ceci pour utiliser un fichier de clé associé à un mot de passe principal pour votre nouvelle base de données Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="230"/>
         <source>Database type:</source>
         <translation>Type de base de données :</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="260"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>Create</source>
         <translation>Créer</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
         <source>New Password Safe</source>
         <translation>Nouveau coffre-fort à mots de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="269"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Saisir un mot de passe principal pour verrouiller votre nouveau coffre-fort Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="317"/>
         <source>Password Safe</source>
         <translation>Coffre-fort à mots de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Saisir un mot de passe principal pour déverouiller votre coffre-fort Keepass :</translation>
     </message>
