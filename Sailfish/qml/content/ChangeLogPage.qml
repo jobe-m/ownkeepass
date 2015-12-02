@@ -73,7 +73,7 @@ Page {
 <b>v1.1.13 Bugfix release</b>\
 <ul>\
 <li>File browser: When searching for a key file the default value for file filter is *.key</li>\
-<li></li>\
+<li>Adjusted look and feel of info popups to system info popups</li>\
 <li></li>\
 </ul>\
 <br>\

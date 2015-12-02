@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 
+
 MouseArea {
     id: infoPopup
 
@@ -64,8 +65,8 @@ MouseArea {
 
     opacity: 0.0
     visible: false
-    width: parent ? parent.width : Screen.width
-    height: column.height + Theme.paddingMedium * 2 + colorShadow.height
+    width: Screen.width
+    height: infoPopupBackground.height
     z: 1
     transformOrigin: Item.TopLeft
 
@@ -80,6 +81,10 @@ MouseArea {
                 x: 0
                 y: 0
                 rotation: 0
+                opacity: 0.0
+            }
+            StateChangeScript{
+                script: hidePopupTimer.restart()
             }
         },
         State {
@@ -90,6 +95,10 @@ MouseArea {
                 x: parent ? parent.width : Screen.width
                 y: parent ? parent.height : Screen.height
                 rotation: 180
+                opacity: 0.0
+            }
+            StateChangeScript{
+                script: hidePopupTimer.restart()
             }
         },
         State {
@@ -100,6 +109,10 @@ MouseArea {
                 x: parent ? parent.width : Screen.width
                 y: 0
                 rotation: 90
+                opacity: 0.0
+            }
+            StateChangeScript{
+                script: hidePopupTimer.restart()
             }
         },
         State {
@@ -110,6 +123,10 @@ MouseArea {
                 x: 0
                 y: parent ? parent.height : Screen.height
                 rotation: -90
+                opacity: 0.0
+            }
+            StateChangeScript{
+                script: hidePopupTimer.restart()
             }
         }
     ]
@@ -131,10 +148,6 @@ MouseArea {
         }
     }
 
-    transitions: Transition {
-        FadeAnimation { properties: "x,y,rotation" }
-    }
-
     SequentialAnimation {
         id: fadeOutAnimation
         FadeAnimation { target: infoPopup; to: 0.0 }
@@ -151,24 +164,9 @@ MouseArea {
         id: infoPopupBackground
         anchors.top: parent.top
         width: parent.width
-        height: column.height + Theme.paddingMedium * 2
-        color: Theme.highlightBackgroundColor
-    }
-
-    Rectangle {
-        id: colorShadow
-        anchors.top: infoPopupBackground.bottom
-        width: parent.width
-        height: column.height
-        color: Theme.highlightBackgroundColor
-    }
-
-    OpacityRampEffect {
-        sourceItem: colorShadow
-        slope: 0.5
-        offset: 0.0
-        clampFactor: -0.5
-        direction: 2 // TtB
+        height: column.height + Theme.paddingMedium * 3
+        opacity: 0.8
+        color: "black"
     }
 
     Image {
@@ -211,8 +209,7 @@ MouseArea {
             horizontalAlignment: Text.AlignLeft
             font.family: Theme.fontFamilyHeading
             font.pixelSize: Theme.fontSizeLarge
-            color: "black"
-            opacity: 0.6
+            color: "white"
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
         Label {
@@ -221,10 +218,23 @@ MouseArea {
             horizontalAlignment: Text.AlignLeft
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSizeExtraSmall
-            color: "black"
-            opacity: 0.5
+            color: "white"
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
+    }
+
+    Timer {
+        id: hidePopupTimer
+        running: false
+        repeat: false
+        interval: 300
+
+        function restart() {
+            running = false
+            running = true
+        }
+
+        onTriggered: infoPopup.opacity = 1.0
     }
 
     Timer {
