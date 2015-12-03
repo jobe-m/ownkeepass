@@ -14,9 +14,9 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   inkscape:export-filename="/home/jobe/Development/SailfishOS/ownkeepass/common/images/wallicons/icon-infobanner-info.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90"
+   inkscape:export-filename="/home/jobe/Development/SailfishOS/ownkeepass/common/images/wallicons/icon-infobanner-info_72_54.png"
+   inkscape:export-xdpi="135"
+   inkscape:export-ydpi="135"
    sodipodi:docname="icon-infobanner-info.svg"
    style="enable-background:new">
   <defs
@@ -29,9 +29,9 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="17.684262"
-     inkscape:cx="24.558922"
-     inkscape:cy="17.54453"
-     inkscape:current-layer="layer1"
+     inkscape:cx="33.85278"
+     inkscape:cy="11.961374"
+     inkscape:current-layer="layer3"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
@@ -46,8 +46,8 @@
      inkscape:snap-global="true"
      inkscape:snap-nodes="true"
      inkscape:object-paths="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="876"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -78,7 +78,7 @@
        id="rect3884"
        width="48.100853"
        height="36.16098"
-       x="-0.16420364"
+       x="-0.051054511"
        y="60.167419" />
   </g>
   <g
@@ -110,19 +110,19 @@
        ry="4.8130126" />
     <path
        sodipodi:type="arc"
-       style="fill:none;stroke:#000000;stroke-width:2.19537117;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#ffffff;stroke-width:2.19537117000000004;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="path3809"
        sodipodi:cx="25.735294"
        sodipodi:cy="13.771493"
        sodipodi:rx="15.328054"
        sodipodi:ry="8.8800907"
-       d="M 38.299381,8.6847739 A 15.328054,8.8800907 0 1 1 31.587952,5.564211"
+       d="M 38.299381,8.6847739 C 43.148585,12.704758 41.454508,18.241001 34.515555,21.050318 27.576601,23.859636 18.020411,22.878196 13.171207,18.858212 8.3220035,14.838228 10.01608,9.3019849 16.955034,6.4926675 21.240214,4.757762 26.756173,4.4077752 31.587952,5.564211"
        transform="matrix(-1.1134386,0,0,-1.2596924,56.322394,44.736357)"
        sodipodi:start="5.6732397"
        sodipodi:end="11.387346"
        sodipodi:open="true" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#ffffff;stroke-width:2.50000000000000000;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="M 13.366046,32.464664 7.3329761,44.781141 21.959231,37.665823"
        id="path3811"
        inkscape:connector-curvature="0"

@@ -14,9 +14,9 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   inkscape:export-filename="/home/jobe/Development/SailfishOS/ownkeepass/common/images/wallicons/icon-l-upperletters.png"
-   inkscape:export-xdpi="135"
-   inkscape:export-ydpi="135"
+   inkscape:export-filename="/home/jobe/Development/SailfishOS/ownkeepass/common/images/wallicons/icon-infobanner-warning_48_36.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
    sodipodi:docname="icon-infobanner-warning.svg"
    style="enable-background:new">
   <defs
@@ -28,10 +28,10 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="8.84"
-     inkscape:cx="-4.5382176"
-     inkscape:cy="29.424404"
-     inkscape:current-layer="layer1"
+     inkscape:zoom="21.829135"
+     inkscape:cx="28.149219"
+     inkscape:cy="17.75209"
+     inkscape:current-layer="layer3"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
@@ -46,8 +46,8 @@
      inkscape:snap-global="true"
      inkscape:snap-nodes="true"
      inkscape:object-paths="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="876"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -78,8 +78,8 @@
        id="rect3884"
        width="48.100853"
        height="36.16098"
-       x="-0.16420364"
-       y="60.167419" />
+       x="-0.072583333"
+       y="59.846745" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -109,14 +109,14 @@
        y="16.067926"
        ry="4.8130126" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:2.59999989999999981;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#ffffff;stroke-width:2.60000000000000009;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="M 8.4841633,44.493212 26.357467,16.438913 44.457014,44.493212 z"
        id="path3782"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
-       style="font-size:37.43166351px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee Bold"
+       style="font-size:37.43166350999999992px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee Bold;stroke-width:2.60000001000000003;stroke-miterlimit:4;stroke-dasharray:none"
        x="21.823116"
        y="42.856346"
        id="text3784"
@@ -126,6 +126,6 @@
          id="tspan3786"
          x="21.823116"
          y="42.856346"
-         style="font-size:24.95444298px">!</tspan></text>
+         style="font-size:24.95444297999999961px;stroke-width:2.60000001000000003;stroke-miterlimit:4;stroke-dasharray:none;fill:#ffffff;fill-opacity:1">!</tspan></text>
   </g>
 </svg>

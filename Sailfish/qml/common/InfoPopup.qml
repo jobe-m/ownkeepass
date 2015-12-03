@@ -44,8 +44,12 @@ MouseArea {
         popupMessage = message
         if (timeout !== undefined) {
             _timeout = timeout * 1000
+
+            acknowledgeButton.enabled = false
         } else {
             _timeout = 0 // set default "0" to disable timeout
+
+            acknowledgeButton.enabled = true
         }
         if (_timeout !== 0) {
             countdown.restart()
@@ -70,7 +74,7 @@ MouseArea {
     z: 1
     transformOrigin: Item.TopLeft
 
-    onClicked: cancel()
+    onClicked: { /* intentionally do nothing */ }
 
     states: [
         State {
@@ -164,7 +168,7 @@ MouseArea {
         id: infoPopupBackground
         anchors.top: parent.top
         width: parent.width
-        height: column.height + Theme.paddingMedium * 3
+        height: column.height + Theme.paddingMedium * 3 + (acknowledgeButton.enabled ? acknowledgeButton.height + Theme.paddingLarge : 0)
         opacity: 0.8
         color: "black"
     }
@@ -173,8 +177,8 @@ MouseArea {
         id: infoPopupIcon
         x: Theme.paddingSmall
         y: Theme.paddingLarge
-        width: 48
-        height: 36
+        width: Screen.sizeCategory >= Screen.Large ? 72 : 48
+        height: Screen.sizeCategory >= Screen.Large ? 54 : 36
         fillMode: Image.PreserveAspectFit
 
         states: [
@@ -184,15 +188,15 @@ MouseArea {
             },
             State {
                 when: popupType === Global.info
-                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-info.png" }
+                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-info_" + (Screen.sizeCategory >= Screen.Large ? "72x54" : "48x36") + ".png" }
             },
             State {
                 when: popupType === Global.warning
-                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-warning.png" }
+                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-warning_" + (Screen.sizeCategory >= Screen.Large ? "72x54" : "48x36") + ".png" }
             },
             State {
                 when: popupType === Global.error
-                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-error.png" }
+                PropertyChanges { target: infoPopupIcon; source: "../../wallicons/icon-infobanner-error_" + (Screen.sizeCategory >= Screen.Large ? "72x54" : "48x36") + ".png" }
             }
         ]
     }
@@ -203,6 +207,7 @@ MouseArea {
         y: Theme.paddingMedium
         width: parent.width - Theme.paddingLarge - Theme.paddingSmall - infoPopupIcon.width - Theme.paddingMedium
         height: children.height
+
         Label {
             id: titleLabel
             width: parent.width
@@ -212,6 +217,7 @@ MouseArea {
             color: "white"
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
+
         Label {
             id: messageLabel
             width: parent.width
@@ -221,6 +227,19 @@ MouseArea {
             color: "white"
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
+    }
+
+    IconButton {
+        id: acknowledgeButton
+        visible: enabled
+        anchors.top: column.bottom
+        anchors.topMargin: Theme.paddingLarge
+        anchors.horizontalCenter: parent.horizontalCenter
+        icon.source: "image://theme/icon-m-acknowledge?" + (pressed
+                     ? Theme.highlightColor
+                     : Theme.primaryColor)
+
+        onClicked: infoPopup.cancel()
     }
 
     Timer {
