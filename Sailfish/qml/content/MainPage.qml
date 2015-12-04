@@ -181,6 +181,22 @@ Page {
                 subTitleBottomMargin: mainPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
+            Item {
+                width: 1
+                height: moreDetails.expanded ?
+                            0 : (Screen.sizeCategory >= Screen.Large ?
+                                     (mainPage.orientation & Orientation.LandscapeMask ? 400 : 250) :
+                                     (mainPage.orientation & Orientation.LandscapeMask ? 78 : 60)
+                                 )
+
+                Behavior on height {
+                    NumberAnimation {
+                        duration: 200
+                        easing.type: Easing.OutQuad
+                    }
+                }
+            }
+
             Image {
                 enabled: mainPage.orientation & Orientation.PortraitMask
                 visible: enabled
@@ -198,7 +214,12 @@ Page {
                             (passwordFieldCombo.height + (
                                  Screen.sizeCategory >= Screen.Large ? 3 * Theme.paddingLarge : Theme.paddingLarge
                                  ))
-                Behavior on height { NumberAnimation{ duration: 400 }}
+                Behavior on height {
+                    NumberAnimation{
+                        duration: 200
+                        easing.type: Easing.OutQuad //InOutQuad
+                    }
+                }
 
                 Image {
                     id: smallImage

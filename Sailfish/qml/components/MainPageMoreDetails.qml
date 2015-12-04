@@ -28,6 +28,7 @@ import harbour.ownkeepass 1.0
 
 Column {
     property alias databasePathAndNameText: databasePathAndName.text
+    property alias expanded: showMoreInfoSwitch.checked
 
     spacing: 0
     width: parent.width
