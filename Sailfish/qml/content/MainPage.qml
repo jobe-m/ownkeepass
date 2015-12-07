@@ -189,12 +189,7 @@ Page {
                                      (mainPage.orientation & Orientation.LandscapeMask ? 78 : 60)
                                  )
 
-                Behavior on height {
-                    NumberAnimation {
-                        duration: 200
-                        easing.type: Easing.OutQuad
-                    }
-                }
+                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
             }
 
             Image {

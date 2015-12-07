@@ -159,7 +159,7 @@ Dialog {
                 height: keyLoading.enabled ? useKeyFileSwitch.height + keyLoading.height : useKeyFileSwitch.height
                 spacing: 0
 
-                Behavior on height { NumberAnimation { duration: 500 } }
+                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
 
                 TextSwitch {
                     id: useKeyFileSwitch
@@ -181,7 +181,7 @@ Dialog {
                     width: parent.width
                     height: keyFilePathArea.height > keyFilePathIcon.height ? keyFilePathArea.height : keyFilePathIcon.height
 
-                    Behavior on opacity { FadeAnimation { duration: 500 } }
+                    Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
 
                     Label {
                         id: keyFilePathArea

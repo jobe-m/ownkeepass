@@ -45,8 +45,8 @@ Column {
         width: parent.width
         spacing: 0
 
-        Behavior on opacity { FadeAnimation { duration: 400 } }
-        Behavior on height { NumberAnimation { duration: 400 } }
+        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+        Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
 
         Label {
             id: databasePathAndName

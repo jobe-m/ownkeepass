@@ -186,11 +186,11 @@ Dialog {
             }
 
             Behavior on height {
-                NumberAnimation { duration: 500 }
+                NumberAnimation { duration: 200; easing.type: Easing.OutQuad }
             }
 
             Behavior on opacity {
-                FadeAnimation { duration: 500 }
+                FadeAnimation { duration: 200; easing.type: Easing.OutQuad }
             }
 
             TextField {

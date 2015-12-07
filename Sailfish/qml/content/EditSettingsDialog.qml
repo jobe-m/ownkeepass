@@ -213,7 +213,7 @@ Dialog {
                 height: fastUnlockRetryCount.enabled ? fastUnlock.height + fastUnlockRetryCount.height : fastUnlock.height
                 spacing: 0
 
-                Behavior on height { NumberAnimation { duration: 500 } }
+                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
 
                 TextSwitch {
                     id: fastUnlock
@@ -243,7 +243,7 @@ Dialog {
                         editSettingsDialog.updateCoverState()
                     }
 
-                    Behavior on opacity { FadeAnimation { duration: 500 } }
+                    Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
                 }
             }
 

@@ -143,8 +143,8 @@ Dialog {
                 EnterKey.onClicked: {
                     parent.focus = true
                 }
-                Behavior on opacity { NumberAnimation { duration: 400 } }
-                Behavior on height { NumberAnimation { duration: 400 } }
+                Behavior on opacity { NumberAnimation { duration: 200 } }
+                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
             }
 
             ComboBox {

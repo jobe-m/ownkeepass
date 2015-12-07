@@ -74,7 +74,7 @@ Page {
 <ul>\
 <li>File browser: When searching for a key file the default value for file filter is *.key</li>\
 <li>Adjusted look and feel of info popups to system info popups</li>\
-<li></li>\
+<li>Added snappy layout animations on main page to enhance usability</li>\
 </ul>\
 <br>\
 <b>v1.1.12 Bugfix release</b>\
