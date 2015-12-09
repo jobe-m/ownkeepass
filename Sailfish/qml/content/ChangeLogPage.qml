@@ -75,6 +75,7 @@ Page {
 <li>File browser: When searching for a key file the default value for file filter is *.key</li>\
 <li>Adjusted look and feel of info popups to system info popups</li>\
 <li>Added snappy layout animations on main page to enhance usability</li>\
+<li>Database can be dropped from recent database list on main page (in order to clean up the list from unused stuff)</li>\
 </ul>\
 <br>\
 <b>v1.1.12 Bugfix release</b>\
