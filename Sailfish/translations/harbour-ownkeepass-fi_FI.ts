@@ -1026,241 +1026,246 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="431"/>
+        <location filename="../qml/content/MainPage.qml" line="440"/>
         <source>Permission error</source>
         <translation>Käyttöoikeusvirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="431"/>
+        <location filename="../qml/content/MainPage.qml" line="440"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Polun luominen Keepass tietokantatiedostoosi epäonnistui. Sinun on ehkä asetettava hakemiston käyttöoikeudet käyttäjälle &apos;nemo&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="436"/>
-        <location filename="../qml/content/MainPage.qml" line="453"/>
+        <location filename="../qml/content/MainPage.qml" line="445"/>
+        <location filename="../qml/content/MainPage.qml" line="462"/>
         <source>Key file error</source>
         <translation>Avaintiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="436"/>
-        <location filename="../qml/content/MainPage.qml" line="453"/>
+        <location filename="../qml/content/MainPage.qml" line="445"/>
+        <location filename="../qml/content/MainPage.qml" line="462"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Tietokantapolku on O.K., mutta avaintiedostoa ei löydy. Tarkista sen polku:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="441"/>
+        <location filename="../qml/content/MainPage.qml" line="450"/>
         <source>Database file already exists</source>
         <translation>Tietokantatiedosto on jo olemassa</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="441"/>
+        <location filename="../qml/content/MainPage.qml" line="450"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Ole hyvä ja valitse toinen polku tai nimi Keepass tietokannallesi tai poista vanha tietokanta käyttäen File Browser sovellusta.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="458"/>
+        <location filename="../qml/content/MainPage.qml" line="467"/>
         <source>Database file error</source>
         <translation>Tietokantatiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="458"/>
+        <location filename="../qml/content/MainPage.qml" line="467"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Tietokantatiedostoa ei löydy. Tarkista sen polku:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="503"/>
+        <location filename="../qml/content/MainPage.qml" line="512"/>
         <source>Database file</source>
         <translation>Tietokantatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="504"/>
+        <location filename="../qml/content/MainPage.qml" line="513"/>
         <source>The specified file is not a Keepass database.</source>
         <translation>Määritetty tiedosto ei ole Keepass -tietokanta.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="509"/>
+        <location filename="../qml/content/MainPage.qml" line="518"/>
         <source>Database version</source>
         <translation>Tietokantaversio</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="510"/>
+        <location filename="../qml/content/MainPage.qml" line="519"/>
         <source>The specified file has an unsupported Keepass database version.</source>
         <translation>Määritetty tiedosto ei käytä tuettua Keepass -tietokantaversiota.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="515"/>
-        <location filename="../qml/content/MainPage.qml" line="533"/>
-        <location filename="../qml/content/MainPage.qml" line="582"/>
-        <location filename="../qml/content/MainPage.qml" line="602"/>
-        <location filename="../qml/content/MainPage.qml" line="624"/>
+        <location filename="../qml/content/MainPage.qml" line="524"/>
+        <location filename="../qml/content/MainPage.qml" line="542"/>
+        <location filename="../qml/content/MainPage.qml" line="591"/>
+        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="633"/>
         <source>Internal database error</source>
         <translation>Sisäinen virhe tietokannassa</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="516"/>
+        <location filename="../qml/content/MainPage.qml" line="525"/>
         <source>Database headers are missing.</source>
         <translation>Tietokannan ylätunniste puuttuu.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="521"/>
-        <location filename="../qml/content/MainPage.qml" line="527"/>
+        <location filename="../qml/content/MainPage.qml" line="530"/>
+        <location filename="../qml/content/MainPage.qml" line="536"/>
         <source>Wrong password</source>
         <translation>Väärä salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="522"/>
+        <location filename="../qml/content/MainPage.qml" line="531"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
         <translation>Joko pääsalasana on väärä tai tietokanta on vaurioitunut. Yritä uudestaan.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="528"/>
+        <location filename="../qml/content/MainPage.qml" line="537"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
         <translation>Joko pääsalasana tai avaintiedosto on väärä. Yritä uudestaan. Jos ongelma jatkuu, joko avaintiedosto tai tietokanta on vaurioitunut.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="534"/>
+        <location filename="../qml/content/MainPage.qml" line="543"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
         <translation>Tietokannan alku ei ole sama sitä vastaavan hajautusarvon kanssa.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="539"/>
-        <location filename="../qml/content/MainPage.qml" line="545"/>
+        <location filename="../qml/content/MainPage.qml" line="548"/>
+        <location filename="../qml/content/MainPage.qml" line="554"/>
         <source>File I/O error</source>
         <translation>Tiedoston I/O virhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="540"/>
+        <location filename="../qml/content/MainPage.qml" line="549"/>
         <source>Cannot open database file. Error details:</source>
         <translation>Tietokantatiedoston avaus epäonnistui. Lisätietoja virheestä:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="546"/>
+        <location filename="../qml/content/MainPage.qml" line="555"/>
         <source>Cannot open key file. Error details:</source>
         <translation>Avaintiedoston avaus epäonnistui. Lisätietoja virheestä:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="584"/>
         <source>Password changed</source>
         <translation>Salasana muutettu</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="575"/>
+        <location filename="../qml/content/MainPage.qml" line="584"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Tietokantasi pääsalasana on vaihdettu onnistuneesti.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="582"/>
+        <location filename="../qml/content/MainPage.qml" line="591"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Aikaisemmin avatun tietokannan sulkeminen epäonnistui. Yritä uudestan. Virheviesti:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="586"/>
+        <location filename="../qml/content/MainPage.qml" line="595"/>
         <source>Internal key error</source>
         <translation>Sisäinen virhe avaimessa</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="586"/>
-        <location filename="../qml/content/MainPage.qml" line="590"/>
+        <location filename="../qml/content/MainPage.qml" line="595"/>
+        <location filename="../qml/content/MainPage.qml" line="599"/>
         <source>The following error occured during opening of database:</source>
         <translation>Seuraava virhetoiminto tapahtui tietokantaa avattaessa:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="590"/>
+        <location filename="../qml/content/MainPage.qml" line="599"/>
         <source>Internal key file error</source>
         <translation>Sisäinen avaintiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="594"/>
+        <location filename="../qml/content/MainPage.qml" line="603"/>
         <source>Error loading database</source>
         <translation>Tietokannan latausvirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="594"/>
+        <location filename="../qml/content/MainPage.qml" line="603"/>
         <source>Please try again.</source>
         <translation>Ole hyvä ja yritä uudelleen.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="598"/>
+        <location filename="../qml/content/MainPage.qml" line="607"/>
         <source>Internal file error</source>
         <translation>Sisäinen tiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="598"/>
+        <location filename="../qml/content/MainPage.qml" line="607"/>
         <source>The following error occured during creation of database:</source>
         <translation>Seuraava virhe tapahtui tietokantaa luodessa:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="602"/>
+        <location filename="../qml/content/MainPage.qml" line="611"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Varmuustallennusryhmän luominen epäonnistui, virheviesti:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="606"/>
+        <location filename="../qml/content/MainPage.qml" line="615"/>
         <source>Save database error</source>
         <translation>Tietokannantalletusvirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="606"/>
+        <location filename="../qml/content/MainPage.qml" line="615"/>
         <source>Could not save database with following error:</source>
         <translation>Tietokannan talletus epäonnistui, virheviesti:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>Database error</source>
         <translation>Tietokantavirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>An error occured on closing your database:</source>
         <translation>Virhe tapahtui sulkiessa tietokantaasi:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="628"/>
         <source>Crypto init error</source>
         <translation>Salauksen alustusvirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="620"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation>Salausalgoritmeja ei voitu alustaa onnistuneesti. Tietokanta suljettiin uudestaan mahdollisten hyökkäysten torjumiseksi. Yritä käynnistää sovellus uudestaan. Jos ongelma toistuu, ota yhteyttä kehittäjään.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="625"/>
+        <location filename="../qml/content/MainPage.qml" line="634"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation>Qstring &quot;%1&quot;:n muuntaminen kokonaisluvuksi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1045"/>
+        <location filename="../qml/content/MainPage.qml" line="1040"/>
+        <source>Drop from List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1104"/>
         <source>Yes</source>
         <translation>Kyllä</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1046"/>
+        <location filename="../qml/content/MainPage.qml" line="1105"/>
         <source>No</source>
         <translation>Ei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1047"/>
+        <location filename="../qml/content/MainPage.qml" line="1106"/>
         <source>Unsaved changes</source>
         <translation>Tallentamattomia muutoksia</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1075"/>
+        <location filename="../qml/content/MainPage.qml" line="1134"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Haluatko tallettaa muutokset salasanatiedostoon?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1080"/>
+        <location filename="../qml/content/MainPage.qml" line="1139"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Haluatko tallettaa muutokset salasanaryhmään?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1085"/>
+        <location filename="../qml/content/MainPage.qml" line="1144"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Haluatko tallettaa muutokset tietokannan asetuksiin?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1090"/>
+        <location filename="../qml/content/MainPage.qml" line="1149"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Haluatko tallettaa muutokset asetusarvoihin?</translation>
     </message>

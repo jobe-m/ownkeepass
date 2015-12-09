@@ -70,6 +70,9 @@ public:
                                        int keyFileLocation,
                                        QString keyFilePath,
                                        int databaseType);
+    Q_INVOKABLE void removeRecentDatabase(QString uiName,
+                                          int dbLocation,
+                                          QString dbFilePath);
     Q_INVOKABLE void loadDatabaseDetails();
 
 public:
@@ -135,6 +138,7 @@ signals:
                                int keyFileLocation,
                                QString keyFilePath,
                                int databaseType);
+    void recentDatabaseRemoved(int result, QString name);
 
     // Signals for property
     void recentDatabaseModelChanged();

@@ -324,6 +324,15 @@ Page {
                                          DatabaseType.DB_TYPE_KEEPASS_1)
             }
         }
+
+        onRecentDatabaseRemoved: { // returns: result, uiName
+            console.log("show Info Popup")
+            if (result === DatabaseAccessResult.RE_OK) {
+                // all fine
+            } else {
+                applicationWindow.infoPopup.show(Global.error, "Internal Error", "Something went wrong with dropping the database from the recent database list. That shouldn't happen. Please let me (the developer) know about that via email or at github. Thanks!")
+            }
+        }
     }
 
     Component.onCompleted: {
@@ -405,7 +414,7 @@ Page {
                 }
             }
 
-            // prepate database and key file
+            // prepare database and key file
             var completeDbFilePath = ownKeepassHelper.getLocationRootPath(internal.dbFileLocation) + "/" + internal.databasePath
             var completeKeyFilePath
             if (internal.useKeyFile) {
@@ -950,8 +959,35 @@ Page {
     Component {
         id: recentDatabaseListItemComponent
         ListItem {
-            id: listItem
+            id: recentDatabaseListItem
+
             contentHeight: Theme.itemSizeMedium // two line delegate
+            menu: contextMenuComponent
+            width: parent.width
+
+            function dropFromList() {
+                remorseAction("Drop Database from List",
+                              function() {
+                                  // save that we only drop from list
+                                  // TODO
+                                  ownKeepassSettings.removeRecentDatabase(model.uiName, model.databaseLocation, model.databaseFilePath)
+                              })
+            }
+            function deleteDatabase() {
+                remorseAction("Delete Database",
+                              function() {
+                                  // save that we delete also database from filesystem
+// TODO
+//                                  ownKeepassSettings.removeRecentDatabase(model.uiName, model.databaseLocation, model.databaseFilePath)
+                              })
+            }
+
+            ListView.onAdd: AddAnimation {
+                target: recentDatabaseListItem
+            }
+            ListView.onRemove: RemoveAnimation {
+                target: recentDatabaseListItem
+            }
 
             Column {
                 width: parent.width
@@ -966,7 +1002,7 @@ Page {
                     horizontalAlignment: Text.AlignLeft
                     text: model.uiName
                     font.pixelSize: Theme.fontSizeMedium
-                    color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    color: recentDatabaseListItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                 }
 
                 Label {
@@ -976,7 +1012,7 @@ Page {
                     horizontalAlignment: Text.AlignLeft
                     text: Global.getLocationName(model.databaseLocation) + " " + model.uiPath
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    color: listItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
+                    color: recentDatabaseListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
                 }
             }
 
@@ -993,6 +1029,29 @@ Page {
                                  "databaseType": model.databaseType,
                                  "password": "" })
             }
+
+            Component {
+                id: contextMenuComponent
+
+                ContextMenu {
+                    id: contextMenu
+
+                    MenuItem {
+                        text: qsTr("Drop from List")
+                        onClicked: {
+                            recentDatabaseListItem.dropFromList()
+                        }
+                    }
+
+// TODO
+//                    MenuItem {
+//                        text: qsTr("Delete Database")
+//                        onClicked: {
+//                            recentDatabaseListItem.deleteDatabase()
+//                        }
+//                    }
+                }
+            } // end contextMenuComponent
         }
     }
 

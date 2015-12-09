@@ -32,7 +32,6 @@ using namespace ownKeepassPublic;
 
 OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper *helper, QObject *parent):
     QObject(parent),
-    m_recentDatabaseModel(new settingsPrivate::RecentDatabaseListModel(m_recentDatabaseListLength)),
     m_helper(helper),
     m_previousVersion(INITIAL_VERSION),
     m_version(OWN_KEEPASS_VERSION),
@@ -59,7 +58,8 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_fastUnlock(true),
     m_fastUnlockRetryCount(2),
     m_uiOrientation(0),
-    m_settings(new Settings(filePath, parent))
+    m_settings(new Settings(filePath, parent)),
+    m_recentDatabaseModel(new settingsPrivate::RecentDatabaseListModel(m_recentDatabaseListLength))
 {
     qDebug() << "ownKeepass version: " << m_version;
     loadSettings();
@@ -264,6 +264,38 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     // The first item in the recent database list view shall not be shown in the UI because
     // it is the active used database which is shown separately
     m_recentDatabaseModel->deleteItem(0);
+}
+
+void OwnKeepassSettings::removeRecentDatabase(QString uiName,
+                                              int dbLocation,
+                                              QString dbFilePath)
+{
+    bool removed = false;
+    // Check if the given database is in the list
+    // starting from the second item which is the first of the recent database list
+    for (int i = 1; i < m_recentDatabaseList.length(); ++i) {
+        if (m_recentDatabaseList[i]["dbLocation"].toInt() == dbLocation &&
+                m_recentDatabaseList[i]["dbFilePath"].toString() == dbFilePath) {
+            // Delete it from list
+            m_recentDatabaseList.removeAt(i);
+            // in the list model the first item is missing because it is the current database and not in the recent database list in the UI
+            m_recentDatabaseModel->deleteItem(i - 1);
+            removed = true;
+        }
+    }
+    if (removed) {
+        // database was found and removed from the list so save the list now
+        // save new recent Database list
+        m_settings->removeArray("main/recentDatabases");
+        for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
+            m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
+        }
+
+        emit recentDatabaseRemoved(DatabaseAccessResult::RE_OK, uiName);
+    } else {
+        // remove of item was not successfull
+        emit recentDatabaseRemoved(DatabaseAccessResult::RE_ERR_REMOVE_RECENT_DATABASE, uiName);
+    }
 }
 
 void OwnKeepassSettings::setDefaultCryptAlgorithm(const int value)

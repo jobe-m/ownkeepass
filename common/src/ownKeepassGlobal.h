@@ -63,6 +63,8 @@ public:
         RE_DBFILE_OPEN_ERROR,                       // Cannot open database file, more detailed error message available as attached string in signal
         RE_KEYFILE_OPEN_ERROR,                      // Cannot open key file, more detailed error message available as attached string in signal
         RE_ERR_SEARCH,                              // search group is invalid
+        RE_ERR_REMOVE_RECENT_DATABASE,              // Could not remove database from recent database list in the settings
+        RE_ERR_DELETE_DATABASE,                     // Could not delete the database file from the file system
 
 
         // Keepass 1 specific
