@@ -6,18 +6,19 @@ ownKeepass
 Status
 ------
 
-Release 1.1.12 available in [openrepos.net] [1] / warehouse app and submitted to Jolla harbour
+Upcoming release 1.1.13 -work in progress- will contain:
+* File browser: When searching for a key file the default value for file filter is *.key
+* Adjusted look and feel of info popups to system info popups
+* Added snappy layout animations on main page to enhance usability
+* Database can be dropped from recent database list on main page (in order to clean up the list from unused stuff)
+
+Release 1.1.12 available in [openrepos.net] [1] / warehouse app and Jolla store
 * Bugfix: Opening or creating a new Keepass database was not working when using accept button in the dialog
 * Updated language files with translations from Transifex
 
-
-Release 1.1.11 available in Jolla Store
-* Updated all translation files
-* Fixed bug with missing translations on the Jolla phone
-
-Finally Keepass 2 database support is HERE! Current status:
+Keepass 2 database support is HERE! Current status:
 * Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch).
-Reusing database code from [KeepassX 2][3] project for that which is shared into this repository.
+* Reusing database code from [KeepassX 2][3] project for that which is shared into this repository. Need to update sources of KeepassX 2 to those of first stable release though (Which arrived two days ago!!!).
 * Writing to Keepass 2 database will be done in near future (on keepass2 branch). It needs some redesign of the password entry save handling.
 
 Roadmap
