@@ -156,10 +156,23 @@ The KeepassX project (for a Qt implementation of Keepass)<br>\
 All translators and contributors: %1<br><br>\
 \
 I hope you have as much fun using ownKeepass as I have creating it!")
-                .arg("Petri Mäkijärvi, Åke Engelbrektson, Agusti Clara, fri, Heimen Stoffels, Rob K, Nathan Follens, \
-carmenfdezb, TylerTemp, Peter Jespersen, Jordi, Guillaume ARIAUX, Sthocs, Francesco Vaccaro, Lorenzo Facca, Alexey, \
-Anton Kalmykov, Sergiy K, Kjetil Kilhavn, Jozef Mlích, R.G.Sidler, deryo, R Kake, Dimitrios Glentadakis,
-André Koot")
+                .arg("\
+Catalan: Agustí Clara, mjoan | \
+Chinese: TylerTemp | \
+Czech: fri, Jozef Mlích | \
+Danish: Peter Jespersen | \
+Dutch: Heimen Stoffels, Nathan Follens, André Koot | \
+Finnish: Petri Makijarvi, miikka kukko, Simo Ruoho, Riku Lahtinen | \
+French: Jordi, Guillaume ARIAUX, Sylvain, Nathan Follens | \
+German: Cermit, deryo, dirktux, R.G. Sidler | \
+Greek: Dimitrios Glentadakis, Marinus Savoritias, Panayiotis Tembriotis | \
+Hungarian: Andras Toth | \
+Italian: fravaccaro, lorenzo facca, Tichy | \
+Japanese: R Kake | \
+Norwegian Bokmål: Kjetil Kilhavn, Nathan Follens, Ole Jakob Brustad | \
+Russian: lewa, Anton Kalmykov, Sergiy K | \
+Spanish: Carmen Fernández B. | \
+Swedish: Åke Engelbrektson")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }
