@@ -171,7 +171,7 @@ Italian: fravaccaro, lorenzo facca, Tichy | \
 Japanese: R Kake | \
 Norwegian Bokmål: Kjetil Kilhavn, Nathan Follens, Ole Jakob Brustad | \
 Russian: lewa, Anton Kalmykov, Sergiy K | \
-Spanish: Carmen Fernández B. | \
+Spanish: Carmen Fernández B., Javi Merino | \
 Swedish: Åke Engelbrektson")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
