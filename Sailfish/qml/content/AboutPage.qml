@@ -161,7 +161,7 @@ Catalan: Agustí Clara, mjoan | \
 Chinese: TylerTemp | \
 Czech: fri, Jozef Mlích | \
 Danish: Peter Jespersen | \
-Dutch: Heimen Stoffels, Nathan Follens, André Koot | \
+Dutch: Heimen Stoffels, Nathan Follens, André Koot, cow | \
 Finnish: Petri Makijarvi, miikka kukko, Simo Ruoho, Riku Lahtinen | \
 French: Jordi, Guillaume ARIAUX, Sylvain, Nathan Follens | \
 German: Cermit, deryo, dirktux, R.G. Sidler | \
