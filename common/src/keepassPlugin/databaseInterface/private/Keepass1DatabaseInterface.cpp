@@ -81,7 +81,20 @@ void Keepass1DatabaseInterface::initDatabase()
 
 void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
 {
-//    qDebug() << "Keepass1DatabaseInterface::slot_openDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
+/*
+    Could not open file.;
+    Could not open file.;
+    Unexpected file size (DB_TOTAL_SIZE < DB_HEADER_SIZE);
+    Wrong Signature;
+    Unsupported File Version.;
+    Unknown Encryption Algorithm.;
+    Unable to initialize the twofish algorithm.;
+    Unknown encryption algorithm.;
+    DONE - Decryption failed. The password is wrong or the file is damaged.
+    DONE - Hash test failed. The password is wrong or the key file is damaged.
+    Invalid group tree.
+*/
+
     // check if there is an already opened database and close it
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
@@ -107,7 +120,17 @@ void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     // open database
     if (!m_kdb3Database->load(filePath, readonly)) {
         // send signal with error
-        emit errorOccured(DatabaseAccessResult::RE_DB_LOAD_ERROR, m_kdb3Database->getError());
+        QString errorMessage = m_kdb3Database->getError();
+        if (!errorMessage.compare("Hash test failed. The password is wrong or the key file is damaged.", Qt::CaseInsensitive) ||
+            !errorMessage.compare("Decryption failed. The password is wrong or the file is damaged.", Qt::CaseInsensitive)) {
+            if (keyfile.isEmpty()) {
+                emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT, "");
+            } else {
+                emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, "");
+            }
+        } else {
+            emit errorOccured(DatabaseAccessResult::RE_DB_LOAD_ERROR, m_kdb3Database->getError());
+        }
         qDebug("ERROR: %s", CSTR(m_kdb3Database->getError()));
         OPEN_DB_CLEANUP
     }
