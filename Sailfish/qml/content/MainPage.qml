@@ -89,6 +89,11 @@ Page {
 
     allowedOrientations: applicationWindow.orientationSetting
 
+    onOrientationChanged: {
+        // Don't animate move of the view content if only orientation changes
+        viewAnimation.enabled = false
+    }
+
     Connections {
         target: ownKeepassHelper
         onShowErrorBanner: {
@@ -189,7 +194,10 @@ Page {
                                      (mainPage.orientation & Orientation.LandscapeMask ? 78 : 60)
                                  )
 
-                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+                Behavior on height {
+                    id: viewAnimation
+                    NumberAnimation { duration: 200; easing.type: Easing.OutQuad }
+                }
             }
 
             Image {
@@ -209,12 +217,6 @@ Page {
                             (passwordFieldCombo.height + (
                                  Screen.sizeCategory >= Screen.Large ? 3 * Theme.paddingLarge : Theme.paddingLarge
                                  ))
-                Behavior on height {
-                    NumberAnimation{
-                        duration: 200
-                        easing.type: Easing.OutQuad //InOutQuad
-                    }
-                }
 
                 Image {
                     id: smallImage
@@ -254,6 +256,10 @@ Page {
 
             MainPageMoreDetails {
                 id: moreDetails
+                onExpandedChanged: {
+                    // Animate move of the view content if more details view expands
+                    viewAnimation.enabled = true
+                }
             }
         }
 
@@ -493,9 +499,6 @@ Page {
             // display popup if some error occured
             switch (result) {
             case DatabaseAccessResult.RE_DB_READ_ONLY:
-//                applicationWindow.infoPopup.show(Global.info,
-//                                          qsTr("Read only support"),
-//                                          qsTr("Keepass 2 database support is currently limited to read only."))
                 // Database opened successfully in read only mode, now init master groups page and cover page
                 Global.enableDatabaseLock = true
                 masterGroupsPage.init()
@@ -552,7 +555,7 @@ Page {
             case DatabaseAccessResult.RE_KEYFILE_OPEN_ERROR:
                 applicationWindow.infoPopup.show(Global.error,
                                           qsTr("File I/O error"),
-                                          qsTr("Cannot open key file. Error details:") + errorMsg)
+                                          qsTr("Cannot open key file. Error details:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
                 break
             default:
@@ -968,8 +971,6 @@ Page {
             function dropFromList() {
                 remorseAction("Drop Database from List",
                               function() {
-                                  // save that we only drop from list
-                                  // TODO
                                   ownKeepassSettings.removeRecentDatabase(model.uiName, model.databaseLocation, model.databaseFilePath)
                               })
             }
