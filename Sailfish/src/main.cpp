@@ -164,6 +164,10 @@ int main(int argc, char *argv[])
         case ownKeepassPublic::Language::JA_JP:
             translator.load("harbour-ownkeepass-ja_JP.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
+        // Hungarian
+        case ownKeepassPublic::Language::HU_HU:
+            translator.load("harbour-ownkeepass-hu_HU.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
         // English
         default:
             translator.load("harbour-ownkeepass-en.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
