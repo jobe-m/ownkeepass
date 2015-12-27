@@ -76,6 +76,8 @@ Page {
 <li>Adjusted look and feel of info popups to system info popups</li>\
 <li>Added snappy layout animations on main page to enhance usability</li>\
 <li>Database can be dropped from recent database list on main page (in order to clean up the list from unused stuff)</li>\
+<li>Added new translation for Hungarian (magyar)</li>\
+<li>Added changes from Transifex to all translations</li>\
 </ul>\
 <br>\
 <b>v1.1.12 Bugfix release</b>\
