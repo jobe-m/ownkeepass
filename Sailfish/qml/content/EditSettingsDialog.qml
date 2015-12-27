@@ -327,6 +327,7 @@ Dialog {
                 description: qsTr("Change of language will be active in ownKeepass after restarting the application")
                 currentIndex: toCurrentIndex(ownKeepassSettings.language)
                 menu: ContextMenu {
+                    // The order of languages below must be the same as in Global.js
                     MenuItem { text: qsTr("System default") } // 0
                     MenuItem { text: "Bokmål" } // 1 (Norwegian Bokmål)
                     MenuItem { text: "Català" } // 2 (Catalan)
@@ -337,13 +338,14 @@ Dialog {
                     MenuItem { text: "Español" }  // 7 (Spanish)
                     MenuItem { text: "Français" } // 8 (French)
                     MenuItem { text: "Italiano" } // 9 (Italian)
-                    MenuItem { text: "Nederlands" } // 10 (Dutch)
-                    MenuItem { text: "Pу́сский" } // 11 (Russian)
-                    MenuItem { text: "Suomi" } // 12 (Finnish)
-                    MenuItem { text: "Svenska" } // 13 (Swedish)
-                    MenuItem { text: "中文" } // 14 (Chinese)
-                    MenuItem { text: "ελληνικά" } // 15 (Greek)
-                    MenuItem { text: "日本語" } // 16 (Japanese)
+                    MenuItem { text: "Magyar" } // 10 (Hungarian)
+                    MenuItem { text: "Nederlands" } // 11 (Dutch)
+                    MenuItem { text: "Pу́сский" } // 12 (Russian)
+                    MenuItem { text: "Suomi" } // 13 (Finnish)
+                    MenuItem { text: "Svenska" } // 14 (Swedish)
+                    MenuItem { text: "中文" } // 15 (Chinese)
+                    MenuItem { text: "ελληνικά" } // 16 (Greek)
+                    MenuItem { text: "日本語" } // 17 (Japanese)
                 }
 
                 // The next two converter functions decouple the alphabetical language list
@@ -388,6 +390,8 @@ Dialog {
                         return Global.greek
                     case Language.JA_JP: // Japanese
                         return Global.japanese
+                    case Language.HU_HU: // Hungarian
+                        return Global.hungarian
                     default:
                         return Global.english
                     }
@@ -433,6 +437,8 @@ Dialog {
                         return Language.EL // Greek
                     case Global.japanese:
                         return Language.JA_JP // Japanese
+                    case Global.hungarian:
+                        return Language.HU_HU
                     default:
                         return Language.EN // English
                     }

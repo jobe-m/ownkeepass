@@ -134,6 +134,7 @@ public:
         NB_NO, // Norwegian Bogmål
         EL,    // Greek
         JA_JP, // Japanese
+        HU_HU, // Hungarian
         INVALID
     };
 };

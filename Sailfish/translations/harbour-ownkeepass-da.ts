@@ -52,7 +52,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="153"/>
         <source>My best appreciations go to:&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators and contributors: %1&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mine påskønnelser til: &lt;br&gt; Jolla (for at fortsætte, hvor Nokia slap) &lt;br&gt; KeepassX-projektet (for en Qt implementering af KeePass) &lt;br&gt; Alle oversættere og bidragydere: %1 &lt;br&gt; Jeg håber, du har lige så meget sjov ved at bruge ownKeepass som jeg har at haft ved at skabe den!</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="182"/>
@@ -496,7 +496,7 @@
         <translation>Ændring af sprog vil først blive aktiveret efter genstart af ownKeepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="330"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="331"/>
         <source>System default</source>
         <translation>Systemstandard</translation>
     </message>
@@ -593,37 +593,37 @@
         <translation>Når aktiveret vil søgefeltet være aktivt ved programopstart.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="449"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
         <source>Cover settings</source>
         <translation>Miniatureindstillinger</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="455"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="461"/>
         <source>Show username and password</source>
         <translation>Vis brugernavn og adgangskode</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="456"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="462"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Ved aktivering af denne vil  brugernavn og adgangskode på den aktuelt åbnede KeePass post, blive vist på miniaturen </translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="467"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="473"/>
         <source>Lock database from cover</source>
         <translation>Lås database fra miniature</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="468"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="474"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Dette lader dig låse databasen med venstre miniature handling</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="479"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="485"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopiér fra miniature</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="480"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="486"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Aktivér dette for at kopiere brugernavn og adgangskode til udklipsholderen fra miniature</translation>
     </message>
@@ -720,24 +720,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="120"/>
+        <location filename="../qml/scripts/Global.js" line="121"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Intet udvalgt endnu</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="123"/>
+        <location filename="../qml/scripts/Global.js" line="124"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Enhedshukommelse</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="125"/>
+        <location filename="../qml/scripts/Global.js" line="126"/>
         <source>SD Card</source>
         <translation>SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="127"/>
+        <location filename="../qml/scripts/Global.js" line="128"/>
         <source>Android Storage</source>
         <translation>Androidlager</translation>
     </message>
@@ -982,106 +982,106 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="100"/>
         <source>Problem with SD card</source>
-        <translation type="unfinished">Problem med SD-kort</translation>
+        <translation>Problem med SD-Kort</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation type="unfinished">SD-kort opdelt i flere partitioner, er ikke understøttet.</translation>
+        <translation>SD-kort med flere partitioner er ikke understøttet.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="141"/>
         <source>Create new database</source>
-        <translation type="unfinished">Opret ny database</translation>
+        <translation>Opret ny database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="157"/>
         <source>Open database</source>
-        <translation type="unfinished">Åben database</translation>
+        <translation>Åben database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="184"/>
         <source>Password Safe</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodeskab</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="272"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation type="unfinished">Indtast et primært kodeord for at låse dit nye Keepass Kodeskab:</translation>
+        <translation>Indtast et primært kodeord for at låse dit nye Keepass Kodeskab:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="279"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sti og navn for ny database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="292"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sti og navn på database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="446"/>
         <source>Permission error</source>
-        <translation type="unfinished"></translation>
+        <translation>Rettighedsfejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="446"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke oprette stien til Keepass databasefilen. Du skal muligvis angive foldertilladelser for brugeren &apos;nemo&apos;.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="451"/>
         <location filename="../qml/content/MainPage.qml" line="468"/>
         <source>Key file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl i nøglefil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="451"/>
         <location filename="../qml/content/MainPage.qml" line="468"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stien til databasefilen er OK, men nøglefilen eksisterer ikke. Kontroller stien til nøglefilen:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="456"/>
         <source>Database file already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasefilen eksisterer allerede</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="456"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Angiv en anden sti og navn til din KeePass database eller slet den gamle database via filhåndteringen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="473"/>
         <source>Database file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl i databasefil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="473"/>
         <source>Database file does not exist. Please check path to database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasefilen findes ikke. Kontroller stien til databasefilen:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="515"/>
         <source>Database file</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasefil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="516"/>
         <source>The specified file is not a Keepass database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den specificerede fil er ikke en Keepass database.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="521"/>
         <source>Database version</source>
-        <translation type="unfinished"></translation>
+        <translation>Databaseversion</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="522"/>
         <source>The specified file has an unsupported Keepass database version.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den pågældende fil er en ikke understøttet databaseversion af Keepass.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="527"/>
@@ -1090,140 +1090,140 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="614"/>
         <location filename="../qml/content/MainPage.qml" line="636"/>
         <source>Internal database error</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern databasefejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="528"/>
         <source>Database headers are missing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databaseheader mangler:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="533"/>
         <location filename="../qml/content/MainPage.qml" line="539"/>
         <source>Wrong password</source>
-        <translation type="unfinished"></translation>
+        <translation>Forkert adgangskode</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="534"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enten er kodeordet forkert eller også er databasefilen korrupt. Prøv igen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="540"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enten er dit kodeord eller din nøglefil forkert. Prøv venligst igen. Hvis fejlen fortsætter, så er enten nøgle fil eller database-fil beskadiget.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="546"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasehoved, stemmer ikke overens med den tilsvarende hash-værdi.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="551"/>
         <location filename="../qml/content/MainPage.qml" line="557"/>
         <source>File I/O error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil I/O fejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="552"/>
         <source>Cannot open database file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke åbne databasefil. Fejldetaljer:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="558"/>
         <source>Cannot open key file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke åbne nøglefil. Fejldetaljer:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="587"/>
         <source>Password changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Adgangskode ændret</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="587"/>
         <source>The master password of your database was changed successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den primære adgangskode til din database er nu succesfuldt ændret.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="594"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke lukke den tidligere åbnede database. Prøv venligst igen. Fejlmeddelelse:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>Internal key error</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern nøglefejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="598"/>
         <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>The following error occured during opening of database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Følgende fejl opstod ved åbning af database:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Internal key file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern fejl i nøglefil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>Error loading database</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl ved indlæsning af database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>Please try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prøv venligst igen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Internal file error</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern filfejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>The following error occured during creation of database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Følgende fejl opstod under oprettelse af database:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>Creation of backup group failed with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprettelse af sikkerhedsgruppe fejlede med følgende fejl:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="618"/>
         <source>Save database error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl ved lagring af database</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="618"/>
         <source>Could not save database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke gemme database på grund af følgende fejl:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="625"/>
         <source>Database error</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasefejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="625"/>
         <source>An error occured on closing your database:</source>
-        <translation type="unfinished"></translation>
+        <translation>En fejl opstod ved lukningen af din database:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="631"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"></translation>
+        <translation>Krypto opstartsfejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="632"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>De kryptografiske algoritmer kunne ikke initaliseres korrekt. Databasen er lukket igen for at forhindre angreb. Prøv at genstarte programmet. Hvis fejlen ikke forsvinder, så kontakt venligst udvikleren.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="637"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejl ved konvertering af QString &quot;%1&quot; til Int</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1041"/>
@@ -1233,37 +1233,37 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="1105"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1106"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nej</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1107"/>
         <source>Unsaved changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikke gemte ændringer</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1135"/>
         <source>Do you want to save changes to the password entry?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vil du gemme ændringer til denne kodeordspost?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1140"/>
         <source>Do you want to save changes to the password group?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vil du gemme ændringer til denne kodeordsgruppe?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1145"/>
         <source>Do you want to save changes to database settings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vil du gemme ændringer til databaseindstillinger?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1150"/>
         <source>Do you want to save changed settings values?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ønsker du at gemme de ændrede indstillinger?</translation>
     </message>
 </context>
 <context>
