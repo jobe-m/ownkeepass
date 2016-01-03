@@ -6,17 +6,13 @@ ownKeepass
 Status
 ------
 
-Release 1.1.13 available in [openrepos.net] [1] / warehouse app
+Release 1.1.13 available in [openrepos.net] [1] / warehouse app and in Jolla store
 * File browser: When searching for a key file the default value for file filter is *.key
 * Adjusted look and feel of info popups to system info popups
 * Added snappy layout animations on main page to enhance usability
 * Database can be dropped from recent database list on main page (in order to clean up the list from unused stuff)
 * Added new translation for Hungarian
 * Updated all translations from Transifex
-
-Release 1.1.12 available in Jolla store
-* Bugfix: Opening or creating a new Keepass database was not working when using accept button in the dialog
-* Updated language files with translations from Transifex
 
 Keepass 2 database support is HERE! Current status:
 * Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch).
