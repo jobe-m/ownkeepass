@@ -204,9 +204,9 @@ Page {
                 enabled: mainPage.orientation & Orientation.PortraitMask
                 visible: enabled
                 // Make image size is dependent on screen size
-                width: Screen.sizeCategory >= Screen.Large ? 780 : 492
+                width: Screen.sizeCategory >= Screen.Large ? (Screen.width * 0.5) : (Screen.width * 0.91)
                 height: width
-                source: "../../wallicons/wall-ownKeys_" + (Screen.sizeCategory >= Screen.Large ? "780x780" : "492x492") + ".png"
+                source: "../../wallicons/wall-ownKeys_" + (Screen.width > 540 ? "780x780" : "492x492") + ".png"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
