@@ -190,8 +190,8 @@ Page {
                 width: 1
                 height: moreDetails.expanded ?
                             0 : (Screen.sizeCategory >= Screen.Large ?
-                                     (mainPage.orientation & Orientation.LandscapeMask ? 400 : 250) :
-                                     (mainPage.orientation & Orientation.LandscapeMask ? 78 : 60)
+                                     (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.195) : (Screen.height * 0.122)) :
+                                     (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.081) : (Screen.height * 0.063))
                                  )
 
                 Behavior on height {
@@ -223,7 +223,7 @@ Page {
                     enabled: mainPage.orientation & Orientation.LandscapeMask
                     visible: enabled
                     width: mainPage.orientation & Orientation.PortraitMask ? 0 : height
-                    height: Screen.sizeCategory >= Screen.Large ? 492 : 250
+                    height: Screen.sizeCategory >= Screen.Large ? (Screen.height * 0.24) : (Screen.height * 0.26)
                     source: "../../wallicons/wall-ownKeys_492x492.png"
                     anchors.left: parent.left
                     anchors.leftMargin: mainPage.orientation & Orientation.PortraitMask ? 0: Theme.horizontalPageMargin
