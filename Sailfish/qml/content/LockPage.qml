@@ -84,6 +84,8 @@ Page {
                 visible: enabled
                 source: "../../wallicons/wall-key.png"
                 anchors.horizontalCenter: parent.horizontalCenter
+                width: height
+                height: implicitHeight * Screen.height / 1920
             }
 
             Item {
@@ -96,7 +98,8 @@ Page {
                     id: lockImageLandscape
                     enabled: lockPage.orientation !== Orientation.Portrait
                     visible: enabled
-                    width: lockPage.orientation & Orientation.PortraitMask ? 0 : implicitWidth
+                    width: lockPage.orientation & Orientation.PortraitMask ? 0 : height
+                    height: implicitHeight * Screen.height / 1920
                     source: "../../wallicons/wall-key.png"
                     anchors.left: parent.left
                     anchors.leftMargin: lockPage.orientation & Orientation.PortraitMask ? 0 : Theme.horizontalPageMargin

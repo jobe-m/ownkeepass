@@ -77,8 +77,9 @@ Page {
                 id: wallImage
                 anchors.bottom: parent.top
                 anchors.horizontalCenter: parent.horizontalCenter
-//                width: Screen.width * 0.8
                 source: "../../wallicons/wall-key.png"
+                width: height
+                height: implicitHeight * Screen.height / 1920
             }
         }
 
