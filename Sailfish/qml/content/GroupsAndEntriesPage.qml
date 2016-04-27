@@ -215,6 +215,8 @@ Page {
                 anchors.bottom: parent.top
                 anchors.horizontalCenter: parent.horizontalCenter
                 source: "../../wallicons/wall-group.png"
+                width: height
+                height: implicitHeight * Screen.height / 1920
             }
         }
 
