@@ -14,9 +14,9 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   inkscape:export-filename="/home/jobe/Development/SailfishOS-devel/ownKeepass/common/images/wallicons/wall-group.png"
-   inkscape:export-xdpi="382.5"
-   inkscape:export-ydpi="382.5"
+   inkscape:export-filename="/home/jobe/Development/SailfishOS/ownkeepass/common/images/entryicons/_49.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180"
    sodipodi:docname="wall-group.svg"
    style="enable-background:new">
   <defs
@@ -28,8 +28,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="10.890625"
-     inkscape:cx="32"
+     inkscape:zoom="14.203125"
+     inkscape:cx="19.537954"
      inkscape:cy="32"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -46,8 +46,8 @@
      inkscape:snap-global="false"
      inkscape:snap-nodes="true"
      inkscape:object-paths="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="876"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -76,8 +76,8 @@
        id="rect3884"
        width="64.1642"
        height="64.3284"
-       x="-0.16420364"
-       y="32" />
+       x="-0.63304102"
+       y="32.090729" />
   </g>
   <g
      id="layer1"
@@ -86,11 +86,11 @@
      transform="translate(0,16)"
      style="display:inline">
     <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.60000001999999997"
-       d="m 6.0203028,-7.7560975 c 0,0 7.0372832,-0.083186 9.7584182,0 2.721135,0.083186 3.16161,0.9409229 4.904035,2.348782 1.742425,1.4078591 2.795051,2.7582019 4.723714,2.7932553 1.928664,0.035053 16.134679,0 24.097346,0 1.656555,0 3.486222,1.5994152 3.477535,3.4720179 L 52.818897,35.876619 c -0.0087,1.872603 -2.160016,3.380196 -3.816572,3.380196 l -43.6247769,0 c -1.6565562,0 -3.0819956,-1.507568 -3.0819956,-3.380196 l 0,-40.2525207 c 0,-1.8726285 2.0308143,-3.3801958 3.7247503,-3.3801958 z"
+       style="fill:none;stroke:#ffffff;stroke-width:0.50000000000000000;stroke-miterlimit:4;stroke-opacity:0.2;stroke-dasharray:none"
+       d="m 6.0203028,-7.7560975 c 0,0 7.0372832,-0.083186 9.7584182,0 2.721135,0.083186 3.16161,0.9409229 4.904035,2.348782 1.742425,1.4078591 2.795051,2.7582019 4.723714,2.7932553 1.928664,0.035053 16.134679,0 24.097346,0 1.656555,0 3.657571,0.7319596 3.466826,4.3180549 l -37.166804,0.00488 C 13.590556,1.530222 10.497318,2.9535865 9.7772513,6.0735137 6.7273296,18.007993 6.5059397,18.938814 2.2955525,35.876621 l 0,-40.2525205 c 0,-1.8726285 2.0308143,-3.3801958 3.7247503,-3.380198 z"
        id="rect4635"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="szzzcsssssss" />
+       sodipodi:nodetypes="szzzcccccss" />
     <rect
        style="fill:#ffffff;display:none"
        id="rect3772"

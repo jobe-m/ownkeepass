@@ -14,9 +14,9 @@
    id="svg2985"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   inkscape:export-filename="/home/jobe/Development/SailfishOS-devel/ownKeepass/common/images/wallicons/wall-key.png"
-   inkscape:export-xdpi="382.5"
-   inkscape:export-ydpi="382.5"
+   inkscape:export-filename="/home/jobe/Development/SailfishOS/ownkeepass/common/images/wallicons/wall-key.png"
+   inkscape:export-xdpi="765"
+   inkscape:export-ydpi="765"
    sodipodi:docname="wall-key.svg"
    style="enable-background:new">
   <defs
@@ -28,10 +28,10 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="10.890625"
+     inkscape:zoom="14.203125"
      inkscape:cx="32"
      inkscape:cy="32"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
@@ -46,8 +46,8 @@
      inkscape:snap-global="false"
      inkscape:snap-nodes="true"
      inkscape:object-paths="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="876"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -76,8 +76,8 @@
        id="rect3884"
        width="64.1642"
        height="64.3284"
-       x="-0.16420364"
-       y="32" />
+       x="-0.078544557"
+       y="31.972422" />
   </g>
   <g
      id="layer1"
@@ -93,7 +93,7 @@
        x="15.763547"
        y="-7.336617" />
     <path
-       style="fill:#ffffff;fill-opacity:0.60000002;display:inline;enable-background:new"
+       style="fill:#ffffff;fill-opacity:0.2;display:inline;enable-background:new"
        d="m 26.90625,27.40625 0,1.875 34.8125,0 -1.875,-1.875 z m 35.375,2.46875 c 0.228393,0.316156 0.303955,0.606655 0.25,0.90625 l -35.625,0 0,1.875 34.125,0 -1.4375,1.46875 -32.6875,0 0,1.875 9.8125,0 c 0.590552,-0.512133 1.532919,-1.438897 1.84375,-1.75 l 1.71875,1.75 3.3125,0 c 1.106248,-1.00951 0.594025,-0.528205 1.8125,-1.75 L 47.1875,36 50.5,36 c 1.318217,-1.281174 0.636782,-0.591384 1.84375,-1.8125 l 1.8125,1.8125 0.03125,0 3.53125,0 c 1.276514,-1.242167 3.139833,-3.100501 4.34375,-4.3125 0.581497,-0.609833 0.704836,-1.175919 0.21875,-1.8125 z"
        transform="translate(0,-16)"
        id="path4890-3-7"
@@ -107,7 +107,7 @@
        sodipodi:nodetypes="ccccccccssscccccsssss" />
     <text
        xml:space="preserve"
-       style="font-size:5px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.60000002;stroke:none;display:inline;enable-background:new;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium"
+       style="font-size:5px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.2;stroke:none;display:inline;enable-background:new;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium"
        x="-24.658445"
        y="17.685328"
        id="text5019"
@@ -117,11 +117,11 @@
          id="tspan5021"
          x="-24.658445"
          y="17.685328"
-         style="font-size:4.69999980999999956px;font-weight:500;-inkscape-font-specification:Ubuntu Medium;fill:#ffffff;fill-opacity:0.60000002">    own</tspan><tspan
+         style="font-size:4.69999980999999956px;font-weight:500;-inkscape-font-specification:Ubuntu Medium;fill:#ffffff;fill-opacity:0.2">    own</tspan><tspan
          sodipodi:role="line"
          x="-24.658445"
          y="23.560328"
          id="tspan5065"
-         style="font-size:4.69999980999999956px;font-weight:500;-inkscape-font-specification:Ubuntu Medium;fill:#ffffff;fill-opacity:0.60000002">Keepass</tspan></text>
+         style="font-size:4.69999980999999956px;font-weight:500;-inkscape-font-specification:Ubuntu Medium;fill:#ffffff;fill-opacity:0.2">Keepass</tspan></text>
   </g>
 </svg>
