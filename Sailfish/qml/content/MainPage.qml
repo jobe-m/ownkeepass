@@ -81,8 +81,9 @@ Page {
 
 
     function clipboardTimerStart() {
-        if (ownKeepassSettings.clearClipboard !== 0) {
-            clipboardTimer.interval = ownKeepassSettings.clearClipboard * 1000
+        var timeToClearClipboard = Global.getClearClipboardTime(ownKeepassSettings.clearClipboard)
+        if (timeToClearClipboard !== -1) {
+            clipboardTimer.interval = timeToClearClipboard
             clipboardTimer.restart()
         }
     }
@@ -966,7 +967,7 @@ Page {
 
             contentHeight: Theme.itemSizeMedium // two line delegate
             menu: contextMenuComponent
-            width: parent.width
+            width: Screen.width
 
             function dropFromList() {
                 remorseAction("Drop Database from List",

@@ -105,7 +105,7 @@ Page {
                 text: qsTr("Copy username")
                 onClicked: {
                     Clipboard.text = entryUsernameTextArea.text
-                    // trigger cleaning of clipboard after 10 seconds
+                    // trigger cleaning of clipboard after specific time
                     applicationWindow.mainPageRef.clipboardTimerStart()
                 }
             }
@@ -116,7 +116,7 @@ Page {
                 text: qsTr("Copy password")
                 onClicked: {
                     Clipboard.text = entryPasswordTextField.text
-                    // trigger cleaning of clipboard after 10 seconds
+                    // trigger cleaning of clipboard after specific time
                     applicationWindow.mainPageRef.clipboardTimerStart()
                 }
             }

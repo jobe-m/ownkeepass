@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013-2016 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -247,15 +247,57 @@ Dialog {
                 }
             }
 
-            TextSwitch {
+            Slider {
                 id: clearClipboard
-                checked: ownKeepassSettings.clearClipboard !== 0
-                text: qsTr("Clear clipboard")
-                description: qsTr("If enabled the clipboard will be cleared after 10 seconds when username or password is copied")
-                onCheckedChanged: {
-                    // This workaround makes it possible to replace this simple switch later with a slider setting which will control timer value
-                    var clearClipboardTimer = clearClipboard.checked ? 10 : 0
-                    editSettingsDialog.clearClipboardChanged = clearClipboardTimer !== ownKeepassSettings.clearClipboard
+                value: ownKeepassSettings.clearClipboard
+                minimumValue: 0
+                maximumValue: 10
+                stepSize: 1
+                width: parent.width - Theme.paddingLarge * 2
+                anchors.horizontalCenter: parent.horizontalCenter
+                valueText: calculateClearClipboardTime(value)
+                label: qsTr("Time to clear clipboard")
+                /*
+                  0 = 5 seconds
+                  1 = 10 seconds
+                  2 = 20 seconds
+                  3 = 30 seconds
+                  4 = 45 seconds
+                  5 = 1 minute
+                  6 = 2 minutes
+                  7 = 3 minutes
+                  8 = 5 minutes
+                  9 = 10 minutes
+                  10 = never clear clipboard
+                  */
+                function calculateClearClipboardTime(value) {
+                    switch (value) {
+                    case 0:
+                        return "5 " + qsTr("seconds")
+                    case 1:
+                        return "10 " + qsTr("seconds")
+                    case 2:
+                        return "20 " + qsTr("seconds")
+                    case 3:
+                        return "30 " + qsTr("seconds")
+                    case 4:
+                        return "45 " + qsTr("seconds")
+                    case 5:
+                        return "1 " + qsTr("minute")
+                    case 6:
+                        return "2 " + qsTr("minutes")
+                    case 7:
+                        return "3 " + qsTr("minutes")
+                    case 8:
+                        return "5 " + qsTr("minutes")
+                    case 9:
+                        return "10 " + qsTr("minutes")
+                    case 10:
+                        return qsTr("Never")
+                    }
+                }
+                onValueChanged: {
+                    editSettingsDialog.clearClipboardChanged = clearClipboard.value !== ownKeepassSettings.clearClipboard
                     editSettingsDialog.updateCoverState()
                 }
             }
@@ -280,42 +322,6 @@ Dialog {
                 onCurrentIndexChanged: {
                     editSettingsDialog.uiOrientationChanged =
                             uiOrientation.currentIndex !== ownKeepassSettings.uiOrientation
-                    editSettingsDialog.updateCoverState()
-                }
-            }
-
-            TextSwitch {
-                id: sortAlphabeticallyInListView
-                checked: ownKeepassSettings.sortAlphabeticallyInListView
-                text: qsTr("Sort in alphabetical order")
-                description: qsTr("Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)")
-                onCheckedChanged: {
-                    editSettingsDialog.sortAlphabeticallyInListViewChanged =
-                            sortAlphabeticallyInListView.checked !== ownKeepassSettings.sortAlphabeticallyInListView
-                    editSettingsDialog.updateCoverState()
-                }
-            }
-
-            TextSwitch {
-                id: showUserNamePasswordInListView
-                checked: ownKeepassSettings.showUserNamePasswordInListView
-                text: qsTr("Extended list view")
-                description: qsTr("If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)")
-                onCheckedChanged: {
-                    editSettingsDialog.showUserNamePasswordInListViewChanged =
-                            showUserNamePasswordInListView.checked !== ownKeepassSettings.showUserNamePasswordInListView
-                    editSettingsDialog.updateCoverState()
-                }
-            }
-
-            TextSwitch {
-                id: focusSearchBarOnStartup
-                checked: ownKeepassSettings.focusSearchBarOnStartup
-                text: qsTr("Focus search bar")
-                description: qsTr("If enabled the search bar will be focused on application startup")
-                onCheckedChanged: {
-                    editSettingsDialog.focusSearchBarOnStartupChanged =
-                            focusSearchBarOnStartup.checked !== ownKeepassSettings.focusSearchBarOnStartup
                     editSettingsDialog.updateCoverState()
                 }
             }
@@ -451,6 +457,42 @@ Dialog {
                 }
             }
 
+            TextSwitch {
+                id: sortAlphabeticallyInListView
+                checked: ownKeepassSettings.sortAlphabeticallyInListView
+                text: qsTr("Sort in alphabetical order")
+                description: qsTr("Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)")
+                onCheckedChanged: {
+                    editSettingsDialog.sortAlphabeticallyInListViewChanged =
+                            sortAlphabeticallyInListView.checked !== ownKeepassSettings.sortAlphabeticallyInListView
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
+            TextSwitch {
+                id: showUserNamePasswordInListView
+                checked: ownKeepassSettings.showUserNamePasswordInListView
+                text: qsTr("Extended list view")
+                description: qsTr("If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)")
+                onCheckedChanged: {
+                    editSettingsDialog.showUserNamePasswordInListViewChanged =
+                            showUserNamePasswordInListView.checked !== ownKeepassSettings.showUserNamePasswordInListView
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
+            TextSwitch {
+                id: focusSearchBarOnStartup
+                checked: ownKeepassSettings.focusSearchBarOnStartup
+                text: qsTr("Focus search bar")
+                description: qsTr("If enabled the search bar will be focused on application startup")
+                onCheckedChanged: {
+                    editSettingsDialog.focusSearchBarOnStartupChanged =
+                            focusSearchBarOnStartup.checked !== ownKeepassSettings.focusSearchBarOnStartup
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
             SectionHeader {
                 text: qsTr("Cover settings")
             }
@@ -521,7 +563,7 @@ Dialog {
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
-                    clearClipboard.checked ? 10 : 0,
+                    clearClipboard.value,
                     language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
                     fastUnlockRetryCount.value,
@@ -541,7 +583,7 @@ Dialog {
                     showUserNamePasswordOnCover.checked,
                     lockDatabaseFromCover.checked,
                     copyNpasteFromCover.checked,
-                    clearClipboard.checked ? 10 : 0,
+                    clearClipboard.value,
                     language.toSettingsIndex(language.currentIndex),
                     fastUnlock.checked,
                     fastUnlockRetryCount.value,

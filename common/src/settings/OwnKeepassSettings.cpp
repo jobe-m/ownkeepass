@@ -53,7 +53,7 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_pwGenSpecialChars(false),
     m_pwGenExcludeLookAlike(true),
     m_pwGenCharFromEveryGroup(true),
-    m_clearClipboard(10),
+    m_clearClipboard(3),
     m_language(0),
     m_fastUnlock(true),
     m_fastUnlockRetryCount(2),

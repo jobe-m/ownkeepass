@@ -61,9 +61,12 @@ var constants = {
     _1microsecond: 1,
     _5seconds: 5 * 1000,
     _10seconds: 10 * 1000,
+    _20seconds: 20 * 1000,
     _30seconds: 30 * 1000,
+    _45seconds: 45 * 1000,
     _1minute: 60 * 1000,
     _2minutes: 2 * 60 * 1000,
+    _3minutes: 3 * 60 * 1000,
     _5minutes: 5 * 60 * 1000,
     _10minutes: 10 * 60 * 1000,
     _30minutes: 30 * 60 * 1000,
@@ -167,6 +170,49 @@ function getInactivityTime(value)
     case 10:
         // set unlimited value just more than 60 minutes
         interval = constants._60minutes + 100
+    }
+    return interval
+}
+
+// convert time to clear clipboard into amount of microseconds and return it
+function getClearClipboardTime(value)
+{
+    var interval = -1
+    switch (value) {
+    case 0:
+        interval = constants._5seconds
+        break
+    case 1:
+        interval = constants._10seconds
+        break
+    case 2:
+        interval = constants._20seconds
+        break
+    case 3:
+        interval = constants._30seconds
+        break
+    case 4:
+        interval = constants._45seconds
+        break
+    case 5:
+        interval = constants._1minute
+        break
+    case 6:
+        interval = constants._2minutes
+        break
+    case 7:
+        interval = constants._3minutes
+        break
+    case 8:
+        interval = constants._5minutes
+        break
+    case 9:
+        interval = constants._10minutes
+        break
+    case 10:
+        // set to -1 for unlimited
+        interval = -1
+        break
     }
     return interval
 }
