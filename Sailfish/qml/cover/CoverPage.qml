@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013-2016 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -44,8 +44,7 @@ CoverBackground {
 
     function copyToClipboard() {
         // copy entry detail into clipboard, round robin -> username, password, empty clipboard
-        switch (clipboardState) {
-        case Global.constants.clipboardUnused:
+        if (clipboardState === Global.constants.clipboardUnused && coverPage.username.length !== 0) {
             infoTextView.text = qsTr("Username copied into clipboard")
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
@@ -54,8 +53,9 @@ CoverBackground {
             clipboardState = Global.constants.clipboardUsernameDropped
             // trigger cleaning of clipboard after 10 seconds
             triggerClearClipboard()
-            break
-        case Global.constants.clipboardUsernameDropped:
+        } else if ((clipboardState === Global.constants.clipboardUnused ||
+                    clipboardState === Global.constants.clipboardUsernameDropped) &&
+                    coverPage.password.length !== 0) {
             infoTextView.text = qsTr("Password copied into clipboard")
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
@@ -64,15 +64,14 @@ CoverBackground {
             clipboardState = Global.constants.clipboardPasswordDropped
             // trigger cleaning of clipboard after 10 seconds
             triggerClearClipboard()
-            break
-        case Global.constants.clipboardPasswordDropped:
+        } else if (clipboardState === Global.constants.clipboardUsernameDropped ||
+                   clipboardState === Global.constants.clipboardPasswordDropped) {
             infoTextView.text = qsTr("Clipboard now empty")
             entryDetailsView.opacity = 0.0
             infoTextView.opacity = 1.0
             infoTextTimer.restart()
             Clipboard.text = ""
             clipboardState = Global.constants.clipboardUnused
-            break
         }
     }
 
@@ -347,11 +346,17 @@ CoverBackground {
         State {
             name: "ENTRY_VIEW"
             PropertyChanges { target: actionLockDatabaseOnly
-                enabled: ownKeepassSettings.lockDatabaseFromCover && !ownKeepassSettings.copyNpasteFromCover }
+                enabled: (ownKeepassSettings.lockDatabaseFromCover && !ownKeepassSettings.copyNpasteFromCover) ||
+                         (coverPage.username.length === 0 && coverPage.password.length === 0)
+            }
             PropertyChanges { target: actionCopyOnly
-                enabled: !ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover }
+                enabled: !ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover &&
+                         (coverPage.username.length !== 0 || coverPage.password.length !== 0)
+            }
             PropertyChanges { target: actionLockDatabaseAndCopy
-                enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover }
+                enabled: ownKeepassSettings.lockDatabaseFromCover && ownKeepassSettings.copyNpasteFromCover &&
+                         (coverPage.username.length !== 0 || coverPage.password.length !== 0)
+            }
             PropertyChanges { target: coverTextLabel
                 text: (coverPage.username.length !== 0 || coverPage.password.length !== 0 ) &&
                       !ownKeepassSettings.showUserNamePasswordOnCover ?
