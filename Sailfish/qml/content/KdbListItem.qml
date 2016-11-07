@@ -91,7 +91,6 @@ ListItem {
         anchors.centerIn: itemIcon
         width: Theme.iconSizeMedium
         height: Theme.iconSizeMedium
-//        source: model.itemType === DatabaseItemType.ENTRY ? "../../entryicons/ic0.png" : "../../entryicons/icf0.png"
         source: model.itemType === DatabaseItemType.ENTRY ? "../../entryicons/ic" + model.iconId + ".png" :
                                                             "../../entryicons/icf" + model.iconId + ".png"
         fillMode: Image.PreserveAspectFit
@@ -132,7 +131,7 @@ ListItem {
             horizontalAlignment: Text.AlignLeft
             font.pixelSize: Theme.fontSizeExtraSmall
             color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
-            font.family: model.itemType === DatabaseItemType.GROUP ? Theme.fontFamily : 'monospace'
+            font.family: Theme.fontFamily
         }
     }
 

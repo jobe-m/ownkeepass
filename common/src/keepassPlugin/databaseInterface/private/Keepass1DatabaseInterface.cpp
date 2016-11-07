@@ -790,8 +790,7 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
             if (m_setting_sortAlphabeticallyInListView) {
                 emit addItemToListModelSorted(entry->title(),                              // entry name
                                               entry->image(),                              // icon id
-//                                              entry->group()->title(),                     // name of parent group as subtitle
-                                              getUserAndPassword(entry),                   // subtitle
+                                              entry->group()->title(),                     // name of parent group as subtitle
                                               uInt2QString(uint(entry)),                   // item id
                                               DatabaseItemType::ENTRY,                     // item type
                                               0,                                           // item level (not used here)
@@ -799,8 +798,7 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
             } else {
                 emit appendItemToListModel(entry->title(),                                 // entry name
                                            entry->image(),                                 // icon id
-//                                           entry->group()->title(),                        // name of parent group as subtitle
-                                           getUserAndPassword(entry),                      // subtitle
+                                           entry->group()->title(),                        // name of parent group as subtitle
                                            uInt2QString(uint(entry)),                      // item id
                                            DatabaseItemType::ENTRY,                        // item type
                                            0,                                              // item level (not used here)
