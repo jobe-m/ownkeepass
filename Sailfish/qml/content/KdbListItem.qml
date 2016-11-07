@@ -91,7 +91,7 @@ ListItem {
         anchors.centerIn: itemIcon
         width: Theme.iconSizeMedium
         height: Theme.iconSizeMedium
-        source: model.itemType === DatabaseItemType.ENTRY ? "../../entryicons/_0.png" : "../../entryicons/_49.png"
+        source: model.itemType === DatabaseItemType.ENTRY ? "../../entryicons/ic00.png" : "../../entryicons/icf00.png"
         fillMode: Image.PreserveAspectFit
         asynchronous: true
         opacity: kdbListItem.highlighted ? 0.5 : 1.0
