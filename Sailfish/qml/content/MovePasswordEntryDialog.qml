@@ -132,7 +132,8 @@ Dialog {
                     anchors.centerIn: iconPlacer
                     width: Theme.iconSizeMedium
                     height: Theme.iconSizeMedium
-                    source: "../../entryicons/icf00.png"
+//                    source: "../../entryicons/icf0.png"
+                    source: "../../entryicons/icf" + model.iconId + ".png"
                     fillMode: Image.PreserveAspectFit
                     asynchronous: true
                     opacity: model.id === movePasswordEntryDialog.newGroupId ? 0.7 : 1.0

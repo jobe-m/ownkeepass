@@ -201,6 +201,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
             m_groups_modelId.insertMulti((const Uuid &)rootGroupId, (const Uuid &)masterGroupId);
         }
         emit appendItemToListModel(masterGroup->name(),                            // group name
+                                   (quint32)masterGroup->iconNumber(),             // icon id
                                    QString("Subgroups: %1 | Entries: %2")
                                    .arg(numberOfSubgroups)
                                    .arg(numberOfEntries),                          // subtitle
@@ -216,6 +217,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         Uuid itemId = entry->uuid();
         // only append to list model if item ID is valid
         emit appendItemToListModel(entry->title(),                                 // group name
+                                   (quint32)entry->iconNumber(),                   // icon id
                                    getUserAndPassword(entry),                      // subtitle
                                    itemId.toHex(),                                 // item id
                                    (int)DatabaseItemType::ENTRY,                   // item type
@@ -252,6 +254,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         int numberOfEntries = subGroup->entries().count();
         Uuid itemId = subGroup->uuid();
         emit appendItemToListModel(subGroup->name(),                               // group name
+                                   (quint32)subGroup->iconNumber(),                // icon id
                                    QString("Subgroups: %1 | Entries: %2")
                                    .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
                                    itemId.toHex(),                                 // item id
@@ -274,6 +277,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         Entry* entry = entries.at(i);
         Uuid itemId = entry->uuid();
         emit appendItemToListModel(entry->title(),                                 // group name
+                                   (quint32)entry->iconNumber(),                   // icon id
                                    getUserAndPassword(entry),                      // subtitle
                                    itemId.toHex(),                                 // item id
                                    (int)DatabaseItemType::ENTRY,                   // item type
@@ -345,21 +349,21 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, quint32 iconI
 }
 
 void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
-                                        QString title,
-                                        QString url,
-                                        QString username,
-                                        QString password,
-                                        QString comment)
+                                               QString title,
+                                               QString url,
+                                               QString username,
+                                               QString password,
+                                               QString comment)
 {
     Q_ASSERT(m_Database);
 }
 
 void Keepass2DatabaseInterface::slot_createNewEntry(QString title,
-                                             QString url,
-                                             QString username,
-                                             QString password,
-                                             QString comment,
-                                             QString parentGroupId)
+                                                    QString url,
+                                                    QString username,
+                                                    QString password,
+                                                    QString comment,
+                                                    QString parentGroupId)
 {
 }
 
@@ -400,6 +404,8 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
             // update list model with found entries
             if (m_setting_sortAlphabeticallyInListView) {
                 emit addItemToListModelSorted(entry->title(),                              // entry name
+                                              (quint32)entry->iconNumber(),                // icon id
+//                                              entry->group()->name(),                      // name of parent group as subtitle
                                               getUserAndPassword(entry),                   // subtitle
                                               entry->uuid().toHex(),                       // item id
                                               DatabaseItemType::ENTRY,                     // item type
@@ -407,6 +413,8 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
                                               searchId);                                   // specifying model where entry should be added (search list model gets 0xfffffffe)
             } else {
                 emit appendItemToListModel(entry->title(),                                 // entry name
+                                           (quint32)entry->iconNumber(),                   // icon id
+//                                           entry->group()->name(),                         // name of parent group as subtitle
                                            getUserAndPassword(entry),                      // subtitle
                                            entry->uuid().toHex(),                          // item id
                                            DatabaseItemType::ENTRY,                        // item type

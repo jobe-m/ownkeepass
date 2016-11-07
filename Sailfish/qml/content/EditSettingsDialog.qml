@@ -256,6 +256,7 @@ Dialog {
                 width: parent.width - Theme.paddingLarge * 2
                 anchors.horizontalCenter: parent.horizontalCenter
                 valueText: calculateClearClipboardTime(value)
+                //: This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied
                 label: qsTr("Time to clear clipboard")
                 /*
                   0 = 5 seconds

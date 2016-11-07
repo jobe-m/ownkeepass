@@ -77,24 +77,24 @@ bool KdbListModel::connectToDatabaseClient()
                   SIGNAL(searchEntriesCompleted(int)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(appendItemToListModel(QString, QString, QString, int, int, QString)),
+                  SIGNAL(appendItemToListModel(QString, quint32, QString, QString, int, int, QString)),
                   this,
-                  SLOT(slot_appendItemToListModel(QString, QString, QString, int, int, QString)));
+                  SLOT(slot_appendItemToListModel(QString, quint32, QString, QString, int, int, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(addItemToListModelSorted(QString, QString, QString, int, int, QString)),
+                  SIGNAL(addItemToListModelSorted(QString, quint32, QString, QString, int, int, QString)),
                   this,
-                  SLOT(slot_addItemToListModelSorted(QString, QString, QString, int, int, QString)));
+                  SLOT(slot_addItemToListModelSorted(QString, quint32, QString, QString, int, int, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(updateItemInListModel(QString, QString, QString, QString)),
+                  SIGNAL(updateItemInListModel(QString, quint32, QString, QString, QString)),
                   this,
-                  SLOT(slot_updateItemInListModel(QString, QString, QString, QString)));
+                  SLOT(slot_updateItemInListModel(QString, quint32, QString, QString, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(updateItemInListModelSorted(QString, QString, QString, QString)),
+                  SIGNAL(updateItemInListModelSorted(QString, quint32, QString, QString, QString)),
                   this,
-                  SLOT(slot_updateItemInListModelSorted(QString, QString, QString, QString)));
+                  SLOT(slot_updateItemInListModelSorted(QString, quint32, QString, QString, QString)));
     Q_ASSERT(ret);
     ret = connect(this,
                   SIGNAL(unregisterFromDatabaseClient(QString)),
@@ -261,7 +261,7 @@ void KdbListModel::clearListModel()
     clear();
 }
 
-void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
+void KdbListModel::slot_appendItemToListModel(QString title, quint32 iconId, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -269,7 +269,7 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, Q
     }
     // only append if this item is for us
     if (m_modelId.compare(modelId) == 0) {
-        KdbItem item(title, subtitle, itemId, itemType, itemLevel);
+        KdbItem item(title, iconId, subtitle, itemId, itemType, itemLevel);
         if (itemType == DatabaseItemType::ENTRY) {
             // append new entry to end of list
             beginInsertRows(QModelIndex(), rowCount(), rowCount());
@@ -294,7 +294,7 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString subtitle, Q
     }
 }
 
-void KdbListModel::slot_addItemToListModelSorted(QString title, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
+void KdbListModel::slot_addItemToListModelSorted(QString title, quint32 iconId, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -302,7 +302,7 @@ void KdbListModel::slot_addItemToListModelSorted(QString title, QString subtitle
     }
     // only append if this item is for us
     if (m_modelId.compare(modelId) == 0) {
-        KdbItem item(title, subtitle, itemId, itemType, itemLevel);
+        KdbItem item(title, iconId, subtitle, itemId, itemType, itemLevel);
         // compare and insert alphabetically into list model depending if it is an password entry or group
         // groups are put at the beginning of the list view before entries
         int i = 0;
@@ -345,7 +345,7 @@ This function updates a single groups item in the list model data.
 \param groupId Identifier for the item inside of the list model.
 \param modelId Identifier for list model, which needs to be changed.
 ******************************************************************************/
-void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, QString itemId, QString modelId)
+void KdbListModel::slot_updateItemInListModel(QString title, quint32 iconId, QString subTitle, QString itemId, QString modelId)
 {
     // check if we need to do anything
     if (m_modelId.compare(modelId) == 0) {
@@ -355,8 +355,9 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, Q
 //                qDebug() << "adding in non sorted mode: " << title;
                 // list view has custom sorting so position of item will stay the same and item just needs an update
                 beginResetModel();
-                // set new title name
+                // set new title name, icon id and sub title
                 m_items[i].m_name = title;
+                m_items[i].m_iconId = iconId;
                 m_items[i].m_subtitle = subTitle;
                 endResetModel();
             }
@@ -366,7 +367,7 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString subTitle, Q
     }
 }
 
-void KdbListModel::slot_updateItemInListModelSorted(QString title, QString subTitle, QString itemId, QString modelId)
+void KdbListModel::slot_updateItemInListModelSorted(QString title, quint32 iconId, QString subTitle, QString itemId, QString modelId)
 {
     // check if we need to do anything
     if (m_modelId.compare(modelId) == 0) {
@@ -380,7 +381,7 @@ void KdbListModel::slot_updateItemInListModelSorted(QString title, QString subTi
                 int itemType = m_items[i].m_itemType;
                 int itemLevel = m_items[i].m_itemLevel;
                 slot_deleteItem(itemId);
-                slot_addItemToListModelSorted(title, subTitle, itemId, itemType, itemLevel, modelId);
+                slot_addItemToListModelSorted(title, iconId, subTitle, itemId, itemType, itemLevel, modelId);
             }
         }
     }
