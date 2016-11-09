@@ -112,7 +112,12 @@ GPLv2<br><br>\
 Yarrow pseudo-randomness generator:<br>\
 Copyright (C) 2007 Tarek Saidi<br>\
 Copyright (C) 2001 Niels Müler<br>\
-GPLv2<br>"
+GPLv2<br><br>\
+\
+Icons taken from the Keepass2Android project:<br>\
+Copyright (C) 2016 Philipp Crocoll<br>\
+GPLv2 or later<br>\
+"
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
                 }
