@@ -74,9 +74,10 @@ Page {
 <ul>\
 <li>Added individual icons for password entries and groups</li>\
 <li>Time to clear clipboard can be adjusted between 5 seconds and 10 minutes</li>\
-<li>A password entry in the list of search items shows now the group it belongs to</li>\
+<li>Parent group of password entries is shown in search list view</li>\
 <li>Copy-Paste cover action now skips empty username or password entries</li>\
-<li></li>\
+<li>Implemented alphabetical sorting of Keepass 2 database entries</li>\
+<li>Updated translations</li>\
 </ul>\
 <br>\
 
