@@ -200,15 +200,27 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
             // i.e. save model list id for master group page and don't do it for list models used in dialogs
             m_groups_modelId.insertMulti((const Uuid &)rootGroupId, (const Uuid &)masterGroupId);
         }
-        emit appendItemToListModel(masterGroup->name(),                            // group name
-                                   (quint32)masterGroup->iconNumber(),             // icon id
-                                   QString("Subgroups: %1 | Entries: %2")
-                                   .arg(numberOfSubgroups)
-                                   .arg(numberOfEntries),                          // subtitle
-                                   masterGroupId.toHex(),                          // item id
-                                   (int)DatabaseItemType::GROUP,                   // item type
-                                   0,                                              // item level (0 = root, 1 = first level, etc.
-                                   rootGroupId.toHex());                           // list model of root group
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit addItemToListModelSorted(masterGroup->name(),
+                                          (quint32)masterGroup->iconNumber(),          // icon id
+                                          QString("Subgroups: %1 | Entries: %2")
+                                          .arg(numberOfSubgroups)
+                                          .arg(numberOfEntries),                       // subtitle
+                                          masterGroupId.toHex(),                       // item id
+                                          (int)DatabaseItemType::GROUP,                // item type
+                                          0,                                           // item level (0 = root, 1 = first level, etc.
+                                          rootGroupId.toHex());                        // list model of root group
+        } else {
+            emit appendItemToListModel(masterGroup->name(),                            // group name
+                                       (quint32)masterGroup->iconNumber(),             // icon id
+                                       QString("Subgroups: %1 | Entries: %2")
+                                       .arg(numberOfSubgroups)
+                                       .arg(numberOfEntries),                          // subtitle
+                                       masterGroupId.toHex(),                          // item id
+                                       (int)DatabaseItemType::GROUP,                   // item type
+                                       0,                                              // item level (0 = root, 1 = first level, etc.
+                                       rootGroupId.toHex());                           // list model of root group
+        }
     }
 
     QList<Entry*> masterEntries = m_Database->rootGroup()->entries();
@@ -216,13 +228,23 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         Entry* entry = masterEntries.at(i);
         Uuid itemId = entry->uuid();
         // only append to list model if item ID is valid
-        emit appendItemToListModel(entry->title(),                                 // group name
-                                   (quint32)entry->iconNumber(),                   // icon id
-                                   getUserAndPassword(entry),                      // subtitle
-                                   itemId.toHex(),                                 // item id
-                                   (int)DatabaseItemType::ENTRY,                   // item type
-                                   0,                                              // item level (not used here)
-                                   rootGroupId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit appendItemToListModel(entry->title(),                                 // group name
+                                       (quint32)entry->iconNumber(),                   // icon id
+                                       getUserAndPassword(entry),                      // subtitle
+                                       itemId.toHex(),                                 // item id
+                                       (int)DatabaseItemType::ENTRY,                   // item type
+                                       0,                                              // item level (not used here)
+                                       rootGroupId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
+        } else {
+            emit addItemToListModelSorted(entry->title(),                              // group name
+                                          (quint32)entry->iconNumber(),                // icon id
+                                          getUserAndPassword(entry),                   // subtitle
+                                          itemId.toHex(),                              // item id
+                                          (int)DatabaseItemType::ENTRY,                // item type
+                                          0,                                           // item level (not used here)
+                                          rootGroupId.toHex());                        // list model gets groupId as its unique ID (here 0 because of root group)
+        }
         // save modelId and entry
         m_entries_modelId.insertMulti(rootGroupId, itemId);
     }
@@ -240,49 +262,58 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 //    qDebug() << "group uuid: " << groupUuid.toByteArray();
 //    qDebug() << "group toHex: " << groupUuid.toHex();
 
-/*
-    if (m_setting_sortAlphabeticallyInListView) {
-        subGroups = m_kdb3Database->sortedGroups();
-    } else {
-        subGroups = m_kdb3Database->groups();
-    }
-*/
-
     for (int i = 0; i < subGroups.count(); i++) {
         Group* subGroup = subGroups.at(i);
         int numberOfSubgroups = subGroup->children().count();
         int numberOfEntries = subGroup->entries().count();
         Uuid itemId = subGroup->uuid();
-        emit appendItemToListModel(subGroup->name(),                               // group name
-                                   (quint32)subGroup->iconNumber(),                // icon id
-                                   QString("Subgroups: %1 | Entries: %2")
-                                   .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
-                                   itemId.toHex(),                                 // item id
-                                   (int)DatabaseItemType::GROUP,                   // item type
-                                   0,                                              // item level (not used here)
-                                   groupId);                                       // list model gets groupId as its unique ID
+
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit appendItemToListModel(subGroup->name(),                                  // group name
+                                       (quint32)subGroup->iconNumber(),                   // icon id
+                                       QString("Subgroups: %1 | Entries: %2")
+                                       .arg(numberOfSubgroups).arg(numberOfEntries),      // subtitle
+                                       itemId.toHex(),                                    // item id
+                                       (int)DatabaseItemType::GROUP,                      // item type
+                                       0,                                                 // item level (not used here)
+                                       groupId);                                          // list model gets groupId as its unique ID
+        } else {
+            emit addItemToListModelSorted(subGroup->name(),                               // group name
+                                          (quint32)subGroup->iconNumber(),                // icon id
+                                          QString("Subgroups: %1 | Entries: %2")
+                                          .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
+                                          itemId.toHex(),                                 // item id
+                                          (int)DatabaseItemType::GROUP,                   // item type
+                                          0,                                              // item level (not used here)
+                                          groupId);                                       // list model gets groupId as its unique ID
+        }
         // save modelId and group
         m_groups_modelId.insertMulti(groupUuid, itemId);
     }
 
     QList<Entry*> entries = group->entries();
-/*
-    if (m_setting_sortAlphabeticallyInListView) {
-        entries = m_kdb3Database->entriesSortedStd(group);
-    } else {
-        entries = m_kdb3Database->entries(group);
-    }
-*/
+
     for (int i = 0; i < entries.count(); i++) {
         Entry* entry = entries.at(i);
         Uuid itemId = entry->uuid();
-        emit appendItemToListModel(entry->title(),                                 // group name
-                                   (quint32)entry->iconNumber(),                   // icon id
-                                   getUserAndPassword(entry),                      // subtitle
-                                   itemId.toHex(),                                 // item id
-                                   (int)DatabaseItemType::ENTRY,                   // item type
-                                   0,                                              // item level (not used here)
-                                   groupId);                                       // list model gets groupId as its unique ID
+
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit appendItemToListModel(entry->title(),                                    // group name
+                                       (quint32)entry->iconNumber(),                      // icon id
+                                       getUserAndPassword(entry),                         // subtitle
+                                       itemId.toHex(),                                    // item id
+                                       (int)DatabaseItemType::ENTRY,                      // item type
+                                       0,                                                 // item level (not used here)
+                                       groupId);                                          // list model gets groupId as its unique ID
+        } else {
+            emit addItemToListModelSorted(entry->title(),                                 // group name
+                                          (quint32)entry->iconNumber(),                   // icon id
+                                          getUserAndPassword(entry),                      // subtitle
+                                          itemId.toHex(),                                 // item id
+                                          (int)DatabaseItemType::ENTRY,                   // item type
+                                          0,                                              // item level (not used here)
+                                          groupId);                                       // list model gets groupId as its unique ID
+        }
         // save modelId and entry
         m_entries_modelId.insertMulti(groupUuid, itemId);
     }
