@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="gl" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="gl">
 <context>
     <name>AboutPage</name>
     <message>
@@ -53,22 +55,22 @@
         <translation>Agradecementos para:&lt;br&gt;&lt;br&gt;Jolla (por continuar onde Nokia se detivo)&lt;br&gt;O proxecto KeepassX (pola implementación de Qt en Keepass)&lt;br&gt;Todolos tradutores e contribuintes: %1&lt;br&gt;&lt;br&gt;¡Agardo que o pases tan ben usando ownKeepass coma eu ao creala!</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="184"/>
+        <location filename="../qml/content/AboutPage.qml" line="185"/>
         <source>Donate or Contribute</source>
         <translation>Doar ou contribuir</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="192"/>
+        <location filename="../qml/content/AboutPage.qml" line="193"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
         <translation>Se te gusta o meu traballo sintete libre de amosarmo. Colabora na traduzón, informa de erros ou manda ideas sobre melloras da aplicación, mandame un café ou dalle a &quot;gustame&quot; e comenta a miña aplicación na tenda de Jolla :)</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="230"/>
+        <location filename="../qml/content/AboutPage.qml" line="231"/>
         <source>Translate</source>
         <translation>Traducir</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="237"/>
+        <location filename="../qml/content/AboutPage.qml" line="238"/>
         <source>Report bugs</source>
         <translation>Informar de erros</translation>
     </message>
@@ -464,12 +466,12 @@
         <translation>Orientación</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
         <source>Extended list view</source>
         <translation>Vista de lista extensa</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="477"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="482"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>Activado amosara o nome de usuario e contrasinal baixo o título do rexistro na vista de lista (reabre a base de datos para activalo)</translation>
     </message>
@@ -548,12 +550,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -582,59 +584,59 @@
         <translation>Horizontal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="464"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="469"/>
         <source>Sort in alphabetical order</source>
         <translation>Ordear por orde alfabético</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="465"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="470"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>Activado todolos rexistros amosaranse en orde alfabético na lista, doutra maneira usarase a orde interna da base de datos (reabre a base de datos para activalo)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
         <source>Focus search bar</source>
         <translation>Enfocar a barra de búsqueda</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="489"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="494"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Activado o cursor situarase na barra de búsqueda ao abrir a aplicación</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="498"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="503"/>
         <source>Cover settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="504"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
         <source>Show username and password</source>
         <translation>Amosar nome de usuario e contrasinal</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="510"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
         <source>Lock database from cover</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="517"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="522"/>
         <source>This lets you lock the database with the left cover action</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
         <source>Copy&apos;n&apos;paste from cover</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="529"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="534"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -729,24 +731,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="124"/>
+        <location filename="../qml/scripts/Global.js" line="125"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Non hai nada seleccionado</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="127"/>
+        <location filename="../qml/scripts/Global.js" line="128"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Memoria do dispositivo</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="129"/>
+        <location filename="../qml/scripts/Global.js" line="130"/>
         <source>SD Card</source>
         <translation>Tarxeta SD</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="131"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>Android Storage</source>
         <translation>Almacenamento de Android</translation>
     </message>
@@ -848,7 +850,7 @@
     <message>
         <location filename="../qml/help/HelpDatabaseSettings.qml" line="27"/>
         <source>On this dialog you can change database internal settings of your currently opened Keepass database file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can type in a new master password for the Keepass database. Please note that if you forgot your master password there is no way to recover the password. It is not saved in the Keepass database and there is also no backdoor to open the database without your password. Furhtermore make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Master Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Encryption currently in use&lt;/b&gt;&lt;br&gt;&lt;br&gt;This is the encryption algorithm which is used to cipher the Keepass database content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key transformation rounds&lt;/b&gt;&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for your Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -857,22 +859,22 @@
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
 Please note the following. While ownKeepass can read and write to Keepass 1 databases it can currently only read from Keepass 2 databases. It cannot yet change and save Keepass 2 databases. This is planned for a future release of ownKeepass.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="41"/>
         <source>&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
         <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES / Rijndael (supported by Keepass 1 and 2) or Twofish (Supported only by Keepass 1) with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords (in-memory encryption currently only Keepass 1). Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="65"/>
         <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -880,7 +882,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMasterGroupsPage.qml" line="27"/>
         <source>This page is showing main password groups of your Keepass database. A password group is a container for password entries. Thus in order to store a password entry you need to create at least one group first.&lt;br&gt;&lt;br&gt;You can use main password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -889,7 +891,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Device Memory, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Device Memory&quot; is located at &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Removed one sentence in section &quot;Use key file&quot;, Changed &quot;Home&quot; to &quot;Device Memory&quot;, Removed section for &quot;Open automatically&quot;, changed &lt;UUID&gt; to &amp;lt;UUID&amp;gt; so that it will be actually shown ;)</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -897,7 +899,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpOpenRecentDatabase.qml" line="27"/>
         <source>Type in here the password for opening the database. If you chose a key file it will be automatically loaded from the path you specified earlier. If you get an error on opening the database and you are sure that your provided password is correct check if the key file is still in the same place when you opened the database the last time successfully.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens the password query dialog again for this database when you start the application the next time.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -918,7 +920,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpSubGroupsPage.qml" line="27"/>
         <source>This page is showing password entries and sub-groups of your Keepass database. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;It is possible to show username and password for each password entry already in the list view. To enable that feature open the ownKeepass settings and check the &quot;Extended list view&quot; switch.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search only in the specific password group and all its sub-groups.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -983,7 +985,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/LockPage.qml" line="227"/>
         <source>Wrong unlock code</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1120,43 +1122,43 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="541"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="547"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="552"/>
         <location filename="../qml/content/MainPage.qml" line="558"/>
         <source>File I/O error</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="553"/>
         <source>Cannot open database file. Error details:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="559"/>
         <source>Cannot open key file. Error details:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="588"/>
         <source>Password changed</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="588"/>
         <source>The master password of your database was changed successfully.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="595"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="599"/>
@@ -1167,7 +1169,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="599"/>
         <location filename="../qml/content/MainPage.qml" line="603"/>
         <source>The following error occured during opening of database:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="603"/>
@@ -1177,12 +1179,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="607"/>
         <source>Error loading database</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="607"/>
         <source>Please try again.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="611"/>
@@ -1192,52 +1194,52 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="611"/>
         <source>The following error occured during creation of database:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="615"/>
         <source>Creation of backup group failed with following error:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="619"/>
         <source>Save database error</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="619"/>
         <source>Could not save database with following error:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="626"/>
         <source>Database error</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="626"/>
         <source>An error occured on closing your database:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="632"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="633"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="638"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1042"/>
         <source>Drop from List</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1106"/>
@@ -1257,22 +1259,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="1136"/>
         <source>Do you want to save changes to the password entry?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1141"/>
         <source>Do you want to save changes to the password group?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1146"/>
         <source>Do you want to save changes to database settings?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1151"/>
         <source>Do you want to save changed settings values?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1285,17 +1287,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="77"/>
         <source>Key file path and name</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="77"/>
         <source>No key file used</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="104"/>
         <source>Database type:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="121"/>
@@ -1306,7 +1308,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="129"/>
         <source>Recent databases</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1325,7 +1327,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1333,7 +1335,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="32"/>
         <source>Enter master password</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="33"/>
@@ -1371,32 +1373,32 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
         <source>Generated password</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
         <source>Length</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
         <source>Generate</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1404,65 +1406,65 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="264"/>
         <source>Please specify a new Keepass database file:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="293"/>
         <source>Please choose an existing Keepass database file:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="167"/>
         <source>Use key file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="88"/>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="168"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="230"/>
         <source>Database type:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
         <source>Create</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="263"/>
         <source>New Password Safe</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="269"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Insira un contrasinal mestre para bloquear a tua nova protección de contrasinais de Keepass:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="316"/>
         <source>Open</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="292"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="317"/>
         <source>Password Safe</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Protección de contrasinais</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="298"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1470,58 +1472,58 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="72"/>
         <source>No content</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
         <source>Pull down to add URL, username, password and comment</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="90"/>
         <source>Read only mode</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Modo de só lectura</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="96"/>
         <source>Copy URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="105"/>
         <source>Copy username</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="116"/>
         <source>Copy password</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="127"/>
         <source>Edit password entry</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="164"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">URL</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Nome de usuario</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="192"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="206"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Contrasinal</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="238"/>
         <source>Comment</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Comentario</translation>
     </message>
 </context>
 </TS>
