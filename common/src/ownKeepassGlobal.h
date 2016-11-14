@@ -135,6 +135,7 @@ public:
         EL,    // Greek
         JA_JP, // Japanese
         HU_HU, // Hungarian
+        GL,    // Galician
         INVALID
     };
 };

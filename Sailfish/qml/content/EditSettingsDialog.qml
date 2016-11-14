@@ -344,15 +344,16 @@ Dialog {
                     MenuItem { text: "English" } // 6 (English)
                     MenuItem { text: "Español" }  // 7 (Spanish)
                     MenuItem { text: "Français" } // 8 (French)
-                    MenuItem { text: "Italiano" } // 9 (Italian)
-                    MenuItem { text: "Magyar" } // 10 (Hungarian)
-                    MenuItem { text: "Nederlands" } // 11 (Dutch)
-                    MenuItem { text: "Pу́сский" } // 12 (Russian)
-                    MenuItem { text: "Suomi" } // 13 (Finnish)
-                    MenuItem { text: "Svenska" } // 14 (Swedish)
-                    MenuItem { text: "中文" } // 15 (Chinese)
-                    MenuItem { text: "ελληνικά" } // 16 (Greek)
-                    MenuItem { text: "日本語" } // 17 (Japanese)
+                    MenuItem { text: "Galego" } // 9 (Galician)
+                    MenuItem { text: "Italiano" } // 10 (Italian)
+                    MenuItem { text: "Magyar" } // 11 (Hungarian)
+                    MenuItem { text: "Nederlands" } // 12 (Dutch)
+                    MenuItem { text: "Pу́сский" } // 13 (Russian)
+                    MenuItem { text: "Suomi" } // 14 (Finnish)
+                    MenuItem { text: "Svenska" } // 15 (Swedish)
+                    MenuItem { text: "中文" } // 16 (Chinese)
+                    MenuItem { text: "ελληνικά" } // 17 (Greek)
+                    MenuItem { text: "日本語" } // 18 (Japanese)
                 }
 
                 // The next two converter functions decouple the alphabetical language list
@@ -399,6 +400,8 @@ Dialog {
                         return Global.japanese
                     case Language.HU_HU: // Hungarian
                         return Global.hungarian
+                    case language.GL: // Galician
+                        return Global.galician
                     default:
                         return Global.english
                     }
@@ -446,6 +449,8 @@ Dialog {
                         return Language.JA_JP // Japanese
                     case Global.hungarian:
                         return Language.HU_HU
+                    case Global.galician:
+                        return Language.GL // Galician
                     default:
                         return Language.EN // English
                     }

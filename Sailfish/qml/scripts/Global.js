@@ -50,6 +50,7 @@ var swedish = 14
 var chinese = 15
 var greek = 16
 var japanese = 17
+var galician = 18
 var polish = -1 // not yet started, but already defined in ownKeepassGlobal.h
 var ukrainian = -1 // not yet started, but already defined in ownKeepassGlobal.h
 

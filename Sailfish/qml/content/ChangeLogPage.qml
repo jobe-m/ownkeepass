@@ -70,14 +70,15 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.1.14</b>\
+<b>v1.1.14 New icons</b>\
 <ul>\
 <li>Added individual icons for password entries and groups</li>\
 <li>Time to clear clipboard can be adjusted between 5 seconds and 10 minutes</li>\
 <li>Parent group of password entries is shown in search list view</li>\
 <li>Copy-Paste cover action now skips empty username or password entries</li>\
 <li>Implemented alphabetical sorting of Keepass 2 database entries</li>\
-<li>Updated translations</li>\
+<li>Added new translation for Galician language (not yet finished, please help getting it done!)</li>\
+<li>Updated all other translations</li>\
 </ul>\
 <br>\
 
