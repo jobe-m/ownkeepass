@@ -189,4 +189,5 @@ TRANSLATIONS += \
     #translations/harbour-ownkeepass-uk_UA.ts \
     translations/harbour-ownkeepass-el.ts \
     translations/harbour-ownkeepass-ja_JP.ts \
-    translations/harbour-ownkeepass-hu_HU.ts
+    translations/harbour-ownkeepass-hu_HU.ts \
+    translations/harbour-ownkeepass-gl.ts

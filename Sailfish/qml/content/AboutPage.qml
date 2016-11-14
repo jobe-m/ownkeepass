@@ -166,6 +166,7 @@ Danish: Peter Jespersen | \
 Dutch: Heimen Stoffels, Nathan Follens, André Koot, cow | \
 Finnish: Petri Makijarvi, miikka kukko, Simo Ruoho, Riku Lahtinen | \
 French: Jordi, Guillaume ARIAUX, Sylvain, Nathan Follens | \
+Galician: pakoR | \
 German: Cermit, deryo, dirktux, R.G. Sidler | \
 Greek: Dimitrios Glentadakis, Marinus Savoritias, Panayiotis Tembriotis | \
 Hungarian: Andras Toth | \
