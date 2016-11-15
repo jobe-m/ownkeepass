@@ -6,18 +6,14 @@ ownKeepass
 Status
 ------
 
-Release 1.1.13 available in [openrepos.net] [1] / warehouse app and in Jolla store
-* File browser: When searching for a key file the default value for file filter is *.key
-* Adjusted look and feel of info popups to system info popups
-* Added snappy layout animations on main page to enhance usability
-* Database can be dropped from recent database list on main page (in order to clean up the list from unused stuff)
-* Added new translation for Hungarian
-* Updated all translations from Transifex
-
-Keepass 2 database support is HERE! Current status:
-* Reading and searching from a Keepass 2 database is finished and now working fine (merged back to master branch).
-* Reusing database code from [KeepassX 2][3] project for that which is shared into this repository. Need to update sources of KeepassX 2 to those of first stable release though (Which arrived two days ago!!!).
-* Writing to Keepass 2 database will be done in near future (on keepass2 branch). It needs some redesign of the password entry save handling.
+Release 1.1.14 available in [openrepos.net] [1] / warehouse app and (shortly also) in Jolla store
+* Added individual icons for password entries and groups
+* Time to clear clipboard can be adjusted between 5 seconds and 10 minutes
+* Parent group of password entries is shown in search list view
+* Copy-Paste cover action now skips empty username or password entries
+* Implemented alphabetical sorting of Keepass 2 database entries
+* Added new translation for Galician language 
+* Updated all other translations from Transifex
 
 Roadmap
 -------
@@ -25,18 +21,10 @@ Roadmap
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Integrating WebDav support for loading and saving your Keepass database to a server like ownCloud.
-*   Other features will only come if there is a strong demand ;)
+*   Update KeepassX 2 database code base with upstream
+*   Write support for Keepass 2 databases
+*   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
 
-I am searching for contributors who want and can work on specific additional features. Below are some of the requirements which
-I marked as contribution on the issue page. That means that I won't work for a while on that topics due to missing time thus you
-can be sure that we don't do double work there.
-*   Delete a Keepass database -> [REQ](https://github.com/jobe-m/ownkeepass/issues/64)
-*   Import and export functionality -> [REQ](https://github.com/jobe-m/ownkeepass/issues/44)
-*   Add support for yubikey with challenge response -> [REQ](https://github.com/jobe-m/ownkeepass/issues/95)
-*   Select the substring freely from the master password for the fast unlock pass code -> [REQ](https://github.com/jobe-m/ownkeepass/issues/85)
-
-The status of all requirements, feature requests and found bugs can be looked up [here] [6].
 
 What is this?
 -------------
