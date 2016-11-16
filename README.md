@@ -6,7 +6,10 @@ ownKeepass
 Status
 ------
 
-Release 1.1.14 available in [openrepos.net] [1] / warehouse app and (shortly also) in Jolla store
+Bugfix release 1.1.15 is going to Jolla store and is already available in [openrepos.net] [1]
+* Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to "disabled"
+
+Release 1.1.14
 * Added individual icons for password entries and groups
 * Time to clear clipboard can be adjusted between 5 seconds and 10 minutes
 * Parent group of password entries is shown in search list view
@@ -21,6 +24,7 @@ Roadmap
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
+*   Code cleanup, rewrite password generator in order to get rid of binary blob for it
 *   Update KeepassX 2 database code base with upstream
 *   Write support for Keepass 2 databases
 *   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
