@@ -70,6 +70,11 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.1.15 Bugfix release</b>\
+<ul>\
+<li>Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to \"disabled\"</li>\
+</ul>\
+<br>\
 <b>v1.1.14 New icons</b>\
 <ul>\
 <li>Added individual icons for password entries and groups</li>\
@@ -81,7 +86,6 @@ Page {
 <li>Updated all other translations</li>\
 </ul>\
 <br>\
-
 <b>v1.1.13 Bugfix release</b>\
 <ul>\
 <li>File browser: When searching for a key file the default value for file filter is *.key</li>\

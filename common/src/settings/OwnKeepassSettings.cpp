@@ -124,6 +124,20 @@ void OwnKeepassSettings::checkSettingsVersion()
             }
         }
 
+        // Version 1.1.15 fixes mapping of "disabled clearing clipboard" to the new value (>10 minutes) which was introduced with release 1.1.14
+        if ((major == 1) && (minor <= 1) && (patch <= 14)) {
+            m_clearClipboard = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toInt();
+            if (m_clearClipboard == 0) {
+                // This is the new value for unlimited time
+                m_clearClipboard = 10;
+                m_settings->setValue("settings/clearClipboard", QVariant(m_clearClipboard));
+            } else if (m_clearClipboard == 10) {
+                // This is the new value for 10 seconds
+                m_clearClipboard = 1;
+                m_settings->setValue("settings/clearClipboard", QVariant(m_clearClipboard));
+            }
+        }
+
         // check if ownKeepass was updated and trigger to show info banner in QML
         if (m_previousVersion != INITIAL_VERSION) {
             emit showChangeLogBanner();
