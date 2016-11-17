@@ -43,6 +43,7 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/DatabaseIcons.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/FilePath.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.cpp \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/PasswordGenerator.cpp \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey.cpp \
 \
@@ -85,6 +86,7 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/DatabaseIcons.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/FilePath.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.h \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/PasswordGenerator.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey_p.h \

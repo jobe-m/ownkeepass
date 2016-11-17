@@ -24,7 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 import "../common"
-import harbour.ownkeepass.PasswordGenerator 1.0
+import harbour.ownkeepass 1.0
 
 Dialog {
     id: passwordGeneratorDialog

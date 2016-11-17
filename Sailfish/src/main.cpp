@@ -42,6 +42,7 @@
 #include "RecentDatabaseListModel.h"
 #include "FileBrowserPlugin.h"
 #include "ownKeepassGlobal.h"
+#include "PasswordGeneratorAdapter.h"
 
 int main(int argc, char *argv[])
 {
@@ -71,6 +72,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
     qmlRegisterType<FileBrowserListModel>(uri, 1, 0, "FileBrowserListModel");
+    qmlRegisterType<PasswordGeneratorAdapter>(uri, 1, 0, "PasswordGenerator");
 
     // provide only one instance of KdbDatabase to QML, only one database can be open at a time
     QScopedPointer<kpxPublic::KdbDatabase> database(new kpxPublic::KdbDatabase());

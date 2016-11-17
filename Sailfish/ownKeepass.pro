@@ -25,6 +25,7 @@ include(../common/src/keepassPlugin/keepass1_database/keepass1_database.pri)
 include(../common/src/keepassPlugin/keepass2_database/keepass2_database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 include(../common/src/fileBrowserPlugin/fileBrowserPlugin.pri)
+include(../common/src/passwordGeneratorAdapter/passwordGeneratorAdapter.pri)
 
 # Get release version from .spec file and paste it further to c++ through a define
 isEmpty(VERSION) {
@@ -70,12 +71,8 @@ common_files.files += \
     ../common/images/entryicons \
     ../common/images/covericons \
     ../common/images/wallicons
-password_generator_qmldir.path   = /usr/share/$${TARGET}/lib/harbour/ownkeepass/PasswordGenerator
-password_generator_qmldir.files += \
-    ../common/qml/imports/PasswordGenerator/qmldir
 password_generator_lib.path   = /usr/share/$${TARGET}/lib
 password_generator_lib.files += \
-    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libPasswordGenerator.so \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgcrypt.so.11 \
     ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgpg-error.so.0
 
@@ -92,7 +89,6 @@ icon_file_256x256.files = icons/256x256/$${TARGET}.png
 INSTALLS += \
     common_files \
     password_generator_lib \
-    password_generator_qmldir \
     icon_file_86x86 \
     icon_file_108x108 \
     icon_file_128x128 \
