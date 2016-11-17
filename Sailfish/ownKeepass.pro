@@ -73,8 +73,8 @@ common_files.files += \
     ../common/images/wallicons
 password_generator_lib.path   = /usr/share/$${TARGET}/lib
 password_generator_lib.files += \
-    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgcrypt.so.11 \
-    ../common/qml/imports/PasswordGenerator/$$ARCH_LIBS/libgpg-error.so.0
+    ../common/libs/$$ARCH_LIBS/libgcrypt.so.11 \
+    ../common/libs/$$ARCH_LIBS/libgpg-error.so.0
 
 # process all application icon sizes
 icon_file_86x86.path    = /usr/share/icons/hicolor/86x86/apps
