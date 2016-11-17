@@ -92,6 +92,10 @@ hacks your cloud service he will be left without the key file. By doing so you m
 harder for an attacker to crack your Keepass database because the key file content is usually
 impossible to guess.
 
+Optionally you could use [Syncthing] [9] to sync the password safe between different devices. Syncthing is available for
+all platforms including Sailfish OS. For Sailfish OS it is available in openrepos as the [core] [10] and a [GUI] [11].
+Syncthing does not require a sync over the internet but it can sync locally between devices.
+
 Some technical notes for QML hackers
 ------------------------------------
 
@@ -143,6 +147,9 @@ Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more 
 [6]: https://github.com/jobe-m/ownkeepass/milestones                   "Status of next major ownKeepass releases"
 [7]: https://github.com/jobe-m/ownkeepass/issues
 [8]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
+[9]: https://syncthing.net/                                            "Syncthing homepage"
+[10]: https://openrepos.net/content/fooxl/syncthing-inotify-bin        "Syncthing core for SFOS"
+[11]: https://openrepos.net/content/fooxl/syncthing-sf                 "Syncthing GUI for SFOS"
 
 Screenshots
 -----------
