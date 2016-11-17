@@ -116,7 +116,10 @@ GPLv2<br><br>\
 \
 Icons taken from the Keepass2Android project:<br>\
 Copyright (C) 2016 Philipp Crocoll<br>\
-GPLv2 or later<br>\
+GPLv2 or later<br><br>\
+\
+Settings code:<br>\
+Copyright (C) 2012  Marco Bavagnoli - lil.deimos@gmail.com<br><br>\
 "
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
