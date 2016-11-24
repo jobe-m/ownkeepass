@@ -169,6 +169,9 @@ public slots:
     void slot_moveGroup(QString groupId,
                         QString newParentGroupId);
 
+public:
+    void getCustomIcon(QString value);
+
 private:
     void initDatabase();
 //    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);

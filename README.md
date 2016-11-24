@@ -6,6 +6,11 @@ ownKeepass
 Status
 ------
 
+Next release 1.1.16
+* Code cleanup done, password generator code refactored
+* Update source base of KeepassX 2 database code to KeepassX release 2.0.2
+*
+
 Bugfix release 1.1.15 is going to Jolla store and is already available in [openrepos.net] [1]
 * Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to "disabled"
 

@@ -24,6 +24,7 @@
 #define DATABASEINTERFACE_H
 
 #include <QString>
+#include <QImage>
 
 
 // Interface for accessing a database
@@ -220,6 +221,16 @@ public: // slots
     virtual void slot_deleteGroup(QString groupId) = 0;
     virtual void slot_moveGroup(QString groupId,
                                 QString newParentGroupId) = 0;
+
+public:
+    /*!
+     * \brief The getCustomIcon function returns a custom database icon
+     * with the Uuid represented as the QString value.
+     *
+     * \param value
+     * \returns A custom database icon as QImage or an empty QImage if the Uuid is not valid.
+     */
+    virtual QImage getCustomIcon(QString value) = 0;
 };
 
 Q_DECLARE_INTERFACE(AbstractDatabaseInterface, "harbour.ownkeepass.AbstractDatabaseInterface")

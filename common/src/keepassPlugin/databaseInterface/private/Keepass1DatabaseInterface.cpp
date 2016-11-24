@@ -858,6 +858,11 @@ void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
     }
 }
 
+QImage Keepass1DatabaseInterface::getCustomIcon(QString value)
+{
+    return QImage;
+}
+
 /*!
 \brief Convert integer number to QString
 
