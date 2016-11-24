@@ -858,9 +858,11 @@ void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
     }
 }
 
-QImage Keepass1DatabaseInterface::getCustomIcon(QString value)
+const QImage Keepass1DatabaseInterface::getCustomIcon(const QString value)
 {
-    return QImage;
+    Q_UNUSED(value);
+    // not yet implemented
+    return QImage();
 }
 
 /*!

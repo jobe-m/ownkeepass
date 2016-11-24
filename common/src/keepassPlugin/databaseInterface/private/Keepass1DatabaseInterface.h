@@ -168,7 +168,7 @@ public slots:
     void slot_moveGroup(QString groupId,
                         QString newParentGroupId);
 public:
-    QImage getCustomIcon(QString value);
+    const QImage getCustomIcon(const QString value);
 
 private:
     void initDatabase();

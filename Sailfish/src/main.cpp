@@ -93,8 +93,6 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("recentDatabaseModel", okpSettings->recentDatabaseModel());
     view->engine()->addImageProvider(QLatin1String("CustomIcon"), new KdbCustomIcon());
 
-    engine->addImageProvider(QLatin1String("colors"), new ColorPixmapProvider);
-
     // Check if user has set language explicitly to be used in the app
     QString locale = QLocale::system().name();
     view->rootContext()->setContextProperty("DebugLocale",QVariant(locale));

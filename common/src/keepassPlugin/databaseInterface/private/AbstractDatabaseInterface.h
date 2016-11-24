@@ -230,7 +230,7 @@ public:
      * \param value
      * \returns A custom database icon as QImage or an empty QImage if the Uuid is not valid.
      */
-    virtual QImage getCustomIcon(QString value) = 0;
+    virtual const QImage getCustomIcon(const QString value) = 0;
 };
 
 Q_DECLARE_INTERFACE(AbstractDatabaseInterface, "harbour.ownkeepass.AbstractDatabaseInterface")

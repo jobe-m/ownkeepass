@@ -170,7 +170,7 @@ public slots:
                         QString newParentGroupId);
 
 public:
-    void getCustomIcon(QString value);
+    const QImage getCustomIcon(const QString value);
 
 private:
     void initDatabase();

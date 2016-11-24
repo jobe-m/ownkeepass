@@ -527,12 +527,12 @@ void Keepass2DatabaseInterface::slot_changeCryptAlgorithm(int value)
 {
 }
 
-QImage Keepass2DatabaseInterface::getCustomIcon(QString value)
+const QImage Keepass2DatabaseInterface::getCustomIcon(const QString value)
 {
-    Uuid iconUuid = qString2Uuid(value);
+    const Uuid iconUuid = qString2Uuid(value);
     if (m_Database->metadata()->containsCustomIcon(iconUuid)) {
         return m_Database->metadata()->customIcon(iconUuid);
     } else {
-        return QImage;
+        return QImage();
     }
 }
