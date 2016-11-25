@@ -927,17 +927,17 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="145"/>
+        <location filename="../qml/content/KdbListItem.qml" line="148"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="161"/>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
         <source>Delete</source>
         <translation>Borrar</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="178"/>
+        <location filename="../qml/content/KdbListItem.qml" line="181"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Mover</translation>

@@ -927,17 +927,17 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="145"/>
+        <location filename="../qml/content/KdbListItem.qml" line="148"/>
         <source>Edit</source>
         <translation>Modifica</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="161"/>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
         <source>Delete</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="178"/>
+        <location filename="../qml/content/KdbListItem.qml" line="181"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Sposta</translation>

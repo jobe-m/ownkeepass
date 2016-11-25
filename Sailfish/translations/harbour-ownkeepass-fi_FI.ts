@@ -930,17 +930,17 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="145"/>
+        <location filename="../qml/content/KdbListItem.qml" line="148"/>
         <source>Edit</source>
         <translation>Muokkaa</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="161"/>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
         <source>Delete</source>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="178"/>
+        <location filename="../qml/content/KdbListItem.qml" line="181"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Siirrä</translation>

@@ -99,6 +99,7 @@ protected: // signals
     // signals to KdbListModel object
     virtual void appendItemToListModel(QString title,
                                        quint32 iconId,
+                                       QString customIconUuid,
                                        QString subtitle,
 //                                       int numberOfSubGroups,
 //                                       int numberOfEntries,
@@ -108,25 +109,28 @@ protected: // signals
                                        QString modelId) = 0;
     virtual void addItemToListModelSorted(QString title,
                                           quint32 iconId,
+                                          QString customIconUuid,
+                                          QString subtitle,
 //                                          int numberOfSubGroups,
 //                                          int numberOfEntries,
-                                          QString subtitle,
                                           QString itemId,
                                           int itemType,
                                           int itemLevel,
                                           QString modelId) = 0;
     virtual void updateItemInListModel(QString title,
                                        quint32 iconId,
+                                       QString customIconUuid,
+                                       QString subTitle,
 //                                       int numberOfSubGroups,
 //                                       int numberOfEntries,
-                                       QString subTitle,
                                        QString itemId,
                                        QString modelId) = 0;
     virtual void updateItemInListModelSorted(QString title,
                                              quint32 iconId,
+                                             QString customIconUuid,
+                                             QString subTitle,
 //                                             int numberOfSubGroups,
 //                                             int numberOfEntries,
-                                             QString subTitle,
                                              QString itemId,
                                              QString modelId) = 0;
     virtual void masterGroupsLoaded(int result) = 0;

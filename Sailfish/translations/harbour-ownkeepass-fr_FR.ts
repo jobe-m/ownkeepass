@@ -929,17 +929,17 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="145"/>
+        <location filename="../qml/content/KdbListItem.qml" line="148"/>
         <source>Edit</source>
         <translation>Modifier</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="161"/>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="178"/>
+        <location filename="../qml/content/KdbListItem.qml" line="181"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Déplacer</translation>

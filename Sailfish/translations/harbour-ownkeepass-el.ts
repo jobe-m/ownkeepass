@@ -926,17 +926,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="145"/>
+        <location filename="../qml/content/KdbListItem.qml" line="148"/>
         <source>Edit</source>
         <translation>Επεξεργασία</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="161"/>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
         <source>Delete</source>
         <translation>Διαγραφή</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="178"/>
+        <location filename="../qml/content/KdbListItem.qml" line="181"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Μετακίνηση</translation>

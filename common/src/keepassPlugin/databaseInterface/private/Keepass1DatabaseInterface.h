@@ -59,6 +59,7 @@ signals:
     // signals to KdbListModel object
     void appendItemToListModel(QString title,
                                quint32 iconId,
+                               QString customIconUuid,
                                QString subtitle,
                                QString itemId,
                                int itemType,
@@ -66,6 +67,7 @@ signals:
                                QString modelId);
     void addItemToListModelSorted(QString title,
                                   quint32 iconId,
+                                  QString customIconUuid,
                                   QString subtitle,
                                   QString itemId,
                                   int itemType,
@@ -73,11 +75,13 @@ signals:
                                   QString modelId);
     void updateItemInListModel(QString title,
                                quint32 iconId,
+                               QString customIconUuid,
                                QString subTitle,
                                QString itemId,
                                QString modelId);
     void updateItemInListModelSorted(QString title,
                                      quint32 iconId,
+                                     QString customIconUuid,
                                      QString subTitle,
                                      QString itemId,
                                      QString modelId);

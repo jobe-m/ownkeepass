@@ -194,6 +194,13 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         int numberOfEntries = masterGroup->entries().count();
 
         Uuid masterGroupId = masterGroup->uuid();
+        Uuid customIconUuid = masterGroup->iconUuid();
+        QString customIcon;
+        if (customIconUuid.isNull()) {
+            customIcon = "";
+        } else {
+            customIcon = customIconUuid.toHex();
+        }
 //        qDebug() << "Uuid: " << masterGroupId.toByteArray();
 //        qDebug() << "toHex: " << masterGroupId.toHex();
         if (registerListModel) {
@@ -204,6 +211,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         if (m_setting_sortAlphabeticallyInListView) {
             emit addItemToListModelSorted(masterGroup->name(),
                                           (quint32)masterGroup->iconNumber(),          // icon id
+                                          customIcon,                                  // customIconUuid
                                           QString("Subgroups: %1 | Entries: %2")
                                           .arg(numberOfSubgroups)
                                           .arg(numberOfEntries),                       // subtitle
@@ -214,6 +222,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         } else {
             emit appendItemToListModel(masterGroup->name(),                            // group name
                                        (quint32)masterGroup->iconNumber(),             // icon id
+                                       customIcon,                                     // customIconUuid
                                        QString("Subgroups: %1 | Entries: %2")
                                        .arg(numberOfSubgroups)
                                        .arg(numberOfEntries),                          // subtitle
@@ -228,10 +237,18 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
     for (int i = 0; i < masterEntries.count(); i++) {
         Entry* entry = masterEntries.at(i);
         Uuid itemId = entry->uuid();
+        Uuid customIconUuid = entry->iconUuid();
+        QString customIcon;
+        if (customIconUuid.isNull()) {
+            customIcon = "";
+        } else {
+            customIcon = customIconUuid.toHex();
+        }
         // only append to list model if item ID is valid
         if (m_setting_sortAlphabeticallyInListView) {
             emit appendItemToListModel(entry->title(),                                 // group name
                                        (quint32)entry->iconNumber(),                   // icon id
+                                       customIcon,                                     // customIconUuid
                                        getUserAndPassword(entry),                      // subtitle
                                        itemId.toHex(),                                 // item id
                                        (int)DatabaseItemType::ENTRY,                   // item type
@@ -240,6 +257,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         } else {
             emit addItemToListModelSorted(entry->title(),                              // group name
                                           (quint32)entry->iconNumber(),                // icon id
+                                          customIcon,                                  // customIconUuid
                                           getUserAndPassword(entry),                   // subtitle
                                           itemId.toHex(),                              // item id
                                           (int)DatabaseItemType::ENTRY,                // item type
@@ -268,10 +286,18 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         int numberOfSubgroups = subGroup->children().count();
         int numberOfEntries = subGroup->entries().count();
         Uuid itemId = subGroup->uuid();
+        Uuid customIconUuid = subGroup->iconUuid();
+        QString customIcon;
+        if (customIconUuid.isNull()) {
+            customIcon = "";
+        } else {
+            customIcon = customIconUuid.toHex();
+        }
 
         if (m_setting_sortAlphabeticallyInListView) {
             emit appendItemToListModel(subGroup->name(),                                  // group name
                                        (quint32)subGroup->iconNumber(),                   // icon id
+                                       customIcon,                                        // customIconUuid
                                        QString("Subgroups: %1 | Entries: %2")
                                        .arg(numberOfSubgroups).arg(numberOfEntries),      // subtitle
                                        itemId.toHex(),                                    // item id
@@ -281,6 +307,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         } else {
             emit addItemToListModelSorted(subGroup->name(),                               // group name
                                           (quint32)subGroup->iconNumber(),                // icon id
+                                          customIcon,                                     // customIconUuid
                                           QString("Subgroups: %1 | Entries: %2")
                                           .arg(numberOfSubgroups).arg(numberOfEntries),   // subtitle
                                           itemId.toHex(),                                 // item id
@@ -297,10 +324,18 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     for (int i = 0; i < entries.count(); i++) {
         Entry* entry = entries.at(i);
         Uuid itemId = entry->uuid();
+        Uuid customIconUuid = entry->iconUuid();
+        QString customIcon;
+        if (customIconUuid.isNull()) {
+            customIcon = "";
+        } else {
+            customIcon = customIconUuid.toHex();
+        }
 
         if (m_setting_sortAlphabeticallyInListView) {
             emit appendItemToListModel(entry->title(),                                    // group name
                                        (quint32)entry->iconNumber(),                      // icon id
+                                       customIcon,                                        // customIconUuid
                                        getUserAndPassword(entry),                         // subtitle
                                        itemId.toHex(),                                    // item id
                                        (int)DatabaseItemType::ENTRY,                      // item type
@@ -309,6 +344,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         } else {
             emit addItemToListModelSorted(entry->title(),                                 // group name
                                           (quint32)entry->iconNumber(),                   // icon id
+                                          customIcon,                                     // customIconUuid
                                           getUserAndPassword(entry),                      // subtitle
                                           itemId.toHex(),                                 // item id
                                           (int)DatabaseItemType::ENTRY,                   // item type
@@ -434,9 +470,17 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
         Uuid searchUuid = qString2Uuid(searchId);
         Q_FOREACH (Entry* entry, searcher.search(searchString, searchGroup, Qt::CaseInsensitive)) {
             // update list model with found entries
+            Uuid customIconUuid = entry->iconUuid();
+            QString customIcon;
+            if (customIconUuid.isNull()) {
+                customIcon = "";
+            } else {
+                customIcon = customIconUuid.toHex();
+            }
             if (m_setting_sortAlphabeticallyInListView) {
                 emit addItemToListModelSorted(entry->title(),                              // entry name
                                               (quint32)entry->iconNumber(),                // icon id
+                                              customIcon,                                  // customIconUuid
                                               entry->group()->name(),                      // name of parent group as subtitle
                                               entry->uuid().toHex(),                       // item id
                                               DatabaseItemType::ENTRY,                     // item type
@@ -445,6 +489,7 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
             } else {
                 emit appendItemToListModel(entry->title(),                                 // entry name
                                            (quint32)entry->iconNumber(),                   // icon id
+                                           customIcon,                                     // customIconUuid
                                            entry->group()->name(),                         // name of parent group as subtitle
                                            entry->uuid().toHex(),                          // item id
                                            DatabaseItemType::ENTRY,                        // item type
