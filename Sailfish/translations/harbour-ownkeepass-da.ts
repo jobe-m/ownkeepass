@@ -373,32 +373,37 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="77"/>
         <source>Save</source>
         <translation>Gem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="64"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="78"/>
         <source>Discard</source>
         <translation>Kassér</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="68"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
+        <source>Change icon:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="132"/>
         <source>Type in a name for the new group:</source>
         <translation>Indtast et navn på den nye gruppe:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="69"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
         <source>Change name of group:</source>
         <translation>Skift navn på gruppe:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="75"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
         <source>Name of group</source>
         <translation>Gruppenavn</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="141"/>
         <source>Set name of group</source>
         <translation>Sæt navn på gruppe</translation>
     </message>

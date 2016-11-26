@@ -785,11 +785,11 @@ Page {
                 showEntryDetailsPageRef.setTextFields(keys, values)
         }
 
-        function loadKdbGroupDetails(name) {
+        function loadKdbGroupDetails(name, iconId, customIconUuid) {
             groupName = originalGroupName = name
             // Populate group detail text fields in editGroupDetailsDialog
             if(editGroupDetailsDialogRef)
-                editGroupDetailsDialogRef.setTextFields(name)
+                editGroupDetailsDialogRef.setTextFields(name, iconId, customIconUuid)
         }
 
         function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment) {
@@ -909,7 +909,7 @@ Page {
 
     KdbGroup {
         id: kdbGroup
-        onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title)
+        onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title, iconId, customIconUuid)
         onGroupDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
         onNewGroupCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }

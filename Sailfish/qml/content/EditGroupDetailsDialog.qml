@@ -38,8 +38,22 @@ Dialog {
     // set cover page accordingly to signal the user unsaved changes
     property string origGroupTitle: ""
 
-    function setTextFields(name) {
+    // private
+    property string _customIconUuid: ""
+    property int _iconId: 0
+
+    function setTextFields(name, iconId, customIconUuid) {
         groupTitleTextField.text = origGroupTitle = name
+        _iconId = iconId
+        _customIconUuid = customIconUuid
+        // determine if this group has a custom icon if not set the corresponding icon wiht iconId
+        if (customIconUuid.length === 0) {
+            groupIcon.source = "../../entryicons/icf" + iconId + ".png"
+        } else {
+            groupIcon.source = "image://CustomIcon/" + customIconUuid
+        }
+
+        groupTitleTextField.focus = true
     }
 
     // forbit page navigation if name of group is empty
@@ -62,6 +76,56 @@ Dialog {
             DialogHeader {
                 acceptText: qsTr("Save")
                 cancelText: qsTr("Discard")
+            }
+
+            SilicaLabel {
+                text: qsTr("Change icon:")
+            }
+
+            Item {
+                width: parent.width
+                height: groupIconBackground.height
+
+                Rectangle {
+                    id: groupIconBackground
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: Theme.itemSizeMedium
+                    height: Theme.itemSizeMedium
+                    color: "white"
+
+                    MouseArea {
+                        id: groupIconMouseArea
+                        anchors.fill: parent
+                        onClicked: {
+                            // open new dialog with grid of all icons
+                        }
+                    }
+                }
+
+                OpacityRampEffect {
+                    sourceItem: groupIconBackground
+                    slope: 0.25
+                    offset: 0.0
+                    clampFactor: -0.75
+                    direction: OpacityRamp.BottomToTop
+                }
+
+                Image {
+                    id: groupIcon
+                    anchors.centerIn: parent
+                    width: Theme.iconSizeMedium
+                    height: Theme.iconSizeMedium
+                    fillMode: Image.PreserveAspectFit
+                    asynchronous: true
+                    opacity: groupIconMouseArea.pressed ? 0.5 : 1.0
+                }
+
+                Rectangle {
+                    anchors.fill: groupIconBackground
+                    color: groupIconMouseArea.pressed ?
+                               Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
+                             : "transparent"
+                }
             }
 
             SilicaLabel {
@@ -93,6 +157,7 @@ Dialog {
                         applicationWindow.cover.state = "GROUPS_VIEW"
                     }
                 }
+                focusOutBehavior: -1
             }
         }
     }

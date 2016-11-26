@@ -402,7 +402,7 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
     // get group handler for groupId
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
-    emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->title());
+    emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->title(), (int)group->image(), "");
 }
 
 void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)

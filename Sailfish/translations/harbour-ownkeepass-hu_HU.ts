@@ -373,32 +373,37 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="63"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="77"/>
         <source>Save</source>
         <translation>Mentés</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="64"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="78"/>
         <source>Discard</source>
         <translation>Mégsem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="68"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
+        <source>Change icon:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="132"/>
         <source>Type in a name for the new group:</source>
         <translation>Nevezzük el az új csoportot:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="69"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
         <source>Change name of group:</source>
         <translation>Csoport nevének megváltoztatása:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="75"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
         <source>Name of group</source>
         <translation>Csoport neve</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="141"/>
         <source>Set name of group</source>
         <translation>Csoport nevének megadása</translation>
     </message>

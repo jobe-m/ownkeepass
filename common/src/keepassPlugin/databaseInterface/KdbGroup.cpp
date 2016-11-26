@@ -49,9 +49,9 @@ bool KdbGroup::connectToDatabaseClient()
                        SLOT(slot_loadGroup(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(groupLoaded(int, QString, QString)),
+                  SIGNAL(groupLoaded(int, QString, QString,int,QString)),
                   this,
-                  SLOT(slot_groupDataLoaded(int,QString,QString)));
+                  SLOT(slot_groupDataLoaded(int,QString,QString,int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
                   SIGNAL(saveGroupToKdbDatabase(QString, QString)),
@@ -112,7 +112,7 @@ void KdbGroup::loadGroupData()
     Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
+        emit groupDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "", 0 , "");
     } else {
         // trigger loading from database client
         emit loadGroupFromKdbDatabase(m_groupId);
@@ -171,11 +171,11 @@ void KdbGroup::moveGroup(QString newParentGroupId)
     }
 }
 
-void KdbGroup::slot_groupDataLoaded(int result, QString groupId, QString title)
+void KdbGroup::slot_groupDataLoaded(int result, QString groupId, QString title, int iconId, QString customIconUuid)
 {
     // forward signal to QML only if the signal is for us
     if (groupId.compare(m_groupId) == 0) {
-        emit groupDataLoaded(result, title);
+        emit groupDataLoaded(result, title, iconId, customIconUuid);
     }
 }
 

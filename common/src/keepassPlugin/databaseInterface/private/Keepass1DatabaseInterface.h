@@ -107,7 +107,9 @@ signals:
     // signal to KdbGroup object
     void groupLoaded(int result,
                      QString groupId,
-                     QString title);
+                     QString title,
+                     int iconId,
+                     QString customIconUuid);
     void groupSaved(int result,
                     QString groupId);
     void newGroupCreated(int result,

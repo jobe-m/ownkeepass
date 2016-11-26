@@ -141,7 +141,8 @@ protected: // signals
     // signal to KdbEntry object
     virtual void entryLoaded(int result,
                              QString entryId,
-//                             quint32 iconId,
+//                             int iconId,
+//                             QString customIconUuid,
                              QList<QString> keys,
                              QList<QString> values) = 0;
     virtual void entrySaved(int result,
@@ -156,8 +157,9 @@ protected: // signals
     // signal to KdbGroup object
     virtual void groupLoaded(int result,
                              QString groupId,
-                             QString title) = 0; //,
-//                             quint32 iconId) = 0;
+                             QString title,
+                             int iconId,
+                             QString customIconUuid) = 0;
     virtual void groupSaved(int result,
                             QString groupId) = 0;
     virtual void newGroupCreated(int result,
