@@ -388,22 +388,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
         <source>Type in a name for the new group:</source>
         <translation>Scegli un nome per il nuovo gruppo:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="134"/>
         <source>Change name of group:</source>
         <translation>Cambia il nome del gruppo:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
         <source>Name of group</source>
         <translation>Nome del gruppo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="141"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
         <source>Set name of group</source>
         <translation>Inserisci nome del gruppo</translation>
     </message>
@@ -1471,6 +1471,19 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
         <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Inserisci una password principale per sbloccare il tuo nuovo Keepass:</translation>
+    </message>
+</context>
+<context>
+    <name>SelectKdbIconDialog</name>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="91"/>
+        <source>Use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="92"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annulla</translation>
     </message>
 </context>
 <context>

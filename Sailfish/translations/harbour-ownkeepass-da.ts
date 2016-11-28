@@ -388,22 +388,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
         <source>Type in a name for the new group:</source>
         <translation>Indtast et navn på den nye gruppe:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="134"/>
         <source>Change name of group:</source>
         <translation>Skift navn på gruppe:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
         <source>Name of group</source>
         <translation>Gruppenavn</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="141"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
         <source>Set name of group</source>
         <translation>Sæt navn på gruppe</translation>
     </message>
@@ -1470,6 +1470,19 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Indtast det primære kodeord for at åbne dit Keepass Kodeskab:</translation>
+    </message>
+</context>
+<context>
+    <name>SelectKdbIconDialog</name>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="91"/>
+        <source>Use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="92"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -187,3 +187,6 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-ja_JP.ts \
     translations/harbour-ownkeepass-hu_HU.ts \
     translations/harbour-ownkeepass-gl.ts
+
+DISTFILES += \
+    qml/content/SelectKdbIconDialog.qml

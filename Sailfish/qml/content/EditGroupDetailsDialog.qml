@@ -98,6 +98,7 @@ Dialog {
                         anchors.fill: parent
                         onClicked: {
                             // open new dialog with grid of all icons
+                            pageStack.push(selectKdbIconDialog)
                         }
                     }
                 }
@@ -160,6 +161,10 @@ Dialog {
                 focusOutBehavior: -1
             }
         }
+    }
+
+    SelectKdbIconDialog {
+        id: selectKdbIconDialog
     }
 
     Component.onCompleted: {

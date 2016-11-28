@@ -388,22 +388,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
         <source>Type in a name for the new group:</source>
         <translation>Typ de naam van de nieuwe groep:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="134"/>
         <source>Change name of group:</source>
         <translation>Wijzig de naam van de groep:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
         <source>Name of group</source>
         <translation>Naam van de groep</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="141"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
         <source>Set name of group</source>
         <translation>Stel de naam van de groep in</translation>
     </message>
@@ -1474,6 +1474,19 @@ ownKeepass is een wachtwoordkluis voor de Jolla Smartphone met het doel gevoelig
         <location filename="../qml/content/QueryPasswordDialog.qml" line="321"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Typ het hoofdwachtwoord voor het ontgrendelen van uw Keepass-wachtwoordkluis:</translation>
+    </message>
+</context>
+<context>
+    <name>SelectKdbIconDialog</name>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="91"/>
+        <source>Use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="92"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuleren</translation>
     </message>
 </context>
 <context>
