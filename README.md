@@ -6,12 +6,13 @@ ownKeepass
 Status
 ------
 
-Next release 1.1.16
+Next release 1.2.0
 * Code cleanup done, password generator code refactored
 * Update source base of KeepassX 2 database code to KeepassX release 2.0.2
-*
+* Changing icon of Keepass group implemented for Keepass 1 and Keepass 2 databases
+* ...
 
-Bugfix release 1.1.15 is going to Jolla store and is already available in [openrepos.net] [1]
+Bugfix release 1.1.15 is available in Jolla store and on [openrepos.net] [1]
 * Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to "disabled"
 
 Release 1.1.14
@@ -29,8 +30,6 @@ Roadmap
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Code cleanup, rewrite password generator in order to get rid of binary blob for it
-*   Update KeepassX 2 database code base with upstream
 *   Write support for Keepass 2 databases
 *   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
 
@@ -101,48 +100,7 @@ Optionally you could use [Syncthing] [9] to sync the password safe between diffe
 all platforms including Sailfish OS. For Sailfish OS it is available in openrepos as the [core] [10] and a [GUI] [11].
 Syncthing does not require a sync over the internet but it can sync locally between devices.
 
-Some technical notes for QML hackers
-------------------------------------
-
-If you want to dig deeper into the code here are some hints to help you getting an overview of the code. The interface for
-the Keepass database code is split into four classes which are exposed as objects to the QML world:
-
-*   KdbDatabase:
-    That object enables the QML side to open an existing Keepass database, create a new empty
-    database and close a database.
-*   KdbListModel:
-    That object is used to get a list of Keepass groups and entries for a dedicated Keepass
-    group or the root group from the Keepass database. It also provides the possibility to search
-    for a specific group and entry in the database.
-*   KdbGroup:
-    This object provides the posibility to create a new group or change the name for an existing
-    group in the database.
-*   KdbEntry:
-    With the use of that object the QML code can read all properties from a Keepass entry like
-    webpage, username, password, comment, etc. Through this object it is also possible to create
-    new entries and save them in the Keepass database.
-
-Features
---------
-
-*   Load and save (automatically in background) kdb database files (Keepass 1)
-*   Load kdbx database files (Keepass 2)
-*   Create, modify and delete Keepass groups and entries
-*   Move password entries between groups
-*   Create new and open existing keepass files from Phone's Home folder, SD Card or Android Storage
-*   Database settings adjustable like master password, encryption algorithm and key transformation rounds
-*   Search keepass entries in whole database
-*   Fast unlock a database with the first 3 characters of the master password
-*   File browser for selecting a database file for loading and choosing a directory for creating a new database
-*   Copy username and password from within cover page and use cover page to peak from other apps to
-    look up username and password
-*   Clear clipboard after 10 seconds and a lot of more
-
-That's it so far.
-
-19-October-2015
-
-Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
+Copyright 2014 - 2016 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
 [1]: https://openrepos.net/content/jobe/ownkeepass                     "Beta and testing releases"
 [2]: http://www.keepass.info/help/v1/setup.html                        "Official Keepass homepage for version 1"
@@ -155,16 +113,3 @@ Copyright 2014 - 2015 Marko Koschak. Licensed under GPLv2. See LICENSE for more 
 [9]: https://syncthing.net/                                            "Syncthing homepage"
 [10]: https://openrepos.net/content/fooxl/syncthing-inotify-bin        "Syncthing core for SFOS"
 [11]: https://openrepos.net/content/fooxl/syncthing-sf                 "Syncthing GUI for SFOS"
-
-Screenshots
------------
-
-![ownKeepass main page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_1.png)
-![ownKeepass search in all groups page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_2.png)
-![ownKeepass password generator dialog](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_3.png)
-![ownKeepass lock page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_4.png)
-![ownKeepass move password entry dialog](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_5.png)
-![ownKeepass open new database dialog](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_6.png)
-![ownKeepass password entry page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_7.png)
-![ownKeepass cover page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_8.png)
-![ownKeepass change log page](http://www.tisno.de/images/stories/myworld/ownkeepass/ownkeepass_9.png)
