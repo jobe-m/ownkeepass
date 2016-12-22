@@ -135,7 +135,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     }
 
     // currently Keepass 2 database support is limited to read only, so set it here explicitly
-    db_read_only = true;
+//    db_read_only = true;
 
     // database was opened successfully
     if (db_read_only) {
@@ -399,10 +399,32 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 
 void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
 {
+    Q_ASSERT(m_Database);
+    // get group handle and load group details
+    Uuid groupUuid = qString2Uuid(groupId);
+    Group* group = m_Database->resolveGroup(groupUuid);
+    Uuid customIconUuid = group->iconUuid();
+    QString customIcon;
+    if (customIconUuid.isNull()) {
+        customIcon = "";
+    } else {
+        customIcon = customIconUuid.toHex();
+    }
+    emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->name(), (int)group->iconNumber(), customIcon);
 }
 
 void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title)
 {
+    Q_ASSERT(m_Database);
+    // get group handle and load group details
+    Uuid groupUuid = qString2Uuid(groupId);
+    Group* group = m_Database->resolveGroup(groupUuid);
+    group->setName(title);
+
+    // save database
+
+    // update all list models which contain the changed group
+
 }
 
 void Keepass2DatabaseInterface::slot_unregisterListModel(QString modelId)

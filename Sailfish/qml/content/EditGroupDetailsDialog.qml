@@ -40,20 +40,24 @@ Dialog {
 
     // private
     property string _customIconUuid: ""
-    property int _iconId: 0
+    property int _iconId: -1
 
     function setTextFields(name, iconId, customIconUuid) {
         groupTitleTextField.text = origGroupTitle = name
-        _iconId = iconId
+        setIconId(iconId, customIconUuid)
+        groupTitleTextField.focus = true
+    }
+
+    function setIconId(iconId, customIconUuid) {
+        // customIconUuid has priority over iconId
+        _iconId = customIconUuid.length === 0 ? iconId : -1
         _customIconUuid = customIconUuid
-        // determine if this group has a custom icon if not set the corresponding icon wiht iconId
+        // determine if this group has a custom icon if not set the corresponding icon with iconId
         if (customIconUuid.length === 0) {
             groupIcon.source = "../../entryicons/icf" + iconId + ".png"
         } else {
             groupIcon.source = "image://CustomIcon/" + customIconUuid
         }
-
-        groupTitleTextField.focus = true
     }
 
     // forbit page navigation if name of group is empty
@@ -98,6 +102,8 @@ Dialog {
                         anchors.fill: parent
                         onClicked: {
                             // open new dialog with grid of all icons
+                            selectKdbIconDialog.newIconId = _customIconUuid.length === 0 ? _iconId : -1
+                            selectKdbIconDialog.newCustomIconUuid = _customIconUuid
                             pageStack.push(selectKdbIconDialog)
                         }
                     }

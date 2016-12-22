@@ -28,15 +28,40 @@ import "../common"
 Dialog {
     id: selectKdbIconDialog
 
+    property int newIconId: -1
+    property string newCustomIconUuid: ""
+
+    // private stuff
+    readonly property int _width: mainPage.orientation & Orientation.LandscapeMask ? Screen.height / 9 : Screen.width / 5
+    readonly property int _height: Screen.width / 5
+
+    canNavigateForward: (newIconId !== -1) || (newCustomIconUuid.length !== 0)
     allowedOrientations: applicationWindow.orientationSetting
+
+    onAccepted: {
+        // save new icon Id
+        var iconId = newCustomIconUuid.length === 0 ? newIconId : -1
+        editGroupDetailsDialog.setIconId(iconId, newCustomIconUuid)
+    }
 
     Component {
         id: iconDelegate
 
         Item {
-            width: Screen.width / 5
-            height: width
+            width: selectKdbIconDialog._width
+// TODO adapt size for jolla tablet
+            //Screen.sizeCategory >= Screen.Large ?
+            //       (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.195) : (Screen.height * 0.122)) :
+            //       (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.081) : (Screen.height * 0.063))
+            height: selectKdbIconDialog._height
 
+            Rectangle {
+                color: Theme.highlightColor
+                visible: index === selectKdbIconDialog.newIconId
+                anchors.fill: parent
+                opacity: 0.5
+            }
+            
             Rectangle {
                 id: iconBackground
                 anchors.centerIn: parent
@@ -49,6 +74,12 @@ Dialog {
                     id: iconMouseArea
                     anchors.fill: parent
                     onClicked: {
+                        // toggle icon selection
+                        if(index === selectKdbIconDialog.newIconId) {
+                            selectKdbIconDialog.newIconId = -1;
+                        } else {
+                            selectKdbIconDialog.newIconId = index;
+                        }
                     }
                 }
             }
@@ -88,13 +119,13 @@ Dialog {
         VerticalScrollDecorator {}
 
         header: DialogHeader {
-            acceptText: qsTr("Use")
+            acceptText: qsTr("Select")
             cancelText: qsTr("Cancel")
         }
 
         model: 69
-        cellWidth: Screen.width / 5
-        cellHeight: cellWidth
+        cellWidth: selectKdbIconDialog._width
+        cellHeight: selectKdbIconDialog._height
 
         delegate: iconDelegate
     }
