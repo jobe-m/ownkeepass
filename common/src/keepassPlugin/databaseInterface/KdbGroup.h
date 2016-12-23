@@ -37,8 +37,8 @@ public:
 
 public:
     Q_INVOKABLE void loadGroupData();
-    Q_INVOKABLE void createNewGroup(QString title, QString parentGroupId);
-    Q_INVOKABLE void saveGroupData(QString title);
+    Q_INVOKABLE void createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid);
+    Q_INVOKABLE void saveGroupData(QString title, int iconId, QString customIconUuid);
     Q_INVOKABLE void deleteGroup();
     Q_INVOKABLE void moveGroup(QString newParentGroupId);
 
@@ -52,8 +52,8 @@ signals:
 
     // signals to database client
     void loadGroupFromKdbDatabase(QString groupId);
-    void saveGroupToKdbDatabase(QString groupId, QString title);
-    void createNewGroupInKdbDatabase(QString title, quint32 iconId, QString parentGroupId);
+    void saveGroupToKdbDatabase(QString groupId, QString title, int iconId, QString customIconUuid);
+    void createNewGroupInKdbDatabase(QString title, QString parentGroupId, int iconId, QString customIconUuid);
     void deleteGroupFromKdbDatabase(QString groupId);
     void moveGroupInKdbDatabase(QString groupId, QString newGroupId);
 

@@ -54,9 +54,9 @@ bool KdbGroup::connectToDatabaseClient()
                   SLOT(slot_groupDataLoaded(int,QString,QString,int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(saveGroupToKdbDatabase(QString, QString)),
+                  SIGNAL(saveGroupToKdbDatabase(QString, QString,int,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_saveGroup(QString, QString)));
+                  SLOT(slot_saveGroup(QString, QString,int,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(groupSaved(int,QString)),
@@ -64,9 +64,9 @@ bool KdbGroup::connectToDatabaseClient()
                   SLOT(slot_groupDataSaved(int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(createNewGroupInKdbDatabase(QString,quint32,QString)),
+                  SIGNAL(createNewGroupInKdbDatabase(QString,QString,int,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_createNewGroup(QString,quint32,QString)));
+                  SLOT(slot_createNewGroup(QString,QString,int,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(newGroupCreated(int, QString)),
@@ -119,7 +119,7 @@ void KdbGroup::loadGroupData()
     }
 }
 
-void KdbGroup::saveGroupData(QString title)
+void KdbGroup::saveGroupData(QString title, int iconId, QString customIconUuid)
 {
     Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
@@ -131,7 +131,7 @@ void KdbGroup::saveGroupData(QString title)
     }
 }
 
-void KdbGroup::createNewGroup(QString title, QString parentGroupId)
+void KdbGroup::createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid)
 {
     Q_ASSERT(parentGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
@@ -140,8 +140,7 @@ void KdbGroup::createNewGroup(QString title, QString parentGroupId)
     } else {
         // trigger creation of new entry in database client
         m_new_group_triggered = true;
-        quint32 iconId = 1;
-        emit createNewGroupInKdbDatabase(title, iconId, parentGroupId);
+        emit createNewGroupInKdbDatabase(title, parentGroupId, iconId, customIconUuid);
     }
 }
 

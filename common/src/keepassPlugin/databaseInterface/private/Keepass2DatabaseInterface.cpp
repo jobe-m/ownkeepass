@@ -21,6 +21,7 @@
 ***************************************************************************/
 
 #include <QDebug>
+#include <QSaveFile>
 
 #include "ownKeepassGlobal.h"
 #include "Keepass2DatabaseInterface.h"
@@ -42,6 +43,7 @@ using namespace ownKeepassPublic;
 Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
     : QObject(parent),
       m_Database(NULL),
+      m_filePath(""),
       m_setting_showUserNamePasswordsInListView(false),
       m_setting_sortAlphabeticallyInListView(true),
       m_rootGroupId(0)
@@ -413,15 +415,21 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
     emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->name(), (int)group->iconNumber(), customIcon);
 }
 
-void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title)
+void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, int iconId, QString customIconUuid)
 {
     Q_ASSERT(m_Database);
     // get group handle and load group details
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
     group->setName(title);
+    if (customIconUuid.length() == 0) {
+        group->setIcon(iconId);
+    } else {
+        group->setIcon(qString2Uuid(customIconUuid));
+    }
 
     // save database
+    saveDatabase();
 
     // update all list models which contain the changed group
 
@@ -434,7 +442,7 @@ void Keepass2DatabaseInterface::slot_unregisterListModel(QString modelId)
     m_entries_modelId.remove(qString2Uuid(modelId));
 }
 
-void Keepass2DatabaseInterface::slot_createNewGroup(QString title, quint32 iconId, QString parentGroupId)
+void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid)
 {
 }
 
@@ -602,4 +610,23 @@ const QImage Keepass2DatabaseInterface::getCustomIcon(const QString value)
     } else {
         return QImage();
     }
+}
+
+bool Keepass2DatabaseInterface::saveDatabase()
+{
+    QSaveFile saveFile(m_filePath);
+    if (saveFile.open(QIODevice::WriteOnly)) {
+        m_writer.writeDatabase(&saveFile, m_Database);
+        if (m_writer.hasError()) {
+//            MessageBox::critical(this, tr("Error"), tr("Writing the database failed.") + "\n\n"
+//                                 + m_writer.errorString());
+            return false;
+        }
+        if (!saveFile.commit()) {
+//            MessageBox::critical(this, tr("Error"), tr("Writing the database failed.") + "\n\n"
+//                                 + saveFile.errorString());
+            return false;
+        }
+    }
+    return true;
 }

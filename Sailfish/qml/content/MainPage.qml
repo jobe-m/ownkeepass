@@ -681,9 +681,11 @@ Page {
           Here are the details for Kdb groups. The same applies like for Kdb entries
           */
         property string originalGroupName: ""
-// TODO                property int originalGroupImageId: 0
+        property int    originalGroupIconId: -1
+        property string originalGroupCustomIconUuid: ""
         property string groupName: ""
-// TODO                property int groupImageId: 0
+        property int    groupIconId: -1
+        property string groupCustomIconUuid: ""
 
         /*
           Data used to save database setting values in ownKeepassDatabase object
@@ -724,10 +726,14 @@ Page {
             if (createNewItem) {
                 // create new group in database, save and update list model data in backend
                 kdbGroup.createNewGroup(groupName,
-                                        parentGroupId)
+                                        parentGroupId,
+                                        groupIconId,
+                                        groupCustomIconUuid)
             } else {
                 // save changes of existing group to database and update list model data in backend
-                kdbGroup.saveGroupData(groupName)
+                kdbGroup.saveGroupData(groupName,
+                                       groupIconId,
+                                       groupCustomIconUuid)
             }
         }
 
@@ -764,7 +770,9 @@ Page {
         }
 
         function checkForUnsavedKdbGroupChanges() {
-            if (originalGroupName !== groupName) {
+            if (originalGroupName !== groupName ||
+                    originalGroupIconId !== groupIconId ||
+                    originalGroupCustomIconUuid !== groupCustomIconUuid) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_GROUP" })
             }
@@ -803,11 +811,13 @@ Page {
             entryComment  = comment
         }
 
-        function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name) {
-            createNewItem = createNewGroup
-            itemId        = groupId
-            parentGroupId = parentGrId
-            groupName     = name
+        function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name, iconId, customIconUuid) {
+            createNewItem       = createNewGroup
+            itemId              = groupId
+            parentGroupId       = parentGrId
+            groupName           = name
+            groupIconId         = iconId
+            groupCustomIconUuid = customIconUuid
         }
 
         function setDatabaseSettings(masterPassword, cryptAlgorithm, keyTransfRounds) {

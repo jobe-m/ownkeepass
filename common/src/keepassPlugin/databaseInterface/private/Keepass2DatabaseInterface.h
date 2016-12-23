@@ -24,11 +24,13 @@
 #define KEEPASS2DATABASEINTERFACE_H
 
 #include <QObject>
+
 #include "AbstractDatabaseInterface.h"
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
 #include "core/Database.h"
 #include "core/Uuid.h"
+#include "format/KeePass2Writer.h"
 
 using namespace kpxPublic;
 
@@ -167,10 +169,13 @@ public slots:
     // signal from KdbGroup object
     void slot_loadGroup(QString groupId);
     void slot_saveGroup(QString groupId,
-                        QString title);
+                        QString title,
+                        int iconId,
+                        QString customIconUuid);
     void slot_createNewGroup(QString title,
-                             quint32 iconId,
-                             QString parentGroupId);
+                             QString parentGroupId,
+                             int iconId,
+                             QString customIconUuid);
     void slot_deleteGroup(QString groupId);
     void slot_moveGroup(QString groupId,
                         QString newParentGroupId);
@@ -180,6 +185,7 @@ public:
 
 private:
     void initDatabase();
+    bool saveDatabase();
 //    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
     inline QString getUserAndPassword(Entry* entry);
     inline Uuid qString2Uuid(QString value);
@@ -188,6 +194,8 @@ private:
 private:
     // Keepass database handler
     Database* m_Database;
+    KeePass2Writer m_writer;
+    QString m_filePath;
 
     // settings
     bool m_setting_showUserNamePasswordsInListView;

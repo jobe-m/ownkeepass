@@ -219,11 +219,13 @@ public: // slots
     // signal from KdbGroup object
     virtual void slot_loadGroup(QString groupId) = 0;
     virtual void slot_saveGroup(QString groupId,
-//                                quint32 iconId,
-                                QString title) = 0;
+                                QString title,
+                                int iconId,
+                                QString customIconUuid) = 0;
     virtual void slot_createNewGroup(QString title,
-                                     quint32 iconId,
-                                     QString parentGroupId) = 0;
+                                     QString parentGroupId,
+                                     int iconId,
+                                     QString customIconUuid) = 0;
     virtual void slot_deleteGroup(QString groupId) = 0;
     virtual void slot_moveGroup(QString groupId,
                                 QString newParentGroupId) = 0;

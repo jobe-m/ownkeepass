@@ -193,7 +193,9 @@ Dialog {
         kdbListItemInternal.setKdbGroupDetails(createNewGroup,
                                                groupId,
                                                parentGroupId,
-                                               groupTitleTextField.text)
+                                               groupTitleTextField.text,
+                                               _iconId,
+                                               _customIconUuid)
         kdbListItemInternal.saveKdbGroupDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details
@@ -202,9 +204,11 @@ Dialog {
         if (canNavigateForward) {
             // first save locally Kdb entry details then trigger check for unsaved changes
             kdbListItemInternal.setKdbGroupDetails(createNewGroup,
-                                        groupId,
-                                        parentGroupId,
-                                        groupTitleTextField.text)
+                                                   groupId,
+                                                   parentGroupId,
+                                                   groupTitleTextField.text,
+                                                   _iconId,
+                                                   _customIconUuid)
             kdbListItemInternal.checkForUnsavedKdbGroupChanges()
         }
     }
