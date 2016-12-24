@@ -373,37 +373,37 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="81"/>
         <source>Save</source>
         <translation>Mentés</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="78"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
         <source>Discard</source>
         <translation>Mégsem</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="86"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
         <source>Type in a name for the new group:</source>
         <translation>Nevezzük el az új csoportot:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
         <source>Change name of group:</source>
         <translation>Csoport nevének megváltoztatása:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
         <source>Name of group</source>
         <translation>Csoport neve</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
         <source>Set name of group</source>
         <translation>Csoport nevének megadása</translation>
     </message>
@@ -1102,9 +1102,9 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="528"/>
         <location filename="../qml/content/MainPage.qml" line="546"/>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
-        <location filename="../qml/content/MainPage.qml" line="637"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
+        <location filename="../qml/content/MainPage.qml" line="618"/>
+        <location filename="../qml/content/MainPage.qml" line="640"/>
         <source>Internal database error</source>
         <translation>Belső adatbázis hiba</translation>
     </message>
@@ -1161,123 +1161,123 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Az adatbázishoz tartozó mester jelszó sikeresen meg lett változtatva.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Nem sikerült bezárni a korábban megnyitott adatbázist. Kérjük próbálja meg ismét. A hiba a következő:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Internal key error</source>
         <translation>Belső kulcs hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>The following error occured during opening of database:</source>
         <translation>Az adatbázis megnyitásakor a következő hiba történt:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>Internal key file error</source>
         <translation>Belső kulcsfájl hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Error loading database</source>
         <translation>Hiba az adatbázis betöltése közben</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Please try again.</source>
         <translation>Kérjük próbálja újra.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>Internal file error</source>
         <translation>Belső fájl hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>The following error occured during creation of database:</source>
         <translation>Az adatbázis létrehozásakor a következő hiba történt:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
+        <location filename="../qml/content/MainPage.qml" line="618"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Hiba a tartalék csoport létrehozása közben:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>Save database error</source>
         <translation>Hiba történt az adatbázis mentése közben</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>Could not save database with following error:</source>
         <translation>Az adatbázis mentése nem sikerült a következő hiba miatt:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="626"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Database error</source>
         <translation>Adatbázis hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="626"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>An error occured on closing your database:</source>
         <translation>Hiba történt az adatbázis bezárásakor:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="632"/>
+        <location filename="../qml/content/MainPage.qml" line="635"/>
         <source>Crypto init error</source>
         <translation>Titkosítás inicializálási hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="633"/>
+        <location filename="../qml/content/MainPage.qml" line="636"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation>A titkosító algoritmus inicializálása nem sikerült. Az adatbázis le lett zárva, megelőzendő egy esetleges támadást. Kérjük próbálja meg ismét megnyitni ezt a programot. Amennyiben a hiba fennáll, lépjen kapcsolatba az alkalmazás fejlesztőjével.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="638"/>
+        <location filename="../qml/content/MainPage.qml" line="641"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation>A &quot;%1&quot; QString Int-re való konverziója sikertelen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1042"/>
+        <location filename="../qml/content/MainPage.qml" line="1061"/>
         <source>Drop from List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1106"/>
+        <location filename="../qml/content/MainPage.qml" line="1125"/>
         <source>Yes</source>
         <translation>Igen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1107"/>
+        <location filename="../qml/content/MainPage.qml" line="1126"/>
         <source>No</source>
         <translation>Nem</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1108"/>
+        <location filename="../qml/content/MainPage.qml" line="1127"/>
         <source>Unsaved changes</source>
         <translation>Elmentetlen változások</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1136"/>
+        <location filename="../qml/content/MainPage.qml" line="1155"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>El szeretnéd menteni a jelszó-bejegyzés módosításait?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1141"/>
+        <location filename="../qml/content/MainPage.qml" line="1160"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>El szeretnéd menteni a jelszó csoport módosításait?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1146"/>
+        <location filename="../qml/content/MainPage.qml" line="1165"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>El szeretnéd menteni az adatbázis módosításait?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1151"/>
+        <location filename="../qml/content/MainPage.qml" line="1170"/>
         <source>Do you want to save changed settings values?</source>
         <translation>El szeretnéd mondani a beállítások módosításait?</translation>
     </message>
@@ -1475,12 +1475,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="91"/>
-        <source>Use</source>
-        <translation type="unfinished"></translation>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="122"/>
+        <source>Select</source>
+        <translation type="unfinished">Kiválasztás</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="92"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
         <source>Cancel</source>
         <translation type="unfinished">Mégsem</translation>
     </message>

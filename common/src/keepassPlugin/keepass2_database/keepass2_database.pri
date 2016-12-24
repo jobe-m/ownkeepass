@@ -67,7 +67,8 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.cpp \
-    $$PWD/keepassx/src/format/KeePass2Writer.cpp
+    $$PWD/keepassx/src/format/KeePass2Writer.cpp \
+    $$PWD/keepassx/src/format/KeePass2XmlWriter.cpp
 
 
 HEADERS += \
@@ -118,4 +119,5 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.h \
-    $$PWD/keepassx/src/format/KeePass2Writer.h
+    $$PWD/keepassx/src/format/KeePass2Writer.h \
+    $$PWD/keepassx/src/format/KeePass2XmlWriter.h

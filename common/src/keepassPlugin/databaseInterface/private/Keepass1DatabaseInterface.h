@@ -111,6 +111,7 @@ signals:
                      int iconId,
                      QString customIconUuid);
     void groupSaved(int result,
+                    QString errorMsg,
                     QString groupId);
     void newGroupCreated(int result,
                          QString groupId);
@@ -166,10 +167,13 @@ public slots:
     // signal from KdbGroup object
     void slot_loadGroup(QString groupId);
     void slot_saveGroup(QString groupId,
-                        QString title);
+                        QString title,
+                        int iconId,
+                        QString customIconUuid);
     void slot_createNewGroup(QString title,
-                             quint32 iconId,
-                             QString parentGroupId);
+                             QString parentGroupId,
+                             int iconId,
+                             QString customIconUuid);
     void slot_deleteGroup(QString groupId);
     void slot_moveGroup(QString groupId,
                         QString newParentGroupId);

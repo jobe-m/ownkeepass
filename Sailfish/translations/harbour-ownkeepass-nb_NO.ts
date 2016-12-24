@@ -373,37 +373,37 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="81"/>
         <source>Save</source>
         <translation>Lagre</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="78"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
         <source>Discard</source>
         <translation>Forkast</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="86"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
         <source>Type in a name for the new group:</source>
         <translation>Angi navn for den nye gruppa:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
         <source>Change name of group:</source>
         <translation>Endre navn på gruppa:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
         <source>Name of group</source>
         <translation>Gruppenavn</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
         <source>Set name of group</source>
         <translation>Angi gruppenavn</translation>
     </message>
@@ -1104,9 +1104,9 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
     <message>
         <location filename="../qml/content/MainPage.qml" line="528"/>
         <location filename="../qml/content/MainPage.qml" line="546"/>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
-        <location filename="../qml/content/MainPage.qml" line="637"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
+        <location filename="../qml/content/MainPage.qml" line="618"/>
+        <location filename="../qml/content/MainPage.qml" line="640"/>
         <source>Internal database error</source>
         <translation>Intern databasefeil</translation>
     </message>
@@ -1163,123 +1163,123 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <translation>Hovedpassordet for databasen ble endret.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Kunne ikke lukke den åpne databasen. Prøv igjen. Feilmelding:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Internal key error</source>
         <translation>Intern nøkkelfil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>The following error occured during opening of database:</source>
         <translation>Følgende feil oppsto når databasen skulle åpnes:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>Internal key file error</source>
         <translation>Intern nøkkelfilfeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Error loading database</source>
         <translation>Feil under innlasting av database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Please try again.</source>
         <translation>Prøv igjen.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>Internal file error</source>
         <translation>Intern filfeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>The following error occured during creation of database:</source>
         <translation>Følgende feil oppsto når databasen skulle lages:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
+        <location filename="../qml/content/MainPage.qml" line="618"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Oppretting av sikkerhetskopigruppe feilet:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>Save database error</source>
         <translation>Databaselagringsfeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>Could not save database with following error:</source>
         <translation>Følgende feil oppsto når databasen skulle lagres:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="626"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Database error</source>
         <translation>Databasefeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="626"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>An error occured on closing your database:</source>
         <translation>En feil oppsto når databasen skulle lukkes:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="632"/>
+        <location filename="../qml/content/MainPage.qml" line="635"/>
         <source>Crypto init error</source>
         <translation>Krypteringsfeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="633"/>
+        <location filename="../qml/content/MainPage.qml" line="636"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation>Start av krypteringsalgoritmen var ikke vellykket. Databasen lukkes igjen for å hindre angrep. Prøv å åpne programmet på ny. Hvis feilen vedvarer, kontakt utvikleren.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="638"/>
+        <location filename="../qml/content/MainPage.qml" line="641"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation>Konvertering av QString &quot;%1&quot; til heltall feilet.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1042"/>
+        <location filename="../qml/content/MainPage.qml" line="1061"/>
         <source>Drop from List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1106"/>
+        <location filename="../qml/content/MainPage.qml" line="1125"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1107"/>
+        <location filename="../qml/content/MainPage.qml" line="1126"/>
         <source>No</source>
         <translation>Nei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1108"/>
+        <location filename="../qml/content/MainPage.qml" line="1127"/>
         <source>Unsaved changes</source>
         <translation>Ulagrede endringer</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1136"/>
+        <location filename="../qml/content/MainPage.qml" line="1155"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Vil du lagre endringene i passordoppføringen?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1141"/>
+        <location filename="../qml/content/MainPage.qml" line="1160"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Vil du lagre passordgruppeendringene?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1146"/>
+        <location filename="../qml/content/MainPage.qml" line="1165"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Vil du lagre endringene i databaseinnstillingene?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1151"/>
+        <location filename="../qml/content/MainPage.qml" line="1170"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Vil du lagre de endrede innstillingene?</translation>
     </message>
@@ -1477,12 +1477,12 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="91"/>
-        <source>Use</source>
-        <translation type="unfinished"></translation>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="122"/>
+        <source>Select</source>
+        <translation type="unfinished">Velg</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="92"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
         <source>Cancel</source>
         <translation type="unfinished">Avbryt</translation>
     </message>

@@ -140,6 +140,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 //    db_read_only = true;
 
     // database was opened successfully
+    m_filePath = filePath;
     if (db_read_only) {
         emit databaseOpened(DatabaseAccessResult::RE_DB_READ_ONLY, "");
     } else {
@@ -161,6 +162,7 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
 
     delete m_Database;
     m_Database = NULL;
+    m_filePath = "";
 
 // TODO delete .lock file
 
@@ -173,6 +175,7 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
 
 void Keepass2DatabaseInterface::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
 {
+    m_filePath = filePath;
 }
 
 void Keepass2DatabaseInterface::slot_changePassKey(QString password, QString keyFile)
@@ -197,6 +200,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 
         Uuid masterGroupId = masterGroup->uuid();
         Uuid customIconUuid = masterGroup->iconUuid();
+        // if custom icon is not set then the string which is passed to QML needs to be zero length
         QString customIcon;
         if (customIconUuid.isNull()) {
             customIcon = "";
@@ -240,6 +244,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         Entry* entry = masterEntries.at(i);
         Uuid itemId = entry->uuid();
         Uuid customIconUuid = entry->iconUuid();
+        // if custom icon is not set then the string which is passed to QML needs to be zero length
         QString customIcon;
         if (customIconUuid.isNull()) {
             customIcon = "";
@@ -289,6 +294,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         int numberOfEntries = subGroup->entries().count();
         Uuid itemId = subGroup->uuid();
         Uuid customIconUuid = subGroup->iconUuid();
+        // if custom icon is not set then the string which is passed to QML needs to be zero length
         QString customIcon;
         if (customIconUuid.isNull()) {
             customIcon = "";
@@ -327,6 +333,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         Entry* entry = entries.at(i);
         Uuid itemId = entry->uuid();
         Uuid customIconUuid = entry->iconUuid();
+        // if custom icon is not set then the string which is passed to QML needs to be zero length
         QString customIcon;
         if (customIconUuid.isNull()) {
             customIcon = "";
@@ -429,10 +436,39 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, i
     }
 
     // save database
-    saveDatabase();
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // send signal to QML
+        emit groupSaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, groupId);
+        return;
+    }
 
     // update all list models which contain the changed group
+    QList<Uuid> modelIds   = m_groups_modelId.keys(groupUuid);
+    int numberOfSubgroups = group->children().count();
+    int numberOfEntries   = group->entries().count();
+    for (int i = 0; i < modelIds.count(); i++) {
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit updateItemInListModelSorted(title,                                        // update group name
+                                             (quint32)iconId,                              // update icon id
+                                             customIconUuid,                               // update custom icon id
+                                             QString("Subgroups: %1 | Entries: %2")
+                                             .arg(numberOfSubgroups).arg(numberOfEntries), // subtitle
+                                             groupId,                                      // identifier for group item in list model
+                                             modelIds[i].toHex());                         // identifier for list model
+        } else {
+            emit updateItemInListModel(title,                                              // update group name
+                                       (quint32)iconId,                                    // update icon id
+                                       customIconUuid,                                     // update custom icon id
+                                       QString("Subgroups: %1 | Entries: %2")
+                                       .arg(numberOfSubgroups).arg(numberOfEntries),       // subtitle
+                                       groupId,                                            // identifier for group item in list model
+                                       modelIds[i].toHex());                               // identifier for list model
+        }
+    }
 
+    // send signal to QML
+    emit groupSaved(DatabaseAccessResult::RE_OK, "", groupId);
 }
 
 void Keepass2DatabaseInterface::slot_unregisterListModel(QString modelId)
@@ -501,6 +537,7 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
         Q_FOREACH (Entry* entry, searcher.search(searchString, searchGroup, Qt::CaseInsensitive)) {
             // update list model with found entries
             Uuid customIconUuid = entry->iconUuid();
+            // if custom icon is not set then the string which is passed to QML needs to be zero length
             QString customIcon;
             if (customIconUuid.isNull()) {
                 customIcon = "";
@@ -612,21 +649,22 @@ const QImage Keepass2DatabaseInterface::getCustomIcon(const QString value)
     }
 }
 
-bool Keepass2DatabaseInterface::saveDatabase()
+QString Keepass2DatabaseInterface::saveDatabase()
 {
     QSaveFile saveFile(m_filePath);
     if (saveFile.open(QIODevice::WriteOnly)) {
         m_writer.writeDatabase(&saveFile, m_Database);
         if (m_writer.hasError()) {
-//            MessageBox::critical(this, tr("Error"), tr("Writing the database failed.") + "\n\n"
-//                                 + m_writer.errorString());
-            return false;
+            // error occured in the Keepass 2 writer
+            return m_writer.errorString();
         }
         if (!saveFile.commit()) {
-//            MessageBox::critical(this, tr("Error"), tr("Writing the database failed.") + "\n\n"
-//                                 + saveFile.errorString());
-            return false;
+            // could not save to file
+            return saveFile.errorString();
         }
+    } else {
+        // could not open file
+        return saveFile.errorString();
     }
-    return true;
+    return "";
 }

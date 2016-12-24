@@ -161,6 +161,7 @@ protected: // signals
                              int iconId,
                              QString customIconUuid) = 0;
     virtual void groupSaved(int result,
+                            QString errorMsg,
                             QString groupId) = 0;
     virtual void newGroupCreated(int result,
                                  QString groupId) = 0;

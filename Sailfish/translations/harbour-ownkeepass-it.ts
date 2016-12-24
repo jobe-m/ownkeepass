@@ -373,37 +373,37 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="77"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="81"/>
         <source>Save</source>
         <translation>Salva</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="78"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
         <source>Discard</source>
         <translation>Annulla</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="86"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="133"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
         <source>Type in a name for the new group:</source>
         <translation>Scegli un nome per il nuovo gruppo:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
         <source>Change name of group:</source>
         <translation>Cambia il nome del gruppo:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
         <source>Name of group</source>
         <translation>Nome del gruppo</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
         <source>Set name of group</source>
         <translation>Inserisci nome del gruppo</translation>
     </message>
@@ -1103,9 +1103,9 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
     <message>
         <location filename="../qml/content/MainPage.qml" line="528"/>
         <location filename="../qml/content/MainPage.qml" line="546"/>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
-        <location filename="../qml/content/MainPage.qml" line="637"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
+        <location filename="../qml/content/MainPage.qml" line="618"/>
+        <location filename="../qml/content/MainPage.qml" line="640"/>
         <source>Internal database error</source>
         <translation>Errore interno database</translation>
     </message>
@@ -1162,123 +1162,123 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
         <translation>La password principale del tuo database è stata cambiata.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="595"/>
+        <location filename="../qml/content/MainPage.qml" line="598"/>
         <source>Could not close the previous opened database. Please try again. Error message:</source>
         <translation>Impossibile chiudere il database aperto, riprova, Errore;</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Internal key error</source>
         <translation>Errore interno chiave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="599"/>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>The following error occured during opening of database:</source>
         <translation>Errore durante l&apos;apertura del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="606"/>
         <source>Internal key file error</source>
         <translation>Errore interno file chiave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Error loading database</source>
         <translation>Errore caricamento database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="610"/>
         <source>Please try again.</source>
         <translation>Riprova.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>Internal file error</source>
         <translation>Errore interno file</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="611"/>
+        <location filename="../qml/content/MainPage.qml" line="614"/>
         <source>The following error occured during creation of database:</source>
         <translation>Errore durante la creazione del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="615"/>
+        <location filename="../qml/content/MainPage.qml" line="618"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Creazione del gruppo di backup fallita:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>Save database error</source>
         <translation>Errore salvataggio database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="619"/>
+        <location filename="../qml/content/MainPage.qml" line="622"/>
         <source>Could not save database with following error:</source>
         <translation>Impossibile salvare database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="626"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Database error</source>
         <translation>Errore database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="626"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>An error occured on closing your database:</source>
         <translation>Errore durante la chiusura del database:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="632"/>
+        <location filename="../qml/content/MainPage.qml" line="635"/>
         <source>Crypto init error</source>
         <translation>Errore crypto init</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="633"/>
+        <location filename="../qml/content/MainPage.qml" line="636"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation>Gli algoritmi crittografici non possono essere inizializzati. Il database è stato chiuso per evitare attacchi. Riprova ad aprire l&apos;app di nuovo. Se l&apos;errore persiste, contatta lo sviluppatore.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="638"/>
+        <location filename="../qml/content/MainPage.qml" line="641"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation>Conversione di QString &quot;%1&quot; in Int fallita</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1042"/>
+        <location filename="../qml/content/MainPage.qml" line="1061"/>
         <source>Drop from List</source>
         <translation>Rimuovi dalla lista</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1106"/>
+        <location filename="../qml/content/MainPage.qml" line="1125"/>
         <source>Yes</source>
         <translation>Sì</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1107"/>
+        <location filename="../qml/content/MainPage.qml" line="1126"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1108"/>
+        <location filename="../qml/content/MainPage.qml" line="1127"/>
         <source>Unsaved changes</source>
         <translation>Modifiche non salvate</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1136"/>
+        <location filename="../qml/content/MainPage.qml" line="1155"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Vuoi salvare le modifiche all&apos;elemento?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1141"/>
+        <location filename="../qml/content/MainPage.qml" line="1160"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Vuoi salvare le modifiche al gruppo?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1146"/>
+        <location filename="../qml/content/MainPage.qml" line="1165"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Vuoi salvare le modifiche alle impostazioni del database?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1151"/>
+        <location filename="../qml/content/MainPage.qml" line="1170"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Vuoi salvare le modifiche alle impostazioni?</translation>
     </message>
@@ -1476,12 +1476,12 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="91"/>
-        <source>Use</source>
-        <translation type="unfinished"></translation>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="122"/>
+        <source>Select</source>
+        <translation type="unfinished">Seleziona</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="92"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
         <source>Cancel</source>
         <translation type="unfinished">Annulla</translation>
     </message>

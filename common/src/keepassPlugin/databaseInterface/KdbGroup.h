@@ -45,7 +45,7 @@ public:
 signals:
     // signals to QML
     void groupDataLoaded(int result, QString title, int iconId, QString customIconUuid);
-    void groupDataSaved(int result);
+    void groupDataSaved(int result, QString errorMsg);
     void newGroupCreated(int result);
     void groupDeleted(int result);
     void groupMoved(int result);
@@ -60,7 +60,7 @@ signals:
 public slots:
     // signals from database client
     void slot_groupDataLoaded(int result, QString groupId, QString title, int iconId, QString customIconUuid);
-    void slot_groupDataSaved(int result, QString groupId);
+    void slot_groupDataSaved(int result, QString errorMsg, QString groupId);
     void slot_newGroupCreated(int result, QString groupId);
     void slot_groupDeleted(int result, QString groupId);
     void slot_groupMoved(int result, QString groupId);

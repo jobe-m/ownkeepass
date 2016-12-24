@@ -114,6 +114,7 @@ signals:
                      int iconId,
                      QString customIconUuid);
     void groupSaved(int result,
+                    QString errorMsg,
                     QString groupId);
     void newGroupCreated(int result,
                          QString groupId);
@@ -185,7 +186,7 @@ public:
 
 private:
     void initDatabase();
-    bool saveDatabase();
+    QString saveDatabase();
 //    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
     inline QString getUserAndPassword(Entry* entry);
     inline Uuid qString2Uuid(QString value);

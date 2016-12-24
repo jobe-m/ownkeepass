@@ -405,18 +405,19 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
     emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->title(), (int)group->image(), "");
 }
 
-void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)
+void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, int iconId, QString customIconUuid)
 {
 //    qDebug() << "groupId " << groupId;
-
+    Q_UNUSED(customIconUuid);
     Q_ASSERT(m_kdb3Database);
 
     //  save changes on group details to database
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group); // Master group (0) cannot be changed
     group->setTitle(title);
+    group->setImage(iconId);
     if (!m_kdb3Database->save()) {
-        emit groupSaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, groupId);
+        emit groupSaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), groupId);
         return;
     }
 
@@ -444,7 +445,7 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title)
         }
     }
     // signal to QML
-    emit groupSaved(DatabaseAccessResult::RE_OK, groupId);
+    emit groupSaved(DatabaseAccessResult::RE_OK, "", groupId);
 }
 
 void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
@@ -456,10 +457,10 @@ void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
     m_entries_modelId.remove(qString2UInt(modelId));
 }
 
-void Keepass1DatabaseInterface::slot_createNewGroup(QString title, quint32 iconId, QString parentGroupId)
+void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid)
 {
 //    qDebug() << "parentGroupId " << parentGroupId;
-
+    Q_UNUSED(customIconUuid);
     Q_ASSERT(m_kdb3Database);
 
     // get parent group handle and identify IDs of list model

@@ -591,6 +591,9 @@ Page {
         function errorHandler(result, errorMsg) {
             // show error to the user
             switch (result) {
+            case DatabaseAccessResult.RE_OK:
+                // Do not show anything
+                break
             case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
                 applicationWindow.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Could not close the previous opened database. Please try again. Error message:") + " " + errorMsg)
                 masterGroupsPage.closeOnError()
@@ -655,7 +658,7 @@ Page {
           */
         property Dialog editEntryDetailsDialogRef: null
         property Dialog editGroupDetailsDialogRef: null
-        property Page showEntryDetailsPageRef: null
+        property Page   showEntryDetailsPageRef: null
 
         /*
           Here are all Kdb entry details which are used to create a new entry, save changes to an
@@ -692,31 +695,31 @@ Page {
           */
         property string databaseKeyFile: ""
         property string databaseMasterPassword: ""
-        property int databaseCryptAlgorithm: 0
-        property int databaseKeyTransfRounds: 0
+        property int    databaseCryptAlgorithm: 0
+        property int    databaseKeyTransfRounds: 0
 
         /*
           Data used to save ownKeepass default setting values
           */
-        property int defaultCryptAlgorithm
-        property int defaultKeyTransfRounds
-        property int inactivityLockTime
+        property int  defaultCryptAlgorithm
+        property int  defaultKeyTransfRounds
+        property int  inactivityLockTime
         property bool sortAlphabeticallyInListView
         property bool showUserNamePasswordInListView
         property bool focusSearchBarOnStartup
         property bool showUserNamePasswordOnCover
         property bool lockDatabaseFromCover
         property bool copyNpasteFromCover
-        property int clearClipboard
-        property int language
+        property int  clearClipboard
+        property int  language
         property bool fastUnlock
-        property int fastUnlockRetryCount
-        property int uiOrientation
+        property int  fastUnlockRetryCount
+        property int  uiOrientation
 
         /*
           Commonly used for manipulation and creation of entries and groups
           */
-        property bool createNewItem: false
+        property bool   createNewItem: false
         property string itemId: ""
         property string parentGroupId: ""
 
@@ -795,6 +798,8 @@ Page {
 
         function loadKdbGroupDetails(name, iconId, customIconUuid) {
             groupName = originalGroupName = name
+            groupIconId = originalGroupIconId = iconId
+            groupCustomIconUuid = originalGroupCustomIconUuid = customIconUuid
             // Populate group detail text fields in editGroupDetailsDialog
             if(editGroupDetailsDialogRef)
                 editGroupDetailsDialogRef.setTextFields(name, iconId, customIconUuid)
@@ -920,14 +925,17 @@ Page {
     KdbGroup {
         id: kdbGroup
         onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title, iconId, customIconUuid)
-        onGroupDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDataSaved: internal.errorHandler(result, errorMsg)
+// TODO add support for error handler
         onNewGroupCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntry
         onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values)
+// TODO add support for error handler
         onEntryDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+// TODO add support for error handler
         onNewEntryCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
@@ -938,19 +946,20 @@ Page {
     // objects here
     KdbGroup {
         id: kdbGroupForDeletion
+// TODO add support for error handler
         onGroupDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryForDeletion
+// TODO add support for error handler
         onEntryDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     KdbEntry {
         id: kdbEntryToMove
-        onEntryMoved: {
-            if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
-        }
+// TODO add support for error handler
+        onEntryMoved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
     }
 
     Component {
