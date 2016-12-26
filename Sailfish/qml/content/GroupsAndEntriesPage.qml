@@ -271,16 +271,15 @@ Page {
 
     KdbListModel {
         id: kdbListModel
-        onGroupsAndEntriesLoaded: {
-            if (result === DatabaseAccessResult.RE_DB_LOAD_ERROR) __showLoadErrorPage()
-        }
+        onGroupsAndEntriesLoaded: Global.env.mainPage.errorHandler(result, errorMsg)
         onMasterGroupsLoaded: {
-            if (result === DatabaseAccessResult.RE_DB_LOAD_ERROR) __showLoadErrorPage()
+            Global.env.mainPage.errorHandler(result, errorMsg)
             // automatically focus search bar on master group page but not on sub-group pages
             if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true
             }
         }
+        onSearchEntriesCompleted: Global.env.mainPage.errorHandler(result, errorMsg)
     }
 
     Timer {

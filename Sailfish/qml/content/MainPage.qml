@@ -88,6 +88,168 @@ Page {
         }
     }
 
+    function errorHandler(result, errorMsg) {
+        // show error to the user
+        switch (result) {
+        case DatabaseAccessResult.RE_OK:
+            break
+        case DatabaseAccessResult.RE_DB_READ_ONLY:
+            break
+        case DatabaseAccessResult.RE_DB_LOAD_ERROR:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Error loading database"),
+                                             qsTr("Could not load database with following error:") + " " + errorMsg)
+            internal.masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_SAVE_ERROR:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Save database error"),
+                                             qsTr("Could not save database with following error:") + " " + errorMsg)
+            internal.masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_ENTRY_NOT_FOUND:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Entry not found"),
+                                             qsTr("Error while searching for password entry in database."))
+            internal.masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_GROUP_NOT_FOUND:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Group not found"),
+                                             qsTr("Error while searching for password group in database."))
+            internal.masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_NOT_OPENED:
+            applicationWindow.infoPopup.show(Global.warning,
+                                             qsTr("No database opened"),
+                                             qsTr("Could not connect to a loaded database. This seems to be a bug."))
+            internal.masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_ALREADY_CLOSED:
+            console.log("Database was already closed. Nothing serious.")
+            break
+        case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
+            // Keepass 1 only
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal database error"),
+                                             qsTr("An error occured on closing your database:") + " " + errorMsg)
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_FILE_ERROR:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal file error"),
+                                             qsTr("The following error occured during creation of database:") + " " + errorMsg)
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_SETKEY_ERROR:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal key error"),
+                                             qsTr("The following error occured during creation of the key for the database:") + " " + errorMsg)
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_CREATE_BACKUPGROUP_ERROR:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal database error"),
+                                             qsTr("Creation of backup group failed with following error:") + " " + errorMsg)
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_CRYPTO_INIT_ERROR:
+            // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety (Keepass 2 only)
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Crypto init error"),
+                                             qsTr("Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer."))
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_NOT_A_KEEPASS_DB:
+            // Keepass 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Database file"),
+                                             qsTr("The specified file is not a Keepass database."))
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_NOT_SUPPORTED_DB_VERSION:
+            // Keepass 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Database version"),
+                                             qsTr("The specified file has an unsupported Keepass database version."))
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_MISSING_DB_HEADERS:
+            // Keepass 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal database error"),
+                                             qsTr("Database headers are missing."))
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT:
+            // Keepass 1 and 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Wrong password"),
+                                             qsTr("Either your master password is wrong or the database file is corrupt. Please try again."))
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT:
+            // Keepass 1 and 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Wrong password"),
+                                             qsTr("Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt."))
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_HEAD_HASH_MISMATCH:
+            // Keepass 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal database error"),
+                                             qsTr("Database head doesn't match corresponding hash value."))
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DBFILE_OPEN_ERROR:
+            // Keepass 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("File I/O error"),
+                                             qsTr("Cannot open database file. Error details:") + " " + errorMsg)
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_KEYFILE_OPEN_ERROR:
+            // Keepass 2
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("File I/O error"),
+                                             qsTr("Cannot open key file. Error details:") + " " + errorMsg)
+            masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_ERR_REMOVE_RECENT_DATABASE:
+            // from ownKeepass settings
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal Error"),
+                                             qsTr("Something went wrong with dropping the database from the recent database list. That shouldn't happen. Please let me (the developer) know about that via email or at github. Thanks!"))
+            break
+        case DatabaseAccessResult.RE_ERR_DELETE_DATABASE:
+            // TODO deleting database file not yet implemented
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal Error"),
+                                             qsTr("Something went wrong while trying to delete the database file. Error message:" + " " + errorMsg))
+            break
+        case DatabaseAccessResult.RE_ERR_QSTRING_TO_INT:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal database error"),
+                                             qsTr("Conversion of QString \"%1\" to Int failed").arg(errorMsg))
+            break
+        case DatabaseAccessResult.RE_ERR_QSTRING_TO_UUID:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Internal database error"),
+                                             qsTr("Conversion of QString \"%1\" to Uuid failed").arg(errorMsg))
+            break
+        default:
+            // This should not happen therefore english error text is enough
+            applicationWindow.infoPopup.show(Global.error,
+                                             "Unknown error code",
+                                             "The following unknown error code appeared: " + result + " (Error message: \"" + errorMsg + "\")")
+            masterGroupsPage.closeOnError()
+            break
+
+        }
+
+    }
+
     allowedOrientations: applicationWindow.orientationSetting
 
     onOrientationChanged: {
@@ -301,7 +463,7 @@ Page {
         onNewDatabaseCreated: internal.newDatabaseCreatedHandler()
         onDatabaseClosed: internal.databaseClosedHandler()
         onDatabasePasswordChanged: internal.databasePasswordChangedHandler()
-        onErrorOccured: internal.errorHandler(result, errorMsg)
+        onErrorOccured: mainPage.errorHandler(result, errorMsg)
     }
 
 
@@ -332,14 +494,7 @@ Page {
             }
         }
 
-        onRecentDatabaseRemoved: { // returns: result, uiName
-            console.log("show Info Popup")
-            if (result === DatabaseAccessResult.RE_OK) {
-                // all fine
-            } else {
-                applicationWindow.infoPopup.show(Global.error, "Internal Error", "Something went wrong with dropping the database from the recent database list. That shouldn't happen. Please let me (the developer) know about that via email or at github. Thanks!")
-            }
-        }
+        onRecentDatabaseRemoved: mainPage.errorHandler(result, uiName)
     }
 
     Component.onCompleted: {
@@ -497,74 +652,14 @@ Page {
         }
 
         function databaseOpenedHandler(result, errorMsg) {
-            // display popup if some error occured
-            switch (result) {
-            case DatabaseAccessResult.RE_DB_READ_ONLY:
-                // Database opened successfully in read only mode, now init master groups page and cover page
+            if ((result === DatabaseAccessResult.RE_OK) || (result === DatabaseAccessResult.RE_DB_READ_ONLY)) {
+                // Database opened successfully (in read only mode)
+                // now init master groups page and cover page
                 Global.enableDatabaseLock = true
                 masterGroupsPage.init()
                 updateRecentDatabaseListModel()
-                break
-            case DatabaseAccessResult.RE_OK:
-                // Yeah, database opened successfully, now init master groups page and cover page
-                Global.enableDatabaseLock = true
-                masterGroupsPage.init()
-                updateRecentDatabaseListModel()
-                break
-            case DatabaseAccessResult.RE_NOT_A_KEEPASS_DB:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("Database file"),
-                                          qsTr("The specified file is not a Keepass database."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_NOT_SUPPORTED_DB_VERSION:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("Database version"),
-                                          qsTr("The specified file has an unsupported Keepass database version."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_MISSING_DB_HEADERS:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("Internal database error"),
-                                          qsTr("Database headers are missing."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("Wrong password"),
-                                          qsTr("Either your master password is wrong or the database file is corrupt. Please try again."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("Wrong password"),
-                                          qsTr("Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_HEAD_HASH_MISMATCH:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("Internal database error"),
-                                          qsTr("Database head doesn't match corresponding hash value."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DBFILE_OPEN_ERROR:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("File I/O error"),
-                                          qsTr("Cannot open database file. Error details:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_KEYFILE_OPEN_ERROR:
-                applicationWindow.infoPopup.show(Global.error,
-                                          qsTr("File I/O error"),
-                                          qsTr("Cannot open key file. Error details:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            default:
-                applicationWindow.infoPopup.show(Global.error,
-                                          "Unknown error code",
-                                          "Error code " + result + " appeared after database was opened.")
-                masterGroupsPage.closeOnError()
-                break
+            } else {
+                mainPage.errorHandler(result, errorMsg)
             }
         }
 
@@ -586,64 +681,6 @@ Page {
 
         function databasePasswordChangedHandler() {
             applicationWindow.infoPopup.show(Global.info, qsTr("Password changed"), qsTr("The master password of your database was changed successfully."), 3)
-        }
-
-        function errorHandler(result, errorMsg) {
-            // show error to the user
-            switch (result) {
-            case DatabaseAccessResult.RE_OK:
-                // Do not show anything
-                break
-            case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Could not close the previous opened database. Please try again. Error message:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DB_SETKEY_ERROR:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Internal key error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DB_SETKEYFILE_ERROR:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Internal key file error"), qsTr("The following error occured during opening of database:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DB_LOAD_ERROR:
-                applicationWindow.infoPopup.show(Global.warning, qsTr("Error loading database"), errorMsg + " " + qsTr("Please try again."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DB_FILE_ERROR:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Internal file error"), qsTr("The following error occured during creation of database:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DB_CREATE_BACKUPGROUP_ERROR:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Internal database error"), qsTr("Creation of backup group failed with following error:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DB_SAVE_ERROR:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Save database error"), qsTr("Could not save database with following error:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_DB_ALREADY_CLOSED:
-                console.log("Database was already closed. Nothing serious.")
-                break
-            case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Database error"), qsTr("An error occured on closing your database:") + " " + errorMsg)
-                masterGroupsPage.closeOnError()
-                break
-            // here start new and reviewed error codes
-            case DatabaseAccessResult.RE_CRYPTO_INIT_ERROR:
-                // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety (Keepass 2 only)
-                applicationWindow.infoPopup.show(Global.error, qsTr("Crypto init error"),
-                                          qsTr("Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer."))
-                masterGroupsPage.closeOnError()
-                break
-            case DatabaseAccessResult.RE_ERR_QSTRING_TO_INT:
-                applicationWindow.infoPopup.show(Global.error, qsTr("Internal database error"),
-                                          qsTr("Conversion of QString \"%1\" to Int failed").arg(errorMsg))
-                break
-            default:
-                console.log("ERROR: unknown result on database error occured: " + result)
-                break
-            }
         }
     }
 
@@ -925,18 +962,15 @@ Page {
     KdbGroup {
         id: kdbGroup
         onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title, iconId, customIconUuid)
-        onGroupDataSaved: internal.errorHandler(result, errorMsg)
-// TODO add support for error handler
-        onNewGroupCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDataSaved: mainPage.errorHandler(result, errorMsg)
+        onNewGroupCreated: mainPage.errorHandler(result, errorMsg)
     }
 
     KdbEntry {
         id: kdbEntry
         onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values)
-// TODO add support for error handler
-        onEntryDataSaved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
-// TODO add support for error handler
-        onNewEntryCreated: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDataSaved: mainPage.errorHandler(result, errorMsg)
+        onNewEntryCreated: mainPage.errorHandler(result, errorMsg)
     }
 
 
@@ -946,20 +980,17 @@ Page {
     // objects here
     KdbGroup {
         id: kdbGroupForDeletion
-// TODO add support for error handler
-        onGroupDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onGroupDeleted: mainPage.errorHandler(result, errorMsg)
     }
 
     KdbEntry {
         id: kdbEntryForDeletion
-// TODO add support for error handler
-        onEntryDeleted: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onEntryDeleted: mainPage.errorHandler(result, errorMsg)
     }
 
     KdbEntry {
         id: kdbEntryToMove
-// TODO add support for error handler
-        onEntryMoved: if (result === DatabaseAccessResult.RE_DB_SAVE_ERROR) __showSaveErrorPage()
+        onEntryMoved: mainPage.errorHandler(result, errorMsg)
     }
 
     Component {

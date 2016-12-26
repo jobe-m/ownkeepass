@@ -242,7 +242,7 @@ void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString key
     Q_ASSERT(m_kdb3Database);
     if (!m_kdb3Database->setKey(password, keyFile)) {
         // send signal with error
-        emit errorOccured(DatabaseAccessResult::RE_DB_SETPW_ERROR, m_kdb3Database->getError());
+        emit errorOccured(DatabaseAccessResult::RE_DB_SETKEY_ERROR, m_kdb3Database->getError());
         return;
     }
     m_kdb3Database->generateMasterKey();
@@ -294,7 +294,7 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
             }
         }
     }
-    emit masterGroupsLoaded(DatabaseAccessResult::RE_OK);
+    emit masterGroupsLoaded(DatabaseAccessResult::RE_OK, "");
 }
 
 void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
@@ -305,7 +305,11 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     // load sub groups and entries
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
-//    qDebug() << "int of group: " << uint(group);
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UInt: " << groupId;
+        emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "");
+    }
+    //    qDebug() << "int of group: " << uint(group);
 
     QList<IGroupHandle*> subGroups;
     if (m_setting_sortAlphabeticallyInListView) {
@@ -343,6 +347,12 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     }
     for (int i = 0; i < entries.count(); i++) {
         IEntryHandle* entry = entries.at(i);
+        Q_ASSERT(entry);
+        if (Q_NULLPTR == entry) {
+            qDebug() << "ERROR: Could not find entry for UUID: " << entry;
+            emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
+            return;
+        }
         if (entry->isValid()) {
             emit appendItemToListModel(entry->title(),                                 // group name
                                        entry->image(),                                 // icon id
@@ -356,21 +366,26 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
             m_entries_modelId.insertMulti(uint(group), uint(entry));
         }
     }
-    emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_OK);
+    emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_OK, "");
 }
 
 void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 {
 //    qDebug() << "entryId " << entryId;
+    QList<QString> keys;
+    QList<QString> values;
 
     // get entry handler for entryId
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
+    Q_ASSERT(entry);
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
+        emit entryLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId, keys, values);
+        return;
+    }
     // decrypt password which is usually stored encrypted in memory
     SecString password = entry->password();
     password.unlock();
-
-    QList<QString> keys;
-    QList<QString> values;
 
     // Add default keys and values (Keepass 1 does not provide custom keys and values as supported in Keepass 2)
     keys.append(EntryAttributes::TitleKey);
@@ -387,6 +402,7 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if it needs to update the details
     emit entryLoaded((int)DatabaseAccessResult::RE_OK,
+                     "",
                      entryId,
                      keys,
                      values);
@@ -402,7 +418,12 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
     // get group handler for groupId
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
-    emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->title(), (int)group->image(), "");
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UInt: " << groupId;
+        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId, "", 0, "");
+    } else {
+        emit groupLoaded(DatabaseAccessResult::RE_OK, "", groupId, group->title(), (int)group->image(), "");
+    }
 }
 
 void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, int iconId, QString customIconUuid)
@@ -414,7 +435,10 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, i
     //  save changes on group details to database
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group); // Master group (0) cannot be changed
-    group->setTitle(title);
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UInt: " << groupId;
+        emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
+    }    group->setTitle(title);
     group->setImage(iconId);
     if (!m_kdb3Database->save()) {
         emit groupSaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), groupId);
@@ -473,7 +497,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString paren
     Q_ASSERT(newGroup);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newGroupCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, uInt2QString(uint(newGroup)));
+        emit newGroupCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), uInt2QString(uint(newGroup)));
         return;
     }
 
@@ -507,7 +531,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString paren
     }
 
     // signal to QML
-    emit newGroupCreated(DatabaseAccessResult::RE_OK, uInt2QString(uint(newGroup)));
+    emit newGroupCreated(DatabaseAccessResult::RE_OK, "", uInt2QString(uint(newGroup)));
 }
 
 void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
@@ -518,11 +542,18 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
                                                QString comment)
 {
 //    qDebug() << "entryId " << entryId;
+    QList<QString> keys;
+    QList<QString> values;
 
     Q_ASSERT(m_kdb3Database);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UInt: " << entryId;
+        emit entrySaved(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
+        return;
+    }
 
     entry->setTitle(title);
     entry->setUrl(url);
@@ -534,7 +565,7 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
     entry->setComment(comment);
     // save changes to database and send signal with result
     if (!m_kdb3Database->save()) {
-        emit entrySaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, entryId);
+        emit entrySaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), entryId);
         return;
     }
 
@@ -558,14 +589,13 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
         }
     }
     // signal to QML
-    emit entrySaved(DatabaseAccessResult::RE_OK, entryId);
+    emit entrySaved(DatabaseAccessResult::RE_OK,
+                    "",
+                    entryId);
     // update all entry objects, there might be two instances open
     // decrypt password which is usually stored encrypted in memory
     s_password = entry->password();
     s_password.unlock();
-
-    QList<QString> keys;
-    QList<QString> values;
 
     // Add default keys and values (Keepass 1 does not provide custom keys and values as supported in Keepass 2)
     keys.append(EntryAttributes::TitleKey);
@@ -582,6 +612,7 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if it needs to update the details
     emit entryLoaded((int)DatabaseAccessResult::RE_OK,
+                     "",
                      entryId,
                      keys,
                      values);
@@ -613,7 +644,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     newEntry->setComment(comment);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit newEntryCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, uInt2QString(uint(newEntry)));
+        emit newEntryCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), uInt2QString(uint(newEntry)));
         return;
     }
 
@@ -643,7 +674,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
-    emit newEntryCreated(DatabaseAccessResult::RE_OK, uInt2QString(uint(newEntry)));
+    emit newEntryCreated(DatabaseAccessResult::RE_OK, "", uInt2QString(uint(newEntry)));
 }
 
 void Keepass1DatabaseInterface::slot_deleteGroup(QString groupId)
@@ -653,13 +684,17 @@ void Keepass1DatabaseInterface::slot_deleteGroup(QString groupId)
     // get group handles
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UInt: " << groupId;
+        emit groupDeleted(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
+    }
     IGroupHandle* parentGroup = group->parent();
     // delete group from database
     Q_ASSERT(m_kdb3Database);
     m_kdb3Database->deleteGroup(group);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit groupDeleted(DatabaseAccessResult::RE_DB_SAVE_ERROR, groupId);
+        emit groupDeleted(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), groupId);
         return;
     }
 
@@ -671,7 +706,7 @@ void Keepass1DatabaseInterface::slot_deleteGroup(QString groupId)
         updateGrandParentGroupInListModel(parentGroup);
     }
     // signal to QML
-    emit groupDeleted(DatabaseAccessResult::RE_OK, groupId);
+    emit groupDeleted(DatabaseAccessResult::RE_OK, "", groupId);
 }
 
 void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
@@ -696,6 +731,11 @@ void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
     // get handles
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UInt: " << entryId;
+        emit entryDeleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
+        return;
+    }
     IGroupHandle* parentGroup = entry->group();
     Q_ASSERT(parentGroup);
 
@@ -704,7 +744,7 @@ void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
     m_kdb3Database->deleteEntry(entry);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit entryDeleted(DatabaseAccessResult::RE_DB_SAVE_ERROR, entryId);
+        emit entryDeleted(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), entryId);
         return;
     }
 
@@ -713,7 +753,7 @@ void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
     // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
-    emit entryDeleted(DatabaseAccessResult::RE_OK, entryId);
+    emit entryDeleted(DatabaseAccessResult::RE_OK, "", entryId);
 }
 
 void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroupId)
@@ -723,6 +763,11 @@ void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
 
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UInt: " << entryId;
+        emit entryMoved(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
+        return;
+    }
     IGroupHandle* parentGroup = entry->group();
     Q_ASSERT(parentGroup);
     IGroupHandle* newGroup = (IGroupHandle*)qString2UInt(newGroupId);
@@ -733,7 +778,7 @@ void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
     m_kdb3Database->moveEntry(entry, newGroup);
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit entryMoved(DatabaseAccessResult::RE_DB_SAVE_ERROR, entryId);
+        emit entryMoved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), entryId);
         return;
     }
 
@@ -771,7 +816,7 @@ void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
     parentGroup = entry->group();
     updateGrandParentGroupInListModel(parentGroup);
     // signal to QML
-    emit entryMoved(DatabaseAccessResult::RE_OK, entryId);
+    emit entryMoved(DatabaseAccessResult::RE_OK, "", entryId);
 }
 
 void Keepass1DatabaseInterface::slot_moveGroup(QString groupId, QString newParentGroupId)
@@ -799,6 +844,12 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
     // update list model with found entries
     for (int i = 0; i < entries.count(); i++) {
         IEntryHandle* entry = entries.at(i);
+        Q_ASSERT(entry);
+        if (Q_NULLPTR == entry) {
+            qDebug() << "ERROR: Could not find entry for UInt: " << entry;
+            emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
+            return;
+        }
         if (entry->isValid()) {
 //            qDebug() << "entry found: " << entry->title() << " " << uint(entry);
             if (m_setting_sortAlphabeticallyInListView) {
@@ -825,7 +876,7 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
         }
     }
     // signal to QML
-    emit searchEntriesCompleted(DatabaseAccessResult::RE_OK);
+    emit searchEntriesCompleted(DatabaseAccessResult::RE_OK, "");
 }
 
 inline QString Keepass1DatabaseInterface::getUserAndPassword(IEntryHandle* entry)
@@ -854,7 +905,7 @@ void Keepass1DatabaseInterface::slot_changeKeyTransfRounds(int value)
     emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, "");
+        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
         return;
     }
 }
@@ -869,7 +920,7 @@ void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
     emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
     // save changes to database
     if (!m_kdb3Database->save()) {
-        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, "");
+        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
         return;
     }
 }

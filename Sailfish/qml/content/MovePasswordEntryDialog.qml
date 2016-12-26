@@ -53,6 +53,7 @@ Dialog {
 
     KdbListModel {
         id: movePasswordEntryListModel
+        onMasterGroupsLoaded: Global.env.mainPage.errorHandler(result, errorMsg)
     }
 
     SilicaFlickable {

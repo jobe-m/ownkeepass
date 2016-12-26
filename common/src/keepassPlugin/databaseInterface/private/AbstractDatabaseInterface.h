@@ -133,41 +133,54 @@ protected: // signals
 //                                             int numberOfEntries,
                                              QString itemId,
                                              QString modelId) = 0;
-    virtual void masterGroupsLoaded(int result) = 0;
-    virtual void groupsAndEntriesLoaded(int result) = 0;
+    virtual void masterGroupsLoaded(int result,
+                                    QString errorMsg) = 0;
+    virtual void groupsAndEntriesLoaded(int result,
+                                        QString errorMsg) = 0;
     virtual void deleteItemInListModel(QString itemId) = 0;
-    virtual void searchEntriesCompleted(int result) = 0;
+    virtual void searchEntriesCompleted(int result,
+                                        QString errorMsg) = 0;
 
     // signal to KdbEntry object
     virtual void entryLoaded(int result,
+                             QString errorMsg,
                              QString entryId,
 //                             int iconId,
 //                             QString customIconUuid,
                              QList<QString> keys,
                              QList<QString> values) = 0;
     virtual void entrySaved(int result,
+                            QString errorMsg,
                             QString entryId) = 0;
     virtual void newEntryCreated(int result,
+                                 QString errorMsg,
                                  QString entryId) = 0;
     virtual void entryDeleted(int result,
+                              QString errorMsg,
                               QString entryId) = 0;
     virtual void entryMoved(int result,
+                            QString errorMsg,
                             QString entryId) = 0;
 
     // signal to KdbGroup object
     virtual void groupLoaded(int result,
+                             QString errorMsg,
                              QString groupId,
                              QString title,
                              int iconId,
                              QString customIconUuid) = 0;
+    // TODO check entrySaved and all below (seach and add missing stuff....)
     virtual void groupSaved(int result,
                             QString errorMsg,
                             QString groupId) = 0;
     virtual void newGroupCreated(int result,
+                                 QString errorMsg,
                                  QString groupId) = 0;
     virtual void groupDeleted(int result,
+                              QString errorMsg,
                               QString groupId) = 0;
     virtual void groupMoved(int result,
+                            QString errorMsg,
                             QString groupId) = 0;
 
 

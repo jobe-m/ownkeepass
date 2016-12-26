@@ -88,27 +88,36 @@ signals:
                                      QString subTitle,
                                      QString itemId,
                                      QString modelId);
-    void masterGroupsLoaded(int result);
-    void groupsAndEntriesLoaded(int result);
+    void masterGroupsLoaded(int result,
+                            QString errorMsg);
+    void groupsAndEntriesLoaded(int result,
+                                QString errorMsg);
     void deleteItemInListModel(QString itemId);
-    void searchEntriesCompleted(int result);
+    void searchEntriesCompleted(int result,
+                                QString errorMsg);
 
     // signal to KdbEntry object
     void entryLoaded(int result,
+                     QString errorMsg,
                      QString entryId,
                      QList<QString> keys,
                      QList<QString> values);
     void entrySaved(int result,
+                    QString errorMsg,
                     QString entryId);
     void newEntryCreated(int result,
+                         QString errorMsg,
                          QString entryId);
     void entryDeleted(int result,
+                      QString errorMsg,
                       QString entryId);
     void entryMoved(int result,
+                    QString errorMsg,
                     QString entryId);
 
     // signal to KdbGroup object
     void groupLoaded(int result,
+                     QString errorMsg,
                      QString groupId,
                      QString title,
                      int iconId,
@@ -117,10 +126,13 @@ signals:
                     QString errorMsg,
                     QString groupId);
     void newGroupCreated(int result,
+                         QString errorMsg,
                          QString groupId);
     void groupDeleted(int result,
+                      QString errorMsg,
                       QString groupId);
     void groupMoved(int result,
+                    QString errorMsg,
                     QString groupId);
 
 public slots:

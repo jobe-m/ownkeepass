@@ -54,12 +54,18 @@ public:
 signals:
     // signals to QML
     void entryDataLoaded(int result,
+                         QString errorMsg,
                          QList<QString> keys,
                          QList<QString> values);
-    void entryDataSaved(int result);
-    void newEntryCreated(int result, QString newEntryId);
-    void entryDeleted(int result);
-    void entryMoved(int result);
+    void entryDataSaved(int result,
+                        QString errorMsg);
+    void newEntryCreated(int result,
+                         QString errorMsg,
+                         QString newEntryId);
+    void entryDeleted(int result,
+                      QString errorMsg);
+    void entryMoved(int result,
+                    QString errorMsg);
 
     // signals to interface of database client
     void loadEntryFromKdbDatabase(QString entryId);
@@ -81,13 +87,22 @@ signals:
 public slots:
     // signals from interface of database client
     void slot_entryDataLoaded(int result,
+                              QString errorMsg,
                               QString entryId,
                               QList<QString> keys,
                               QList<QString> values);
-    void slot_entryDataSaved(int result, QString entryId);
-    void slot_entryDeleted(int result, QString entryId);
-    void slot_entryMoved(int result, QString entryId);
-    void slot_newEntryCreated(int result, QString entryId);
+    void slot_entryDataSaved(int result,
+                             QString errorMsg,
+                             QString entryId);
+    void slot_entryDeleted(int result,
+                           QString errorMsg,
+                           QString entryId);
+    void slot_entryMoved(int result,
+                         QString errorMsg,
+                         QString entryId);
+    void slot_newEntryCreated(int result,
+                              QString errorMsg,
+                              QString entryId);
     void slot_disconnectFromDatabaseClient();
 
 public:

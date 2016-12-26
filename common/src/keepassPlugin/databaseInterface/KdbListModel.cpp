@@ -52,9 +52,9 @@ bool KdbListModel::connectToDatabaseClient()
                        SLOT(slot_loadMasterGroups(bool)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(masterGroupsLoaded(int)),
+                  SIGNAL(masterGroupsLoaded(int, QString)),
                   this,
-                  SIGNAL(masterGroupsLoaded(int)));
+                  SIGNAL(masterGroupsLoaded(int, QString)));
     Q_ASSERT(ret);
     ret = connect(this,
                   SIGNAL(loadGroupsAndEntries(QString)),
@@ -62,19 +62,19 @@ bool KdbListModel::connectToDatabaseClient()
                   SLOT(slot_loadGroupsAndEntries(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(groupsAndEntriesLoaded(int)),
+                  SIGNAL(groupsAndEntriesLoaded(int, QString)),
                   this,
-                  SIGNAL(groupsAndEntriesLoaded(int)));
+                  SIGNAL(groupsAndEntriesLoaded(int, QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(searchEntries(QString,QString)),
+                  SIGNAL(searchEntries(QString, QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_searchEntries(QString,QString)));
+                  SLOT(slot_searchEntries(QString, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(searchEntriesCompleted(int)),
+                  SIGNAL(searchEntriesCompleted(int, QString)),
                   this,
-                  SIGNAL(searchEntriesCompleted(int)));
+                  SIGNAL(searchEntriesCompleted(int, QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(appendItemToListModel(QString, quint32, QString, QString, QString, int, int, QString)),
@@ -148,7 +148,7 @@ void KdbListModel::loadMasterGroupsFromDatabase()
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED);
+        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);
@@ -167,14 +167,14 @@ void KdbListModel::loadGroupListFromDatabase()
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED);
+        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);
             m_registered = false;
         }
         // this list model is only used in a dialog and is thrown away afterwards, so it does not need to be registered
-        // i.e. changes on the database which are normally reflecte to list models are not needed here
+        // i.e. changes on the database which are normally reflected to list models are not needed here
         m_registered = true;
         m_modelId = "ffffffff";
         // send signal to global interface of keepass database to get master groups
@@ -190,7 +190,7 @@ void KdbListModel::loadGroupsAndEntriesFromDatabase(QString groupId)
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED);
+        emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);
@@ -209,7 +209,7 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
     }
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_NOT_OPENED);
+        emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
     } else {
         if (m_registered) {
             emit unregisterFromDatabaseClient(m_modelId);

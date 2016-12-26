@@ -44,26 +44,53 @@ public:
 
 signals:
     // signals to QML
-    void groupDataLoaded(int result, QString title, int iconId, QString customIconUuid);
-    void groupDataSaved(int result, QString errorMsg);
-    void newGroupCreated(int result);
-    void groupDeleted(int result);
-    void groupMoved(int result);
+    void groupDataLoaded(int result,
+                         QString title,
+                         int iconId,
+                         QString customIconUuid);
+    void groupDataSaved(int result,
+                        QString errorMsg);
+    void newGroupCreated(int result,
+                         QString errorMsg);
+    void groupDeleted(int result,
+                      QString errorMsg);
+    void groupMoved(int result,
+                    QString errorMsg);
 
     // signals to database client
     void loadGroupFromKdbDatabase(QString groupId);
-    void saveGroupToKdbDatabase(QString groupId, QString title, int iconId, QString customIconUuid);
-    void createNewGroupInKdbDatabase(QString title, QString parentGroupId, int iconId, QString customIconUuid);
+    void saveGroupToKdbDatabase(QString groupId,
+                                QString title,
+                                int iconId,
+                                QString customIconUuid);
+    void createNewGroupInKdbDatabase(QString title,
+                                     QString parentGroupId,
+                                     int iconId,
+                                     QString customIconUuid);
     void deleteGroupFromKdbDatabase(QString groupId);
-    void moveGroupInKdbDatabase(QString groupId, QString newGroupId);
+    void moveGroupInKdbDatabase(QString groupId,
+                                QString newGroupId);
 
 public slots:
     // signals from database client
-    void slot_groupDataLoaded(int result, QString groupId, QString title, int iconId, QString customIconUuid);
-    void slot_groupDataSaved(int result, QString errorMsg, QString groupId);
-    void slot_newGroupCreated(int result, QString groupId);
-    void slot_groupDeleted(int result, QString groupId);
-    void slot_groupMoved(int result, QString groupId);
+    void slot_groupDataLoaded(int result,
+                              QString errorMsg,
+                              QString groupId,
+                              QString title,
+                              int iconId,
+                              QString customIconUuid);
+    void slot_groupDataSaved(int result,
+                             QString errorMsg,
+                             QString groupId);
+    void slot_newGroupCreated(int result,
+                              QString errorMsg,
+                              QString groupId);
+    void slot_groupDeleted(int result,
+                           QString errorMsg,
+                           QString groupId);
+    void slot_groupMoved(int result,
+                         QString errorMsg,
+                         QString groupId);
     void slot_disconnectFromDatabaseClient();
 
 public:

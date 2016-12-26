@@ -95,9 +95,12 @@ signals:
     void searchEntries(QString searchString, QString rootGroupId);
 
     // signals to QML
-    void groupsAndEntriesLoaded(int result);
-    void masterGroupsLoaded(int result);
-    void searchEntriesCompleted(int result);
+    void groupsAndEntriesLoaded(int result,
+                                QString errorMsg);
+    void masterGroupsLoaded(int result,
+                            QString errorMsg);
+    void searchEntriesCompleted(int result,
+                                QString errorMsg);
     void modelDataChanged();
 
     // signals for properties

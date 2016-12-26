@@ -35,43 +35,36 @@ public:
     Q_ENUMS(eDatabaseAccessResult)
 
     enum eDatabaseAccessResult {
-        RE_OK = 0,                                  // no error
-        RE_DB_LOAD_ERROR,                           // error loading data from database
-        RE_DB_SAVE_ERROR,                           // error saving data into database
-        RE_DB_NOT_OPENED,                           // database is not opened
-        RE_DB_OPEN,                                 // other database is currently open, close it first
-        RE_DB_ALREADY_CLOSED,                       // database already closed, no harm
-        RE_DB_CLOSE_FAILED,                         // database closing failed
-        RE_DB_FILE_ERROR,                           // file path error for new database
-        RE_DB_SETKEY_ERROR,                         // error setting key (consisting of password and/or keyfile
-        RE_DB_SETPW_ERROR,                          // error setting password for database
-        RE_DB_SETKEYFILE_ERROR,                     // error setting key file for database
-        RE_DB_CREATE_BACKUPGROUP_ERROR,             // error creating backup group
-        RE_PRECHECK_DB_PATH_ERROR,                  // database file does not exists on precheck
-        RE_PRECHECK_KEY_FILE_PATH_ERROR,            // key file does not exists on precheck
-        RE_PRECHECK_DB_PATH_CREATION_ERROR,         // path to database file could not be created
-
         // new and reviewed error codes
-        RE_DB_READ_ONLY,                            // database file is read-only
-        RE_CRYPTO_INIT_ERROR,                       // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety
-        RE_NOT_A_KEEPASS_DB,                        // Not a KeePass database
-        RE_NOT_SUPPORTED_DB_VERSION,                // Unsupported KeePass database version
-        RE_MISSING_DB_HEADERS,                      // missing database headers
-        RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT,         // Wrong password or database file is corrupt
+        RE_OK = 0,                                     // no error
+        RE_DB_READ_ONLY,                               // database file is read-only
+        RE_DB_LOAD_ERROR,                              // error loading data from database
+        RE_DB_SAVE_ERROR,                              // error saving data into database
+        RE_DB_ENTRY_NOT_FOUND,                         // Entry could not be found in database (uuid or pointer is corrupt?)
+        RE_DB_GROUP_NOT_FOUND,                         // Group could not be found in database (Uuid or pointer is corrupt?)
+        RE_DB_NOT_OPENED,                              // database is not opened
+        RE_DB_ALREADY_CLOSED,                          // database already closed, no harm
+        RE_DB_CLOSE_FAILED,                            // database closing failed
+        RE_DB_FILE_ERROR,                              // file path error for new database
+        RE_DB_SETKEY_ERROR,                            // error setting key (consisting of password and/or keyfile)
+        RE_DB_CREATE_BACKUPGROUP_ERROR,                // error creating backup group
+        RE_CRYPTO_INIT_ERROR,                          // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety
+        RE_NOT_A_KEEPASS_DB,                           // Not a KeePass database
+        RE_NOT_SUPPORTED_DB_VERSION,                   // Unsupported KeePass database version
+        RE_MISSING_DB_HEADERS,                         // missing database headers
+        RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT,            // Wrong password or database file is corrupt
         RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, // Wrong password or wrong keyfile or either keyfile or database file is corrupt
-        RE_HEAD_HASH_MISMATCH,                      // Database head doesn't match hash
-        RE_DBFILE_OPEN_ERROR,                       // Cannot open database file, more detailed error message available as attached string in signal
-        RE_KEYFILE_OPEN_ERROR,                      // Cannot open key file, more detailed error message available as attached string in signal
-        RE_ERR_SEARCH,                              // search group is invalid
-        RE_ERR_REMOVE_RECENT_DATABASE,              // Could not remove database from recent database list in the settings
-        RE_ERR_DELETE_DATABASE,                     // Could not delete the database file from the file system
-
+        RE_HEAD_HASH_MISMATCH,                         // Database head doesn't match hash
+        RE_DBFILE_OPEN_ERROR,                          // Cannot open database file, more detailed error message available as attached string in signal
+        RE_KEYFILE_OPEN_ERROR,                         // Cannot open key file, more detailed error message available as attached string in signal
+        RE_ERR_REMOVE_RECENT_DATABASE,                 // Could not remove database from recent database list in the settings
+        RE_ERR_DELETE_DATABASE,                        // Could not delete the database file from the file system
 
         // Keepass 1 specific
-        RE_ERR_QSTRING_TO_INT,                      // conversion of QString to int failed
+        RE_ERR_QSTRING_TO_INT,                         // conversion of QString to int failed
 
         // Keepass 2 specific
-        RE_ERR_QSTRING_TO_UUID,                     // conversion of uuid to QString failed (for passing a reference to QML)
+        RE_ERR_QSTRING_TO_UUID,                        // conversion of uuid to QString failed (for passing a reference to QML)
 
         RE_LAST
     };

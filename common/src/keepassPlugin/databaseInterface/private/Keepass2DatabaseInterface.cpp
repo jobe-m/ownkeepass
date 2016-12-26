@@ -242,6 +242,12 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
     QList<Entry*> masterEntries = m_Database->rootGroup()->entries();
     for (int i = 0; i < masterEntries.count(); i++) {
         Entry* entry = masterEntries.at(i);
+        Q_ASSERT(entry);
+        if (Q_NULLPTR == entry) {
+            qDebug() << "ERROR: Could not find entry for UUID: " << entry;
+            emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
+            return;
+        }
         Uuid itemId = entry->uuid();
         Uuid customIconUuid = entry->iconUuid();
         // if custom icon is not set then the string which is passed to QML needs to be zero length
@@ -274,7 +280,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         // save modelId and entry
         m_entries_modelId.insertMulti(rootGroupId, itemId);
     }
-    emit masterGroupsLoaded(DatabaseAccessResult::RE_OK);
+    emit masterGroupsLoaded(DatabaseAccessResult::RE_OK, "");
 }
 
 void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
@@ -283,6 +289,13 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     // load sub groups and entries
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
+    Q_ASSERT(group);
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UUID: " << groupId;
+        emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "");
+        return;
+    }
+
     QList<Group*> subGroups = group->children();
 
 //    qDebug() << "group uuid: " << groupUuid.toByteArray();
@@ -331,6 +344,12 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 
     for (int i = 0; i < entries.count(); i++) {
         Entry* entry = entries.at(i);
+        Q_ASSERT(entry);
+        if (Q_NULLPTR == entry) {
+            qDebug() << "ERROR: Could not find entry for UUID: " << entry;
+            emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
+            return;
+        }
         Uuid itemId = entry->uuid();
         Uuid customIconUuid = entry->iconUuid();
         // if custom icon is not set then the string which is passed to QML needs to be zero length
@@ -363,22 +382,22 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         // save modelId and entry
         m_entries_modelId.insertMulti(groupUuid, itemId);
     }
-    emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_OK);
+    emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_OK, "");
 }
 
 void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 {
+    QList<QString> keys; //entry->attributes()->customKeys();
+    QList<QString> values;
+
     // get entry handler for entryId
     Entry* entry = m_Database->resolveEntry(qString2Uuid(entryId));
+    Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
-// TODO add error handling
-//        emit entryLoaded(DB_ENTRY_NOT_FOUND,...);
+        emit entryLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId, keys, values);
         return;
     } else {
-        QList<QString> keys; //entry->attributes()->customKeys();
-        QList<QString> values;
-
         // First add default keys and values
         keys.append(EntryAttributes::TitleKey);
         keys.append(EntryAttributes::URLKey);
@@ -400,6 +419,7 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
         // send signal with all entry data to all connected entry objects
         // each object will check with entryId if it needs to update the details
         emit entryLoaded(DatabaseAccessResult::RE_OK,
+                         "",
                          entryId,
                          keys,
                          values);
@@ -412,6 +432,12 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
     // get group handle and load group details
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
+    Q_ASSERT(group);
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UUID: " << groupId;
+        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId, "", 0, "");
+        return;
+    }
     Uuid customIconUuid = group->iconUuid();
     QString customIcon;
     if (customIconUuid.isNull()) {
@@ -419,7 +445,12 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
     } else {
         customIcon = customIconUuid.toHex();
     }
-    emit groupLoaded(DatabaseAccessResult::RE_OK, groupId, group->name(), (int)group->iconNumber(), customIcon);
+    emit groupLoaded(DatabaseAccessResult::RE_OK,
+                     "",
+                     groupId,
+                     group->name(),
+                     (int)group->iconNumber(),
+                     customIcon);
 }
 
 void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, int iconId, QString customIconUuid)
@@ -428,6 +459,12 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, i
     // get group handle and load group details
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
+    Q_ASSERT(group);
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UUID: " << groupId;
+        emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
+        return;
+    }
     group->setName(title);
     if (customIconUuid.length() == 0) {
         group->setIcon(iconId);
@@ -535,6 +572,12 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
         QString searchId = uInt2QString(0xfffffffe);
         Uuid searchUuid = qString2Uuid(searchId);
         Q_FOREACH (Entry* entry, searcher.search(searchString, searchGroup, Qt::CaseInsensitive)) {
+            Q_ASSERT(entry);
+            if (Q_NULLPTR == entry) {
+                qDebug() << "ERROR: Could not find entry for UUID: " << entry;
+                emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
+                return;
+            }
             // update list model with found entries
             Uuid customIconUuid = entry->iconUuid();
             // if custom icon is not set then the string which is passed to QML needs to be zero length
@@ -567,9 +610,9 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
             m_entries_modelId.insertMulti(searchUuid, entry->uuid());
         }
         // signal to QML
-        emit searchEntriesCompleted(DatabaseAccessResult::RE_OK);
+        emit searchEntriesCompleted(DatabaseAccessResult::RE_OK, "");
     } else {
-        emit searchEntriesCompleted(DatabaseAccessResult::RE_ERR_SEARCH);
+        emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "");
     }
 }
 

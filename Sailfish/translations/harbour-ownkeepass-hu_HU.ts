@@ -762,12 +762,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="320"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="345"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="390"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="395"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="319"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="323"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="339"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="389"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="394"/>
         <source>Password groups</source>
         <translation>Jelszó csoportok</translation>
     </message>
@@ -822,21 +822,21 @@
         <translation>Jelszó csoportok vagy bejegyzések hozzáadásához húzd lefelé</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="304"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="303"/>
         <source>Loading</source>
         <translation>Betöltés folyamatban</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
+        <source>Search in all groups</source>
+        <translation>Keresés az összes csoportban</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="364"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="400"/>
-        <source>Search in all groups</source>
-        <translation>Keresés az összes csoportban</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="361"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="401"/>
         <source>Search in</source>
         <translation>Keresés ebben:</translation>
     </message>
@@ -996,288 +996,319 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="101"/>
+        <location filename="../qml/content/MainPage.qml" line="263"/>
         <source>Problem with SD card</source>
         <translation>Gond adódott az SD kártyával</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="102"/>
+        <location filename="../qml/content/MainPage.qml" line="264"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>A több partícióval is rendelkező SD kártyák nem támogatottak.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="142"/>
+        <location filename="../qml/content/MainPage.qml" line="304"/>
         <source>Create new database</source>
         <translation>Új adatbázis létrehozása</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="158"/>
+        <location filename="../qml/content/MainPage.qml" line="320"/>
         <source>Open database</source>
         <translation>Adatbázis megnyitása</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="185"/>
+        <location filename="../qml/content/MainPage.qml" line="347"/>
         <source>Password Safe</source>
         <translation>Jelszó Széf</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="273"/>
+        <location filename="../qml/content/MainPage.qml" line="435"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Adj meg egy mester jelszót az új Keepass Jelszó Széfedhez:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="280"/>
+        <location filename="../qml/content/MainPage.qml" line="442"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>Új adatbázis elérési útvonala és neve</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="293"/>
+        <location filename="../qml/content/MainPage.qml" line="455"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>Adatbázis elérési útvonala és neve</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="447"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Permission error</source>
         <translation>Jogosultsági hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="447"/>
+        <location filename="../qml/content/MainPage.qml" line="602"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>A Keepass adatbázis fájl nem elérhető. Elképzelhető, hogy a &apos;nemo&apos; nevű felhasználó számára be kell állítanod a mappa-jogosultságokat.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="452"/>
-        <location filename="../qml/content/MainPage.qml" line="469"/>
+        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="624"/>
         <source>Key file error</source>
         <translation>Kulcsfájl hiba.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="452"/>
-        <location filename="../qml/content/MainPage.qml" line="469"/>
+        <location filename="../qml/content/MainPage.qml" line="607"/>
+        <location filename="../qml/content/MainPage.qml" line="624"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Az adatbázis elérési útja helyes, ám a kulcsfájl nem található. Ellenőrizd a kulcsfájlt:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="457"/>
+        <location filename="../qml/content/MainPage.qml" line="612"/>
         <source>Database file already exists</source>
         <translation>Az adatbázis fájl már létezik</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="457"/>
+        <location filename="../qml/content/MainPage.qml" line="612"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Kérjük adjon meg egy másik elérési utat és nevet a Keepass adatbázis részére, vagy fájlkezelőből töröld a régit.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="474"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Database file error</source>
         <translation>Adatbázis fájlhiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="474"/>
+        <location filename="../qml/content/MainPage.qml" line="629"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Az adatbázis állomány nem létezik. Kérjük ellenőrizze az adatbázis fájl elérési útját:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="516"/>
+        <location filename="../qml/content/MainPage.qml" line="166"/>
         <source>Database file</source>
         <translation>Adatbázis fájl</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="517"/>
+        <location filename="../qml/content/MainPage.qml" line="167"/>
         <source>The specified file is not a Keepass database.</source>
         <translation>A megadott fájl nem Keepass adatbázis.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="522"/>
+        <location filename="../qml/content/MainPage.qml" line="173"/>
         <source>Database version</source>
         <translation>Adatbázis verzió</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="523"/>
+        <location filename="../qml/content/MainPage.qml" line="174"/>
         <source>The specified file has an unsupported Keepass database version.</source>
         <translation>A megadott fájl a Keepass adatbázis egy nem támogatott verziójával készült.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="528"/>
-        <location filename="../qml/content/MainPage.qml" line="546"/>
-        <location filename="../qml/content/MainPage.qml" line="598"/>
-        <location filename="../qml/content/MainPage.qml" line="618"/>
-        <location filename="../qml/content/MainPage.qml" line="640"/>
+        <location filename="../qml/content/MainPage.qml" line="134"/>
+        <location filename="../qml/content/MainPage.qml" line="152"/>
+        <location filename="../qml/content/MainPage.qml" line="180"/>
+        <location filename="../qml/content/MainPage.qml" line="201"/>
+        <location filename="../qml/content/MainPage.qml" line="233"/>
+        <location filename="../qml/content/MainPage.qml" line="238"/>
         <source>Internal database error</source>
         <translation>Belső adatbázis hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="529"/>
+        <location filename="../qml/content/MainPage.qml" line="101"/>
+        <source>Could not load database with following error:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="112"/>
+        <source>Entry not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="113"/>
+        <source>Error while searching for password entry in database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="118"/>
+        <source>Group not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="119"/>
+        <source>Error while searching for password group in database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="124"/>
+        <source>No database opened</source>
+        <translation type="unfinished">Nincs nyitott adatbázis</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="125"/>
+        <source>Could not connect to a loaded database. This seems to be a bug.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="147"/>
+        <source>The following error occured during creation of the key for the database:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="181"/>
         <source>Database headers are missing.</source>
         <translation>Az adatbázis-fejlécek hiányoznak</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="534"/>
-        <location filename="../qml/content/MainPage.qml" line="540"/>
+        <location filename="../qml/content/MainPage.qml" line="187"/>
+        <location filename="../qml/content/MainPage.qml" line="194"/>
         <source>Wrong password</source>
         <translation>Hibás jelszó</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="535"/>
+        <location filename="../qml/content/MainPage.qml" line="188"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
         <translation>A mester jelszava hibás, vagy az adatbázis állomány sérült. Kérjük próbálja újra.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="541"/>
+        <location filename="../qml/content/MainPage.qml" line="195"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
         <translation>Hibás a mester jelszava, vagy a kulcsfájl. Kérjük próbálja újra. Amennyiben a hiba továbbra is fennáll, úgy vagy a kulcsfájl, vagy az adatbázis állomány sérült.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="547"/>
+        <location filename="../qml/content/MainPage.qml" line="202"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
         <translation>Az adatbázis nem egyezik meg a hozzá tartozó ellenőrző-összeggel.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="552"/>
-        <location filename="../qml/content/MainPage.qml" line="558"/>
+        <location filename="../qml/content/MainPage.qml" line="208"/>
+        <location filename="../qml/content/MainPage.qml" line="215"/>
         <source>File I/O error</source>
         <translation>Fájl I/O hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="553"/>
+        <location filename="../qml/content/MainPage.qml" line="209"/>
         <source>Cannot open database file. Error details:</source>
         <translation>Az adatbázis állomány nem nyitható meg. A hiba részletei:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="559"/>
+        <location filename="../qml/content/MainPage.qml" line="216"/>
         <source>Cannot open key file. Error details:</source>
         <translation>A kulcsfájl nem nyitható meg. A hiba részletei:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
+        <location filename="../qml/content/MainPage.qml" line="222"/>
+        <location filename="../qml/content/MainPage.qml" line="228"/>
+        <source>Internal Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="223"/>
+        <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="239"/>
+        <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="683"/>
         <source>Password changed</source>
         <translation>A jelszó megváltozott</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="588"/>
+        <location filename="../qml/content/MainPage.qml" line="683"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Az adatbázishoz tartozó mester jelszó sikeresen meg lett változtatva.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="598"/>
-        <source>Could not close the previous opened database. Please try again. Error message:</source>
-        <translation>Nem sikerült bezárni a korábban megnyitott adatbázist. Kérjük próbálja meg ismét. A hiba a következő:</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="602"/>
+        <location filename="../qml/content/MainPage.qml" line="146"/>
         <source>Internal key error</source>
         <translation>Belső kulcs hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="602"/>
-        <location filename="../qml/content/MainPage.qml" line="606"/>
-        <source>The following error occured during opening of database:</source>
-        <translation>Az adatbázis megnyitásakor a következő hiba történt:</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="606"/>
-        <source>Internal key file error</source>
-        <translation>Belső kulcsfájl hiba</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="610"/>
+        <location filename="../qml/content/MainPage.qml" line="100"/>
         <source>Error loading database</source>
         <translation>Hiba az adatbázis betöltése közben</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="610"/>
-        <source>Please try again.</source>
-        <translation>Kérjük próbálja újra.</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="614"/>
+        <location filename="../qml/content/MainPage.qml" line="140"/>
         <source>Internal file error</source>
         <translation>Belső fájl hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="614"/>
+        <location filename="../qml/content/MainPage.qml" line="141"/>
         <source>The following error occured during creation of database:</source>
         <translation>Az adatbázis létrehozásakor a következő hiba történt:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="618"/>
+        <location filename="../qml/content/MainPage.qml" line="153"/>
         <source>Creation of backup group failed with following error:</source>
         <translation>Hiba a tartalék csoport létrehozása közben:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="622"/>
+        <location filename="../qml/content/MainPage.qml" line="106"/>
         <source>Save database error</source>
         <translation>Hiba történt az adatbázis mentése közben</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="622"/>
+        <location filename="../qml/content/MainPage.qml" line="107"/>
         <source>Could not save database with following error:</source>
         <translation>Az adatbázis mentése nem sikerült a következő hiba miatt:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="629"/>
-        <source>Database error</source>
-        <translation>Adatbázis hiba</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="629"/>
+        <location filename="../qml/content/MainPage.qml" line="135"/>
         <source>An error occured on closing your database:</source>
         <translation>Hiba történt az adatbázis bezárásakor:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="635"/>
+        <location filename="../qml/content/MainPage.qml" line="159"/>
         <source>Crypto init error</source>
         <translation>Titkosítás inicializálási hiba</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="636"/>
+        <location filename="../qml/content/MainPage.qml" line="160"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
         <translation>A titkosító algoritmus inicializálása nem sikerült. Az adatbázis le lett zárva, megelőzendő egy esetleges támadást. Kérjük próbálja meg ismét megnyitni ezt a programot. Amennyiben a hiba fennáll, lépjen kapcsolatba az alkalmazás fejlesztőjével.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="641"/>
+        <location filename="../qml/content/MainPage.qml" line="234"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
         <translation>A &quot;%1&quot; QString Int-re való konverziója sikertelen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1061"/>
+        <location filename="../qml/content/MainPage.qml" line="1092"/>
         <source>Drop from List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1125"/>
+        <location filename="../qml/content/MainPage.qml" line="1156"/>
         <source>Yes</source>
         <translation>Igen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1126"/>
+        <location filename="../qml/content/MainPage.qml" line="1157"/>
         <source>No</source>
         <translation>Nem</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1127"/>
+        <location filename="../qml/content/MainPage.qml" line="1158"/>
         <source>Unsaved changes</source>
         <translation>Elmentetlen változások</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1155"/>
+        <location filename="../qml/content/MainPage.qml" line="1186"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>El szeretnéd menteni a jelszó-bejegyzés módosításait?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1160"/>
+        <location filename="../qml/content/MainPage.qml" line="1191"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>El szeretnéd menteni a jelszó csoport módosításait?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1165"/>
+        <location filename="../qml/content/MainPage.qml" line="1196"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>El szeretnéd menteni az adatbázis módosításait?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1170"/>
+        <location filename="../qml/content/MainPage.qml" line="1201"/>
         <source>Do you want to save changed settings values?</source>
         <translation>El szeretnéd mondani a beállítások módosításait?</translation>
     </message>
@@ -1319,18 +1350,18 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>MovePasswordEntryDialog</name>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="71"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="72"/>
         <source>Accept</source>
         <extracomment>&quot;Accept&quot; in dialog for choosing group to move password entry into</extracomment>
         <translation>Elfogad</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="72"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="73"/>
         <source>Cancel</source>
         <translation>Mégsem</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="80"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation>&quot;%1&quot; jelszó-bejegyzés áthelyezése a következő csoportba:</translation>
     </message>
