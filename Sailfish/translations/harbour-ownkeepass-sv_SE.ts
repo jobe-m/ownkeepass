@@ -762,81 +762,61 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="319"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="323"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="339"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="389"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="394"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="315"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="386"/>
         <source>Password groups</source>
         <translation>Lösenordsgrupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
-        <source>Load Error</source>
-        <translation>Läsfel</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
-        <source>Could not load all items from Keepass database file. That&apos;s strange.</source>
-        <translation>Kunde inte läsa in alla poster från Keepass databasfil. Det är konstigt!</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="76"/>
-        <source>Save Error</source>
-        <translation>Skrivfel</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="76"/>
-        <source>Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.</source>
-        <translation>Kunde inte spara ändringar i Keepass databasfil. Antingen är platsen för databasfilen skrivskyddad, eller också är filen flyttad.</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="107"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="99"/>
         <source>Search</source>
         <translation>Sök</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="166"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="158"/>
         <source>No entries found</source>
         <translation>Inga poster hittades</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="185"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="177"/>
         <source>Decrypting Keepass database</source>
         <translation>Dekrypterar Keepass databas</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="207"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="199"/>
         <source>Group is empty</source>
         <translation>Gruppen är tom</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="210"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="202"/>
         <source>Pull down to add password groups</source>
         <translation>Dra neråt för att lägga till lösenordsgrupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="211"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="203"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Dra neråt för att lägga till lösenordsgrupper eller nya lösenordsposter</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="303"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="295"/>
         <source>Loading</source>
         <translation>Läser in</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="351"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="355"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="391"/>
         <source>Search in all groups</source>
         <translation>Sök i alla grupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="364"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="400"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="392"/>
         <source>Search in</source>
         <translation>Sök i</translation>
     </message>
@@ -937,12 +917,12 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
         <translation>Redigera</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <location filename="../qml/content/KdbListItem.qml" line="165"/>
         <source>Delete</source>
         <translation>Ta bort</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="181"/>
+        <location filename="../qml/content/KdbListItem.qml" line="182"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Flytta</translation>

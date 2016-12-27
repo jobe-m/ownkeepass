@@ -136,9 +136,6 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
         return;
     }
 
-    // currently Keepass 2 database support is limited to read only, so set it here explicitly
-//    db_read_only = true;
-
     // database was opened successfully
     m_filePath = filePath;
     if (db_read_only) {

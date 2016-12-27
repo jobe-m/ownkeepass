@@ -161,6 +161,7 @@ ListItem {
             }
 
             MenuItem {
+                enabled: ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2
                 text: qsTr("Delete")
                 onClicked: {
                     switch (model.itemType) {
@@ -175,8 +176,8 @@ ListItem {
             }
 
             MenuItem {
-                enabled: model.itemType === DatabaseItemType.ENTRY
-                visible: enabled
+                enabled: (model.itemType === DatabaseItemType.ENTRY) && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
+                visible: model.itemType === DatabaseItemType.ENTRY
                 //: used in menu to move the password entry into another group
                 text: qsTr("Move")
                 onClicked: {

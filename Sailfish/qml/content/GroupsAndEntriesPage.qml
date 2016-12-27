@@ -68,14 +68,6 @@ Page {
         if (status === PageStatus.Active) pageStack.pop(pageStack.previousPage(groupsAndEntriesPage))
     }
 
-    function __showLoadErrorPage() {
-        applicationWindow.infoPopup.show(Global.error, qsTr("Load Error"), qsTr("Could not load all items from Keepass database file. That's strange."))
-    }
-
-    function __showSaveErrorPage() {
-        applicationWindow.infoPopup.show(Global.error, qsTr("Save Error"), qsTr("Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed."))
-    }
-
     allowedOrientations: applicationWindow.orientationSetting
 
     Item {

@@ -56,8 +56,8 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
-        visible: enabled
+        enabled: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
+        visible: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
         text: qsTr("Database settings")
         onClicked: {
             pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
@@ -65,8 +65,8 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordGroupsMenuItem && !ownKeepassDatabase.readOnly
-        visible: enabled
+        enabled: enableNewPasswordGroupsMenuItem && !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
+        visible: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
         text: qsTr("New password group")
         onClicked: {
             newPasswordGroupClicked()
@@ -74,8 +74,8 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordEntryMenuItem && !ownKeepassDatabase.readOnly
-        visible: enabled
+        enabled: enableNewPasswordEntryMenuItem && !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
+        visible: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
         text: qsTr("New password entry")
         onClicked: {
             newPasswordEntryClicked()

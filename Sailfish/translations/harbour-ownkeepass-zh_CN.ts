@@ -762,81 +762,61 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="319"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="323"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="339"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="389"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="394"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="315"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="386"/>
         <source>Password groups</source>
         <translation>密码组</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
-        <source>Load Error</source>
-        <translation>载入错误</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="72"/>
-        <source>Could not load all items from Keepass database file. That&apos;s strange.</source>
-        <translation>怪了，无法从Keepass数据库文件中载入所有内容</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="76"/>
-        <source>Save Error</source>
-        <translation>保存错误</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="76"/>
-        <source>Could not save your changes to Keepass database file. Either the location of the file is write protected or it was removed.</source>
-        <translation>无法保存你的设置到Keepass数据库文件。文件位置被写保护或已删除。</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="107"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="99"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="166"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="158"/>
         <source>No entries found</source>
         <translation>未找到词条</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="185"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="177"/>
         <source>Decrypting Keepass database</source>
         <translation>解密Keepass数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="207"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="199"/>
         <source>Group is empty</source>
         <translation>组为空</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="210"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="202"/>
         <source>Pull down to add password groups</source>
         <translation>下拉添加密码组</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="211"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="203"/>
         <source>Pull down to add password groups or entries</source>
         <translation>下拉添加密码组或词条</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="303"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="295"/>
         <source>Loading</source>
         <translation>载入中</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="351"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="355"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="391"/>
         <source>Search in all groups</source>
         <translation>在所有组中搜索</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="364"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="400"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="392"/>
         <source>Search in</source>
         <translation>搜索这里</translation>
     </message>
@@ -937,12 +917,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <location filename="../qml/content/KdbListItem.qml" line="165"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="181"/>
+        <location filename="../qml/content/KdbListItem.qml" line="182"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>移动</translation>
