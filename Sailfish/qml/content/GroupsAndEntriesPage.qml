@@ -219,8 +219,9 @@ Page {
             onNewPasswordGroupClicked: {
                 // empty searchField
                 searchField.text = ""
+                // set default icon id and delete custom icon uuid per default, too
                 pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
-                               { "createNewGroup": true, "parentGroupId": groupId })
+                               { "createNewGroup": true, "parentGroupId": groupId, "iconId": 0, "customIconUuid": "" })
             }
 
             onNewPasswordEntryClicked: {

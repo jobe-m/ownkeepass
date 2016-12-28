@@ -432,7 +432,7 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
     Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
-        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId, "", 0, "");
+        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId, "", "", 0, "");
         return;
     }
     Uuid customIconUuid = group->iconUuid();
@@ -446,11 +446,12 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
                      "",
                      groupId,
                      group->name(),
+                     group->notes(),
                      (int)group->iconNumber(),
                      customIcon);
 }
 
-void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, int iconId, QString customIconUuid)
+void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, QString notes, int iconId, QString customIconUuid)
 {
     Q_ASSERT(m_Database);
     // get group handle and load group details
@@ -463,6 +464,7 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, i
         return;
     }
     group->setName(title);
+    group->setNotes(notes);
     if (customIconUuid.length() == 0) {
         group->setIcon(iconId);
     } else {
@@ -512,8 +514,77 @@ void Keepass2DatabaseInterface::slot_unregisterListModel(QString modelId)
     m_entries_modelId.remove(qString2Uuid(modelId));
 }
 
-void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid)
+void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes, QString parentGroupId, int iconId, QString customIconUuid)
 {
+    Q_ASSERT(m_Database);
+    Uuid parentGroupUuid;
+    // Id for root group is "0" otherwise it is uuid for of parent group
+    if (parentGroupId.compare("0") == 0) {
+        parentGroupUuid = m_Database->rootGroup()->uuid();
+    } else {
+        parentGroupUuid = qString2Uuid(parentGroupId);
+    }
+    Group* parentGroup = m_Database->resolveGroup(parentGroupUuid);
+    Q_ASSERT(parentGroup);
+    if (Q_NULLPTR == parentGroup) {
+        qDebug() << "ERROR: Could not find group for UUID: " << parentGroupId;
+        emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", parentGroupId);
+        return;
+    }
+
+    // Create new empty group
+    Group* newGroup = new Group();
+    newGroup->setUuid(Uuid::random());
+    newGroup->setName(title);
+    if (customIconUuid.length() == 0) {
+        newGroup->setIcon(iconId);
+    } else {
+        qDebug() << "custom icon uuid: " << customIconUuid;
+        newGroup->setIcon(qString2Uuid(customIconUuid));
+    }
+    // new group will get handle to database from parent group
+    newGroup->setParent(parentGroup);
+
+    // save database
+    QString newGroupId = newGroup->uuid().toHex();
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // send signal to QML
+        emit newGroupCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, newGroupId);
+        return;
+    }
+
+    // update all list model of parent groups where new group was added
+    if (m_setting_sortAlphabeticallyInListView) {
+        emit addItemToListModelSorted(title,                                    // group name
+                                      (quint32)iconId,                          // icon id
+                                      customIconUuid,                           // customIconUuid
+                                      "Subgroups: 0 | Entries: 0",              // subtitle
+                                      newGroupId,                               // identifier for group item in list model
+                                      DatabaseItemType::GROUP,                  // item type
+                                      0,                                        // item level (not used here)
+                                      parentGroupUuid.toHex());                 // identifier for list model
+    } else {
+        emit appendItemToListModel(title,                                       // group name
+                                   (quint32)iconId,                             // icon id
+                                   customIconUuid,                              // customIconUuid
+                                   "Subgroups: 0 | Entries: 0",                 // subtitle
+                                   newGroupId,                                  // identifier for group in list model
+                                   DatabaseItemType::GROUP,                     // item type
+                                   0,                                           // item level (not used here)
+                                   parentGroupUuid.toHex());                    // identifier for list model
+    }
+    // save modelid and group
+    m_groups_modelId.insertMulti(parentGroupUuid, newGroup->uuid());
+
+    // update all grandparent groups subtitle in UI
+    // check if parent group is root group, then we don't need to do anything
+    if (parentGroup != m_Database->rootGroup()) {
+        updateGrandParentGroupInListModel(parentGroup);
+    }
+
+    // send signal to QML
+    emit newGroupCreated(DatabaseAccessResult::RE_OK, "", newGroupId);
 }
 
 void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
@@ -539,9 +610,28 @@ void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
 {
 }
 
-//void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* parentGroup)
-//{
-//}
+void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentGroup)
+{
+    Q_ASSERT(m_Database);
+    Group* grandParentGroup = parentGroup->parentGroup();
+    int numberOfSubgroups = parentGroup->children().count();
+    int numberOfEntries   = parentGroup->entries().count();
+    Uuid customIconUuid = parentGroup->iconUuid();
+    // if custom icon is not set then the string which is passed to QML needs to be zero length
+    QString customIcon;
+    if (customIconUuid.isNull()) {
+        customIcon = "";
+    } else {
+        customIcon = customIconUuid.toHex();
+    }
+    emit updateItemInListModel(parentGroup->name(),                                   // group name
+                               parentGroup->iconNumber(),                             // icon id
+                               customIcon,                                            // customIconUuid
+                               QString("Subgroups: %1 | Entries: %2")
+                               .arg(numberOfSubgroups).arg(numberOfEntries),          // subtitle
+                               parentGroup->uuid().toHex(),                           // identifier for group item in list model
+                               grandParentGroup->uuid().toHex());                     // identifier for list model
+}
 
 void Keepass2DatabaseInterface::slot_deleteEntry(QString entryId)
 {
@@ -642,12 +732,17 @@ characters long.
 */
 inline Uuid Keepass2DatabaseInterface::qString2Uuid(QString value)
 {
-    QByteArray baValue = QByteArray::fromHex(value.toLatin1());
-    if (baValue.size() == Uuid::Length) {
-        return Uuid(baValue);
+    if (value.compare("fffffffe") == 0) {
+        // special handle for search (group) list model
+        return Uuid("fffffffe");
     } else {
-        emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_UUID, value);
-        return Uuid();
+        QByteArray baValue = QByteArray::fromHex(value.toLatin1());
+        if (baValue.size() == Uuid::Length) {
+            return Uuid(baValue);
+        } else {
+            emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_UUID, value);
+            return Uuid();
+        }
     }
 }
 

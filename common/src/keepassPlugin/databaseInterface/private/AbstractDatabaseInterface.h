@@ -167,9 +167,9 @@ protected: // signals
                              QString errorMsg,
                              QString groupId,
                              QString title,
+                             QString notes,
                              int iconId,
                              QString customIconUuid) = 0;
-    // TODO check entrySaved and all below (seach and add missing stuff....)
     virtual void groupSaved(int result,
                             QString errorMsg,
                             QString groupId) = 0;
@@ -234,9 +234,11 @@ public: // slots
     virtual void slot_loadGroup(QString groupId) = 0;
     virtual void slot_saveGroup(QString groupId,
                                 QString title,
+                                QString notes,
                                 int iconId,
                                 QString customIconUuid) = 0;
     virtual void slot_createNewGroup(QString title,
+                                     QString notes,
                                      QString parentGroupId,
                                      int iconId,
                                      QString customIconUuid) = 0;

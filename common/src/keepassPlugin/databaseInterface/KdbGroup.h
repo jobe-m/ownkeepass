@@ -37,15 +37,17 @@ public:
 
 public:
     Q_INVOKABLE void loadGroupData();
-    Q_INVOKABLE void createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid);
-    Q_INVOKABLE void saveGroupData(QString title, int iconId, QString customIconUuid);
+    Q_INVOKABLE void createNewGroup(QString title, QString notes, QString parentGroupId, int iconId, QString customIconUuid);
+    Q_INVOKABLE void saveGroupData(QString title, QString notes, int iconId, QString customIconUuid);
     Q_INVOKABLE void deleteGroup();
     Q_INVOKABLE void moveGroup(QString newParentGroupId);
 
 signals:
     // signals to QML
     void groupDataLoaded(int result,
+                         QString errorMsg,
                          QString title,
+                         QString notes,
                          int iconId,
                          QString customIconUuid);
     void groupDataSaved(int result,
@@ -61,9 +63,11 @@ signals:
     void loadGroupFromKdbDatabase(QString groupId);
     void saveGroupToKdbDatabase(QString groupId,
                                 QString title,
+                                QString notes,
                                 int iconId,
                                 QString customIconUuid);
     void createNewGroupInKdbDatabase(QString title,
+                                     QString notes,
                                      QString parentGroupId,
                                      int iconId,
                                      QString customIconUuid);
@@ -77,6 +81,7 @@ public slots:
                               QString errorMsg,
                               QString groupId,
                               QString title,
+                              QString notes,
                               int iconId,
                               QString customIconUuid);
     void slot_groupDataSaved(int result,

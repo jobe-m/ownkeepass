@@ -28,7 +28,7 @@ import "../common"
 Dialog {
     id: selectKdbIconDialog
 
-    property int newIconId: -1
+    property int newIconId: 0 // Default new icon
     property string newCustomIconUuid: ""
 
     // private stuff

@@ -49,14 +49,14 @@ bool KdbGroup::connectToDatabaseClient()
                        SLOT(slot_loadGroup(QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(groupLoaded(int,QString,QString,QString,int,QString)),
+                  SIGNAL(groupLoaded(int,QString,QString,QString,QString,int,QString)),
                   this,
-                  SLOT(slot_groupDataLoaded(int,QString,QString,QString,int,QString)));
+                  SLOT(slot_groupDataLoaded(int,QString,QString,QString,QString,int,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(saveGroupToKdbDatabase(QString, QString,int,QString)),
+                  SIGNAL(saveGroupToKdbDatabase(QString,QString,QString,int,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_saveGroup(QString, QString,int,QString)));
+                  SLOT(slot_saveGroup(QString,QString,QString,int,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(groupSaved(int,QString,QString,QString)),
@@ -64,9 +64,9 @@ bool KdbGroup::connectToDatabaseClient()
                   SLOT(slot_groupDataSaved(int,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(createNewGroupInKdbDatabase(QString,QString,int,QString)),
+                  SIGNAL(createNewGroupInKdbDatabase(QString,QString,QString,int,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_createNewGroup(QString,QString,int,QString)));
+                  SLOT(slot_createNewGroup(QString,QString,QString,int,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(newGroupCreated(int,QString,QString)),
@@ -112,14 +112,14 @@ void KdbGroup::loadGroupData()
     Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
-        emit groupDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "", 0 , "");
+        emit groupDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "", "", "", 0 , "");
     } else {
         // trigger loading from database client
         emit loadGroupFromKdbDatabase(m_groupId);
     }
 }
 
-void KdbGroup::saveGroupData(QString title, int iconId, QString customIconUuid)
+void KdbGroup::saveGroupData(QString title, QString notes, int iconId, QString customIconUuid)
 {
     Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
@@ -127,11 +127,11 @@ void KdbGroup::saveGroupData(QString title, int iconId, QString customIconUuid)
         emit groupDataSaved(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
     } else {
         // trigger loading from database client
-        emit saveGroupToKdbDatabase(m_groupId, title, iconId, customIconUuid);
+        emit saveGroupToKdbDatabase(m_groupId, title, notes, iconId, customIconUuid);
     }
 }
 
-void KdbGroup::createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid)
+void KdbGroup::createNewGroup(QString title, QString notes, QString parentGroupId, int iconId, QString customIconUuid)
 {
     Q_ASSERT(parentGroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
@@ -140,7 +140,7 @@ void KdbGroup::createNewGroup(QString title, QString parentGroupId, int iconId, 
     } else {
         // trigger creation of new entry in database client
         m_new_group_triggered = true;
-        emit createNewGroupInKdbDatabase(title, parentGroupId, iconId, customIconUuid);
+        emit createNewGroupInKdbDatabase(title, notes, parentGroupId, iconId, customIconUuid);
     }
 }
 
@@ -170,11 +170,11 @@ void KdbGroup::moveGroup(QString newParentGroupId)
     }
 }
 
-void KdbGroup::slot_groupDataLoaded(int result, QString errorMsg, QString groupId, QString title, int iconId, QString customIconUuid)
+void KdbGroup::slot_groupDataLoaded(int result, QString errorMsg, QString groupId, QString title, QString notes, int iconId, QString customIconUuid)
 {
     // forward signal to QML only if the signal is for us
     if (groupId.compare(m_groupId) == 0) {
-        emit groupDataLoaded(result, title, iconId, customIconUuid);
+        emit groupDataLoaded(result, errorMsg, title, notes, iconId, customIconUuid);
     }
 }
 

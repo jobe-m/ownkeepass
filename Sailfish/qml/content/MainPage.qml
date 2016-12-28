@@ -226,7 +226,7 @@ Page {
             // TODO deleting database file not yet implemented
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Internal Error"),
-                                             qsTr("Something went wrong while trying to delete the database file. Error message:" + " " + errorMsg))
+                                             qsTr("Something went wrong while trying to delete the database file. Error message:") + " " + errorMsg)
             break
         case DatabaseAccessResult.RE_ERR_QSTRING_TO_INT:
             applicationWindow.infoPopup.show(Global.error,
@@ -721,10 +721,12 @@ Page {
           Here are the details for Kdb groups. The same applies like for Kdb entries
           */
         property string originalGroupName: ""
-        property int    originalGroupIconId: -1
+        property string originalGroupNotes: ""
+        property int    originalGroupIconId: 0
         property string originalGroupCustomIconUuid: ""
         property string groupName: ""
-        property int    groupIconId: -1
+        property string groupNotes: ""
+        property int    groupIconId: 0
         property string groupCustomIconUuid: ""
 
         /*
@@ -766,12 +768,14 @@ Page {
             if (createNewItem) {
                 // create new group in database, save and update list model data in backend
                 kdbGroup.createNewGroup(groupName,
+                                        groupNotes,
                                         parentGroupId,
                                         groupIconId,
                                         groupCustomIconUuid)
             } else {
                 // save changes of existing group to database and update list model data in backend
                 kdbGroup.saveGroupData(groupName,
+                                       groupNotes,
                                        groupIconId,
                                        groupCustomIconUuid)
             }
@@ -811,6 +815,7 @@ Page {
 
         function checkForUnsavedKdbGroupChanges() {
             if (originalGroupName !== groupName ||
+                    originalGroupNotes !== groupNotes ||
                     originalGroupIconId !== groupIconId ||
                     originalGroupCustomIconUuid !== groupCustomIconUuid) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
@@ -833,13 +838,14 @@ Page {
                 showEntryDetailsPageRef.setTextFields(keys, values)
         }
 
-        function loadKdbGroupDetails(name, iconId, customIconUuid) {
+        function loadKdbGroupDetails(name, notes, iconId, customIconUuid) {
             groupName = originalGroupName = name
+            groupNotes = originalGroupNotes = notes
             groupIconId = originalGroupIconId = iconId
             groupCustomIconUuid = originalGroupCustomIconUuid = customIconUuid
             // Populate group detail text fields in editGroupDetailsDialog
             if(editGroupDetailsDialogRef)
-                editGroupDetailsDialogRef.setTextFields(name, iconId, customIconUuid)
+                editGroupDetailsDialogRef.setTextFields(name, notes, iconId, customIconUuid)
         }
 
         function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment) {
@@ -853,11 +859,12 @@ Page {
             entryComment  = comment
         }
 
-        function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name, iconId, customIconUuid) {
+        function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name, notes, iconId, customIconUuid) {
             createNewItem       = createNewGroup
             itemId              = groupId
             parentGroupId       = parentGrId
             groupName           = name
+            groupNotes          = notes
             groupIconId         = iconId
             groupCustomIconUuid = customIconUuid
         }
@@ -961,7 +968,10 @@ Page {
 
     KdbGroup {
         id: kdbGroup
-        onGroupDataLoaded: kdbListItemInternal.loadKdbGroupDetails(title, iconId, customIconUuid)
+        onGroupDataLoaded: {
+            mainPage.errorHandler(result, errorMsg)
+            kdbListItemInternal.loadKdbGroupDetails(title, notes, iconId, customIconUuid)
+        }
         onGroupDataSaved: mainPage.errorHandler(result, errorMsg)
         onNewGroupCreated: mainPage.errorHandler(result, errorMsg)
     }

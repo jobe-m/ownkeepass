@@ -118,6 +118,7 @@ signals:
                      QString errorMsg,
                      QString groupId,
                      QString title,
+                     QString notes,
                      int iconId,
                      QString customIconUuid);
     void groupSaved(int result,
@@ -180,10 +181,12 @@ public slots:
     // signal from KdbGroup object
     void slot_loadGroup(QString groupId);
     void slot_saveGroup(QString groupId,
+                        QString notes,
                         QString title,
                         int iconId,
                         QString customIconUuid);
     void slot_createNewGroup(QString title,
+                             QString notes,
                              QString parentGroupId,
                              int iconId,
                              QString customIconUuid);

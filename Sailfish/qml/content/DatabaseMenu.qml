@@ -65,8 +65,8 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordGroupsMenuItem && !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
-        visible: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
+        enabled: enableNewPasswordGroupsMenuItem && !ownKeepassDatabase.readOnly
+        visible: enabled
         text: qsTr("New password group")
         onClicked: {
             newPasswordGroupClicked()

@@ -373,39 +373,49 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="81"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="106"/>
         <source>Save</source>
         <translation>Uložit</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="82"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="107"/>
         <source>Discard</source>
         <translation>Zahodit</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="86"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="111"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="164"/>
         <source>Type in a name for the new group:</source>
         <translation>Zadejte název nové skupiny:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="140"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="165"/>
         <source>Change name of group:</source>
         <translation>Změnit název skupiny:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="171"/>
         <source>Name of group</source>
         <translation>Název skupiny</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
         <source>Set name of group</source>
         <translation>Nastavit název skupiny</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="196"/>
+        <source>Notes for the group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="198"/>
+        <source>Set notes for the group</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -762,12 +772,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="311"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="315"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="331"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="386"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="312"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="316"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="332"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="337"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="382"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="387"/>
         <source>Password groups</source>
         <translation>Heslové skupiny</translation>
     </message>
@@ -802,21 +812,21 @@
         <translation>Stáhněte dolů pro přidání heslových skupin nebo záznamů</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="295"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="296"/>
         <source>Loading</source>
         <translation>Nahrává se</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="351"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="355"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="391"/>
-        <source>Search in all groups</source>
-        <translation>Hledat ve všech skupinách</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="392"/>
+        <source>Search in all groups</source>
+        <translation>Hledat ve všech skupinách</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="353"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="357"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="393"/>
         <source>Search in</source>
         <translation>Hledat v</translation>
     </message>
@@ -1183,6 +1193,11 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/MainPage.qml" line="229"/>
+        <source>Something went wrong while trying to delete the database file. Error message:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
         <translation type="unfinished"></translation>
@@ -1253,42 +1268,42 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Převod QString &quot;%1&quot; na Int selhal</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1092"/>
+        <location filename="../qml/content/MainPage.qml" line="1102"/>
         <source>Drop from List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1156"/>
+        <location filename="../qml/content/MainPage.qml" line="1166"/>
         <source>Yes</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1157"/>
+        <location filename="../qml/content/MainPage.qml" line="1167"/>
         <source>No</source>
         <translation>Ne</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1158"/>
+        <location filename="../qml/content/MainPage.qml" line="1168"/>
         <source>Unsaved changes</source>
         <translation>Neuložené změny</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1186"/>
+        <location filename="../qml/content/MainPage.qml" line="1196"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Chcete uložit změny do heslového záznamu?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1191"/>
+        <location filename="../qml/content/MainPage.qml" line="1201"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Chcete uložit změny do heslové skupiny?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1196"/>
+        <location filename="../qml/content/MainPage.qml" line="1206"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Chcete uložit změny do nastavení databáze?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1201"/>
+        <location filename="../qml/content/MainPage.qml" line="1211"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Chcete uložit změněné hodnoty nastavení?</translation>
     </message>

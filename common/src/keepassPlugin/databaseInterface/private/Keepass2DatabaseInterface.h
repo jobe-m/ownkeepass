@@ -120,6 +120,7 @@ signals:
                      QString errorMsg,
                      QString groupId,
                      QString title,
+                     QString notes,
                      int iconId,
                      QString customIconUuid);
     void groupSaved(int result,
@@ -183,9 +184,11 @@ public slots:
     void slot_loadGroup(QString groupId);
     void slot_saveGroup(QString groupId,
                         QString title,
+                        QString notes,
                         int iconId,
                         QString customIconUuid);
     void slot_createNewGroup(QString title,
+                             QString notes,
                              QString parentGroupId,
                              int iconId,
                              QString customIconUuid);
@@ -199,7 +202,7 @@ public:
 private:
     void initDatabase();
     QString saveDatabase();
-//    void updateGrandParentGroupInListModel(IGroupHandle* parentGroup);
+    void updateGrandParentGroupInListModel(Group* parentGroup);
     inline QString getUserAndPassword(Entry* entry);
     inline Uuid qString2Uuid(QString value);
     inline QString uInt2QString(uint value);

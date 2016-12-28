@@ -420,16 +420,17 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
     Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UInt: " << groupId;
-        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId, "", 0, "");
+        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId, "", "", 0, "");
     } else {
-        emit groupLoaded(DatabaseAccessResult::RE_OK, "", groupId, group->title(), (int)group->image(), "");
+        emit groupLoaded(DatabaseAccessResult::RE_OK, "", groupId, group->title(), "", (int)group->image(), "");
     }
 }
 
-void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, int iconId, QString customIconUuid)
+void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString notes, QString title, int iconId, QString customIconUuid)
 {
 //    qDebug() << "groupId " << groupId;
     Q_UNUSED(customIconUuid);
+    Q_UNUSED(notes);
     Q_ASSERT(m_kdb3Database);
 
     //  save changes on group details to database
@@ -481,10 +482,11 @@ void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
     m_entries_modelId.remove(qString2UInt(modelId));
 }
 
-void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString parentGroupId, int iconId, QString customIconUuid)
+void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes, QString parentGroupId, int iconId, QString customIconUuid)
 {
 //    qDebug() << "parentGroupId " << parentGroupId;
     Q_UNUSED(customIconUuid);
+    Q_UNUSED(notes);
     Q_ASSERT(m_kdb3Database);
 
     // get parent group handle and identify IDs of list model

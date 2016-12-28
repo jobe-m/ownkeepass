@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 import "../common"
+import harbour.ownkeepass 1.0
 
 Dialog {
     id: editGroupDetailsDialog
@@ -33,25 +34,45 @@ Dialog {
     property string groupId: ""
     // creation of new group needs parent group ID
     property string parentGroupId: ""
+    // icon for group (either a default icon or a custom database icon
+    property int iconId: -1
+    property string customIconUuid: ""
 
+    // internal
     // The following properties are used to check if text of any entry detail was changed. If so,
     // set cover page accordingly to signal the user unsaved changes
-    property string origGroupTitle: ""
+    property string origName: ""
+    property string origNotes: ""
+    property int origIconId: -1
+    property string origCustomIconUuid: ""
+    property bool nameChanged: false
+    property bool notesChanged: false
+    property bool iconIdChanged: false
+    property bool customIconUuidChanged: false
 
-    // private
-    property string _customIconUuid: ""
-    property int _iconId: -1
-
-    function setTextFields(name, iconId, customIconUuid) {
-        groupTitleTextField.text = origGroupTitle = name
-        setIconId(iconId, customIconUuid)
-        groupTitleTextField.focus = true
+    // This function should be called when any text is changed to check if the
+    // cover page state needs to be updated
+    function updateCoverState() {
+        if (nameChanged || notesChanged || iconIdChanged || customIconUuidChanged) {
+            applicationWindow.cover.state = "UNSAVED_CHANGES"
+        } else {
+            applicationWindow.cover.state = "ENTRY_VIEW"
+        }
     }
 
-    function setIconId(iconId, customIconUuid) {
+    function setTextFields(name, notes, aIconId, aCustomIconUuid) {
+        groupNameTextField.text = origName = name
+        groupNotesTextField.text = origNotes = notes
+        iconId = origIconId = aIconId
+        customIconUuid = origCustomIconUuid = aCustomIconUuid
+        setIconId(aIconId, aCustomIconUuid)
+        groupNameTextField.focus = true
+    }
+
+    function setIconId(aIconId, aCustomIconUuid) {
         // customIconUuid has priority over iconId
-        _iconId = customIconUuid.length === 0 ? iconId : -1
-        _customIconUuid = customIconUuid
+        iconId = aCustomIconUuid.length === 0 ? aIconId : -1
+        customIconUuid = aCustomIconUuid
         // determine if this group has a custom icon if not set the corresponding icon with iconId
         if (customIconUuid.length === 0) {
             groupIcon.source = "../../entryicons/icf" + iconId + ".png"
@@ -60,8 +81,12 @@ Dialog {
         }
     }
 
+    // set group icon for image element
+    onIconIdChanged: setIconId(iconId, "")
+    onCustomIconUuidChanged: setIconId(-1, customIconUuid)
+
     // forbit page navigation if name of group is empty
-    canNavigateForward: groupTitleTextField.text !== ""
+    canNavigateForward: groupNameTextField.text !== "" && (iconId !== -1 || customIconUuid.length !== 0)
     allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
@@ -102,8 +127,8 @@ Dialog {
                         anchors.fill: parent
                         onClicked: {
                             // open new dialog with grid of all icons
-                            selectKdbIconDialog.newIconId = _customIconUuid.length === 0 ? _iconId : -1
-                            selectKdbIconDialog.newCustomIconUuid = _customIconUuid
+                            selectKdbIconDialog.newIconId = customIconUuid.length === 0 ? iconId : -1
+                            selectKdbIconDialog.newCustomIconUuid = customIconUuid
                             pageStack.push(selectKdbIconDialog)
                         }
                     }
@@ -141,7 +166,7 @@ Dialog {
             }
 
             TextField {
-                id: groupTitleTextField
+                id: groupNameTextField
                 width: parent.width
                 label: qsTr("Name of group")
                 text: ""
@@ -157,12 +182,23 @@ Dialog {
                 onTextChanged: {
                     // set new title name in cover
                     applicationWindow.cover.title = text
-                    // update cover state
-                    if (editGroupDetailsDialog.origGroupTitle !== text) {
-                        applicationWindow.cover.state = "UNSAVED_CHANGES"
-                    } else {
-                        applicationWindow.cover.state = "GROUPS_VIEW"
-                    }
+                    nameChanged = origName !== text ? true : false
+                    updateCoverState()
+                }
+                focusOutBehavior: -1
+            }
+
+            TextArea {
+                id: groupNotesTextField
+                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
+                visible: enabled
+                width: parent.width
+                label: qsTr("Notes for the group")
+                text: ""
+                placeholderText: qsTr("Set notes for the group")
+                onTextChanged: {
+                    notesChanged = origNotes !== text ? true : false
+                    updateCoverState()
                 }
                 focusOutBehavior: -1
             }
@@ -181,7 +217,7 @@ Dialog {
         if (!createNewGroup) {
             kdbGroup.loadGroupData()
         }
-        groupTitleTextField.focus = true
+        groupNameTextField.focus = true
     }
     Component.onDestruction: {
         // unset again
@@ -193,9 +229,10 @@ Dialog {
         kdbListItemInternal.setKdbGroupDetails(createNewGroup,
                                                groupId,
                                                parentGroupId,
-                                               groupTitleTextField.text,
-                                               _iconId,
-                                               _customIconUuid)
+                                               groupNameTextField.text,
+                                               groupNotesTextField.text,
+                                               iconId,
+                                               customIconUuid)
         kdbListItemInternal.saveKdbGroupDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details
@@ -206,9 +243,10 @@ Dialog {
             kdbListItemInternal.setKdbGroupDetails(createNewGroup,
                                                    groupId,
                                                    parentGroupId,
-                                                   groupTitleTextField.text,
-                                                   _iconId,
-                                                   _customIconUuid)
+                                                   groupNameTextField.text,
+                                                   groupNotesTextField.text,
+                                                   iconId,
+                                                   customIconUuid)
             kdbListItemInternal.checkForUnsavedKdbGroupChanges()
         }
     }
