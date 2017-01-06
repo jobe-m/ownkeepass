@@ -925,17 +925,17 @@ ownKeepass is een wachtwoordkluis voor de Jolla Smartphone met het doel gevoelig
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="148"/>
+        <location filename="../qml/content/KdbListItem.qml" line="149"/>
         <source>Edit</source>
         <translation>Bewerken</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="165"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Delete</source>
         <translation>Verwijderen</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="183"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Verplaatsen</translation>
@@ -1505,14 +1505,19 @@ ownKeepass is een wachtwoordkluis voor de Jolla Smartphone met het doel gevoelig
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="122"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
         <source>Select</source>
         <translation type="unfinished">Selecteren</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
         <source>Cancel</source>
         <translation type="unfinished">Annuleren</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
+        <source>Choose a Keepass standard icon:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

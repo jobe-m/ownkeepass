@@ -922,17 +922,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="148"/>
+        <location filename="../qml/content/KdbListItem.qml" line="149"/>
         <source>Edit</source>
         <translation>編集</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="165"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Delete</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="183"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>移動</translation>
@@ -1502,14 +1502,19 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="122"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
         <source>Select</source>
         <translation type="unfinished">選択</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
         <source>Cancel</source>
         <translation type="unfinished">キャンセル</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
+        <source>Choose a Keepass standard icon:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

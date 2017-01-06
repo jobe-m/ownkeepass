@@ -75,9 +75,9 @@ Dialog {
         customIconUuid = aCustomIconUuid
         // determine if this group has a custom icon if not set the corresponding icon with iconId
         if (customIconUuid.length === 0) {
-            groupIcon.source = "../../entryicons/icf" + iconId + ".png"
+            groupIcon.source = "image://KeepassIcon/icf" + iconId
         } else {
-            groupIcon.source = "image://CustomIcon/" + customIconUuid
+            groupIcon.source = "image://KeepassIcon/" + customIconUuid
         }
     }
 

@@ -922,17 +922,17 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="148"/>
+        <location filename="../qml/content/KdbListItem.qml" line="149"/>
         <source>Edit</source>
         <translation>Redigera</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="165"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Delete</source>
         <translation>Ta bort</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="183"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Flytta</translation>
@@ -1502,14 +1502,19 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="122"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
         <source>Select</source>
         <translation type="unfinished">Välj</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
         <source>Cancel</source>
         <translation type="unfinished">Avbryt</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
+        <source>Choose a Keepass standard icon:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

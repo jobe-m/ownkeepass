@@ -68,7 +68,6 @@ TARGET = harbour-ownkeepass
 # adding common QML files, QML imports, C++ libs and image files for the app
 common_files.path   = /usr/share/$${TARGET}
 common_files.files += \
-    ../common/images/entryicons \
     ../common/images/covericons \
     ../common/images/wallicons
 password_generator_lib.path   = /usr/share/$${TARGET}/lib
@@ -85,6 +84,10 @@ icon_file_128x128.path  = /usr/share/icons/hicolor/128x128/apps
 icon_file_128x128.files = icons/128x128/$${TARGET}.png
 icon_file_256x256.path  = /usr/share/icons/hicolor/256x256/apps
 icon_file_256x256.files = icons/256x256/$${TARGET}.png
+
+# icons are put into resources
+#QMAKE_RESOURCE_FLAGS += -no-compress
+RESOURCES = ../common/images/icons.qrc
 
 INSTALLS += \
     common_files \

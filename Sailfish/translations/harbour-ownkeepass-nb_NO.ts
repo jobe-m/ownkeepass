@@ -923,17 +923,17 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="148"/>
+        <location filename="../qml/content/KdbListItem.qml" line="149"/>
         <source>Edit</source>
         <translation>Rediger</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="165"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Delete</source>
         <translation>Slett</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="183"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Flytt</translation>
@@ -1503,14 +1503,19 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="122"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
         <source>Select</source>
         <translation type="unfinished">Velg</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
         <source>Cancel</source>
         <translation type="unfinished">Avbryt</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
+        <source>Choose a Keepass standard icon:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

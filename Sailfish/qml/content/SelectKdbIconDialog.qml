@@ -100,7 +100,7 @@ Dialog {
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
                 opacity: iconMouseArea.pressed ? 0.5 : 1.0
-                source: "../../entryicons/icf" + index + ".png"
+                source: "image://KeepassIcon/icf" + index
             }
 
 //            Label {
