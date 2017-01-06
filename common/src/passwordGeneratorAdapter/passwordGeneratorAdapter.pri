@@ -20,11 +20,6 @@
 #**
 #***************************************************************************
 
-#QT += qml quick
-# password generator uses libgcrypt
-#LIBS += -lgcrypt
-#INCLUDEPATH += ../../../src
-
 # for optimizing string construction
 DEFINES *= QT_USE_QSTRINGBUILDER
 
@@ -32,14 +27,7 @@ INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
 
 SOURCES += \
-#    ../../../src/core/PasswordGenerator.cpp \
     ../common/src/passwordGeneratorAdapter/PasswordGeneratorAdapter.cpp
-#    ../../../src/crypto/Random.cpp \
-#    ../../../src/crypto/Crypto.cpp
 
 HEADERS += \
-#    ../../../src/core/PasswordGenerator.h \
     ../common/src/passwordGeneratorAdapter/PasswordGeneratorAdapter.h
-#    ../../../src/core/Global.h \
-#    ../../../src/crypto/Random.h \
-#    ../../../src/crypto/Crypto.h
