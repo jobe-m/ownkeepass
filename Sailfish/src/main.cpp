@@ -43,7 +43,7 @@
 #include "FileBrowserPlugin.h"
 #include "ownKeepassGlobal.h"
 #include "PasswordGeneratorAdapter.h"
-#include "KdbCustomIcon.h"
+#include "KeepassIcon.h"
 
 int main(int argc, char *argv[])
 {
@@ -65,6 +65,8 @@ int main(int argc, char *argv[])
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     app->setOrganizationName(orgName);
     app->setApplicationName(appName);
+
+    Q_INIT_RESOURCE(icons);
 
     // @uri harbour.ownkeepass
     const char* uri("harbour.ownkeepass");
@@ -91,7 +93,7 @@ int main(int argc, char *argv[])
     QScopedPointer<settingsPublic::OwnKeepassSettings> okpSettings(new settingsPublic::OwnKeepassSettings(settingsFilePath, helper.data()));
     view->rootContext()->setContextProperty("ownKeepassSettings", okpSettings.data());
     view->rootContext()->setContextProperty("recentDatabaseModel", okpSettings->recentDatabaseModel());
-    view->engine()->addImageProvider(QLatin1String("CustomIcon"), new KdbCustomIcon());
+    view->engine()->addImageProvider(QLatin1String("KeepassIcon"), new kpxPublic::KeepassIcon());
 
     // Check if user has set language explicitly to be used in the app
     QString locale = QLocale::system().name();
