@@ -20,20 +20,28 @@
 **
 ***************************************************************************/
 
-#ifndef KDBCUSTOMICON_H
-#define KDBCUSTOMICON_H
+#include "KeepassIcon.h"
+#include "private/DatabaseClient.h"
+#include "private/AbstractDatabaseInterface.h"
 
-#include <QQuickImageProvider>
-#include <QImage>
+#include <QDir>
+#include <QStandardPaths>
+#include <QDebug>
 
-class KdbCustomIcon : public QQuickImageProvider
+using namespace kpxPublic;
+
+QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
 {
-public:
-    KdbCustomIcon()
-        : QQuickImageProvider(QQuickImageProvider::Image)
-    {}
-
-    QImage requestImage(const QString &uuid, QSize *size, const QSize &requestedSize);
-};
-
-#endif // KDBCUSTOMICON_H
+    Q_UNUSED(requestedSize);
+    QImage icon;
+    // Check first char and determine if the icon is a stardart keepass icon (e.g. icf12) otherwise the icon is a custom one
+    if (uuid.startsWith("i")) {
+        icon = QImage(":/entryicons/" + uuid + ".png", "PNG");
+    } else {
+        icon = (dynamic_cast<AbstractDatabaseInterface*>(kpxPrivate::DatabaseClient::getInstance()->getInterface()))->getCustomIcon(uuid);
+    }
+    if (size) {
+        *size = QSize(icon.width(), icon.height()); // (128, 128);
+    }
+    return icon;
+}

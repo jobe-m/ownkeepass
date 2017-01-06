@@ -20,17 +20,23 @@
 **
 ***************************************************************************/
 
-#include "KdbCustomIcon.h"
-#include "private/DatabaseClient.h"
-#include "private/AbstractDatabaseInterface.h"
+#ifndef KEEPASSICON_H
+#define KEEPASSICON_H
 
-QImage KdbCustomIcon::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
+#include <QQuickImageProvider>
+#include <QImage>
+
+namespace kpxPublic {
+
+class KeepassIcon : public QQuickImageProvider
 {
-    Q_UNUSED(requestedSize);
+public:
+    KeepassIcon()
+        : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
+    {}
 
-    QImage customIcon = (dynamic_cast<AbstractDatabaseInterface*>(kpxPrivate::DatabaseClient::getInstance()->getInterface()))->getCustomIcon(uuid);
-    if (size) {
-        *size = QSize(customIcon.width(), customIcon.height());
-    }
-    return customIcon;
+    QImage requestImage(const QString &uuid, QSize *size, const QSize &requestedSize);
+};
+
 }
+#endif // KDBCUSTOMICON_H

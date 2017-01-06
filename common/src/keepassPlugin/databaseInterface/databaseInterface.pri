@@ -36,7 +36,7 @@ SOURCES += \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.cpp \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.cpp \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.cpp \
-    $$PWD/KdbCustomIcon.cpp
+    $$PWD/KeepassIcon.cpp
 
 HEADERS += \
     ../common/src/keepassPlugin/databaseInterface/KdbDatabase.h \
@@ -50,5 +50,5 @@ HEADERS += \
     ../common/src/keepassPlugin/databaseInterface/private/AbstractDatabaseInterface.h \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.h \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.h \
-    $$PWD/KdbCustomIcon.h
+    $$PWD/KeepassIcon.h
 
