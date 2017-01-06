@@ -970,7 +970,7 @@ inline uint Keepass1DatabaseInterface::qString2UInt(QString value)
 {
     bool ok = false;
     // threat QString value as hexadecimal number
-    uint uintValue = value.toLatin1().toUInt(&ok, 16);
+    uint uintValue = value.toUInt(&ok, 16);
     if (ok) {
         return uintValue;
     } else {
