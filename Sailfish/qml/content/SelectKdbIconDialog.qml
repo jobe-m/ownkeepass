@@ -44,6 +44,32 @@ Dialog {
         editGroupDetailsDialog.setIconId(iconId, newCustomIconUuid)
     }
 
+    SilicaFlickable {
+        anchors.fill: parent
+
+        DialogHeader {
+            id: header
+            acceptText: qsTr("Select")
+            cancelText: qsTr("Cancel")
+            spacing: 0
+        }
+
+        SilicaGridView {
+            width: parent.width
+            anchors.top: header.bottom
+            anchors.bottom: parent.bottom
+
+            // Show a scollbar when the view is flicked, place this over all other content
+            VerticalScrollDecorator {}
+
+            model: 69
+            cellWidth: selectKdbIconDialog._width
+            cellHeight: selectKdbIconDialog._height
+
+            delegate: iconDelegate
+        }
+    }
+
     Component {
         id: iconDelegate
 
@@ -109,24 +135,5 @@ Dialog {
 //                text: index
 //            }
         }
-    }
-
-    SilicaGridView {
-        width: parent.width
-        height: parent.height
-
-        // Show a scollbar when the view is flicked, place this over all other content
-        VerticalScrollDecorator {}
-
-        header: DialogHeader {
-            acceptText: qsTr("Select")
-            cancelText: qsTr("Cancel")
-        }
-
-        model: 69
-        cellWidth: selectKdbIconDialog._width
-        cellHeight: selectKdbIconDialog._height
-
-        delegate: iconDelegate
     }
 }
