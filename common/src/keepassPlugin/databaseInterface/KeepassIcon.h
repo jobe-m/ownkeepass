@@ -25,6 +25,7 @@
 
 #include <QQuickImageProvider>
 #include <QImage>
+#include <QAbstractListModel>
 
 namespace kpxPublic {
 
@@ -37,6 +38,96 @@ public:
 
     QImage requestImage(const QString &uuid, QSize *size, const QSize &requestedSize);
 };
+
+static const int baseRole = Qt::UserRole + 1;
+
+class IconItem
+{
+public:
+    IconItem(QString uuid, type)
+        : m_uuid(uuid),
+          m_type(type)
+    {
+        static int itemCount = 0;
+        m_index = itemCount;
+        itemCount++;
+    }
+    virtual ~IconItem() {}
+
+    QVariant get(const int role) const;
+    static QHash<int, QByteArray> createRoles();
+
+    QString m_uuid;  // Contains file name of standard icon or uuid of custom database icon
+    int     m_index; // Number of icon
+    int     m_type;  // Identifies if this icon is a standard icon or a custom database icon - this is used for sections in the list view
+};
+
+class IconListModel : public QAbstractListModel
+{
+    Q_OBJECT
+
+public:
+    Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
+
+public:
+    Q_INVOKABLE void initListModel(int loadStandardIcons);
+    Q_INVOKABLE void clearListModel();
+
+public:
+    IconListModel(QObject *parent = 0);
+    virtual ~IconListModel();
+
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    void clear();
+    bool isEmpty();
+
+    // Overwrite function to set role names
+    virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
+
+signals:
+    // signals to QML
+    void modelDataChanged();
+
+    // signals to database client
+    void loadCustomIcons();
+
+    // signals for properties
+    void isEmptyChanged();
+
+public slots:
+    // signal from database client
+    void slot_appendCustomIcon(QString uuid);
+    void slot_deleteCustomIcon(QString uuid);
+
+private:
+    QList<IconItem> m_items;
+    // List model is for password entries (false) or password groups (true) - this affects only the 68 standard icons
+    bool m_group_icons;
+};
+
+// inline implementations
+inline QVariant IconItem::get(const int role) const
+{
+    switch (role) {
+    case baseRole:
+        return m_uuid;
+    case baseRole + 1:
+        return m_index;
+    case baseRole + 2:
+        return m_type;
+    }
+    return QVariant();
+}
+
+inline QHash<int, QByteArray> IconItem::createRoles()
+{
+    QHash<int, QByteArray> roles;
+    roles[baseRole]     = "uuid";
+    roles[baseRole + 1] = "index";
+    rotes[baseRole + 2] = "type";
+    return roles;
+}
 
 }
 #endif // KDBCUSTOMICON_H
