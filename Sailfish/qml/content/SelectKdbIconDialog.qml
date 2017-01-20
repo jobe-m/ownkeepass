@@ -53,7 +53,7 @@ Dialog {
             spacing: 0
         }
 
-        SilicaGridView {
+        SilicaListView {
             width: parent.width
             anchors.top: header.bottom
             anchors.bottom: parent.bottom
@@ -61,11 +61,40 @@ Dialog {
             // Show a scollbar when the view is flicked, place this over all other content
             VerticalScrollDecorator {}
 
-            model: iconListModel
-            cellWidth: selectKdbIconDialog._width
-            cellHeight: selectKdbIconDialog._height
+            model: iconSectionsModel
+            section.property: "sectionName"
+            section.criteria: ViewSection.FullString
+            section.delegate:  SectionHeader {
+                id: sectionHeader
+                text: section
+            }
 
-            delegate: iconDelegate
+            delegate: SilicaGridView {
+                width: selectKdbIconDialog.width
+                height: contentHeight
+
+                model: iconListModel
+                cellWidth: selectKdbIconDialog._width
+                cellHeight: selectKdbIconDialog._height
+
+                delegate: iconDelegate
+            }
+        }
+    }
+
+    ListModel {
+        id: iconSectionsModel
+
+        ListElement {
+            sectionName: qsTr("Keepass Icons")
+        }
+
+        ListElement {
+            sectionName: qsTr("Custom Database Icons")
+        }
+
+        ListElement {
+            sectionName: qsTr("ownKeepass Icon Pack")
         }
     }
 
@@ -113,14 +142,14 @@ Dialog {
                 }
             }
 
-            OpacityRampEffect {
+/*            OpacityRampEffect {
                 sourceItem: iconBackground
                 slope: 0.25
                 offset: 0.0
                 clampFactor: -0.75
                 direction: OpacityRamp.BottomToTop
             }
-
+*/
             Image {
                 id: icon
                 anchors.centerIn: parent

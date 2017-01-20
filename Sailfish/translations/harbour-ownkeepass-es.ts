@@ -1511,6 +1511,21 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <source>Cancel</source>
         <translation type="unfinished">Cancelar</translation>
     </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="89"/>
+        <source>Keepass Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="93"/>
+        <source>Custom Database Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="97"/>
+        <source>ownKeepass Icon Pack</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowEntryDetailsPage</name>

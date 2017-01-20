@@ -1514,6 +1514,21 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <source>Cancel</source>
         <translation type="unfinished">Peruuta</translation>
     </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="89"/>
+        <source>Keepass Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="93"/>
+        <source>Custom Database Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="97"/>
+        <source>ownKeepass Icon Pack</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowEntryDetailsPage</name>

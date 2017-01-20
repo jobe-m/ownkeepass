@@ -1511,6 +1511,21 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="89"/>
+        <source>Keepass Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="93"/>
+        <source>Custom Database Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="97"/>
+        <source>ownKeepass Icon Pack</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowEntryDetailsPage</name>
