@@ -722,12 +722,10 @@ Page {
           */
         property string originalGroupName: ""
         property string originalGroupNotes: ""
-        property int    originalGroupIconId: 0
-        property string originalGroupCustomIconUuid: ""
+        property string originalGroupIconUuid: ""
         property string groupName: ""
         property string groupNotes: ""
-        property int    groupIconId: 0
-        property string groupCustomIconUuid: ""
+        property string groupIconUuid: ""
 
         /*
           Data used to save database setting values in ownKeepassDatabase object
@@ -770,14 +768,12 @@ Page {
                 kdbGroup.createNewGroup(groupName,
                                         groupNotes,
                                         parentGroupId,
-                                        groupIconId,
-                                        groupCustomIconUuid)
+                                        groupIconUuid)
             } else {
                 // save changes of existing group to database and update list model data in backend
                 kdbGroup.saveGroupData(groupName,
                                        groupNotes,
-                                       groupIconId,
-                                       groupCustomIconUuid)
+                                       groupIconUuid)
             }
         }
 
@@ -816,8 +812,7 @@ Page {
         function checkForUnsavedKdbGroupChanges() {
             if (originalGroupName !== groupName ||
                     originalGroupNotes !== groupNotes ||
-                    originalGroupIconId !== groupIconId ||
-                    originalGroupCustomIconUuid !== groupCustomIconUuid) {
+                    originalGroupIconUuid !== groupIconUuid) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_GROUP" })
             }
@@ -838,14 +833,13 @@ Page {
                 showEntryDetailsPageRef.setTextFields(keys, values)
         }
 
-        function loadKdbGroupDetails(name, notes, iconId, customIconUuid) {
+        function loadKdbGroupDetails(name, notes, iconUuid) {
             groupName = originalGroupName = name
             groupNotes = originalGroupNotes = notes
-            groupIconId = originalGroupIconId = iconId
-            groupCustomIconUuid = originalGroupCustomIconUuid = customIconUuid
+            groupIconUuid = originalGroupIconUuid = iconUuid
             // Populate group detail text fields in editGroupDetailsDialog
             if(editGroupDetailsDialogRef)
-                editGroupDetailsDialogRef.setTextFields(name, notes, iconId, customIconUuid)
+                editGroupDetailsDialogRef.setTextFields(name, notes, iconUuid)
         }
 
         function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment) {
@@ -859,14 +853,13 @@ Page {
             entryComment  = comment
         }
 
-        function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name, notes, iconId, customIconUuid) {
+        function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name, notes, iconUuid) {
             createNewItem       = createNewGroup
             itemId              = groupId
             parentGroupId       = parentGrId
             groupName           = name
             groupNotes          = notes
-            groupIconId         = iconId
-            groupCustomIconUuid = customIconUuid
+            groupIconUuid       = iconUuid
         }
 
         function setDatabaseSettings(masterPassword, cryptAlgorithm, keyTransfRounds) {
@@ -970,7 +963,7 @@ Page {
         id: kdbGroup
         onGroupDataLoaded: {
             mainPage.errorHandler(result, errorMsg)
-            kdbListItemInternal.loadKdbGroupDetails(title, notes, iconId, customIconUuid)
+            kdbListItemInternal.loadKdbGroupDetails(title, notes, iconUuid)
         }
         onGroupDataSaved: mainPage.errorHandler(result, errorMsg)
         onNewGroupCreated: mainPage.errorHandler(result, errorMsg)

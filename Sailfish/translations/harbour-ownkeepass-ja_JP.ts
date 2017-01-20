@@ -373,47 +373,47 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="106"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="88"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="107"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="89"/>
         <source>Discard</source>
         <translation>破棄</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="111"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="93"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="164"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="145"/>
         <source>Type in a name for the new group:</source>
         <translation>新規グループ名を入力</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="165"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
         <source>Change name of group:</source>
         <translation>グループ名を変更</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="171"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="152"/>
         <source>Name of group</source>
         <translation>グループ名</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="154"/>
         <source>Set name of group</source>
         <translation>グループ名を設定</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="196"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="177"/>
         <source>Notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="198"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="179"/>
         <source>Set notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -922,17 +922,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="149"/>
+        <location filename="../qml/content/KdbListItem.qml" line="145"/>
         <source>Edit</source>
         <translation>編集</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="166"/>
+        <location filename="../qml/content/KdbListItem.qml" line="162"/>
         <source>Delete</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="183"/>
+        <location filename="../qml/content/KdbListItem.qml" line="179"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>移動</translation>
@@ -1269,42 +1269,42 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>QString &quot;%1&quot;をIntに変換できません</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1102"/>
+        <location filename="../qml/content/MainPage.qml" line="1095"/>
         <source>Drop from List</source>
         <translation>リストから削除</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1166"/>
+        <location filename="../qml/content/MainPage.qml" line="1159"/>
         <source>Yes</source>
         <translation>はい</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1167"/>
+        <location filename="../qml/content/MainPage.qml" line="1160"/>
         <source>No</source>
         <translation>いいえ</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1168"/>
+        <location filename="../qml/content/MainPage.qml" line="1161"/>
         <source>Unsaved changes</source>
         <translation>保存されていない変更</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1196"/>
+        <location filename="../qml/content/MainPage.qml" line="1189"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>パスワードエントリの変更を保存しますか？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1201"/>
+        <location filename="../qml/content/MainPage.qml" line="1194"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>パスワードグループの変更を保存しますか？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1206"/>
+        <location filename="../qml/content/MainPage.qml" line="1199"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>データベース設定の変更を保存しますか？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1211"/>
+        <location filename="../qml/content/MainPage.qml" line="1204"/>
         <source>Do you want to save changed settings values?</source>
         <translation>変更内容を保存しますか？</translation>
     </message>
@@ -1502,19 +1502,14 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="51"/>
         <source>Select</source>
         <translation type="unfinished">選択</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="52"/>
         <source>Cancel</source>
         <translation type="unfinished">キャンセル</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
-        <source>Choose a Keepass standard icon:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -34,59 +34,41 @@ Dialog {
     property string groupId: ""
     // creation of new group needs parent group ID
     property string parentGroupId: ""
-    // icon for group (either a default icon or a custom database icon
-    property int iconId: -1
-    property string customIconUuid: ""
+    // icon for group (either a default icon or a custom database icon)
+    property string iconUuid: ""
 
     // internal
     // The following properties are used to check if text of any entry detail was changed. If so,
     // set cover page accordingly to signal the user unsaved changes
     property string origName: ""
     property string origNotes: ""
-    property int origIconId: -1
-    property string origCustomIconUuid: ""
+    property string origIconUuid: ""
     property bool nameChanged: false
     property bool notesChanged: false
-    property bool iconIdChanged: false
-    property bool customIconUuidChanged: false
+    property bool iconUuidChanged: false
 
     // This function should be called when any text is changed to check if the
     // cover page state needs to be updated
     function updateCoverState() {
-        if (nameChanged || notesChanged || iconIdChanged || customIconUuidChanged) {
+        if (nameChanged || notesChanged || iconUuidChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
         } else {
             applicationWindow.cover.state = "ENTRY_VIEW"
         }
     }
 
-    function setTextFields(name, notes, aIconId, aCustomIconUuid) {
+    function setTextFields(name, notes, aIconUuid) {
         groupNameTextField.text = origName = name
         groupNotesTextField.text = origNotes = notes
-        iconId = origIconId = aIconId
-        customIconUuid = origCustomIconUuid = aCustomIconUuid
-        setIconId(aIconId, aCustomIconUuid)
+        iconUuid = origIconUuid = aIconUuid
         groupNameTextField.focus = true
     }
 
-    function setIconId(aIconId, aCustomIconUuid) {
-        // customIconUuid has priority over iconId
-        iconId = aCustomIconUuid.length === 0 ? aIconId : -1
-        customIconUuid = aCustomIconUuid
-        // determine if this group has a custom icon if not set the corresponding icon with iconId
-        if (customIconUuid.length === 0) {
-            groupIcon.source = "image://KeepassIcon/icf" + iconId
-        } else {
-            groupIcon.source = "image://KeepassIcon/" + customIconUuid
-        }
-    }
-
     // set group icon for image element
-    onIconIdChanged: setIconId(iconId, "")
-    onCustomIconUuidChanged: setIconId(-1, customIconUuid)
+    onIconUuidChanged: groupIcon.source = "image://KeepassIcon/" + iconUuid
 
     // forbit page navigation if name of group is empty
-    canNavigateForward: groupNameTextField.text !== "" && (iconId !== -1 || customIconUuid.length !== 0)
+    canNavigateForward: groupNameTextField.text !== "" && iconUuid.length !== -1
     allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
@@ -127,8 +109,7 @@ Dialog {
                         anchors.fill: parent
                         onClicked: {
                             // open new dialog with grid of all icons
-                            selectKdbIconDialog.newIconId = customIconUuid.length === 0 ? iconId : -1
-                            selectKdbIconDialog.newCustomIconUuid = customIconUuid
+                            selectKdbIconDialog.newIconUuid = iconUuid
                             pageStack.push(selectKdbIconDialog)
                         }
                     }
@@ -231,8 +212,7 @@ Dialog {
                                                parentGroupId,
                                                groupNameTextField.text,
                                                groupNotesTextField.text,
-                                               iconId,
-                                               customIconUuid)
+                                               iconUuid)
         kdbListItemInternal.saveKdbGroupDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details
@@ -245,8 +225,7 @@ Dialog {
                                                    parentGroupId,
                                                    groupNameTextField.text,
                                                    groupNotesTextField.text,
-                                                   iconId,
-                                                   customIconUuid)
+                                                   iconUuid)
             kdbListItemInternal.checkForUnsavedKdbGroupChanges()
         }
     }

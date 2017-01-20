@@ -373,47 +373,47 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="106"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="88"/>
         <source>Save</source>
         <translation>Lagre</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="107"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="89"/>
         <source>Discard</source>
         <translation>Forkast</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="111"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="93"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="164"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="145"/>
         <source>Type in a name for the new group:</source>
         <translation>Angi navn for den nye gruppa:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="165"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
         <source>Change name of group:</source>
         <translation>Endre navn på gruppa:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="171"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="152"/>
         <source>Name of group</source>
         <translation>Gruppenavn</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="154"/>
         <source>Set name of group</source>
         <translation>Angi gruppenavn</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="196"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="177"/>
         <source>Notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="198"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="179"/>
         <source>Set notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -923,17 +923,17 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="149"/>
+        <location filename="../qml/content/KdbListItem.qml" line="145"/>
         <source>Edit</source>
         <translation>Rediger</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="166"/>
+        <location filename="../qml/content/KdbListItem.qml" line="162"/>
         <source>Delete</source>
         <translation>Slett</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="183"/>
+        <location filename="../qml/content/KdbListItem.qml" line="179"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Flytt</translation>
@@ -1270,42 +1270,42 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <translation>Konvertering av QString &quot;%1&quot; til heltall feilet.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1102"/>
+        <location filename="../qml/content/MainPage.qml" line="1095"/>
         <source>Drop from List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1166"/>
+        <location filename="../qml/content/MainPage.qml" line="1159"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1167"/>
+        <location filename="../qml/content/MainPage.qml" line="1160"/>
         <source>No</source>
         <translation>Nei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1168"/>
+        <location filename="../qml/content/MainPage.qml" line="1161"/>
         <source>Unsaved changes</source>
         <translation>Ulagrede endringer</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1196"/>
+        <location filename="../qml/content/MainPage.qml" line="1189"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Vil du lagre endringene i passordoppføringen?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1201"/>
+        <location filename="../qml/content/MainPage.qml" line="1194"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Vil du lagre passordgruppeendringene?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1206"/>
+        <location filename="../qml/content/MainPage.qml" line="1199"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Vil du lagre endringene i databaseinnstillingene?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1211"/>
+        <location filename="../qml/content/MainPage.qml" line="1204"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Vil du lagre de endrede innstillingene?</translation>
     </message>
@@ -1503,19 +1503,14 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="51"/>
         <source>Select</source>
         <translation type="unfinished">Velg</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="52"/>
         <source>Cancel</source>
         <translation type="unfinished">Avbryt</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
-        <source>Choose a Keepass standard icon:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

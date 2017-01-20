@@ -37,8 +37,8 @@ public:
 
 public:
     Q_INVOKABLE void loadGroupData();
-    Q_INVOKABLE void createNewGroup(QString title, QString notes, QString parentGroupId, int iconId, QString customIconUuid);
-    Q_INVOKABLE void saveGroupData(QString title, QString notes, int iconId, QString customIconUuid);
+    Q_INVOKABLE void createNewGroup(QString title, QString notes, QString parentGroupId, QString iconUuid);
+    Q_INVOKABLE void saveGroupData(QString title, QString notes, QString iconUuid);
     Q_INVOKABLE void deleteGroup();
     Q_INVOKABLE void moveGroup(QString newParentGroupId);
 
@@ -48,8 +48,7 @@ signals:
                          QString errorMsg,
                          QString title,
                          QString notes,
-                         int iconId,
-                         QString customIconUuid);
+                         QString iconUuid);
     void groupDataSaved(int result,
                         QString errorMsg);
     void newGroupCreated(int result,
@@ -64,13 +63,11 @@ signals:
     void saveGroupToKdbDatabase(QString groupId,
                                 QString title,
                                 QString notes,
-                                int iconId,
-                                QString customIconUuid);
+                                QString iconUuid);
     void createNewGroupInKdbDatabase(QString title,
                                      QString notes,
                                      QString parentGroupId,
-                                     int iconId,
-                                     QString customIconUuid);
+                                     QString iconUuid);
     void deleteGroupFromKdbDatabase(QString groupId);
     void moveGroupInKdbDatabase(QString groupId,
                                 QString newGroupId);
@@ -82,8 +79,7 @@ public slots:
                               QString groupId,
                               QString title,
                               QString notes,
-                              int iconId,
-                              QString customIconUuid);
+                              QString iconUuid);
     void slot_groupDataSaved(int result,
                              QString errorMsg,
                              QString groupId);

@@ -24,24 +24,23 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 import "../common"
+import harbour.ownkeepass 1.0
 
 Dialog {
     id: selectKdbIconDialog
 
-    property int newIconId: 0 // Default new icon
-    property string newCustomIconUuid: ""
+    property string newIconUuid: ""
 
     // private stuff
     readonly property int _width: mainPage.orientation & Orientation.LandscapeMask ? Screen.height / 9 : Screen.width / 5
     readonly property int _height: Screen.width / 5
 
-    canNavigateForward: (newIconId !== -1) || (newCustomIconUuid.length !== 0)
+    canNavigateForward: newIconUuid.length !== 0
     allowedOrientations: applicationWindow.orientationSetting
 
     onAccepted: {
         // save new icon Id
-        var iconId = newCustomIconUuid.length === 0 ? newIconId : -1
-        editGroupDetailsDialog.setIconId(iconId, newCustomIconUuid)
+        editGroupDetailsDialog.iconUuid = newIconUuid
     }
 
     SilicaFlickable {
@@ -62,12 +61,16 @@ Dialog {
             // Show a scollbar when the view is flicked, place this over all other content
             VerticalScrollDecorator {}
 
-            model: 69
+            model: iconListModel
             cellWidth: selectKdbIconDialog._width
             cellHeight: selectKdbIconDialog._height
 
             delegate: iconDelegate
         }
+    }
+
+    IconListModel {
+        id: iconListModel
     }
 
     Component {
@@ -83,7 +86,7 @@ Dialog {
 
             Rectangle {
                 color: Theme.highlightColor
-                visible: index === selectKdbIconDialog.newIconId
+                visible: model.uuid === newIconUuid
                 anchors.fill: parent
                 opacity: 0.5
             }
@@ -101,10 +104,10 @@ Dialog {
                     anchors.fill: parent
                     onClicked: {
                         // toggle icon selection
-                        if(index === selectKdbIconDialog.newIconId) {
-                            selectKdbIconDialog.newIconId = -1;
+                        if(model.uuid === newIconUuid) {
+                            newIconUuid = "";
                         } else {
-                            selectKdbIconDialog.newIconId = index;
+                            newIconUuid = model.uuid;
                         }
                     }
                 }
@@ -126,7 +129,7 @@ Dialog {
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
                 opacity: iconMouseArea.pressed ? 0.5 : 1.0
-                source: "image://KeepassIcon/icf" + index
+                source: "image://KeepassIcon/" + model.uuid
             }
 
 //            Label {
@@ -135,5 +138,10 @@ Dialog {
 //                text: index
 //            }
         }
+    }
+
+    Component.onCompleted: {
+        // Load standard group icons + custom database icons if there are any
+        iconListModel.initListModel(IconListModel.LOAD_STANDARD_GROUP_ICONS)
     }
 }

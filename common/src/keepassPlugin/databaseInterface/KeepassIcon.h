@@ -26,6 +26,9 @@
 #include <QQuickImageProvider>
 #include <QImage>
 #include <QAbstractListModel>
+#include "ownKeepassGlobal.h"
+
+using namespace ownKeepassPublic; // for using baseRole
 
 namespace kpxPublic {
 
@@ -39,12 +42,10 @@ public:
     QImage requestImage(const QString &uuid, QSize *size, const QSize &requestedSize);
 };
 
-static const int baseRole = Qt::UserRole + 1;
-
 class IconItem
 {
 public:
-    IconItem(QString uuid, type)
+    IconItem(QString uuid, int type)
         : m_uuid(uuid),
           m_type(type)
     {
@@ -59,7 +60,7 @@ public:
 
     QString m_uuid;  // Contains file name of standard icon or uuid of custom database icon
     int     m_index; // Number of icon
-    int     m_type;  // Identifies if this icon is a standard icon or a custom database icon - this is used for sections in the list view
+    int     m_type;  // Identifies if this icon is a STANDARD_ICON or a CUSTOM_DATABASE_ICON - this is used for sections in the list view
 };
 
 class IconListModel : public QAbstractListModel
@@ -70,10 +71,26 @@ public:
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
 
 public:
+    // This function needs to be called from QML side to initialize the list model with data from Keepass and the database.
+    // \param loadStandardIcons is one of NO_STANDARD_ICONS, LOAD_STANDARD_ENTRY_ICONS, LOAD_STANDARD_GROUP_ICONS
     Q_INVOKABLE void initListModel(int loadStandardIcons);
     Q_INVOKABLE void clearListModel();
 
 public:
+    Q_ENUMS(eIconType)
+    Q_ENUMS(eLoadStandardIcons)
+
+    enum eIconType {
+        STANDARD_ICON = 0,
+        CUSTOM_DATABASE_ICON
+    };
+
+    enum eLoadStandardIcons {
+        NO_STANDARD_ICONS = 0,
+        LOAD_STANDARD_ENTRY_ICONS,
+        LOAD_STANDARD_GROUP_ICONS
+    };
+
     IconListModel(QObject *parent = 0);
     virtual ~IconListModel();
 
@@ -83,7 +100,7 @@ public:
     bool isEmpty();
 
     // Overwrite function to set role names
-    virtual QHash<int, QByteArray> roleNames() const { return KdbItem::createRoles(); }
+    virtual QHash<int, QByteArray> roleNames() const { return IconItem::createRoles(); }
 
 signals:
     // signals to QML
@@ -125,7 +142,7 @@ inline QHash<int, QByteArray> IconItem::createRoles()
     QHash<int, QByteArray> roles;
     roles[baseRole]     = "uuid";
     roles[baseRole + 1] = "index";
-    rotes[baseRole + 2] = "type";
+    roles[baseRole + 2] = "type";
     return roles;
 }
 

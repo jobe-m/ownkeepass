@@ -27,6 +27,8 @@
 
 namespace ownKeepassPublic {
 
+static const int baseRole = Qt::UserRole + 1;
+
 class DatabaseAccessResult : public QObject
 {
     Q_OBJECT

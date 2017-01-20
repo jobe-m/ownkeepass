@@ -98,8 +98,7 @@ protected: // signals
 
     // signals to KdbListModel object
     virtual void appendItemToListModel(QString title,
-                                       quint32 iconId,
-                                       QString customIconUuid,
+                                       QString iconUuid,
                                        QString subtitle,
 //                                       int numberOfSubGroups,
 //                                       int numberOfEntries,
@@ -108,8 +107,7 @@ protected: // signals
                                        int itemLevel,
                                        QString modelId) = 0;
     virtual void addItemToListModelSorted(QString title,
-                                          quint32 iconId,
-                                          QString customIconUuid,
+                                          QString iconUuid,
                                           QString subtitle,
 //                                          int numberOfSubGroups,
 //                                          int numberOfEntries,
@@ -118,16 +116,14 @@ protected: // signals
                                           int itemLevel,
                                           QString modelId) = 0;
     virtual void updateItemInListModel(QString title,
-                                       quint32 iconId,
-                                       QString customIconUuid,
+                                       QString iconUuid,
                                        QString subTitle,
 //                                       int numberOfSubGroups,
 //                                       int numberOfEntries,
                                        QString itemId,
                                        QString modelId) = 0;
     virtual void updateItemInListModelSorted(QString title,
-                                             quint32 iconId,
-                                             QString customIconUuid,
+                                             QString iconUuid,
                                              QString subTitle,
 //                                             int numberOfSubGroups,
 //                                             int numberOfEntries,
@@ -145,8 +141,7 @@ protected: // signals
     virtual void entryLoaded(int result,
                              QString errorMsg,
                              QString entryId,
-//                             int iconId,
-//                             QString customIconUuid,
+//                             QString iconUuid,
                              QList<QString> keys,
                              QList<QString> values) = 0;
     virtual void entrySaved(int result,
@@ -168,8 +163,7 @@ protected: // signals
                              QString groupId,
                              QString title,
                              QString notes,
-                             int iconId,
-                             QString customIconUuid) = 0;
+                             QString iconUuid) = 0;
     virtual void groupSaved(int result,
                             QString errorMsg,
                             QString groupId) = 0;
@@ -213,14 +207,14 @@ public: // slots
     // signal from KdbEntry object
     virtual void slot_loadEntry(QString entryId) = 0;
     virtual void slot_saveEntry(QString entryId,
-//                                quint32 iconId,
+//                                QString iconUuid,
                                 QString title,
                                 QString url,
                                 QString username,
                                 QString password,
                                 QString comment) = 0;
     virtual void slot_createNewEntry(QString title,
-//                                     quint32 iconId,
+//                                     QString iconUuid,
                                      QString url,
                                      QString username,
                                      QString password,
@@ -235,13 +229,11 @@ public: // slots
     virtual void slot_saveGroup(QString groupId,
                                 QString title,
                                 QString notes,
-                                int iconId,
-                                QString customIconUuid) = 0;
+                                QString iconUuid) = 0;
     virtual void slot_createNewGroup(QString title,
                                      QString notes,
                                      QString parentGroupId,
-                                     int iconId,
-                                     QString customIconUuid) = 0;
+                                     QString iconUuid) = 0;
     virtual void slot_deleteGroup(QString groupId) = 0;
     virtual void slot_moveGroup(QString groupId,
                                 QString newParentGroupId) = 0;

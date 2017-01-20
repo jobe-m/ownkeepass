@@ -35,8 +35,8 @@ QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &
 {
     Q_UNUSED(requestedSize);
     QImage icon;
-    // Check lenth and determine if the icon is a stardart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 16 byte)
-    if (uuid.size() != Uuid::Length) {
+    // Check lenth and determine if the icon is a stardart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
+    if (uuid.size() != (Uuid::Length * 2)) {
         // Load standard image from resources
         icon = QImage(":/entryicons/" + uuid + ".png", "PNG");
     } else {
@@ -82,8 +82,6 @@ void IconListModel::clear()
     beginResetModel();
     m_items.clear();
     endResetModel();
-    m_numGroups = 0;
-    m_numEntries = 0;
 
     // signal to QML and for property update
     emit modelDataChanged();
@@ -95,51 +93,60 @@ void IconListModel::clearListModel()
     clear();
 }
 
-void KdbListModel::slot_appendItemToListModel(QString title, quint32 iconId, QString customIconUuid, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
+void IconListModel::initListModel(int loadStandardIcons)
 {
-    if (!m_registered) {
-        m_modelId = modelId;
-        m_registered = true;
-    }
-    // only append if this item is for us
-    if (m_modelId.compare(modelId) == 0) {
-        KdbItem item(title, iconId, customIconUuid, subtitle, itemId, itemType, itemLevel);
-        if (itemType == DatabaseItemType::ENTRY) {
+    // First clean up the list model
+    clear();
+    // Now populate the list model with standard Keepasss icons if desired
+    switch(loadStandardIcons) {
+    case LOAD_STANDARD_ENTRY_ICONS:
+        for(int i = 0; i <= 68; i++) {
+            IconItem item(QString("ic%1").arg(i), STANDARD_ICON);
             // append new entry to end of list
             beginInsertRows(QModelIndex(), rowCount(), rowCount());
             m_items << item;
             endInsertRows();
-            m_numEntries++;
-        } else {
-            // insert new group after last group in list
-            int i = 0;
-            while (i < m_items.count() && m_items[i].m_itemType == DatabaseItemType::GROUP) { ++i; }
-            beginInsertRows(QModelIndex(), i, i);
-            m_items.insert(i, item);
+        }
+        break;
+    case LOAD_STANDARD_GROUP_ICONS:
+        for(int i = 0; i <= 68; i++) {
+            IconItem item(QString("icf%1").arg(i), STANDARD_ICON);
+            // append new entry to end of list
+            beginInsertRows(QModelIndex(), rowCount(), rowCount());
+            m_items << item;
             endInsertRows();
-            m_numGroups++;
         }
-        // emit isEmptyChanged signal if list view was empty before
-        if (m_items.length() == 1) {
-            emit isEmptyChanged();
-        }
-        // signal to property to update itself in QML
-        emit modelDataChanged();
+        break;
+    default: // NO_STANDARD_ICONS
+        break;
     }
+    // emit isEmptyChanged signal if list view was empty before
+    emit isEmptyChanged();
+    // signal to property to update itself in QML
+    emit modelDataChanged();
 }
 
-void KdbListModel::slot_deleteItem(QString itemId)
+void IconListModel::slot_appendCustomIcon(QString uuid)
+{
+    IconItem item(uuid, CUSTOM_DATABASE_ICON);
+    // append new entry to end of list
+    beginInsertRows(QModelIndex(), rowCount(), rowCount());
+    m_items << item;
+    endInsertRows();
+    // emit isEmptyChanged signal if list view was empty before
+    if (m_items.length() == 1) {
+        emit isEmptyChanged();
+    }
+    // signal to property to update itself in QML
+    emit modelDataChanged();
+}
+
+void IconListModel::slot_deleteCustomIcon(QString uuid)
 {
     // look at each item in list model
     for (int i = 0; i < m_items.count(); i++) {
-        if (m_items[i].m_id == itemId) {
+        if (m_items[i].m_uuid == uuid) {
 //            qDebug() << "delete item: " << m_items[i].m_name;
-            // check item type and decrease appropriate item number counter
-            if (m_items[i].m_itemType == DatabaseItemType::ENTRY) {
-                m_numEntries--;
-            } else {
-                m_numGroups--;
-            }
             // now delete it from list model
             beginRemoveRows(QModelIndex(), i, i);
             m_items.removeAt(i);

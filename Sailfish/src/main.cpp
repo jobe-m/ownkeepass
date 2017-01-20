@@ -74,6 +74,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<kpxPublic::KdbListModel>(uri, 1, 0, "KdbListModel");
     qmlRegisterType<kpxPublic::KdbEntry>(uri, 1, 0, "KdbEntry");
     qmlRegisterType<kpxPublic::KdbGroup>(uri, 1, 0, "KdbGroup");
+    qmlRegisterType<kpxPublic::IconListModel>(uri, 1, 0, "IconListModel");
     qmlRegisterType<FileBrowserListModel>(uri, 1, 0, "FileBrowserListModel");
     qmlRegisterType<PasswordGeneratorAdapter>(uri, 1, 0, "PasswordGenerator");
 

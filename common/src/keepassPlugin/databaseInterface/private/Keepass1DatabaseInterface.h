@@ -59,30 +59,26 @@ signals:
 
     // signals to KdbListModel object
     void appendItemToListModel(QString title,
-                               quint32 iconId,
-                               QString customIconUuid,
+                               QString iconUuid,
                                QString subtitle,
                                QString itemId,
                                int itemType,
                                int itemLevel,
                                QString modelId);
     void addItemToListModelSorted(QString title,
-                                  quint32 iconId,
-                                  QString customIconUuid,
+                                  QString iconUuid,
                                   QString subtitle,
                                   QString itemId,
                                   int itemType,
                                   int itemLevel,
                                   QString modelId);
     void updateItemInListModel(QString title,
-                               quint32 iconId,
-                               QString customIconUuid,
+                               QString iconUuid,
                                QString subTitle,
                                QString itemId,
                                QString modelId);
     void updateItemInListModelSorted(QString title,
-                                     quint32 iconId,
-                                     QString customIconUuid,
+                                     QString iconUuid,
                                      QString subTitle,
                                      QString itemId,
                                      QString modelId);
@@ -119,8 +115,7 @@ signals:
                      QString groupId,
                      QString title,
                      QString notes,
-                     int iconId,
-                     QString customIconUuid);
+                     QString iconUuid);
     void groupSaved(int result,
                     QString errorMsg,
                     QString groupId);
@@ -181,15 +176,13 @@ public slots:
     // signal from KdbGroup object
     void slot_loadGroup(QString groupId);
     void slot_saveGroup(QString groupId,
-                        QString notes,
                         QString title,
-                        int iconId,
-                        QString customIconUuid);
+                        QString notes,
+                        QString iconUuid);
     void slot_createNewGroup(QString title,
                              QString notes,
                              QString parentGroupId,
-                             int iconId,
-                             QString customIconUuid);
+                             QString iconUuid);
     void slot_deleteGroup(QString groupId);
     void slot_moveGroup(QString groupId,
                         QString newParentGroupId);
@@ -202,6 +195,8 @@ private:
     inline QString getUserAndPassword(IEntryHandle* entry);
     inline QString uInt2QString(uint value);
     inline uint qString2UInt(QString value);
+    QString getEntryIcon(int standardIcon);
+    QString getGroupIcon(int standardIcon);
 
 private:
     // Keepass database handler

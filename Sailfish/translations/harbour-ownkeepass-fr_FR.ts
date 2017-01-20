@@ -373,47 +373,47 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="106"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="88"/>
         <source>Save</source>
         <translation>Enregistrer</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="107"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="89"/>
         <source>Discard</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="111"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="93"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="164"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="145"/>
         <source>Type in a name for the new group:</source>
         <translation>Saisir un nom pour le nouveau groupe :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="165"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
         <source>Change name of group:</source>
         <translation>Modifier le nom de groupe :</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="171"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="152"/>
         <source>Name of group</source>
         <translation>Nom de groupe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="154"/>
         <source>Set name of group</source>
         <translation>Définir le nom de groupe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="196"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="177"/>
         <source>Notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="198"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="179"/>
         <source>Set notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -924,17 +924,17 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="149"/>
+        <location filename="../qml/content/KdbListItem.qml" line="145"/>
         <source>Edit</source>
         <translation>Modifier</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="166"/>
+        <location filename="../qml/content/KdbListItem.qml" line="162"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="183"/>
+        <location filename="../qml/content/KdbListItem.qml" line="179"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Déplacer</translation>
@@ -1271,42 +1271,42 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Conversion de Qstring &quot;%1&quot; vers Int échoué</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1102"/>
+        <location filename="../qml/content/MainPage.qml" line="1095"/>
         <source>Drop from List</source>
         <translation>Supprimer de la liste</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1166"/>
+        <location filename="../qml/content/MainPage.qml" line="1159"/>
         <source>Yes</source>
         <translation>Oui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1167"/>
+        <location filename="../qml/content/MainPage.qml" line="1160"/>
         <source>No</source>
         <translation>Non</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1168"/>
+        <location filename="../qml/content/MainPage.qml" line="1161"/>
         <source>Unsaved changes</source>
         <translation>Modifications non enregistrées</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1196"/>
+        <location filename="../qml/content/MainPage.qml" line="1189"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Voulez-vous enregistrer les modifications du mot de passe ?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1201"/>
+        <location filename="../qml/content/MainPage.qml" line="1194"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Voulez-vous enregistrer les modifications du groupe de mots de passe ?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1206"/>
+        <location filename="../qml/content/MainPage.qml" line="1199"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Voulez-vous enregistrer les modifications des paramètres de la base de données ?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1211"/>
+        <location filename="../qml/content/MainPage.qml" line="1204"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Voulez-vous enregistrer les changements de paramètres ?</translation>
     </message>
@@ -1504,19 +1504,14 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="51"/>
         <source>Select</source>
         <translation type="unfinished">Sélectionner</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="52"/>
         <source>Cancel</source>
         <translation type="unfinished">Annuler</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
-        <source>Choose a Keepass standard icon:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

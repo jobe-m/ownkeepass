@@ -374,47 +374,47 @@ by reviewjolla, 5 minutes ago</translation>
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="106"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="88"/>
         <source>Save</source>
         <translation>Talleta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="107"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="89"/>
         <source>Discard</source>
         <translation>Hylkää</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="111"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="93"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="164"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="145"/>
         <source>Type in a name for the new group:</source>
         <translation>Anan nimi uudelle ryhmälle:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="165"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
         <source>Change name of group:</source>
         <translation>Muuta ryhmän nimi:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="171"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="152"/>
         <source>Name of group</source>
         <translation>Ryhmän nimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="154"/>
         <source>Set name of group</source>
         <translation>Aseta ryhmän nimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="196"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="177"/>
         <source>Notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="198"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="179"/>
         <source>Set notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -925,17 +925,17 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="149"/>
+        <location filename="../qml/content/KdbListItem.qml" line="145"/>
         <source>Edit</source>
         <translation>Muokkaa</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="166"/>
+        <location filename="../qml/content/KdbListItem.qml" line="162"/>
         <source>Delete</source>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="183"/>
+        <location filename="../qml/content/KdbListItem.qml" line="179"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Siirrä</translation>
@@ -1272,42 +1272,42 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Qstring &quot;%1&quot;:n muuntaminen kokonaisluvuksi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1102"/>
+        <location filename="../qml/content/MainPage.qml" line="1095"/>
         <source>Drop from List</source>
         <translation>Poista listalta</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1166"/>
+        <location filename="../qml/content/MainPage.qml" line="1159"/>
         <source>Yes</source>
         <translation>Kyllä</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1167"/>
+        <location filename="../qml/content/MainPage.qml" line="1160"/>
         <source>No</source>
         <translation>Ei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1168"/>
+        <location filename="../qml/content/MainPage.qml" line="1161"/>
         <source>Unsaved changes</source>
         <translation>Tallentamattomia muutoksia</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1196"/>
+        <location filename="../qml/content/MainPage.qml" line="1189"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Haluatko tallettaa muutokset salasanatiedostoon?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1201"/>
+        <location filename="../qml/content/MainPage.qml" line="1194"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Haluatko tallettaa muutokset salasanaryhmään?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1206"/>
+        <location filename="../qml/content/MainPage.qml" line="1199"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Haluatko tallettaa muutokset tietokannan asetuksiin?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1211"/>
+        <location filename="../qml/content/MainPage.qml" line="1204"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Haluatko tallettaa muutokset asetusarvoihin?</translation>
     </message>
@@ -1505,19 +1505,14 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="123"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="51"/>
         <source>Select</source>
         <translation type="unfinished">Valitse</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="124"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="52"/>
         <source>Cancel</source>
         <translation type="unfinished">Peruuta</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="127"/>
-        <source>Choose a Keepass standard icon:</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

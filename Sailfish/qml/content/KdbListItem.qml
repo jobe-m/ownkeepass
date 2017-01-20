@@ -91,11 +91,7 @@ ListItem {
         anchors.centerIn: itemIcon
         width: Theme.iconSizeMedium
         height: Theme.iconSizeMedium
-        source: model.customIconUuid.length === 0 ?
-                    (model.itemType === DatabaseItemType.ENTRY ?
-                         "image://KeepassIcon/ic" + model.iconId :
-                         "image://KeepassIcon/icf" + model.iconId) :
-                    "image://KeepassIcon/" + model.customIconUuid
+        source: "image://KeepassIcon/" + model.iconUuid
         fillMode: Image.PreserveAspectFit
         asynchronous: true
         opacity: kdbListItem.highlighted ? 0.5 : 1.0
@@ -145,7 +141,7 @@ ListItem {
             id: contextMenu
 
             MenuItem {
-                enabled: model.itemType === DatabaseItemType.GROUP
+                enabled: ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2 || model.itemType === DatabaseItemType.GROUP
                 text: qsTr("Edit")
                 onClicked: {
                     switch (model.itemType) {

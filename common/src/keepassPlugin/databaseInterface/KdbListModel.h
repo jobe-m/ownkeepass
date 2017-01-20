@@ -26,19 +26,18 @@
 #include <QAbstractListModel>
 #include <QStringList>
 #include "private/AbstractDatabaseInterface.h"
+#include "ownKeepassGlobal.h"
 
+using namespace ownKeepassPublic; // for using baseRole
 
 namespace kpxPublic {
-
-static const int baseRole = Qt::UserRole + 1;
 
 class KdbItem
 {
 public:
-    KdbItem(QString name, quint32 iconId, QString customIconUuid, QString subtitle, QString id, int itemType, int itemLevel)
+    KdbItem(QString name, QString iconUuid, QString subtitle, QString id, int itemType, int itemLevel)
         : m_name(name),
-          m_iconId(iconId),
-          m_customIconUuid(customIconUuid),
+          m_iconUuid(iconUuid),
           m_subtitle(subtitle),
           m_id(id),
           m_itemType(itemType),
@@ -50,8 +49,7 @@ public:
     static QHash<int, QByteArray> createRoles();
 
     QString m_name;
-    quint32 m_iconId;
-    QString m_customIconUuid;
+    QString m_iconUuid;
     QString m_subtitle;
     QString m_id;
     int m_itemType;
@@ -109,30 +107,26 @@ signals:
 public slots:
     // signal from database client
     void slot_appendItemToListModel(QString title,
-                                    quint32 iconId,
-                                    QString customIconUuid,
+                                    QString iconUuid,
                                     QString subtitle,
                                     QString itemId,
                                     int itemType,
                                     int itemLevel,
                                     QString modelId);
     void slot_addItemToListModelSorted(QString title,
-                                       quint32 iconId,
-                                       QString customIconUuid,
+                                       QString iconUuid,
                                        QString subtitle,
                                        QString itemId,
                                        int itemType,
                                        int itemLevel,
                                        QString modelId);
     void slot_updateItemInListModel(QString title,
-                                    quint32 iconId,
-                                    QString customIconUuid,
+                                    QString iconUuid,
                                     QString subTitle,
                                     QString itemId,
                                     QString modelId);
     void slot_updateItemInListModelSorted(QString title,
-                                          quint32 iconId,
-                                          QString customIconUuid,
+                                          QString iconUuid,
                                           QString subTitle,
                                           QString itemId,
                                           QString modelId);
@@ -165,16 +159,14 @@ inline QVariant KdbItem::get(const int role) const
     case baseRole:
         return m_name;
     case baseRole + 1:
-        return m_iconId;
+        return m_iconUuid;
     case baseRole + 2:
-        return m_customIconUuid;
-    case baseRole + 3:
         return m_subtitle;
-    case baseRole + 4:
+    case baseRole + 3:
         return m_id;
-    case baseRole + 5:
+    case baseRole + 4:
         return m_itemType;
-    case baseRole + 6:
+    case baseRole + 5:
         return m_itemLevel;
     }
     return QVariant();
@@ -184,12 +176,11 @@ inline QHash<int, QByteArray> KdbItem::createRoles()
 {
     QHash<int, QByteArray> roles;
     roles[baseRole]     = "name";
-    roles[baseRole + 1] = "iconId";
-    roles[baseRole + 2] = "customIconUuid";
-    roles[baseRole + 3] = "subtitle";
-    roles[baseRole + 4] = "id";
-    roles[baseRole + 5] = "itemType";
-    roles[baseRole + 6] = "itemLevel";
+    roles[baseRole + 1] = "iconUuid";
+    roles[baseRole + 2] = "subtitle";
+    roles[baseRole + 3] = "id";
+    roles[baseRole + 4] = "itemType";
+    roles[baseRole + 5] = "itemLevel";
     return roles;
 }
 
