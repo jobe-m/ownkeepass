@@ -64,9 +64,14 @@ Dialog {
             model: iconSectionsModel
             section.property: "sectionName"
             section.criteria: ViewSection.FullString
+            section.labelPositioning: ViewSection.InlineLabels
             section.delegate:  SectionHeader {
                 id: sectionHeader
-                text: section
+                text: section === "keepassIcons" ?
+                          qsTr("Keepass Icons") :
+                          section === "customDatabaseIcons" ?
+                              qsTr("Custom Database Icons") :
+                              qsTr("ownKeepass Icon Pack")
             }
 
             delegate: SilicaGridView {
@@ -86,15 +91,15 @@ Dialog {
         id: iconSectionsModel
 
         ListElement {
-            sectionName: qsTr("Keepass Icons")
+            sectionName: "keepassIcons"
         }
 
         ListElement {
-            sectionName: qsTr("Custom Database Icons")
+            sectionName: "customDatabaseIcons"
         }
 
         ListElement {
-            sectionName: qsTr("ownKeepass Icon Pack")
+            sectionName: "ownKeepassIconPack"
         }
     }
 

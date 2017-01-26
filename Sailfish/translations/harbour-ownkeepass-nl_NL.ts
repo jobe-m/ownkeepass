@@ -1515,17 +1515,17 @@ ownKeepass is een wachtwoordkluis voor de Jolla Smartphone met het doel gevoelig
         <translation type="unfinished">Annuleren</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="89"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="71"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="93"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="73"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="97"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="74"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>
