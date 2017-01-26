@@ -256,7 +256,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
         }
         // only append to list model if item ID is valid
         if (m_setting_sortAlphabeticallyInListView) {
-            emit appendItemToListModel(entry->title(),                                 // group name
+            emit addItemToListModelSorted(entry->title(),                              // group name
                                        (quint32)entry->iconNumber(),                   // icon id
                                        customIcon,                                     // customIconUuid
                                        getUserAndPassword(entry),                      // subtitle
@@ -265,7 +265,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
                                        0,                                              // item level (not used here)
                                        rootGroupId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
         } else {
-            emit addItemToListModelSorted(entry->title(),                              // group name
+            emit appendItemToListModel(entry->title(),                                 // group name
                                           (quint32)entry->iconNumber(),                // icon id
                                           customIcon,                                  // customIconUuid
                                           getUserAndPassword(entry),                   // subtitle
@@ -313,7 +313,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         }
 
         if (m_setting_sortAlphabeticallyInListView) {
-            emit appendItemToListModel(subGroup->name(),                                  // group name
+            emit addItemToListModelSorted(subGroup->name(),                               // group name
                                        (quint32)subGroup->iconNumber(),                   // icon id
                                        customIcon,                                        // customIconUuid
                                        QString("Subgroups: %1 | Entries: %2")
@@ -323,7 +323,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
                                        0,                                                 // item level (not used here)
                                        groupId);                                          // list model gets groupId as its unique ID
         } else {
-            emit addItemToListModelSorted(subGroup->name(),                               // group name
+            emit appendItemToListModel(subGroup->name(),                                  // group name
                                           (quint32)subGroup->iconNumber(),                // icon id
                                           customIcon,                                     // customIconUuid
                                           QString("Subgroups: %1 | Entries: %2")
@@ -358,7 +358,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         }
 
         if (m_setting_sortAlphabeticallyInListView) {
-            emit appendItemToListModel(entry->title(),                                    // group name
+            emit addItemToListModelSorted(entry->title(),                                 // group name
                                        (quint32)entry->iconNumber(),                      // icon id
                                        customIcon,                                        // customIconUuid
                                        getUserAndPassword(entry),                         // subtitle
@@ -367,7 +367,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
                                        0,                                                 // item level (not used here)
                                        groupId);                                          // list model gets groupId as its unique ID
         } else {
-            emit addItemToListModelSorted(entry->title(),                                 // group name
+            emit appendItemToListModel(entry->title(),                                    // group name
                                           (quint32)entry->iconNumber(),                   // icon id
                                           customIcon,                                     // customIconUuid
                                           getUserAndPassword(entry),                      // subtitle
