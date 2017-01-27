@@ -28,6 +28,8 @@ import harbour.ownkeepass 1.0
 
 Dialog {
     id: selectKdbIconDialog
+//    width: mainPage.orientation & Orientation.LandscapeMask ? Screen.height : Screen.width
+//    height: mainPage.orientation & Orientation.LandscapeMask ? Screen.width : Screen.height
 
     property string newIconUuid: ""
 
@@ -45,21 +47,28 @@ Dialog {
 
     SilicaFlickable {
         anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: col.height
 
-        DialogHeader {
-            id: header
-            acceptText: qsTr("Select")
-            cancelText: qsTr("Cancel")
-            spacing: 0
-        }
+        // Show a scollbar when the view is flicked, place this over all other content
+        VerticalScrollDecorator {}
 
-        SilicaListView {
+        Column {
+            id: col
+            width: parent.width
+//            spacing: Theme.paddingLarge
+
+            DialogHeader {
+                id: header
+                acceptText: qsTr("Select")
+                cancelText: qsTr("Cancel")
+                spacing: 0
+            }
+
+/*        SilicaListView {
             width: parent.width
             anchors.top: header.bottom
             anchors.bottom: parent.bottom
-
-            // Show a scollbar when the view is flicked, place this over all other content
-            VerticalScrollDecorator {}
 
             model: iconSectionsModel
             section.property: "sectionName"
@@ -67,44 +76,92 @@ Dialog {
             section.labelPositioning: ViewSection.InlineLabels
             section.delegate:  SectionHeader {
                 id: sectionHeader
-                text: section === "keepassIcons" ?
+                text: section === "keepassIcon" ?
                           qsTr("Keepass Icons") :
-                          section === "customDatabaseIcons" ?
+                          section === "customDatabaseIcon" ?
                               qsTr("Custom Database Icons") :
                               qsTr("ownKeepass Icon Pack")
             }
 
-            delegate: SilicaGridView {
-                width: selectKdbIconDialog.width
-                height: contentHeight
+            delegate:
+*/
 
-                model: iconListModel
+            SectionHeader {
+                text: qsTr("Keepass Icons")
+            }
+
+            SilicaGridView {
+                id: keepassIconGridView
+                width: selectKdbIconDialog.width
+
+                model: keepassIconListModel
                 cellWidth: selectKdbIconDialog._width
                 cellHeight: selectKdbIconDialog._height
 
                 delegate: iconDelegate
+
+                Connections {
+                    // for breaking the binding loop on height
+                    onContentHeightChanged: keepassIconGridView.height = keepassIconGridView.contentHeight
+                }
+            }
+
+            SectionHeader {
+                enabled: !customDatabaseIconListModel.isEmpty
+                visible: enabled
+                text: qsTr("Custom Database Icons")
+            }
+
+            SilicaGridView {
+                id: customDatabaseIconGridView
+                width: selectKdbIconDialog.width
+
+                model: customDatabaseIconListModel
+                cellWidth: selectKdbIconDialog._width
+                cellHeight: selectKdbIconDialog._height
+
+                delegate: iconDelegate
+
+                Connections {
+                    // for breaking the binding loop on height
+                    onContentHeightChanged: customDatabaseIconGridView.height = customDatabaseIconGridView.contentHeight
+                }
+            }
+
+            SectionHeader {
+                enabled: !ownKeepassIconPackListModel.isEmpty
+                visible: enabled
+                text: qsTr("ownKeepass Icon Pack")
+            }
+
+            SilicaGridView {
+                id: ownKeepassIconPackGridView
+                width: selectKdbIconDialog.width
+
+                model: ownKeepassIconPackListModel
+                cellWidth: selectKdbIconDialog._width
+                cellHeight: selectKdbIconDialog._height
+
+                delegate: iconDelegate
+
+                Connections {
+                    // for breaking the binding loop on height
+                    onContentHeightChanged: ownKeepassIconPackGridView.height = ownKeepassIconPackGridView.contentHeight
+                }
             }
         }
     }
 
-    ListModel {
-        id: iconSectionsModel
-
-        ListElement {
-            sectionName: "keepassIcons"
-        }
-
-        ListElement {
-            sectionName: "customDatabaseIcons"
-        }
-
-        ListElement {
-            sectionName: "ownKeepassIconPack"
-        }
+    IconListModel {
+        id: keepassIconListModel
     }
 
     IconListModel {
-        id: iconListModel
+        id: customDatabaseIconListModel
+    }
+
+    IconListModel {
+        id: ownKeepassIconPackListModel
     }
 
     Component {
@@ -147,14 +204,6 @@ Dialog {
                 }
             }
 
-/*            OpacityRampEffect {
-                sourceItem: iconBackground
-                slope: 0.25
-                offset: 0.0
-                clampFactor: -0.75
-                direction: OpacityRamp.BottomToTop
-            }
-*/
             Image {
                 id: icon
                 anchors.centerIn: parent
@@ -175,7 +224,11 @@ Dialog {
     }
 
     Component.onCompleted: {
-        // Load standard group icons + custom database icons if there are any
-        iconListModel.initListModel(IconListModel.LOAD_STANDARD_GROUP_ICONS)
+        // Load Keepass group icons, custom database icons from Keepass 2 database and ownKeepass icon pack icons into list models
+        keepassIconListModel.initListModel(IconListModel.LOAD_KEEPASS_GROUP_ICONS)
+//        customDatabaseIconListModel.initListModel(IconListModel.LOAD_CUSTOM_DATABASE_ICONS)
+        customDatabaseIconListModel.initListModel(IconListModel.LOAD_KEEPASS_ENTRY_ICONS)
+        ownKeepassIconPackListModel.initListModel(IconListModel.LOAD_OWNKEEPASS_ICON_PACK_ICONS)
+
     }
 }

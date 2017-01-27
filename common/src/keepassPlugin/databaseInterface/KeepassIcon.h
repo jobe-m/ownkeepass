@@ -60,7 +60,7 @@ public:
 
     QString m_uuid;  // Contains file name of standard icon or uuid of custom database icon
     int     m_index; // Number of icon
-    int     m_type;  // Identifies if this icon is a STANDARD_ICON or a CUSTOM_DATABASE_ICON - this is used for sections in the list view
+    int     m_type;  // Identifies if this icon is a KEEPASS_ICON or a CUSTOM_DATABASE_ICON or a OWNKEEPASS_ICON_PACK - this is used for sections in the list view
 };
 
 class IconListModel : public QAbstractListModel
@@ -71,9 +71,9 @@ public:
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
 
 public:
-    // This function needs to be called from QML side to initialize the list model with data from Keepass and the database.
-    // \param loadStandardIcons is one of NO_STANDARD_ICONS, LOAD_STANDARD_ENTRY_ICONS, LOAD_STANDARD_GROUP_ICONS
-    Q_INVOKABLE void initListModel(int loadStandardIcons);
+    /// This function needs to be called from QML side to initialize the list model with data from Keepass and the database.
+    /// \param keepassIconType is one of LOAD_KEEPASS_ENTRY_ICONS, LOAD_KEEPASS_GROUP_ICONS. For any other value no Keepass icons will be added to the list model.
+    Q_INVOKABLE void initListModel(int keepassIconType);
     Q_INVOKABLE void clearListModel();
 
 public:
@@ -81,14 +81,16 @@ public:
     Q_ENUMS(eLoadStandardIcons)
 
     enum eIconType {
-        STANDARD_ICON = 0,
-        CUSTOM_DATABASE_ICON
+        KEEPASS_ICON = 0,
+        CUSTOM_DATABASE_ICON,
+        OWNKEEPASS_ICON_PACK
     };
 
     enum eLoadStandardIcons {
-        NO_STANDARD_ICONS = 0,
-        LOAD_STANDARD_ENTRY_ICONS,
-        LOAD_STANDARD_GROUP_ICONS
+        LOAD_KEEPASS_ENTRY_ICONS = 0,
+        LOAD_KEEPASS_GROUP_ICONS,
+        LOAD_CUSTOM_DATABASE_ICONS,
+        LOAD_OWNKEEPASS_ICON_PACK_ICONS
     };
 
     IconListModel(QObject *parent = 0);

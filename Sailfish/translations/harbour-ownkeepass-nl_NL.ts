@@ -1505,27 +1505,27 @@ ownKeepass is een wachtwoordkluis voor de Jolla Smartphone met het doel gevoelig
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="51"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="63"/>
         <source>Select</source>
         <translation type="unfinished">Selecteren</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="52"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="64"/>
         <source>Cancel</source>
         <translation type="unfinished">Annuleren</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="71"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="90"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="73"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="112"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="74"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="134"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>

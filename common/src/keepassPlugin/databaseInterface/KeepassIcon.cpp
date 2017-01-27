@@ -93,31 +93,31 @@ void IconListModel::clearListModel()
     clear();
 }
 
-void IconListModel::initListModel(int loadStandardIcons)
+void IconListModel::initListModel(int keepassIconType)
 {
     // First clean up the list model
     clear();
     // Now populate the list model with standard Keepasss icons if desired
-    switch(loadStandardIcons) {
-    case LOAD_STANDARD_ENTRY_ICONS:
+    switch(keepassIconType) {
+    case LOAD_KEEPASS_ENTRY_ICONS:
         for(int i = 0; i <= 68; i++) {
-            IconItem item(QString("ic%1").arg(i), STANDARD_ICON);
+            IconItem item(QString("ic%1").arg(i), KEEPASS_ICON);
             // append new entry to end of list
             beginInsertRows(QModelIndex(), rowCount(), rowCount());
             m_items << item;
             endInsertRows();
         }
         break;
-    case LOAD_STANDARD_GROUP_ICONS:
+    case LOAD_KEEPASS_GROUP_ICONS:
         for(int i = 0; i <= 68; i++) {
-            IconItem item(QString("icf%1").arg(i), STANDARD_ICON);
+            IconItem item(QString("icf%1").arg(i), KEEPASS_ICON);
             // append new entry to end of list
             beginInsertRows(QModelIndex(), rowCount(), rowCount());
             m_items << item;
             endInsertRows();
         }
         break;
-    default: // NO_STANDARD_ICONS
+    default: // do not load any Keepass icons
         break;
     }
     // emit isEmptyChanged signal if list view was empty before

@@ -1505,27 +1505,27 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="51"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="63"/>
         <source>Select</source>
         <translation type="unfinished">Valitse</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="52"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="64"/>
         <source>Cancel</source>
         <translation type="unfinished">Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="71"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="90"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="73"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="112"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="74"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="134"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>

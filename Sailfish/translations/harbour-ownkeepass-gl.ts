@@ -1501,27 +1501,27 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="51"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="63"/>
         <source>Select</source>
         <translation type="unfinished">Seleccionar</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="52"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="64"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="71"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="90"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="73"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="112"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="74"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="134"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>
