@@ -57,6 +57,10 @@ var ukrainian = -1 // not yet started, but already defined in ownKeepassGlobal.h
 // Contants used to scale UI components
 var icon_indent_in_listview = 4 // real ident = icon width / 4
 
+// item Type
+var typePasswordGroup = 0
+var typePasswordEntry = 1
+
 
 var constants = {
     _1microsecond: 1,

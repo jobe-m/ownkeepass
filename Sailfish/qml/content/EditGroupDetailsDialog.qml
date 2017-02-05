@@ -109,8 +109,8 @@ Dialog {
                         anchors.fill: parent
                         onClicked: {
                             // open new dialog with grid of all icons
-                            selectKdbIconDialog.newIconUuid = iconUuid
-                            pageStack.push(selectKdbIconDialog)
+                            pageStack.push( selectKdbIconDialog,
+                                           { "newIconUuid": iconUuid })
                         }
                     }
                 }
@@ -188,6 +188,11 @@ Dialog {
 
     SelectKdbIconDialog {
         id: selectKdbIconDialog
+        itemType: Global.typePasswordGroup
+
+        onAccepted: {
+            editGroupDetailsDialog.iconUuid = newIconUuid
+        }
     }
 
     Component.onCompleted: {

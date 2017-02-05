@@ -746,24 +746,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="125"/>
+        <location filename="../qml/scripts/Global.js" line="129"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Inget valt än</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="128"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Enhetslagring</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="130"/>
+        <location filename="../qml/scripts/Global.js" line="134"/>
         <source>SD Card</source>
         <translation>SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="132"/>
+        <location filename="../qml/scripts/Global.js" line="136"/>
         <source>Android Storage</source>
         <translation>Android-lagring</translation>
     </message>
@@ -1502,27 +1502,37 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
 <context>
     <name>SelectKdbIconDialog</name>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="63"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="56"/>
         <source>Select</source>
         <translation type="unfinished">Välj</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="64"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="57"/>
         <source>Cancel</source>
         <translation type="unfinished">Avbryt</translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="90"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="62"/>
+        <source>Choose an icon for the password group:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="63"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="67"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="112"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="89"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="134"/>
+        <location filename="../qml/content/SelectKdbIconDialog.qml" line="111"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>

@@ -435,7 +435,7 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
 
 void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, QString notes, QString iconUuid)
 {
-//    qDebug() << "groupId " << groupId;
+    qDebug() << "icon uuid: " << iconUuid;
     Q_UNUSED(notes);
     Q_ASSERT(m_kdb3Database);
 
@@ -445,9 +445,12 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UInt: " << groupId;
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
-    }    group->setTitle(title);
+    }
+    group->setTitle(title);
     // remove "icf" from icon name ("icfXX") so that only the icon number is left
-    group->setImage((quint32)iconUuid.right(4).toInt());
+    QString iconNumber = iconUuid;
+    qDebug() << "icon number: " << iconNumber.remove(0, 3).toInt();
+    group->setImage((quint32)iconNumber.remove(0, 3).toInt());
     if (!m_kdb3Database->save()) {
         emit groupSaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), groupId);
         return;
@@ -498,7 +501,9 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes
 
     CGroup* groupData = new CGroup(); // ownership will be given to m_kdb3Database object
     groupData->Title = title;
-    groupData->Image = (quint32)iconUuid.right(4).toInt();
+    QString iconNumber = iconUuid;
+    // remove "icf" from icon name ("icfXX") so that only the icon number is left
+    groupData->Image = (quint32)iconNumber.remove(0, 3).toInt();
     IGroupHandle* newGroup = m_kdb3Database->addGroup(groupData, parentGroup);
     Q_ASSERT(newGroup);
     // save changes to database

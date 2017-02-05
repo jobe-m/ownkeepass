@@ -28,22 +28,16 @@ import harbour.ownkeepass 1.0
 
 Dialog {
     id: selectKdbIconDialog
-//    width: mainPage.orientation & Orientation.LandscapeMask ? Screen.height : Screen.width
-//    height: mainPage.orientation & Orientation.LandscapeMask ? Screen.width : Screen.height
 
     property string newIconUuid: ""
 
-    // private stuff
+    property int itemType: Global.typePasswordEntry
+
     readonly property int _width: mainPage.orientation & Orientation.LandscapeMask ? Screen.height / 9 : Screen.width / 5
     readonly property int _height: Screen.width / 5
 
     canNavigateForward: newIconUuid.length !== 0
     allowedOrientations: applicationWindow.orientationSetting
-
-    onAccepted: {
-        // save new icon Id
-        editGroupDetailsDialog.iconUuid = newIconUuid
-    }
 
     SilicaFlickable {
         anchors.fill: parent
@@ -56,7 +50,6 @@ Dialog {
         Column {
             id: col
             width: parent.width
-//            spacing: Theme.paddingLarge
 
             DialogHeader {
                 id: header
@@ -65,26 +58,10 @@ Dialog {
                 spacing: 0
             }
 
-/*        SilicaListView {
-            width: parent.width
-            anchors.top: header.bottom
-            anchors.bottom: parent.bottom
-
-            model: iconSectionsModel
-            section.property: "sectionName"
-            section.criteria: ViewSection.FullString
-            section.labelPositioning: ViewSection.InlineLabels
-            section.delegate:  SectionHeader {
-                id: sectionHeader
-                text: section === "keepassIcon" ?
-                          qsTr("Keepass Icons") :
-                          section === "customDatabaseIcon" ?
-                              qsTr("Custom Database Icons") :
-                              qsTr("ownKeepass Icon Pack")
+            SilicaLabel {
+                text: itemType === Global.typePasswordGroup ? qsTr("Choose an icon for the password group:") :
+                                                       qsTr("Choose an icon for the password entry:")
             }
-
-            delegate:
-*/
 
             SectionHeader {
                 text: qsTr("Keepass Icons")
@@ -225,9 +202,12 @@ Dialog {
 
     Component.onCompleted: {
         // Load Keepass group icons, custom database icons from Keepass 2 database and ownKeepass icon pack icons into list models
-        keepassIconListModel.initListModel(IconListModel.LOAD_KEEPASS_GROUP_ICONS)
-//        customDatabaseIconListModel.initListModel(IconListModel.LOAD_CUSTOM_DATABASE_ICONS)
-        customDatabaseIconListModel.initListModel(IconListModel.LOAD_KEEPASS_ENTRY_ICONS)
+        if (itemType === Global.typePasswordEntry) {
+            keepassIconListModel.initListModel(IconListModel.LOAD_KEEPASS_ENTRY_ICONS)
+        } else if (itemType === Global.typePasswordGroup) {
+            keepassIconListModel.initListModel(IconListModel.LOAD_KEEPASS_GROUP_ICONS)
+        }
+        customDatabaseIconListModel.initListModel(IconListModel.LOAD_CUSTOM_DATABASE_ICONS)
         ownKeepassIconPackListModel.initListModel(IconListModel.LOAD_OWNKEEPASS_ICON_PACK_ICONS)
 
     }

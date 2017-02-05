@@ -436,11 +436,10 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     }
     group->setName(title);
     group->setNotes(notes);
-    int iconNumber = 0;
     if (iconUuid.size() != (Uuid::Length * 2)) {
         // Remove icf from icon name, e.g. "icf12" so that 12 is the icon number
-        iconNumber = iconUuid.right(4).toInt();
-        group->setIcon(iconNumber);
+        QString iconNumber = iconUuid;
+        group->setIcon(iconNumber.remove(0, 3).toInt());
     } else {
         group->setIcon(qString2Uuid(iconUuid));
     }
