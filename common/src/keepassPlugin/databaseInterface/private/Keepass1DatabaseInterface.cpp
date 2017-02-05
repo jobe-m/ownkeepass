@@ -175,7 +175,6 @@ void Keepass1DatabaseInterface::slot_closeDatabase()
 
 void Keepass1DatabaseInterface::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
 {
-//    qDebug() << "Keepass1DatabaseInterface::slot_createNewDatabase() - dbPath: " << filePath << " pw: " << password << " keyfile: " << keyfile;
     // check if there is an already opened database and close it
     if (m_kdb3Database) {
         if (!m_kdb3Database->close()) {
@@ -266,11 +265,7 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
     }
     for (int i = 0; i < masterGroups.count(); i++) {
         IGroupHandle* masterGroup = masterGroups.at(i);
-//        qDebug() << "int of mastergroup: " << uint(masterGroup);
         if (masterGroup->isValid()) {
-//            qDebug("Mastergroup %d: %s", i, CSTR(masterGroup->title()));
-//            qDebug("Expanded: %d Level: %d", masterGroup->expanded(), masterGroup->level());
-
             int item_level = masterGroup->level();
             if (masterGroup->title() != "Backup") {
                 int numberOfSubgroups = masterGroup->children().count();
@@ -298,7 +293,6 @@ void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 
 void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 {
-//    qDebug() << "groupId " << groupId;
 
     Q_ASSERT(m_kdb3Database);
     // load sub groups and entries
@@ -308,8 +302,6 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
         qDebug() << "ERROR: Could not find group for UInt: " << groupId;
         emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "");
     }
-    //    qDebug() << "int of group: " << uint(group);
-
     QList<IGroupHandle*> subGroups;
     if (m_setting_sortAlphabeticallyInListView) {
         subGroups = m_kdb3Database->sortedGroups();
@@ -318,10 +310,7 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     }
     for (int i = 0; i < subGroups.count(); i++) {
         IGroupHandle* subGroup = subGroups.at(i);
-//        qDebug() << "int of subgroup: " << uint(subGroup->parent()) << " (title: " << subGroup->parent()->title() << ")";
-
         if (subGroup->isValid() && subGroup->parent() == group) {
-//            qDebug("Group %d: %s", i, CSTR(subGroup->title()));
             int numberOfSubgroups = subGroup->children().count();
             int numberOfEntries = m_kdb3Database->entries(subGroup).count();
             emit appendItemToListModel(subGroup->title(),                              // group name
@@ -368,7 +357,6 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 
 void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 {
-//    qDebug() << "entryId " << entryId;
     QList<QString> keys;
     QList<QString> values;
 
@@ -410,8 +398,6 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 
 void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
 {
-//    qDebug() << "groupId " << groupId;
-
     // get group handler for groupId
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
@@ -429,13 +415,12 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
                          groupId,
                          group->title(),
                          "",
-                         getGroupIcon((int)group->image()));
+                         getGroupIcon(group->image()));
     }
 }
 
 void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, QString notes, QString iconUuid)
 {
-    qDebug() << "icon uuid: " << iconUuid;
     Q_UNUSED(notes);
     Q_ASSERT(m_kdb3Database);
 
@@ -449,8 +434,8 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     group->setTitle(title);
     // remove "icf" from icon name ("icfXX") so that only the icon number is left
     QString iconNumber = iconUuid;
-    qDebug() << "icon number: " << iconNumber.remove(0, 3).toInt();
-    group->setImage((quint32)iconNumber.remove(0, 3).toInt());
+    quint32 qui32_iconNumber = (quint32)iconNumber.remove(0, 3).toInt();
+    group->setImage(qui32_iconNumber);
     if (!m_kdb3Database->save()) {
         emit groupSaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), groupId);
         return;
@@ -483,8 +468,6 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
 
 void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
 {
-//    qDebug() << "modelId " << modelId;
-
     // delete all groups and entries which are associated with given modelId
     m_groups_modelId.remove(qString2UInt(modelId));
     m_entries_modelId.remove(qString2UInt(modelId));
@@ -492,7 +475,6 @@ void Keepass1DatabaseInterface::slot_unregisterListModel(QString modelId)
 
 void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes, QString parentGroupId, QString iconUuid)
 {
-//    qDebug() << "parentGroupId " << parentGroupId;
     Q_UNUSED(notes);
     Q_ASSERT(m_kdb3Database);
 
@@ -545,7 +527,6 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes
 
 void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, QString url, QString username, QString password, QString comment)
 {
-//    qDebug() << "entryId " << entryId;
     QList<QString> keys;
     QList<QString> values;
 
@@ -628,8 +609,6 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
                                              QString comment,
                                              QString parentGroupId)
 {
-//    qDebug() << "parentGroupId " << parentGroupId;
-
     // create new entry in specified group
     IGroupHandle* parentGroup = (IGroupHandle*)qString2UInt(parentGroupId);
     Q_ASSERT(parentGroup);
@@ -679,8 +658,6 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
 
 void Keepass1DatabaseInterface::slot_deleteGroup(QString groupId)
 {
-//    qDebug() << "groupId " << groupId;
-
     // get group handles
     IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
     Q_ASSERT(group);
@@ -725,8 +702,6 @@ void Keepass1DatabaseInterface::updateGrandParentGroupInListModel(IGroupHandle* 
 
 void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
 {
-//    qDebug() << "entryId " << entryId;
-
     // get handles
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
@@ -757,9 +732,6 @@ void Keepass1DatabaseInterface::slot_deleteEntry(QString entryId)
 
 void Keepass1DatabaseInterface::slot_moveEntry(QString entryId, QString newGroupId)
 {
-//    qDebug() << "entryId " << entryId;
-//    qDebug() << "newGroupId " << newGroupId;
-
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
     Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
@@ -825,8 +797,6 @@ void Keepass1DatabaseInterface::slot_moveGroup(QString groupId, QString newParen
 
 void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString rootGroupId)
 {
-//    qDebug() << "rootGroupId " << rootGroupId;
-
     // get group handle
     IGroupHandle* rootGroup = (IGroupHandle*)qString2UInt(rootGroupId);
     // search for entries in database
@@ -848,7 +818,6 @@ void Keepass1DatabaseInterface::slot_searchEntries(QString searchString, QString
             return;
         }
         if (entry->isValid()) {
-//            qDebug() << "entry found: " << entry->title() << " " << uint(entry);
             if (m_setting_sortAlphabeticallyInListView) {
                 emit addItemToListModelSorted(entry->title(),                              // entry name
                                               getEntryIcon(entry->image()),                // icon uuid
@@ -978,13 +947,13 @@ inline uint Keepass1DatabaseInterface::qString2UInt(QString value)
     }
 }
 
-QString Keepass1DatabaseInterface::getEntryIcon(int standardIcon)
+QString Keepass1DatabaseInterface::getEntryIcon(quint32 standardIcon)
 {
     // custom icons are not supported for Keepass 1 database
     return QString("ic%1").arg(standardIcon);
 }
 
-QString Keepass1DatabaseInterface::getGroupIcon(int standardIcon)
+QString Keepass1DatabaseInterface::getGroupIcon(quint32 standardIcon)
 {
     // custom icons are not supported for Keepass 1 database
     return QString("icf%1").arg(standardIcon);

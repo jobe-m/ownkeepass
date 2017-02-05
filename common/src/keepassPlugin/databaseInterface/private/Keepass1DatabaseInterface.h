@@ -195,8 +195,8 @@ private:
     inline QString getUserAndPassword(IEntryHandle* entry);
     inline QString uInt2QString(uint value);
     inline uint qString2UInt(QString value);
-    QString getEntryIcon(int standardIcon);
-    QString getGroupIcon(int standardIcon);
+    QString getEntryIcon(quint32 standardIcon);
+    QString getGroupIcon(quint32 standardIcon);
 
 private:
     // Keepass database handler
