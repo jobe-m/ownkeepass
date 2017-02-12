@@ -97,7 +97,8 @@ signals:
                      QString errorMsg,
                      QString entryId,
                      QList<QString> keys,
-                     QList<QString> values);
+                     QList<QString> values,
+                     QString iconUuid);
     void entrySaved(int result,
                     QString errorMsg,
                     QString entryId);
@@ -164,13 +165,15 @@ public slots:
                         QString url,
                         QString username,
                         QString password,
-                        QString comment);
+                        QString comment,
+                        QString iconUuid);
     void slot_createNewEntry(QString title,
                              QString url,
                              QString username,
                              QString password,
                              QString comment,
-                             QString parentGroupId);
+                             QString parentGroupId,
+                             QString iconUuid);
     void slot_deleteEntry(QString entryId);
     void slot_moveEntry(QString entryId,
                         QString newGroupId);

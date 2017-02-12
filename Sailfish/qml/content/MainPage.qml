@@ -696,6 +696,7 @@ Page {
         property Dialog editEntryDetailsDialogRef: null
         property Dialog editGroupDetailsDialogRef: null
         property Page   showEntryDetailsPageRef: null
+        property Dialog editItemIconDialogRef: null
 
         /*
           Here are all Kdb entry details which are used to create a new entry, save changes to an
@@ -709,13 +710,13 @@ Page {
         property string originalEntryUsername: ""
         property string originalEntryPassword: ""
         property string originalEntryComment: ""
-// TODO                property int originalEntryImageId: 0
+        property string originalEntryIconUuid: ""
         property string entryTitle: ""
         property string entryUrl: ""
         property string entryUsername: ""
         property string entryPassword: ""
         property string entryComment: ""
-// TODO                property int entryImageId: 0
+        property string entryIconUuid: ""
 
         /*
           Here are the details for Kdb groups. The same applies like for Kdb entries
@@ -787,14 +788,16 @@ Page {
                                         entryUsername,
                                         entryPassword,
                                         entryComment,
-                                        parentGroupId)
+                                        parentGroupId,
+                                        entryIconUuid)
             } else {
                 // save changes of existing group to database and update list model data in backend
                 kdbEntry.saveEntryData(entryTitle,
                                        entryUrl,
                                        entryUsername,
                                        entryPassword,
-                                       entryComment)
+                                       entryComment,
+                                       entryIconUuid)
             }
         }
 
@@ -802,7 +805,7 @@ Page {
             // check if the user has changed any entry details
             if (originalEntryTitle !== entryTitle || originalEntryUrl !== entryUrl ||
                     originalEntryUsername !== entryUsername || originalEntryPassword !== entryPassword ||
-                    originalEntryComment !== entryComment) {
+                    originalEntryComment !== entryComment || originalEntryIconUuid !== entryIconUuid) {
                 // open query dialog for unsaved changes
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_ENTRY" })
@@ -818,19 +821,20 @@ Page {
             }
         }
 
-        function loadKdbEntryDetails(keys, values) {
+        function loadKdbEntryDetails(keys, values, iconUuid) {
             entryTitle    = originalEntryTitle    = values[0]
             entryUrl      = originalEntryUrl      = values[1]
             entryUsername = originalEntryUsername = values[2]
             entryPassword = originalEntryPassword = values[3]
             entryComment  = originalEntryComment  = values[4]
+            entryIconUuid = originalEntryIconUuid = iconUuid
 
             // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
             // depending on which is currently active
-            if(editEntryDetailsDialogRef)
-                editEntryDetailsDialogRef.setTextFields(keys, values)
-            if(showEntryDetailsPageRef)
-                showEntryDetailsPageRef.setTextFields(keys, values)
+            if (editEntryDetailsDialogRef)
+                editEntryDetailsDialogRef.setTextFields(keys, values, iconUuid)
+            if (showEntryDetailsPageRef)
+                showEntryDetailsPageRef.setTextFields(keys, values, iconUuid)
         }
 
         function loadKdbGroupDetails(name, notes, iconUuid) {
@@ -838,11 +842,12 @@ Page {
             groupNotes = originalGroupNotes = notes
             groupIconUuid = originalGroupIconUuid = iconUuid
             // Populate group detail text fields in editGroupDetailsDialog
-            if(editGroupDetailsDialogRef)
+            if (editGroupDetailsDialogRef) {
                 editGroupDetailsDialogRef.setTextFields(name, notes, iconUuid)
+            }
         }
 
-        function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment) {
+        function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment, iconUuid) {
             createNewItem = createNewEntry
             itemId        = entryId
             parentGroupId = parentGrId
@@ -851,6 +856,7 @@ Page {
             entryUsername = username
             entryPassword = password
             entryComment  = comment
+            entryIconUuid = iconUuid
         }
 
         function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name, notes, iconUuid) {
@@ -971,7 +977,7 @@ Page {
 
     KdbEntry {
         id: kdbEntry
-        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values)
+        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values, iconUuid)
         onEntryDataSaved: mainPage.errorHandler(result, errorMsg)
         onNewEntryCreated: mainPage.errorHandler(result, errorMsg)
     }
@@ -1135,6 +1141,32 @@ Page {
         id: editGroupDetailsDialogComponent
         EditGroupDetailsDialog {
             id: editGroupDetailsDialog
+        }
+    }
+
+    Component {
+        id: editItemIconDialogComponent
+        EditItemIconDialog {
+            id: editItemIconDialog
+            itemType: DatabaseItemType.GROUP
+
+            onAccepted: {
+                console.log("New icon: " + newIconUuid)
+                // Set new icon uuid, all other group resp. entry data was previously set and save the changed icon uuid
+                kdbListItemInternal.createNewItem = false
+                switch (itemType) {
+                case DatabaseItemType.GROUP:
+                    console.log("Save Group")
+                    kdbListItemInternal.groupIconUuid = newIconUuid
+                    kdbListItemInternal.saveKdbGroupDetails()
+                    break
+                case DatabaseItemType.ENTRY:
+                    console.log("Save Entry")
+                    kdbListItemInternal.entryIconUuid = newIconUuid
+                    kdbListItemInternal.saveKdbEntryDetails()
+                    break
+                }
+            }
         }
     }
 

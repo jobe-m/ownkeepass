@@ -32,7 +32,8 @@ Page {
     // ID of the keepass entry to be shown
     property string entryId: ""
 
-    function setTextFields(keys, values) {
+// TODO show icon
+    function setTextFields(keys, values, iconUuid) {
         var maxKeys = keys.length
         var i = 5
         customKeyValueList.clear()

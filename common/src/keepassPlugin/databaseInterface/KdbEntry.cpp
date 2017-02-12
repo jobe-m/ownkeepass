@@ -50,14 +50,14 @@ bool KdbEntry::connectToDatabaseClient()
     Q_UNUSED(ret);
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(entryLoaded(int,QString,QString,QList<QString>,QList<QString>)),
+                  SIGNAL(entryLoaded(int,QString,QString,QList<QString>,QList<QString>,QString)),
                   this,
-                  SLOT(slot_entryDataLoaded(int,QString,QString,QList<QString>,QList<QString>)));
+                  SLOT(slot_entryDataLoaded(int,QString,QString,QList<QString>,QList<QString>,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(saveEntryToKdbDatabase(QString,QString,QString,QString,QString,QString)),
+                  SIGNAL(saveEntryToKdbDatabase(QString,QString,QString,QString,QString,QString,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_saveEntry(QString,QString,QString,QString,QString,QString)));
+                  SLOT(slot_saveEntry(QString,QString,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(entrySaved(int,QString,QString)),
@@ -65,9 +65,9 @@ bool KdbEntry::connectToDatabaseClient()
                   SLOT(slot_entryDataSaved(int,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,QString)),
+                  SIGNAL(createNewEntryInKdbDatabase(QString,QString,QString,QString,QString,QString,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,QString)));
+                  SLOT(slot_createNewEntry(QString,QString,QString,QString,QString,QString,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(newEntryCreated(int,QString,QString)),
@@ -130,7 +130,7 @@ void KdbEntry::loadEntryData()
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         QList<QString> emptyList;
-        emit entryDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "", emptyList, emptyList);
+        emit entryDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "", emptyList, emptyList, "");
     } else {
         // trigger loading from database client
         emit loadEntryFromKdbDatabase(m_entryId);
@@ -141,7 +141,8 @@ void KdbEntry::saveEntryData(QString title,
                              QString url,
                              QString username,
                              QString password,
-                             QString comment)
+                             QString comment,
+                             QString iconUuid)
 {
     Q_ASSERT(m_entryId != "");
     if (!m_connected && !connectToDatabaseClient()) {
@@ -149,7 +150,7 @@ void KdbEntry::saveEntryData(QString title,
         emit entryDataSaved(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
     } else {
         // trigger saving to database client
-        emit saveEntryToKdbDatabase(m_entryId, title, url, username, password, comment);
+        emit saveEntryToKdbDatabase(m_entryId, title, url, username, password, comment, iconUuid);
     }
 }
 
@@ -158,7 +159,8 @@ void KdbEntry::createNewEntry(QString title,
                               QString username,
                               QString password,
                               QString comment,
-                              QString parentgroupId)
+                              QString parentgroupId,
+                              QString iconUuid)
 {
     Q_ASSERT(parentgroupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
@@ -167,7 +169,7 @@ void KdbEntry::createNewEntry(QString title,
     } else {
         // trigger creation of new entry in database client
         m_new_entry_triggered = true;
-        emit createNewEntryInKdbDatabase(title, url, username, password, comment, parentgroupId);
+        emit createNewEntryInKdbDatabase(title, url, username, password, comment, parentgroupId, iconUuid);
     }
 }
 
@@ -200,11 +202,12 @@ void KdbEntry::slot_entryDataLoaded(int result,
                                     QString errorMsg,
                                     QString entryId,
                                     QList<QString> keys,
-                                    QList<QString> values)
+                                    QList<QString> values,
+                                    QString iconUuid)
 {
     // forward signal to QML only if the signal is for us
     if (entryId.compare(m_entryId) == 0) {
-        emit entryDataLoaded(result, errorMsg, keys, values);
+        emit entryDataLoaded(result, errorMsg, keys, values, iconUuid);
     }
 }
 

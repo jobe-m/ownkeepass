@@ -27,11 +27,11 @@ import "../common"
 import harbour.ownkeepass 1.0
 
 Dialog {
-    id: selectKdbIconDialog
+    id: editItemIconDialog
 
     property string newIconUuid: ""
 
-    property int itemType: Global.typePasswordEntry
+    property int itemType: DatabaseItemType.ENTRY
 
     readonly property int _width: mainPage.orientation & Orientation.LandscapeMask ? Screen.height / 9 : Screen.width / 5
     readonly property int _height: Screen.width / 5
@@ -59,7 +59,7 @@ Dialog {
             }
 
             SilicaLabel {
-                text: itemType === Global.typePasswordGroup ? qsTr("Choose an icon for the password group:") :
+                text: itemType === DatabaseItemType.GROUP ? qsTr("Choose an icon for the password group:") :
                                                        qsTr("Choose an icon for the password entry:")
             }
 
@@ -69,11 +69,11 @@ Dialog {
 
             SilicaGridView {
                 id: keepassIconGridView
-                width: selectKdbIconDialog.width
+                width: editItemIconDialog.width
 
                 model: keepassIconListModel
-                cellWidth: selectKdbIconDialog._width
-                cellHeight: selectKdbIconDialog._height
+                cellWidth: editItemIconDialog._width
+                cellHeight: editItemIconDialog._height
 
                 delegate: iconDelegate
 
@@ -91,11 +91,11 @@ Dialog {
 
             SilicaGridView {
                 id: customDatabaseIconGridView
-                width: selectKdbIconDialog.width
+                width: editItemIconDialog.width
 
                 model: customDatabaseIconListModel
-                cellWidth: selectKdbIconDialog._width
-                cellHeight: selectKdbIconDialog._height
+                cellWidth: editItemIconDialog._width
+                cellHeight: editItemIconDialog._height
 
                 delegate: iconDelegate
 
@@ -113,11 +113,11 @@ Dialog {
 
             SilicaGridView {
                 id: ownKeepassIconPackGridView
-                width: selectKdbIconDialog.width
+                width: editItemIconDialog.width
 
                 model: ownKeepassIconPackListModel
-                cellWidth: selectKdbIconDialog._width
-                cellHeight: selectKdbIconDialog._height
+                cellWidth: editItemIconDialog._width
+                cellHeight: editItemIconDialog._height
 
                 delegate: iconDelegate
 
@@ -145,12 +145,12 @@ Dialog {
         id: iconDelegate
 
         Item {
-            width: selectKdbIconDialog._width
+            width: editItemIconDialog._width
 // TODO adapt size for jolla tablet
             //Screen.sizeCategory >= Screen.Large ?
             //       (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.195) : (Screen.height * 0.122)) :
             //       (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.081) : (Screen.height * 0.063))
-            height: selectKdbIconDialog._height
+            height: editItemIconDialog._height
 
             Rectangle {
                 color: Theme.highlightColor
@@ -202,9 +202,9 @@ Dialog {
 
     Component.onCompleted: {
         // Load Keepass group icons, custom database icons from Keepass 2 database and ownKeepass icon pack icons into list models
-        if (itemType === Global.typePasswordEntry) {
+        if (itemType === DatabaseItemType.ENTRY) {
             keepassIconListModel.initListModel(IconListModel.LOAD_KEEPASS_ENTRY_ICONS)
-        } else if (itemType === Global.typePasswordGroup) {
+        } else if (itemType === DatabaseItemType.GROUP) {
             keepassIconListModel.initListModel(IconListModel.LOAD_KEEPASS_GROUP_ICONS)
         }
         customDatabaseIconListModel.initListModel(IconListModel.LOAD_CUSTOM_DATABASE_ICONS)

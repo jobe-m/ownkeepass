@@ -358,7 +358,7 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
     Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
-        emit entryLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId, keys, values);
+        emit entryLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId, keys, values, "");
         return;
     } else {
         // First add default keys and values
@@ -385,7 +385,9 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
                          "",
                          entryId,
                          keys,
-                         values);
+                         values,
+                         getEntryIcon(entry->iconNumber(),
+                                      entry->iconUuid()));
     }
 }
 
@@ -568,7 +570,9 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
                                                QString url,
                                                QString username,
                                                QString password,
-                                               QString comment)
+                                               QString comment,
+                                               QString iconUuid)
+// TODO edit icon
 {
     Q_ASSERT(m_Database);
 }
@@ -578,12 +582,16 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QString title,
                                                     QString username,
                                                     QString password,
                                                     QString comment,
-                                                    QString parentGroupId)
+                                                    QString parentGroupId,
+                                                    QString iconUuid)
+// TODO edit icon
 {
+    Q_ASSERT(m_Database);
 }
 
 void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
 {
+    Q_ASSERT(m_Database);
 }
 
 void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentGroup)

@@ -41,18 +41,21 @@ Dialog {
     property string origUsername: ""
     property string origPassword: ""
     property string origComment: ""
+    property string origIconUuid : ""
     property bool titleChanged: false
     property bool urlChanged: false
     property bool usernameChanged: false
     property bool passwordChanged: false
     property bool commentChanged: false
+    property bool iconUuidChanged: false
 
-    function setTextFields(keys, values) {
+    function setTextFields(keys, values, iconUuid) {
         entryTitleTextField.text = origTitle = values[0]
         entryUrlTextField.text = origUrl = values[1]
         entryUsernameTextField.text = origUsername = values[2]
         entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = values[3]
         entryCommentTextField.text = origComment = values[4]
+        origIconUuid = iconUuid
     }
 
     // This function should be called when any text is changed to check if the
@@ -278,13 +281,15 @@ Dialog {
     onAccepted: {
         // first save locally Kdb entry details then trigger save to backend
         kdbListItemInternal.setKdbEntryDetails(createNewEntry,
-                                    entryId,
-                                    parentGroupId,
-                                    entryTitleTextField.text,
-                                    entryUrlTextField.text,
-                                    entryUsernameTextField.text,
-                                    entryPasswordTextField.text,
-                                    entryCommentTextField.text)
+                                               entryId,
+                                               parentGroupId,
+                                               entryTitleTextField.text,
+                                               entryUrlTextField.text,
+                                               entryUsernameTextField.text,
+                                               entryPasswordTextField.text,
+                                               entryCommentTextField.text,
+// TODO edit icon
+                                               origIconUuid)
         kdbListItemInternal.saveKdbEntryDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details
@@ -293,13 +298,15 @@ Dialog {
         if (canNavigateForward) {
             // first save locally Kdb entry details then trigger check for unsaved changes
             kdbListItemInternal.setKdbEntryDetails(createNewEntry,
-                                        entryId,
-                                        parentGroupId,
-                                        entryTitleTextField.text,
-                                        entryUrlTextField.text,
-                                        entryUsernameTextField.text,
-                                        entryPasswordTextField.text,
-                                        entryCommentTextField.text)
+                                                   entryId,
+                                                   parentGroupId,
+                                                   entryTitleTextField.text,
+                                                   entryUrlTextField.text,
+                                                   entryUsernameTextField.text,
+                                                   entryPasswordTextField.text,
+                                                   entryCommentTextField.text,
+// TODO edit icon
+                                                   origIconUuid)
             kdbListItemInternal.checkForUnsavedKdbEntryChanges()
         }
     }

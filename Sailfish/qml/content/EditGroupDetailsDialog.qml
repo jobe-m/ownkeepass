@@ -109,7 +109,7 @@ Dialog {
                         anchors.fill: parent
                         onClicked: {
                             // open new dialog with grid of all icons
-                            pageStack.push( selectKdbIconDialog,
+                            pageStack.push( editItemIconDialog,
                                            { "newIconUuid": iconUuid })
                         }
                     }
@@ -186,9 +186,9 @@ Dialog {
         }
     }
 
-    SelectKdbIconDialog {
-        id: selectKdbIconDialog
-        itemType: Global.typePasswordGroup
+    EditItemIconDialog {
+        id: editItemIconDialog
+        itemType: DatabaseItemType.GROUP
 
         onAccepted: {
             editGroupDetailsDialog.iconUuid = newIconUuid

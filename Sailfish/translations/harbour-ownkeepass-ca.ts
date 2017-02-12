@@ -294,78 +294,78 @@
 <context>
     <name>EditEntryDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="97"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="100"/>
         <source>Save</source>
         <translation>Desa</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="98"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
         <source>Discard</source>
         <translation>Descarta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="102"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="105"/>
         <source>Create new password entry:</source>
         <translation>Crea un nou registre de contrasenya:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="103"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="106"/>
         <source>Edit password entry:</source>
         <translation>Edita el registre de contrasenya:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="113"/>
         <source>Title</source>
         <translation>Títol</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="112"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="115"/>
         <source>Set title (mandatory)</source>
         <translation>Introduïu un títol (obligatori)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="129"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="132"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="131"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="134"/>
         <source>Set URL</source>
         <translation>Introduïu una URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="146"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="149"/>
         <source>Username</source>
         <translation>Nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="148"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="151"/>
         <source>Set username</source>
         <translation>Introduïu un nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="170"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
         <source>Password</source>
         <translation>Contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="176"/>
         <source>Set password</source>
         <translation>Introduïu una contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="216"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="219"/>
         <source>Verify password</source>
         <translation>Verifiqueu la contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="249"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="252"/>
         <source>Comment</source>
         <translation>Comentaris</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="251"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="254"/>
         <source>Set comment</source>
         <translation>Introduïu comentaris</translation>
     </message>
@@ -415,6 +415,44 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="179"/>
         <source>Set notes for the group</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditItemIconDialog</name>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="56"/>
+        <source>Select</source>
+        <translation type="unfinished">Selecciona</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="57"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel·la</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="62"/>
+        <source>Choose an icon for the password group:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="63"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
+        <source>Keepass Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="89"/>
+        <source>Custom Database Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="111"/>
+        <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -746,24 +784,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="129"/>
+        <location filename="../qml/scripts/Global.js" line="125"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>No s&apos;ha seleccionat res encara</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="132"/>
+        <location filename="../qml/scripts/Global.js" line="128"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Memòria interna</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="134"/>
+        <location filename="../qml/scripts/Global.js" line="130"/>
         <source>SD Card</source>
         <translation>Targeta SD</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="136"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>Android Storage</source>
         <translation>Android Storage</translation>
     </message>
@@ -922,17 +960,17 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="145"/>
+        <location filename="../qml/content/KdbListItem.qml" line="165"/>
         <source>Edit</source>
         <translation>Edita</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="162"/>
+        <location filename="../qml/content/KdbListItem.qml" line="182"/>
         <source>Delete</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="179"/>
+        <location filename="../qml/content/KdbListItem.qml" line="199"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Mou</translation>
@@ -1269,42 +1307,42 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
         <translation>La conversió de QString &quot;%1&quot; a Int ha fallat</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1095"/>
+        <location filename="../qml/content/MainPage.qml" line="1101"/>
         <source>Drop from List</source>
         <translation>Treu-ho de la llista</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1159"/>
+        <location filename="../qml/content/MainPage.qml" line="1191"/>
         <source>Yes</source>
         <translation>Sí</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1160"/>
+        <location filename="../qml/content/MainPage.qml" line="1192"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1161"/>
+        <location filename="../qml/content/MainPage.qml" line="1193"/>
         <source>Unsaved changes</source>
         <translation>Canvis no desats</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1189"/>
+        <location filename="../qml/content/MainPage.qml" line="1221"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Voleu desar els canvis al registre de contrasenya?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1194"/>
+        <location filename="../qml/content/MainPage.qml" line="1226"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Voleu desar els canvis al grup de contrasenyes?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1199"/>
+        <location filename="../qml/content/MainPage.qml" line="1231"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Voleu desar els canvis a la configuració de la base de dades?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1204"/>
+        <location filename="../qml/content/MainPage.qml" line="1236"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Voleu desar els canvis a la configuració?</translation>
     </message>
@@ -1500,98 +1538,60 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
     </message>
 </context>
 <context>
-    <name>SelectKdbIconDialog</name>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="56"/>
-        <source>Select</source>
-        <translation type="unfinished">Selecciona</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="57"/>
-        <source>Cancel</source>
-        <translation type="unfinished">Cancel·la</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="62"/>
-        <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="63"/>
-        <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="67"/>
-        <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="89"/>
-        <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/SelectKdbIconDialog.qml" line="111"/>
-        <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="72"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="73"/>
         <source>No content</source>
         <translation>Cap contingut</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="75"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation>Estireu cap avall per afegir una URL, nom d&apos;usuari, contrasenya i comentaris</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="90"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="91"/>
         <source>Read only mode</source>
         <translation>Mode de només lectura</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="96"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="97"/>
         <source>Copy URL</source>
         <translation>Copia la URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="105"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="106"/>
         <source>Copy username</source>
         <translation>Copia el nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="116"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="117"/>
         <source>Copy password</source>
         <translation>Copia la contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="127"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="128"/>
         <source>Edit password entry</source>
         <translation>Edita el registre de contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="164"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="165"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="175"/>
         <source>Username</source>
         <translation>Nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="192"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="206"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="193"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="207"/>
         <source>Password</source>
         <translation>Contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="238"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="239"/>
         <source>Comment</source>
         <translation>Comentari</translation>
     </message>

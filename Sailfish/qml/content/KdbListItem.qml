@@ -58,15 +58,35 @@ ListItem {
     }
 
     onClicked: {
-        switch (model.itemType) {
-        case DatabaseItemType.GROUP:
-            pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                           { "pageTitle": model.name, "groupId": model.id })
-            break
-        case DatabaseItemType.ENTRY:
-            pageStack.push(showEntryDetailsPageComponent,
-                           { "pageTitle": model.name, "entryId": model.id })
-            break
+        // Check if the user touched the group or entry icon and open the icon selection dialog
+        if (mouse.x < Theme.itemSizeMedium) {
+            // Save item id of group or entry
+            // It will be needed when saving the new icon uuid
+            kdbListItemInternal.itemId = model.id
+            if (model.itemType === DatabaseItemType.GROUP) {
+                // Load group details so that we have them when saving the new icon uuid
+                kdbGroup.groupId = model.id
+                kdbGroup.loadGroupData()
+            } else {
+                // Load entry details ...
+                kdbEntry.entryId = model.id
+                kdbEntry.loadEntryData()
+            }
+            // open new dialog with grid of all icons
+            pageStack.push( editItemIconDialogComponent,
+                           { "newIconUuid": model.iconUuid,
+                             "itemType": model.itemType })
+        } else {
+            switch (model.itemType) {
+            case DatabaseItemType.GROUP:
+                pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
+                               { "pageTitle": model.name, "groupId": model.id })
+                break
+            case DatabaseItemType.ENTRY:
+                pageStack.push(showEntryDetailsPageComponent,
+                               { "pageTitle": model.name, "entryId": model.id })
+                break
+            }
         }
     }
 

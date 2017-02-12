@@ -365,7 +365,7 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
     Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
-        emit entryLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId, keys, values);
+        emit entryLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId, keys, values, "");
         return;
     }
     // decrypt password which is usually stored encrypted in memory
@@ -386,11 +386,7 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if it needs to update the details
-    emit entryLoaded((int)DatabaseAccessResult::RE_OK,
-                     "",
-                     entryId,
-                     keys,
-                     values);
+    emit entryLoaded((int)DatabaseAccessResult::RE_OK, "", entryId, keys, values, "");
 
     // encrypt password in memory again
     password.lock();
@@ -403,19 +399,9 @@ void Keepass1DatabaseInterface::slot_loadGroup(QString groupId)
     Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UInt: " << groupId;
-        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND,
-                         "",
-                         groupId,
-                         "",
-                         "",
-                         "");
+        emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId, "", "", "");
     } else {
-        emit groupLoaded(DatabaseAccessResult::RE_OK,
-                         "",
-                         groupId,
-                         group->title(),
-                         "",
-                         getGroupIcon(group->image()));
+        emit groupLoaded(DatabaseAccessResult::RE_OK, "", groupId, group->title(), "", getGroupIcon(group->image()));
     }
 }
 
@@ -525,7 +511,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes
     emit newGroupCreated(DatabaseAccessResult::RE_OK, "", uInt2QString(uint(newGroup)));
 }
 
-void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, QString url, QString username, QString password, QString comment)
+void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, QString url, QString username, QString password, QString comment, QString iconUuid)
 {
     QList<QString> keys;
     QList<QString> values;
@@ -548,6 +534,10 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, Q
     s_password.lock();
     entry->setPassword(s_password);
     entry->setComment(comment);
+    // remove "ic" from icon name ("icXX") so that only the icon number is left
+    QString iconNumber = iconUuid;
+    quint32 qui32_iconNumber = (quint32)iconNumber.remove(0, 2).toInt();
+    entry->setImage(qui32_iconNumber);
     // save changes to database and send signal with result
     if (!m_kdb3Database->save()) {
         emit entrySaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), entryId);
@@ -594,20 +584,11 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, Q
 
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if it needs to update the details
-    emit entryLoaded((int)DatabaseAccessResult::RE_OK,
-                     "",
-                     entryId,
-                     keys,
-                     values);
+    emit entryLoaded((int)DatabaseAccessResult::RE_OK, "", entryId, keys, values, iconUuid);
     s_password.lock();
 }
 
-void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
-                                             QString url,
-                                             QString username,
-                                             QString password,
-                                             QString comment,
-                                             QString parentGroupId)
+void Keepass1DatabaseInterface::slot_createNewEntry(QString title, QString url, QString username, QString password, QString comment, QString parentGroupId, QString iconUuid)
 {
     // create new entry in specified group
     IGroupHandle* parentGroup = (IGroupHandle*)qString2UInt(parentGroupId);
@@ -623,6 +604,9 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title,
     s_password.lock();
     newEntry->setPassword(s_password);
     newEntry->setComment(comment);
+    // remove "ic" from icon name ("icXX") so that only the icon number is left
+    quint32 qui32_iconNumber = (quint32)iconUuid.remove(0, 2).toInt();
+    newEntry->setImage(qui32_iconNumber);
     // save changes to database
     if (!m_kdb3Database->save()) {
         emit newEntryCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), uInt2QString(uint(newEntry)));

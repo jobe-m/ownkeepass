@@ -41,13 +41,15 @@ public:
                                    QString url,
                                    QString username,
                                    QString password,
-                                   QString comment);
+                                   QString comment,
+                                   QString iconUuid);
     Q_INVOKABLE void createNewEntry(QString title,
                                     QString url,
                                     QString username,
                                     QString password,
                                     QString comment,
-                                    QString parentgroupId);
+                                    QString parentgroupId,
+                                    QString iconUuid);
     Q_INVOKABLE void deleteEntry();
     Q_INVOKABLE void moveEntry(QString newGroupId);
 
@@ -56,7 +58,8 @@ signals:
     void entryDataLoaded(int result,
                          QString errorMsg,
                          QList<QString> keys,
-                         QList<QString> values);
+                         QList<QString> values,
+                         QString iconUuid);
     void entryDataSaved(int result,
                         QString errorMsg);
     void newEntryCreated(int result,
@@ -74,13 +77,15 @@ signals:
                                 QString url,
                                 QString username,
                                 QString password,
-                                QString comment);
+                                QString comment,
+                                QString iconUuid);
     void createNewEntryInKdbDatabase(QString title,
                                      QString url,
                                      QString username,
                                      QString password,
                                      QString comment,
-                                     QString parentgroupId);
+                                     QString parentgroupId,
+                                     QString iconUuid);
     void deleteEntryFromKdbDatabase(QString entryId);
     void moveEntryInKdbDatabase(QString entryId, QString newGroupId);
 
@@ -90,7 +95,8 @@ public slots:
                               QString errorMsg,
                               QString entryId,
                               QList<QString> keys,
-                              QList<QString> values);
+                              QList<QString> values,
+                              QString iconUuid);
     void slot_entryDataSaved(int result,
                              QString errorMsg,
                              QString entryId);

@@ -192,4 +192,4 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-gl.ts
 
 DISTFILES += \
-    qml/content/SelectKdbIconDialog.qml
+    qml/content/EditItemIconDialog.qml
