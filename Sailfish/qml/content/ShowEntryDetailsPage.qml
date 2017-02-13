@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.ownkeepass 1.0
 import "../common"
 import "../scripts/Global.js" as Global
 
@@ -123,8 +124,8 @@ Page {
             }
 
             MenuItem {
-                enabled: !ownKeepassDatabase.readOnly
-                visible: enabled
+                enabled: !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
+                visible: !ownKeepassDatabase.readOnly
                 text: qsTr("Edit password entry")
                 onClicked: {
                     pageStack.push(editEntryDetailsDialogComponent,
