@@ -58,6 +58,11 @@ Dialog {
                 spacing: 0
             }
 
+            Item {
+                height: Theme.paddingLarge
+                width: parent.width
+            }
+
             SilicaLabel {
                 text: itemType === DatabaseItemType.GROUP ? qsTr("Choose an icon for the password group:") :
                                                        qsTr("Choose an icon for the password entry:")
