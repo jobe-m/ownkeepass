@@ -35,7 +35,7 @@ QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &
 {
     Q_UNUSED(requestedSize);
     QImage icon;
-    // Check lenth and determine if the icon is a stardart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
+    // Check lenth and determine if the icon is a standart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
     if (uuid.size() != (Uuid::Length * 2)) {
         // Load standard image from resources
         icon = QImage(":/entryicons/" + uuid + ".png", "PNG");

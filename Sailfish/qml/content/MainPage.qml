@@ -133,88 +133,88 @@ Page {
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Internal database error"),
                                              qsTr("An error occured on closing your database:") + " " + errorMsg)
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_DB_FILE_ERROR:
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Internal file error"),
                                              qsTr("The following error occured during creation of database:") + " " + errorMsg)
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_DB_SETKEY_ERROR:
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Internal key error"),
                                              qsTr("The following error occured during creation of the key for the database:") + " " + errorMsg)
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_DB_CREATE_BACKUPGROUP_ERROR:
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Internal database error"),
                                              qsTr("Creation of backup group failed with following error:") + " " + errorMsg)
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_CRYPTO_INIT_ERROR:
             // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety (Keepass 2 only)
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Crypto init error"),
                                              qsTr("Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer."))
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_NOT_A_KEEPASS_DB:
             // Keepass 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Database file"),
                                              qsTr("The specified file is not a Keepass database."))
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_NOT_SUPPORTED_DB_VERSION:
             // Keepass 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Database version"),
                                              qsTr("The specified file has an unsupported Keepass database version."))
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_MISSING_DB_HEADERS:
             // Keepass 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Internal database error"),
                                              qsTr("Database headers are missing."))
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT:
             // Keepass 1 and 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Wrong password"),
                                              qsTr("Either your master password is wrong or the database file is corrupt. Please try again."))
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT:
             // Keepass 1 and 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Wrong password"),
                                              qsTr("Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt."))
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_HEAD_HASH_MISMATCH:
             // Keepass 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Internal database error"),
                                              qsTr("Database head doesn't match corresponding hash value."))
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_DBFILE_OPEN_ERROR:
             // Keepass 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("File I/O error"),
                                              qsTr("Cannot open database file. Error details:") + " " + errorMsg)
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_KEYFILE_OPEN_ERROR:
             // Keepass 2
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("File I/O error"),
                                              qsTr("Cannot open key file. Error details:") + " " + errorMsg)
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_ERR_REMOVE_RECENT_DATABASE:
             // from ownKeepass settings
@@ -243,7 +243,7 @@ Page {
             applicationWindow.infoPopup.show(Global.error,
                                              "Unknown error code",
                                              "The following unknown error code appeared: " + result + " (Error message: \"" + errorMsg + "\")")
-            masterGroupsPage.closeOnError()
+            internal.masterGroupsPage.closeOnError()
             break
 
         }
