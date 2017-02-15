@@ -575,6 +575,90 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
 // TODO edit icon
 {
     Q_ASSERT(m_Database);
+    // get group handle and load group details
+    Uuid entryUuid = qString2Uuid(entryId);
+    Entry* entry = m_Database->resolveEntry(entryUuid);
+    Q_ASSERT(entry);
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
+        emit entrySaved(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
+        return;
+    }
+
+// TODO Save/Update also other entry details
+// TODO Implement string lists for getting entry details ...
+
+//    entry->setTitle(title);
+//    entry->setUrl(url);
+
+    if (iconUuid.size() != (Uuid::Length * 2)) {
+        // Remove ic from icon name, e.g. "ic12" so that 12 is the icon number
+        QString iconNumber = iconUuid;
+        entry->setIcon(iconNumber.remove(0, 2).toInt());
+    } else {
+        entry->setIcon(qString2Uuid(iconUuid));
+    }
+
+    // save database
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // send signal to QML
+        emit entrySaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, entryId);
+        return;
+    }
+
+    // update all list models which contain the changed group
+    QList<Uuid> modelIds = m_entries_modelId.keys(entryUuid);
+    for (int i = 0; i < modelIds.count(); i++) {
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit updateItemInListModelSorted(title,                                 // group name
+                                             getEntryIcon(entry->iconNumber(),
+                                                          entry->iconUuid()),       // icon uuid
+                                             getUserAndPassword(entry),             // subtitle
+                                             entryId,                               // identifier for item in list model
+                                             modelIds[i].toHex());                  // identifier for list model of master group
+        } else {
+            emit updateItemInListModel(title,                                       // group name
+                                       getEntryIcon(entry->iconNumber(),
+                                                    entry->iconUuid()),             // icon uuid
+                                       getUserAndPassword(entry),                   // subtitle
+                                       entryId,                                     // identifier for item in list model
+                                       modelIds[i].toHex());                        // identifier for list model of master group
+        }
+    }
+    // signal to QML
+    emit entrySaved(DatabaseAccessResult::RE_OK, "", entryId);
+
+    // update all entry objects, there might be two instances open
+    // decrypt password which is usually stored encrypted in memory
+    QList<QString> keys;
+    QList<QString> values;
+    keys.append(EntryAttributes::TitleKey);
+    keys.append(EntryAttributes::URLKey);
+    keys.append(EntryAttributes::UserNameKey);
+    keys.append(EntryAttributes::PasswordKey);
+    keys.append(EntryAttributes::NotesKey);
+    values.append(entry->title());
+    values.append(entry->url());
+    values.append(entry->username());
+    values.append(entry->password());
+    values.append(entry->notes());
+
+    // Now add additional custom keys and values
+    Q_FOREACH (const QString& key, entry->attributes()->customKeys()) {
+        keys.append(key);
+        values.append(entry->attributes()->value(key));
+    }
+
+    // send signal with all entry data to all connected entry objects
+    // each object will check with entryId if it needs to update the details
+    emit entryLoaded(DatabaseAccessResult::RE_OK,
+                     "",
+                     entryId,
+                     keys,
+                     values,
+                     getEntryIcon(entry->iconNumber(),
+                                  entry->iconUuid()));
 }
 
 void Keepass2DatabaseInterface::slot_createNewEntry(QString title,

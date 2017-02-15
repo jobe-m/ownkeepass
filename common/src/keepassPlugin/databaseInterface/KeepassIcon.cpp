@@ -33,6 +33,8 @@ using namespace kpxPublic;
 
 QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
 {
+    qDebug() << uuid;
+
     Q_UNUSED(requestedSize);
     QImage icon;
     // Check lenth and determine if the icon is a standart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
