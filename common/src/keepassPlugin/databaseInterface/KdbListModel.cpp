@@ -112,16 +112,12 @@ bool KdbListModel::connectToDatabaseClient()
                   SLOT(slot_disconnectFromDatabaseClient()));
     Q_ASSERT(ret);
 
-    qDebug() << "KdbListModel connected";
-
     m_connected = true;
     return true;
 }
 
 void KdbListModel::disconnectFromDatabaseClient()
 {
-    qDebug() << "disconnect KdbListModel";
-
     // disconnect all signals to backend
     // this is not needed ?
 //    bool ret = disconnect(this, 0, 0, 0);
@@ -137,7 +133,6 @@ KdbListModel::~KdbListModel()
     if (m_registered) {
         emit unregisterFromDatabaseClient(m_modelId);
     }
-    qDebug() << "KdbListModel destroyed";
 }
 
 void KdbListModel::loadMasterGroupsFromDatabase()

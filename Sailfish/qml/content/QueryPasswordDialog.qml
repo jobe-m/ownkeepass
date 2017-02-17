@@ -144,8 +144,6 @@ Dialog {
                                 dbLoading.locationIndex = dialog.locationIndex
                                 dbLoading.relativePath = dialog.relativePath
                                 dbLoading.absolutePath = dialog.absolutePath
-
-                                console.log("Absolute path: " + dialog.absolutePath)
                             })
                         }
                     }

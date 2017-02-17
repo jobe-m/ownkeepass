@@ -1149,17 +1149,14 @@ Page {
             id: editItemIconDialog
 
             onAccepted: {
-                console.log("New icon: " + newIconUuid)
                 // Set new icon uuid, all other group resp. entry data was previously set and save the changed icon uuid
                 kdbListItemInternal.createNewItem = false
                 switch (itemType) {
                 case DatabaseItemType.GROUP:
-                    console.log("Save Group")
                     kdbListItemInternal.groupIconUuid = newIconUuid
                     kdbListItemInternal.saveKdbGroupDetails()
                     break
                 case DatabaseItemType.ENTRY:
-                    console.log("Save Entry")
                     kdbListItemInternal.entryIconUuid = newIconUuid
                     kdbListItemInternal.saveKdbEntryDetails()
                     break

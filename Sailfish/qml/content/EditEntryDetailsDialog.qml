@@ -344,7 +344,6 @@ Dialog {
     }
 
     Component.onDestruction: {
-        console.log("set to null")
         // unset again
         kdbListItemInternal.editEntryDetailsDialogRef = null
     }

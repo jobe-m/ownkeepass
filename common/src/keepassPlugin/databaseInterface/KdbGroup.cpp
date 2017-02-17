@@ -95,8 +95,6 @@ bool KdbGroup::connectToDatabaseClient()
 
 void KdbGroup::disconnectFromDatabaseClient()
 {
-    qDebug() << "disconnect KdbGroup";
-
     // disconnect all signals to backend
     // this is not needed ?
 //    bool ret = disconnect(this, 0, 0, 0);

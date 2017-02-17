@@ -207,7 +207,7 @@ Dialog {
                     parent.focus = true
                     var array = text.split(" ")
                     fileBrowserListModel.fileFilter = array
-                    console.log(array)
+//                    console.log(array)
                 }
                 focusOutBehavior: -1
             }

@@ -100,14 +100,12 @@ bool KdbEntry::connectToDatabaseClient()
                   SLOT(slot_disconnectFromDatabaseClient()));
     Q_ASSERT(ret);
 
-    qDebug() << "KdbEntry connected";
     m_connected = true;
     return true;
 }
 
 void KdbEntry::disconnectFromDatabaseClient()
 {
-    qDebug() << "disconnect KdbEntry";
 
     // disconnect all signals to backend
     // this is not needed ?
@@ -120,9 +118,7 @@ void KdbEntry::disconnectFromDatabaseClient()
 }
 
 KdbEntry::~KdbEntry()
-{
-    qDebug() << "KdbEntry destroyed";
-}
+{}
 
 void KdbEntry::loadEntryData()
 {

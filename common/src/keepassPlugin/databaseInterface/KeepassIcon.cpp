@@ -33,6 +33,7 @@ using namespace kpxPublic;
 
 QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
 {
+// TODO debug custom database icons in Keepass 1 database
     qDebug() << uuid;
 
     Q_UNUSED(requestedSize);

@@ -425,7 +425,6 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
 
 void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, QString notes, QString iconUuid)
 {
-    qDebug() << "start" << iconUuid;
     Q_ASSERT(m_Database);
     // get group handle and load group details
     Uuid groupUuid = qString2Uuid(groupId);
@@ -459,7 +458,6 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     int numberOfSubgroups = group->children().count();
     int numberOfEntries   = group->entries().count();
     for (int i = 0; i < modelIds.count(); i++) {
-        qDebug() << iconUuid;
         if (m_setting_sortAlphabeticallyInListView) {
             emit updateItemInListModelSorted(title,                                        // update group name
                                              iconUuid,                                     // update icon uuid
@@ -517,7 +515,6 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
         iconNumber = iconUuid.remove("icf").toInt();
         newGroup->setIcon(iconNumber);
     } else {
-        qDebug() << "custom icon uuid: " << iconUuid;
         newGroup->setIcon(qString2Uuid(iconUuid));
     }
     // new group will get handle to database from parent group
