@@ -36,6 +36,7 @@ Page {
     property bool initOnPageConstruction: true
     // ID of the keepass group which should be shown ("0" for master groups)
     property string groupId: "0"
+    property string parentIconUuid: "icf0"
     property string pageTitle: qsTr("Password groups")
 
     // private properties and funtions
@@ -221,14 +222,15 @@ Page {
                 searchField.text = ""
                 // set default icon id and delete custom icon uuid per default, too
                 pageStack.push(Global.env.mainPage.editGroupDetailsDialogComponent,
-                               { "createNewGroup": true, "parentGroupId": groupId, "iconUuid": "icf0" })
+                               { "createNewGroup": true, "parentGroupId": groupId, "iconUuid": parentIconUuid })
             }
 
             onNewPasswordEntryClicked: {
                 // empty searchField
                 searchField.text = ""
                 pageStack.push(Global.env.mainPage.editEntryDetailsDialogComponent,
-                               { "createNewEntry": true, "parentGroupId": groupId })
+                               // Convert group icon uuid to entry icon uuid
+                               { "createNewEntry": true, "parentGroupId": groupId, "iconUuid": parentIconUuid.replace('f', '') })
             }
 
             onSearchClicked: {

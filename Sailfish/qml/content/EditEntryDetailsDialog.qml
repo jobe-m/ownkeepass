@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.ownkeepass 1.0
 import "../scripts/Global.js" as Global
 import "../common"
 
@@ -33,6 +34,8 @@ Dialog {
     property string entryId: ""
     // creation of new entry needs parent group ID
     property string parentGroupId: ""
+    // icon for entry (either a default icon or a custom database icon)
+    property string iconUuid: ""
 
     // The following properties are used to check if text of any entry detail was changed. If so,
     // set cover page accordingly to signal the user unsaved changes
@@ -49,27 +52,33 @@ Dialog {
     property bool commentChanged: false
     property bool iconUuidChanged: false
 
-    function setTextFields(keys, values, iconUuid) {
+    function setTextFields(keys, values, aIconUuid) {
         entryTitleTextField.text = origTitle = values[0]
         entryUrlTextField.text = origUrl = values[1]
         entryUsernameTextField.text = origUsername = values[2]
         entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = values[3]
         entryCommentTextField.text = origComment = values[4]
-        origIconUuid = iconUuid
+        iconUuid = origIconUuid = aIconUuid
     }
 
     // This function should be called when any text is changed to check if the
     // cover page state needs to be updated
     function updateCoverState() {
-        if (titleChanged || urlChanged || usernameChanged || passwordChanged || commentChanged) {
+        if (titleChanged || urlChanged || usernameChanged || passwordChanged || commentChanged || iconUuidChanged) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
         } else {
             applicationWindow.cover.state = "ENTRY_VIEW"
         }
     }
 
-    // forbit page navigation if title is not set and password is not verified
-    canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight
+    // set group icon for image element
+    onIconUuidChanged: {
+        iconUuidChanged = origIconUuid !== iconUuid ? true : false
+        entryIcon.source = "image://KeepassIcon/" + iconUuid
+    }
+
+    // forbit page navigation if title is not set and password is not verified and icon not set
+    canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight && iconUuid.length !== -1
     allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
@@ -99,6 +108,58 @@ Dialog {
             DialogHeader {
                 acceptText: qsTr("Save")
                 cancelText: qsTr("Discard")
+            }
+
+            SilicaLabel {
+                text: qsTr("Change icon:")
+            }
+
+            Item {
+                width: parent.width
+                height: entryIconBackground.height
+
+                Rectangle {
+                    id: entryIconBackground
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: Theme.itemSizeMedium
+                    height: Theme.itemSizeMedium
+                    color: "white"
+
+                    MouseArea {
+                        id: entryIconMouseArea
+                        anchors.fill: parent
+                        onClicked: {
+                            // open new dialog with grid of all icons
+                            pageStack.push( editItemIconDialog,
+                                           { "newIconUuid": iconUuid })
+                        }
+                    }
+                }
+
+                OpacityRampEffect {
+                    sourceItem: entryIconBackground
+                    slope: 0.25
+                    offset: 0.0
+                    clampFactor: -0.75
+                    direction: OpacityRamp.BottomToTop
+                }
+
+                Image {
+                    id: entryIcon
+                    anchors.centerIn: parent
+                    width: Theme.iconSizeMedium
+                    height: Theme.iconSizeMedium
+                    fillMode: Image.PreserveAspectFit
+                    asynchronous: true
+                    opacity: entryIconMouseArea.pressed ? 0.5 : 1.0
+                }
+
+                Rectangle {
+                    anchors.fill: entryIconBackground
+                    color: entryIconMouseArea.pressed ?
+                               Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
+                             : "transparent"
+                }
             }
 
             SilicaLabel {
@@ -262,17 +323,28 @@ Dialog {
         }
     }
 
+    EditItemIconDialog {
+        id: editItemIconDialog
+        itemType: DatabaseItemType.ENTRY
+
+        onAccepted: {
+            iconUuid = newIconUuid
+        }
+    }
+
     Component.onCompleted: {
         // set reference in kdbListItemInternal object
         kdbListItemInternal.editEntryDetailsDialogRef = editEntryDetailsDialog
 
-        kdbEntry.entryId = editEntryDetailsDialog.entryId
+        kdbEntry.entryId = entryId
         if (!createNewEntry) {
             kdbEntry.loadEntryData()
         }
         entryTitleTextField.focus = true
     }
+
     Component.onDestruction: {
+        console.log("set to null")
         // unset again
         kdbListItemInternal.editEntryDetailsDialogRef = null
     }
@@ -288,8 +360,7 @@ Dialog {
                                                entryUsernameTextField.text,
                                                entryPasswordTextField.text,
                                                entryCommentTextField.text,
-// TODO edit icon
-                                               origIconUuid)
+                                               iconUuid)
         kdbListItemInternal.saveKdbEntryDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details
@@ -305,8 +376,7 @@ Dialog {
                                                    entryUsernameTextField.text,
                                                    entryPasswordTextField.text,
                                                    entryCommentTextField.text,
-// TODO edit icon
-                                                   origIconUuid)
+                                                   iconUuid)
             kdbListItemInternal.checkForUnsavedKdbEntryChanges()
         }
     }

@@ -80,7 +80,7 @@ ListItem {
             switch (model.itemType) {
             case DatabaseItemType.GROUP:
                 pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
-                               { "pageTitle": model.name, "groupId": model.id })
+                               { "pageTitle": model.name, "groupId": model.id, "parentIconUuid": model.iconUuid })
                 break
             case DatabaseItemType.ENTRY:
                 pageStack.push(showEntryDetailsPageComponent,

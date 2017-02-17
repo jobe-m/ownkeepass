@@ -386,7 +386,7 @@ void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if it needs to update the details
-    emit entryLoaded((int)DatabaseAccessResult::RE_OK, "", entryId, keys, values, "");
+    emit entryLoaded((int)DatabaseAccessResult::RE_OK, "", entryId, keys, values, getEntryIcon(entry->image()));
 
     // encrypt password in memory again
     password.lock();

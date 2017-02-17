@@ -294,78 +294,83 @@
 <context>
     <name>EditEntryDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="100"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="109"/>
         <source>Save</source>
         <translation>Opslaan</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="101"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="110"/>
         <source>Discard</source>
         <translation>Verwerpen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="105"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
+        <source>Change icon:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="166"/>
         <source>Create new password entry:</source>
         <translation>Nieuwe wachtwoordinvoer creëren</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="106"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="167"/>
         <source>Edit password entry:</source>
         <translation>Wachtwoordinvoer bewerken:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="113"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="174"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="115"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="176"/>
         <source>Set title (mandatory)</source>
         <translation>Titel instellen (verplicht)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="193"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="134"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="195"/>
         <source>Set URL</source>
         <translation>URL instellen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="149"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="210"/>
         <source>Username</source>
         <translation>Gebruikersnaam</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="151"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
         <source>Set username</source>
         <translation>Gebruikersnaam instellen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="234"/>
         <source>Password</source>
         <translation>Wachtwoord</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="176"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="237"/>
         <source>Set password</source>
         <translation>Wachtwoord instellen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="216"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="219"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="277"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="280"/>
         <source>Verify password</source>
         <translation>Wachtwoord bevestigen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="252"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="313"/>
         <source>Comment</source>
         <translation>Opmerking</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="254"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="315"/>
         <source>Set comment</source>
         <translation>Vul een opmerking in</translation>
     </message>
@@ -373,47 +378,47 @@
 <context>
     <name>EditGroupDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="88"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="91"/>
         <source>Save</source>
         <translation>Opslaan</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="89"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="92"/>
         <source>Discard</source>
         <translation>Verwerpen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="93"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="145"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
         <source>Type in a name for the new group:</source>
         <translation>Typ de naam van de nieuwe groep:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="146"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="149"/>
         <source>Change name of group:</source>
         <translation>Wijzig de naam van de groep:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="152"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="155"/>
         <source>Name of group</source>
         <translation>Naam van de groep</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="154"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="157"/>
         <source>Set name of group</source>
         <translation>Stel de naam van de groep in</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="177"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="180"/>
         <source>Notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="179"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="182"/>
         <source>Set notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -431,27 +436,27 @@
         <translation type="unfinished">Annuleren</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="62"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Choose an icon for the password group:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="63"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="68"/>
         <source>Choose an icon for the password entry:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="72"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="89"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="94"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="111"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="116"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -809,62 +814,62 @@
 <context>
     <name>GroupsAndEntriesPage</name>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="39"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="312"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="316"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="332"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="337"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="382"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="387"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="314"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="318"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="334"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="339"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="389"/>
         <source>Password groups</source>
         <translation>Wachtwoordgroepen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="99"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="100"/>
         <source>Search</source>
         <translation>Zoeken</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="158"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="159"/>
         <source>No entries found</source>
         <translation>Geen vermeldingen gevonden</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="177"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="178"/>
         <source>Decrypting Keepass database</source>
         <translation>Bezig met ontsleutelen van de Keepass-database</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="199"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="200"/>
         <source>Group is empty</source>
         <translation>Groep is leeg</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="202"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="203"/>
         <source>Pull down to add password groups</source>
         <translation>Trek naar beneden om wachtwoordgroepen toe te voegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="203"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="204"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Trek naar beneden om wachtwoordgroepen of -invoeren toe te voegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="296"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="298"/>
         <source>Loading</source>
         <translation>Bezig met laden</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="352"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="392"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="354"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="358"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="394"/>
         <source>Search in all groups</source>
         <translation>Zoeken in alle groepen</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="353"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="357"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="393"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="355"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="395"/>
         <source>Search in</source>
         <translation>Zoeken in</translation>
     </message>
@@ -1310,42 +1315,42 @@ ownKeepass is een wachtwoordkluis voor de Jolla Smartphone met het doel gevoelig
         <translation>Conversie van QString &quot;%1&quot; naar Int mislukt</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1101"/>
+        <location filename="../qml/content/MainPage.qml" line="1100"/>
         <source>Drop from List</source>
         <translation>Verwijderen uit lijst</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1191"/>
+        <location filename="../qml/content/MainPage.qml" line="1189"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1192"/>
+        <location filename="../qml/content/MainPage.qml" line="1190"/>
         <source>No</source>
         <translation>Nee</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1193"/>
+        <location filename="../qml/content/MainPage.qml" line="1191"/>
         <source>Unsaved changes</source>
         <translation>Niet-opgeslagen wijzigingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1221"/>
+        <location filename="../qml/content/MainPage.qml" line="1219"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Wilt u de wijzigingen aan het wachtwoordveld opslaan?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1226"/>
+        <location filename="../qml/content/MainPage.qml" line="1224"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Wilt u de wijzigingen opslaan naar de wachtwoordgroep?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1231"/>
+        <location filename="../qml/content/MainPage.qml" line="1229"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Wilt u de wijzigingen in de database-instellingen opslaan?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1236"/>
+        <location filename="../qml/content/MainPage.qml" line="1234"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Wilt u de wijzigingen in de instellingen opslaan?</translation>
     </message>
@@ -1543,58 +1548,58 @@ ownKeepass is een wachtwoordkluis voor de Jolla Smartphone met het doel gevoelig
 <context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="73"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
         <source>No content</source>
         <translation>Geen inhoud</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="75"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation>Trek naar beneden om URL, gebruikersnaam, wachtwoord en opmerking toe te voegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="91"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="92"/>
         <source>Read only mode</source>
         <translation>Alleen-lezen modus</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="97"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="98"/>
         <source>Copy URL</source>
         <translation>URL kopiëren</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="106"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="107"/>
         <source>Copy username</source>
         <translation>Gebruikersnaam kopiëren</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="117"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="118"/>
         <source>Copy password</source>
         <translation>Wachtwoord kopiëren</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="128"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="129"/>
         <source>Edit password entry</source>
         <translation>Wachtwoordinvoer bewerken:</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="165"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="166"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="175"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
         <source>Username</source>
         <translation>Gebruikersnaam</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="193"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="207"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="194"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="208"/>
         <source>Password</source>
         <translation>Wachtwoord</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="239"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="240"/>
         <source>Comment</source>
         <translation>Opmerking</translation>
     </message>

@@ -696,7 +696,6 @@ Page {
         property Dialog editEntryDetailsDialogRef: null
         property Dialog editGroupDetailsDialogRef: null
         property Page   showEntryDetailsPageRef: null
-        property Dialog editItemIconDialogRef: null
 
         /*
           Here are all Kdb entry details which are used to create a new entry, save changes to an
@@ -1148,7 +1147,6 @@ Page {
         id: editItemIconDialogComponent
         EditItemIconDialog {
             id: editItemIconDialog
-            itemType: DatabaseItemType.GROUP
 
             onAccepted: {
                 console.log("New icon: " + newIconUuid)

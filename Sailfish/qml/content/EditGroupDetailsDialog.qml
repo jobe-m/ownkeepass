@@ -22,9 +22,9 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.ownkeepass 1.0
 import "../scripts/Global.js" as Global
 import "../common"
-import harbour.ownkeepass 1.0
 
 Dialog {
     id: editGroupDetailsDialog
@@ -65,9 +65,12 @@ Dialog {
     }
 
     // set group icon for image element
-    onIconUuidChanged: groupIcon.source = "image://KeepassIcon/" + iconUuid
+    onIconUuidChanged: {
+        iconUuidChanged = origIconUuid !== iconUuid ? true : false
+        groupIcon.source = "image://KeepassIcon/" + iconUuid
+    }
 
-    // forbit page navigation if name of group is empty
+    // forbit page navigation if name of group is empty and icon not set
     canNavigateForward: groupNameTextField.text !== "" && iconUuid.length !== -1
     allowedOrientations: applicationWindow.orientationSetting
 
