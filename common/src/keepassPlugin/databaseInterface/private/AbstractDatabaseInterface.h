@@ -38,61 +38,61 @@ protected: // signals
     virtual void disconnectAllClients() = 0;
 
     // signals to KdbDatabase object
-    /*!
-     * \brief The databaseOpened() signal is emmitted after calling
-     * slot_openDatabase(). It signals that opening of the Keepass is finished.
-     * If database could be opened successfully (result is RE_OK or
-     * RE_DB_READ_ONLY) other database access operations can be used like
-     * slot_loadMasterGroups() or slot_loadEntry().
-     *
-     * \param result is set to one of the following error codes:
-     *        RE_OK if no error happened, database can be opened
-     *        RE_DB_READ_ONLY if database file is read-only, database can be
-     *          opened
-     *        RE_NOT_A_KEEPASS_DB if the file is not a KeePass database
-     *          (Keepass 2 only)
-     *        RE_NOT_SUPPORTED_DB_VERSION if the file contains an unsupported
-     *          KeePass database version (Keepass 2 only)
-     *        RE_MISSING_DB_HEADERS if database headers are missing (Keepass 2
-     *          only)
-     *        RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT if wrong master password was
-     *          specified or if database file is corrupt
-     *        RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT if wrong master
-     *          password or wrong keyfile was specified or if either keyfile or
-     *          database file is corrupt
-     *        RE_HEAD_HASH_MISMATCH if database head doesn't match corresponding
-     *          hash value (Keepass 2 only)
-     *        RE_DBFILE_OPEN_ERROR if database file cannot be opened, more
-     *          detailed error message available in errorMsg (Keepass 2 only)
-     *        RE_KEYFILE_OPEN_ERROR if key file cannot be opened, more detailed
-     *          error message available in errorMsg (Keepass 2 only)
-     *
-     * \param errorMsg is a string containing more details about the error or
-     *        is empty if no further details are available.
-     */
+
+    /// \brief The databaseOpened() signal is emmitted after calling
+    /// slot_openDatabase(). It signals that opening of the Keepass database is finished.
+    /// If database could be opened successfully (result is RE_OK or
+    /// RE_DB_READ_ONLY) other database access operations can be used like
+    /// slot_loadMasterGroups() or slot_loadEntry().
+    ///
+    /// \param result: This parameter is set to one of the following error codes:
+    ///   \li \c RE_OK if no error happened, database can be opened
+    ///   \li \c RE_DB_READ_ONLY if database file is read-only, database can be
+    ///          opened
+    ///   \li \c RE_NOT_A_KEEPASS_DB if the file is not a KeePass database
+    ///          (Keepass 2 only)
+    ///   \li \c RE_NOT_SUPPORTED_DB_VERSION if the file contains an unsupported
+    ///          KeePass database version (Keepass 2 only)
+    ///        \li \c RE_MISSING_DB_HEADERS if database headers are missing (Keepass 2
+    ///          only)
+    ///        \li \c RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT if wrong master password was
+    ///          specified or if database file is corrupt
+    ///   \li \c     RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT if wrong master
+    ///          password or wrong keyfile was specified or if either keyfile or
+    ///          database file is corrupt
+    ///   \li \c     RE_HEAD_HASH_MISMATCH if database head doesn't match corresponding
+    ///          hash value (Keepass 2 only)
+    ///   \li \c     RE_DBFILE_OPEN_ERROR if database file cannot be opened, more
+    ///          detailed error message available in errorMsg (Keepass 2 only)
+    ///   \li \c     RE_KEYFILE_OPEN_ERROR if key file cannot be opened, more detailed
+    ///          error message available in errorMsg (Keepass 2 only)
+    ///
+    /// \param errorMsg: This paramter is a string containing more details about the error or
+    ///        is empty if no further details are available.
+    ///
     virtual void databaseOpened(int result, QString errorMsg) = 0;
     virtual void newDatabaseCreated() = 0;
     virtual void databaseClosed() = 0;
     virtual void passwordChanged() = 0;
     virtual void databaseKeyTransfRoundsChanged(int value) = 0;
     virtual void databaseCryptAlgorithmChanged(int value) = 0;
-    /*!
-     * \brief The errorOccured() signal is emitted whenever an internal error
-     * occured. Refer to the result list for the severity of the error and if
-     * accessing the database is still possible.
-     *
-     * \param result is one from the folloing list:
-     *        RE_ERR_QSTRING_TO_UUID QString value is not exactly 16 characters
-     *          long and cannot be converted successfully (Keepass 2 only)
-     *          Access to database is still possible. Severity low.
-     *        RE_ERR_QSTRING_TO_INT Conversion from QString to integer number
-     *          failed (Keepass 1 only)
-     *          Access to database is still possible. Severity low.
-     *        RE_CRYPTO_INIT_ERROR Cryptographic algorithms could not be
-     *          initialized successfully, abort opening of any Keepass database
-     *          for safety (Keepass 2 only)
-     *          Severity high.
-     */
+
+    /// \brief The errorOccured() signal is emitted whenever an internal error
+    /// occured. Refer to the result list for the severity of the error and if
+    /// accessing the database is still possible.
+    ///
+    /// \param result is one from the folloing list:
+    ///        RE_ERR_QSTRING_TO_UUID QString value is not exactly 16 characters
+    ///          long and cannot be converted successfully (Keepass 2 only)
+    ///          Access to database is still possible. Severity low.
+    ///        RE_ERR_QSTRING_TO_INT Conversion from QString to integer number
+    ///          failed (Keepass 1 only)
+    ///          Access to database is still possible. Severity low.
+    ///        RE_CRYPTO_INIT_ERROR Cryptographic algorithms could not be
+    ///          initialized successfully, abort opening of any Keepass database
+    ///          for safety (Keepass 2 only)
+    ///          Severity high.
+    ///
     virtual void errorOccured(int result,
                               QString errorMsg) = 0;
 
@@ -177,6 +177,8 @@ protected: // signals
                             QString errorMsg,
                             QString groupId) = 0;
 
+    // signal to KeepassIcon
+    virtual void appendCustomIconToListModel(QString uuid) = 0;
 
 public: // slots
     // signals from KdbDatabase object
@@ -238,14 +240,16 @@ public: // slots
     virtual void slot_moveGroup(QString groupId,
                                 QString newParentGroupId) = 0;
 
+    // signal from KeepassIcon
+    virtual void slot_loadCustomIcons() = 0;
+
 public:
-    /*!
-     * \brief The getCustomIcon function returns a custom database icon
-     * with the Uuid represented as the QString value.
-     *
-     * \param value
-     * \returns A custom database icon as QImage or an empty QImage if the Uuid is not valid.
-     */
+    /// \brief The getCustomIcon function returns a custom database icon
+    /// with the Uuid represented as the QString value.
+    ///
+    /// \param value
+    /// \returns A custom database icon as QImage or an empty QImage if the Uuid is not valid.
+    ///
     virtual const QImage getCustomIcon(const QString value) = 0;
 };
 

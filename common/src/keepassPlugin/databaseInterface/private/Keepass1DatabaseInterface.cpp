@@ -873,6 +873,11 @@ void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
     }
 }
 
+void Keepass1DatabaseInterface::slot_loadCustomIcons()
+{
+    // This space is left blank intentionally - custom database icons are not supported for Keepass 1 databases
+}
+
 const QImage Keepass1DatabaseInterface::getCustomIcon(const QString value)
 {
     Q_UNUSED(value);

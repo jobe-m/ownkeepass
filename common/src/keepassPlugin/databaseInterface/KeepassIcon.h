@@ -106,23 +106,34 @@ public:
 
 signals:
     // signals to QML
+    void iconListModelLoaded(int result,
+                             QString errorMsg);
     void modelDataChanged();
 
     // signals to database client
     void loadCustomIcons();
+    void unregisterFromDatabaseClient(QString modelId);
 
     // signals for properties
     void isEmptyChanged();
 
 public slots:
     // signal from database client
-    void slot_appendCustomIcon(QString uuid);
-    void slot_deleteCustomIcon(QString uuid);
+    void slot_appendCustomIconToListModel(QString uuid);
+    void slot_deleteCustomIconfromListModel(QString uuid);
+    void slot_disconnectFromDatabaseClient();
+
+private:
+    bool connectToDatabaseClient();
+    void disconnectFromDatabaseClient();
 
 private:
     QList<IconItem> m_items;
     // List model is for password entries (false) or password groups (true) - this affects only the 68 standard icons
     bool m_group_icons;
+
+    // identifies if this object is conntected to a loaded keepass database
+    bool m_connected;
 };
 
 // inline implementations

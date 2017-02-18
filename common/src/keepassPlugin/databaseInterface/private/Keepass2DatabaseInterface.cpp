@@ -823,6 +823,13 @@ void Keepass2DatabaseInterface::slot_changeCryptAlgorithm(int value)
 {
 }
 
+void Keepass2DatabaseInterface::slot_loadCustomIcons()
+{
+    Q_FOREACH (const Uuid& iconUuid, m_Database->metadata()->customIconsOrder()) {
+        emit appendCustomIconToListModel(iconUuid.toHex());
+    }
+}
+
 const QImage Keepass2DatabaseInterface::getCustomIcon(const QString value)
 {
     const Uuid iconUuid = qString2Uuid(value);

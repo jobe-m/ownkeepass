@@ -132,6 +132,9 @@ signals:
                     QString errorMsg,
                     QString groupId);
 
+    // signal to KeepassIcon
+    void appendCustomIconToListModel(QString uuid);
+
 public slots:
     // signals from KdbDatabase object
     void slot_openDatabase(QString filePath,
@@ -191,6 +194,9 @@ public slots:
     void slot_deleteGroup(QString groupId);
     void slot_moveGroup(QString groupId,
                         QString newParentGroupId);
+
+    // signal from KeepassIcon
+    void slot_loadCustomIcons();
 
 public:
     const QImage getCustomIcon(const QString value);

@@ -140,6 +140,12 @@ Dialog {
 
     IconListModel {
         id: customDatabaseIconListModel
+
+        onIconListModelLoaded: { // returns result, errorMsg
+            if (result !== DatabaseAccessResult.RE_OK) {
+                console.log("ERROR: Loading icon list model")
+            }
+        }
     }
 
     IconListModel {
@@ -214,6 +220,5 @@ Dialog {
         }
         customDatabaseIconListModel.initListModel(IconListModel.LOAD_CUSTOM_DATABASE_ICONS)
         ownKeepassIconPackListModel.initListModel(IconListModel.LOAD_OWNKEEPASS_ICON_PACK_ICONS)
-
     }
 }

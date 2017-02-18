@@ -30,11 +30,12 @@
 #include <QDebug>
 
 using namespace kpxPublic;
+using namespace kpxPrivate;
 
 QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
 {
 // TODO debug custom database icons in Keepass 1 database
-    qDebug() << uuid;
+//    qDebug() << uuid;
 
     Q_UNUSED(requestedSize);
     QImage icon;
@@ -54,12 +55,59 @@ QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &
 
 IconListModel::IconListModel(QObject *parent)
     : QAbstractListModel(parent),
-      m_group_icons(false)
-{}
-
+      m_group_icons(false),
+      m_connected(false)
+{
+    // Just to be sure: empty m_icons list
+    clear();
+}
 
 IconListModel::~IconListModel()
 {}
+
+bool IconListModel::connectToDatabaseClient()
+{
+    // check if database backend is already initialized and available
+    if (DatabaseClient::getInstance()->getInterface() == NULL) {
+        return false;
+    }
+    // connect signals to backend
+    bool ret = connect(this,
+                       SIGNAL(loadCustomIcons()),
+                       DatabaseClient::getInstance()->getInterface(),
+                       SLOT(slot_loadCustomIcons()));
+    Q_ASSERT(ret);
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(appendCustomIconToListModel(QString)),
+                  this,
+                  SLOT(slot_appendCustomIconToListModel(QString)));
+    Q_ASSERT(ret);
+    ret = connect(DatabaseClient::getInstance()->getInterface(),
+                  SIGNAL(disconnectAllClients()),
+                  this,
+                  SLOT(slot_disconnectFromDatabaseClient()));
+    Q_ASSERT(ret);
+
+    m_connected = true;
+    return true;
+}
+
+void IconListModel::slot_disconnectFromDatabaseClient()
+{
+    if (m_connected) {
+        disconnectFromDatabaseClient();
+    }
+}
+
+void IconListModel::disconnectFromDatabaseClient()
+{
+    // disconnect all signals to backend
+    // this is not needed ?
+//    bool ret = disconnect(this, 0, 0, 0);
+//    Q_ASSERT(ret);
+
+    m_connected = false;
+}
 
 int IconListModel::rowCount(const QModelIndex& parent) const
 {
@@ -120,6 +168,17 @@ void IconListModel::initListModel(int keepassIconType)
             endInsertRows();
         }
         break;
+    case LOAD_CUSTOM_DATABASE_ICONS:
+        if (!m_connected && !connectToDatabaseClient()) {
+            // if not successfully connected just return an error
+            emit iconListModelLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
+        } else {
+            emit loadCustomIcons();
+        }
+        break;
+    case LOAD_OWNKEEPASS_ICON_PACK_ICONS:
+// TODO
+        break;
     default: // do not load any Keepass icons
         break;
     }
@@ -129,7 +188,7 @@ void IconListModel::initListModel(int keepassIconType)
     emit modelDataChanged();
 }
 
-void IconListModel::slot_appendCustomIcon(QString uuid)
+void IconListModel::slot_appendCustomIconToListModel(QString uuid)
 {
     IconItem item(uuid, CUSTOM_DATABASE_ICON);
     // append new entry to end of list
@@ -144,12 +203,12 @@ void IconListModel::slot_appendCustomIcon(QString uuid)
     emit modelDataChanged();
 }
 
-void IconListModel::slot_deleteCustomIcon(QString uuid)
+// TODO take into use when needed
+void IconListModel::slot_deleteCustomIconfromListModel(QString uuid)
 {
     // look at each item in list model
     for (int i = 0; i < m_items.count(); i++) {
         if (m_items[i].m_uuid == uuid) {
-//            qDebug() << "delete item: " << m_items[i].m_name;
             // now delete it from list model
             beginRemoveRows(QModelIndex(), i, i);
             m_items.removeAt(i);
