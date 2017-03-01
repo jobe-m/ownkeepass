@@ -118,12 +118,14 @@ Dialog {
                 width: parent.width
                 height: entryIconBackground.height
 
-                Rectangle {
+                Image {
                     id: entryIconBackground
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: Theme.itemSizeMedium
                     height: Theme.itemSizeMedium
-                    color: "white"
+                    source: "image://IconBackground"
+                    fillMode: Image.PreserveAspectFit
+                    asynchronous: true
 
                     MouseArea {
                         id: entryIconMouseArea
@@ -134,14 +136,6 @@ Dialog {
                                            { "newIconUuid": iconUuid })
                         }
                     }
-                }
-
-                OpacityRampEffect {
-                    sourceItem: entryIconBackground
-                    slope: 0.25
-                    offset: 0.0
-                    clampFactor: -0.75
-                    direction: OpacityRamp.BottomToTop
                 }
 
                 Image {

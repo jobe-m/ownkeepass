@@ -53,6 +53,17 @@ QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &
     return icon;
 }
 
+QImage IconBackground::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
+{
+    Q_UNUSED(requestedSize);
+    QImage icon;
+    icon = QImage(":/entryicons/background.png", "PNG");
+    if (size) {
+        *size = QSize(icon.width(), icon.height());
+    }
+    return icon;
+}
+
 IconListModel::IconListModel(QObject *parent)
     : QAbstractListModel(parent),
       m_group_icons(false),

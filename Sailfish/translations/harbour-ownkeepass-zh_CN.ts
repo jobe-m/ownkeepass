@@ -309,68 +309,68 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="166"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
         <source>Create new password entry:</source>
         <translation>新建密码词条：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="167"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="161"/>
         <source>Edit password entry:</source>
         <translation>编辑密码词条：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="174"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="176"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="170"/>
         <source>Set title (mandatory)</source>
         <translation>设置标题（强制）</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="193"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="187"/>
         <source>URL</source>
         <translation>网址</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="195"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="189"/>
         <source>Set URL</source>
         <translation>设置网址</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="210"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="204"/>
         <source>Username</source>
         <translation>用户名</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="206"/>
         <source>Set username</source>
         <translation>设置用户名</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="234"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="228"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="237"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="231"/>
         <source>Set password</source>
         <translation>设置密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="277"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="280"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="271"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="274"/>
         <source>Verify password</source>
         <translation>验证密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="313"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="307"/>
         <source>Comment</source>
         <translation>注释</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="315"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="309"/>
         <source>Set comment</source>
         <translation>设置注释</translation>
     </message>
@@ -393,32 +393,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
         <source>Type in a name for the new group:</source>
         <translation>输入新组名称：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="149"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="143"/>
         <source>Change name of group:</source>
         <translation>修改组名：</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="155"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="149"/>
         <source>Name of group</source>
         <translation>组名</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="157"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="151"/>
         <source>Set name of group</source>
         <translation>设置组名</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="180"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="174"/>
         <source>Notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="182"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="176"/>
         <source>Set notes for the group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -965,17 +965,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="165"/>
+        <location filename="../qml/content/KdbListItem.qml" line="159"/>
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="199"/>
+        <location filename="../qml/content/KdbListItem.qml" line="193"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>移动</translation>

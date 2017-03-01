@@ -90,21 +90,15 @@ ListItem {
         }
     }
 
-    Rectangle {
+    Image {
         id: itemIcon
         x: model.itemLevel * (width / Global.icon_indent_in_listview)
         anchors.verticalCenter: parent.verticalCenter
         width: Theme.itemSizeMedium
         height: Theme.itemSizeMedium
-        color: "white"
-    }
-
-    OpacityRampEffect {
-        sourceItem: itemIcon
-        slope: 0.25
-        offset: 0.0
-        clampFactor: -0.75
-        direction: OpacityRamp.BottomToTop
+        source: "image://IconBackground"
+        fillMode: Image.PreserveAspectFit
+        asynchronous: true
     }
 
     Image {

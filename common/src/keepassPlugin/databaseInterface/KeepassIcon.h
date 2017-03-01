@@ -42,6 +42,16 @@ public:
     QImage requestImage(const QString &uuid, QSize *size, const QSize &requestedSize);
 };
 
+class IconBackground : public QQuickImageProvider
+{
+public:
+    IconBackground()
+        : QQuickImageProvider(QQuickImageProvider::Image, QQuickImageProvider::ForceAsynchronousImageLoading)
+    {}
+
+    QImage requestImage(const QString &uuid, QSize *size, const QSize &requestedSize);
+};
+
 class IconItem
 {
 public:

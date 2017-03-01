@@ -119,6 +119,7 @@ HEADERS += \
     ../common/src/ownKeepassGlobal.h
 
 OTHER_FILES += \
+    ../common/images/icons.qrc \
     ../README.md \
     ../LICENSE \
     qml/common/ViewSearchPlaceholder.qml \

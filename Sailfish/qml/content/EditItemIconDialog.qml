@@ -170,13 +170,14 @@ Dialog {
                 opacity: 0.5
             }
             
-            Rectangle {
+            Image {
                 id: iconBackground
                 anchors.centerIn: parent
                 width: Theme.itemSizeMedium
                 height: Theme.itemSizeMedium
-                color: "white"
-                opacity: 0.2
+                source: "image://IconBackground"
+                fillMode: Image.PreserveAspectFit
+                asynchronous: true
 
                 MouseArea {
                     id: iconMouseArea

@@ -95,6 +95,7 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("ownKeepassSettings", okpSettings.data());
     view->rootContext()->setContextProperty("recentDatabaseModel", okpSettings->recentDatabaseModel());
     view->engine()->addImageProvider(QLatin1String("KeepassIcon"), new kpxPublic::KeepassIcon());
+    view->engine()->addImageProvider(QLatin1String("IconBackground"), new kpxPublic::IconBackground());
 
     // Check if user has set language explicitly to be used in the app
     QString locale = QLocale::system().name();
