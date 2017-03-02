@@ -33,8 +33,18 @@ Dialog {
 
     property int itemType: DatabaseItemType.ENTRY
 
-    readonly property int _width: mainPage.orientation & Orientation.LandscapeMask ? Screen.height / 9 : Screen.width / 5
-    readonly property int _height: Screen.width / 5
+    readonly property int _width:
+        Screen.sizeCategory >= Screen.Large ?
+            // size on tablet
+            mainPage.orientation & Orientation.LandscapeMask ? Screen.height / 12 : Screen.width / 9 :
+            // size on phone
+            mainPage.orientation & Orientation.LandscapeMask ? Screen.height / 9 : Screen.width / 5
+    readonly property int _height:
+        Screen.sizeCategory >= Screen.Large ?
+            // size on tablet
+            Screen.width / 9 :
+            // siez on phone
+            Screen.width / 5
 
     canNavigateForward: newIconUuid.length !== 0
     allowedOrientations: applicationWindow.orientationSetting
@@ -157,10 +167,6 @@ Dialog {
 
         Item {
             width: editItemIconDialog._width
-// TODO adapt size for jolla tablet
-            //Screen.sizeCategory >= Screen.Large ?
-            //       (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.195) : (Screen.height * 0.122)) :
-            //       (mainPage.orientation & Orientation.LandscapeMask ? (Screen.height * 0.081) : (Screen.height * 0.063))
             height: editItemIconDialog._height
 
             Rectangle {
