@@ -306,7 +306,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cambiar icono:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
@@ -390,7 +390,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar icono:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
@@ -415,50 +415,51 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="174"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Notas para el grupo</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="176"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Añadir notas al grupo</translation>
     </message>
 </context>
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">Seleccionar</translation>
+        <translation>Seleccionar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancelar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Elige un icono para el grupo de contraseñas:</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation>Elige un icono para el registro de contraseña:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
-        <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Iconos Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Iconos personalizados de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>Paquete de iconos ownKeepass</translation>
     </message>
 </context>
 <context>
@@ -608,12 +609,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Hora de vaciar portapapeles</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Nunca</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -1007,22 +1008,22 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <translation>Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Desbloquea tu Protección de Contraseñas con los tres primeros caracteres de tu contraseña maestra:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>Te quedan %1 intentos</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>Te queda un intento</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>Código de desbloqueo erróneo</translation>
     </message>
@@ -1146,42 +1147,42 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>No se pudo cargar la base de datos por el siguiente error:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="112"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Registro no encontrado</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al buscar registro de contraseña en la base de datos.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="118"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo no encontrado</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Error al buscar grupo de contraseñas en la base de datos.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="124"/>
         <source>No database opened</source>
-        <translation type="unfinished">No hay ninguna base de datos abierta</translation>
+        <translation>Ninguna base de datos abierta</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>No se pudo conectar a la base de datos cargada. Esto parece un error.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="147"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Se produjo el siguiente error al crear la clave de la base de datos:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="181"/>
@@ -1229,22 +1230,22 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <location filename="../qml/content/MainPage.qml" line="222"/>
         <location filename="../qml/content/MainPage.qml" line="228"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error interno</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Algo fue mal al eliminar la base de datos de la lista de bases de datos recientes. Eso no debería ocurrir. Por favor, infórmame (al desarrollador) de esto por correo electrónico o en github. ¡Gracias!</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Algo fue mal al intentar borrar el fichero de la base de datos. Mensaje de error:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha fallado la conversión del QString &quot;%1&quot; al Uuid</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="683"/>

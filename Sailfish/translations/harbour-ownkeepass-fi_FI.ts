@@ -307,7 +307,7 @@ by reviewjolla, 5 minutes ago</translation>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vaihda kuvake:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
@@ -391,7 +391,7 @@ by reviewjolla, 5 minutes ago</translation>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaihda kuvake:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
@@ -416,50 +416,50 @@ by reviewjolla, 5 minutes ago</translation>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="174"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmän muistiinpanot</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="176"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Tee muistiinpanot ryhmälle</translation>
     </message>
 </context>
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">Valitse</translation>
+        <translation>Valitse</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">Peruuta</translation>
+        <translation>Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse kuvake salasanaryhmälle:</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation>Valitse kuvake salasanalle:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
-        <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Keepass kuvakkeet</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Omat tietokantakuvakkeet</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass kuvakkeet</translation>
     </message>
 </context>
 <context>
@@ -609,12 +609,12 @@ by reviewjolla, 5 minutes ago</translation>
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Aika leikepöydän tyhjentämiselle</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei koskaan</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -1010,22 +1010,22 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Avaa salasanasovellus antamalla 3 ensimmäistä merkkiä pääsalasanasta:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>Sinulla on %1 yritystä jäljellä</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>sinulla on yksi yritys jäljellä</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>Väärä avauskoodi</translation>
     </message>
@@ -1149,42 +1149,42 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>En voinut ladata tietokantaa tämän virheen takia:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="112"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Salasanaa ei löytynyt</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe etsittäessä salasanaa tietokannasta.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="118"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Ryhmää ei löytynyt</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Virhe etsittäessä salasanaryhmää tietokannasta.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="124"/>
         <source>No database opened</source>
-        <translation type="unfinished">Tietokantaa ei ole avattu</translation>
+        <translation>TIetokanta ei ole avattu</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kytkeytyminen avattuun tietokantaan epäonnistui. Tämä näyttää bugilta.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="147"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Seuraava virhe tapahtui luotaessa tietokannan avainta:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="181"/>
@@ -1232,22 +1232,22 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <location filename="../qml/content/MainPage.qml" line="222"/>
         <location filename="../qml/content/MainPage.qml" line="228"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Sisäinen virhe</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Jotakin meni pieleen tietokantaa poistettaessa viimeisempien tietokantojen listalta. Tämän ei tulisi tapahtua. Voisitteko ilmoittaa virheestä minulle (kehittäjä) joko sähköpostilla tai GitHubissa. Kiitos!</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietokantatiedostoa tuhottaessa tapahtui tuntematon virhe. Virheviesti:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>QString &quot;%1&quot; muuttaminen UUid-arvoksi epäonnistui</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="683"/>

@@ -426,37 +426,37 @@
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
         <translation type="unfinished">Vælg</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
         <source>Choose an icon for the password entry:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -608,12 +608,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tidgrænse for rydning af udklipsholder</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Aldrig</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -888,7 +888,7 @@
     <message>
         <location filename="../qml/help/HelpDatabaseSettings.qml" line="27"/>
         <source>On this dialog you can change database internal settings of your currently opened Keepass database file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here you can type in a new master password for the Keepass database. Please note that if you forgot your master password there is no way to recover the password. It is not saved in the Keepass database and there is also no backdoor to open the database without your password. Furhtermore make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Master Password&quot; field.&lt;br&gt;&lt;br&gt;&lt;b&gt;Encryption currently in use&lt;/b&gt;&lt;br&gt;&lt;br&gt;This is the encryption algorithm which is used to cipher the Keepass database content.&lt;br&gt;&lt;br&gt;&lt;b&gt;Key transformation rounds&lt;/b&gt;&lt;br&gt;&lt;br&gt;Set the default value for key transformation rounds for your Keepass database. This value controls the amount of encryption rounds computed on the master password. Adjusting this value has direct effect on the time needed to decrypt the database on loading. But setting this value higher makes the database more robust against brute force attacks. As a good compromise between security and usability you should adjust the value so that opening the database takes one second on your phone.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Her kan du åbne en eksisterende KeePass databasefil.&lt;br&gt;Brug filhåndteringen til at finde din  KeePass databasefil. Du vil have adgang til følgende steder: Enhedshukommelse, SD-kort og Android-lager. Hvis du har problemer med at ownKeepass ikke kan finde filen, skal du sørge for at placere den i en af de nedenstående stier. &quot;Enhedshukommelse&quot; er placeret ved &quot;%1&quot;. Hvis der er sat et SD-kort i telefonen, er det placeret i &quot;/media /sdcard /&amp;lt; UUID &amp; gt;&quot;. (Bemærk, at SD-kort med mere end én partition ikke understøttes.) &quot;Android oplagring&quot; er placeret i &quot;%2&quot; &lt;br&gt; råd:. Hvis du uploader din KeePass database i skyen, så kontroller at du bruger en lokalt lagret nøglefil, ud over det primære kodeord. Denne nøglefil skal ikke uploades til cloud-tjenesten. &lt;br&gt;&lt;B&gt; Brug en nøglefil &lt;/ b&gt;&lt;br&gt; Hvis du har brug for en nøglefil for at åbne din KeePass database, skal du tjekke denne mulighed. &lt;br&gt;&lt;b&gt; Primær adgangskode &lt;/ b&gt; &lt;br&gt; Indtast adgangskoden til din KeePass database her.&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -912,7 +912,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="65"/>
         <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Deling af din KeePassdatabase mellem din Jolla Smartphone / Tablet og din stationære PC&lt;/ b&gt;&lt;br&gt;KeePass databasefilformatet er perfekt til at dele dit kodeskab sikkert imellem forskellige systemer som smartphones, tablets, stationær PC og så videre. Dette skyldes at der er en masse KeePass implementeringer til rådighed for disse platforme. Tag et kig på download-siden [4] for at hente den klassiske KeePass 1 eller eller KeePass 2 version til den stationære PC. Der er også en liste over alternative KeePass implementeringer på den pågældende side. Jeg vil også gerne henvise dig til KeepassX-version 0.4.3 [2], som er også kompatibel med KeePass-version 1. Du kan også finde en Alpha version af KeepassX 2 på samme side, som kan håndtere KeePass 2 databaser. &lt;br&gt; Du kan dele din KeePass databasefil via SD-kort eller via en sky-tjeneste som ownCloud eller Dropbox. Ved brug af en sky-tjeneste vil jeg anbefale at bruge en nøglefil foruden det primære kodeord. Nøglefilen vil blive brugt til at afkryptere databasen. Opbevar kun denne nøglefil lokalt på din smartphone eller PC. Læg den ikke op på en cloud-tjeneste. Hvis en hacker bryder ind i din cloud-tjeneste vil denne stadig mangle nøglefilen. Dette gør det endnu sværere for en hacker at knække din KeePassdatabase, fordi at uden denne fil er det som regel umuligt at gætte filindholdet.</translation>
     </message>
 </context>
 <context>
@@ -920,7 +920,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMasterGroupsPage.qml" line="27"/>
         <source>This page is showing main password groups of your Keepass database. A password group is a container for password entries. Thus in order to store a password entry you need to create at least one group first.&lt;br&gt;&lt;br&gt;You can use main password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Denne side viser de vigtigste kodeordsgrupper grupper i din KeePass-database. En kodeordsgruppe er en beholder til kodeordsposter. Det betyder at, for at kunne gemme en adgangskode skal du oprette mindst én gruppe først.&lt;br&gt;&lt;br&gt;Du kan bruge hovedgrupperne til at organisere dine kodeordsposter. Du kan for eksempel oprette grupper for &quot;Onlineshops&quot;, &quot;E-post-konti&quot;, &quot;Sociale medier&quot; og så videre.&lt;br&gt;&lt;br&gt;Et søgefelt kan aktiveres fra topmenuen, der vises i toppen af kodeordsgruppelisten. Med denne kan du søge efter passwordsposter i hele KeePass-databasen. Hvis du ønsker, at søgefeltet får automatisk fokus, når du åbner KeePass-databasen skal du åbne indstillinger og aktivere den korrekte indstilling.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -929,7 +929,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Device Memory, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Device Memory&quot; is located at &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Removed one sentence in section &quot;Use key file&quot;, Changed &quot;Home&quot; to &quot;Device Memory&quot;, Removed section for &quot;Open automatically&quot;, changed &lt;UUID&gt; to &amp;lt;UUID&amp;gt; so that it will be actually shown ;)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Her kan du åbne en eksisterende KeePass databasefilen.&lt;br&gt;Brug filhåndteringen til at finde din KeePass databasefil. Du vil få adgang til følgende steder: Enhedshukommelsen, SD-kort og Android storage.. Hvis du har problemer med at ownKeepass ikke kan finde filen, skal du sørge for at placere den i en af de nedenstående stier.  &quot;Enhedshukommelse&quot; befinder sig i &quot;%1&quot;. Hvis et SD-Kort er isat din telefon, kan det findes ved &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Vær opmærksom på, at SD-kort der indeholder mere end en partition, ikke er understøtte.t) &quot;Android Storage&quot; findes ved &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Råd: Hvis du lægger din Keepassdatabase op på en Cloud-tjeneste, skal du udover det primære kodeord også helst benytte en lokal nøglefil. Denne nøglefil bør ikke lægges op på din Cloud-tjenesten.&lt;br&gt;&lt;br&gt;&lt;b&gt;Brug nøglefil&lt;/b&gt;&lt;br&gt;&lt;br&gt;Hvis de behøver en nøglefil for at åbne din Keepassdatabase, aktivér denne indstilling.&lt;br&gt;&lt;br&gt;&lt;b&gt;Primært kodeord&lt;/b&gt;&lt;br&gt;&lt;br&gt;Indtast dit kodeord for din Keepassdatabase.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1006,22 +1006,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Kodeskab</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Lås dit Kodeskab op med de tre første tegn i dit primære kodeord.</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>Du har %1 forsøg tilbage</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>Du har ét forsøg tilbage</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>Forkert låsekode</translation>
     </message>
@@ -1313,7 +1313,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="1100"/>
         <source>Drop from List</source>
-        <translation type="unfinished"></translation>
+        <translation>Drop fra liste</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1186"/>
@@ -1561,7 +1561,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="98"/>
         <source>Copy URL</source>
-        <translation>Kopier URL</translation>
+        <translation>Kopiér URL</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="107"/>

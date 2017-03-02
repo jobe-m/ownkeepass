@@ -306,7 +306,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Change icon:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
@@ -390,7 +390,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Change icon:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
@@ -415,50 +415,50 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="174"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Notes for the group</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="176"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Set notes for the group</translation>
     </message>
 </context>
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">Select</translation>
+        <translation>Select</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose an icon for the password group:</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation>Choose an icon for the password entry:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
-        <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Keepass Icons</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Custom Database Icons</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass Icon Pack</translation>
     </message>
 </context>
 <context>
@@ -608,12 +608,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Time to clear clipboard</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Never</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -1007,22 +1007,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Password Safe</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Unlock your Password Safe with the first 3 characters of your master password:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>You have %1 tries left</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>You have one try left</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>Wrong unlock code</translation>
     </message>
@@ -1146,42 +1146,42 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Could not load database with following error:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="112"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Entry not found</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Error while searching for password entry in database.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="118"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Group not found</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Error while searching for password group in database.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="124"/>
         <source>No database opened</source>
-        <translation type="unfinished">No database opened</translation>
+        <translation>No database opened</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Could not connect to a loaded database. This seems to be a bug.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="147"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>The following error occured during creation of the key for the database:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="181"/>
@@ -1229,22 +1229,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="222"/>
         <location filename="../qml/content/MainPage.qml" line="228"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Internal Error</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Something went wrong while trying to delete the database file. Error message:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversion of QString &quot;%1&quot; to Uuid failed</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="683"/>

@@ -426,37 +426,37 @@
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
         <translation type="unfinished">Selecciona</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
         <translation type="unfinished">Cancel·la</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
         <source>Choose an icon for the password entry:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1007,22 +1007,22 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
         <translation>Protecció de contrasenyes</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Desbloqueu la Protecció de Contrasenyes amb els 3 primers caràcters de la vostra contrasenya principal:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>Us queden %1 intents</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>Només us queda 1 intent</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>codi de desbloqueig erroni</translation>
     </message>

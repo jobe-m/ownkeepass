@@ -79,6 +79,18 @@ Page {
                 subTitleBottomMargin: lockPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
+            // Add padding in landscape mode on tablet
+            Item {
+                enabled: lockPage.orientation !== Orientation.Portrait
+                visible: enabled
+                height: Screen.sizeCategory >= Screen.Large ?
+                            // size on tablet
+                            Screen.width / 7 :
+                            // size on phone
+                            0
+                width: parent.width
+            }
+
             Image {
                 enabled: lockPage.orientation & Orientation.PortraitMask
                 visible: enabled
@@ -130,7 +142,7 @@ Page {
 
                         TextField {
                             id: firstFast
-                            width: parent.width / 7
+                            width: Screen.width / 7
                             anchors.top: parent.top
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.horizontalCenterOffset: -(parent.width / 6)
@@ -159,7 +171,7 @@ Page {
 
                         TextField {
                             id: secondFast
-                            width: parent.width / 7
+                            width: Screen.width / 7
                             anchors.top: parent.top
                             anchors.horizontalCenter: parent.horizontalCenter
                             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
@@ -185,7 +197,7 @@ Page {
 
                         TextField {
                             id: thirdFast
-                            width: parent.width / 7
+                            width: Screen.width / 7
                             anchors.top: parent.top
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.horizontalCenterOffset: parent.width / 6

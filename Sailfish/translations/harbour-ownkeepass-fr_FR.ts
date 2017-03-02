@@ -11,7 +11,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation>Coffre-fort à mots de passe</translation>
+        <translation>Gestionnaire de mots de passe</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="66"/>
@@ -62,7 +62,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="193"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
-        <translation>Si vous aimez mon travail, n&apos;hésitez pas à montrer votre gratitude. Faites une traduction, émettez un rapport de bogue ou une idée d&apos;amélioration, payez-moi un café ou tout simplement appréciez mon application et parlez-en :)</translation>
+        <translation>Si vous aimez mon travail, n&apos;hésitez pas à montrer votre gratitude. Faites une traduction, émettez un rapport de bug ou une idée d&apos;amélioration, payez-moi un café ou tout simplement appréciez mon application et parlez-en :)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="231"/>
@@ -108,7 +108,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="57"/>
         <source>Password Safe</source>
-        <translation>Coffre-fort à mots de passe</translation>
+        <translation>Gestionnaire de mots de passe</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="65"/>
@@ -306,7 +306,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modifier l&apos;icône :</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
@@ -390,7 +390,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier l&apos;icône :</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
@@ -415,50 +415,50 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="174"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Notes pour le groupe</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="176"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Définir notes pour le groupe</translation>
     </message>
 </context>
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">Sélectionner</translation>
+        <translation>Sélectionner</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisir une icône pour le mot de passe de groupe :</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation>Choisir une icône pour la saisie du mot de passe :</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
-        <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Icônes de Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Icônes de base de données Custom</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>Pack d&apos;icônes ownKeepass</translation>
     </message>
 </context>
 <context>
@@ -608,12 +608,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Délai d’effacement du presse-papier</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Jamais</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -897,7 +897,7 @@
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
 Please note the following. While ownKeepass can read and write to Keepass 1 databases it can currently only read from Keepass 2 databases. It cannot yet change and save Keepass 2 databases. This is planned for a future release of ownKeepass.</source>
-        <translation>ownKeepass est une application de coffre-fort à mot de passe pour le smartphone Jolla dont le but est de protéger des données sensibles telles que des mots de passes pour des pages web, des numéros de cartes de crédit, des PINs, des TANs et autres informations qui doivent être gardées secrètes. Toutes ces informations sont sauvegardées dans un fichier de base de données qui est crypté et enregistré localement sur votre téléphone. Pour ouvrir la base de données, vous devez en connaitre le mot de passe principal. ownKeepass peut utiliser les versions de bases de données 1 et  2. Cela signifie que vous pouvez aussi utiliser Keepass [1] ou KeepassX [2] sur votre ordinateur de bureau pour déchiffrer et ouvrir ce fichier de bases de donnés.&lt;br&gt;&lt;br&gt;
+        <translation>ownKeepass est une application de gestionnaire de mot de passe pour le smartphone Jolla dont le but est de protéger des données sensibles telles que des mots de passes pour des pages web, des numéros de cartes de crédit, des PINs, des TANs et autres informations qui doivent être gardées secrètes. Toutes ces informations sont sauvegardées dans un fichier de base de données qui est crypté et enregistré localement sur votre téléphone. Pour ouvrir la base de données, vous devez en connaitre le mot de passe principal. ownKeepass peut utiliser les versions de bases de données 1 et  2. Cela signifie que vous pouvez aussi utiliser Keepass [1] ou KeepassX [2] sur votre ordinateur de bureau pour déchiffrer et ouvrir ce fichier de bases de donnés.&lt;br&gt;&lt;br&gt;
 Veuillez noter ce qui suit. ownKeepass peut lire et écrire des bases de données Keepass 1 mais peut seulement lire des bases de données  Keepass 2. Pour l&apos;instant, il ne peut modifier ou enregistrer des bases de données Keepass 2. Ceci est prévu pour une version ultérieure de l&apos;application.</translation>
     </message>
     <message>
@@ -910,12 +910,12 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
         <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES / Rijndael (supported by Keepass 1 and 2) or Twofish (Supported only by Keepass 1) with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords (in-memory encryption currently only Keepass 1). Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Quelques mots sur la sécurité de la base de données Keepass&lt;/b&gt;&lt;br&gt;&lt;br&gt;Le code de base de donnée dans ownKeepass est basé sur le projet KeepassX [2] et contient, par conséquent, un grand nombre de fonction liées à la sécurité. Il utilise des algorithmes éprouvés tels que AES / Rijndael (pris en charge par Keepass 1 et 2) ou Twofish (pris en charge uniquement par Keepass 1) avec des blocs de 128 bits et des clés de 256 bits, SHA-256 comme algorithme de hachage et un chiffrement de tous les mots de passe en mémoire (chiffrement en mémoire, actuellement uniquement pour Keepass 1). De plus, il protège le mot de passe principal contre une attaque par force brute et protège aussi d&apos;une attaque du dictionnaire par le biais de hachage et chiffrement avant de décrypter la base de données Keepass. Cette fonction est appelée cycle de transformation de la clé et peut être modifiée dans les réglages de la base de données. Quoi qu&apos;il en soit, cela ajoute des éléments de sécurité aux 2 suivants que vous devez connaitre :&lt;br&gt;&lt;br&gt;(1) Utilisez toujours un mot de passe principal assez long et difficile à deviner.&lt;br&gt;&lt;br&gt;(2) Protégez votre système contre les logiciels espions qui peuvent être spécialisés pour attaquer ownKeepass. Ce second point est la 1ère des 10 lois immuables de la sécurité [3]: &quot;Si un malfaiteur peut vous persuader d&apos;exécuter son programme sur votre ordinateur, ce n&apos;est plus votre ordinateur&quot;.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="65"/>
         <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Partagez la base de données Keepass entre votre Smartphone / Tablette Jolla et votre PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;Le format de fichier de la base de données Keepass est parfait pour partager votre gestionnaire de mots de passe entre différents systèmes tels que smartphones, tablettes, PC etc. Ceci vient du fait qu&apos;il y a beaucoup de mises en œuvre de Keepass pour ces plateformes. Consultez la page de téléchargement de Keepass [4] pour obtenir la version Keepass 1 ou Keepass 2 pour PC. Vous y trouverez aussi une liste de mises en œuvre alternatives. J&apos;aimerais aussi ajouter que Keepass version 0.4.3 [2] est compatible avec Keepass version 1. Sur la même page, vous trouverez aussi une version Alpha de keepassX 2 qui peut gérer les bases de données  Keepass 2.&lt;br&gt;Vous pouvez gérer votre fichier de base de données Keepass via une carte SD ou des services cloud tels que ownCloud ou Dropbox. Lors de l&apos;utilisation d&apos;un serveur cloud, je recommanderais d&apos;utiliser un fichier de clé en plus du mot de passe principal. Celui-ci sera utilisé par ownKeepass pour déchiffrer la base de données. Sauvegardez ce fichier de clé sur votre smartphone et votre PC mais ne la téléchargez pas sur le service cloud. Si un attaquant pénètre votre service cloud, il ne disposera pas de la clé de fichier. Il lui sera donc difficile de craquer votre base de données Keepass car le contenu de la clé de fichier est habituellement  impossible à deviner.</translation>
     </message>
 </context>
 <context>
@@ -948,7 +948,7 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/help/HelpPage.qml" line="49"/>
         <source>Password Safe</source>
-        <translation>Coffre-fort à mots de passe</translation>
+        <translation>Gestionnaire de mots de passe</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpPage.qml" line="57"/>
@@ -988,7 +988,7 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/LicensePage.qml" line="47"/>
         <source>Password Safe</source>
-        <translation>Coffre-fort à mots de passe</translation>
+        <translation>Gestionnaire de mots de passe</translation>
     </message>
     <message>
         <location filename="../qml/content/LicensePage.qml" line="55"/>
@@ -1006,25 +1006,25 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/LockPage.qml" line="77"/>
         <source>Password Safe</source>
-        <translation>Coffre à mot de passe</translation>
+        <translation>Gestionnaire de mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
-        <translation>Déverrouiller votre coffre à mot de passe avec les 3 premiers caractères de votre mot de passe principal :</translation>
+        <translation>Déverrouiller votre gestionnaire de mot de passe avec les 3 premiers caractères de votre mot de passe principal :</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>Il vous reste %1 tentatives</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>1 tentative restante</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>Code erroné</translation>
     </message>
@@ -1054,12 +1054,12 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/MainPage.qml" line="347"/>
         <source>Password Safe</source>
-        <translation>Coffre-fort à mots de passe</translation>
+        <translation>Gestionnaire de mots de passe</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="435"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation>Saisir un mot de passe principal pour verrouiller votre nouveau coffre-fort à mots de passe Keepass :</translation>
+        <translation>Saisir un mot de passe principal pour verrouiller votre nouveau gestionnaire de mots de passe Keepass :</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="442"/>
@@ -1148,42 +1148,42 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement de la base de données impossible en raison des erreurs suivantes : </translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="112"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrée introuvable</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur lors la recherche du mot de passe dans la base de données.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="118"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Groupe introuvable</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur lors la recherche du mot de passe de groupe dans la base de données.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="124"/>
         <source>No database opened</source>
-        <translation type="unfinished">Aucune base de données ouverte</translation>
+        <translation>Aucune base de données ouverte</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion à une base de données impossible. Ceci semble être un bug.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="147"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;erreur suivante s&apos;est produite lors de la création de la clé de base de données :</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="181"/>
@@ -1204,7 +1204,7 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/MainPage.qml" line="195"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation>Votre mot de passe principal ou votre clé de fichier est erroné. Essayez à nouveau. Si l&apos;erreur persiste, la clé de fichier ou le fichier de base de donnée est corrompu.</translation>
+        <translation>Votre mot de passe principal ou votre fichier de clé est erroné. Essayez à nouveau. Si l&apos;erreur persiste, le fichier de clé ou le fichier de base de donnée est corrompu.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="202"/>
@@ -1225,28 +1225,28 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/MainPage.qml" line="216"/>
         <source>Cannot open key file. Error details:</source>
-        <translation>Impossible d&apos;ouvrir le fichier de la clé. Détails de l&apos;erreur :</translation>
+        <translation>Impossible d&apos;ouvrir le fichier de clé. Détails de l&apos;erreur :</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="222"/>
         <location filename="../qml/content/MainPage.qml" line="228"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur interne</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Une erreur s&apos;est produite en supprimant la base de données de la liste des bases de données récentes. Ceci ne devrait pas se produire. Faites-le moi savoir (le développeur), via email ou sur github. Merci.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Une erreur s&apos;est produite lors de la suppression d&apos;un fichier de base de données. Message d&apos;erreur :</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversion de Qstring &quot;%1&quot; vers Uuid échoué</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="683"/>
@@ -1503,7 +1503,7 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
-        <translation>Activez ceci pour utiliser un fichier de clé associé à un mot de passe principal pour votre nouvelle base de données Keepass</translation>
+        <translation>Activez ceci pour utiliser un fichier de clé associé à un mot de passe principal pour votre nouvelle base de données Keepass.</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
@@ -1518,12 +1518,12 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
         <source>New Password Safe</source>
-        <translation>Nouveau coffre-fort à mots de passe</translation>
+        <translation>Nouveau gestionnaire de mots de passe</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation>Saisir un mot de passe principal pour verrouiller votre nouveau coffre-fort Keepass :</translation>
+        <translation>Saisir un mot de passe principal pour verrouiller votre nouveau gestionnaire de mots de passe Keepass :</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
@@ -1535,13 +1535,13 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
         <source>Password Safe</source>
-        <translation>Coffre-fort à mots de passe</translation>
+        <translation>Gestionnaire de mots de passe</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
-        <translation>Saisir un mot de passe principal pour déverouiller votre coffre-fort Keepass :</translation>
+        <translation>Saisir un mot de passe principal pour déverrouiller votre gestionnaire de mots de passe Keepass :</translation>
     </message>
 </context>
 <context>

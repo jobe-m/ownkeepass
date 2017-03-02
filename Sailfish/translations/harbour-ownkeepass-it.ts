@@ -6,7 +6,8 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation>Info su ownKeepass</translation>
+        <translation>Info su ownKeepassy
+</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
@@ -224,7 +225,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="79"/>
         <source>New password entry</source>
-        <translation>Nuovo elemento</translation>
+        <translation>Nuova voce</translation>
     </message>
 </context>
 <context>
@@ -306,17 +307,17 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cambia icona:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
         <source>Create new password entry:</source>
-        <translation>Crea nuovo elemento:</translation>
+        <translation>Crea nuova voce:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="161"/>
         <source>Edit password entry:</source>
-        <translation>Modifica elemento:</translation>
+        <translation>Modifica voce:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
@@ -390,7 +391,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia icona:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
@@ -415,50 +416,50 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="174"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Note per il gruppo</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="176"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci le note per il gruppo</translation>
     </message>
 </context>
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">Seleziona</translation>
+        <translation>Selezione</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annulla</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli un&apos;icona per il gruppo di password:</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation>Scegli un&apos;icona per la voce password:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
-        <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Icone di Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Icone personalizzate</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>Pacchetto Icone di ownKeepass</translation>
     </message>
 </context>
 <context>
@@ -608,12 +609,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tempo di scadenza appunti</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Mai</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -674,7 +675,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="510"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
-        <translation>Mostra il nome utente e la password dell&apos;elemento attivo nella cover</translation>
+        <translation>Mostra il nome utente e la password della voce attiva nella cover</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
@@ -959,7 +960,7 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
     <message>
         <location filename="../qml/help/HelpSubGroupsPage.qml" line="27"/>
         <source>This page is showing password entries and sub-groups of your Keepass database. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;It is possible to show username and password for each password entry already in the list view. To enable that feature open the ownKeepass settings and check the &quot;Extended list view&quot; switch.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search only in the specific password group and all its sub-groups.&lt;br&gt;&lt;br&gt;</source>
-        <translation>Questa pagina mostra le password e i sottogruppi del database Keepass. Un elemento password memorizza i bit di informazioni nel database. &lt;br&gt;&lt;br&gt;Puoi visualizzare il nome utente e la password già nella lista principale, basta abilitare la funzionalità &quot;Vista lista estesa&quot; nella pagina delle impostazioni di ownKeepass.&lt;br&gt;&lt;br&gt; Una barra di ricerca può essere attivata dal pulley menu mostrato in cima alla lista delle password. Con esso è possibile cercare solo nel gruppo password specifico e tutti i suoi sottogruppi.&lt;br&gt;&lt;br&gt;</translation>
+        <translation>Questa pagina mostra le password e i sottogruppi del database Keepass. Una voce password memorizza i bit di informazioni nel database. &lt;br&gt;&lt;br&gt;Puoi visualizzare il nome utente e la password già nella lista principale, basta abilitare la funzionalità &quot;Vista lista estesa&quot; nella pagina delle impostazioni di ownKeepass.&lt;br&gt;&lt;br&gt; Una barra di ricerca può essere attivata dal pulley menu mostrato in cima alla lista delle password. Con esso è possibile cercare solo nel gruppo password specifico e tutti i suoi sottogruppi.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1007,22 +1008,22 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
         <translation>Gestore password</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Sblocca inserendo i primi 3 caratteri della tua password principale:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>Hai %1 tentativi</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>Ultimo tentativo</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>Codice non corretto</translation>
     </message>
@@ -1146,42 +1147,42 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore nell&apos;apertura del database a causa di:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="112"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Voce non trovata</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore nella ricerca della voce password nel database.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="118"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppo non trovato</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore nella ricerca del gruppo di password nel database.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="124"/>
         <source>No database opened</source>
-        <translation type="unfinished">Nessun database aperto</translation>
+        <translation>Nessun database aperto</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile connettersi al database caricato. Questo potrebbe essere un baco.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="147"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>È occorso il seguente errore durante la creazione della chiave del database:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="181"/>
@@ -1229,22 +1230,22 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
         <location filename="../qml/content/MainPage.qml" line="222"/>
         <location filename="../qml/content/MainPage.qml" line="228"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore interno</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Qualcosa non ha funzionato facendo il drop del database dalla lista dei database recenti. Questo non dovrebbe accadere. Prego avvisare lo sviluppatore via email o su github. Grazie!</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qualcosa non ha funzionato nel tentativo di eliminare il file del database. Messaggio di errore:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversione da QString &quot;%1&quot; a Uuid fallita</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="683"/>
@@ -1334,7 +1335,7 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
     <message>
         <location filename="../qml/content/MainPage.qml" line="1216"/>
         <source>Do you want to save changes to the password entry?</source>
-        <translation>Vuoi salvare le modifiche all&apos;elemento?</translation>
+        <translation>Vuoi salvare le modifiche alla voce password?</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1221"/>
@@ -1402,7 +1403,7 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="80"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation>Sposta elemento &quot;%1&quot; nel gruppo seguente:</translation>
+        <translation>Sposta voce &quot;%1&quot; nel gruppo seguente:</translation>
     </message>
 </context>
 <context>
@@ -1577,7 +1578,7 @@ Nota; sebbene ownKeepass possa aprire e scrivere database Keepass 1 al momento p
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="129"/>
         <source>Edit password entry</source>
-        <translation>Modifica password</translation>
+        <translation>Modifica voce password</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="166"/>

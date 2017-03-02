@@ -306,7 +306,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">アイコン変更:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
@@ -390,7 +390,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコン変更:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
@@ -415,50 +415,50 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="174"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>グループの情報</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="176"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>グループの情報を設定</translation>
     </message>
 </context>
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">選択</translation>
+        <translation>選択</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">キャンセル</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>パスワードグループのアイコンを選択:</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
+        <source>Choose an icon for the password entry:</source>
+        <translation>エントリのアイコンを選択:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
-        <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Keepassアイコン</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタムデータベースアイコン</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepassアイコンパック</translation>
     </message>
 </context>
 <context>
@@ -608,12 +608,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>クリップボードタイムアウト</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>クリップボードをクリアしない</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -908,12 +908,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
         <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES / Rijndael (supported by Keepass 1 and 2) or Twofish (Supported only by Keepass 1) with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords (in-memory encryption currently only Keepass 1). Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Keepassデータベースのセキュリティについて&lt;/b&gt;&lt;br&gt;&lt;br&gt;ownKeepassのデータベース関連のコードはKeepassXプロジェクト[2]に基づいており、多くのセキュリティ関連機能が含まれています。 これにはAES / Rijndael（Keepass 1と2でサポートされている）、128ビットブロックサイズと256ビット鍵サイズのTwofish（Keepass 1のみでサポートされている）、SHA-256をハッシュアルゴリズムおよびメモリ内暗号化パスワード（現時点でメモリ内暗号化はKeepass 1のみでサポート）のような実証済みの暗号アルゴリズムが使用されています。 さらに、マスタパスワードを使用してKeepassデータベースを復号化する前に、そのパスワードをハッシュおよび暗号化することによって、ブルートフォース攻撃およびディクテーション攻撃からマスターパスワードを保護します。 この機能はKey Transformation Roundsと呼ばれ、データベース設定で調整できます。ともあれ、これら全てはあなたが知っておくべき次の2つの安全対策への追加対策でしかありません。&lt;br&gt;&lt;br&gt;(1) 常に十分長く予測し難いマスターパスワードを使ってください。&lt;br&gt;&lt;br&gt;(2) ownKeepassの攻撃に特化したスパイウェアからシステムを保護してください。 2つ目は、セキュリティの10の不変則[3]の第1法則です: &quot;悪意のある人があなたのコンピュータでプログラムを実行するようにあなたを説得することができれば、それはもはやあなたのコンピュータではありません&quot;。</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="65"/>
         <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Jolla Smartphone / Tablet とDesktop PCでのデータベースの共有について&lt;/b&gt;&lt;br&gt;&lt;br&gt;Keepassデータベースファイル形式は、スマートフォン、タブレット、デスクトップPCなどの異なるシステム間で安全にパスワードを共有するのに最適ですに。これは、これらのプラットフォームで利用可能なKeepassの実装が多数存在するためです。 Keepassのダウンロードページ[4]を見て、デスクトップPC用の旧版のKeepass 1、またはKeepass 2を入手してください。そのページにはKeepassの代替実装のリストもあります。 また、KeepassX ver. 0.4.3 [2] がKeepass 1にも対応していることも追記しておきます。 同じページにKeepass 2データベースを取り扱えるものとしてKeepassX 2のAlphaバージョンも確認できます。&lt;br&gt;KeepassデータベースファイルをSDカード経由で、またはownCloudやDropboxのようなクラウドサービス経由で共有できます。クラウドサーバーを使用する場合は、マスターパスワードに加えてキーファイルを使用することをお勧めします。追加のキーファイルは、ownKeepassによってデータベースの復号化に使用されます。このキーファイルは、スマートフォンとデスクトップPCにローカルに保存してください。クラウドサービスにアップロードしないでください。攻撃者がクラウドサービスをハッキングすると、キーファイルなしで放置されます。そうすれば、キーファイルの内容が通常は推測することができないため、攻撃者がKeepassデータベースをクラッキングすることがより困難になります。</translation>
     </message>
 </context>
 <context>
@@ -930,7 +930,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Device Memory, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Device Memory&quot; is located at &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Removed one sentence in section &quot;Use key file&quot;, Changed &quot;Home&quot; to &quot;Device Memory&quot;, Removed section for &quot;Open automatically&quot;, changed &lt;UUID&gt; to &amp;lt;UUID&amp;gt; so that it will be actually shown ;)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>ここでは既存のKeepassデータベースファイルを開くことができます。&lt;br&gt;&lt;br&gt;ファイルブラウザを使用してKeepassデータベースファイルを検索します。 デバイスメモリ、SDカード、およびAndroidストレージを確認することができます。 ファイルに問題がある場合は、下記のパスにファイルを配置してください。 &quot;デバイスメモリ&quot;は &quot;％1&quot;にあります。 SDカードが携帯電話に挿入されている場合は、「/ media / sdcard /＆lt; UUID＆gt;」にあります。(複数のパーティションを持つSDカードはサポートされていませんのでご注意ください) &quot;Android storage&quot;は &quot;％2&quot;にあります。&lt;br&gt;&lt;br&gt;Keepassデータベースをクラウドにアップロードする場合は、マスターパスワードに加えてローカルに保存されたキーファイルを使用するようにしてください。この時キーファイルをクラウドにアップロードしてはいけません。&lt;br&gt;&lt;br&gt;&lt;b&gt;キーファイルを使用&lt;/b&gt;&lt;br&gt;&lt;br&gt;Keepassデータベースを開くためのキーファイルが必要な場合は、このオプションをオンにしてください。&lt;br&gt;&lt;br&gt;&lt;b&gt;マスターパスワード&lt;/ b&gt;&lt;br&gt;Keepassデータベースのパスワードをここに入力してください。&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1007,22 +1007,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Password Safe</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>マスターパスワードの先頭3文字を入力してアンロックしてください。</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>あと %1 回入力できます</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>あと 1 回入力できます</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>ロック解除コードが違います</translation>
     </message>
@@ -1146,42 +1146,42 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>エラーによりデータベースを読み込めません:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="112"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>エントリがみつかりませn</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>データベース内のエントリ検索中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="118"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>グループがみつかりませn</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>データベース内のパスワードグループ検索中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="124"/>
         <source>No database opened</source>
-        <translation type="unfinished">開かれているデータベースはありません</translation>
+        <translation>開かれているデータベースはありません</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>読み込まれたデータベースに接続できません。これはバグのようです。</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="147"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>データベースのキー生成中にエラーが発生しました:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="181"/>
@@ -1229,22 +1229,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="222"/>
         <location filename="../qml/content/MainPage.qml" line="228"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>内部エラー</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>なんらかの異常により最新のデータベースリストからデータベースが欠落しています。通常発生し得ない現象なので、私(開発者)に電子メールまたはgithubからご連絡ください。よろしくお願いします。</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>データベース削除中に何らかの異常が発生しました。エラーメッセージ:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>QString &quot;%1&quot;のUuid変換に失敗しました</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="683"/>

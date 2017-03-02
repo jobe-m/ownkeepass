@@ -26,7 +26,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="96"/>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="102"/>
@@ -47,22 +47,22 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="147"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Zásluhy</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="155"/>
         <source>My best appreciations go to:&lt;br&gt;&lt;br&gt;Jolla (for continuing where Nokia stopped)&lt;br&gt;The KeepassX project (for a Qt implementation of Keepass)&lt;br&gt;All translators and contributors: %1&lt;br&gt;&lt;br&gt;I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>Můj vděk patří:&lt;br&gt;&lt;br&gt;Jolle (pokračuje tam, kde se Nokia zastavila)&lt;br&gt;Projekt KeepassX (za udělání Keepass v Qt)&lt;br&gt;Všem překladatelům a přispěvatelům: %1&lt;br&gt;&lt;br&gt;Mým přáním je, abyste si ownKeepass užili tak, jako já, když jsem je tvořil!</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="185"/>
         <source>Donate or Contribute</source>
-        <translation type="unfinished"></translation>
+        <translation>Darovat nebo přispět</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="193"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokud se vám líbí moje práce, neostýchejte se ukázat mi vaši vděčnost prací na překladu, nahlášením chyby v programu nebo nápadem na jeho vylepšení, balíčkem kávy nebo jednoduše o mé aplikaci, která se vám líbí, mluvte v jollím obchodě :)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="231"/>
@@ -426,37 +426,37 @@
 <context>
     <name>EditItemIconDialog</name>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="70"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
         <translation type="unfinished">Vybrat</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="71"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
         <translation type="unfinished">Zrušit</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="81"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
         <source>Choose an icon for the password entry:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="86"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
         <source>Keepass Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="108"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditItemIconDialog.qml" line="130"/>
+        <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -608,12 +608,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Čas vyprázdnit schránku</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Nikdy</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -902,7 +902,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="41"/>
         <source>&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Použití stránek nápovědy&lt;/b&gt;&lt;br&gt; Každá stránka v aplikaci ownKeepass má svoji vlastní nápovědu. Takže prosím, využijte ji, a zjistěte informace o funkcích, které nabízí ownKeepass.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
@@ -920,7 +920,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMasterGroupsPage.qml" line="27"/>
         <source>This page is showing main password groups of your Keepass database. A password group is a container for password entries. Thus in order to store a password entry you need to create at least one group first.&lt;br&gt;&lt;br&gt;You can use main password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tato stránka ukazuje hlavní skupiny hesel ve vaší Keepass databázi. Heslová skupina je kontejner pro hesla. Abyste mohl uložit heslo, musíte nejprve vytvořit alespoň jednu skupinu.&lt;br&gt;&lt;br&gt;Používejte hlavní skupiny pro pořádání hesel. Například můžete vytvořit skupiny pro &quot;internetové obchody&quot;, &quot;účty elektronické pošty&quot;, &quot;stránky společenských médií&quot; atd.&lt;br&gt;&lt;br&gt;Z vysunovací nabídky je možné povolit vyhledávací pole, které se ukazuje nahoře seznamu skupiny hesel. S jeho pomocí můžete hledat heslové záznamy v celé databázi Keepass. Pokud chcete, aby se vyhledávací řádek při otevření databáze Keepass automaticky zaměřil, otevřete, prosím, stránku s nastavením a zaškrtněte odpovídající přepínač.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -958,7 +958,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpSubGroupsPage.qml" line="27"/>
         <source>This page is showing password entries and sub-groups of your Keepass database. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;It is possible to show username and password for each password entry already in the list view. To enable that feature open the ownKeepass settings and check the &quot;Extended list view&quot; switch.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search only in the specific password group and all its sub-groups.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tato stránka ukazuje hesla a podskupiny ve vaši databázi KeePass.&lt;br&gt;&lt;br&gt;Je možné ukázat, uživatelské jméno a heslo pro každou položku již v zobrazení seznamu.</translation>
     </message>
 </context>
 <context>
@@ -1006,22 +1006,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Sejf s hesly</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="124"/>
+        <location filename="../qml/content/LockPage.qml" line="136"/>
         <source>Unlock your Password Safe with the first 3 characters of your master password:</source>
         <translation>Odemkněte sejf s hesly zadáním tří prvních znaků z hlavního hesla:</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="223"/>
+        <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
         <translation>Máte ještě %1 zbylé pokusy</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="225"/>
+        <location filename="../qml/content/LockPage.qml" line="237"/>
         <source>You have one try left</source>
         <translation>Zbývá vám jen jeden pokus</translation>
     </message>
     <message>
-        <location filename="../qml/content/LockPage.qml" line="227"/>
+        <location filename="../qml/content/LockPage.qml" line="239"/>
         <source>Wrong unlock code</source>
         <translation>Nesprávný odemykací kód</translation>
     </message>
@@ -1298,12 +1298,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="159"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chybná inicializace šifrovací funkce</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="160"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kryptografické algoritmy nebyly úspěšně inicializovány. Databáze byla opět uzavřena, aby se zabránilo možnému útoku. Zkuste znovu otevřít aplikaci. Pokud chyba přetrvá, obraťte se na vývojáře.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="234"/>
@@ -1313,7 +1313,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="1100"/>
         <source>Drop from List</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstranit ze seznamu</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1186"/>
@@ -1356,33 +1356,33 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="38"/>
         <source>Show more details</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázat více podrobností</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="77"/>
         <source>Key file path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta k souboru s klíčem a název</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="77"/>
         <source>No key file used</source>
-        <translation type="unfinished"></translation>
+        <translation>Není použit žádný soubor s klíčem</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="104"/>
         <source>Database type:</source>
-        <translation type="unfinished">Typ databáze:</translation>
+        <translation>Typ databáze:</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="121"/>
         <source>Unknown</source>
         <extracomment>Here unknown is used for unknown database type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Neznámý</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="129"/>
         <source>Recent databases</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedávné databáze</translation>
     </message>
 </context>
 <context>
@@ -1409,27 +1409,27 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="32"/>
         <source>Enter master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadat hlavní heslo</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="33"/>
         <source>Master password</source>
-        <translation type="unfinished">Hlavní heslo</translation>
+        <translation>Hlavní heslo</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="34"/>
         <source>Confirm master password</source>
-        <translation type="unfinished">Potvrdit hlavní heslo</translation>
+        <translation>Potvrdit hlavní heslo</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="35"/>
         <source>Master password confirmed</source>
-        <translation type="unfinished">Hlavní heslo potvrzeno</translation>
+        <translation>Hlavní heslo potvrzeno</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="36"/>
         <source>Confirm password</source>
-        <translation type="unfinished"></translation>
+        <translation>Potvrďte heslo</translation>
     </message>
 </context>
 <context>
