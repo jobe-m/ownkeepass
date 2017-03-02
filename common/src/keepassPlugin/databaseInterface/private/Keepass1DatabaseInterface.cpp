@@ -418,10 +418,7 @@ void Keepass1DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
     }
     group->setTitle(title);
-    // remove "icf" from icon name ("icfXX") so that only the icon number is left
-    QString iconNumber = iconUuid;
-    quint32 qui32_iconNumber = (quint32)iconNumber.remove(0, 3).toInt();
-    group->setImage(qui32_iconNumber);
+    group->setImage((quint32)UuidToIconNumber(iconUuid));
     if (!m_kdb3Database->save()) {
         emit groupSaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), groupId);
         return;
@@ -469,9 +466,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes
 
     CGroup* groupData = new CGroup(); // ownership will be given to m_kdb3Database object
     groupData->Title = title;
-    QString iconNumber = iconUuid;
-    // remove "icf" from icon name ("icfXX") so that only the icon number is left
-    groupData->Image = (quint32)iconNumber.remove(0, 3).toInt();
+    groupData->Image = (quint32)UuidToIconNumber(iconUuid);
     IGroupHandle* newGroup = m_kdb3Database->addGroup(groupData, parentGroup);
     Q_ASSERT(newGroup);
     // save changes to database
@@ -534,10 +529,7 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, Q
     s_password.lock();
     entry->setPassword(s_password);
     entry->setComment(comment);
-    // remove "ic" from icon name ("icXX") so that only the icon number is left
-    QString iconNumber = iconUuid;
-    quint32 qui32_iconNumber = (quint32)iconNumber.remove(0, 2).toInt();
-    entry->setImage(qui32_iconNumber);
+    entry->setImage((quint32)UuidToIconNumber(iconUuid));
     // save changes to database and send signal with result
     if (!m_kdb3Database->save()) {
         emit entrySaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), entryId);
@@ -604,9 +596,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title, QString url, 
     s_password.lock();
     newEntry->setPassword(s_password);
     newEntry->setComment(comment);
-    // remove "ic" from icon name ("icXX") so that only the icon number is left
-    quint32 qui32_iconNumber = (quint32)iconUuid.remove(0, 2).toInt();
-    newEntry->setImage(qui32_iconNumber);
+    newEntry->setImage((quint32)UuidToIconNumber(iconUuid));
     // save changes to database
     if (!m_kdb3Database->save()) {
         emit newEntryCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError(), uInt2QString(uint(newEntry)));
@@ -875,14 +865,33 @@ void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
 
 void Keepass1DatabaseInterface::slot_loadCustomIcons()
 {
-    // This space is left blank intentionally - custom database icons are not supported for Keepass 1 databases
+    for (int i = m_kdb3Database->builtinIcons(); i < m_kdb3Database->numIcons(); i++) {
+        // generate custom icon number which is starting from ic69
+        QString customIconNumber = QString("ic%1").arg(i);
+        emit appendCustomIconToListModel(customIconNumber);
+    }
 }
 
 const QImage Keepass1DatabaseInterface::getCustomIcon(const QString value)
 {
-    Q_UNUSED(value);
-    // not yet implemented
-    return QImage();
+    QPixmap customIcon = m_kdb3Database->icon(UuidToIconNumber(value));
+    if (customIcon.isNull()) {
+        return QImage();
+    } else {
+        return customIcon.toImage();
+    }
+}
+
+int Keepass1DatabaseInterface::UuidToIconNumber(QString value)
+{
+    // check if value contains "icf" or "ic"
+    if (value.contains(QString("icf"))) {
+        // remove "icf" from icon name ("icfXX") so that only the icon number is left
+        return value.remove(0, 3).toInt();
+    } else {
+        // remove "ic" from icon name ("icXX") so that only the icon number is left
+        return value.remove(0, 2).toInt();
+    }
 }
 
 /*!

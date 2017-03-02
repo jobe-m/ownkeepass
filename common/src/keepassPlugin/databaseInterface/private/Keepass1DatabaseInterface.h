@@ -207,6 +207,7 @@ private:
     inline uint qString2UInt(QString value);
     QString getEntryIcon(quint32 standardIcon);
     QString getGroupIcon(quint32 standardIcon);
+    int UuidToIconNumber(QString value);
 
 private:
     // Keepass database handler

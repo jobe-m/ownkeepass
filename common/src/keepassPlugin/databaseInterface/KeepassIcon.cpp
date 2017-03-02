@@ -34,17 +34,19 @@ using namespace kpxPrivate;
 
 QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
 {
-// TODO debug custom database icons in Keepass 1 database
-//    qDebug() << uuid;
-
     Q_UNUSED(requestedSize);
     QImage icon;
     // Check lenth and determine if the icon is a standart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
     if (uuid.size() != (Uuid::Length * 2)) {
         // Load standard image from resources
         icon = QImage(":/entryicons/" + uuid + ".png", "PNG");
+        // If loading of the image failed than try load custom database icon from Keepass 1 database which starts with "ic69" or "icf69"
+        if (icon.isNull()) {
+            // Load custom image from Keepass 1 database
+            icon = (dynamic_cast<AbstractDatabaseInterface*>(kpxPrivate::DatabaseClient::getInstance()->getInterface()))->getCustomIcon(uuid);
+        }
     } else {
-        // Load custom image from Keepass database
+        // Load custom image from Keepass 2 database
         icon = (dynamic_cast<AbstractDatabaseInterface*>(kpxPrivate::DatabaseClient::getInstance()->getInterface()))->getCustomIcon(uuid);
     }
     if (size) {
