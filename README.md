@@ -7,12 +7,14 @@ Status
 ------
 
 Next release 1.2.0
-* Code cleanup done, password generator code refactored
-* Update source base of KeepassX 2 database code to KeepassX release 2.0.2
-* Changing icon of Keepass group implemented for Keepass 1 and Keepass 2 databases
+* Implemented changing of icons for password group and entries for Keepass 1 and 2 databases
+* Supported are standard Keepass icons and custom database icons of Keepass 1 and 2 databases
+* Implemented "create new" and "edit" password group for Keepass 2 database
 * Reworked error handling mechanism and added a lot of database error checks
-* Create new and modify existing password group now implemented for Keepass 2 database
-* ...
+* Update source base of KeepassX 2 database code to KeepassX release 2.0.2
+* Code cleanup done, password generator code refactored
+* Fixed some UI and layout glitches
+* Updated all translations from transifex
 
 Bugfix release 1.1.15 is available in Jolla store and on [openrepos.net] [1]
 * Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to "disabled"
