@@ -70,6 +70,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.2.1 Language bugfix</b>\
+<ul>\
+<li>If one of the following languages where selected directly another language was actually shown: galician, italian, hungarian, dutch, russian, finnish, swedish, chinese, greek, japanese</li>\
+<li>Setting language to system default was not affected by the bug</li>\
+</ul>\
+<br>\
 <b>v1.2.0 Changeable icons</b>\
 <ul>\
 <li>Implemented changing of icons for password group and entries for Keepass 1 and 2 databases</li>\
