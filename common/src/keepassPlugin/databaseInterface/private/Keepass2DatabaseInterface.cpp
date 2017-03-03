@@ -512,7 +512,8 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
     int iconNumber = 0;
     // Check lenth and determine if the icon is a stardart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
     if (iconUuid.size() != (Uuid::Length * 2)) {
-        iconNumber = iconUuid.remove("icf").toInt();
+        QString standardIcon = iconUuid;
+        iconNumber = standardIcon.remove(0, 3).toInt();
         newGroup->setIcon(iconNumber);
     } else {
         newGroup->setIcon(qString2Uuid(iconUuid));
@@ -532,8 +533,8 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
     // update all list model of parent groups where new group was added
     if (m_setting_sortAlphabeticallyInListView) {
         emit addItemToListModelSorted(title,                                    // group name
-                                      getGroupIcon(iconNumber,
-                                                   qString2Uuid(iconUuid)),     // icon uuid
+                                      getGroupIcon(newGroup->iconNumber(),
+                                                   newGroup->iconUuid()),       // icon uuid
                                       "Subgroups: 0 | Entries: 0",              // subtitle
                                       newGroupId,                               // identifier for group item in list model
                                       DatabaseItemType::GROUP,                  // item type
@@ -541,8 +542,8 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
                                       parentGroupUuid.toHex());                 // identifier for list model
     } else {
         emit appendItemToListModel(title,                                       // group name
-                                   getGroupIcon(iconNumber,
-                                                qString2Uuid(iconUuid)),        // icon uuid
+                                   getGroupIcon(newGroup->iconNumber(),
+                                                newGroup->iconUuid()),          // icon uuid
                                    "Subgroups: 0 | Entries: 0",                 // subtitle
                                    newGroupId,                                  // identifier for group in list model
                                    DatabaseItemType::GROUP,                     // item type

@@ -70,6 +70,18 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.2.0 Changeable icons</b>\
+<ul>\
+<li>Implemented changing of icons for password group and entries for Keepass 1 and 2 databases</li>\
+<li>Standard Keepass icons and custom database icons of Keepass 1 and 2 databases are supported</li>\
+<li>Implemented \"create new\" and \"edit\" password group for Keepass 2 database</li>\
+<li>Reworked error handling mechanism and added a lot of database error checks</li>\
+<li>Updated source base of Keepass 2 database code to KeepassX release 2.0.2</li>\
+<li>Code cleanup done, password generator code refactored</li>\
+<li>Fixed some UI and layout glitches</li>\
+<li>Updated all translations from transifex</li>\
+</ul>\
+<br>\
 <b>v1.1.15 Bugfix release</b>\
 <ul>\
 <li>Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to \"disabled\"</li>\
