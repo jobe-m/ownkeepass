@@ -6,7 +6,11 @@ ownKeepass
 Status
 ------
 
-Release 1.2.0 is available on [openrepos.net] [1]
+Bugfix release 1.2.1 is available on [openrepos.net] [1]
+* If one of the following languages where selected directly another language was actually shown: galician, italian, hungarian, dutch, russian, finnish, swedish, chinese, greek, japanese
+* Setting language to system default was not affected by the bug
+
+Release 1.2.0
 * Implemented changing of icons for password group and entries for Keepass 1 and 2 databases
 * Standard Keepass icons and custom database icons of Keepass 1 and 2 databases are supported
 * Implemented "create new" and "edit" password group for Keepass 2 database
