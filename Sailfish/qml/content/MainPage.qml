@@ -704,17 +704,11 @@ Page {
           save the entry details if he has canceled the edit dialog unintentionally or because he
           did not understand the whole UI paradigma at all... well recently the UX evolved quite nicely;)
           */
-        property string originalEntryTitle: ""
-        property string originalEntryUrl: ""
-        property string originalEntryUsername: ""
-        property string originalEntryPassword: ""
-        property string originalEntryComment: ""
+        property var originalEntryKeys: []
+        property var originalEntryValues: []
         property string originalEntryIconUuid: ""
-        property string entryTitle: ""
-        property string entryUrl: ""
-        property string entryUsername: ""
-        property string entryPassword: ""
-        property string entryComment: ""
+        property var entryKeys: []
+        property var entryValues: []
         property string entryIconUuid: ""
 
         /*
@@ -782,32 +776,36 @@ Page {
             kdbEntry.entryId = itemId
             if (createNewItem) {
                 // create new group in database, save and update list model data in backend
-                kdbEntry.createNewEntry(entryTitle,
-                                        entryUrl,
-                                        entryUsername,
-                                        entryPassword,
-                                        entryComment,
+                kdbEntry.createNewEntry(entryKeys,
+                                        entryValues,
                                         parentGroupId,
                                         entryIconUuid)
             } else {
                 // save changes of existing group to database and update list model data in backend
-                kdbEntry.saveEntryData(entryTitle,
-                                       entryUrl,
-                                       entryUsername,
-                                       entryPassword,
-                                       entryComment,
+                kdbEntry.saveEntryData(entryKeys,
+                                       entryValues,
                                        entryIconUuid)
             }
         }
 
         function checkForUnsavedKdbEntryChanges() {
             // check if the user has changed any entry details
-            if (originalEntryTitle !== entryTitle || originalEntryUrl !== entryUrl ||
-                    originalEntryUsername !== entryUsername || originalEntryPassword !== entryPassword ||
-                    originalEntryComment !== entryComment || originalEntryIconUuid !== entryIconUuid) {
+            if (entryValues.length !== originalEntryValues.length) {
                 // open query dialog for unsaved changes
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_ENTRY" })
+                return
+            }
+            // length of arrays is equal now check if any content has changed
+            var i = 0
+            while (i < entryValues.length && i < originalEntryValues.length) {
+                if (entryValues[i] !== originalEntryValues[i]) {
+                    // open query dialog for unsaved changes
+                    pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                      { "state": "QUERY_FOR_ENTRY" })
+                    break
+                }
+                ++i
             }
         }
 
@@ -821,11 +819,8 @@ Page {
         }
 
         function loadKdbEntryDetails(keys, values, iconUuid) {
-            entryTitle    = originalEntryTitle    = values[0]
-            entryUrl      = originalEntryUrl      = values[1]
-            entryUsername = originalEntryUsername = values[2]
-            entryPassword = originalEntryPassword = values[3]
-            entryComment  = originalEntryComment  = values[4]
+            entryKeys   = originalEntryKeys   = keys
+            entryValues = originalEntryValues = values
             entryIconUuid = originalEntryIconUuid = iconUuid
 
             // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
@@ -846,15 +841,15 @@ Page {
             }
         }
 
-        function setKdbEntryDetails(createNewEntry, entryId, parentGrId, title, url, username, password, comment, iconUuid) {
+        function setKdbEntryDetails(createNewEntry, entryId, parentGrId, keys, values, iconUuid) {
+
+// TODO feature/save_kdb2_entry
+
             createNewItem = createNewEntry
             itemId        = entryId
             parentGroupId = parentGrId
-            entryTitle    = title
-            entryUrl      = url
-            entryUsername = username
-            entryPassword = password
-            entryComment  = comment
+            entryKeys     = keys
+            entryValues   = values
             entryIconUuid = iconUuid
         }
 

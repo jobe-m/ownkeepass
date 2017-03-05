@@ -506,11 +506,8 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes
     emit newGroupCreated(DatabaseAccessResult::RE_OK, "", uInt2QString(uint(newGroup)));
 }
 
-void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, QString url, QString username, QString password, QString comment, QString iconUuid)
+void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QList<QString> keys, QList<QString> values, QString iconUuid)
 {
-    QList<QString> keys;
-    QList<QString> values;
-
     Q_ASSERT(m_kdb3Database);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
@@ -521,14 +518,15 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, Q
         return;
     }
 
-    entry->setTitle(title);
-    entry->setUrl(url);
-    entry->setUsername(username);
+    // Using predefined order of keys and values (Keepass 1 does not provide custom keys and values as supported in Keepass 2)
+    entry->setTitle(values[KeepassDefault::TITLE]);
+    entry->setUrl(values[KeepassDefault::URL]);
+    entry->setUsername(values[KeepassDefault::USERNAME]);
     SecString s_password;
-    s_password.setString(password);
+    s_password.setString(values[KeepassDefault::PASSWORD]);
     s_password.lock();
     entry->setPassword(s_password);
-    entry->setComment(comment);
+    entry->setComment(values[KeepassDefault::NOTES]);
     entry->setImage((quint32)UuidToIconNumber(iconUuid));
     // save changes to database and send signal with result
     if (!m_kdb3Database->save()) {
@@ -540,13 +538,13 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, Q
     QList<int> modelIds = m_entries_modelId.keys(uint(entry));
     for (int i = 0; i < modelIds.count(); i++) {
         if (m_setting_sortAlphabeticallyInListView) {
-            emit updateItemInListModelSorted(title,                                 // group name
+            emit updateItemInListModelSorted(values[KeepassDefault::TITLE],         // entry name
                                              getEntryIcon(entry->image()),          // icon uuid
                                              getUserAndPassword(entry),             // subtitle
                                              entryId,                               // identifier for item in list model
                                              uInt2QString(modelIds[i]));            // identifier for list model of master group
         } else {
-            emit updateItemInListModel(title,                                       // group name
+            emit updateItemInListModel(values[KeepassDefault::TITLE],               // entry name
                                        getEntryIcon(entry->image()),                // icon uuid
                                        getUserAndPassword(entry),                   // subtitle
                                        entryId,                                     // identifier for item in list model
@@ -562,40 +560,30 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QString title, Q
     s_password = entry->password();
     s_password.unlock();
 
-    // Add default keys and values (Keepass 1 does not provide custom keys and values as supported in Keepass 2)
-    keys.append(EntryAttributes::TitleKey);
-    keys.append(EntryAttributes::URLKey);
-    keys.append(EntryAttributes::UserNameKey);
-    keys.append(EntryAttributes::PasswordKey);
-    keys.append(EntryAttributes::NotesKey);
-    values.append(entry->title());
-    values.append(entry->url());
-    values.append(entry->username());
-    values.append(s_password.string());
-    values.append(entry->comment());
-
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if it needs to update the details
     emit entryLoaded((int)DatabaseAccessResult::RE_OK, "", entryId, keys, values, iconUuid);
     s_password.lock();
 }
 
-void Keepass1DatabaseInterface::slot_createNewEntry(QString title, QString url, QString username, QString password, QString comment, QString parentGroupId, QString iconUuid)
+void Keepass1DatabaseInterface::slot_createNewEntry(QList<QString> keys, QList<QString> values, QString parentGroupId, QString iconUuid)
 {
+    Q_UNUSED(keys)
     // create new entry in specified group
     IGroupHandle* parentGroup = (IGroupHandle*)qString2UInt(parentGroupId);
     Q_ASSERT(parentGroup);
     Q_ASSERT(m_kdb3Database);
     IEntryHandle* newEntry = m_kdb3Database->newEntry(parentGroup);
     // add data to new entry
-    newEntry->setTitle(title);
-    newEntry->setUrl(url);
-    newEntry->setUsername(username);
+    // Using predefined order of keys and values (Keepass 1 does not provide custom keys and values as supported in Keepass 2)
+    newEntry->setTitle(values[KeepassDefault::TITLE]);
+    newEntry->setUrl(values[KeepassDefault::URL]);
+    newEntry->setUsername(values[KeepassDefault::USERNAME]);
     SecString s_password;
-    s_password.setString(password);
+    s_password.setString(values[KeepassDefault::PASSWORD]);
     s_password.lock();
     newEntry->setPassword(s_password);
-    newEntry->setComment(comment);
+    newEntry->setComment(values[KeepassDefault::NOTES]);
     newEntry->setImage((quint32)UuidToIconNumber(iconUuid));
     // save changes to database
     if (!m_kdb3Database->save()) {
@@ -605,7 +593,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title, QString url, 
 
     // add entry to list model in order to update UI by sending signal to list models with identifier modelId
     if (m_setting_sortAlphabeticallyInListView) {
-        emit addItemToListModelSorted(title,                                       // title
+        emit addItemToListModelSorted(values[KeepassDefault::TITLE],               // title
                                       getEntryIcon(newEntry->image()),             // icon uuid
                                       getUserAndPassword(newEntry),                // subtitle
                                       uInt2QString(uint(newEntry)),                // item id
@@ -613,7 +601,7 @@ void Keepass1DatabaseInterface::slot_createNewEntry(QString title, QString url, 
                                       0,                                           // item level (not used here)
                                       parentGroupId);                              // id of list model where to put this entry in
     } else {
-        emit appendItemToListModel(title,                                          // title
+        emit appendItemToListModel(values[KeepassDefault::TITLE],                  // title
                                    getEntryIcon(newEntry->image()),                // icon uuid
                                    getUserAndPassword(newEntry),                   // subtitle
                                    uInt2QString(uint(newEntry)),                   // item id

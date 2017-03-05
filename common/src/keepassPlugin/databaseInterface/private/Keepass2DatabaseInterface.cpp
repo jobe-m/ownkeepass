@@ -350,7 +350,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 
 void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 {
-    QList<QString> keys; //entry->attributes()->customKeys();
+    QList<QString> keys;
     QList<QString> values;
 
     // get entry handler for entryId
@@ -564,13 +564,10 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
 }
 
 void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
-                                               QString title,
-                                               QString url,
-                                               QString username,
-                                               QString password,
-                                               QString comment,
+                                               QList<QString> keys,
+                                               QList<QString> values,
                                                QString iconUuid)
-// TODO edit icon
+// TODO feature/save_kdb2_entry
 {
     Q_ASSERT(m_Database);
     // get group handle and load group details
@@ -609,14 +606,14 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
     QList<Uuid> modelIds = m_entries_modelId.keys(entryUuid);
     for (int i = 0; i < modelIds.count(); i++) {
         if (m_setting_sortAlphabeticallyInListView) {
-            emit updateItemInListModelSorted(title,                                 // group name
+            emit updateItemInListModelSorted(values[KeepassDefault::TITLE],         // entry name
                                              getEntryIcon(entry->iconNumber(),
                                                           entry->iconUuid()),       // icon uuid
                                              getUserAndPassword(entry),             // subtitle
                                              entryId,                               // identifier for item in list model
                                              modelIds[i].toHex());                  // identifier for list model of master group
         } else {
-            emit updateItemInListModel(title,                                       // group name
+            emit updateItemInListModel(values[KeepassDefault::TITLE],               // entry name
                                        getEntryIcon(entry->iconNumber(),
                                                     entry->iconUuid()),             // icon uuid
                                        getUserAndPassword(entry),                   // subtitle
@@ -626,27 +623,6 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
     }
     // signal to QML
     emit entrySaved(DatabaseAccessResult::RE_OK, "", entryId);
-
-    // update all entry objects, there might be two instances open
-    // decrypt password which is usually stored encrypted in memory
-    QList<QString> keys;
-    QList<QString> values;
-    keys.append(EntryAttributes::TitleKey);
-    keys.append(EntryAttributes::URLKey);
-    keys.append(EntryAttributes::UserNameKey);
-    keys.append(EntryAttributes::PasswordKey);
-    keys.append(EntryAttributes::NotesKey);
-    values.append(entry->title());
-    values.append(entry->url());
-    values.append(entry->username());
-    values.append(entry->password());
-    values.append(entry->notes());
-
-    // Now add additional custom keys and values
-    Q_FOREACH (const QString& key, entry->attributes()->customKeys()) {
-        keys.append(key);
-        values.append(entry->attributes()->value(key));
-    }
 
     // send signal with all entry data to all connected entry objects
     // each object will check with entryId if it needs to update the details
@@ -659,14 +635,11 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
                                   entry->iconUuid()));
 }
 
-void Keepass2DatabaseInterface::slot_createNewEntry(QString title,
-                                                    QString url,
-                                                    QString username,
-                                                    QString password,
-                                                    QString comment,
+void Keepass2DatabaseInterface::slot_createNewEntry(QList<QString> keys,
+                                                    QList<QString> values,
                                                     QString parentGroupId,
                                                     QString iconUuid)
-// TODO edit icon
+// TODO feature/save_kdb2_entry
 {
     Q_ASSERT(m_Database);
 }

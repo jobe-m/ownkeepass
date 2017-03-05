@@ -53,11 +53,19 @@ Dialog {
     property bool iconUuidChanged: false
 
     function setTextFields(keys, values, aIconUuid) {
-        entryTitleTextField.text = origTitle = values[0]
-        entryUrlTextField.text = origUrl = values[1]
-        entryUsernameTextField.text = origUsername = values[2]
-        entryPasswordTextField.text = entryVerifyPasswordTextField.text = origPassword = values[3]
-        entryCommentTextField.text = origComment = values[4]
+        var maxKeys = keys.length
+        var i = 5
+        customKeyValueList.clear()
+        while (i < maxKeys) {
+            customKeyValueList.append({"key": keys[i], "value": values[i], "oldValue": values[i]})
+            ++i
+        }
+        entryTitleTextField.text          = origTitle    = values[KeepassDefault.TITLE]
+        entryUrlTextField.text            = origUrl      = values[KeepassDefault.URL]
+        entryUsernameTextField.text       = origUsername = values[KeepassDefault.USERNAME]
+        entryPasswordTextField.text       =
+        entryVerifyPasswordTextField.text = origPassword = values[KeepassDefault.PASSWORD]
+        entryCommentTextField.text        = origComment  = values[KeepassDefault.NOTES]
         iconUuid = origIconUuid = aIconUuid
     }
 
@@ -71,6 +79,31 @@ Dialog {
         }
     }
 
+    // Get all keys and values from the various text input fields
+    function prepareSaveEntryDetails() {
+        var keys = [ "title", "url", "username", "password", "notes" ]
+        var values = []
+        values[KeepassDefault.TITLE]    = entryTitleTextField.text
+        values[KeepassDefault.URL]      = entryUrlTextField.text
+        values[KeepassDefault.USERNAME] = entryUsernameTextField.text
+        values[KeepassDefault.PASSWORD] = entryPasswordTextField.text
+        values[KeepassDefault.NOTES]    = entryCommentTextField.text
+        var maxKeyValue = 5 + customKeyValueList.count
+        var i = 5
+        while (i < maxKeyValue) {
+            keys.push(customKeyValueList.get(i).key)
+            values.push(customKeyValueList.get(i).value)
+            ++i
+        }
+
+        kdbListItemInternal.setKdbEntryDetails(createNewEntry,
+                                               entryId,
+                                               parentGroupId,
+                                               keys,
+                                               values,
+                                               iconUuid)
+    }
+
     // set group icon for image element
     onIconUuidChanged: {
         iconUuidChanged = origIconUuid !== iconUuid ? true : false
@@ -80,6 +113,10 @@ Dialog {
     // forbit page navigation if title is not set and password is not verified and icon not set
     canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight && iconUuid.length !== -1
     allowedOrientations: applicationWindow.orientationSetting
+
+    ListModel {
+        id: customKeyValueList
+    }
 
     SilicaFlickable {
         anchors.fill: parent
@@ -314,6 +351,21 @@ Dialog {
                 }
                 focusOutBehavior: -1
             }
+
+            Repeater {
+                model: customKeyValueList
+
+                TextArea {
+                    width: parent.width
+                    label: key
+                    text: value
+                    onTextChanged: {
+// TODO feature/save_dkb2_entry
+// Check if text has changed...
+                        console.log("Changed text for: " + index)
+                    }
+                }
+            }
         }
     }
 
@@ -345,15 +397,7 @@ Dialog {
     // user wants to save new entry data
     onAccepted: {
         // first save locally Kdb entry details then trigger save to backend
-        kdbListItemInternal.setKdbEntryDetails(createNewEntry,
-                                               entryId,
-                                               parentGroupId,
-                                               entryTitleTextField.text,
-                                               entryUrlTextField.text,
-                                               entryUsernameTextField.text,
-                                               entryPasswordTextField.text,
-                                               entryCommentTextField.text,
-                                               iconUuid)
+        prepareSaveEntryDetails()
         kdbListItemInternal.saveKdbEntryDetails()
     }
     // user has rejected editing entry data, check if there are unsaved details
@@ -361,15 +405,7 @@ Dialog {
         // no need for saving if input fields are invalid
         if (canNavigateForward) {
             // first save locally Kdb entry details then trigger check for unsaved changes
-            kdbListItemInternal.setKdbEntryDetails(createNewEntry,
-                                                   entryId,
-                                                   parentGroupId,
-                                                   entryTitleTextField.text,
-                                                   entryUrlTextField.text,
-                                                   entryUsernameTextField.text,
-                                                   entryPasswordTextField.text,
-                                                   entryCommentTextField.text,
-                                                   iconUuid)
+            prepareSaveEntryDetails()
             kdbListItemInternal.checkForUnsavedKdbEntryChanges()
         }
     }

@@ -24,7 +24,6 @@
 #define KDBLISTMODEL_H
 
 #include <QAbstractListModel>
-#include <QStringList>
 #include "private/AbstractDatabaseInterface.h"
 #include "ownKeepassGlobal.h"
 

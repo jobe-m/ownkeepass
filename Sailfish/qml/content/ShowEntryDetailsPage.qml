@@ -33,26 +33,31 @@ Page {
     // ID of the keepass entry to be shown
     property string entryId: ""
 
-// TODO show icon
     function setTextFields(keys, values, iconUuid) {
+        console.log(keys + " " + values)
+/*        console.log(keys[KeepassDefault.TITLE] + " " + values[KeepassDefault.TITLE])
+        console.log(keys[KeepassDefault.URL] + " " + values[KeepassDefault.URL])
+        console.log(keys[KeepassDefault.USERNAME] + " " + values[KeepassDefault.USERNAME])
+        console.log(keys[KeepassDefault.PASSWORD] + " " + values[KeepassDefault.PASSWORD])
+        console.log(keys[KeepassDefault.NOTES] + " " + values[KeepassDefault.NOTES])
+*/
         var maxKeys = keys.length
         var i = 5
         customKeyValueList.clear()
         while (i < maxKeys) {
-//            console.log(keys[i] + " " + values[i])
             customKeyValueList.append({"key": keys[i], "value": values[i]})
             ++i
         }
-        pageHeader.title = values[0]
-        entryUrlTextArea.text = values[1]
-        entryUsernameTextArea.text = values[2]
-        entryPasswordTextField.text = values[3]
-        entryCommentTextArea.text = values[4]
+        pageHeader.title            = values[KeepassDefault.TITLE]
+        entryUrlTextArea.text       = values[KeepassDefault.URL]
+        entryUsernameTextArea.text  = values[KeepassDefault.USERNAME]
+        entryPasswordTextField.text = values[KeepassDefault.PASSWORD]
+        entryCommentTextArea.text   = values[KeepassDefault.NOTES]
 
         // set also cover
-        applicationWindow.cover.title = values[0]
-        applicationWindow.cover.username = values[2]
-        applicationWindow.cover.password = values[3]
+        applicationWindow.cover.title = values[KeepassDefault.TITLE]
+        applicationWindow.cover.username = values[KeepassDefault.USERNAME]
+        applicationWindow.cover.password = values[KeepassDefault.PASSWORD]
     }
 
     allowedOrientations: applicationWindow.orientationSetting

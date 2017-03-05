@@ -37,17 +37,12 @@ public:
 
 public:
     Q_INVOKABLE void loadEntryData();
-    Q_INVOKABLE void saveEntryData(QString title,
-                                   QString url,
-                                   QString username,
-                                   QString password,
-                                   QString comment,
+
+    Q_INVOKABLE void saveEntryData(QList<QString> keys,
+                                   QList<QString> values,
                                    QString iconUuid);
-    Q_INVOKABLE void createNewEntry(QString title,
-                                    QString url,
-                                    QString username,
-                                    QString password,
-                                    QString comment,
+    Q_INVOKABLE void createNewEntry(QList<QString> keys,
+                                    QList<QString> values,
                                     QString parentgroupId,
                                     QString iconUuid);
     Q_INVOKABLE void deleteEntry();
@@ -73,17 +68,11 @@ signals:
     // signals to interface of database client
     void loadEntryFromKdbDatabase(QString entryId);
     void saveEntryToKdbDatabase(QString entryId,
-                                QString title,
-                                QString url,
-                                QString username,
-                                QString password,
-                                QString comment,
+                                QList<QString> keys,
+                                QList<QString> values,
                                 QString iconUuid);
-    void createNewEntryInKdbDatabase(QString title,
-                                     QString url,
-                                     QString username,
-                                     QString password,
-                                     QString comment,
+    void createNewEntryInKdbDatabase(QList<QString> keys,
+                                     QList<QString> values,
                                      QString parentgroupId,
                                      QString iconUuid);
     void deleteEntryFromKdbDatabase(QString entryId);

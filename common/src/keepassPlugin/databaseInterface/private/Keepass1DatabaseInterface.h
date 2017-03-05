@@ -162,17 +162,11 @@ public slots:
     // signal from KdbEntry object
     void slot_loadEntry(QString entryId);
     void slot_saveEntry(QString entryId,
-                        QString title,
-                        QString url,
-                        QString username,
-                        QString password,
-                        QString comment,
+                        QList<QString> keys,
+                        QList<QString> values,
                         QString iconUuid);
-    void slot_createNewEntry(QString title,
-                             QString url,
-                             QString username,
-                             QString password,
-                             QString comment,
+    void slot_createNewEntry(QList<QString> keys,
+                             QList<QString> values,
                              QString parentGroupId,
                              QString iconUuid);
     void slot_deleteEntry(QString entryId);

@@ -295,83 +295,83 @@ by reviewjolla, 5 minutes ago</translation>
 <context>
     <name>EditEntryDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="109"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="146"/>
         <source>Save</source>
         <translation>Talleta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="110"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>Discard</source>
         <translation>Hylkää</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="114"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="151"/>
         <source>Change icon:</source>
         <translation type="unfinished">Vaihda kuvake:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="197"/>
         <source>Create new password entry:</source>
         <translation>Luo uusi salasana-tiedosto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="161"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="198"/>
         <source>Edit password entry:</source>
         <translation>Muuta salasana-tiedostoa:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="205"/>
         <source>Title</source>
         <translation>Otsikko</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="170"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="207"/>
         <source>Set title (mandatory)</source>
         <translation>Aseta otsikko (pakollinen)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="187"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="224"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="189"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="226"/>
         <source>Set URL</source>
         <translation>Aseta URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="204"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="241"/>
         <source>Username</source>
         <translation>Käyttäjänimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="206"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="243"/>
         <source>Set username</source>
         <translation>Aseta käyttäjänimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="228"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="265"/>
         <source>Password</source>
         <translation>Salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="231"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="268"/>
         <source>Set password</source>
         <translation>Aseta salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="271"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="274"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="308"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="311"/>
         <source>Verify password</source>
         <translation>Varmista salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="307"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="344"/>
         <source>Comment</source>
         <translation>Kommentti</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="309"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="346"/>
         <source>Set comment</source>
         <translation>Aseta kommentti</translation>
     </message>
@@ -1315,42 +1315,42 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Qstring &quot;%1&quot;:n muuntaminen kokonaisluvuksi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1100"/>
+        <location filename="../qml/content/MainPage.qml" line="1095"/>
         <source>Drop from List</source>
         <translation>Poista listalta</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1186"/>
+        <location filename="../qml/content/MainPage.qml" line="1181"/>
         <source>Yes</source>
         <translation>Kyllä</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1187"/>
+        <location filename="../qml/content/MainPage.qml" line="1182"/>
         <source>No</source>
         <translation>Ei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1188"/>
+        <location filename="../qml/content/MainPage.qml" line="1183"/>
         <source>Unsaved changes</source>
         <translation>Tallentamattomia muutoksia</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1216"/>
+        <location filename="../qml/content/MainPage.qml" line="1211"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Haluatko tallettaa muutokset salasanatiedostoon?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1221"/>
+        <location filename="../qml/content/MainPage.qml" line="1216"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Haluatko tallettaa muutokset salasanaryhmään?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1226"/>
+        <location filename="../qml/content/MainPage.qml" line="1221"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Haluatko tallettaa muutokset tietokannan asetuksiin?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1231"/>
+        <location filename="../qml/content/MainPage.qml" line="1226"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Haluatko tallettaa muutokset asetusarvoihin?</translation>
     </message>
@@ -1548,58 +1548,58 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="79"/>
         <source>No content</source>
         <translation>Ei sisältöä</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="81"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation>Vedä alas lisätäksesi URL, käyttäjänimi, salasana ja kommentti</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="92"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="97"/>
         <source>Read only mode</source>
         <translation>Vain luku -tila</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="98"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="103"/>
         <source>Copy URL</source>
         <translation>Kopioi URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="107"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="112"/>
         <source>Copy username</source>
         <translation>Kopioi käyttäjänimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="118"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="123"/>
         <source>Copy password</source>
         <translation>Kopioi salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="129"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="134"/>
         <source>Edit password entry</source>
         <translation>Muokkaa salasanatiedostoa</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="166"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="171"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="181"/>
         <source>Username</source>
         <translation>Käyttäjänimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="194"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="208"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="199"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="213"/>
         <source>Password</source>
         <translation>Salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="240"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="245"/>
         <source>Comment</source>
         <translation>Kommentti</translation>
     </message>

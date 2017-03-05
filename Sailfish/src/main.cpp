@@ -87,6 +87,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<ownKeepassPublic::DatabaseAccessResult>(uri, 1, 0, "DatabaseAccessResult");
     qmlRegisterType<ownKeepassPublic::DatabaseItemType>(uri, 1, 0, "DatabaseItemType");
     qmlRegisterType<ownKeepassPublic::DatabaseType>(uri, 1, 0, "DatabaseType");
+    qmlRegisterType<ownKeepassPublic::DatabaseType>(uri, 1, 0, "KeepassDefault");
 
     // Setup some class as context properties and make them accessible in QML
     QScopedPointer<OwnKeepassHelper> helper(new OwnKeepassHelper());

@@ -23,6 +23,7 @@
 #ifndef DATABASEINTERFACE_H
 #define DATABASEINTERFACE_H
 
+#include <QList>
 #include <QString>
 #include <QImage>
 
@@ -209,17 +210,11 @@ public: // slots
     // signal from KdbEntry object
     virtual void slot_loadEntry(QString entryId) = 0;
     virtual void slot_saveEntry(QString entryId,
-                                QString title,
-                                QString url,
-                                QString username,
-                                QString password,
-                                QString comment,
+                                QList<QString> keys,
+                                QList<QString> values,
                                 QString iconUuid) = 0;
-    virtual void slot_createNewEntry(QString title,
-                                     QString url,
-                                     QString username,
-                                     QString password,
-                                     QString comment,
+    virtual void slot_createNewEntry(QList<QString> keys,
+                                     QList<QString> values,
                                      QString parentGroupId,
                                      QString iconUuid) = 0;
     virtual void slot_deleteEntry(QString entryId) = 0;
