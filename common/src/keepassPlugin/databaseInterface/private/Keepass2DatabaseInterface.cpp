@@ -350,8 +350,8 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 
 void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 {
-    QList<QString> keys;
-    QList<QString> values;
+    QStringList keys;
+    QStringList values;
 
     // get entry handler for entryId
     Entry* entry = m_Database->resolveEntry(qString2Uuid(entryId));
@@ -564,8 +564,8 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
 }
 
 void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
-                                               QList<QString> keys,
-                                               QList<QString> values,
+                                               QStringList keys,
+                                               QStringList values,
                                                QString iconUuid)
 // TODO feature/save_kdb2_entry
 {
@@ -635,8 +635,8 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
                                   entry->iconUuid()));
 }
 
-void Keepass2DatabaseInterface::slot_createNewEntry(QList<QString> keys,
-                                                    QList<QString> values,
+void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
+                                                    QStringList values,
                                                     QString parentGroupId,
                                                     QString iconUuid)
 // TODO feature/save_kdb2_entry

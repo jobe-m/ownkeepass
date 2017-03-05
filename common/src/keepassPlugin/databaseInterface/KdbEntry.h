@@ -34,27 +34,25 @@ class KdbEntry : public QObject
 
 public:
     Q_PROPERTY(QString entryId READ getEntryId WRITE setEntryId STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString title READ getTitle WRITE setTitle STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString url READ getUrl WRITE setUrl STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString userName READ getUserName WRITE setUserName STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString password READ getPassword WRITE setPassword STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString notes READ getNotes WRITE setNotes STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString iconUuid READ getIconUuid WRITE setIconUuid STORED true SCRIPTABLE true)
 
 public:
     Q_INVOKABLE void loadEntryData();
 
-    Q_INVOKABLE void saveEntryData(QList<QString> keys,
-                                   QList<QString> values,
-                                   QString iconUuid);
-    Q_INVOKABLE void createNewEntry(QList<QString> keys,
-                                    QList<QString> values,
-                                    QString parentgroupId,
-                                    QString iconUuid);
+    Q_INVOKABLE void saveEntryData();
+    Q_INVOKABLE void createNewEntry(QString parentgroupId);
     Q_INVOKABLE void deleteEntry();
     Q_INVOKABLE void moveEntry(QString newGroupId);
 
 signals:
     // signals to QML
     void entryDataLoaded(int result,
-                         QString errorMsg,
-                         QList<QString> keys,
-                         QList<QString> values,
-                         QString iconUuid);
+                         QString errorMsg);
     void entryDataSaved(int result,
                         QString errorMsg);
     void newEntryCreated(int result,
@@ -68,11 +66,11 @@ signals:
     // signals to interface of database client
     void loadEntryFromKdbDatabase(QString entryId);
     void saveEntryToKdbDatabase(QString entryId,
-                                QList<QString> keys,
-                                QList<QString> values,
+                                QStringList keys,
+                                QStringList values,
                                 QString iconUuid);
-    void createNewEntryInKdbDatabase(QList<QString> keys,
-                                     QList<QString> values,
+    void createNewEntryInKdbDatabase(QStringList keys,
+                                     QStringList values,
                                      QString parentgroupId,
                                      QString iconUuid);
     void deleteEntryFromKdbDatabase(QString entryId);
@@ -83,8 +81,8 @@ public slots:
     void slot_entryDataLoaded(int result,
                               QString errorMsg,
                               QString entryId,
-                              QList<QString> keys,
-                              QList<QString> values,
+                              QStringList keys,
+                              QStringList values,
                               QString iconUuid);
     void slot_entryDataSaved(int result,
                              QString errorMsg,
@@ -106,13 +104,33 @@ public:
 
     QString getEntryId() const { return m_entryId; }
     void setEntryId(const QString value) { m_entryId = value; }
+    QString getTitle() const { return m_title; }
+    void setTitle(const String value) { m_title = value; }
+    QString getUrl() const { return m_url; }
+    void setUrl(const String value) { m_url = value; }
+    QString getUserName() const { return m_userName; }
+    void setUserName(const String value) { m_userName = value; }
+    QString getPassword() const { return m_password; }
+    void setPassword(const String value) { m_password = value; }
+    QString getNotes() const { return m_notes; }
+    void setNotes(const String value) { m_notes = value; }
+    QString getIconUuid() const { return m_iconUuid; }
+    void setIconUuid(const QString value) { m_iconUuid = value; }
 
 private:
+    void clearData();
     bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
 
 private:
     QString m_entryId;
+    QString m_title;
+    QString m_url;
+    QString m_userName;
+    QString m_password;
+    QString m_notes;
+    QString m_iconUuid;
+
     bool m_connected;
     bool m_new_entry_triggered;
 };

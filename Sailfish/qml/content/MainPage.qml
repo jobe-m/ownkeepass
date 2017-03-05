@@ -971,7 +971,7 @@ Page {
 
     KdbEntry {
         id: kdbEntry
-        onEntryDataLoaded: kdbListItemInternal.loadKdbEntryDetails(keys, values, iconUuid)
+        onEntryDataLoaded: mainPage.errorHandler(result, errorMsg)
         onEntryDataSaved: mainPage.errorHandler(result, errorMsg)
         onNewEntryCreated: mainPage.errorHandler(result, errorMsg)
     }

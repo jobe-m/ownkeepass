@@ -357,8 +357,8 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 
 void Keepass1DatabaseInterface::slot_loadEntry(QString entryId)
 {
-    QList<QString> keys;
-    QList<QString> values;
+    QStringList keys;
+    QStringList values;
 
     // get entry handler for entryId
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);
@@ -506,7 +506,7 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes
     emit newGroupCreated(DatabaseAccessResult::RE_OK, "", uInt2QString(uint(newGroup)));
 }
 
-void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QList<QString> keys, QList<QString> values, QString iconUuid)
+void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QStringList keys, QStringList values, QString iconUuid)
 {
     Q_ASSERT(m_kdb3Database);
     //  save changes on entry details to database
@@ -566,7 +566,7 @@ void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QList<QString> k
     s_password.lock();
 }
 
-void Keepass1DatabaseInterface::slot_createNewEntry(QList<QString> keys, QList<QString> values, QString parentGroupId, QString iconUuid)
+void Keepass1DatabaseInterface::slot_createNewEntry(QStringList keys, QStringList values, QString parentGroupId, QString iconUuid)
 {
     Q_UNUSED(keys)
     // create new entry in specified group

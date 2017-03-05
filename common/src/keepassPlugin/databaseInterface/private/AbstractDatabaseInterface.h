@@ -142,8 +142,8 @@ protected: // signals
     virtual void entryLoaded(int result,
                              QString errorMsg,
                              QString entryId,
-                             QList<QString> keys,
-                             QList<QString> values,
+                             QStringList keys,
+                             QStringList values,
                              QString iconUuid) = 0;
     virtual void entrySaved(int result,
                             QString errorMsg,
@@ -210,11 +210,11 @@ public: // slots
     // signal from KdbEntry object
     virtual void slot_loadEntry(QString entryId) = 0;
     virtual void slot_saveEntry(QString entryId,
-                                QList<QString> keys,
-                                QList<QString> values,
+                                QStringList keys,
+                                QStringList values,
                                 QString iconUuid) = 0;
-    virtual void slot_createNewEntry(QList<QString> keys,
-                                     QList<QString> values,
+    virtual void slot_createNewEntry(QStringList keys,
+                                     QStringList values,
                                      QString parentGroupId,
                                      QString iconUuid) = 0;
     virtual void slot_deleteEntry(QString entryId) = 0;

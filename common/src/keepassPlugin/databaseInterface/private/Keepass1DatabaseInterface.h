@@ -94,8 +94,8 @@ signals:
     void entryLoaded(int result,
                      QString errorMsg,
                      QString entryId,
-                     QList<QString> keys,
-                     QList<QString> values,
+                     QStringList keys,
+                     QStringList values,
                      QString iconUuid);
     void entrySaved(int result,
                     QString errorMsg,
@@ -162,11 +162,11 @@ public slots:
     // signal from KdbEntry object
     void slot_loadEntry(QString entryId);
     void slot_saveEntry(QString entryId,
-                        QList<QString> keys,
-                        QList<QString> values,
+                        QStringList keys,
+                        QStringList values,
                         QString iconUuid);
-    void slot_createNewEntry(QList<QString> keys,
-                             QList<QString> values,
+    void slot_createNewEntry(QStringList keys,
+                             QStringList values,
                              QString parentGroupId,
                              QString iconUuid);
     void slot_deleteEntry(QString entryId);
