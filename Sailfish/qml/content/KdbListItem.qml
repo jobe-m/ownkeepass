@@ -84,7 +84,7 @@ ListItem {
                 break
             case DatabaseItemType.ENTRY:
                 pageStack.push(showEntryDetailsPageComponent,
-                               { "pageTitle": model.name, "entryId": model.id })
+                               { "entryId": model.id })
                 break
             }
         }

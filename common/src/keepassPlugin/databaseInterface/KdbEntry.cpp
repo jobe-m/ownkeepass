@@ -41,8 +41,15 @@ KdbEntry::KdbEntry(QObject *parent)
       m_password(""),
       m_notes(""),
       m_iconUuid(""),
+      m_original_title(""),
+      m_original_url(""),
+      m_original_userName(""),
+      m_original_password(""),
+      m_original_notes(""),
+      m_original_iconUuid(""),
       m_connected(false),
-      m_new_entry_triggered(false)
+      m_new_entry_triggered(false),
+      m_edited(false)
 {}
 
 bool KdbEntry::connectToDatabaseClient()
@@ -148,6 +155,7 @@ void KdbEntry::saveEntryData()
         keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
              << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
         values << m_title << m_url << m_userName << m_password << m_notes;
+        qDebug() << "Save entry data: " << m_title << m_url << m_userName << m_password << m_notes;
         emit saveEntryToKdbDatabase(m_entryId, keys, values, m_iconUuid);
     }
 }
@@ -205,12 +213,12 @@ void KdbEntry::slot_entryDataLoaded(int result,
     Q_UNUSED(keys)
     // forward signal to QML only if the signal is for us
     if (entryId.compare(m_entryId) == 0) {
-        m_title    = values[KeepassDefault::TITLE];
-        m_url      = values[KeepassDefault::URL];
-        m_userName = values[KeepassDefault::USERNAME];
-        m_password = values[KeepassDefault::PASSWORD];
-        m_notes    = values[KeepassDefault::NOTES];
-        m_iconUuid = iconUuid;
+        m_original_title    = m_title    = values[KeepassDefault::TITLE];
+        m_original_url      = m_url      = values[KeepassDefault::URL];
+        m_original_userName = m_userName = values[KeepassDefault::USERNAME];
+        m_original_password = m_password = values[KeepassDefault::PASSWORD];
+        m_original_notes    = m_notes    = values[KeepassDefault::NOTES];
+        m_original_iconUuid = m_iconUuid = iconUuid;
         emit entryDataLoaded(result, errorMsg);
     }
 }
@@ -269,4 +277,23 @@ void KdbEntry::clearData()
     m_password = "";
     m_notes    = "";
     m_iconUuid = "";
+    m_original_title    = "";
+    m_original_url      = "";
+    m_original_userName = "";
+    m_original_password = "";
+    m_original_notes    = "";
+    m_original_iconUuid = "";
+    m_edited = false;
+}
+
+void KdbEntry::checkIfEdited()
+{
+    if (m_title == m_original_title && m_url == m_original_url &&
+        m_userName == m_original_userName && m_password == m_original_password &&
+        m_notes == m_original_notes && m_iconUuid == m_original_iconUuid) {
+        m_edited = false;
+    } else {
+        m_edited = true;
+    }
+    emit dataEdited();
 }

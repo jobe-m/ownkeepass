@@ -34,12 +34,14 @@ class KdbEntry : public QObject
 
 public:
     Q_PROPERTY(QString entryId READ getEntryId WRITE setEntryId STORED true SCRIPTABLE true)
-    Q_PROPERTY(QString title READ getTitle WRITE setTitle STORED true SCRIPTABLE true)
-    Q_PROPERTY(QString url READ getUrl WRITE setUrl STORED true SCRIPTABLE true)
-    Q_PROPERTY(QString userName READ getUserName WRITE setUserName STORED true SCRIPTABLE true)
-    Q_PROPERTY(QString password READ getPassword WRITE setPassword STORED true SCRIPTABLE true)
-    Q_PROPERTY(QString notes READ getNotes WRITE setNotes STORED true SCRIPTABLE true)
-    Q_PROPERTY(QString iconUuid READ getIconUuid WRITE setIconUuid STORED true SCRIPTABLE true)
+    Q_PROPERTY(QString title READ getTitle WRITE setTitle STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
+    Q_PROPERTY(QString url READ getUrl WRITE setUrl STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
+    Q_PROPERTY(QString userName READ getUserName WRITE setUserName STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
+    Q_PROPERTY(QString password READ getPassword WRITE setPassword STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
+    Q_PROPERTY(QString notes READ getNotes WRITE setNotes STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
+    Q_PROPERTY(QString iconUuid READ getIconUuid WRITE setIconUuid STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
+
+    Q_PROPERTY(bool edited READ getEdited NOTIFY dataEdited)
 
 public:
     Q_INVOKABLE void loadEntryData();
@@ -51,6 +53,7 @@ public:
 
 signals:
     // signals to QML
+    void dataEdited();
     void entryDataLoaded(int result,
                          QString errorMsg);
     void entryDataSaved(int result,
@@ -105,34 +108,44 @@ public:
     QString getEntryId() const { return m_entryId; }
     void setEntryId(const QString value) { m_entryId = value; }
     QString getTitle() const { return m_title; }
-    void setTitle(const String value) { m_title = value; }
+    void setTitle(const QString value) { m_title = value; checkIfEdited(); }
     QString getUrl() const { return m_url; }
-    void setUrl(const String value) { m_url = value; }
+    void setUrl(const QString value) { m_url = value; checkIfEdited(); }
     QString getUserName() const { return m_userName; }
-    void setUserName(const String value) { m_userName = value; }
+    void setUserName(const QString value) { m_userName = value; checkIfEdited(); }
     QString getPassword() const { return m_password; }
-    void setPassword(const String value) { m_password = value; }
+    void setPassword(const QString value) { m_password = value; checkIfEdited(); }
     QString getNotes() const { return m_notes; }
-    void setNotes(const String value) { m_notes = value; }
+    void setNotes(const QString value) { m_notes = value; checkIfEdited(); }
     QString getIconUuid() const { return m_iconUuid; }
-    void setIconUuid(const QString value) { m_iconUuid = value; }
+    void setIconUuid(const QString value) { m_iconUuid = value; checkIfEdited(); }
+    bool getEdited() const { return m_edited; }
 
 private:
     void clearData();
     bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
+    void checkIfEdited();
 
 private:
     QString m_entryId;
+
     QString m_title;
     QString m_url;
     QString m_userName;
     QString m_password;
     QString m_notes;
     QString m_iconUuid;
+    QString m_original_title;
+    QString m_original_url;
+    QString m_original_userName;
+    QString m_original_password;
+    QString m_original_notes;
+    QString m_original_iconUuid;
 
     bool m_connected;
     bool m_new_entry_triggered;
+    bool m_edited;
 };
 
 }

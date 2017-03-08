@@ -35,11 +35,11 @@ Dialog {
     // creation of new entry needs parent group ID
     property string parentGroupId: ""
     // icon for entry (either a default icon or a custom database icon)
-    property string iconUuid: ""
+//    property string iconUuid: ""
 
     // The following properties are used to check if text of any entry detail was changed. If so,
     // set cover page accordingly to signal the user unsaved changes
-    property string origTitle: ""
+/*    property string origTitle: ""
     property string origUrl: ""
     property string origUsername: ""
     property string origPassword: ""
@@ -51,8 +51,8 @@ Dialog {
     property bool passwordChanged: false
     property bool commentChanged: false
     property bool iconUuidChanged: false
-
-    function setTextFields(keys, values, aIconUuid) {
+*/
+/*    function setTextFields(keys, values, aIconUuid) {
         var maxKeys = keys.length
         var i = 5
         customKeyValueList.clear()
@@ -68,52 +68,37 @@ Dialog {
         entryCommentTextField.text        = origComment  = values[KeepassDefault.NOTES]
         iconUuid = origIconUuid = aIconUuid
     }
-
+*/
     // This function should be called when any text is changed to check if the
     // cover page state needs to be updated
-    function updateCoverState() {
-        if (titleChanged || urlChanged || usernameChanged || passwordChanged || commentChanged || iconUuidChanged) {
+    function updateCoverState(value) {
+        if (value) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
         } else {
             applicationWindow.cover.state = "ENTRY_VIEW"
         }
     }
 
-    // Get all keys and values from the various text input fields
+    // Get all values from the various text input fields and feed into the kdbEntry object
     function prepareSaveEntryDetails() {
-        var keys = [ "title", "url", "username", "password", "notes" ]
-        var values = []
-        values[KeepassDefault.TITLE]    = entryTitleTextField.text
-        values[KeepassDefault.URL]      = entryUrlTextField.text
-        values[KeepassDefault.USERNAME] = entryUsernameTextField.text
-        values[KeepassDefault.PASSWORD] = entryPasswordTextField.text
-        values[KeepassDefault.NOTES]    = entryCommentTextField.text
-        var maxKeyValue = 5 + customKeyValueList.count
-        var i = 5
-        while (i < maxKeyValue) {
-            keys.push(customKeyValueList.get(i).key)
-            values.push(customKeyValueList.get(i).value)
-            ++i
-        }
-
-        kdbListItemInternal.setKdbEntryDetails(createNewEntry,
-                                               entryId,
-                                               parentGroupId,
-                                               keys,
-                                               values,
-                                               iconUuid)
+        kdbEntry.title    = entryTitleTextField.text
+        kdbEntry.url      = entryUrlTextField.text
+        kdbEntry.userName = entryUsernameTextField.text
+        kdbEntry.password = entryPasswordTextField.text
+        kdbEntry.notes    = entryCommentTextField.text
     }
 
     // set group icon for image element
-    onIconUuidChanged: {
-        iconUuidChanged = origIconUuid !== iconUuid ? true : false
-        entryIcon.source = "image://KeepassIcon/" + iconUuid
-    }
+//    onIconUuidChanged: {
+//        iconUuidChanged = origIconUuid !== iconUuid ? true : false
+//        entryIcon.source = "image://KeepassIcon/" + iconUuid
+//    }
 
     // forbit page navigation if title is not set and password is not verified and icon not set
-    canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight && iconUuid.length !== -1
+    canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight
     allowedOrientations: applicationWindow.orientationSetting
 
+// TODO feature/save_dkb2_entry
     ListModel {
         id: customKeyValueList
     }
@@ -170,7 +155,7 @@ Dialog {
                         onClicked: {
                             // open new dialog with grid of all icons
                             pageStack.push( editItemIconDialog,
-                                           { "newIconUuid": iconUuid })
+                                           { "newIconUuid": kdbEntry.iconUuid })
                         }
                     }
                 }
@@ -183,6 +168,7 @@ Dialog {
                     fillMode: Image.PreserveAspectFit
                     asynchronous: true
                     opacity: entryIconMouseArea.pressed ? 0.5 : 1.0
+                    source: "image://KeepassIcon/" + kdbEntry.iconUuid
                 }
 
                 Rectangle {
@@ -203,16 +189,14 @@ Dialog {
                 width: parent.width
                 inputMethodHints: Qt.ImhSensitiveData
                 label: qsTr("Title")
-                text: ""
+                text: kdbEntry.title
                 placeholderText: qsTr("Set title (mandatory)")
                 errorHighlight: text.length === 0
                 EnterKey.enabled: !errorHighlight
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUrlTextField.focus = true
                 onTextChanged: {
-                    editEntryDetailsDialog.titleChanged =
-                            (editEntryDetailsDialog.origTitle !== text ? true : false)
-                    editEntryDetailsDialog.updateCoverState()
+                    updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1 // This doesn't let the eye button steal focus
             }
@@ -222,14 +206,12 @@ Dialog {
                 width: parent.width
                 inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhSensitiveData
                 label: qsTr("URL")
-                text: ""
+                text: kdbEntry.url
                 placeholderText: qsTr("Set URL")
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUsernameTextField.focus = true
                 onTextChanged: {
-                    editEntryDetailsDialog.urlChanged =
-                            (editEntryDetailsDialog.origUrl !== text ? true : false)
-                    editEntryDetailsDialog.updateCoverState()
+                    updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1
             }
@@ -239,14 +221,12 @@ Dialog {
                 width: parent.width
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData
                 label: qsTr("Username")
-                text: ""
+                text: kdbEntry.userName
                 placeholderText: qsTr("Set username")
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryPasswordTextField.focus = true
                 onTextChanged: {
-                    editEntryDetailsDialog.usernameChanged =
-                            (editEntryDetailsDialog.origUsername !== text ? true : false)
-                    editEntryDetailsDialog.updateCoverState()
+                    updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1
             }
@@ -263,15 +243,13 @@ Dialog {
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
                     echoMode: TextInput.Password
                     label: qsTr("Password")
-                    text: ""
+                    text: kdbEntry.password
                     font.family: 'monospace'
                     placeholderText: qsTr("Set password")
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
                     onTextChanged: {
-                        editEntryDetailsDialog.passwordChanged =
-                                (editEntryDetailsDialog.origPassword !== text ? true : false)
-                        editEntryDetailsDialog.updateCoverState()
+                        updateCoverState(kdbEntry.edited)
                     }
                     focusOutBehavior: -1
                 }
@@ -342,12 +320,10 @@ Dialog {
                 id: entryCommentTextField
                 width: parent.width
                 label: qsTr("Comment")
-                text: ""
+                text: kdbEntry.notes
                 placeholderText: qsTr("Set comment")
                 onTextChanged: {
-                    editEntryDetailsDialog.commentChanged =
-                            (editEntryDetailsDialog.origComment !== text ? true : false)
-                    editEntryDetailsDialog.updateCoverState()
+                    updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1
             }
@@ -374,13 +350,14 @@ Dialog {
         itemType: DatabaseItemType.ENTRY
 
         onAccepted: {
-            iconUuid = newIconUuid
+            entryIcon.source = "image://KeepassIcon/" + newIconUuid
+            kdbEntry.iconUuid = newIconUuid
         }
     }
 
     Component.onCompleted: {
         // set reference in kdbListItemInternal object
-        kdbListItemInternal.editEntryDetailsDialogRef = editEntryDetailsDialog
+//        kdbListItemInternal.editEntryDetailsDialogRef = editEntryDetailsDialog
 
         kdbEntry.entryId = entryId
         if (!createNewEntry) {
@@ -391,14 +368,14 @@ Dialog {
 
     Component.onDestruction: {
         // unset again
-        kdbListItemInternal.editEntryDetailsDialogRef = null
+//        kdbListItemInternal.editEntryDetailsDialogRef = null
     }
 
     // user wants to save new entry data
     onAccepted: {
         // first save locally Kdb entry details then trigger save to backend
         prepareSaveEntryDetails()
-        kdbListItemInternal.saveKdbEntryDetails()
+        kdbListItemInternal.saveKdbEntryDetails(createNewEntry)
     }
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {

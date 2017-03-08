@@ -29,39 +29,13 @@ import "../scripts/Global.js" as Global
 Page {
     id: showEntryDetailsPage
 
-    property string pageTitle: ""
     // ID of the keepass entry to be shown
     property string entryId: ""
 
-    function setTextFields(keys, values, iconUuid) {
-        console.log(keys + " " + values)
-/*        console.log(keys[KeepassDefault.TITLE] + " " + values[KeepassDefault.TITLE])
-        console.log(keys[KeepassDefault.URL] + " " + values[KeepassDefault.URL])
-        console.log(keys[KeepassDefault.USERNAME] + " " + values[KeepassDefault.USERNAME])
-        console.log(keys[KeepassDefault.PASSWORD] + " " + values[KeepassDefault.PASSWORD])
-        console.log(keys[KeepassDefault.NOTES] + " " + values[KeepassDefault.NOTES])
-*/
-        var maxKeys = keys.length
-        var i = 5
-        customKeyValueList.clear()
-        while (i < maxKeys) {
-            customKeyValueList.append({"key": keys[i], "value": values[i]})
-            ++i
-        }
-        pageHeader.title            = values[KeepassDefault.TITLE]
-        entryUrlTextArea.text       = values[KeepassDefault.URL]
-        entryUsernameTextArea.text  = values[KeepassDefault.USERNAME]
-        entryPasswordTextField.text = values[KeepassDefault.PASSWORD]
-        entryCommentTextArea.text   = values[KeepassDefault.NOTES]
-
-        // set also cover
-        applicationWindow.cover.title = values[KeepassDefault.TITLE]
-        applicationWindow.cover.username = values[KeepassDefault.USERNAME]
-        applicationWindow.cover.password = values[KeepassDefault.PASSWORD]
-    }
-
     allowedOrientations: applicationWindow.orientationSetting
 
+// TODO feature/save_kdb2_entry
+// get list view from kdbEntry somehow
     ListModel {
         id: customKeyValueList
     }
@@ -134,7 +108,7 @@ Page {
                 text: qsTr("Edit password entry")
                 onClicked: {
                     pageStack.push(editEntryDetailsDialogComponent,
-                                   { "entryId": showEntryDetailsPage.entryId })
+                                   { "entryId": entryId })
                 }
             }
 
@@ -156,10 +130,10 @@ Page {
 
             PageHeaderExtended {
                 id: pageHeader
-                title: pageTitle
+                title: kdbEntry.title
                 subTitle: "ownKeepass"
                 subTitleOpacity: 0.5
-                subTitleBottomMargin: showEntryDetailsPage.orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
+                subTitleBottomMargin: orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
             TextArea {
@@ -170,6 +144,7 @@ Page {
                 readOnly: true
                 label: qsTr("URL")
                 color: Theme.primaryColor
+                text: kdbEntry.url
             }
 
             TextArea {
@@ -180,6 +155,7 @@ Page {
                 readOnly: true
                 label: qsTr("Username")
                 color: Theme.primaryColor
+                text: kdbEntry.userName
             }
 
             Item {
@@ -199,6 +175,7 @@ Page {
                     label: qsTr("Password")
                     color: Theme.primaryColor
                     font.family: 'monospace'
+                    text: kdbEntry.password
 
                     Behavior on opacity { FadeAnimation {} }
                 }
@@ -244,10 +221,12 @@ Page {
                 readOnly: true
                 label: qsTr("Comment")
                 color: Theme.primaryColor
+                text: kdbEntry.notes
             }
 
             Repeater {
                 model: customKeyValueList
+// TODO feature/save_dkb2_entry
 
                 TextArea {
                     width: parent.width
@@ -261,16 +240,9 @@ Page {
     }
 
     Component.onCompleted: {
-        // set reference in kdbListItemInternal object
-        kdbListItemInternal.showEntryDetailsPageRef = showEntryDetailsPage
         // set entry ID and load entry details to show in this page
-        kdbEntry.entryId = showEntryDetailsPage.entryId
+        kdbEntry.entryId = entryId
         kdbEntry.loadEntryData()
-    }
-    Component.onDestruction: {
-        // unset again
-        kdbListItemInternal.showEntryDetailsPageRef = null
-        // reset cover state to database opened
     }
 
     onStatusChanged: {

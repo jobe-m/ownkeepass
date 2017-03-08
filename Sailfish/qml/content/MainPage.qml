@@ -38,6 +38,7 @@ Page {
     property Component editDatabaseSettingsDialogComponent: editDatabaseSettingsDialogComponent
     property Component editSettingsDialogComponent: editSettingsDialogComponent
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
+//    property Component kdbEntry: kdbEntry
 
     // internal
     property string __unlockCharA: ""
@@ -695,7 +696,6 @@ Page {
           */
         property Dialog editEntryDetailsDialogRef: null
         property Dialog editGroupDetailsDialogRef: null
-        property Page   showEntryDetailsPageRef: null
 
         /*
           Here are all Kdb entry details which are used to create a new entry, save changes to an
@@ -771,26 +771,24 @@ Page {
             }
         }
 
-        function saveKdbEntryDetails() {
-            // Set entry ID and create or save Kdb Entry
-            kdbEntry.entryId = itemId
+        function saveKdbEntryDetails(createNewItem) {
             if (createNewItem) {
                 // create new group in database, save and update list model data in backend
-                kdbEntry.createNewEntry(entryKeys,
-                                        entryValues,
-                                        parentGroupId,
-                                        entryIconUuid)
+                kdbEntry.createNewEntry(parentGroupId)
             } else {
                 // save changes of existing group to database and update list model data in backend
-                kdbEntry.saveEntryData(entryKeys,
-                                       entryValues,
-                                       entryIconUuid)
+                kdbEntry.saveEntryData()
             }
         }
 
         function checkForUnsavedKdbEntryChanges() {
             // check if the user has changed any entry details
-            if (entryValues.length !== originalEntryValues.length) {
+            if (kdbEntry.edited) {
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "state": "QUERY_FOR_ENTRY" })
+            }
+
+/*            if (entryValues.length !== originalEntryValues.length) {
                 // open query dialog for unsaved changes
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_ENTRY" })
@@ -807,6 +805,7 @@ Page {
                 }
                 ++i
             }
+*/
         }
 
         function checkForUnsavedKdbGroupChanges() {
@@ -816,19 +815,6 @@ Page {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_GROUP" })
             }
-        }
-
-        function loadKdbEntryDetails(keys, values, iconUuid) {
-            entryKeys   = originalEntryKeys   = keys
-            entryValues = originalEntryValues = values
-            entryIconUuid = originalEntryIconUuid = iconUuid
-
-            // Populate entry detail text fields in editEntryDetailsDialog or showEntryDetailsPage
-            // depending on which is currently active
-            if (editEntryDetailsDialogRef)
-                editEntryDetailsDialogRef.setTextFields(keys, values, iconUuid)
-            if (showEntryDetailsPageRef)
-                showEntryDetailsPageRef.setTextFields(keys, values, iconUuid)
         }
 
         function loadKdbGroupDetails(name, notes, iconUuid) {

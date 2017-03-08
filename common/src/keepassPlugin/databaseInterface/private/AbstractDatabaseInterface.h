@@ -23,8 +23,8 @@
 #ifndef DATABASEINTERFACE_H
 #define DATABASEINTERFACE_H
 
-#include <QList>
 #include <QString>
+#include <QStringList>
 #include <QImage>
 
 
