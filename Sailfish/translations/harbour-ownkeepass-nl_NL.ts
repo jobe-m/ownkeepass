@@ -294,85 +294,90 @@
 <context>
     <name>EditEntryDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="131"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="83"/>
         <source>Save</source>
-        <translation>Opslaan</translation>
+        <translation type="unfinished">Opslaan</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="84"/>
         <source>Discard</source>
-        <translation>Verwerpen</translation>
+        <translation type="unfinished">Verwerpen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="88"/>
         <source>Change icon:</source>
         <translation type="unfinished">Pictogram wijzigen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="183"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="134"/>
         <source>Create new password entry:</source>
-        <translation>Nieuwe wachtwoordinvoer aanmaken:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="184"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="135"/>
         <source>Edit password entry:</source>
-        <translation>Wachtwoordinvoer bewerken:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="191"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="142"/>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="193"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="144"/>
         <source>Set title (mandatory)</source>
-        <translation>Titel instellen (verplicht)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="208"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished">URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="210"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="162"/>
         <source>Set URL</source>
-        <translation>URL instellen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="223"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="176"/>
         <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <translation type="unfinished">Gebruikersnaam</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="225"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="178"/>
         <source>Set username</source>
-        <translation>Gebruikersnaam instellen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="230"/>
         <source>Password</source>
-        <translation>Wachtwoord</translation>
+        <translation type="unfinished">Wachtwoord</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="248"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="204"/>
         <source>Set password</source>
-        <translation>Wachtwoord instellen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="286"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="289"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="231"/>
         <source>Verify password</source>
-        <translation>Wachtwoord bevestigen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="322"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="253"/>
+        <source>Generate password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="266"/>
         <source>Comment</source>
-        <translation>Opmerking</translation>
+        <translation type="unfinished">Opmerking</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="324"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="268"/>
         <source>Set comment</source>
-        <translation>Vul een opmerking in</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1592,13 +1597,12 @@ ownKeepass is een wachtwoordkluis voor de Jolla-smartphone met het doel gevoelig
         <translation>Gebruikersnaam</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="175"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="190"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="169"/>
         <source>Password</source>
         <translation>Wachtwoord</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="222"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="181"/>
         <source>Comment</source>
         <translation>Opmerking</translation>
     </message>

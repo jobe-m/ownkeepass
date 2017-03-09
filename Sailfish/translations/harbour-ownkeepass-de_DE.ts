@@ -294,85 +294,90 @@
 <context>
     <name>EditEntryDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="131"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="83"/>
         <source>Save</source>
-        <translation>Speichern</translation>
+        <translation type="unfinished">Speichern</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="84"/>
         <source>Discard</source>
-        <translation>Verwerfen</translation>
+        <translation type="unfinished">Verwerfen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="88"/>
         <source>Change icon:</source>
         <translation type="unfinished">Symbol ändern:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="183"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="134"/>
         <source>Create new password entry:</source>
-        <translation>Erzeuge neuen Passworteintrag:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="184"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="135"/>
         <source>Edit password entry:</source>
-        <translation>Passworteintrag ändern:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="191"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="142"/>
         <source>Title</source>
-        <translation>Titel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="193"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="144"/>
         <source>Set title (mandatory)</source>
-        <translation>Titel angeben (erforderlich)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="208"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="160"/>
         <source>URL</source>
-        <translation>Internetadresse</translation>
+        <translation type="unfinished">Internetadresse</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="210"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="162"/>
         <source>Set URL</source>
-        <translation>Internetadresse festlegen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="223"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="176"/>
         <source>Username</source>
-        <translation>Benutzernamen</translation>
+        <translation type="unfinished">Benutzername</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="225"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="178"/>
         <source>Set username</source>
-        <translation>Benutzernamen festlegen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="245"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="230"/>
         <source>Password</source>
-        <translation>Passwort</translation>
+        <translation type="unfinished">Passwort</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="248"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="204"/>
         <source>Set password</source>
-        <translation>Passwort festlegen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="286"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="289"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="231"/>
         <source>Verify password</source>
-        <translation>Passwort bestätigen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="322"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="253"/>
+        <source>Generate password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="266"/>
         <source>Comment</source>
-        <translation>Kommentar</translation>
+        <translation type="unfinished">Kommentar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="324"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="268"/>
         <source>Set comment</source>
-        <translation>Kommentar erstellen</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1589,13 +1594,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Benutzername</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="175"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="190"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="169"/>
         <source>Password</source>
         <translation>Passwort</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="222"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="181"/>
         <source>Comment</source>
         <translation>Kommentar</translation>
     </message>

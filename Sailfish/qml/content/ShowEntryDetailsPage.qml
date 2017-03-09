@@ -158,59 +158,18 @@ Page {
                 text: kdbEntry.userName
             }
 
-            Item {
-                enabled: entryPasswordTextField.text !== ""
-                visible: entryPasswordTextField.text !== ""
+            PasswordField {
+                id: entryPasswordTextField
                 width: parent.width
-                height: Math.max(entryPasswordTextField.height, entryPasswordTextArea.height)
-
-                TextField {
-                    id: entryPasswordTextField
-                    anchors.left: parent.left
-                    anchors.right: showPasswordButton.left
-                    anchors.verticalCenter: parent.verticalCenter
-                    opacity: 1.0
-                    readOnly: true
-                    echoMode: TextInput.Password
-                    label: qsTr("Password")
-                    color: Theme.primaryColor
-                    font.family: 'monospace'
-                    text: kdbEntry.password
-
-                    Behavior on opacity { FadeAnimation {} }
-                }
-
-                TextArea {
-                    id: entryPasswordTextArea
-                    anchors.left: parent.left
-                    anchors.right: showPasswordButton.left
-                    anchors.verticalCenter: parent.verticalCenter
-                    opacity: 0.0
-                    readOnly: true
-                    label: qsTr("Password")
-                    text: entryPasswordTextField.text
-                    color: Theme.primaryColor
-                    font.family: 'monospace'
-
-                    Behavior on opacity { FadeAnimation {} }
-                }
-
-                IconButton {
-                    id: showPasswordButton
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
-                    anchors.verticalCenter: parent.verticalCenter
-                    icon.source: entryPasswordTextArea.opacity === 1.0 ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
-                    onClicked: {
-                        if (entryPasswordTextField.opacity === 1.0) {
-                            entryPasswordTextArea.opacity = 1.0
-                            entryPasswordTextField.opacity = 0.0
-                        } else {
-                            entryPasswordTextArea.opacity = 0.0
-                            entryPasswordTextField.opacity = 1.0
-                        }
-                    }
-                }
+                enabled: text !== ""
+                visible: text !== ""
+                horizontalAlignment: TextInput.AlignLeft
+                showEchoModeToggle: true
+                readOnly: true
+                label: qsTr("Password")
+                color: Theme.primaryColor
+                font.family: 'monospace'
+                text: kdbEntry.password
             }
 
             TextArea {

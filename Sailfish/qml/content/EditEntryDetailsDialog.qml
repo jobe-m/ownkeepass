@@ -34,68 +34,20 @@ Dialog {
     property string entryId: ""
     // creation of new entry needs parent group ID
     property string parentGroupId: ""
-    // icon for entry (either a default icon or a custom database icon)
-//    property string iconUuid: ""
 
-    // The following properties are used to check if text of any entry detail was changed. If so,
-    // set cover page accordingly to signal the user unsaved changes
-/*    property string origTitle: ""
-    property string origUrl: ""
-    property string origUsername: ""
-    property string origPassword: ""
-    property string origComment: ""
-    property string origIconUuid : ""
-    property bool titleChanged: false
-    property bool urlChanged: false
-    property bool usernameChanged: false
-    property bool passwordChanged: false
-    property bool commentChanged: false
-    property bool iconUuidChanged: false
-*/
-/*    function setTextFields(keys, values, aIconUuid) {
-        var maxKeys = keys.length
-        var i = 5
-        customKeyValueList.clear()
-        while (i < maxKeys) {
-            customKeyValueList.append({"key": keys[i], "value": values[i], "oldValue": values[i]})
-            ++i
-        }
-        entryTitleTextField.text          = origTitle    = values[KeepassDefault.TITLE]
-        entryUrlTextField.text            = origUrl      = values[KeepassDefault.URL]
-        entryUsernameTextField.text       = origUsername = values[KeepassDefault.USERNAME]
-        entryPasswordTextField.text       =
-        entryVerifyPasswordTextField.text = origPassword = values[KeepassDefault.PASSWORD]
-        entryCommentTextField.text        = origComment  = values[KeepassDefault.NOTES]
-        iconUuid = origIconUuid = aIconUuid
-    }
-*/
-    // This function should be called when any text is changed to check if the
+    // This function will be called when any text is changed to check if the
     // cover page state needs to be updated
-    function updateCoverState(value) {
-        if (value) {
+    function updateCoverState(changesDone) {
+        if (changesDone) {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
         } else {
             applicationWindow.cover.state = "ENTRY_VIEW"
         }
     }
 
-    // Get all values from the various text input fields and feed into the kdbEntry object
-    function prepareSaveEntryDetails() {
-        kdbEntry.title    = entryTitleTextField.text
-        kdbEntry.url      = entryUrlTextField.text
-        kdbEntry.userName = entryUsernameTextField.text
-        kdbEntry.password = entryPasswordTextField.text
-        kdbEntry.notes    = entryCommentTextField.text
-    }
 
-    // set group icon for image element
-//    onIconUuidChanged: {
-//        iconUuidChanged = origIconUuid !== iconUuid ? true : false
-//        entryIcon.source = "image://KeepassIcon/" + iconUuid
-//    }
-
-    // forbit page navigation if title is not set and password is not verified and icon not set
-    canNavigateForward: !entryTitleTextField.errorHighlight && !entryVerifyPasswordTextField.errorHighlight
+    // forbit page navigation if title is not set and password is not verified (if password field shows the password in cleartext)
+    canNavigateForward: !entryTitleTextField.errorHighlight && (!entryVerifyPasswordTextField.enabled || !entryVerifyPasswordTextField.errorHighlight)
     allowedOrientations: applicationWindow.orientationSetting
 
 // TODO feature/save_dkb2_entry
@@ -154,8 +106,7 @@ Dialog {
                         anchors.fill: parent
                         onClicked: {
                             // open new dialog with grid of all icons
-                            pageStack.push( editItemIconDialog,
-                                           { "newIconUuid": kdbEntry.iconUuid })
+                            pageStack.push( editItemIconDialog, { "newIconUuid": kdbEntry.iconUuid })
                         }
                     }
                 }
@@ -196,9 +147,10 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUrlTextField.focus = true
                 onTextChanged: {
+                    kdbEntry.title = text
                     updateCoverState(kdbEntry.edited)
                 }
-                focusOutBehavior: -1 // This doesn't let the eye button steal focus
+                focusOutBehavior: -1  // prevent the "abc" password mode button to steal focus
             }
 
             TextField {
@@ -211,6 +163,7 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryUsernameTextField.focus = true
                 onTextChanged: {
+                    kdbEntry.url = text
                     updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1
@@ -226,67 +179,58 @@ Dialog {
                 EnterKey.iconSource: "image://theme/icon-m-enter-next"
                 EnterKey.onClicked: entryPasswordTextField.focus = true
                 onTextChanged: {
+                    kdbEntry.userName = text
                     updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1
             }
 
-            Item {
+            Column {
+                id: passwordColumn
                 width: parent.width
-                height: entryPasswordTextField.height
+                height: entryPasswordTextField.echoMode === TextInput.Password
+                        ? entryPasswordTextField.height + entryVerifyPasswordTextField.height + spacing
+                        : entryPasswordTextField.height
 
-                TextField {
+                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+                PasswordField {
                     id: entryPasswordTextField
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.right: showPasswordButton.left
+                    width: parent.width
+                    showEchoModeToggle: true
+                    horizontalAlignment: TextInput.AlignLeft
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                    echoMode: TextInput.Password
                     label: qsTr("Password")
-                    text: kdbEntry.password
-                    font.family: 'monospace'
                     placeholderText: qsTr("Set password")
-                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                    EnterKey.onClicked: entryVerifyPasswordTextField.focus = true
+                    font.family: 'monospace'
+                    text: kdbEntry.password
                     onTextChanged: {
+                        kdbEntry.password = text
                         updateCoverState(kdbEntry.edited)
+                    }
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: {
+                        if (entryVerifyPasswordTextField.enabled) {
+                            entryVerifyPasswordTextField.focus = true
+                        } else {
+                            entryCommentTextField.focus = true
+                        }
                     }
                     focusOutBehavior: -1
                 }
 
-                IconButton {
-                    id: showPasswordButton
-                    anchors.top: parent.top
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
-                    icon.source: entryPasswordTextField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
-                    onClicked: {
-                        if (entryPasswordTextField.echoMode === TextInput.Normal) {
-                            entryPasswordTextField.echoMode =
-                                    entryVerifyPasswordTextField.echoMode = TextInput.Password
-                        } else {
-                            entryPasswordTextField.echoMode =
-                                    entryVerifyPasswordTextField.echoMode = TextInput.Normal
-                        }
-                    }
-                }
-            }
-
-            Item {
-                width: parent.width
-                height: entryVerifyPasswordTextField.height
-
-                TextField {
+                PasswordField {
                     id: entryVerifyPasswordTextField
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.right: generatePasswordButton.left
+                    width: parent.width
+                    horizontalAlignment: TextInput.AlignLeft
+                    enabled: entryPasswordTextField.echoMode === TextInput.Password
+                    opacity: enabled ? 1.0 : 0.0
+                    showEchoModeToggle: false
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                    echoMode: TextInput.Password
-                    label: qsTr("Verify password")
-                    text: ""
-                    font.family: 'monospace'
+                    label: qsTr("Password")
                     placeholderText: qsTr("Verify password")
+                    font.family: 'monospace'
+                    text: kdbEntry.password
                     errorHighlight: entryPasswordTextField.text !== text
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: {
@@ -298,21 +242,21 @@ Dialog {
                         }
                     }
                     focusOutBehavior: -1
-                }
 
-                IconButton {
-                    id: generatePasswordButton
-                    anchors.top: parent.top
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
-                    icon.source: "../../wallicons/icon-l-generator.png"
-                    onClicked: {
-                        var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
-                        pwGenDialog.accepted.connect(function() {
-                            entryPasswordTextField.text =
-                                    entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
-                        })
-                    }
+                    Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+                }
+            }
+
+            Button {
+                width: parent.width * 0.65
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Generate password")
+                onClicked: {
+                    var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
+                    pwGenDialog.accepted.connect(function() {
+                        entryPasswordTextField.text =
+                                entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
+                    })
                 }
             }
 
@@ -323,6 +267,7 @@ Dialog {
                 text: kdbEntry.notes
                 placeholderText: qsTr("Set comment")
                 onTextChanged: {
+                    kdbEntry.notes = text
                     updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1
@@ -352,13 +297,11 @@ Dialog {
         onAccepted: {
             entryIcon.source = "image://KeepassIcon/" + newIconUuid
             kdbEntry.iconUuid = newIconUuid
+            updateCoverState(kdbEntry.edited)
         }
     }
 
     Component.onCompleted: {
-        // set reference in kdbListItemInternal object
-//        kdbListItemInternal.editEntryDetailsDialogRef = editEntryDetailsDialog
-
         kdbEntry.entryId = entryId
         if (!createNewEntry) {
             kdbEntry.loadEntryData()
@@ -366,23 +309,17 @@ Dialog {
         entryTitleTextField.focus = true
     }
 
-    Component.onDestruction: {
-        // unset again
-//        kdbListItemInternal.editEntryDetailsDialogRef = null
-    }
-
     // user wants to save new entry data
     onAccepted: {
-        // first save locally Kdb entry details then trigger save to backend
-        prepareSaveEntryDetails()
+        // trigger save entry data to backend
         kdbListItemInternal.saveKdbEntryDetails(createNewEntry)
     }
+
     // user has rejected editing entry data, check if there are unsaved details
     onRejected: {
         // no need for saving if input fields are invalid
         if (canNavigateForward) {
-            // first save locally Kdb entry details then trigger check for unsaved changes
-            prepareSaveEntryDetails()
+            // trigger check for unsaved changes
             kdbListItemInternal.checkForUnsavedKdbEntryChanges()
         }
     }
