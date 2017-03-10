@@ -210,6 +210,7 @@ Dialog {
                     }
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: {
+                        // Check which field gets focus when pressing EnterKey
                         if (entryVerifyPasswordTextField.enabled) {
                             entryVerifyPasswordTextField.focus = true
                         } else {

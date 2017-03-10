@@ -351,7 +351,7 @@ by reviewjolla, 5 minutes ago</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="230"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="231"/>
         <source>Password</source>
         <translation type="unfinished">Salasana</translation>
     </message>
@@ -361,22 +361,22 @@ by reviewjolla, 5 minutes ago</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="231"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="232"/>
         <source>Verify password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="253"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="254"/>
         <source>Generate password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="266"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="267"/>
         <source>Comment</source>
         <translation type="unfinished">Kommentti</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="268"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="269"/>
         <source>Set comment</source>
         <translation type="unfinished"></translation>
     </message>

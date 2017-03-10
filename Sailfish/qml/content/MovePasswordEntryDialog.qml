@@ -104,43 +104,29 @@ Dialog {
                     opacity: 0.5
                 }
 
-                Rectangle {
-                    id: itemBackground
-                    x: 0
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: Theme.itemSizeMedium + model.itemLevel * (iconPlacer.width / Global.icon_indent_in_listview)
-                    height: Theme.itemSizeMedium
-                    color: "white"
-                }
-
-                Item {
-                    id: iconPlacer
+                Image {
+                    id: iconBackground
                     x: model.itemLevel * (width / Global.icon_indent_in_listview)
                     anchors.verticalCenter: parent.verticalCenter
                     width: Theme.itemSizeMedium
                     height: Theme.itemSizeMedium
-                }
-
-                OpacityRampEffect {
-                    sourceItem: itemBackground
-                    slope: 0.25
-                    offset: 0.0
-                    clampFactor: -0.75
-                    direction: OpacityRamp.BottomToTop
+                    source: "image://IconBackground"
+                    fillMode: Image.PreserveAspectFit
+                    asynchronous: true
                 }
 
                 Image {
-                    anchors.centerIn: iconPlacer
+                    anchors.centerIn: iconBackground
                     width: Theme.iconSizeMedium
                     height: Theme.iconSizeMedium
-                    source: "../../entryicons/icf" + model.iconId + ".png"
+                    source: "image://KeepassIcon/" + model.iconUuid
                     fillMode: Image.PreserveAspectFit
                     asynchronous: true
                     opacity: model.id === movePasswordEntryDialog.newGroupId ? 0.7 : 1.0
                 }
 
                 Item {
-                    anchors.left: iconPlacer.right
+                    anchors.left: iconBackground.right
                     anchors.right: parent.right
                     anchors.leftMargin: Theme.paddingSmall
                     anchors.rightMargin: Theme.paddingSmall
