@@ -164,6 +164,9 @@ ListItem {
                                        { "groupId": model.id })
                         break
                     case DatabaseItemType.ENTRY:
+                        // Load entry details ...
+                        kdbEntry.entryId = model.id
+                        kdbEntry.loadEntryData()
                         pageStack.push(editEntryDetailsDialogComponent,
                                        { "entryId": model.id })
                         break

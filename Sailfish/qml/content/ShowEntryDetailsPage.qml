@@ -34,12 +34,6 @@ Page {
 
     allowedOrientations: applicationWindow.orientationSetting
 
-// TODO feature/save_kdb2_entry
-// get list view from kdbEntry somehow
-    ListModel {
-        id: customKeyValueList
-    }
-
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -183,16 +177,35 @@ Page {
                 text: kdbEntry.notes
             }
 
-            Repeater {
-                model: customKeyValueList
-// TODO feature/save_dkb2_entry
+            SilicaListView {
+                id: additionalAttributesListView
+                width: parent.width
+                model: kdbEntry
 
-                TextArea {
+                delegate: Item {
                     width: parent.width
-                    readOnly: true
-                    label: key
-                    text: value
-                    color: Theme.primaryColor
+                    height: additionalAttributesTextArea.height + Theme.paddingLarge
+
+                    TextArea {
+                        id: additionalAttributesTextArea
+                        width: parent.width
+                        anchors.top: parent.top
+                        readOnly: true
+                        label: model.key
+                        text: model.value
+                        color: Theme.primaryColor
+                    }
+
+                    Item {
+                        height: Theme.paddingLarge
+                        width: parent.width
+                        anchors.top: additionalAttributesTextArea.bottom
+                    }
+                }
+
+                Connections {
+                    // for breaking the binding loop on height
+                    onContentHeightChanged: additionalAttributesListView.height = additionalAttributesListView.contentHeight
                 }
             }
         }

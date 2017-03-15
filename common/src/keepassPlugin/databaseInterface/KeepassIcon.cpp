@@ -41,7 +41,7 @@ QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &
         // Load standard image from resources
         icon = QImage(":/entryicons/" + uuid + ".png", "PNG");
         // If loading of the image failed than try load custom database icon from Keepass 1 database which starts with "ic69" or "icf69"
-        if (icon.isNull()) {
+        if (icon.isNull() && uuid.size() != 0) {
             // Load custom image from Keepass 1 database
             icon = (dynamic_cast<AbstractDatabaseInterface*>(kpxPrivate::DatabaseClient::getInstance()->getInterface()))->getCustomIcon(uuid);
         }

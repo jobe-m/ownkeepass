@@ -23,12 +23,31 @@
 #ifndef KDBENTRY_H
 #define KDBENTRY_H
 
-#include <QObject>
+#include <QAbstractItemModel>
 #include "private/AbstractDatabaseInterface.h"
+#include "ownKeepassGlobal.h"
+
+using namespace ownKeepassPublic; // for using baseRole
 
 namespace kpxPublic {
 
-class KdbEntry : public QObject
+class AdditionalAttributeItem
+{
+public:
+    AdditionalAttributeItem(QString key, QString value)
+        : m_key(key),
+          m_value(value)
+    {}
+    virtual ~AdditionalAttributeItem() {}
+
+    QVariant get(const int role) const;
+    static QHash<int, QByteArray> createRoles();
+
+    QString m_key;
+    QString m_value;
+};
+
+class KdbEntry : public QAbstractListModel
 {
     Q_OBJECT
 
@@ -40,16 +59,20 @@ public:
     Q_PROPERTY(QString password READ getPassword WRITE setPassword STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
     Q_PROPERTY(QString notes READ getNotes WRITE setNotes STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
     Q_PROPERTY(QString iconUuid READ getIconUuid WRITE setIconUuid STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
-
     Q_PROPERTY(bool edited READ getEdited NOTIFY dataEdited)
+
+    // for list model
+    Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
 
 public:
     Q_INVOKABLE void loadEntryData();
-
     Q_INVOKABLE void saveEntryData();
     Q_INVOKABLE void createNewEntry(QString parentgroupId);
     Q_INVOKABLE void deleteEntry();
     Q_INVOKABLE void moveEntry(QString newGroupId);
+
+    // for list model
+    Q_INVOKABLE void clearListModel();
 
 signals:
     // signals to QML
@@ -78,6 +101,10 @@ signals:
                                      QString iconUuid);
     void deleteEntryFromKdbDatabase(QString entryId);
     void moveEntryInKdbDatabase(QString entryId, QString newGroupId);
+
+    // for list model
+    void modelDataChanged();
+    void isEmptyChanged();
 
 public slots:
     // signals from interface of database client
@@ -120,14 +147,22 @@ public:
     QString getIconUuid() const { return m_iconUuid; }
     void setIconUuid(const QString value) { m_iconUuid = value; checkIfEdited(); }
     bool getEdited() const { return m_edited; }
+    void clearData();
+
+    // for list model
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    bool isEmpty();
+    // Overwrite function to set role names
+    virtual QHash<int, QByteArray> roleNames() const { return AdditionalAttributeItem::createRoles(); }
 
 private:
-    void clearData();
     bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
     void checkIfEdited();
 
 private:
+    QList<AdditionalAttributeItem> m_additional_attribute_items;
     QString m_entryId;
 
     QString m_title;
@@ -147,6 +182,26 @@ private:
     bool m_new_entry_triggered;
     bool m_edited;
 };
+
+// inline implementations
+inline QVariant AdditionalAttributeItem::get(const int role) const
+{
+    switch (role) {
+    case baseRole:
+        return m_key;
+    case baseRole + 1:
+        return m_value;
+    }
+    return QVariant();
+}
+
+inline QHash<int, QByteArray> AdditionalAttributeItem::createRoles()
+{
+    QHash<int, QByteArray> roles;
+    roles[baseRole]     = "key";
+    roles[baseRole + 1] = "value";
+    return roles;
+}
 
 }
 #endif // KDBENTRY_H

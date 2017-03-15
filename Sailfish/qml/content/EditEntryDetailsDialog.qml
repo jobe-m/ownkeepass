@@ -29,11 +29,9 @@ import "../common"
 Dialog {
     id: editEntryDetailsDialog
 
-    property bool createNewEntry: false
     // ID of the keepass entry to be edited
     property string entryId: ""
-    // creation of new entry needs parent group ID
-    property string parentGroupId: ""
+    property bool createNewEntry: false
 
     // This function will be called when any text is changed to check if the
     // cover page state needs to be updated
@@ -44,7 +42,6 @@ Dialog {
             applicationWindow.cover.state = "ENTRY_VIEW"
         }
     }
-
 
     // forbit page navigation if title is not set and password is not verified (if password field shows the password in cleartext)
     canNavigateForward: !entryTitleTextField.errorHighlight && (!entryVerifyPasswordTextField.enabled || !entryVerifyPasswordTextField.errorHighlight)
@@ -303,9 +300,8 @@ Dialog {
     }
 
     Component.onCompleted: {
-        kdbEntry.entryId = entryId
-        if (!createNewEntry) {
-            kdbEntry.loadEntryData()
+        if (createNewEntry) {
+            kdbEntry.clearData()
         }
         entryTitleTextField.focus = true
     }

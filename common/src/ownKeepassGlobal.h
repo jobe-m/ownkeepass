@@ -145,10 +145,11 @@ public:
     // This is the default order of Keepass standard entry keys which is used for loading and saving password entries
     enum eKeepassDefaultEntryKeys {
         TITLE    = 0,
-        URL      = 1,
-        USERNAME = 2,
-        PASSWORD = 3,
-        NOTES    = 4
+        URL,
+        USERNAME,
+        PASSWORD,
+        NOTES,
+        ADDITIONAL_ATTRIBUTES
     };
 };
 

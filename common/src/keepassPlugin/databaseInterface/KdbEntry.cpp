@@ -33,7 +33,7 @@ using namespace kpxPrivate;
 using namespace ownKeepassPublic;
 
 KdbEntry::KdbEntry(QObject *parent)
-    : QObject(parent),
+    : QAbstractListModel(parent),
       m_entryId(""),
       m_title(""),
       m_url(""),
@@ -219,6 +219,20 @@ void KdbEntry::slot_entryDataLoaded(int result,
         m_original_password = m_password = values[KeepassDefault::PASSWORD];
         m_original_notes    = m_notes    = values[KeepassDefault::NOTES];
         m_original_iconUuid = m_iconUuid = iconUuid;
+        m_edited = false;
+        clearListModel();
+        for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.length(); i++) {
+            AdditionalAttributeItem item(keys[i], values[i]);
+            beginInsertRows(QModelIndex(), rowCount(), rowCount());
+            m_additional_attribute_items.append(item);
+            endInsertRows();
+        }
+        // emit isEmptyChanged signal if list view was empty before
+        if (m_additional_attribute_items.length() != 0) {
+            emit isEmptyChanged();
+            // signal to property to update itself in QML
+            emit modelDataChanged();
+        }
         emit entryDataLoaded(result, errorMsg);
     }
 }
@@ -284,6 +298,7 @@ void KdbEntry::clearData()
     m_original_notes    = "";
     m_original_iconUuid = "";
     m_edited = false;
+    clearListModel();
 }
 
 void KdbEntry::checkIfEdited()
@@ -291,9 +306,45 @@ void KdbEntry::checkIfEdited()
     if (m_title == m_original_title && m_url == m_original_url &&
         m_userName == m_original_userName && m_password == m_original_password &&
         m_notes == m_original_notes && m_iconUuid == m_original_iconUuid) {
-        m_edited = false;
+        if (m_edited) {
+            m_edited = false;
+            emit dataEdited();
+        }
     } else {
-        m_edited = true;
+        if (m_edited == false) {
+            m_edited = true;
+            emit dataEdited();
+        }
     }
-    emit dataEdited();
+}
+
+// for list model
+int KdbEntry::rowCount(const QModelIndex& parent) const
+{
+    Q_UNUSED(parent);
+    return m_additional_attribute_items.count();
+}
+
+bool KdbEntry::isEmpty()
+{
+    return m_additional_attribute_items.isEmpty();
+}
+
+QVariant KdbEntry::data(const QModelIndex &index, int role) const
+{
+    if (index.row() < 0 || index.row() >= m_additional_attribute_items.count())
+        return QVariant();
+
+    return m_additional_attribute_items[index.row()].get(role);
+}
+
+void KdbEntry::clearListModel()
+{
+    beginResetModel();
+    m_additional_attribute_items.clear();
+    endResetModel();
+
+    // signal to QML and for property update
+    emit modelDataChanged();
+    emit isEmptyChanged();
 }

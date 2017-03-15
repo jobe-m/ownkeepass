@@ -38,7 +38,6 @@ Page {
     property Component editDatabaseSettingsDialogComponent: editDatabaseSettingsDialogComponent
     property Component editSettingsDialogComponent: editSettingsDialogComponent
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
-//    property Component kdbEntry: kdbEntry
 
     // internal
     property string __unlockCharA: ""
@@ -827,18 +826,6 @@ Page {
             }
         }
 
-        function setKdbEntryDetails(createNewEntry, entryId, parentGrId, keys, values, iconUuid) {
-
-// TODO feature/save_kdb2_entry
-
-            createNewItem = createNewEntry
-            itemId        = entryId
-            parentGroupId = parentGrId
-            entryKeys     = keys
-            entryValues   = values
-            entryIconUuid = iconUuid
-        }
-
         function setKdbGroupDetails(createNewGroup, groupId, parentGrId, name, notes, iconUuid) {
             createNewItem       = createNewGroup
             itemId              = groupId
@@ -1138,7 +1125,7 @@ Page {
                     kdbListItemInternal.saveKdbGroupDetails()
                     break
                 case DatabaseItemType.ENTRY:
-                    kdbListItemInternal.entryIconUuid = newIconUuid
+                    kdbEntry.iconUuid = newIconUuid
                     kdbListItemInternal.saveKdbEntryDetails()
                     break
                 }
