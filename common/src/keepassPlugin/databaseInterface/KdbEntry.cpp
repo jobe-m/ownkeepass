@@ -47,6 +47,12 @@ KdbEntry::KdbEntry(QObject *parent)
       m_original_password(""),
       m_original_notes(""),
       m_original_iconUuid(""),
+      m_title_modified(false),
+      m_url_modified(false),
+      m_userName_modified(false),
+      m_password_modified(false),
+      m_notes_modified(false),
+      m_iconUuid_modified(false),
       m_connected(false),
       m_new_entry_triggered(false),
       m_edited(false)
@@ -155,6 +161,9 @@ void KdbEntry::saveEntryData()
         keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
              << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
         values << m_title << m_url << m_userName << m_password << m_notes;
+
+// TODO Add additional attributes key and values to Stringlists
+
         qDebug() << "Save entry data: " << m_title << m_url << m_userName << m_password << m_notes;
         emit saveEntryToKdbDatabase(m_entryId, keys, values, m_iconUuid);
     }
@@ -174,6 +183,9 @@ void KdbEntry::createNewEntry(QString parentgroupId)
         keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
              << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
         values << m_title << m_url << m_userName << m_password << m_notes;
+
+// TODO Add additional attributes key and values to Stringlists
+
         emit createNewEntryInKdbDatabase(keys, values, parentgroupId, m_iconUuid);
     }
 }
@@ -297,25 +309,106 @@ void KdbEntry::clearData()
     m_original_password = "";
     m_original_notes    = "";
     m_original_iconUuid = "";
+    m_title_modified = false;
+    m_url_modified = false;
+    m_userName_modified = false;
+    m_password_modified = false;
+    m_notes_modified = false;
+    m_iconUuid_modified = false;
     m_edited = false;
     clearListModel();
 }
 
 void KdbEntry::checkIfEdited()
 {
-    if (m_title == m_original_title && m_url == m_original_url &&
-        m_userName == m_original_userName && m_password == m_original_password &&
-        m_notes == m_original_notes && m_iconUuid == m_original_iconUuid) {
+    if (m_title_modified || m_url_modified || m_userName_modified ||
+        m_password_modified || m_notes_modified || m_iconUuid_modified ||
+        checkIfAdditionalAttibuteItemsModified() ) {
+        if (!m_edited) {
+            m_edited = true;
+            emit dataEdited();
+        }
+    } else {
         if (m_edited) {
             m_edited = false;
             emit dataEdited();
         }
-    } else {
-        if (m_edited == false) {
-            m_edited = true;
-            emit dataEdited();
+    }
+}
+
+bool KdbEntry::checkIfAdditionalAttibuteItemsModified()
+{
+    Q_FOREACH(AdditionalAttributeItem item, m_additional_attribute_items) {
+        if (item.m_modified) {
+            return true;
         }
     }
+    return false;
+}
+
+void KdbEntry::setTitle(const QString value) {
+    m_title = value;
+    if (m_title != m_original_title) {
+        m_title_modified = true;
+    } else {
+        m_title_modified = false;
+    }
+    checkIfEdited();
+}
+
+void KdbEntry::setUrl(const QString value)
+{
+    m_url = value;
+    if (m_url != m_original_url) {
+        m_url_modified = true;
+    } else {
+        m_url_modified = false;
+    }
+    checkIfEdited();
+}
+
+void KdbEntry::setUserName(const QString value)
+{
+    m_userName = value;
+    if (m_userName != m_original_userName) {
+        m_userName_modified = true;
+    } else {
+        m_userName_modified = false;
+    }
+    checkIfEdited();
+}
+
+void KdbEntry::setPassword(const QString value)
+{
+    m_password = value;
+    if (m_password != m_original_password) {
+        m_password_modified = true;
+    } else {
+        m_password_modified = false;
+    }
+    checkIfEdited();
+}
+
+void KdbEntry::setNotes(const QString value)
+{
+    m_notes = value;
+    if (m_notes != m_original_notes) {
+        m_notes_modified = true;
+    } else {
+        m_notes_modified = false;
+    }
+    checkIfEdited();
+}
+
+void KdbEntry::setIconUuid(const QString value)
+{
+    m_iconUuid = value;
+    if (m_iconUuid != m_original_iconUuid) {
+        m_iconUuid_modified = true;
+    } else {
+        m_iconUuid_modified = false;
+    }
+    checkIfEdited();
 }
 
 // for list model
@@ -332,8 +425,9 @@ bool KdbEntry::isEmpty()
 
 QVariant KdbEntry::data(const QModelIndex &index, int role) const
 {
-    if (index.row() < 0 || index.row() >= m_additional_attribute_items.count())
+    if (index.row() < 0 || index.row() >= m_additional_attribute_items.count()) {
         return QVariant();
+    }
 
     return m_additional_attribute_items[index.row()].get(role);
 }
@@ -347,4 +441,22 @@ void KdbEntry::clearListModel()
     // signal to QML and for property update
     emit modelDataChanged();
     emit isEmptyChanged();
+}
+
+Qt::ItemFlags KdbEntry::flags(const QModelIndex &index) const
+{
+    if (!index.isValid()) {
+        return 0;
+    }
+
+    return Qt::ItemIsEditable | QAbstractListModel::flags(index);
+}
+
+bool KdbEntry::setData(const QModelIndex & index, const QVariant & value, int role)
+{
+    if (index.row() < 0 || index.row() >= m_additional_attribute_items.count()) {
+        return false;
+    } else {
+        m_additional_attribute_items[index.row()].set(value, role);
+    }
 }

@@ -47,11 +47,6 @@ Dialog {
     canNavigateForward: !entryTitleTextField.errorHighlight && (!entryVerifyPasswordTextField.enabled || !entryVerifyPasswordTextField.errorHighlight)
     allowedOrientations: applicationWindow.orientationSetting
 
-// TODO feature/save_dkb2_entry
-    ListModel {
-        id: customKeyValueList
-    }
-
     SilicaFlickable {
         anchors.fill: parent
         contentWidth: parent.width
@@ -271,18 +266,110 @@ Dialog {
                 focusOutBehavior: -1
             }
 
-            Repeater {
-                model: customKeyValueList
+// TODO implement SilicaListView for editing additional attributes
+// Implement also backend in kdbEntry to change additional attributes...
 
-                TextArea {
+            SilicaListView {
+                id: additionalAttributesListView
+                width: parent.width
+                model: kdbEntry
+
+                delegate: Item {
+                    id: additionalAttributesDelegate
                     width: parent.width
-                    label: key
-                    text: value
-                    onTextChanged: {
-// TODO feature/save_dkb2_entry
-// Check if text has changed...
-                        console.log("Changed text for: " + index)
+                    height: additionalAttributesTextArea.height + additionalAttributesButtons.height + Theme.paddingLarge
+
+                    TextArea {
+                        id: additionalAttributesTextArea
+                        width: parent.width
+                        anchors.top: parent.top
+                        label: model.key
+                        text: model.value
+                        placeholderText: qsTr("Set") + " " + model.key
+                        onTextChanged: {
+                            // Check if editing additional attribute value
+                            // Additional attribute key will be saved in button onClicked handler below
+                            if (!model.editKeyMode) {
+                                model.value = text
+                                updateCoverState(kdbEntry.edited)
+                            }
+                        }
                     }
+
+// TODO Add TextField for editing key
+
+                    Row {
+                        id: additionalAttributesButtons
+                        anchors.top: additionalAttributesTextArea.bottom
+                        anchors.right: parent.right
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.left: parent.left
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        spacing: (width / 2) * 0.1
+                        height: Theme.itemSizeSmall //+ Theme.paddingMedium
+
+                        Button {
+                            id: editLabelButton
+                            width: (parent.width / 2) * 0.95
+                            anchors.bottom: parent.bottom
+                            text: qsTr("Edit Label")
+                            onClicked: {
+                                if (model.editKeyMode) {
+                                    model.editKeyMode = false
+                                    // change to edit additional attribute value
+                                    text = qsTr("Edit Label")
+                                    deleteAdditionalAttributeButton.text = qsTr("Delete")
+                                    additionalAttributesTextArea.text = model.value
+                                    additionalAttributesTextArea.label = model.key
+                                    additionalAttributesTextArea.placeholderText = qsTr("Set") + " " + model.key
+                                } else {
+                                    model.editKeyMode = true
+                                    // change to edit additional attribute key (label)
+                                    text = qsTr("Cancel")
+                                    deleteAdditionalAttributeButton.text = qsTr("Accept")
+                                    additionalAttributesDelegate.enabled = true
+                                    additionalAttributesTextArea.text = model.key
+                                    additionalAttributesTextArea.label = qsTr("Edit Label")
+                                    additionalAttributesTextArea.placeholderText = qsTr("Edit Label")
+                                }
+                            }
+                        }
+
+                        Button {
+                            id: deleteAdditionalAttributeButton
+                            width: (parent.width / 2) * 0.95
+                            anchors.bottom: parent.bottom
+                            text: qsTr("Delete")
+                            onClicked: {
+                                if (model.editKeyMode) {
+                                    model.editKeyMode = false
+                                    // Accept changes of additional attribute Key and save it
+                                    model.key = additionalAttributesTextArea.text
+                                    updateCoverState(kdbEntry.edited)
+                                    text = qsTr("Delete")
+                                    editLabelButton.text = qsTr("Edit Label")
+                                    additionalAttributesTextArea.text = model.value
+                                    additionalAttributesTextArea.label = model.key
+                                    additionalAttributesTextArea.placeholderText = qsTr("Set") + " " + model.key
+                                } else {
+                                    model.editKeyMode = true
+                                    // Set marker to delete additional attribute
+                                    model.toBeDeleted = true
+                                }
+                            }
+                        }
+                    }
+
+                    Item {
+                        height: Theme.paddingLarge
+                        width: parent.width
+                        anchors.top: additionalAttributesButtons.bottom
+                    }
+                }
+
+                Connections {
+                    // for breaking the binding loop on height
+                    onContentHeightChanged: additionalAttributesListView.height = additionalAttributesListView.contentHeight
                 }
             }
         }

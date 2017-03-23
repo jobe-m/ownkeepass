@@ -74,8 +74,8 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableNewPasswordEntryMenuItem && !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
-        visible: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
+        enabled: enableNewPasswordEntryMenuItem && !ownKeepassDatabase.readOnly
+        visible: enabled
         text: qsTr("New password entry")
         onClicked: {
             newPasswordEntryClicked()

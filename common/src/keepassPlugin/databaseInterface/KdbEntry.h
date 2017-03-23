@@ -34,17 +34,33 @@ namespace kpxPublic {
 class AdditionalAttributeItem
 {
 public:
-    AdditionalAttributeItem(QString key, QString value)
+    AdditionalAttributeItem(QString key, QString value, bool editKeyMode = false)
         : m_key(key),
-          m_value(value)
-    {}
+          m_value(value),
+          m_edit_key_mode(editKeyMode),
+          m_original_key(key),
+          m_original_value(value),
+          m_to_be_deleted(false)
+    {
+        static int itemCount = 0;
+        m_index = itemCount;
+        itemCount++;
+    }
     virtual ~AdditionalAttributeItem() {}
 
     QVariant get(const int role) const;
+    bool set(const QVariant & value, const int role);
     static QHash<int, QByteArray> createRoles();
 
     QString m_key;
     QString m_value;
+    bool m_edit_key_mode;
+    int m_index;
+
+    QString m_original_key;
+    QString m_original_value;
+    bool m_to_be_deleted;
+    bool m_modified;
 };
 
 class KdbEntry : public QAbstractListModel
@@ -70,6 +86,7 @@ public:
     Q_INVOKABLE void createNewEntry(QString parentgroupId);
     Q_INVOKABLE void deleteEntry();
     Q_INVOKABLE void moveEntry(QString newGroupId);
+    Q_INVOKABLE void clearData();
 
     // for list model
     Q_INVOKABLE void clearListModel();
@@ -135,31 +152,34 @@ public:
     QString getEntryId() const { return m_entryId; }
     void setEntryId(const QString value) { m_entryId = value; }
     QString getTitle() const { return m_title; }
-    void setTitle(const QString value) { m_title = value; checkIfEdited(); }
+    void setTitle(const QString value);
     QString getUrl() const { return m_url; }
-    void setUrl(const QString value) { m_url = value; checkIfEdited(); }
+    void setUrl(const QString value);
     QString getUserName() const { return m_userName; }
-    void setUserName(const QString value) { m_userName = value; checkIfEdited(); }
+    void setUserName(const QString value);
     QString getPassword() const { return m_password; }
-    void setPassword(const QString value) { m_password = value; checkIfEdited(); }
+    void setPassword(const QString value);
     QString getNotes() const { return m_notes; }
-    void setNotes(const QString value) { m_notes = value; checkIfEdited(); }
+    void setNotes(const QString value);
     QString getIconUuid() const { return m_iconUuid; }
-    void setIconUuid(const QString value) { m_iconUuid = value; checkIfEdited(); }
-    bool getEdited() const { return m_edited; }
-    void clearData();
+    void setIconUuid(const QString value);
+    bool getEdited() { checkIfEdited(); return m_edited; }
 
-    // for list model
+    // for reading list model
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     bool isEmpty();
     // Overwrite function to set role names
     virtual QHash<int, QByteArray> roleNames() const { return AdditionalAttributeItem::createRoles(); }
 
+    // for editable list model
+    Qt::ItemFlags flags(const QModelIndex &index) const;
+    bool setData(const QModelIndex & index, const QVariant & value, int role = Qt::EditRole);
 private:
     bool connectToDatabaseClient();
     void disconnectFromDatabaseClient();
     void checkIfEdited();
+    bool checkIfAdditionalAttibuteItemsModified();
 
 private:
     QList<AdditionalAttributeItem> m_additional_attribute_items;
@@ -177,6 +197,12 @@ private:
     QString m_original_password;
     QString m_original_notes;
     QString m_original_iconUuid;
+    bool m_title_modified;
+    bool m_url_modified;
+    bool m_userName_modified;
+    bool m_password_modified;
+    bool m_notes_modified;
+    bool m_iconUuid_modified;
 
     bool m_connected;
     bool m_new_entry_triggered;
@@ -191,8 +217,51 @@ inline QVariant AdditionalAttributeItem::get(const int role) const
         return m_key;
     case baseRole + 1:
         return m_value;
+    case baseRole + 2:
+        return m_edit_key_mode;
+    case baseRole + 3:
+        return m_index;
+    case baseRole + 4:
+        return m_to_be_deleted;
+    case baseRole + 5:
+        return m_modified;
     }
     return QVariant();
+}
+
+inline bool AdditionalAttributeItem::set(const QVariant & value, const int role)
+{
+    switch (role) {
+    case baseRole:
+        m_key = value.toString();
+        if (m_key != m_original_key || m_value != m_original_value) {
+            m_modified = true;
+        } else {
+            m_modified = false;
+        }
+        return true;
+    case baseRole + 1:
+        m_value = value.toString();
+        if (m_key != m_original_key || m_value != m_original_value) {
+            m_modified = true;
+        } else {
+            m_modified = false;
+        }
+        return true;
+    case baseRole + 2:
+        m_edit_key_mode = value.toBool();
+        return true;
+    case baseRole + 3:
+        // m_index is not editable
+        return false;
+    case baseRole + 4:
+        m_to_be_deleted = value.toBool();
+        return true;
+    case baseRole + 5:
+        // m_modified is not editable
+        return false;
+    }
+    return false;
 }
 
 inline QHash<int, QByteArray> AdditionalAttributeItem::createRoles()
@@ -200,6 +269,10 @@ inline QHash<int, QByteArray> AdditionalAttributeItem::createRoles()
     QHash<int, QByteArray> roles;
     roles[baseRole]     = "key";
     roles[baseRole + 1] = "value";
+    roles[baseRole + 2] = "editKeyMode";
+    roles[baseRole + 3] = "index";
+    roles[baseRole + 4] = "toBeDeleted";
+    roles[baseRole + 5] = "modified";
     return roles;
 }
 

@@ -294,90 +294,123 @@
 <context>
     <name>EditEntryDetailsDialog</name>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="80"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="75"/>
         <source>Save</source>
         <translation type="unfinished">Desa</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="81"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="76"/>
         <source>Discard</source>
         <translation type="unfinished">Descarta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="85"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="80"/>
         <source>Change icon:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="131"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="126"/>
         <source>Create new password entry:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="127"/>
         <source>Edit password entry:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="134"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="141"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="136"/>
         <source>Set title (mandatory)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="157"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="152"/>
         <source>URL</source>
         <translation type="unfinished">URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="159"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="154"/>
         <source>Set URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="168"/>
         <source>Username</source>
         <translation type="unfinished">Nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="175"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="170"/>
         <source>Set username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="200"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="228"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="195"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="223"/>
         <source>Password</source>
         <translation type="unfinished">Contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="201"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="196"/>
         <source>Set password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="229"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="224"/>
         <source>Verify password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="251"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="246"/>
         <source>Generate password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="264"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="259"/>
         <source>Comment</source>
         <translation type="unfinished">Comentari</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="266"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="261"/>
         <source>Set comment</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="288"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="324"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="353"/>
+        <source>Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="315"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="320"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="332"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="333"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="350"/>
+        <source>Edit Label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="321"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="342"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="349"/>
+        <source>Delete</source>
+        <translation type="unfinished">Elimina</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="328"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancel·la</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="329"/>
+        <source>Accept</source>
+        <translation type="unfinished">Accepta</translation>
     </message>
 </context>
 <context>
@@ -970,17 +1003,17 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="159"/>
+        <location filename="../qml/content/KdbListItem.qml" line="158"/>
         <source>Edit</source>
         <translation>Edita</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="179"/>
+        <location filename="../qml/content/KdbListItem.qml" line="178"/>
         <source>Delete</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="196"/>
+        <location filename="../qml/content/KdbListItem.qml" line="195"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Mou</translation>
@@ -1550,57 +1583,57 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
 <context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="53"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="47"/>
         <source>No content</source>
         <translation>Cap contingut</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="55"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="49"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation>Estireu cap avall per afegir una URL, nom d&apos;usuari, contrasenya i comentaris</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="71"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="65"/>
         <source>Read only mode</source>
         <translation>Mode de només lectura</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="77"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="71"/>
         <source>Copy URL</source>
         <translation>Copia la URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="86"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="80"/>
         <source>Copy username</source>
         <translation>Copia el nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="97"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="91"/>
         <source>Copy password</source>
         <translation>Copia la contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="108"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="102"/>
         <source>Edit password entry</source>
         <translation>Edita el registre de contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="145"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="139"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="156"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="150"/>
         <source>Username</source>
         <translation>Nom d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="169"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="163"/>
         <source>Password</source>
         <translation>Contrasenya</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="181"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="175"/>
         <source>Comment</source>
         <translation>Comentari</translation>
     </message>

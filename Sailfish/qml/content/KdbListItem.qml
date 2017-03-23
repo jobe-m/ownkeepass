@@ -155,7 +155,6 @@ ListItem {
             id: contextMenu
 
             MenuItem {
-                enabled: ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2 || model.itemType === DatabaseItemType.GROUP
                 text: qsTr("Edit")
                 onClicked: {
                     switch (model.itemType) {
@@ -164,7 +163,7 @@ ListItem {
                                        { "groupId": model.id })
                         break
                     case DatabaseItemType.ENTRY:
-                        // Load entry details ...
+                        // Load entry details before opening page
                         kdbEntry.entryId = model.id
                         kdbEntry.loadEntryData()
                         pageStack.push(editEntryDetailsDialogComponent,
