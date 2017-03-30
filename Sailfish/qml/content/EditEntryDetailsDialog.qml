@@ -266,6 +266,12 @@ Dialog {
                 focusOutBehavior: -1
             }
 
+            SectionHeader {
+                enabled: !kdbEntry.isEmpty
+                visible: enabled
+                text: qsTr("Additional Attributes")
+            }
+
 // TODO implement SilicaListView for editing additional attributes
 // Implement also backend in kdbEntry to change additional attributes...
 
@@ -276,37 +282,90 @@ Dialog {
 
                 delegate: Item {
                     id: additionalAttributesDelegate
+                    enabled: !model.toBeDeleted
+                    visible: enabled
+
                     width: parent.width
-                    height: additionalAttributesTextArea.height + additionalAttributesButtons.height + Theme.paddingLarge
+                    height: enabled ? ((additionalAttributesTextArea.enabled ?
+                                            additionalAttributesTextArea.height :
+                                            additionalAttributesTextField.height ) + additionalAttributesButtons.height + additionalAttributesBottomPadding.height) : 0
+
+                    Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+                    function listItemRemove() {
+                        Remorse.itemAction(additionalAttributesDelegate,
+                                           "Deleting",
+                                           function() {
+                                               // Set marker to delete additional attribute
+                                               model.toBeDeleted = true
+                                               additionalAttributesDelegate.enabled = false
+                                           })
+                    }
+
+                    function saveLabel() {
+                        // Save label into additional attribute Key
+                        model.editKeyMode = false
+                        additionalAttributesTextArea.enabled = true
+                        additionalAttributesTextArea.focus = true
+                        model.key = additionalAttributesTextField.text
+                        additionalAttributesTextArea.label = model.key
+                        additionalAttributesTextArea.placeholderText = qsTr("Set") + " " + model.key
+                        updateCoverState(kdbEntry.edited)
+                        deleteAdditionalAttributeButton.text = qsTr("Delete")
+                        editLabelButton.text = qsTr("Edit Label")
+                    }
+
+                    ListView.onAdd: AddAnimation {
+                        target: additionalAttributesDelegate
+                    }
+                    ListView.onRemove: RemoveAnimation {
+                        target: additionalAttributesDelegate
+                    }
 
                     TextArea {
                         id: additionalAttributesTextArea
                         width: parent.width
                         anchors.top: parent.top
+                        opacity: enabled ? 1.0 : 0.0
                         label: model.key
                         text: model.value
                         placeholderText: qsTr("Set") + " " + model.key
                         onTextChanged: {
-                            // Check if editing additional attribute value
-                            // Additional attribute key will be saved in button onClicked handler below
-                            if (!model.editKeyMode) {
-                                model.value = text
-                                updateCoverState(kdbEntry.edited)
-                            }
+                            // Save additional attribute value
+                            model.value = text
+                            updateCoverState(kdbEntry.edited)
                         }
+                        focusOutBehavior: -1
+
+                        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
                     }
 
-// TODO Add TextField for editing key
+                    TextField {
+                        id: additionalAttributesTextField
+                        width: parent.width
+                        anchors.top: parent.top
+                        enabled: !additionalAttributesTextArea.enabled
+                        opacity: enabled ? 1.0 : 0.0
+                        label: qsTr("Edit Label")
+                        text: model.key
+                        placeholderText: qsTr("Edit Label")
+                        EnterKey.onClicked: {
+                            additionalAttributesDelegate.saveLabel()
+                        }
+                        focusOutBehavior: -1
+
+                        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+                    }
 
                     Row {
                         id: additionalAttributesButtons
-                        anchors.top: additionalAttributesTextArea.bottom
+                        anchors.bottom: additionalAttributesBottomPadding.top
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.horizontalPageMargin
                         anchors.left: parent.left
                         anchors.leftMargin: Theme.horizontalPageMargin
                         spacing: (width / 2) * 0.1
-                        height: Theme.itemSizeSmall //+ Theme.paddingMedium
+                        height: Theme.itemSizeSmall
 
                         Button {
                             id: editLabelButton
@@ -315,22 +374,19 @@ Dialog {
                             text: qsTr("Edit Label")
                             onClicked: {
                                 if (model.editKeyMode) {
-                                    model.editKeyMode = false
                                     // change to edit additional attribute value
+                                    model.editKeyMode = false
+                                    additionalAttributesTextArea.enabled = true
+                                    additionalAttributesTextArea.focus = true
                                     text = qsTr("Edit Label")
                                     deleteAdditionalAttributeButton.text = qsTr("Delete")
-                                    additionalAttributesTextArea.text = model.value
-                                    additionalAttributesTextArea.label = model.key
-                                    additionalAttributesTextArea.placeholderText = qsTr("Set") + " " + model.key
                                 } else {
+                                    // change to edit label
                                     model.editKeyMode = true
-                                    // change to edit additional attribute key (label)
+                                    additionalAttributesTextArea.enabled = false
+                                    additionalAttributesTextField.focus = true
                                     text = qsTr("Cancel")
                                     deleteAdditionalAttributeButton.text = qsTr("Accept")
-                                    additionalAttributesDelegate.enabled = true
-                                    additionalAttributesTextArea.text = model.key
-                                    additionalAttributesTextArea.label = qsTr("Edit Label")
-                                    additionalAttributesTextArea.placeholderText = qsTr("Edit Label")
                                 }
                             }
                         }
@@ -342,28 +398,21 @@ Dialog {
                             text: qsTr("Delete")
                             onClicked: {
                                 if (model.editKeyMode) {
-                                    model.editKeyMode = false
-                                    // Accept changes of additional attribute Key and save it
-                                    model.key = additionalAttributesTextArea.text
-                                    updateCoverState(kdbEntry.edited)
-                                    text = qsTr("Delete")
-                                    editLabelButton.text = qsTr("Edit Label")
-                                    additionalAttributesTextArea.text = model.value
-                                    additionalAttributesTextArea.label = model.key
-                                    additionalAttributesTextArea.placeholderText = qsTr("Set") + " " + model.key
+                                    // Save label
+                                    additionalAttributesDelegate.saveLabel()
                                 } else {
-                                    model.editKeyMode = true
-                                    // Set marker to delete additional attribute
-                                    model.toBeDeleted = true
+                                    // Start remorse timer to delete the additional attribute
+                                    additionalAttributesDelegate.listItemRemove()
                                 }
                             }
                         }
                     }
 
                     Item {
+                        id: additionalAttributesBottomPadding
                         height: Theme.paddingLarge
                         width: parent.width
-                        anchors.top: additionalAttributesButtons.bottom
+                        anchors.bottom: additionalAttributesDelegate.bottom
                     }
                 }
 

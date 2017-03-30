@@ -380,35 +380,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="288"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="324"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="353"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="272"/>
+        <source>Additional Attributes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="312"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="332"/>
         <source>Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="315"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="320"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="332"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="333"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="350"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="349"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="351"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="374"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="381"/>
         <source>Edit Label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="321"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="342"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="349"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="314"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="382"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="398"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="328"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="388"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="329"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="389"/>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
