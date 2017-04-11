@@ -40,6 +40,8 @@ Dialog {
             applicationWindow.cover.state = "UNSAVED_CHANGES"
         } else {
             applicationWindow.cover.state = "ENTRY_VIEW"
+            applicationWindow.cover.username = kdbEntry.userName
+            applicationWindow.cover.password = kdbEntry.password
         }
     }
 

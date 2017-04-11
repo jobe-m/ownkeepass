@@ -32,6 +32,17 @@ Page {
     // ID of the keepass entry to be shown
     property string entryId: ""
 
+    function copyToClipboard(y, height, text, label) {
+        clickIndicator.y = y
+        clickIndicator.height = height
+        clickIndicator.opacity = 1.0
+        clickIndicatorTimer.start()
+        Clipboard.text = text
+        // trigger cleaning of clipboard after specific time
+        applicationWindow.mainPageRef.clipboardTimerStart()
+        applicationWindow.infoPopup.show(Global.info, "", label + " " + qsTr("copied into clipboard"), 2)
+    }
+
     allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
@@ -117,6 +128,24 @@ Page {
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
+        Rectangle {
+            id: clickIndicator
+            x: 0
+            width: parent.width
+            color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
+
+            Behavior on opacity { FadeAnimation {} }
+        }
+
+        Timer {
+            id: clickIndicatorTimer
+            repeat: false
+            interval: 300
+            onTriggered: {
+                clickIndicator.opacity = 0.0
+            }
+        }
+
         Column {
             id: col
             width: parent.width
@@ -139,6 +168,19 @@ Page {
                 label: qsTr("URL")
                 color: Theme.primaryColor
                 text: kdbEntry.url
+
+                onClicked: {
+                    clickIndicator.y = y
+                    clickIndicator.height = height
+                    clickIndicator.opacity = 1.0
+                    clickIndicatorTimer.start()
+                    // Check if url contains http, if not add it so that URL opens in browser
+                    if (text.toLowerCase().match(/^http/g) === null) {
+                        Qt.openUrlExternally("http://" + text)
+                    } else {
+                        Qt.openUrlExternally(text)
+                    }
+                }
             }
 
             TextArea {
@@ -150,6 +192,7 @@ Page {
                 label: qsTr("Username")
                 color: Theme.primaryColor
                 text: kdbEntry.userName
+                onClicked: copyToClipboard(y, height, text, label)
             }
 
             PasswordField {
@@ -164,6 +207,7 @@ Page {
                 color: Theme.primaryColor
                 font.family: 'monospace'
                 text: kdbEntry.password
+                onClicked: copyToClipboard(y, height, text, label)
             }
 
             TextArea {
@@ -175,6 +219,7 @@ Page {
                 label: qsTr("Comment")
                 color: Theme.primaryColor
                 text: kdbEntry.notes
+                onClicked: copyToClipboard(y, height, text, label)
             }
 
             SilicaListView {
@@ -194,6 +239,7 @@ Page {
                         label: model.key
                         text: model.value
                         color: Theme.primaryColor
+                        onClicked: copyToClipboard(additionalAttributesListView.y + parent.y, height, text, label)
                     }
 
                     Item {
@@ -222,6 +268,8 @@ Page {
         if (status === PageStatus.Active) {
             applicationWindow.cover.state = "ENTRY_VIEW"
             applicationWindow.cover.title = pageHeader.title
+            applicationWindow.cover.username = kdbEntry.userName
+            applicationWindow.cover.password = kdbEntry.password
         }
     }
 }

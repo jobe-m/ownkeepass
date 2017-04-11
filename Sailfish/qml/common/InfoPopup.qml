@@ -211,6 +211,7 @@ MouseArea {
         Label {
             id: titleLabel
             width: parent.width
+            height: text.length !== 0 ? contentHeight : 0
             horizontalAlignment: Text.AlignLeft
             font.family: Theme.fontFamilyHeading
             font.pixelSize: Theme.fontSizeLarge

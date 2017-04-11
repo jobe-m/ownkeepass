@@ -87,14 +87,14 @@ Copyright &#169; 2013-2017 Marko Koschak"
                     anchors.bottom: parent.bottom
                     width: (parent.width / 2) * 0.95
                     text: "Twitter"
-                    onClicked:Qt.openUrlExternally("https://twitter.com/jobe2k")
+                    onClicked: Qt.openUrlExternally("https://twitter.com/jobe2k")
                 }
 
                 Button {
                     anchors.bottom: parent.bottom
                     width: (parent.width / 2) * 0.95
                     text: qsTr("Email")
-                    onClicked:Qt.openUrlExternally("mailto:marko.koschak@tisno.de")
+                    onClicked: Qt.openUrlExternally("mailto:marko.koschak@tisno.de")
                 }
             }
 

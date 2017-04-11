@@ -170,12 +170,12 @@ Dialog {
             height: editItemIconDialog._height
 
             Rectangle {
-                color: Theme.highlightColor
+                color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity) //Theme.highlightColor
                 visible: model.uuid === newIconUuid
                 anchors.fill: parent
-                opacity: 0.5
+//                opacity: 0.5
             }
-            
+
             Image {
                 id: iconBackground
                 anchors.centerIn: parent
