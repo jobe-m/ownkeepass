@@ -1589,62 +1589,71 @@ ownKeepass is een wachtwoordkluis voor de Jolla-smartphone met het doel gevoelig
 <context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="43"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="39"/>
         <source>copied into clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="54"/>
         <source>No content</source>
         <translation>Geen inhoud</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="60"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="56"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation>Trek naar beneden om URL, gebruikersnaam, wachtwoord en opmerking toe te voegen</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="72"/>
         <source>Read only mode</source>
         <translation>Alleen-lezen modus</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="82"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="78"/>
         <source>Copy URL</source>
         <translation>URL kopiëren</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="91"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="87"/>
         <source>Copy username</source>
         <translation>Gebruikersnaam kopiëren</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="102"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="98"/>
         <source>Copy password</source>
         <translation>Wachtwoord kopiëren</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="113"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="109"/>
         <source>Edit password entry</source>
         <translation>Wachtwoordinvoer bewerken</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="143"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="144"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="160"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="177"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="195"/>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="159"/>
         <source>Username</source>
         <translation>Gebruikersnaam</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="209"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="167"/>
         <source>Password</source>
         <translation>Wachtwoord</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="222"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
         <source>Comment</source>
         <translation>Opmerking</translation>
     </message>

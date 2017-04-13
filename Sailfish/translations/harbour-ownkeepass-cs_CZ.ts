@@ -1586,62 +1586,71 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="43"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="39"/>
         <source>copied into clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="54"/>
         <source>No content</source>
         <translation>Žádný obsah</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="60"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="56"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation>Stáhněte dolů pro přidání adresy (URL), uživatelského jména, hesla a poznámky</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="72"/>
         <source>Read only mode</source>
         <translation>Režim pouze pro čtení</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="82"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="78"/>
         <source>Copy URL</source>
         <translation>Kopírovat adresu (URL)</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="91"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="87"/>
         <source>Copy username</source>
         <translation>Kopírovat uživatelské jméno</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="102"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="98"/>
         <source>Copy password</source>
         <translation>Kopírovat heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="113"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="109"/>
         <source>Edit password entry</source>
         <translation>Upravit heslový záznam</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="143"/>
         <source>URL</source>
         <translation>Adresa (URL)</translation>
     </message>
     <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="144"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="160"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="177"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="195"/>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="159"/>
         <source>Username</source>
         <translation>Uživatelské jméno</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="209"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="167"/>
         <source>Password</source>
         <translation>Heslo</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="222"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
         <source>Comment</source>
         <translation>Poznámka</translation>
     </message>

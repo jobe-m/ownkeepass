@@ -1587,62 +1587,71 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="43"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="39"/>
         <source>copied into clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="54"/>
         <source>No content</source>
         <translation>没有内容</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="60"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="56"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation>下拉以添加网址，用户名，密码和注释</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="72"/>
         <source>Read only mode</source>
         <translation>只读模式</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="82"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="78"/>
         <source>Copy URL</source>
         <translation>复制网址</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="91"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="87"/>
         <source>Copy username</source>
         <translation>赋值用户名</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="102"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="98"/>
         <source>Copy password</source>
         <translation>复制密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="113"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="109"/>
         <source>Edit password entry</source>
         <translation>编辑密码词条</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="143"/>
         <source>URL</source>
         <translation>网址</translation>
     </message>
     <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="144"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="160"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="177"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="195"/>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="159"/>
         <source>Username</source>
         <translation>用户名</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="209"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="167"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="222"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
         <source>Comment</source>
         <translation>注释</translation>
     </message>

@@ -1586,62 +1586,71 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>ShowEntryDetailsPage</name>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="43"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="39"/>
         <source>copied into clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="54"/>
         <source>No content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="60"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="56"/>
         <source>Pull down to add URL, username, password and comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="72"/>
         <source>Read only mode</source>
         <translation>Λειτουργία μόνο ανάγνωσης</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="82"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="78"/>
         <source>Copy URL</source>
         <translation>Αντιγραφή URL</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="91"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="87"/>
         <source>Copy username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="102"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="98"/>
         <source>Copy password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="113"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="109"/>
         <source>Edit password entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="143"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="144"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="160"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="177"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="195"/>
+        <source>Copy to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="159"/>
         <source>Username</source>
         <translation>Όνομα χρήστη</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="209"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="167"/>
         <source>Password</source>
         <translation>Κωδικός πρόσβασης</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="222"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
         <source>Comment</source>
         <translation>Σχόλιο</translation>
     </message>

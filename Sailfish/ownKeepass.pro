@@ -193,4 +193,5 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-gl.ts
 
 DISTFILES += \
-    qml/content/EditItemIconDialog.qml
+    qml/content/EditItemIconDialog.qml \
+    qml/common/EntryTextArea.qml

@@ -70,6 +70,17 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.2.2 Keepass 2 write support</b>\
+<ul>\
+<li>Additional attributes can be added in Keepass 2 database password entries</li>\
+<li>It is now possible to copy into clipboard every entry text field by choosing press and hold menu entry</li>\
+<li>Open URL in web browser by just one click on the URL text field</li>\
+<li>Updated password text field to Sailfish look</li>\
+<li></li>\
+<li></li>\
+<li></li>\
+</ul>\
+<br>\
 <b>v1.2.1 Language bugfix</b>\
 <ul>\
 <li>If one of the following languages where selected directly another language was actually shown: galician, italian, hungarian, dutch, russian, finnish, swedish, chinese, greek, japanese</li>\

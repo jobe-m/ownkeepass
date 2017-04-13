@@ -32,15 +32,11 @@ Page {
     // ID of the keepass entry to be shown
     property string entryId: ""
 
-    function copyToClipboard(y, height, text, label) {
-        clickIndicator.y = y
-        clickIndicator.height = height
-        clickIndicator.opacity = 1.0
-        clickIndicatorTimer.start()
+    function copyToClipboard(text, label) {
         Clipboard.text = text
         // trigger cleaning of clipboard after specific time
         applicationWindow.mainPageRef.clipboardTimerStart()
-        applicationWindow.infoPopup.show(Global.info, "", label + " " + qsTr("copied into clipboard"), 2)
+//        applicationWindow.infoPopup.show(Global.info, "", label + " " + qsTr("copied into clipboard"), 2)
     }
 
     allowedOrientations: applicationWindow.orientationSetting
@@ -77,37 +73,6 @@ Page {
             }
 
             MenuItem {
-                enabled: entryUrlTextArea.text !== ""
-                visible: enabled
-                text: qsTr("Copy URL")
-                onClicked: {
-                    Clipboard.text = entryUrlTextArea.text
-                }
-            }
-
-            MenuItem {
-                enabled: entryUsernameTextArea.text !== ""
-                visible: enabled
-                text: qsTr("Copy username")
-                onClicked: {
-                    Clipboard.text = entryUsernameTextArea.text
-                    // trigger cleaning of clipboard after specific time
-                    applicationWindow.mainPageRef.clipboardTimerStart()
-                }
-            }
-
-            MenuItem {
-                enabled: entryPasswordTextField.text !== ""
-                visible: enabled
-                text: qsTr("Copy password")
-                onClicked: {
-                    Clipboard.text = entryPasswordTextField.text
-                    // trigger cleaning of clipboard after specific time
-                    applicationWindow.mainPageRef.clipboardTimerStart()
-                }
-            }
-
-            MenuItem {
                 enabled: !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
                 visible: !ownKeepassDatabase.readOnly
                 text: qsTr("Edit password entry")
@@ -128,24 +93,6 @@ Page {
         // Show a scollbar when the view is flicked, place this over all other content
         VerticalScrollDecorator {}
 
-        Rectangle {
-            id: clickIndicator
-            x: 0
-            width: parent.width
-            color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
-
-            Behavior on opacity { FadeAnimation {} }
-        }
-
-        Timer {
-            id: clickIndicatorTimer
-            repeat: false
-            interval: 300
-            onTriggered: {
-                clickIndicator.opacity = 0.0
-            }
-        }
-
         Column {
             id: col
             width: parent.width
@@ -159,21 +106,12 @@ Page {
                 subTitleBottomMargin: orientation & Orientation.PortraitMask ? Theme.paddingSmall : 0
             }
 
-            TextArea {
+            EntryTextArea {
                 id: entryUrlTextArea
-                width: parent.width
-                enabled: text !== ""
-                visible: text !== ""
-                readOnly: true
-                label: qsTr("URL")
-                color: Theme.primaryColor
                 text: kdbEntry.url
-
-                onClicked: {
-                    clickIndicator.y = y
-                    clickIndicator.height = height
-                    clickIndicator.opacity = 1.0
-                    clickIndicatorTimer.start()
+                label: qsTr("URL")
+                menuLabel: qsTr("Copy to clipboard")
+                onItemClicked: {
                     // Check if url contains http, if not add it so that URL opens in browser
                     if (text.toLowerCase().match(/^http/g) === null) {
                         Qt.openUrlExternally("http://" + text)
@@ -181,45 +119,32 @@ Page {
                         Qt.openUrlExternally(text)
                     }
                 }
+                onMenuClicked: copyToClipboard(text, label)
             }
 
-            TextArea {
+            EntryTextArea {
                 id: entryUsernameTextArea
-                width: parent.width
-                enabled: text !== ""
-                visible: text !== ""
-                readOnly: true
-                label: qsTr("Username")
-                color: Theme.primaryColor
                 text: kdbEntry.userName
-                onClicked: copyToClipboard(y, height, text, label)
+                label: qsTr("Username")
+                menuLabel: qsTr("Copy to clipboard")
+                onMenuClicked: copyToClipboard(text, label)
             }
 
-            PasswordField {
+            EntryTextArea {
                 id: entryPasswordTextField
-                width: parent.width
-                enabled: text !== ""
-                visible: text !== ""
-                horizontalAlignment: TextInput.AlignLeft
-                showEchoModeToggle: true
-                readOnly: true
-                label: qsTr("Password")
-                color: Theme.primaryColor
-                font.family: 'monospace'
                 text: kdbEntry.password
-                onClicked: copyToClipboard(y, height, text, label)
+                label: qsTr("Password")
+                menuLabel: qsTr("Copy to clipboard")
+                onMenuClicked: copyToClipboard(text, label)
+                passwordMode: true
             }
 
-            TextArea {
+            EntryTextArea {
                 id: entryCommentTextArea
-                width: parent.width
-                enabled: text !== ""
-                visible: text !== ""
-                readOnly: true
-                label: qsTr("Comment")
-                color: Theme.primaryColor
                 text: kdbEntry.notes
-                onClicked: copyToClipboard(y, height, text, label)
+                label: qsTr("Comment")
+                menuLabel: qsTr("Copy to clipboard")
+                onMenuClicked: copyToClipboard(text, label)
             }
 
             SilicaListView {
@@ -228,18 +153,16 @@ Page {
                 model: kdbEntry
 
                 delegate: Item {
-                    width: parent.width
+                    width: Screen.width
                     height: additionalAttributesTextArea.height + Theme.paddingLarge
 
-                    TextArea {
+                    EntryTextArea {
                         id: additionalAttributesTextArea
-                        width: parent.width
                         anchors.top: parent.top
-                        readOnly: true
-                        label: model.key
                         text: model.value
-                        color: Theme.primaryColor
-                        onClicked: copyToClipboard(additionalAttributesListView.y + parent.y, height, text, label)
+                        label: model.key
+                        menuLabel: qsTr("Copy to clipboard")
+                        onMenuClicked: copyToClipboard(text, label)
                     }
 
                     Item {

@@ -37,7 +37,7 @@ ListItem {
 
     menu: ownKeepassDatabase.readOnly ? null : contextMenuComponent
     contentHeight: enabled ? Theme.itemSizeMedium : 0
-    width: parent ? parent.width : screen.width
+    width: parent ? parent.width : Screen.width
     enabled: showLevel === model.itemLevel
     visible: enabled
 
