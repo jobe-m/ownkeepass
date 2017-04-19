@@ -166,6 +166,7 @@ public slots:
     void slot_saveEntry(QString entryId,
                         QStringList keys,
                         QStringList values,
+                        QStringList keysToDelete,
                         QString iconUuid);
     void slot_createNewEntry(QStringList keys,
                              QStringList values,

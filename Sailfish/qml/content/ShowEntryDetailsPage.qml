@@ -73,7 +73,7 @@ Page {
             }
 
             MenuItem {
-                enabled: !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
+                enabled: !ownKeepassDatabase.readOnly
                 visible: !ownKeepassDatabase.readOnly
                 text: qsTr("Edit password entry")
                 onClicked: {

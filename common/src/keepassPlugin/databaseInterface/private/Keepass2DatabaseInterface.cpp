@@ -566,8 +566,8 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
 void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
                                                QStringList keys,
                                                QStringList values,
+                                               QStringList keysToDelete,
                                                QString iconUuid)
-// TODO feature/save_kdb2_entry
 {
     Q_ASSERT(m_Database);
     // get group handle and load group details
@@ -580,11 +580,20 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
         return;
     }
 
-// TODO Save/Update also other entry details
-// TODO Implement string lists for getting entry details ...
+    // Using predefined order of keys for default values
+    entry->setTitle(values[KeepassDefault::TITLE]);
+    entry->setUrl(value[KeepassDefault::URL]);
+    entry->setUsername(value[KeepassDefault::USERNAME]);
+    entry->setPassword(value[KeepassDefault::PASSWORD]);
+    entry->setNotes(value[KeepassDefault::NOTES]);
 
-//    entry->setTitle(title);
-//    entry->setUrl(url);
+    // Add or update existing keys and values
+    for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.length(); ++i) {
+        entry->attributes()->set(key[i], value[i]);
+    }
+
+// TODO Delete keys and values
+
 
     if (iconUuid.size() != (Uuid::Length * 2)) {
         // Remove ic from icon name, e.g. "ic12" so that 12 is the icon number
