@@ -29,8 +29,6 @@ import "../common"
 Dialog {
     id: editEntryDetailsDialog
 
-    // ID of the keepass entry to be edited
-    property string entryId: ""
     property bool createNewEntry: false
 
     // This function will be called when any text is changed to check if the
@@ -438,9 +436,6 @@ Dialog {
     }
 
     Component.onCompleted: {
-        if (createNewEntry) {
-            kdbEntry.clearData()
-        }
         entryTitleTextField.focus = true
     }
 

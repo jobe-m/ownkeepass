@@ -488,14 +488,7 @@ void Keepass2DatabaseInterface::slot_unregisterListModel(QString modelId)
 
 void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes, QString parentGroupId, QString iconUuid)
 {
-    Q_ASSERT(m_Database);
-    Uuid parentGroupUuid;
-    // Id for root group is "0" otherwise it is uuid for of parent group
-    if (parentGroupId.compare("0") == 0) {
-        parentGroupUuid = m_Database->rootGroup()->uuid();
-    } else {
-        parentGroupUuid = qString2Uuid(parentGroupId);
-    }
+    Uuid parentGroupUuid = getGroupFromDatabase(parentGroupId);
     Group* parentGroup = m_Database->resolveGroup(parentGroupUuid);
     Q_ASSERT(parentGroup);
     if (Q_NULLPTR == parentGroup) {
@@ -582,14 +575,14 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
 
     // Using predefined order of keys for default values
     entry->setTitle(values[KeepassDefault::TITLE]);
-    entry->setUrl(value[KeepassDefault::URL]);
-    entry->setUsername(value[KeepassDefault::USERNAME]);
-    entry->setPassword(value[KeepassDefault::PASSWORD]);
-    entry->setNotes(value[KeepassDefault::NOTES]);
+    entry->setUrl(values[KeepassDefault::URL]);
+    entry->setUsername(values[KeepassDefault::USERNAME]);
+    entry->setPassword(values[KeepassDefault::PASSWORD]);
+    entry->setNotes(values[KeepassDefault::NOTES]);
 
     // Add or update existing keys and values
     for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.length(); ++i) {
-        entry->attributes()->set(key[i], value[i]);
+        entry->attributes()->set(keys[i], values[i]);
     }
 
 // TODO Delete keys and values
@@ -611,7 +604,7 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
         return;
     }
 
-    // update all list models which contain the changed group
+    // update all list models which contain the changed entry
     QList<Uuid> modelIds = m_entries_modelId.keys(entryUuid);
     for (int i = 0; i < modelIds.count(); i++) {
         if (m_setting_sortAlphabeticallyInListView) {
@@ -648,14 +641,87 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
                                                     QStringList values,
                                                     QString parentGroupId,
                                                     QString iconUuid)
-// TODO feature/save_kdb2_entry
 {
-    Q_ASSERT(m_Database);
+    Uuid parentGroupUuid = getGroupFromDatabase(parentGroupId);
+    Group* parentGroup = m_Database->resolveGroup(parentGroupUuid);
+
+    Q_ASSERT(parentGroup);
+    if (Q_NULLPTR == parentGroup) {
+        qDebug() << "ERROR: Could not find group for UUID: " << parentGroupId;
+        emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", parentGroupId);
+        return;
+    }
+
+    Entry* newEntry = new Entry();
+    newEntry->setUuid(Uuid::random());
+    newEntry->setTitle(values[KeepassDefault::TITLE]);
+    newEntry->setUrl(values[KeepassDefault::URL]);
+    newEntry->setUsername(values[KeepassDefault::USERNAME]);
+    newEntry->setPassword(values[KeepassDefault::PASSWORD]);
+    newEntry->setNotes(values[KeepassDefault::NOTES]);
+
+    // Add or update existing keys and values
+    for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.length(); ++i) {
+        newEntry->attributes()->set(keys[i], values[i]);
+    }
+
+    // Add this new entry to a group in the database
+    newEntry->setGroup(parentGroup);
+
+    if (iconUuid.size() != (Uuid::Length * 2)) {
+        // Remove ic from icon name, e.g. "ic12" so that 12 is the icon number
+        QString iconNumber = iconUuid;
+        newEntry->setIcon(iconNumber.remove(0, 2).toInt());
+    } else {
+        newEntry->setIcon(qString2Uuid(iconUuid));
+    }
+
+    // save database
+    QString newEntryId = newEntry->uuid().toHex();
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // send signal to QML
+        emit newEntryCreated(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, newEntryId);
+        return;
+    }
+
+    // update all list models of parent groups where new entry was added
+    if (m_setting_sortAlphabeticallyInListView) {
+        emit addItemToListModelSorted(values[KeepassDefault::TITLE],            // entry name
+                                      getEntryIcon(newEntry->iconNumber(),
+                                                   newEntry->iconUuid()),       // icon uuid
+                                      getUserAndPassword(newEntry),                // subtitle
+                                      newEntryId,                               // identifier for entry item in list model
+                                      DatabaseItemType::ENTRY,                  // item type
+                                      0,                                        // item level (not used here)
+                                      parentGroupId);                           // identifier for list model
+    } else {
+        emit appendItemToListModel(values[KeepassDefault::TITLE],               // entry name
+                                   getEntryIcon(newEntry->iconNumber(),
+                                                newEntry->iconUuid()),          // icon uuid
+                                   getUserAndPassword(newEntry),                   // subtitle
+                                   newEntryId,                                  // identifier for entry item in list model
+                                   DatabaseItemType::ENTRY,                     // item type
+                                   0,                                           // item level (not used here)
+                                   parentGroupId);                              // identifier for list model
+    }
+    // save modelid and group
+    m_entries_modelId.insertMulti(parentGroupUuid, newEntry->uuid());
+
+    // update all grandparent groups subtitle in UI
+    // check if parent group is root group, then we don't need to do anything
+    if (parentGroup != m_Database->rootGroup()) {
+        updateGrandParentGroupInListModel(parentGroup);
+    }
+
+    // signal to QML
+    emit newEntryCreated(DatabaseAccessResult::RE_OK, "", newEntryId);
 }
 
 void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
 {
     Q_ASSERT(m_Database);
+// TODO
 }
 
 void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentGroup)
@@ -861,4 +927,17 @@ QString Keepass2DatabaseInterface::getGroupIcon(int standardIcon, Uuid customIco
     } else {
         return customIcon.toHex();
     }
+}
+
+Uuid Keepass2DatabaseInterface::getGroupFromDatabase(QString groupId)
+{
+    Q_ASSERT(m_Database);
+    Uuid groupUuid;
+    // Id for root group is "0" otherwise it is uuid for of parent group
+    if (groupId.compare("0") == 0) {
+        groupUuid = m_Database->rootGroup()->uuid();
+    } else {
+        groupUuid = qString2Uuid(groupId);
+    }
+    return groupUuid;
 }

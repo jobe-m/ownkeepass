@@ -212,6 +212,7 @@ public: // slots
     virtual void slot_saveEntry(QString entryId,
                                 QStringList keys,
                                 QStringList values,
+                                QStringList keysToDelete,
                                 QString iconUuid) = 0;
     virtual void slot_createNewEntry(QStringList keys,
                                      QStringList values,

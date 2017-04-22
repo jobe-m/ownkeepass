@@ -205,6 +205,7 @@ private:
     inline QString uInt2QString(uint value);
     QString getEntryIcon(int standardIcon, Uuid customIcon);
     QString getGroupIcon(int standardIcon, Uuid customIcon);
+    Uuid getGroupFromDatabase(QString groupId);
 
 private:
     // Keepass database handler

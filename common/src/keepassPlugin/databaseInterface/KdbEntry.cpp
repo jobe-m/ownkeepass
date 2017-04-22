@@ -77,9 +77,9 @@ bool KdbEntry::connectToDatabaseClient()
                   SLOT(slot_entryDataLoaded(int,QString,QString,QStringList,QStringList,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(saveEntryToKdbDatabase(QString,QStringList,QStringList,QString)),
+                  SIGNAL(saveEntryToKdbDatabase(QString,QStringList,QStringList,QStringList,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_saveEntry(QString,QStringList,QStringList,QString)));
+                  SLOT(slot_saveEntry(QString,QStringList,QStringList,QStringList,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(entrySaved(int,QString,QString)),
@@ -158,20 +158,32 @@ void KdbEntry::saveEntryData()
         // trigger saving to database client
         QStringList keys;
         QStringList values;
+        QStringList keysToDelete;
         keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
              << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
         values << m_title << m_url << m_userName << m_password << m_notes;
 
-// TODO Add additional attributes key and values to Stringlists
+        for (int i = 0; i < m_additional_attribute_items.count(); ++i) {
+            // Add additional attributes key and values to Stringlists
+            if (m_additional_attribute_items[i].m_modified &&
+                !m_additional_attribute_items[i].m_to_be_deleted) {
+                keys << m_additional_attribute_items[i].m_key;
+                values << m_additional_attribute_items[i].m_value;
+            }
+            // Check which keys can be deleted
+            if (m_additional_attribute_items[i].m_to_be_deleted) {
+                keysToDelete << m_additional_attribute_items[i].m_key;
+            }
+        }
 
         qDebug() << "Save entry data: " << m_title << m_url << m_userName << m_password << m_notes;
-        emit saveEntryToKdbDatabase(m_entryId, keys, values, m_iconUuid);
+        emit saveEntryToKdbDatabase(m_entryId, keys, values, keysToDelete, m_iconUuid);
     }
 }
 
-void KdbEntry::createNewEntry(QString parentgroupId)
+void KdbEntry::createNewEntry()
 {
-    Q_ASSERT(parentgroupId != "");
+    Q_ASSERT(m_groupId != "");
     if (!m_connected && !connectToDatabaseClient()) {
         // if not successfully connected just return an error
         emit newEntryCreated(DatabaseAccessResult::RE_DB_NOT_OPENED, "", 0);
@@ -184,9 +196,16 @@ void KdbEntry::createNewEntry(QString parentgroupId)
              << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
         values << m_title << m_url << m_userName << m_password << m_notes;
 
-// TODO Add additional attributes key and values to Stringlists
+        for (int i = 0; i < m_additional_attribute_items.count(); ++i) {
+            // Add additional attributes key and values to Stringlists
+            if (m_additional_attribute_items[i].m_modified &&
+                !m_additional_attribute_items[i].m_to_be_deleted) {
+                keys << m_additional_attribute_items[i].m_key;
+                values << m_additional_attribute_items[i].m_value;
+            }
+        }
 
-        emit createNewEntryInKdbDatabase(keys, values, parentgroupId, m_iconUuid);
+        emit createNewEntryInKdbDatabase(keys, values, m_groupId, m_iconUuid);
     }
 }
 
@@ -409,6 +428,11 @@ void KdbEntry::setIconUuid(const QString value)
         m_iconUuid_modified = false;
     }
     checkIfEdited();
+}
+
+void KdbEntry::setGroupId(const QString value)
+{
+    m_groupId = value;
 }
 
 // for list model

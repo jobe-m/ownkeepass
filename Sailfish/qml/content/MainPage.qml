@@ -38,6 +38,7 @@ Page {
     property Component editDatabaseSettingsDialogComponent: editDatabaseSettingsDialogComponent
     property Component editSettingsDialogComponent: editSettingsDialogComponent
     property Component queryDialogForUnsavedChangesComponent: queryDialogForUnsavedChangesComponent
+    property KdbEntry kdbEntry: kdbEntry
 
     // internal
     property string __unlockCharA: ""
@@ -530,7 +531,7 @@ Page {
         property bool useKeyFile: false
         property int keyFileLocation: 0
         property string keyFilePath: ""
-        property int databaseType: ownKeepassDatabase.DB_TYPE_UNKNOWN
+        property int databaseType: DatabaseType.DB_TYPE_UNKNOWN
         property Page masterGroupsPage
 
         function init() {
@@ -773,7 +774,7 @@ Page {
         function saveKdbEntryDetails(createNewItem) {
             if (createNewItem) {
                 // create new group in database, save and update list model data in backend
-                kdbEntry.createNewEntry(parentGroupId)
+                kdbEntry.createNewEntry()
             } else {
                 // save changes of existing group to database and update list model data in backend
                 kdbEntry.saveEntryData()
@@ -786,25 +787,6 @@ Page {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_ENTRY" })
             }
-
-/*            if (entryValues.length !== originalEntryValues.length) {
-                // open query dialog for unsaved changes
-                pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "state": "QUERY_FOR_ENTRY" })
-                return
-            }
-            // length of arrays is equal now check if any content has changed
-            var i = 0
-            while (i < entryValues.length && i < originalEntryValues.length) {
-                if (entryValues[i] !== originalEntryValues[i]) {
-                    // open query dialog for unsaved changes
-                    pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                      { "state": "QUERY_FOR_ENTRY" })
-                    break
-                }
-                ++i
-            }
-*/
         }
 
         function checkForUnsavedKdbGroupChanges() {

@@ -228,9 +228,13 @@ Page {
             onNewPasswordEntryClicked: {
                 // empty searchField
                 searchField.text = ""
+                // reset entry object and init with icon and parent groupId
+                Global.env.mainPage.kdbEntry.clearData()
+                // Convert group icon uuid to entry icon uuid
+                Global.env.mainPage.kdbEntry.iconUuid = parentIconUuid.replace('f', '')
+                Global.env.mainPage.kdbEntry.groupId = groupId
                 pageStack.push(Global.env.mainPage.editEntryDetailsDialogComponent,
-                               // Convert group icon uuid to entry icon uuid
-                               { "createNewEntry": true, "parentGroupId": groupId, "iconUuid": parentIconUuid.replace('f', '') })
+                               { "createNewEntry": true })
             }
 
             onSearchClicked: {

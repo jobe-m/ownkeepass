@@ -32,7 +32,7 @@ ListItem {
     property bool passwordMode: false
 
     // private
-    property bool _passwordEchoMode: false
+    property bool _passwordEchoMode: true
     property string _passwordEcho: ""
 
     signal itemClicked
@@ -86,7 +86,7 @@ ListItem {
                            Screen.width - Theme.horizontalPageMargin - passwordModeButton.width :
                            Screen.width - Theme.horizontalPageMargin * 2
                 font.pixelSize: Theme.fontSizeMedium
-                text: entryTextArea._passwordEchoMode ? _passwordEcho : entryTextArea.text
+                text: entryTextArea.passwordMode && entryTextArea._passwordEchoMode ? _passwordEcho : entryTextArea.text
                 color: entryTextArea.highlighted ? Theme.highlightColor : Theme.primaryColor
                 Component.onCompleted: {
                     if (entryTextArea.passwordMode) {

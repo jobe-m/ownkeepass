@@ -75,6 +75,7 @@ public:
     Q_PROPERTY(QString password READ getPassword WRITE setPassword STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
     Q_PROPERTY(QString notes READ getNotes WRITE setNotes STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
     Q_PROPERTY(QString iconUuid READ getIconUuid WRITE setIconUuid STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
+    Q_PROPERTY(QString groupId READ getGroupId WRITE setGroupId NOTIFY entryDataLoaded)
     Q_PROPERTY(bool edited READ getEdited NOTIFY dataEdited)
 
     // for list model
@@ -83,7 +84,7 @@ public:
 public:
     Q_INVOKABLE void loadEntryData();
     Q_INVOKABLE void saveEntryData();
-    Q_INVOKABLE void createNewEntry(QString parentgroupId);
+    Q_INVOKABLE void createNewEntry();
     Q_INVOKABLE void deleteEntry();
     Q_INVOKABLE void moveEntry(QString newGroupId);
     Q_INVOKABLE void clearData();
@@ -111,6 +112,7 @@ signals:
     void saveEntryToKdbDatabase(QString entryId,
                                 QStringList keys,
                                 QStringList values,
+                                QStringList keysToDelete,
                                 QString iconUuid);
     void createNewEntryInKdbDatabase(QStringList keys,
                                      QStringList values,
@@ -163,6 +165,8 @@ public:
     void setNotes(const QString value);
     QString getIconUuid() const { return m_iconUuid; }
     void setIconUuid(const QString value);
+    QString getGroupId() const { return m_groupId; }
+    void setGroupId(const QString value);
     bool getEdited() { checkIfEdited(); return m_edited; }
 
     // for reading list model
@@ -184,6 +188,7 @@ private:
 private:
     QList<AdditionalAttributeItem> m_additional_attribute_items;
     QString m_entryId;
+    QString m_groupId;
 
     QString m_title;
     QString m_url;
