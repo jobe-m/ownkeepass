@@ -44,7 +44,9 @@ Dialog {
     }
 
     // forbit page navigation if title is not set and password is not verified (if password field shows the password in cleartext)
-    canNavigateForward: !entryTitleTextField.errorHighlight && (!entryVerifyPasswordTextField.enabled || !entryVerifyPasswordTextField.errorHighlight)
+    canNavigateForward: !entryTitleTextField.errorHighlight &&
+                        (!entryVerifyPasswordTextField.enabled || !entryVerifyPasswordTextField.errorHighlight) &&
+                        !kdbEntry.invalidKey
     allowedOrientations: applicationWindow.orientationSetting
 
     SilicaFlickable {
@@ -60,7 +62,11 @@ Dialog {
         }
 
         ApplicationMenu {
+            disableNewEntryAttribute: false
             disableSettingsItem: true
+            onAddAdditionalAttribute: {
+                kdbEntry.addAdditionalAttribute()
+            }
         }
 
         // Show a scollbar when the view is flicked, place this over all other content
@@ -267,18 +273,15 @@ Dialog {
             }
 
             SectionHeader {
-                enabled: !kdbEntry.isEmpty
-                visible: enabled
+                id: additionalAttributesSection
                 text: qsTr("Additional Attributes")
             }
-
-// TODO implement SilicaListView for editing additional attributes
-// Implement also backend in kdbEntry to change additional attributes...
 
             SilicaListView {
                 id: additionalAttributesListView
                 width: parent.width
                 model: kdbEntry
+
 
                 delegate: Item {
                     id: additionalAttributesDelegate
@@ -286,9 +289,9 @@ Dialog {
                     visible: enabled
 
                     width: parent.width
-                    height: enabled ? ((additionalAttributesTextArea.enabled ?
-                                            additionalAttributesTextArea.height :
-                                            additionalAttributesTextField.height ) + additionalAttributesButtons.height + additionalAttributesBottomPadding.height) : 0
+                    height: enabled ? ((additionalAttributesEditText.enabled ?
+                                            additionalAttributesEditText.height :
+                                            additionalAttributesEditLabel.height ) + additionalAttributesButtons.height + additionalAttributesBottomPadding.height) : 0
 
                     Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
 
@@ -305,14 +308,14 @@ Dialog {
                     function saveLabel() {
                         // Save label into additional attribute Key
                         model.editKeyMode = false
-                        additionalAttributesTextArea.enabled = true
-                        additionalAttributesTextArea.focus = true
-                        model.key = additionalAttributesTextField.text
-                        additionalAttributesTextArea.label = model.key
-                        additionalAttributesTextArea.placeholderText = qsTr("Set") + " " + model.key
+                        additionalAttributesEditText.enabled = true
+                        additionalAttributesEditText.focus = true
+                        model.key = additionalAttributesEditLabel.text
+                        additionalAttributesEditText.label = model.key
+                        additionalAttributesEditText.placeholderText = qsTr("Set") + " " + model.key
                         updateCoverState(kdbEntry.edited)
-                        deleteAdditionalAttributeButton.text = qsTr("Delete")
-                        editLabelButton.text = qsTr("Edit Label")
+                        additionalAttributeRightButton.text = qsTr("Delete")
+                        additionalAttributeLeftButton.text = qsTr("Edit Label")
                     }
 
                     ListView.onAdd: AddAnimation {
@@ -323,13 +326,15 @@ Dialog {
                     }
 
                     TextArea {
-                        id: additionalAttributesTextArea
+                        id: additionalAttributesEditText
+                        enabled: !model.editKeyMode
                         width: parent.width
                         anchors.top: parent.top
                         opacity: enabled ? 1.0 : 0.0
                         label: model.key
                         text: model.value
-                        placeholderText: qsTr("Set") + " " + model.key
+                        placeholderText: model.key.length === 0 ?
+                                             qsTr("Label not set") : qsTr("Set") + " " + model.key
                         onTextChanged: {
                             // Save additional attribute value
                             model.value = text
@@ -341,14 +346,21 @@ Dialog {
                     }
 
                     TextField {
-                        id: additionalAttributesTextField
+                        id: additionalAttributesEditLabel
                         width: parent.width
                         anchors.top: parent.top
-                        enabled: !additionalAttributesTextArea.enabled
+                        enabled: !additionalAttributesEditText.enabled
                         opacity: enabled ? 1.0 : 0.0
                         label: qsTr("Edit Label")
                         text: model.key
                         placeholderText: qsTr("Edit Label")
+                        errorHighlight: model.errorHighlight
+                        onTextChanged: {
+                            model.key = text
+                            errorHighlight = model.errorHighlight
+                            updateCoverState(kdbEntry.edited)
+                        }
+                        EnterKey.enabled: !errorHighlight
                         EnterKey.onClicked: {
                             additionalAttributesDelegate.saveLabel()
                         }
@@ -359,43 +371,56 @@ Dialog {
 
                     Row {
                         id: additionalAttributesButtons
+                        enabled: height !== 0
+                        opacity: enabled ? 1.0 : 0.0
                         anchors.bottom: additionalAttributesBottomPadding.top
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.horizontalPageMargin
                         anchors.left: parent.left
                         anchors.leftMargin: Theme.horizontalPageMargin
                         spacing: (width / 2) * 0.1
-                        height: Theme.itemSizeSmall
+                        height: additionalAttributesEditText.focus ||
+                                additionalAttributesEditLabel.focus ?
+                                    Theme.itemSizeSmall : 0
+
+                        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
 
                         Button {
-                            id: editLabelButton
+                            id: additionalAttributeLeftButton
+                            enabled: additionalAttributesEditText.label.length !== 0  // Disable cancel button when label is initally empty on creation
                             width: (parent.width / 2) * 0.95
                             anchors.bottom: parent.bottom
-                            text: qsTr("Edit Label")
+                            text: model.editKeyMode ? qsTr("Cancel") : qsTr("Edit Label")
                             onClicked: {
                                 if (model.editKeyMode) {
-                                    // change to edit additional attribute value
+                                    // change to edit additional attribute text
                                     model.editKeyMode = false
-                                    additionalAttributesTextArea.enabled = true
-                                    additionalAttributesTextArea.focus = true
+                                    // Reset key and label to original value
+                                    model.key = additionalAttributesEditText.label
+                                    additionalAttributesEditLabel.text = additionalAttributesEditText.label
+                                    // Switch edit fields
+                                    additionalAttributesEditText.enabled = true
+                                    additionalAttributesEditText.focus = true
+                                    // Switch button texts
                                     text = qsTr("Edit Label")
-                                    deleteAdditionalAttributeButton.text = qsTr("Delete")
+                                    additionalAttributeRightButton.text = qsTr("Delete")
                                 } else {
                                     // change to edit label
                                     model.editKeyMode = true
-                                    additionalAttributesTextArea.enabled = false
-                                    additionalAttributesTextField.focus = true
+                                    additionalAttributesEditText.enabled = false
+                                    additionalAttributesEditLabel.focus = true
                                     text = qsTr("Cancel")
-                                    deleteAdditionalAttributeButton.text = qsTr("Accept")
+                                    additionalAttributeRightButton.text = qsTr("Accept")
                                 }
                             }
                         }
 
                         Button {
-                            id: deleteAdditionalAttributeButton
+                            id: additionalAttributeRightButton
+                            enabled: !additionalAttributesEditLabel.errorHighlight
                             width: (parent.width / 2) * 0.95
                             anchors.bottom: parent.bottom
-                            text: qsTr("Delete")
+                            text: model.editKeyMode ? qsTr("Accept") : qsTr("Delete")
                             onClicked: {
                                 if (model.editKeyMode) {
                                     // Save label
@@ -418,7 +443,9 @@ Dialog {
 
                 Connections {
                     // for breaking the binding loop on height
-                    onContentHeightChanged: additionalAttributesListView.height = additionalAttributesListView.contentHeight
+                    onContentHeightChanged: {
+                        additionalAttributesListView.height = additionalAttributesListView.contentHeight
+                    }
                 }
             }
         }
@@ -433,10 +460,6 @@ Dialog {
             kdbEntry.iconUuid = newIconUuid
             updateCoverState(kdbEntry.edited)
         }
-    }
-
-    Component.onCompleted: {
-        entryTitleTextField.focus = true
     }
 
     // user wants to save new entry data

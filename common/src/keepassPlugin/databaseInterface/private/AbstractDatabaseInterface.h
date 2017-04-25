@@ -213,6 +213,7 @@ public: // slots
                                 QStringList keys,
                                 QStringList values,
                                 QStringList keysToDelete,
+                                QStringList keysToRename,
                                 QString iconUuid) = 0;
     virtual void slot_createNewEntry(QStringList keys,
                                      QStringList values,

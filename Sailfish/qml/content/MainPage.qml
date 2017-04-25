@@ -786,6 +786,8 @@ Page {
             if (kdbEntry.edited) {
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
                                   { "state": "QUERY_FOR_ENTRY" })
+            } else {
+                kdbEntry.clearData()
             }
         }
 
@@ -1151,6 +1153,23 @@ Page {
                     break
                 case "QUERY_FOR_APP_SETTINGS":
                     kdbListItemInternal.saveKeepassSettings()
+                    break
+                default:
+                    console.log("ERROR: unknown query for unsaved changes")
+                    break
+                }
+            }
+
+            onRejected: {
+                switch (state) {
+                case "QUERY_FOR_ENTRY":
+                    kdbEntry.clearData()
+                    break
+                case "QUERY_FOR_GROUP":
+                    break
+                case "QUERY_FOR_DATABASE_SETTINGS":
+                    break
+                case "QUERY_FOR_APP_SETTINGS":
                     break
                 default:
                     console.log("ERROR: unknown query for unsaved changes")

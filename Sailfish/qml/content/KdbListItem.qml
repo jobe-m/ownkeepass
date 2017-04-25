@@ -166,8 +166,7 @@ ListItem {
                         // Load entry details before opening page
                         kdbEntry.entryId = model.id
                         kdbEntry.loadEntryData()
-                        pageStack.push(editEntryDetailsDialogComponent,
-                                       { "entryId": model.id })
+                        pageStack.push(editEntryDetailsDialogComponent)
                         break
                     }
                 }

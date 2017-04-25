@@ -379,8 +379,8 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
             values.append(entry->attributes()->value(key));
         }
 
-        // send signal with all entry data to all connected entry objects
-        // each object will check with entryId if it needs to update the details
+        // Send signal with all entry data to all connected entry objects
+        // Each object will check with entryId if it needs to update the details
         emit entryLoaded(DatabaseAccessResult::RE_OK,
                          "",
                          entryId,
@@ -560,6 +560,7 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
                                                QStringList keys,
                                                QStringList values,
                                                QStringList keysToDelete,
+                                               QStringList keysToRename,
                                                QString iconUuid)
 {
     Q_ASSERT(m_Database);
@@ -580,13 +581,24 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
     entry->setPassword(values[KeepassDefault::PASSWORD]);
     entry->setNotes(values[KeepassDefault::NOTES]);
 
+    // Do not change order of key update, rename and delete
     // Add or update existing keys and values
-    for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.length(); ++i) {
+    for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.count(); ++i) {
         entry->attributes()->set(keys[i], values[i]);
+        qDebug() << "add or update: " << keys[i] << values[i];
     }
 
-// TODO Delete keys and values
+    // Rename existing keys
+    for (int i = 0; i < keysToRename.count(); i = i+2) {
+        entry->attributes()->rename(keysToRename[i], keysToRename[i+1]);
+        qDebug() << "rename: " << keysToRename[i] << keysToRename[i+1];
+    }
 
+    // Delete existing keys
+    for (int i = 0; i < keysToDelete.count(); ++i) {
+        entry->attributes()->remove(keysToDelete[i]);
+        qDebug() << "delete: " << keysToDelete[i];
+    }
 
     if (iconUuid.size() != (Uuid::Length * 2)) {
         // Remove ic from icon name, e.g. "ic12" so that 12 is the icon number
@@ -596,15 +608,15 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
         entry->setIcon(qString2Uuid(iconUuid));
     }
 
-    // save database
+    // Save database
     QString errorMsg = saveDatabase();
     if (errorMsg.length() != 0) {
-        // send signal to QML
+        // Send signal to QML
         emit entrySaved(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, entryId);
         return;
     }
 
-    // update all list models which contain the changed entry
+    // Update all list models which contain the changed entry
     QList<Uuid> modelIds = m_entries_modelId.keys(entryUuid);
     for (int i = 0; i < modelIds.count(); i++) {
         if (m_setting_sortAlphabeticallyInListView) {
@@ -623,18 +635,11 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
                                        modelIds[i].toHex());                        // identifier for list model of master group
         }
     }
-    // signal to QML
+    // Signal to QML
     emit entrySaved(DatabaseAccessResult::RE_OK, "", entryId);
 
-    // send signal with all entry data to all connected entry objects
-    // each object will check with entryId if it needs to update the details
-    emit entryLoaded(DatabaseAccessResult::RE_OK,
-                     "",
-                     entryId,
-                     keys,
-                     values,
-                     getEntryIcon(entry->iconNumber(),
-                                  entry->iconUuid()));
+    // In order to update ShowEntryDetailsPage just call loadEntry slot with the entry Id
+    slot_loadEntry(entryId);
 }
 
 void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
@@ -661,8 +666,9 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
     newEntry->setNotes(values[KeepassDefault::NOTES]);
 
     // Add or update existing keys and values
-    for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.length(); ++i) {
+    for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.count(); ++i) {
         newEntry->attributes()->set(keys[i], values[i]);
+        qDebug() << "save: " << keys[i] << values[i];
     }
 
     // Add this new entry to a group in the database

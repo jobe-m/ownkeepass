@@ -27,19 +27,31 @@ import "../scripts/Global.js" as Global
 PushUpMenu {
     id: applicationMenu
 
+    property bool disableNewEntryAttribute: true
     property bool disableSettingsItem: false
     property string helpContent: ""
+
+    signal addAdditionalAttribute
+
+    MenuItem {
+        enabled: !disableNewEntryAttribute
+        visible: enabled
+        text: qsTr("Add Additional Attribute")
+        onClicked: addAdditionalAttribute()
+    }
 
     MenuItem {
         text: qsTr("About")
         onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
     }
+
     MenuItem {
         enabled: helpContent !== ""
         visible: enabled
         text: qsTr("Help")
         onClicked: pageStack.push(Qt.resolvedUrl("../help/Help" + helpContent + ".qml"))
     }
+
     MenuItem {
         enabled: !disableSettingsItem
         visible: enabled

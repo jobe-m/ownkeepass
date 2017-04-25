@@ -506,9 +506,15 @@ void Keepass1DatabaseInterface::slot_createNewGroup(QString title, QString notes
     emit newGroupCreated(DatabaseAccessResult::RE_OK, "", uInt2QString(uint(newGroup)));
 }
 
-void Keepass1DatabaseInterface::slot_saveEntry(QString entryId, QStringList keys, QStringList values, QStringList keysToDelete, QString iconUuid)
+void Keepass1DatabaseInterface::slot_saveEntry(QString entryId,
+                                               QStringList keys,
+                                               QStringList values,
+                                               QStringList keysToDelete,
+                                               QStringList keysToRename,
+                                               QString iconUuid)
 {
     Q_UNUSED(keysToDelete)
+    Q_UNUSED(keysToRename)
     Q_ASSERT(m_kdb3Database);
     //  save changes on entry details to database
     IEntryHandle* entry = (IEntryHandle*)qString2UInt(entryId);

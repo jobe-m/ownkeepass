@@ -23,9 +23,18 @@
 #ifndef KDBENTRY_H
 #define KDBENTRY_H
 
+#include <QDebug>
 #include <QAbstractItemModel>
 #include "private/AbstractDatabaseInterface.h"
 #include "ownKeepassGlobal.h"
+
+#define ROLE_KEY             baseRole
+#define ROLE_VALUE           baseRole + 1
+#define ROLE_EDIT_KEY_MODE   baseRole + 2
+#define ROLE_INDEX           baseRole + 3
+#define ROLE_TO_BE_DELETED   baseRole + 4
+#define ROLE_MODIFIED        baseRole + 5
+#define ROLE_ERROR_HIGHLIGHT baseRole + 6
 
 using namespace ownKeepassPublic; // for using baseRole
 
@@ -34,13 +43,14 @@ namespace kpxPublic {
 class AdditionalAttributeItem
 {
 public:
-    AdditionalAttributeItem(QString key, QString value, bool editKeyMode = false)
+    AdditionalAttributeItem(QString key, QString value, bool editKeyMode = false, bool errorHighlight = false)
         : m_key(key),
           m_value(value),
           m_edit_key_mode(editKeyMode),
           m_original_key(key),
           m_original_value(value),
-          m_to_be_deleted(false)
+          m_to_be_deleted(false),
+          m_error_highlight(errorHighlight)
     {
         static int itemCount = 0;
         m_index = itemCount;
@@ -61,6 +71,7 @@ public:
     QString m_original_value;
     bool m_to_be_deleted;
     bool m_modified;
+    bool m_error_highlight;
 };
 
 class KdbEntry : public QAbstractListModel
@@ -77,6 +88,7 @@ public:
     Q_PROPERTY(QString iconUuid READ getIconUuid WRITE setIconUuid STORED true SCRIPTABLE true NOTIFY entryDataLoaded)
     Q_PROPERTY(QString groupId READ getGroupId WRITE setGroupId NOTIFY entryDataLoaded)
     Q_PROPERTY(bool edited READ getEdited NOTIFY dataEdited)
+    Q_PROPERTY(bool invalidKey READ getInvalidKey NOTIFY invalidKeyChanged)
 
     // for list model
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY isEmptyChanged)
@@ -88,6 +100,7 @@ public:
     Q_INVOKABLE void deleteEntry();
     Q_INVOKABLE void moveEntry(QString newGroupId);
     Q_INVOKABLE void clearData();
+    Q_INVOKABLE void addAdditionalAttribute();
 
     // for list model
     Q_INVOKABLE void clearListModel();
@@ -95,6 +108,7 @@ public:
 signals:
     // signals to QML
     void dataEdited();
+    void invalidKeyChanged();
     void entryDataLoaded(int result,
                          QString errorMsg);
     void entryDataSaved(int result,
@@ -113,6 +127,7 @@ signals:
                                 QStringList keys,
                                 QStringList values,
                                 QStringList keysToDelete,
+                                QStringList keysToRename,
                                 QString iconUuid);
     void createNewEntryInKdbDatabase(QStringList keys,
                                      QStringList values,
@@ -168,6 +183,7 @@ public:
     QString getGroupId() const { return m_groupId; }
     void setGroupId(const QString value);
     bool getEdited() { checkIfEdited(); return m_edited; }
+    bool getInvalidKey() const { return m_invalid_key; }
 
     // for reading list model
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
@@ -212,24 +228,27 @@ private:
     bool m_connected;
     bool m_new_entry_triggered;
     bool m_edited;
+    bool m_invalid_key;
 };
 
 // inline implementations
 inline QVariant AdditionalAttributeItem::get(const int role) const
 {
     switch (role) {
-    case baseRole:
-        return m_key;
-    case baseRole + 1:
-        return m_value;
-    case baseRole + 2:
-        return m_edit_key_mode;
-    case baseRole + 3:
-        return m_index;
-    case baseRole + 4:
-        return m_to_be_deleted;
-    case baseRole + 5:
-        return m_modified;
+    case ROLE_KEY:
+        return QVariant(m_key);
+    case ROLE_VALUE:
+        return QVariant(m_value);
+    case ROLE_EDIT_KEY_MODE:
+        return QVariant(m_edit_key_mode);
+    case ROLE_INDEX:
+        return QVariant(m_index);
+    case ROLE_TO_BE_DELETED:
+        return QVariant(m_to_be_deleted);
+    case ROLE_MODIFIED:
+        return QVariant(m_modified);
+    case ROLE_ERROR_HIGHLIGHT:
+        return QVariant(m_error_highlight);
     }
     return QVariant();
 }
@@ -237,7 +256,7 @@ inline QVariant AdditionalAttributeItem::get(const int role) const
 inline bool AdditionalAttributeItem::set(const QVariant & value, const int role)
 {
     switch (role) {
-    case baseRole:
+    case ROLE_KEY:
         m_key = value.toString();
         if (m_key != m_original_key || m_value != m_original_value) {
             m_modified = true;
@@ -245,7 +264,7 @@ inline bool AdditionalAttributeItem::set(const QVariant & value, const int role)
             m_modified = false;
         }
         return true;
-    case baseRole + 1:
+    case ROLE_VALUE:
         m_value = value.toString();
         if (m_key != m_original_key || m_value != m_original_value) {
             m_modified = true;
@@ -253,18 +272,21 @@ inline bool AdditionalAttributeItem::set(const QVariant & value, const int role)
             m_modified = false;
         }
         return true;
-    case baseRole + 2:
+    case ROLE_EDIT_KEY_MODE:
         m_edit_key_mode = value.toBool();
         return true;
-    case baseRole + 3:
+    case ROLE_INDEX:
         // m_index is not editable
         return false;
-    case baseRole + 4:
+    case ROLE_TO_BE_DELETED:
         m_to_be_deleted = value.toBool();
         return true;
-    case baseRole + 5:
+    case ROLE_MODIFIED:
         // m_modified is not editable
         return false;
+    case ROLE_ERROR_HIGHLIGHT:
+        m_error_highlight = value.toBool();
+        return true;
     }
     return false;
 }
@@ -272,12 +294,13 @@ inline bool AdditionalAttributeItem::set(const QVariant & value, const int role)
 inline QHash<int, QByteArray> AdditionalAttributeItem::createRoles()
 {
     QHash<int, QByteArray> roles;
-    roles[baseRole]     = "key";
-    roles[baseRole + 1] = "value";
-    roles[baseRole + 2] = "editKeyMode";
-    roles[baseRole + 3] = "index";
-    roles[baseRole + 4] = "toBeDeleted";
-    roles[baseRole + 5] = "modified";
+    roles[ROLE_KEY]             = "key";
+    roles[ROLE_VALUE]           = "value";
+    roles[ROLE_EDIT_KEY_MODE]   = "editKeyMode";
+    roles[ROLE_INDEX]           = "index";
+    roles[ROLE_TO_BE_DELETED]   = "toBeDeleted";
+    roles[ROLE_MODIFIED]        = "modified";
+    roles[ROLE_ERROR_HIGHLIGHT] = "errorHighlight";
     return roles;
 }
 

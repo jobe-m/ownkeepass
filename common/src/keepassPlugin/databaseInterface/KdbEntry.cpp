@@ -55,7 +55,8 @@ KdbEntry::KdbEntry(QObject *parent)
       m_iconUuid_modified(false),
       m_connected(false),
       m_new_entry_triggered(false),
-      m_edited(false)
+      m_edited(false),
+      m_invalid_key(false)
 {}
 
 bool KdbEntry::connectToDatabaseClient()
@@ -77,9 +78,9 @@ bool KdbEntry::connectToDatabaseClient()
                   SLOT(slot_entryDataLoaded(int,QString,QString,QStringList,QStringList,QString)));
     Q_ASSERT(ret);
     ret = connect(this,
-                  SIGNAL(saveEntryToKdbDatabase(QString,QStringList,QStringList,QStringList,QString)),
+                  SIGNAL(saveEntryToKdbDatabase(QString,QStringList,QStringList,QStringList,QStringList,QString)),
                   DatabaseClient::getInstance()->getInterface(),
-                  SLOT(slot_saveEntry(QString,QStringList,QStringList,QStringList,QString)));
+                  SLOT(slot_saveEntry(QString,QStringList,QStringList,QStringList,QStringList,QString)));
     Q_ASSERT(ret);
     ret = connect(DatabaseClient::getInstance()->getInterface(),
                   SIGNAL(entrySaved(int,QString,QString)),
@@ -159,25 +160,42 @@ void KdbEntry::saveEntryData()
         QStringList keys;
         QStringList values;
         QStringList keysToDelete;
+        QStringList keysToRename;
         keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
              << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
         values << m_title << m_url << m_userName << m_password << m_notes;
 
+        // Add additional attributes key and values to Stringlists
         for (int i = 0; i < m_additional_attribute_items.count(); ++i) {
-            // Add additional attributes key and values to Stringlists
-            if (m_additional_attribute_items[i].m_modified &&
-                !m_additional_attribute_items[i].m_to_be_deleted) {
-                keys << m_additional_attribute_items[i].m_key;
+            // Check for changed attribute key or value
+            if (!m_additional_attribute_items[i].m_to_be_deleted &&
+                    ((m_additional_attribute_items[i].m_original_key !=
+                      m_additional_attribute_items[i].m_key) ||
+                     (m_additional_attribute_items[i].m_original_value !=
+                      m_additional_attribute_items[i].m_value)))
+            {
+                // Add original key because the key might got renamed
+                if (m_additional_attribute_items[i].m_original_key.length() != 0) {
+                    keys << m_additional_attribute_items[i].m_original_key;
+                } else {
+                    keys << m_additional_attribute_items[i].m_key;
+                }
                 values << m_additional_attribute_items[i].m_value;
             }
             // Check which keys can be deleted
             if (m_additional_attribute_items[i].m_to_be_deleted) {
                 keysToDelete << m_additional_attribute_items[i].m_key;
             }
+            // Check for renamed keys
+            if (!m_additional_attribute_items[i].m_to_be_deleted &&
+                m_additional_attribute_items[i].m_original_key.length() != 0 &&
+                (m_additional_attribute_items[i].m_original_key !=
+                 m_additional_attribute_items[i].m_key)) {
+                keysToRename << m_additional_attribute_items[i].m_original_key << m_additional_attribute_items[i].m_key;
+            }
         }
 
-        qDebug() << "Save entry data: " << m_title << m_url << m_userName << m_password << m_notes;
-        emit saveEntryToKdbDatabase(m_entryId, keys, values, keysToDelete, m_iconUuid);
+        emit saveEntryToKdbDatabase(m_entryId, keys, values, keysToDelete, keysToRename, m_iconUuid);
     }
 }
 
@@ -478,9 +496,58 @@ Qt::ItemFlags KdbEntry::flags(const QModelIndex &index) const
 
 bool KdbEntry::setData(const QModelIndex & index, const QVariant & value, int role)
 {
+    bool invalidKey = false;
     if (index.row() < 0 || index.row() >= m_additional_attribute_items.count()) {
         return false;
     } else {
+        // Check if data to be set is a key
+        if (role == ROLE_KEY) {
+            QString newKey = value.toString();
+//            qDebug() << newKey << " " << index.row();
+            if (newKey.length() == 0) {
+//                qDebug() << "key empty: error highlight to true";
+                invalidKey = true;
+            } else {
+//                qDebug() << "error highlight to false";
+                invalidKey = false;
+            }
+            // Check if new key is a duplicate of a predefined default key
+            if (newKey == EntryAttributes::TitleKey || newKey == EntryAttributes::URLKey ||
+                    newKey == EntryAttributes::UserNameKey || newKey == EntryAttributes::PasswordKey ||
+                    newKey == EntryAttributes::NotesKey) {
+                invalidKey = true;
+            }
+            // Check if new key name is a duplicate of another additional attribute key
+            for (int i = 0; i < m_additional_attribute_items.count(); ++i) {
+                if (index.row() != i) {
+                    if (m_additional_attribute_items[i].m_key == newKey) {
+//                        qDebug() << "key duplicate: error highlight to true";
+                        invalidKey = true;
+                    }
+                }
+            }
+        }
         m_additional_attribute_items[index.row()].set(value, role);
+        m_additional_attribute_items[index.row()].set(QVariant(invalidKey), ROLE_ERROR_HIGHLIGHT);
+        m_invalid_key = invalidKey;
+        // signal to QML and for property update
+        emit invalidKeyChanged();
+        emit modelDataChanged();
+        return true;
     }
+}
+
+void KdbEntry::addAdditionalAttribute()
+{
+    // Add item with editKeyMode enabled and activated errorHighlight because new item is per default empty
+    AdditionalAttributeItem item("", "", true, true);
+    beginInsertRows(QModelIndex(), rowCount(), rowCount());
+    m_additional_attribute_items.append(item);
+    endInsertRows();
+    // emit isEmptyChanged signal if list view was empty before
+    if (m_additional_attribute_items.count() == 1) {
+        emit isEmptyChanged();
+    }
+    // signal to property to update itself in QML
+    emit modelDataChanged();
 }

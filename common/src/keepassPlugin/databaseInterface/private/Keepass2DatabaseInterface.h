@@ -167,6 +167,7 @@ public slots:
                         QStringList keys,
                         QStringList values,
                         QStringList keysToDelete,
+                        QStringList keysToRename,
                         QString iconUuid);
     void slot_createNewEntry(QStringList keys,
                              QStringList values,

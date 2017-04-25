@@ -36,7 +36,7 @@ Page {
         Clipboard.text = text
         // trigger cleaning of clipboard after specific time
         applicationWindow.mainPageRef.clipboardTimerStart()
-//        applicationWindow.infoPopup.show(Global.info, "", label + " " + qsTr("copied into clipboard"), 2)
+        // applicationWindow.infoPopup.show(Global.info, "", label + " " + qsTr("copied into clipboard"), 2)
     }
 
     allowedOrientations: applicationWindow.orientationSetting
@@ -77,8 +77,9 @@ Page {
                 visible: !ownKeepassDatabase.readOnly
                 text: qsTr("Edit password entry")
                 onClicked: {
-                    pageStack.push(editEntryDetailsDialogComponent,
-                                   { "entryId": entryId })
+                    kdbEntry.entryId = entryId
+                    kdbEntry.loadEntryData()
+                    pageStack.push(editEntryDetailsDialogComponent)
                 }
             }
 
@@ -163,6 +164,10 @@ Page {
                         label: model.key
                         menuLabel: qsTr("Copy to clipboard")
                         onMenuClicked: copyToClipboard(text, label)
+                        passwordMode: String(label.toLowerCase()).indexOf("password") !== -1 ||
+                                      String(label.toLowerCase()).indexOf("pin") !== -1 ||
+                                      String(label.toLowerCase()).indexOf("tan") !== -1 ||
+                                      String(label.toLowerCase()).indexOf("puk") !== -1
                     }
 
                     Item {
@@ -177,6 +182,11 @@ Page {
                     onContentHeightChanged: additionalAttributesListView.height = additionalAttributesListView.contentHeight
                 }
             }
+
+            Item {
+                height: Theme.itemSizeSmall
+                width: parent.width
+            }
         }
     }
 
@@ -187,8 +197,11 @@ Page {
     }
 
     onStatusChanged: {
-        // if page gets active set cover state
         if (status === PageStatus.Active) {
+            // set entry ID and load entry details to show in this page
+            kdbEntry.entryId = entryId
+            kdbEntry.loadEntryData()
+            // set cover state and info
             applicationWindow.cover.state = "ENTRY_VIEW"
             applicationWindow.cover.title = pageHeader.title
             applicationWindow.cover.username = kdbEntry.userName
