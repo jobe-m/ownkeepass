@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2015 - 2017 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -61,69 +61,49 @@ Column {
         text: passwordDescriptionText + "\n"
     }
 
-    Item {
+    PasswordField {
+        id: passwordField
         width: parent.width
-        height: passwordField.height
-
-        TextField {
-            id: passwordField
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: showPasswordButton.left
-            inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-            echoMode: TextInput.Password
-            errorHighlight: passwordErrorHighlightEnabled ? (text.length > 0 && text.length < 3) : false
-            label: passwordLabelText
-            placeholderText: passwordPlaceholderText
-            text: ""
-            font.family: 'monospace'
-            EnterKey.enabled: text.length === 0 || (!errorHighlight && (passwordEnterKeyEnabled || passwordConfirmEnabled))
-            EnterKey.highlighted: true
-            EnterKey.iconSource: text.length === 0 ?
-                                     "image://theme/icon-m-enter-close" :
-                                     passwordConfirmEnabled ?
-                                         "image://theme/icon-m-enter-next" :
-                                         "image://theme/icon-m-enter-accept"
-            EnterKey.onClicked: {
-                if (text.length === 0) {
-                    parent.focus = true
-                } else if (passwordConfirmEnabled) {
-                    confirmPasswordField.focus = true
-                } else {
-                    parent.focus = true
-                    // All right now do some stuff outside with the password
-                    passwordClicked(passwordField.text)
-                    // reset password text again
-                    passwordField.text = ""
-                }
-            }
-            focusOutBehavior: -1
-        }
-
-        IconButton {
-            id: showPasswordButton
-            anchors.right: parent.right
-            anchors.rightMargin: Theme.horizontalPageMargin
-            anchors.verticalCenter: parent.verticalCenter
-            icon.source: passwordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" :
-                                                                       "../../wallicons/icon-l-closeeye.png"
-            onClicked: {
-                if (passwordField.echoMode === TextInput.Normal) {
-                    passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Password
-                } else {
-                    passwordField.echoMode = confirmPasswordField.echoMode = TextInput.Normal
-                }
+        showEchoModeToggle: true
+        horizontalAlignment: TextInput.AlignLeft
+        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+        errorHighlight: passwordErrorHighlightEnabled ? (text.length > 0 && text.length < 3) : false
+        label: passwordLabelText
+        placeholderText: passwordPlaceholderText
+        text: ""
+        font.family: 'monospace'
+        EnterKey.enabled: text.length === 0 || (!errorHighlight && (passwordEnterKeyEnabled || passwordConfirmEnabled))
+        EnterKey.highlighted: true
+        EnterKey.iconSource: text.length === 0 ?
+                                 "image://theme/icon-m-enter-close" :
+                                 passwordConfirmEnabled ?
+                                     "image://theme/icon-m-enter-next" :
+                                     "image://theme/icon-m-enter-accept"
+        EnterKey.onClicked: {
+            if (text.length === 0) {
+                parent.focus = true
+            } else if (passwordConfirmEnabled) {
+                confirmPasswordField.focus = true
+            } else {
+                parent.focus = true
+                // All right now do some stuff outside with the password
+                passwordClicked(passwordField.text)
+                // reset password text again
+                passwordField.text = ""
             }
         }
+        onEchoModeChanged: confirmPasswordField.echoMode = echoMode
+        focusOutBehavior: -1
     }
 
-    TextField {
+    PasswordField {
         id: confirmPasswordField
-        enabled: passwordConfirmEnabled
         width: parent.width
-        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-        echoMode: TextInput.Password
+        horizontalAlignment: TextInput.AlignLeft
+        enabled: passwordConfirmEnabled
         visible: enabled
+        showEchoModeToggle: false
+        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
         errorHighlight: passwordField.text !== text && text.length !== 0
         label: errorHighlight ? passwordConfirmLabelText : passwordConfirmedLabelText
         placeholderText: passwordConfirmPlaceholderText

@@ -988,7 +988,7 @@ Page {
             function deleteDatabase() {
                 remorseAction("Delete Database",
                               function() {
-                                  // save that we delete also database from filesystem
+                                  // tell user that database was deleted from filesystem
 // TODO
 //                                  ownKeepassSettings.removeRecentDatabase(model.uiName, model.databaseLocation, model.databaseFilePath)
                               })
