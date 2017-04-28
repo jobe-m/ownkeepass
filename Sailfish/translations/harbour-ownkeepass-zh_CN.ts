@@ -426,7 +426,7 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="413"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="423"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">接受</translation>
     </message>
 </context>
 <context>
@@ -1490,44 +1490,45 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>PasswordGeneratorDialog</name>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
-        <source>Accept</source>
-        <translation>接收</translation>
-    </message>
-    <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
+        <source>Accept</source>
+        <translation type="unfinished">接受</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation>放弃</translation>
+        <translation type="unfinished">放弃</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation>生成的密码</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation>没有选择的字符组</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation>长度</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation>排除外观相似的字符</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation>保证密码包含了每个组的字符</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation>shengcheng</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

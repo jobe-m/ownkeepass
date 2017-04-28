@@ -1492,44 +1492,45 @@ ownKeepass is een wachtwoordkluis voor de Jolla-smartphone met het doel gevoelig
 <context>
     <name>PasswordGeneratorDialog</name>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
-        <source>Accept</source>
-        <translation>Aanvaarden</translation>
-    </message>
-    <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
+        <source>Accept</source>
+        <translation type="unfinished">Aanvaarden</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation>Verwerpen</translation>
+        <translation type="unfinished">Verwerpen</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation>Gegenereerd wachtwoord</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation>Geen tekengroep geselecteerd</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation>Lengte</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation>Op elkaar lijkende tekens uitsluiten</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation>Verifieer dat het wachtwoord tekens uit elke groep bevat</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation>Genereren</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1489,44 +1489,45 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>PasswordGeneratorDialog</name>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
-        <source>Accept</source>
-        <translation>Elfogad</translation>
-    </message>
-    <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
+        <source>Accept</source>
+        <translation type="unfinished">Elfogad</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation>Mégsem</translation>
+        <translation type="unfinished">Mégsem</translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation>Generált jelszó</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation>Nincs karakter-csoport kiválasztva</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation>Hossz</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation>Hasonló kinézetű karakterek kihagyása</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation>Bizonyosodj meg róla, hogy a jelszó minden csoportból tartalmaz karaktereket</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation>Generál</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

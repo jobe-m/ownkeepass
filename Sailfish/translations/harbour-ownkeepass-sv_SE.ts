@@ -1490,44 +1490,45 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
 <context>
     <name>PasswordGeneratorDialog</name>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="73"/>
-        <source>Accept</source>
-        <translation>Acceptera</translation>
-    </message>
-    <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
+        <source>Accept</source>
+        <translation type="unfinished">Acceptera</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation>Förkasta</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="88"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation>Generera lösenord</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation>Ingen teckengrupp vald</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="119"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation>Längd</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="181"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation>Undanta tecken som liknar varandra</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="192"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation>Tillse att lösenordet innehåller tecken från varje grupp</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="202"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation>Generera</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

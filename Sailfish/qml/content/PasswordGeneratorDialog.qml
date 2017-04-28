@@ -24,6 +24,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../scripts/Global.js" as Global
 import "../common"
+import "../components"
 import harbour.ownkeepass 1.0
 
 Dialog {
@@ -67,45 +68,39 @@ Dialog {
         Column {
             id: col
             width: parent.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingMedium
 
             DialogHeader {
                 acceptText: qsTr("Accept")
                 cancelText: qsTr("Discard")
             }
 
-            Item {
+            PasswordField {
+                id: generatedPasswordField
                 width: parent.width
-                height: generatedPasswordField.height
-
-                TextField {
-                    id: generatedPasswordField
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.right: showPasswordButton.left
-                    echoMode: TextInput.Password
-                    readOnly: true
-                    label: qsTr("Generated password")
-                    placeholderText: qsTr("No char group selected")
-                    errorHighlight: text.length === 0
-                    color: Theme.primaryColor
-                    font.family: 'monospace'
-                }
-
-                IconButton {
-                    id: showPasswordButton
-                    anchors.top: parent.top
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.horizontalPageMargin
-                    icon.source: generatedPasswordField.echoMode === TextInput.Normal ? "../../wallicons/icon-l-openeye.png" : "../../wallicons/icon-l-closeeye.png"
-                    onClicked: {
-                        if (generatedPasswordField.echoMode === TextInput.Normal) {
-                            generatedPasswordField.echoMode = TextInput.Password
-                        } else {
-                            generatedPasswordField.echoMode = TextInput.Normal
-                        }
+                showEchoModeToggle: true
+                readOnly: true
+                label: qsTr("Generated password")
+                placeholderText: qsTr("No char group selected")
+                errorHighlight: text.length === 0
+                onErrorHighlightChanged: {
+                    if (errorHighlight) {
+                        font.family = defaultFontFamily
+                        placeholderText = qsTr("No char group selected")
+                    } else {
+                        // First clear placeholder text so that it does not seem to jump bigger before fading out
+                        placeholderText = ""
+                        font.family = 'monospace'
                     }
                 }
+
+                color: Theme.primaryColor
+                Component.onCompleted: {
+                    defaultFontFamily = font.family
+                    font.family = 'monospace'
+                    console.log(defaultFontFamily)
+                }
+                property string defaultFontFamily: ""
             }
 
             Slider {
@@ -130,9 +125,8 @@ Dialog {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingLarge
 
-                Switch {
-                    id: lowerLetters
-                    icon.source: "../../wallicons/icon-l-lowerletters.png"
+                PasswordCharSwitch {
+                    a: "a"; b: "b"; c: "c"; d: "d"
                     checked: ownKeepassSettings.pwGenLowerLetters
                     onCheckedChanged: {
                         passwordGenerator.lowerLetters = checked
@@ -141,9 +135,8 @@ Dialog {
                     }
                 }
 
-                Switch {
-                    id: upperLetters
-                    icon.source: "../../wallicons/icon-l-upperletters.png"
+                PasswordCharSwitch {
+                    a: "A"; b: "B"; c: "C"; d: "D"
                     checked: ownKeepassSettings.pwGenUpperLetters
                     onCheckedChanged: {
                         passwordGenerator.upperLetters = checked
@@ -152,9 +145,9 @@ Dialog {
                     }
                 }
 
-                Switch {
-                    id: numbers
-                    icon.source: "../../wallicons/icon-l-numbers.png"
+
+                PasswordCharSwitch {
+                    a: "1"; b: "2"; c: "3"; d: "4"
                     checked: ownKeepassSettings.pwGenNumbers
                     onCheckedChanged: {
                         passwordGenerator.numbers = checked
@@ -163,9 +156,8 @@ Dialog {
                     }
                 }
 
-                Switch {
-                    id: specialChars
-                    icon.source: "../../wallicons/icon-l-specialchars.png"
+                PasswordCharSwitch {
+                    a: "#"; b: "/"; c: "@"; d: "$"
                     checked: ownKeepassSettings.pwGenSpecialChars
                     onCheckedChanged: {
                         passwordGenerator.specialCharacters = checked
