@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.ownkeepass 1.0
 import "../scripts/Global.js" as Global
 
 PushUpMenu {
@@ -34,7 +35,7 @@ PushUpMenu {
     signal addAdditionalAttribute
 
     MenuItem {
-        enabled: !disableNewEntryAttribute
+        enabled: !disableNewEntryAttribute && ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
         visible: enabled
         text: qsTr("Add Additional Attribute")
         onClicked: addAdditionalAttribute()

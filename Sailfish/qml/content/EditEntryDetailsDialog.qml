@@ -274,6 +274,8 @@ Dialog {
 
             SectionHeader {
                 id: additionalAttributesSection
+                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
+                visible: enabled
                 text: qsTr("Additional Attributes")
             }
 

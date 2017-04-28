@@ -78,22 +78,22 @@
 <context>
     <name>ApplicationMenu</name>
     <message>
-        <location filename="../qml/content/ApplicationMenu.qml" line="39"/>
+        <location filename="../qml/content/ApplicationMenu.qml" line="40"/>
         <source>Add Additional Attribute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ApplicationMenu.qml" line="44"/>
+        <location filename="../qml/content/ApplicationMenu.qml" line="45"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ApplicationMenu.qml" line="51"/>
+        <location filename="../qml/content/ApplicationMenu.qml" line="52"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/ApplicationMenu.qml" line="58"/>
+        <location filename="../qml/content/ApplicationMenu.qml" line="59"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -385,46 +385,46 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="277"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="279"/>
         <source>Additional Attributes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="315"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="337"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="317"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="339"/>
         <source>Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="337"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="339"/>
         <source>Label not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="318"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="354"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="320"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="356"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="393"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="405"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="358"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="395"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="407"/>
         <source>Edit Label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="317"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="406"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="423"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="319"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="408"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="425"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="393"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="412"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="395"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="414"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="413"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="423"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="415"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="425"/>
         <source>Accept</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1510,22 +1510,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="114"/>
         <source>Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="173"/>
         <source>Exclude look-alike characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="184"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="194"/>
         <source>Generate</source>
         <translation type="unfinished"></translation>
     </message>
