@@ -98,55 +98,10 @@ Dialog {
                     id: dbLoadingInfo
                 }
 
-                Item {
+                FileQueryListItem {
                     id: dbLoading
-
-                    property int locationIndex: 0
-                    property string relativePath: ""
-                    property string absolutePath: ""
-                    property bool createNewFile: true
-
-                    width: parent.width
-                    height: dbFilePathArea.height > dbFilePathIcon.height ? dbFilePathArea.height : dbFilePathIcon.height
-
-                    Label {
-                        id: dbFilePathArea
-
-                        anchors.left: parent.left
-                        anchors.leftMargin: Theme.horizontalPageMargin
-                        anchors.right: dbFilePathIcon.left
-                        anchors.rightMargin: Theme.paddingLarge
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: Global.getLocationName(dbLoading.locationIndex) + dbLoading.relativePath
-                        opacity: 0.6
-                        font.pixelSize: Theme.fontSizeSmall
-                        wrapMode: Text.Wrap
-                    }
-
-                    Image {
-                        id: dbFilePathIcon
-                        source: "image://theme/icon-m-right"
-                        anchors.right: parent.right
-                        anchors.rightMargin: Theme.horizontalPageMargin
-                        anchors.verticalCenter: parent.verticalCenter
-                        fillMode: Image.PreserveAspectFit
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(), {
-                                                            "locationIndex": dbLoading.locationIndex,
-                                                            "absolutePath": dbLoading.absolutePath,
-                                                            "fileFilter": "*.kdb *.kdbx",
-                                                            "state": dbLoading.createNewFile ? "CREATE_NEW_FILE" : "OPEN_FILE" })
-                            dialog.accepted.connect(function() {
-                                dbLoading.locationIndex = dialog.locationIndex
-                                dbLoading.relativePath = dialog.relativePath
-                                dbLoading.absolutePath = dialog.absolutePath
-                            })
-                        }
-                    }
+                    createNewFile: true
+                    fileFilter: "*.kdb *.kdbx"
                 }
             }
 
@@ -166,59 +121,14 @@ Dialog {
                     description: qsTr("Switch this on to use a key file together with a master password for your new Keepass database")
                 }
 
-                Item {
+                FileQueryListItem {
                     id: keyLoading
                     enabled: useKeyFileSwitch.checked
                     opacity: enabled ? 1.0 : 0.0
-
-                    property int locationIndex: 0
-                    property string relativePath: ""
-                    property string absolutePath: ""
-                    property bool createNewFile: false
-
-                    width: parent.width
-                    height: keyFilePathArea.height > keyFilePathIcon.height ? keyFilePathArea.height : keyFilePathIcon.height
+                    createNewFile: false
+                    fileFilter: "*.key"
 
                     Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
-
-                    Label {
-                        id: keyFilePathArea
-
-                        anchors.left: parent.left
-                        anchors.leftMargin: Theme.horizontalPageMargin
-                        anchors.right: keyFilePathIcon.left
-                        anchors.rightMargin: Theme.paddingLarge
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: Global.getLocationName(keyLoading.locationIndex) + keyLoading.relativePath
-                        opacity: 0.6
-                        font.pixelSize: Theme.fontSizeSmall
-                        wrapMode: Text.Wrap
-                    }
-
-                    Image {
-                        id: keyFilePathIcon
-                        source: "image://theme/icon-m-right"
-                        anchors.right: parent.right
-                        anchors.rightMargin: Theme.horizontalPageMargin
-                        anchors.verticalCenter: parent.verticalCenter
-                        fillMode: Image.PreserveAspectFit
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            var dialog = pageStack.push(Qt.resolvedUrl("../common/FileSystemDialog.qml").toString(), {
-                                                            "locationIndex": keyLoading.locationIndex,
-                                                            "absolutePath": keyLoading.absolutePath,
-                                                            "fileFilter": "*.key",
-                                                            "state": keyLoading.createNewFile ? "CREATE_NEW_FILE" : "OPEN_FILE" })
-                            dialog.accepted.connect(function() {
-                                keyLoading.locationIndex = dialog.locationIndex
-                                keyLoading.relativePath = dialog.relativePath
-                                keyLoading.absolutePath = dialog.absolutePath
-                            })
-                        }
-                    }
                 }
             }
 

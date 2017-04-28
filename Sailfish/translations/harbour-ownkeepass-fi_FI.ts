@@ -1537,17 +1537,17 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="262"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="172"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>Valitse uusi Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="291"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="201"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>Valitse Keepass-tietokantatiedosto:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="165"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="120"/>
         <source>Use key file</source>
         <translation>Käytä avaintiedostoa</translation>
     </message>
@@ -1557,45 +1557,45 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Peruuta</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="166"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="121"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>Aseta tämä käyttääksesi avaintiedosta pääsalasanan kanssa uuden Keepass tietokannan luomisessa</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="228"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="138"/>
         <source>Database type:</source>
         <translation>Tietokannan tyyppi:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="260"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="170"/>
         <source>Create</source>
         <translation>Luo</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="261"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="171"/>
         <source>New Password Safe</source>
         <translation>Uusi salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="267"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="177"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Anna pääsalasana lukitaksesi uusi Keepass salasanatiedostosi:</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="289"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="314"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="199"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="224"/>
         <source>Open</source>
         <translation>Avaa</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="290"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="315"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="200"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
         <source>Password Safe</source>
         <translation>Salasanatiedosto</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="296"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="319"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="206"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>Anna pääsalasana avataksesi Keepass salasanatiedostosi:</translation>
     </message>

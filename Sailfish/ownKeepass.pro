@@ -195,4 +195,5 @@ TRANSLATIONS += \
 DISTFILES += \
     qml/content/EditItemIconDialog.qml \
     qml/common/EntryTextArea.qml \
-    qml/components/PasswordCharSwitch.qml
+    qml/components/PasswordCharSwitch.qml \
+    qml/common/FileQueryListItem.qml
