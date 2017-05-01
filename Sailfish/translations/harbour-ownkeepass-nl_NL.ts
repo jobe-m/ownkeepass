@@ -1026,12 +1026,12 @@ ownKeepass is een wachtwoordkluis voor de Jolla-smartphone met het doel gevoelig
         <translation>Bewerken</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="177"/>
+        <location filename="../qml/content/KdbListItem.qml" line="176"/>
         <source>Delete</source>
         <translation>Verwijderen</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="194"/>
+        <location filename="../qml/content/KdbListItem.qml" line="193"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Verplaatsen</translation>
@@ -1513,22 +1513,22 @@ ownKeepass is een wachtwoordkluis voor de Jolla-smartphone met het doel gevoelig
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="114"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="173"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="184"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="194"/>
+        <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1649,6 +1649,30 @@ ownKeepass is een wachtwoordkluis voor de Jolla-smartphone met het doel gevoelig
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="146"/>
         <source>Comment</source>
         <translation>Opmerking</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="168"/>
+        <source>password</source>
+        <extracomment>Translate &quot;password&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="170"/>
+        <source>pin</source>
+        <extracomment>&quot;pin&quot; like a pin number of your credit card or sim card. Translate &quot;pin&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="172"/>
+        <source>tan</source>
+        <extracomment>&quot;tan&quot; like a tan list from your bank account. Translate &quot;tan&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>
+        <source>puk</source>
+        <extracomment>&quot;puk&quot; like the (emergency) puk number of your sim card. Translate &quot;puk&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

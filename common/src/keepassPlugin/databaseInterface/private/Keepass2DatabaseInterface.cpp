@@ -585,19 +585,19 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
     // Add or update existing keys and values
     for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.count(); ++i) {
         entry->attributes()->set(keys[i], values[i]);
-        qDebug() << "add or update: " << keys[i] << values[i];
+//        qDebug() << "add or update: " << keys[i] << values[i];
     }
 
     // Rename existing keys
     for (int i = 0; i < keysToRename.count(); i = i+2) {
         entry->attributes()->rename(keysToRename[i], keysToRename[i+1]);
-        qDebug() << "rename: " << keysToRename[i] << keysToRename[i+1];
+//        qDebug() << "rename: " << keysToRename[i] << keysToRename[i+1];
     }
 
     // Delete existing keys
     for (int i = 0; i < keysToDelete.count(); ++i) {
         entry->attributes()->remove(keysToDelete[i]);
-        qDebug() << "delete: " << keysToDelete[i];
+//        qDebug() << "delete: " << keysToDelete[i];
     }
 
     if (iconUuid.size() != (Uuid::Length * 2)) {
@@ -668,7 +668,7 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
     // Add or update existing keys and values
     for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.count(); ++i) {
         newEntry->attributes()->set(keys[i], values[i]);
-        qDebug() << "save: " << keys[i] << values[i];
+//        qDebug() << "save: " << keys[i] << values[i];
     }
 
     // Add this new entry to a group in the database
@@ -724,12 +724,6 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
     emit newEntryCreated(DatabaseAccessResult::RE_OK, "", newEntryId);
 }
 
-void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
-{
-    Q_ASSERT(m_Database);
-// TODO
-}
-
 void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentGroup)
 {
     Q_ASSERT(m_Database);
@@ -747,6 +741,69 @@ void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentG
 
 void Keepass2DatabaseInterface::slot_deleteEntry(QString entryId)
 {
+    Q_ASSERT(m_Database);
+    Uuid entryUuid = qString2Uuid(entryId);
+    Entry* entry = m_Database->resolveEntry(entryUuid);
+    Q_ASSERT(entry);
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
+        emit entryDeleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
+        return;
+    }
+    Group* parentGroup = entry->group();
+    Q_ASSERT(parentGroup);
+    // This puts entry into recycle bin or deletes it directy if recycle bin is not enabled
+    m_Database->recycleEntry(entry);
+
+    // Save database
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // Send signal to QML
+        emit entryDeleted(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, entryId);
+        return;
+    }
+
+    // remove entry from all active list models where it might be added
+    emit deleteItemInListModel(entryId);
+    // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
+    updateGrandParentGroupInListModel(parentGroup);
+    // signal to QML
+    emit entryDeleted(DatabaseAccessResult::RE_OK, "", entryId);
+}
+
+void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
+{
+    Q_ASSERT(m_Database);
+    Uuid groupUuid = qString2Uuid(groupId);
+    Group* group = m_Database->resolveGroup(groupUuid);
+    Q_ASSERT(group);
+    if (Q_NULLPTR == group) {
+        qDebug() << "ERROR: Could not find group for UUID: " << groupId;
+        emit groupDeleted(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
+        return;
+    }
+    Group* parentGroup = group->parentGroup();
+    Q_ASSERT(parentGroup);
+    // This puts entry into recycle bin or deletes it directy if recycle bin is not enabled
+    m_Database->recycleGroup(group);
+
+    // Save database
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // Send signal to QML
+        emit groupDeleted(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, groupId);
+        return;
+    }
+
+    // remove group from all active list models where it might be added
+    emit deleteItemInListModel(groupId);
+
+    // update all grandparent groups subtitle, ie. subgroup counter has to be updated in UI
+    if (parentGroup != NULL) { // if parent group is root group we don't need to do anything
+        updateGrandParentGroupInListModel(parentGroup);
+    }
+    // signal to QML
+    emit groupDeleted(DatabaseAccessResult::RE_OK, "", groupId);
 }
 
 void Keepass2DatabaseInterface::slot_moveEntry(QString entryId, QString newGroupId)

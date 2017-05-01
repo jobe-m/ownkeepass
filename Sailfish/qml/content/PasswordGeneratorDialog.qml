@@ -98,7 +98,6 @@ Dialog {
                 Component.onCompleted: {
                     defaultFontFamily = font.family
                     font.family = 'monospace'
-                    console.log(defaultFontFamily)
                 }
                 property string defaultFontFamily: ""
             }

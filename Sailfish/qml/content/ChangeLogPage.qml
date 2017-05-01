@@ -70,13 +70,14 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.2.2 Keepass 2 write support</b>\
+<b>v1.2.2 Initial Keepass 2 write support</b>\
 <ul>\
-<li>Additional attributes can be added in Keepass 2 database password entries</li>\
-<li>It is now possible to copy into clipboard every entry text field by choosing press and hold menu entry</li>\
-<li>Open URL in web browser by just one click on the URL text field</li>\
-<li>Updated password text field to Sailfish look</li>\
-<li></li>\
+<li>Password entries of a Keepass 2 database can be created and edited</li>\
+<li>Additional attributes can be added, changed and deleted in Keepass 2 database password entries</li>\
+<li>Added possibility to copy into clipboard every item of a passwort entry by long-press on it</li>\
+<li>Open URL in web browser by just one click on the URL text</li>\
+<li>Changed password fields to match SailfishOS look</li>\
+<li>Fixed scaling of some icons on higher resolution displays</li>\
 <li></li>\
 <li></li>\
 </ul>\

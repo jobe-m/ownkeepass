@@ -173,7 +173,6 @@ ListItem {
             }
 
             MenuItem {
-                enabled: ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2
                 text: qsTr("Delete")
                 onClicked: {
                     switch (model.itemType) {
