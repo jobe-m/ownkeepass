@@ -164,10 +164,14 @@ Page {
                         label: model.key
                         menuLabel: qsTr("Copy to clipboard")
                         onMenuClicked: copyToClipboard(text, label)
-                        passwordMode: String(label.toLowerCase()).indexOf("password") !== -1 ||
-                                      String(label.toLowerCase()).indexOf("pin") !== -1 ||
-                                      String(label.toLowerCase()).indexOf("tan") !== -1 ||
-                                      String(label.toLowerCase()).indexOf("puk") !== -1
+                                      //: Translate "password" with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.
+                        passwordMode: String(label.toLowerCase()).indexOf(qsTr("password")) !== -1 ||
+                                      //: "pin" like a pin number of your credit card or sim card. Translate "pin" with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.
+                                      String(label.toLowerCase()).indexOf(qsTr("pin")) !== -1 ||
+                                      //: "tan" like a tan list from your bank account. Translate "tan" with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.
+                                      String(label.toLowerCase()).indexOf(qsTr("tan")) !== -1 ||
+                                      //: "puk" like the (emergency) puk number of your sim card. Translate "puk" with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.
+                                      String(label.toLowerCase()).indexOf(qsTr("puk")) !== -1
                     }
 
                     Item {

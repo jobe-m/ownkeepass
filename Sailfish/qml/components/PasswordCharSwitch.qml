@@ -49,6 +49,7 @@ Column {
             spacing: -Theme.paddingMedium
 
             Label {
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: passwordCharSwitch.a
                 color: charSwitch.pressed ? Theme.highlightColor : Theme.primaryColor
                 font.family: Theme.fontFamilyHeading
@@ -56,6 +57,7 @@ Column {
             }
 
             Label {
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: passwordCharSwitch.c
                 color: charSwitch.pressed ? Theme.highlightColor : Theme.primaryColor
                 font.family: Theme.fontFamilyHeading
@@ -68,6 +70,7 @@ Column {
             spacing: -Theme.paddingMedium
 
             Label {
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: passwordCharSwitch.b
                 color: charSwitch.pressed ? Theme.highlightColor : Theme.primaryColor
                 font.family: Theme.fontFamilyHeading
@@ -76,6 +79,7 @@ Column {
             }
 
             Label {
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: passwordCharSwitch.d
                 color: charSwitch.pressed ? Theme.highlightColor : Theme.primaryColor
                 font.family: Theme.fontFamilyHeading
