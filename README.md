@@ -1,12 +1,10 @@
-ownKeepass
-==========
+# ownKeepass
 
-[Bug reports go here] [7] - [Translations here] [8]
+[Bug reports go here] - [Translations here]
 
-Status
-------
+## Status
 
-Bugfix release 1.2.1 is available on [openrepos.net] [1]
+Bugfix release 1.2.1 is available on [openrepos.net]
 * If one of the following languages where selected directly another language was actually shown: galician, italian, hungarian, dutch, russian, finnish, swedish, chinese, greek, japanese
 * Setting language to system default was not affected by the bug
 
@@ -32,8 +30,7 @@ Release 1.1.14
 * Added new translation for Galician language 
 * Updated all other translations from Transifex
 
-Roadmap
--------
+## Roadmap
 
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
@@ -42,23 +39,17 @@ in descending order.
 *   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
 
 
-What is this?
--------------
+## What is this?
 
 ownKeepass is a password safe application for the Jolla Smartphone with the purpose to
 protect sensible data like passwords for web pages, credit card numbers,
 PINs, TANs and other bits of information which should be kept secret. All that information
 is saved in a database file which is encrypted and stored locally on your phone. To open
 the database you need to know the master password of the database. ownKeepass can use Keepass
-version 1 and 2 databases. That means you can use [Keepass] [2] or [KeepassX] [3] on your desktop 
+version 1 and 2 databases. That means you can use [Keepass] or [KeepassX] on your desktop 
 system to decrypt and open that database file, too.
 
-Please note that while ownKeepass can read and write to Keepass 1 databases it can currently only
-read from Keepass version 2 databases. It cannot yet change and save Keepass 2 databases.
-This is planned for a future release of ownKeepass.
-
-Why?
-----
+## Why?
 
 I started to work on this project beginning of 2012 when QML started to get usable from development point
 of view for the Nokia N9. Writing a QML UI for the stable KeepassX 0.4.3 version was just born out of the
@@ -69,10 +60,9 @@ Mid of 2013 I decided to continue development on the new Sailfish OS platform fr
 start-up Jolla. This platform offers Qt5 with QtQuick2 and Wayland which really marks the edge of UI
 development. This is so much of technical motivation to me to do some great UI stuff with ownKeepass :)
 
-Some words about Keepass database security
-------------------------------------------
+## Some words about Keepass database security
 
-The database code in ownKeepass is based on the [KeepassX project] [3] and as such contains a lot of
+The database code in ownKeepass is based on the [KeepassX] project and as such contains a lot of
 security related features. It uses proven encryption algorithms like Advanced Encryption Standard
 (AES / Rijndael) or Twofish with 128 bits block size and 256 bits key size, SHA-256 as hashing
 algorithm and in-memory encryption of all passwords. Furthermore it protects the master
@@ -84,18 +74,16 @@ you should be aware of:
 *   Always use a long enough and difficult to guess master password.
 *   Protect your system from spyware which might be specialized to attack ownKeepass.
 
-The second is law #1 of the [10 Immutable Laws of Security] [4]: "If a bad guy can persuade you to run
+The second is law #1 of the [10 Immutable Laws of Security]: "If a bad guy can persuade you to run
 his program on your computer, it's not your computer anymore".
 
-Sharing Keepass database between your jolla phone and your desktop PC
----------------------------------------------------------------------
+## Sharing Keepass database between your jolla phone and your desktop PC
 
 The Keepass database file format is perfect to share your password safe between different
 systems like phones, tablets, desktop PC and so on. That is because there are a lot of Keepass
-implementations available for those platforms. Have a look at the [Keepass download page] [5] to get the classic Keepass 1
-version for the desktop PC. There is also a list of alternative Keepass implementations on that page.
-I would also like to point you to [KeepassX version 0.4.3] [3] which is also
-compatible with Keepass version 1.
+implementations available for those platforms. Have a look at the [Keepass download page] to get the classic Keepass 1 or
+the new Keepass version 2 for the desktop PC. There is also a list of alternative Keepass implementations on that page.
+I would also like to point you to [KeepassX] which is also compatible with Keepass version 1 and 2 databases.
 You can share your Keepass database file via SD card or via a cloud service like Dropbox.
 When using a cloud server I would recommend to use a key file in addition to the master password.
 The additional key file will be used by ownKeepass to decrypt the database. Store this key file
@@ -104,20 +92,19 @@ hacks your cloud service he will be left without the key file. By doing so you m
 harder for an attacker to crack your Keepass database because the key file content is usually
 impossible to guess.
 
-Optionally you could use [Syncthing] [9] to sync the password safe between different devices. Syncthing is available for
-all platforms including Sailfish OS. For Sailfish OS it is available in openrepos as the [core] [10] and a [GUI] [11].
+Optionally you could use [Syncthing] to sync the password safe between different devices. Syncthing is available for
+all platforms including Sailfish OS. For Sailfish OS it is available in openrepos as the [core] and a [GUI].
 Syncthing does not require a sync over the internet but it can sync locally between devices.
 
 Copyright 2014 - 2016 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
-[1]: https://openrepos.net/content/jobe/ownkeepass                     "Beta and testing releases"
-[2]: http://www.keepass.info/help/v1/setup.html                        "Official Keepass homepage for version 1"
-[3]: http://www.keepassx.org                                           "KeepassX project homepage"
-[4]: http://technet.microsoft.com/en-us/library/cc722487.aspx          "10 Immutable Laws of Security"
-[5]: http://www.keepass.info/download.html                             "Download classic Keepass"
-[6]: https://github.com/jobe-m/ownkeepass/milestones                   "Status of next major ownKeepass releases"
-[7]: https://github.com/jobe-m/ownkeepass/issues
-[8]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
-[9]: https://syncthing.net/                                            "Syncthing homepage"
-[10]: https://openrepos.net/content/fooxl/syncthing-inotify-bin        "Syncthing core for SFOS"
-[11]: https://openrepos.net/content/fooxl/syncthing-sf                 "Syncthing GUI for SFOS"
+[openrepos.net]: https://openrepos.net/content/jobe/ownkeepass                             "Beta and testing releases"
+[Keepass]: http://www.keepass.info/help/v1/setup.html                                      "Official Keepass homepage for version 1"
+[KeepassX]: http://www.keepassx.org                                                        "KeepassX project homepage"
+[10 Immutable Laws of Security]: http://technet.microsoft.com/en-us/library/cc722487.aspx  "10 Immutable Laws of Security"
+[Keepass download page]: http://www.keepass.info/download.html                             "Download classic Keepass"
+[Bug reports go here]: https://github.com/jobe-m/ownkeepass/issues
+[Translations here]: https://www.transifex.com/projects/p/jobe_m-ownKeepass/
+[Syncthing]: https://syncthing.net/                                                        "Syncthing homepage"
+[core]: https://openrepos.net/content/fooxl/syncthing-inotify-bin                          "Syncthing core for SFOS"
+[GUI]: https://openrepos.net/content/fooxl/syncthing-sf                                    "Syncthing GUI for SFOS"
