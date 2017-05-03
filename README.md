@@ -96,7 +96,7 @@ Optionally you could use [Syncthing] to sync the password safe between different
 all platforms including Sailfish OS. For Sailfish OS it is available in openrepos as the [core] and a [GUI].
 Syncthing does not require a sync over the internet but it can sync locally between devices.
 
-Copyright 2014 - 2016 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
+Copyright 2014 - 2017 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
 [openrepos.net]: https://openrepos.net/content/jobe/ownkeepass                             "Beta and testing releases"
 [Keepass]: http://www.keepass.info/help/v1/setup.html                                      "Official Keepass homepage for version 1"
