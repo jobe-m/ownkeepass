@@ -63,7 +63,7 @@ Page {
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("ownKeepass is a Keepass 1.x and 2.x compatible password safe application")
+                text: qsTr("ownKeepass is a Keepass 1 and 2 compatible password safe application")
             }
 
             SilicaLabel {
@@ -144,44 +144,6 @@ Copyright &#169; 2013-2017 Marko Koschak"
             }
 
             SectionHeader {
-                text: qsTr("Credits")
-            }
-
-            SilicaLabel {
-                textFormat: Text.StyledText
-                linkColor: Theme.highlightColor
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: Theme.fontSizeExtraSmall
-                text: qsTr("My best appreciations go to:<br><br>\
-Jolla (for continuing where Nokia stopped)<br>\
-The KeepassX project (for a Qt implementation of Keepass)<br>\
-All translators and contributors: %1<br><br>\
-\
-I hope you have as much fun using ownKeepass as I have creating it!")
-                .arg("\
-Catalan: Agustí Clara, mjoan | \
-Chinese: TylerTemp | \
-Czech: fri, Jozef Mlích | \
-Danish: Peter Jespersen | \
-Dutch: Heimen Stoffels, Nathan Follens, André Koot, cow | \
-Finnish: Petri Makijarvi, miikka kukko, Simo Ruoho, Riku Lahtinen | \
-French: Jordi, Guillaume ARIAUX, Sylvain, Nathan Follens | \
-Galician: pakoR | \
-German: Cermit, deryo, dirktux, R.G. Sidler | \
-Greek: Dimitrios Glentadakis, Marinus Savoritias, Panayiotis Tembriotis | \
-Hungarian: Andras Toth | \
-Italian: fravaccaro, lorenzo facca, Tichy | \
-Japanese: R Kake | \
-Norwegian Bokmål: Kjetil Kilhavn, Nathan Follens, Ole Jakob Brustad | \
-Russian: lewa, Anton Kalmykov, Sergiy K | \
-Spanish: Carmen Fernández B., Javi Merino | \
-Swedish: Åke Engelbrektson")
-                onLinkActivated: {
-                    Qt.openUrlExternally(link)
-                }
-            }
-
-            SectionHeader {
                 text: qsTr("Donate or Contribute")
             }
 
@@ -240,11 +202,71 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                 }
             }
 
+            SectionHeader {
+                text: qsTr("Credits")
+            }
+
             SilicaLabel {
                 textFormat: Text.StyledText
+                linkColor: Theme.highlightColor
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraSmall
-                text: "<br>"
+                text: qsTr("My best appreciations go to:") + "<br><br>" +
+                      qsTr("Jolla (for continuing where Nokia stopped)") + "<br>" +
+                      qsTr("The KeepassX project (for a Qt implementation of Keepass)") + "<br>" +
+                      //: %1 and %2 are placeholders for links to the project on transifex and github
+                      qsTr("And finally many thanks to all translators on %1 and contributors on %2 (for keeping me motivated to work on ownKeepass)")
+                .arg("<a href=\"https://www.transifex.com/projects/p/jobe_m-ownKeepass/\">transifex</a>")
+                .arg("<a href=\"https://github.com/jobe-m/ownkeepass/graphs/contributors\">GitHub</a>") + "<br><br>" +
+                qsTr("Alphabetical list of all translators:") + "<br><br>" +
+                "_panta_ (Panayiotis Tembriotis)<br>" +
+                "akalmykov (Anton Kalmykov)<br>" +
+                "alert.aleksandar00 (Alert Aleksandar)<br>" +
+                "Artemys<br>" +
+                "carmenfdezb (Carmen Fernández B.)<br>" +
+                "Cermit (Heinz)<br>" +
+                "cow<br>" +
+                "deryo (I won't tell)<br>" +
+                "dglent (Dimitrios Glentadakis)<br>" +
+                "Dude259 (Gizmo Muppet)<br>" +
+                "esaintor (Saintor Batkhuu)<br>" +
+                "eson (Åke Engelbrektson)<br>" +
+                "flywheeldk (Peter Jespersen)<br>" +
+                "fri<br>" +
+                "fri666 (Agustí Clara)<br>" +
+                "Getmantsev (Andrey Getmantsev)<br>" +
+                "ghostofasmile (fravaccaro)<br>" +
+                "helicalgear<br>" +
+                "hellomax (Max Max)<br>" +
+                "JaviMerino (Javi Merino)<br>" +
+                "Jordi<br>" +
+                "jotakinhan (miikka kukko)<br>" +
+                "kanne (Petri Makijarvi)<br>" +
+                "kjetil_kilhavn (Kjetil Kilhavn)<br>" +
+                "koenigseggCCGT (lorenzo facca)<br>" +
+                "limsup (Andras Toth)<br>" +
+                "mijnheer (André Koot)<br>" +
+                "mjoan<br>" +
+                "Nerfiaux (Guillaume ARIAUX)<br>" +
+                "olebr (Ole Jakob Brustad)<br>" +
+                "pakoR<br>" +
+                "PawelSpoon<br>" +
+                "pljmn (Nathan Follens)<br>" +
+                "reviewjolla (Simo Ruoho)<br>" +
+                "rgsidler (R.G. Sidler)<br>" +
+                "rla88 (Riku Lahtinen)<br>" +
+                "Savvoritias (Marinus Savoritias)<br>" +
+                "Sthocs<br>" +
+                "tichy (Tichy)<br>" +
+                "Tomasz_Amborski (Tomasz Amborski)<br>" +
+                "TylerTemp (Tyler Temp)<br>" +
+                "umglurf<br>" +
+                "Vistaus (Heimen Stoffels)<br>" +
+                "xmlich02 (Jozef Mlích)<br><br>" +
+                qsTr("I hope you have as much fun using ownKeepass as I have creating it!")
+                onLinkActivated: {
+                    Qt.openUrlExternally(link)
+                }
             }
         }
     }

@@ -70,16 +70,18 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.2.2 Initial Keepass 2 write support</b>\
+<b>v1.2.2 Keepass 2 write support</b>\
 <ul>\
-<li>Password entries of a Keepass 2 database can be created and edited</li>\
-<li>Additional attributes can be added, changed and deleted in Keepass 2 database password entries</li>\
+<li>Password entries in Keepass 2 databases can be created, edited and deleted</li>\
+<li>Password groups in Keepass 2 databases can be deleted</li>\
+<li>Additional attributes of password entries in Keepass 2 databases can be added, changed and deleted</li>\
 <li>Added possibility to copy into clipboard every item of a passwort entry by long-press on it</li>\
 <li>Open URL in web browser by just one click on the URL text</li>\
-<li>Changed password fields to match SailfishOS look</li>\
-<li>Fixed scaling of some icons on higher resolution displays</li>\
-<li></li>\
-<li></li>\
+<li>Reworked password entry editing page for Keepass 2 support</li>\
+<li>Fixed scaling of icons on password generator page with higher resolution displays</li>\
+<li>Updated about page</li>\
+<li>Added new translations for Polish and Serbian (Not yet fully done, please help on transifex if you can)</li>\
+<li>Updated all other translations from transifex</li>\
 </ul>\
 <br>\
 <b>v1.2.1 Language bugfix</b>\
