@@ -48,7 +48,8 @@ Page {
 
         ViewPlaceholder {
             enabled: !entryUrlTextArea.enabled && !entryUsernameTextArea.enabled &&
-                     !entryPasswordTextField.enabled && !entryCommentTextArea.enabled
+                     !entryPasswordTextField.enabled && !entryCommentTextArea.enabled &&
+                     kdbEntry.isEmpty
             verticalOffset: wallImage.height / 2
 
             text: qsTr("No content")

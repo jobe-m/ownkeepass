@@ -44,46 +44,34 @@ Dialog {
     }
 
     // forbit page navigation if title is not set and password is not verified (if password field shows the password in cleartext)
-    canNavigateForward: !entryTitleTextField.errorHighlight &&
-                        (!entryVerifyPasswordTextField.enabled || !entryVerifyPasswordTextField.errorHighlight) &&
+    canNavigateForward: !entryTitleTextFieldRef.errorHighlight &&
+                        (!entryVerifyPasswordTextFieldRef.enabled || !entryVerifyPasswordTextFieldRef.errorHighlight) &&
                         !kdbEntry.invalidKey
     allowedOrientations: applicationWindow.orientationSetting
 
-    SilicaFlickable {
-        anchors.fill: parent
-        contentWidth: parent.width
-        contentHeight: col.height
+    // References for accessing properties inside the Component below
+    property Image entryIconRef: null
+    property DialogHeader headerRef: null
+    property TextField entryTitleTextFieldRef: null
+    property PasswordField entryVerifyPasswordTextFieldRef: null
 
-        PullDownMenu {
-            SilicaMenuLabel {
-                text: Global.activeDatabase
-                elide: Text.ElideMiddle
-            }
-        }
-
-        ApplicationMenu {
-            disableNewEntryAttribute: false
-            disableSettingsItem: true
-            onAddAdditionalAttribute: {
-                kdbEntry.addAdditionalAttribute()
-            }
-        }
-
-        // Show a scollbar when the view is flicked, place this over all other content
-        VerticalScrollDecorator {}
+    Component {
+        id: headerComp
 
         Column {
-            id: col
             width: parent.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingMedium
 
             DialogHeader {
+                id: header
                 acceptText: qsTr("Save")
                 cancelText: qsTr("Discard")
+                spacing: 0
+                Component.onCompleted: headerRef = header
             }
 
-            SilicaLabel {
-                text: qsTr("Change icon:")
+            SectionHeader {
+                text: qsTr("Change icon")
             }
 
             Item {
@@ -118,6 +106,7 @@ Dialog {
                     asynchronous: true
                     opacity: entryIconMouseArea.pressed ? 0.5 : 1.0
                     source: "image://KeepassIcon/" + kdbEntry.iconUuid
+                    Component.onCompleted: entryIconRef = entryIcon
                 }
 
                 Rectangle {
@@ -128,9 +117,8 @@ Dialog {
                 }
             }
 
-            SilicaLabel {
-                text: editEntryDetailsDialog.createNewEntry ? qsTr("Create new password entry:") :
-                                                              qsTr("Edit password entry:")
+            SectionHeader {
+                text: qsTr("Change password entry details")
             }
 
             TextField {
@@ -149,6 +137,7 @@ Dialog {
                     updateCoverState(kdbEntry.edited)
                 }
                 focusOutBehavior: -1  // prevent the "abc" password mode button to steal focus
+                Component.onCompleted: entryTitleTextFieldRef = entryTitleTextField
             }
 
             TextField {
@@ -183,8 +172,20 @@ Dialog {
                 focusOutBehavior: -1
             }
 
+            Button {
+                width: parent.width * 0.65
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Generate password")
+                onClicked: {
+                    var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
+                    pwGenDialog.accepted.connect(function() {
+                        entryPasswordTextField.text =
+                                entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
+                    })
+                }
+            }
+
             Column {
-                id: passwordColumn
                 width: parent.width
                 height: entryPasswordTextField.echoMode === TextInput.Password
                         ? entryPasswordTextField.height + entryVerifyPasswordTextField.height + spacing
@@ -205,6 +206,9 @@ Dialog {
                     onTextChanged: {
                         kdbEntry.password = text
                         updateCoverState(kdbEntry.edited)
+                        if (echoMode !== TextInput.Password) {
+                            entryVerifyPasswordTextField.text = text
+                        }
                     }
                     EnterKey.iconSource: "image://theme/icon-m-enter-next"
                     EnterKey.onClicked: {
@@ -243,19 +247,8 @@ Dialog {
                     focusOutBehavior: -1
 
                     Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
-                }
-            }
 
-            Button {
-                width: parent.width * 0.65
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Generate password")
-                onClicked: {
-                    var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
-                    pwGenDialog.accepted.connect(function() {
-                        entryPasswordTextField.text =
-                                entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
-                    })
+                    Component.onCompleted: entryVerifyPasswordTextFieldRef = entryVerifyPasswordTextField
                 }
             }
 
@@ -276,181 +269,208 @@ Dialog {
                 id: additionalAttributesSection
                 enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
                 visible: enabled
-                text: qsTr("Additional Attributes")
+                text: qsTr("Change additional attributes")
             }
 
-            SilicaListView {
-                id: additionalAttributesListView
+            // dummy for last padding space
+            Item {
+                height: 1
                 width: parent.width
-                model: kdbEntry
-
-
-                delegate: Item {
-                    id: additionalAttributesDelegate
-                    enabled: !model.toBeDeleted
-                    visible: enabled
-
-                    width: parent.width
-                    height: enabled ? ((additionalAttributesEditText.enabled ?
-                                            additionalAttributesEditText.height :
-                                            additionalAttributesEditLabel.height ) + additionalAttributesButtons.height + additionalAttributesBottomPadding.height) : 0
-
-                    Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
-
-                    function listItemRemove() {
-                        Remorse.itemAction(additionalAttributesDelegate,
-                                           "Deleting",
-                                           function() {
-                                               // Set marker to delete additional attribute
-                                               model.toBeDeleted = true
-                                               additionalAttributesDelegate.enabled = false
-                                           })
-                    }
-
-                    function saveLabel() {
-                        // Save label into additional attribute Key
-                        model.editKeyMode = false
-                        additionalAttributesEditText.enabled = true
-                        additionalAttributesEditText.focus = true
-                        model.key = additionalAttributesEditLabel.text
-                        additionalAttributesEditText.label = model.key
-                        additionalAttributesEditText.placeholderText = qsTr("Set") + " " + model.key
-                        updateCoverState(kdbEntry.edited)
-                        additionalAttributeRightButton.text = qsTr("Delete")
-                        additionalAttributeLeftButton.text = qsTr("Edit Label")
-                    }
-
-                    ListView.onAdd: AddAnimation {
-                        target: additionalAttributesDelegate
-                    }
-                    ListView.onRemove: RemoveAnimation {
-                        target: additionalAttributesDelegate
-                    }
-
-                    TextArea {
-                        id: additionalAttributesEditText
-                        enabled: !model.editKeyMode
-                        width: parent.width
-                        anchors.top: parent.top
-                        opacity: enabled ? 1.0 : 0.0
-                        label: model.key
-                        text: model.value
-                        placeholderText: model.key.length === 0 ?
-                                             qsTr("Label not set") : qsTr("Set") + " " + model.key
-                        onTextChanged: {
-                            // Save additional attribute value
-                            model.value = text
-                            updateCoverState(kdbEntry.edited)
-                        }
-                        focusOutBehavior: -1
-
-                        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
-                    }
-
-                    TextField {
-                        id: additionalAttributesEditLabel
-                        width: parent.width
-                        anchors.top: parent.top
-                        enabled: !additionalAttributesEditText.enabled
-                        opacity: enabled ? 1.0 : 0.0
-                        label: qsTr("Edit Label")
-                        text: model.key
-                        placeholderText: qsTr("Edit Label")
-                        errorHighlight: model.errorHighlight
-                        onTextChanged: {
-                            model.key = text
-                            errorHighlight = model.errorHighlight
-                            updateCoverState(kdbEntry.edited)
-                        }
-                        EnterKey.enabled: !errorHighlight
-                        EnterKey.onClicked: {
-                            additionalAttributesDelegate.saveLabel()
-                        }
-                        focusOutBehavior: -1
-
-                        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
-                    }
-
-                    Row {
-                        id: additionalAttributesButtons
-                        enabled: height !== 0
-                        opacity: enabled ? 1.0 : 0.0
-                        anchors.bottom: additionalAttributesBottomPadding.top
-                        anchors.right: parent.right
-                        anchors.rightMargin: Theme.horizontalPageMargin
-                        anchors.left: parent.left
-                        anchors.leftMargin: Theme.horizontalPageMargin
-                        spacing: (width / 2) * 0.1
-                        height: additionalAttributesEditText.focus ||
-                                additionalAttributesEditLabel.focus ?
-                                    Theme.itemSizeSmall : 0
-
-                        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
-
-                        Button {
-                            id: additionalAttributeLeftButton
-                            enabled: additionalAttributesEditText.label.length !== 0  // Disable cancel button when label is initally empty on creation
-                            width: (parent.width / 2) * 0.95
-                            anchors.bottom: parent.bottom
-                            text: model.editKeyMode ? qsTr("Cancel") : qsTr("Edit Label")
-                            onClicked: {
-                                if (model.editKeyMode) {
-                                    // change to edit additional attribute text
-                                    model.editKeyMode = false
-                                    // Reset key and label to original value
-                                    model.key = additionalAttributesEditText.label
-                                    additionalAttributesEditLabel.text = additionalAttributesEditText.label
-                                    // Switch edit fields
-                                    additionalAttributesEditText.enabled = true
-                                    additionalAttributesEditText.focus = true
-                                    // Switch button texts
-                                    text = qsTr("Edit Label")
-                                    additionalAttributeRightButton.text = qsTr("Delete")
-                                } else {
-                                    // change to edit label
-                                    model.editKeyMode = true
-                                    additionalAttributesEditText.enabled = false
-                                    additionalAttributesEditLabel.focus = true
-                                    text = qsTr("Cancel")
-                                    additionalAttributeRightButton.text = qsTr("Accept")
-                                }
-                            }
-                        }
-
-                        Button {
-                            id: additionalAttributeRightButton
-                            enabled: !additionalAttributesEditLabel.errorHighlight
-                            width: (parent.width / 2) * 0.95
-                            anchors.bottom: parent.bottom
-                            text: model.editKeyMode ? qsTr("Accept") : qsTr("Delete")
-                            onClicked: {
-                                if (model.editKeyMode) {
-                                    // Save label
-                                    additionalAttributesDelegate.saveLabel()
-                                } else {
-                                    // Start remorse timer to delete the additional attribute
-                                    additionalAttributesDelegate.listItemRemove()
-                                }
-                            }
-                        }
-                    }
-
-                    Item {
-                        id: additionalAttributesBottomPadding
-                        height: Theme.paddingLarge
-                        width: parent.width
-                        anchors.bottom: additionalAttributesDelegate.bottom
-                    }
-                }
-
-                Connections {
-                    // for breaking the binding loop on height
-                    onContentHeightChanged: {
-                        additionalAttributesListView.height = additionalAttributesListView.contentHeight
-                    }
-                }
             }
         }
+    }
+
+    SilicaListView {
+        id: listView
+        model: kdbEntry
+        anchors.fill: parent
+        clip: true
+        spacing: Theme.paddingMedium
+
+        PullDownMenu {
+            SilicaMenuLabel {
+                text: Global.activeDatabase
+                elide: Text.ElideMiddle
+            }
+        }
+
+        ApplicationMenu {
+            disableNewEntryAttribute: false
+            disableSettingsItem: true
+            onAddAdditionalAttribute: {
+                kdbEntry.addAdditionalAttribute()
+            }
+        }
+
+        header: headerComp
+
+        footer: Item { // give the last item in the list some space to the bottom
+            height: listView.spacing // Theme.paddingMedium
+            width: parent.width
+        }
+
+        delegate: Item {
+            id: additionalAttributesDelegate
+            enabled: !model.toBeDeleted
+            visible: enabled
+            width: parent.width
+
+            height: enabled ? (additionalAttributesButtons.height + additionalAttributesEditText.height +
+                               additionalAttributesEditLabel.height + additionalAttributesBottomPadding.height)
+                            : 0
+
+            Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+            function listItemRemove() {
+                Remorse.itemAction(additionalAttributesDelegate,
+                                   "Deleting",
+                                   function() {
+                                       // Set marker to delete additional attribute
+                                       model.toBeDeleted = true
+                                       additionalAttributesDelegate.enabled = false
+                                   })
+            }
+
+            function saveLabel() {
+                // Save label into additional attribute Key
+                model.editKeyMode = false
+                additionalAttributesEditText.enabled = true
+                additionalAttributesEditText.focus = true
+                model.key = additionalAttributesEditLabel.text
+                additionalAttributesEditText.label = model.key
+                additionalAttributesEditText.placeholderText = qsTr("Set") + " " + model.key
+                updateCoverState(kdbEntry.edited)
+                additionalAttributeRightButton.text = qsTr("Delete")
+                additionalAttributeLeftButton.text = qsTr("Edit Label")
+            }
+
+            ListView.onAdd: AddAnimation {
+                target: additionalAttributesDelegate
+            }
+            ListView.onRemove: RemoveAnimation {
+                target: additionalAttributesDelegate
+            }
+
+            // This is the additional attribute edit button row
+            Row {
+                id: additionalAttributesButtons
+                enabled: height !== 0
+                opacity: enabled ? 1.0 : 0.0
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.left: parent.left
+                anchors.leftMargin: Theme.horizontalPageMargin
+                spacing: (width / 2) * 0.1
+                height: additionalAttributesEditText.focus || additionalAttributesEditLabel.focus
+                        ? additionalAttributeLeftButton.height + Theme.paddingMedium : 0
+
+                Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+                Button {
+                    id: additionalAttributeLeftButton
+                    enabled: additionalAttributesEditText.label.length !== 0  // Disable cancel button when label is initally empty on creation
+                    width: (parent.width / 2) * 0.95
+                    text: model.editKeyMode ? qsTr("Cancel") : qsTr("Edit Label")
+                    onClicked: {
+                        if (model.editKeyMode) {
+                            // change to edit additional attribute text
+                            model.editKeyMode = false
+                            // Reset key and label to original value
+                            model.key = additionalAttributesEditText.label
+                            additionalAttributesEditLabel.text = additionalAttributesEditText.label
+                            // Switch edit fields
+                            additionalAttributesEditText.enabled = true
+                            additionalAttributesEditText.focus = true
+                            // Switch button texts
+                            text = qsTr("Edit Label")
+                            additionalAttributeRightButton.text = qsTr("Delete")
+                        } else {
+                            // change to edit label
+                            model.editKeyMode = true
+                            additionalAttributesEditText.enabled = false
+                            additionalAttributesEditLabel.focus = true
+                            text = qsTr("Cancel")
+                            additionalAttributeRightButton.text = qsTr("Accept")
+                        }
+                    }
+                }
+
+                Button {
+                    id: additionalAttributeRightButton
+                    enabled: !additionalAttributesEditLabel.errorHighlight
+                    width: (parent.width / 2) * 0.95
+                    text: model.editKeyMode ? qsTr("Accept") : qsTr("Delete")
+                    onClicked: {
+                        if (model.editKeyMode) {
+                            // Save label
+                            additionalAttributesDelegate.saveLabel()
+                        } else {
+                            // Start remorse timer to delete the additional attribute
+                            additionalAttributesDelegate.listItemRemove()
+                        }
+                    }
+                }
+            }
+
+            // The following two Text edit fields are for attitional attributes
+            TextArea {
+                id: additionalAttributesEditText
+                enabled: !model.editKeyMode
+                width: parent.width
+                height: enabled ? implicitHeight : 0
+                anchors.bottom: additionalAttributesBottomPadding.top
+                opacity: enabled ? 1.0 : 0.0
+                label: model.key
+                text: model.value
+                placeholderText: model.key.length === 0
+                                 ? "ERROR"
+                                 : qsTr("Set") + " " + model.key
+                onTextChanged: {
+                    // Save additional attribute value
+                    model.value = text
+                    updateCoverState(kdbEntry.edited)
+                }
+                focusOutBehavior: -1
+
+                Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+            }
+
+            TextField {
+                id: additionalAttributesEditLabel
+                width: parent.width
+                height: enabled ? implicitHeight : 0
+                anchors.bottom: additionalAttributesBottomPadding.top
+                enabled: !additionalAttributesEditText.enabled
+                opacity: enabled ? 1.0 : 0.0
+                label: qsTr("Edit Label")
+                text: model.key
+                placeholderText: qsTr("Edit Label")
+                errorHighlight: model.errorHighlight
+                onTextChanged: {
+                    model.key = text
+                    errorHighlight = model.errorHighlight
+                    updateCoverState(kdbEntry.edited)
+                }
+                EnterKey.enabled: !errorHighlight
+                EnterKey.onClicked: {
+                    additionalAttributesDelegate.saveLabel()
+                }
+                focusOutBehavior: -1
+
+                Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+            }
+
+            // This is a spacer to keep some distance from the next list item
+            Item {
+                id: additionalAttributesBottomPadding
+                height: Theme.paddingMedium
+                width: parent.width
+                anchors.bottom: additionalAttributesDelegate.bottom
+            }
+        }
+
+        VerticalScrollDecorator {}
     }
 
     EditItemIconDialog {
@@ -458,7 +478,7 @@ Dialog {
         itemType: DatabaseItemType.ENTRY
 
         onAccepted: {
-            entryIcon.source = "image://KeepassIcon/" + newIconUuid
+            entryIconRef.source = "image://KeepassIcon/" + newIconUuid
             kdbEntry.iconUuid = newIconUuid
             updateCoverState(kdbEntry.edited)
         }

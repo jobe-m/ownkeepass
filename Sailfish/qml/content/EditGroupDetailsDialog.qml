@@ -92,8 +92,8 @@ Dialog {
                 cancelText: qsTr("Discard")
             }
 
-            SilicaLabel {
-                text: qsTr("Change icon:")
+            SectionHeader {
+                text: qsTr("Change icon")
             }
 
             Item {
@@ -138,9 +138,8 @@ Dialog {
                 }
             }
 
-            SilicaLabel {
-                text: editGroupDetailsDialog.createNewGroup ? qsTr("Type in a name for the new group:") :
-                                                              qsTr("Change name of group:")
+            SectionHeader {
+                text: qsTr("Change group details")
             }
 
             TextField {
