@@ -102,6 +102,8 @@ int main(int argc, char *argv[])
     QString locale = QLocale::system().name();
     view->rootContext()->setContextProperty("DebugLocale",QVariant(locale));
 
+    // When editing or adding new languages make sure to update all relevant data in:
+    // EditSettingsDialog.qml, Global.js, ownKeepassGlobal.h and below
     QTranslator translator;
     if (ownKeepassPublic::Language::SYSTEM_DEFAULT != okpSettings->language()) {
         switch (okpSettings->language()) {
@@ -180,6 +182,10 @@ int main(int argc, char *argv[])
         // Galician
         case ownKeepassPublic::Language::GL:
             translator.load("harbour-ownkeepass-gl.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
+        // Serbian
+        case ownKeepassPublic::Language::SR_RS:
+            translator.load("harbour-ownkeepass-sr_RS.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
         // English
         default:

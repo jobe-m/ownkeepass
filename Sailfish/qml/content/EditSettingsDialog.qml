@@ -336,24 +336,26 @@ Dialog {
                 menu: ContextMenu {
                     // The order of languages below must be the same as in Global.js
                     MenuItem { text: qsTr("System default") } // 0
-                    MenuItem { text: "Bokmål" } // 1 (Norwegian Bokmål)
-                    MenuItem { text: "Català" } // 2 (Catalan)
-                    MenuItem { text: "Čeština" } // 3 (Czech)
-                    MenuItem { text: "Dansk" } // 4 (Danish)
-                    MenuItem { text: "Deutsch" } // 5 (German)
-                    MenuItem { text: "English" } // 6 (English)
-                    MenuItem { text: "Español" }  // 7 (Spanish)
-                    MenuItem { text: "Français" } // 8 (French)
-                    MenuItem { text: "Galego" } // 9 (Galician)
-                    MenuItem { text: "Italiano" } // 10 (Italian)
-                    MenuItem { text: "Magyar" } // 11 (Hungarian)
-                    MenuItem { text: "Nederlands" } // 12 (Dutch)
-                    MenuItem { text: "Pу́сский" } // 13 (Russian)
-                    MenuItem { text: "Suomi" } // 14 (Finnish)
-                    MenuItem { text: "Svenska" } // 15 (Swedish)
-                    MenuItem { text: "中文" } // 16 (Chinese)
-                    MenuItem { text: "ελληνικά" } // 17 (Greek)
-                    MenuItem { text: "日本語" } // 18 (Japanese)
+                    MenuItem { text: "Bokmål" }       // 1 (Norwegian Bokmål)
+                    MenuItem { text: "Català" }       // 2 (Catalan)
+                    MenuItem { text: "Čeština" }      // 3 (Czech)
+                    MenuItem { text: "српски" }       // 4 (Serbian)
+                    MenuItem { text: "Dansk" }        // 5 (Danish)
+                    MenuItem { text: "Deutsch" }      // 6 (German)
+                    MenuItem { text: "English" }      // 7 (English)
+                    MenuItem { text: "Español" }      // 8 (Spanish)
+                    MenuItem { text: "Français" }     // 9 (French)
+                    MenuItem { text: "Galego" }       // 10 (Galician)
+                    MenuItem { text: "Italiano" }     // 11 (Italian)
+                    MenuItem { text: "język polski" } // 12 (Polish)
+                    MenuItem { text: "Magyar" }       // 13 (Hungarian)
+                    MenuItem { text: "Nederlands" }   // 14 (Dutch)
+                    MenuItem { text: "Pу́сский" }      // 15 (Russian)
+                    MenuItem { text: "Suomi" }        // 16 (Finnish)
+                    MenuItem { text: "Svenska" }      // 17 (Swedish)
+                    MenuItem { text: "中文" }          // 18 (Chinese)
+                    MenuItem { text: "ελληνικά" }     // 19 (Greek)
+                    MenuItem { text: "日本語" }        // 20 (Japanese)
                 }
 
                 // The next two converter functions decouple the alphabetical language list
@@ -400,8 +402,10 @@ Dialog {
                         return Global.japanese
                     case Language.HU_HU: // Hungarian
                         return Global.hungarian
-                    case language.GL: // Galician
+                    case Language.GL: // Galician
                         return Global.galician
+                    case Language.SR_RS: // Serbian
+                        return Global.serbian
                     default:
                         return Global.english
                     }
@@ -451,6 +455,8 @@ Dialog {
                         return Language.HU_HU
                     case Global.galician:
                         return Language.GL // Galician
+                    case Global.serbian:
+                        return Language.SR_RS // Serbian
                     default:
                         return Language.EN // English
                     }

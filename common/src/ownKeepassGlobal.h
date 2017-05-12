@@ -123,7 +123,7 @@ public:
         IT,    // Italian
         RU,    // Russian
         DA,    // Danish
-        PL_PL, // Polish - not yet started
+        PL_PL, // Polish
         ZH_CN, // Chinese
         UK_UA, // Ukrainian - not yet started
         NB_NO, // Norwegian Bogmål
@@ -131,6 +131,7 @@ public:
         JA_JP, // Japanese
         HU_HU, // Hungarian
         GL,    // Galician
+        SR_RS, // Serbian
         INVALID
     };
 };
