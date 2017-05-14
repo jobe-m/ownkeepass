@@ -589,12 +589,12 @@
         <translation>Orientation</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="487"/>
         <source>Extended list view</source>
         <translation>Vue liste étendue</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="482"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>En activant ceci, le nom d&apos;utilisateur et le mot de passe sont affichés sous le titre de la vue par liste (ré-ouvrir la base de données pour activer ceci)</translation>
     </message>
@@ -707,57 +707,57 @@
         <translation>Paysage</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="469"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
         <source>Sort in alphabetical order</source>
         <translation>Trier par ordre alphabétique</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="470"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>En activant ceci, toutes les entrées de la vue par liste seront triées par ordre alphabétique, sinon l&apos;ordre interne de la base de données sera utilisé (ré-ouvrir la base de données pour activer)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="499"/>
         <source>Focus search bar</source>
         <translation>Focaliser sur barre de recherche</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="494"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="500"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Si activé, le curseur sera placé sur la barre de recherche au démarrage de l&apos;application</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="503"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
         <source>Cover settings</source>
         <translation>Paramètres de couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="515"/>
         <source>Show username and password</source>
         <translation>Afficher le nom d&apos;utilisateur et le mot de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="510"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Si activé, le nom d&apos;utilisateur et mot de passe de la saisie Keepass active seront affichés sur la couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="527"/>
         <source>Lock database from cover</source>
         <translation>Verrouiller la base de données depuis la couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="522"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Permet de verrouiller la base de données par une action à gauche depuis la couverture </translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Copier - coller depuis la couverture</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="534"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="540"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Activer ceci pour copier le nom d&apos;utilisateur et le mot de passe dans le presse-papier depuis la couverture</translation>
     </message>
@@ -854,24 +854,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="125"/>
+        <location filename="../qml/scripts/Global.js" line="126"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Rien de séléctionné pour le moment</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="128"/>
+        <location filename="../qml/scripts/Global.js" line="129"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Mémoire de l&apos;appareil</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="130"/>
+        <location filename="../qml/scripts/Global.js" line="131"/>
         <source>SD Card</source>
         <translation>Carte SD</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="132"/>
+        <location filename="../qml/scripts/Global.js" line="133"/>
         <source>Android Storage</source>
         <translation>Stockage Android</translation>
     </message>
@@ -1122,61 +1122,61 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Gestionnaire de mots de passe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="436"/>
+        <location filename="../qml/content/MainPage.qml" line="450"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Saisir un mot de passe principal pour verrouiller votre nouveau gestionnaire de mots de passe Keepass :</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="443"/>
+        <location filename="../qml/content/MainPage.qml" line="457"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>Emplacement et nom du fichier de la nouvelle base de données</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="456"/>
+        <location filename="../qml/content/MainPage.qml" line="470"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>Emplacement et nom du fichier de la base de données</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>Permission error</source>
         <translation>Erreur d&apos;autorisation</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Ne peut pas créer d&apos;emplacement pour votre ficher de base de données Keepass. Il vous faut définir les autorisations du répertoire pour l&apos;utilisateur &quot;nemo&quot;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
-        <location filename="../qml/content/MainPage.qml" line="625"/>
+        <location filename="../qml/content/MainPage.qml" line="651"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Key file error</source>
         <translation>Erreur de fichier de clé</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
-        <location filename="../qml/content/MainPage.qml" line="625"/>
+        <location filename="../qml/content/MainPage.qml" line="651"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>L&apos;emplacement de base de données est correct mais le fichier de clé est absente. Veuillez vérifier le chemin pour le fichier de clé :</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="656"/>
         <source>Database file already exists</source>
         <translation>Fichier de base de données existe déjà</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="656"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Indiquez un autre emplacement et nom pour votre base de données Keepass ou supprimez l&apos;ancienne base de données à l&apos;aide d&apos;un navigateur de fichier.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="630"/>
+        <location filename="../qml/content/MainPage.qml" line="673"/>
         <source>Database file error</source>
         <translation>Erreur de fichier de base de données</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="630"/>
+        <location filename="../qml/content/MainPage.qml" line="673"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Le fichier de base de données n&apos;existe pas. Vérifiez l&apos;emplacement :</translation>
     </message>
@@ -1314,12 +1314,12 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Conversion de Qstring &quot;%1&quot; vers Uuid échoué</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="684"/>
+        <location filename="../qml/content/MainPage.qml" line="741"/>
         <source>Password changed</source>
         <translation>Mot de passe modifié</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="684"/>
+        <location filename="../qml/content/MainPage.qml" line="741"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Le mot de passe principal de votre base de données a été modifié.</translation>
     </message>
@@ -1379,42 +1379,42 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Conversion de Qstring &quot;%1&quot; vers Int échoué</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1052"/>
+        <location filename="../qml/content/MainPage.qml" line="1102"/>
         <source>Drop from List</source>
         <translation>Supprimer de la liste</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1138"/>
+        <location filename="../qml/content/MainPage.qml" line="1180"/>
         <source>Yes</source>
         <translation>Oui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1139"/>
+        <location filename="../qml/content/MainPage.qml" line="1181"/>
         <source>No</source>
         <translation>Non</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1140"/>
+        <location filename="../qml/content/MainPage.qml" line="1182"/>
         <source>Unsaved changes</source>
         <translation>Modifications non enregistrées</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1185"/>
+        <location filename="../qml/content/MainPage.qml" line="1227"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Voulez-vous enregistrer les modifications du mot de passe ?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1190"/>
+        <location filename="../qml/content/MainPage.qml" line="1232"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Voulez-vous enregistrer les modifications du groupe de mots de passe ?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1195"/>
+        <location filename="../qml/content/MainPage.qml" line="1237"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Voulez-vous enregistrer les modifications des paramètres de la base de données ?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1200"/>
+        <location filename="../qml/content/MainPage.qml" line="1242"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Voulez-vous enregistrer les changements de paramètres ?</translation>
     </message>

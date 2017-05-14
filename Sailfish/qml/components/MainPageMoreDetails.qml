@@ -64,7 +64,7 @@ Column {
             color: Theme.primaryColor
             horizontalAlignment: Text.AlignLeft
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            text: Global.getLocationName(internal.dbFileLocation) + " " + internal.databasePath
+            text: Global.getLocationName(internal.dbFileLocation) + " " + internal.dbFilePath
         }
 
         Label {

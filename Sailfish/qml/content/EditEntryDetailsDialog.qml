@@ -136,8 +136,8 @@ Dialog {
                     kdbEntry.title = text
                     updateCoverState(kdbEntry.edited)
                 }
-                focusOutBehavior: -1  // prevent the "abc" password mode button to steal focus
                 Component.onCompleted: entryTitleTextFieldRef = entryTitleTextField
+                focusOutBehavior: -1  // prevent the "abc" password mode button to steal focus
             }
 
             TextField {
@@ -244,11 +244,11 @@ Dialog {
                             entryCommentTextField.focus = true
                         }
                     }
-                    focusOutBehavior: -1
 
                     Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
 
                     Component.onCompleted: entryVerifyPasswordTextFieldRef = entryVerifyPasswordTextField
+                    focusOutBehavior: -1
                 }
             }
 
@@ -431,9 +431,9 @@ Dialog {
                     model.value = text
                     updateCoverState(kdbEntry.edited)
                 }
-                focusOutBehavior: -1
 
                 Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+                focusOutBehavior: -1
             }
 
             TextField {
@@ -456,9 +456,9 @@ Dialog {
                 EnterKey.onClicked: {
                     additionalAttributesDelegate.saveLabel()
                 }
-                focusOutBehavior: -1
 
                 Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+                focusOutBehavior: -1
             }
 
             // This is a spacer to keep some distance from the next list item

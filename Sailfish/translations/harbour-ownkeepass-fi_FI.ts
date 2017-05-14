@@ -589,12 +589,12 @@
         <translation>Orientaatio</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="487"/>
         <source>Extended list view</source>
         <translation>Laajennetun listan näkymä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="482"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>Jos laitat tämän päälle, käyttäjänimi ja salasana näytetään listausnäytöillä riviotsakkeen alapuolella (avaa tietokanta uudellen aktivoidaksesi tämä asetus)</translation>
     </message>
@@ -707,57 +707,57 @@
         <translation>Vaaka-asento</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="469"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
         <source>Sort in alphabetical order</source>
         <translation>Laita aakkosjärjestykseen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="470"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>Laittamalla tämän asetuksen päälle, listausnäyttö esittää tietokannan aakkosjärjestyksessä, eikä tietokannan sisäisen järjestyksen mukaisesti (avaa tietokanta uudelleen aktivoidaksesi tämä asetus)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="499"/>
         <source>Focus search bar</source>
         <translation>Kohdista hakukenttään</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="494"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="500"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Jos asetettu, hakukenttä kohdistetaan sovelluksen käynnistyessä</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="503"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
         <source>Cover settings</source>
         <translation>Kuvakeasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="515"/>
         <source>Show username and password</source>
         <translation>Näytä käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="510"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Asettamalla tämä, kuvakkeessa näytetään kulloinkin avoinna olevan Keepass-tiedoston käyttäjänimi ja salasana</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="527"/>
         <source>Lock database from cover</source>
         <translation>Lukitse tietokanta kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="522"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Tämä sallii tietokannan lukituksen kuvaketta vasemmalle pyyhkäisten</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Leikkaa ja liimaa kuvakkeesta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="534"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="540"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Asettamalla tämän, sallit käyttäjänimen ja salasanan kopioinnin kuvakkeesta leikepöydälle</translation>
     </message>
@@ -854,24 +854,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="125"/>
+        <location filename="../qml/scripts/Global.js" line="126"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Mitään ei ole vielä merkitty valituksi</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="128"/>
+        <location filename="../qml/scripts/Global.js" line="129"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Laitteen muisti</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="130"/>
+        <location filename="../qml/scripts/Global.js" line="131"/>
         <source>SD Card</source>
         <translation>SD-kortti</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="132"/>
+        <location filename="../qml/scripts/Global.js" line="133"/>
         <source>Android Storage</source>
         <translation>Android-muisti</translation>
     </message>
@@ -1122,61 +1122,61 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Salasanasovellus</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="436"/>
+        <location filename="../qml/content/MainPage.qml" line="450"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Anna pääsalasana jolla uusi Keepass tietokanta lukitaan:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="443"/>
+        <location filename="../qml/content/MainPage.qml" line="457"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>Polku ja uuden tietokannan nimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="456"/>
+        <location filename="../qml/content/MainPage.qml" line="470"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>Polku ja tietokannan nimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>Permission error</source>
         <translation>Käyttöoikeusvirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="603"/>
+        <location filename="../qml/content/MainPage.qml" line="646"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Polun luominen Keepass tietokantatiedostoosi epäonnistui. Sinun on ehkä asetettava hakemiston käyttöoikeudet käyttäjälle &apos;nemo&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
-        <location filename="../qml/content/MainPage.qml" line="625"/>
+        <location filename="../qml/content/MainPage.qml" line="651"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Key file error</source>
         <translation>Avaintiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="608"/>
-        <location filename="../qml/content/MainPage.qml" line="625"/>
+        <location filename="../qml/content/MainPage.qml" line="651"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Tietokantapolku on O.K., mutta avaintiedostoa ei löydy. Tarkista sen polku:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="656"/>
         <source>Database file already exists</source>
         <translation>Tietokantatiedosto on jo olemassa</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="613"/>
+        <location filename="../qml/content/MainPage.qml" line="656"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Ole hyvä ja valitse toinen polku tai nimi Keepass tietokannallesi tai poista vanha tietokanta käyttäen File Browser sovellusta.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="630"/>
+        <location filename="../qml/content/MainPage.qml" line="673"/>
         <source>Database file error</source>
         <translation>Tietokantatiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="630"/>
+        <location filename="../qml/content/MainPage.qml" line="673"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Tietokantatiedostoa ei löydy. Tarkista sen polku:</translation>
     </message>
@@ -1314,12 +1314,12 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>QString &quot;%1&quot; muuttaminen UUid-arvoksi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="684"/>
+        <location filename="../qml/content/MainPage.qml" line="741"/>
         <source>Password changed</source>
         <translation>Salasana muutettu</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="684"/>
+        <location filename="../qml/content/MainPage.qml" line="741"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Tietokantasi pääsalasana on vaihdettu onnistuneesti.</translation>
     </message>
@@ -1379,42 +1379,42 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Qstring &quot;%1&quot;:n muuntaminen kokonaisluvuksi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1052"/>
+        <location filename="../qml/content/MainPage.qml" line="1102"/>
         <source>Drop from List</source>
         <translation>Poista listalta</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1138"/>
+        <location filename="../qml/content/MainPage.qml" line="1180"/>
         <source>Yes</source>
         <translation>Kyllä</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1139"/>
+        <location filename="../qml/content/MainPage.qml" line="1181"/>
         <source>No</source>
         <translation>Ei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1140"/>
+        <location filename="../qml/content/MainPage.qml" line="1182"/>
         <source>Unsaved changes</source>
         <translation>Tallentamattomia muutoksia</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1185"/>
+        <location filename="../qml/content/MainPage.qml" line="1227"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Haluatko tallettaa muutokset salasanatiedostoon?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1190"/>
+        <location filename="../qml/content/MainPage.qml" line="1232"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Haluatko tallettaa muutokset salasanaryhmään?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1195"/>
+        <location filename="../qml/content/MainPage.qml" line="1237"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Haluatko tallettaa muutokset tietokannan asetuksiin?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1200"/>
+        <location filename="../qml/content/MainPage.qml" line="1242"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Haluatko tallettaa muutokset asetusarvoihin?</translation>
     </message>

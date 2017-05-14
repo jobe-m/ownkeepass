@@ -405,6 +405,13 @@ Page {
                         var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                                               { "initOnPageConstruction": false, "groupId": "0" })
                         var createNewDatabase =  false
+                        // copy password data over to to-be-opened-databae-details
+                        internal.setToBeOpenedDatabaseInfo(internal.dbFileLocation,
+                                                           internal.dbFilePath,
+                                                           internal.useKeyFile,
+                                                           internal.keyFileLocation,
+                                                           internal.keyFilePath,
+                                                           internal.databaseType)
                         internal.openKeepassDatabase(password, createNewDatabase, masterGroupsPage)
                     }
 
@@ -413,6 +420,13 @@ Page {
                         var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                                               { "initOnPageConstruction": false, "groupId": "0" })
                         var createNewDatabase = true
+                        // copy password data over to to-be-opened-databae-details
+                        internal.setToBeOpenedDatabaseInfo(internal.dbFileLocation,
+                                                           internal.dbFilePath,
+                                                           internal.useKeyFile,
+                                                           internal.keyFileLocation,
+                                                           internal.keyFilePath,
+                                                           internal.databaseType)
                         internal.openKeepassDatabase(password, createNewDatabase, masterGroupsPage)
                     }
                 }
@@ -526,12 +540,19 @@ Page {
         property bool overWriteDbfileCheck: false
         // These values will be used on creation and opening of database
         // If creation of database and opening succeeds these values will be stored in settings.ini
-        property int dbFileLocation: 0
-        property string databasePath: ""
-        property bool useKeyFile: false
-        property int keyFileLocation: 0
+        property int    dbFileLocation: 0
+        property string dbFilePath: ""
+        property bool   useKeyFile: false
+        property int    keyFileLocation: 0
         property string keyFilePath: ""
-        property int databaseType: DatabaseType.DB_TYPE_UNKNOWN
+        property int    databaseType: DatabaseType.DB_TYPE_UNKNOWN
+        // Details for the to be opened database (in case the opening failed above data will not be overwritten)
+        property int    tbo_dbFileLocation: 0
+        property string tbo_dbFilePath: ""
+        property bool   tbo_useKeyFile: false
+        property int    tbo_keyFileLocation: 0
+        property string tbo_keyFilePath: ""
+        property int    tbo_databaseType: DatabaseType.DB_TYPE_UNKNOWN
         property Page masterGroupsPage
 
         function init() {
@@ -551,12 +572,26 @@ Page {
                                  keyFilePath,
                                  databaseType) {
             internal.dbFileLocation = dbFileLocation
-            internal.databasePath =  dbFilePath
+            internal.dbFilePath =  dbFilePath
             internal.useKeyFile = useKeyFile
             internal.keyFileLocation = keyFileLocation
             internal.keyFilePath = keyFilePath
             internal.databaseType = databaseType
         }
+
+        function setToBeOpenedDatabaseInfo(dbFileLocation,
+                                           dbFilePath,
+                                           useKeyFile,
+                                           keyFileLocation,
+                                           keyFilePath,
+                                           databaseType) {
+                      internal.tbo_dbFileLocation = dbFileLocation
+                      internal.tbo_dbFilePath =  dbFilePath
+                      internal.tbo_useKeyFile = useKeyFile
+                      internal.tbo_keyFileLocation = keyFileLocation
+                      internal.tbo_keyFilePath = keyFilePath
+                      internal.tbo_databaseType = databaseType
+                  }
 
         function openKeepassDatabase(password,
                                      createNewDatabase,
@@ -578,25 +613,33 @@ Page {
             }
 
             // prepare database and key file
-            var completeDbFilePath = ownKeepassHelper.getLocationRootPath(internal.dbFileLocation) + "/" + internal.databasePath
+            var completeDbFilePath = ownKeepassHelper.getLocationRootPath(tbo_dbFileLocation) + "/" + tbo_dbFilePath
             var completeKeyFilePath
-            if (internal.useKeyFile) {
-                completeKeyFilePath = ownKeepassHelper.getLocationRootPath(internal.keyFileLocation) + "/" + internal.keyFilePath
+            if (tbo_useKeyFile) {
+                completeKeyFilePath = ownKeepassHelper.getLocationRootPath(tbo_keyFileLocation) + "/" + tbo_keyFilePath
             } else {
                 completeKeyFilePath = ""
             }
 
+            console.log("Open Kdb Database")
+//            console.log(tbo_dbFileLocation)
+//            console.log(tbo_dbFilePath)
+//            console.log(tbo_useKeyFile)
+//            console.log(tbo_keyFileLocation)
+//            console.log(tbo_keyFilePath)
+//            console.log(tbo_databaseType)
+
             if (createNewDatabase) {
                 // Check if database file already exists and if key file is present if it should be used
                 if (!ownKeepassHelper.fileExists(completeDbFilePath)) {
-                    if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
+                    if (!tbo_useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // Ok, now check if path to file exists if not create it
                         if (ownKeepassHelper.createFilePathIfNotExist(completeDbFilePath)) {
                             // set default values for encryption and key transformation rounds
                             ownKeepassDatabase.keyTransfRounds = ownKeepassSettings.defaultKeyTransfRounds
                             ownKeepassDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
-                            ownKeepassDatabase.create(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, true)
+                            ownKeepassDatabase.create(tbo_databaseType, completeDbFilePath, completeKeyFilePath, password, true)
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
@@ -616,9 +659,9 @@ Page {
             } else {
                 // Check if database exists and if key file exists in case it should be used
                 if (ownKeepassHelper.fileExists(completeDbFilePath)) {
-                    if (!useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
+                    if (!tbo_useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
-                        ownKeepassDatabase.open(internal.databaseType, completeDbFilePath, completeKeyFilePath, password, false)
+                        ownKeepassDatabase.open(internal.tbo_databaseType, completeDbFilePath, completeKeyFilePath, password, false)
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
@@ -635,21 +678,21 @@ Page {
 
         function updateRecentDatabaseListModel() {
             // update recent database list
-            var uiName = internal.databasePath.substring(internal.databasePath.lastIndexOf("/") + 1, internal.databasePath.length)
-            var uiPath = internal.databasePath.substring(0, internal.databasePath.lastIndexOf("/") + 1)
+            var uiName = internal.dbFilePath.substring(internal.dbFilePath.lastIndexOf("/") + 1, internal.dbFilePath.length)
+            var uiPath = internal.dbFilePath.substring(0, internal.dbFilePath.lastIndexOf("/") + 1)
             ownKeepassSettings.addRecentDatabase(uiName,
                                                  uiPath,
                                                  internal.dbFileLocation,
-                                                 internal.databasePath,
+                                                 internal.dbFilePath,
                                                  internal.useKeyFile,
                                                  internal.keyFileLocation,
                                                  internal.keyFilePath,
                                                  internal.databaseType)
             // Set database name in global object for pulley menu on groups and entries pages
-            Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + databasePath
+            Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
             // Get database name and set on cover page for create new and open database states
-            applicationWindow.cover.title = databasePath.substring(
-                        databasePath.lastIndexOf("/") + 1, databasePath.length)
+            applicationWindow.cover.title = dbFilePath.substring(
+                        dbFilePath.lastIndexOf("/") + 1, dbFilePath.length)
         }
 
         function databaseOpenedHandler(result, errorMsg) {
@@ -657,6 +700,13 @@ Page {
                 // Database opened successfully (in read only mode)
                 // now init master groups page and cover page
                 Global.enableDatabaseLock = true
+                // update details of active database on main page
+                setDatabaseInfo(tbo_dbFileLocation,
+                                tbo_dbFilePath,
+                                tbo_useKeyFile,
+                                tbo_keyFileLocation,
+                                tbo_keyFilePath,
+                                tbo_databaseType)
                 masterGroupsPage.init()
                 updateRecentDatabaseListModel()
             } else {
@@ -667,6 +717,13 @@ Page {
         function newDatabaseCreatedHandler() {
             // Yeah, database created successfully, now init master groups page and cover page
             Global.enableDatabaseLock = true
+            // update details of active database on main page
+            setDatabaseInfo(tbo_dbFileLocation,
+                            tbo_dbFilePath,
+                            tbo_useKeyFile,
+                            tbo_keyFileLocation,
+                            tbo_keyFilePath,
+                            tbo_databaseType)
             masterGroupsPage.init()
             updateRecentDatabaseListModel()
         }
@@ -957,12 +1014,13 @@ Page {
         id: queryPasswordDialogComponent
         QueryPasswordDialog {
             onAccepted: {
-                internal.setDatabaseInfo(dbFileLocation,
-                                         dbFilePath,
-                                         useKeyFile,
-                                         keyFileLocation,
-                                         keyFilePath,
-                                         databaseType)
+                // copy password data over to to-be-opened-databae-details
+                internal.setToBeOpenedDatabaseInfo(dbFileLocation,
+                                                   dbFilePath,
+                                                   useKeyFile,
+                                                   keyFileLocation,
+                                                   keyFilePath,
+                                                   databaseType)
                 internal.openKeepassDatabase(password,
                                              state === "CreateNewDatabase",
                                              acceptDestinationInstance)
@@ -983,14 +1041,6 @@ Page {
                 remorseAction("Drop Database from List",
                               function() {
                                   ownKeepassSettings.removeRecentDatabase(model.uiName, model.databaseLocation, model.databaseFilePath)
-                              })
-            }
-            function deleteDatabase() {
-                remorseAction("Delete Database",
-                              function() {
-                                  // tell user that database was deleted from filesystem
-// TODO
-//                                  ownKeepassSettings.removeRecentDatabase(model.uiName, model.databaseLocation, model.databaseFilePath)
                               })
             }
 
@@ -1054,14 +1104,6 @@ Page {
                             recentDatabaseListItem.dropFromList()
                         }
                     }
-
-// TODO
-//                    MenuItem {
-//                        text: qsTr("Delete Database")
-//                        onClicked: {
-//                            recentDatabaseListItem.deleteDatabase()
-//                        }
-//                    }
                 }
             } // end contextMenuComponent
         }
