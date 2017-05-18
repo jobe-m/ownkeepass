@@ -327,12 +327,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="67"/>
         <source>Save</source>
-        <translation type="unfinished">保存</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="68"/>
         <source>Discard</source>
-        <translation type="unfinished">放弃</translation>
+        <translation>放弃</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="74"/>
@@ -347,48 +347,48 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set title (mandatory)</source>
-        <translation type="unfinished"></translation>
+        <translation>设置标题（强制）</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>URL</source>
-        <translation type="unfinished">网址</translation>
+        <translation>网址</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="149"/>
         <source>Set URL</source>
-        <translation type="unfinished"></translation>
+        <translation>设置网址</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="163"/>
         <source>Username</source>
-        <translation type="unfinished">用户名</translation>
+        <translation>用户名</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="165"/>
         <source>Set username</source>
-        <translation type="unfinished"></translation>
+        <translation>设置用户名</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="202"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="233"/>
         <source>Password</source>
-        <translation type="unfinished">密码</translation>
+        <translation>密码</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
         <source>Set password</source>
-        <translation type="unfinished"></translation>
+        <translation>设置密码</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="234"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>验证密码</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="178"/>
@@ -398,12 +398,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="258"/>
         <source>Comment</source>
-        <translation type="unfinished">注释</translation>
+        <translation>注释</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="260"/>
         <source>Set comment</source>
-        <translation type="unfinished"></translation>
+        <translation>设置注释</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="341"/>
@@ -442,7 +442,7 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="394"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="403"/>
         <source>Accept</source>
-        <translation type="unfinished">接受</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1503,43 +1503,43 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
         <source>Accept</source>
-        <translation type="unfinished">接受</translation>
+        <translation>接收</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation type="unfinished">放弃</translation>
+        <translation>放弃</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation type="unfinished"></translation>
+        <translation>生成的密码</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation type="unfinished"></translation>
+        <translation>没有选择的字符组</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>长度</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"></translation>
+        <translation>排除外观相似的字符</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"></translation>
+        <translation>保证密码包含了每个组的字符</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>shengcheng</translation>
     </message>
 </context>
 <context>

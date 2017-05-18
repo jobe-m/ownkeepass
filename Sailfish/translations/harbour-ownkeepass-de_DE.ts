@@ -16,7 +16,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="66"/>
         <source>ownKeepass is a Keepass 1 and 2 compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass ist ein Passwort-Safe-Programm, welches mit Keepass Version 1 und 2 kompatibel ist. </translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="74"/>
@@ -52,33 +52,33 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="214"/>
         <source>My best appreciations go to:</source>
-        <translation type="unfinished"></translation>
+        <translation>Meine größte Anerkennung gilt:</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="215"/>
         <source>Jolla (for continuing where Nokia stopped)</source>
-        <translation type="unfinished"></translation>
+        <translation>Jolla (dafür, dass sie die Arbeit von Nokia fortführen)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="216"/>
         <source>The KeepassX project (for a Qt implementation of Keepass)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dem KeepassX Projekt (für eine Qt Implementierung von Keepass)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="218"/>
         <source>And finally many thanks to all translators on %1 and contributors on %2 (for keeping me motivated to work on ownKeepass)</source>
         <extracomment>%1 and %2 are placeholders for links to the project on transifex and github</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Und letztendlich allen Übersetzern auf %1 und Mitwirkenden auf %2 (dafür, dass ihr mir die Motivation gebt an ownKeepass weiter zu arbeiten)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="221"/>
         <source>Alphabetical list of all translators:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Übersetzer in alphabetischer Reihenfolge:</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="266"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ich hoffe ihr habt mit ownKeepass mindestens so viel Spass wie ich während der Entwicklung!</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="147"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="40"/>
         <source>Add Additional Attribute</source>
-        <translation type="unfinished"></translation>
+        <translation>Attribut hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="45"/>
@@ -327,89 +327,89 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="67"/>
         <source>Save</source>
-        <translation type="unfinished">Speichern</translation>
+        <translation>Speichern</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="68"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerfen</translation>
+        <translation>Verwerfen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="74"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol ändern</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="121"/>
         <source>Change password entry details</source>
-        <translation type="unfinished"></translation>
+        <translation>Passworteintrag ändern</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set title (mandatory)</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel angeben (erforderlich)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>URL</source>
-        <translation type="unfinished">Internetadresse</translation>
+        <translation>Internetadresse</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="149"/>
         <source>Set URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Internetadresse festlegen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="163"/>
         <source>Username</source>
-        <translation type="unfinished">Benutzername</translation>
+        <translation>Benutzernamen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="165"/>
         <source>Set username</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzernamen festlegen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="202"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="233"/>
         <source>Password</source>
-        <translation type="unfinished">Passwort</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
         <source>Set password</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort festlegen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="234"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort bestätigen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="178"/>
         <source>Generate password</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort generieren</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="258"/>
         <source>Comment</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="260"/>
         <source>Set comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar erstellen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="341"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="428"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändere</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="344"/>
@@ -418,31 +418,31 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="446"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="448"/>
         <source>Edit Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezeichnung</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="343"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="387"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="403"/>
         <source>Delete</source>
-        <translation type="unfinished">Löschen</translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="272"/>
         <source>Change additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Zusätzliche Attribute ändern</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="374"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="393"/>
         <source>Cancel</source>
-        <translation type="unfinished">Abbrechen</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="394"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="403"/>
         <source>Accept</source>
-        <translation type="unfinished">Übernehmen</translation>
+        <translation>Übernehmen</translation>
     </message>
 </context>
 <context>
@@ -460,12 +460,12 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol ändern</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
         <source>Change group details</source>
-        <translation type="unfinished"></translation>
+        <translation>Details der Gruppe ändern</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
@@ -1502,43 +1502,43 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
         <source>Accept</source>
-        <translation type="unfinished">Übernehmen</translation>
+        <translation>Übernehmen</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation type="unfinished">Verwerfen</translation>
+        <translation>Verwerfen</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation type="unfinished"></translation>
+        <translation>Erzeugtes Passwort</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Zeichengruppe ausgewählt</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Länge</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Schliesse Zeichen, die sich ähnlich sehen, aus</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"></translation>
+        <translation>Sicherstellen, dass das Passwort Zeichen aus jeder Gruppe enthält</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>Erzeugen</translation>
     </message>
 </context>
 <context>
@@ -1641,7 +1641,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="148"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="166"/>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>In Zwischenablage kopieren</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="130"/>
@@ -1662,25 +1662,25 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="169"/>
         <source>password</source>
         <extracomment>Translate &quot;password&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>passwort</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="171"/>
         <source>pin</source>
         <extracomment>&quot;pin&quot; like a pin number of your credit card or sim card. Translate &quot;pin&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>pin</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="173"/>
         <source>tan</source>
         <extracomment>&quot;tan&quot; like a tan list from your bank account. Translate &quot;tan&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>tan</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="175"/>
         <source>puk</source>
         <extracomment>&quot;puk&quot; like the (emergency) puk number of your sim card. Translate &quot;puk&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>puk</translation>
     </message>
 </context>
 </TS>

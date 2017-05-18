@@ -327,12 +327,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="67"/>
         <source>Save</source>
-        <translation type="unfinished">Mentés</translation>
+        <translation>Mentés</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="68"/>
         <source>Discard</source>
-        <translation type="unfinished">Mégsem</translation>
+        <translation>Mégsem</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="74"/>
@@ -347,48 +347,48 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Név</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set title (mandatory)</source>
-        <translation type="unfinished"></translation>
+        <translation>Név megadása (kötelező)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="149"/>
         <source>Set URL</source>
-        <translation type="unfinished"></translation>
+        <translation>URL megadása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="163"/>
         <source>Username</source>
-        <translation type="unfinished">Felhasználó név</translation>
+        <translation>Felhasználó név</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="165"/>
         <source>Set username</source>
-        <translation type="unfinished"></translation>
+        <translation>Felhasználó név megadása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="202"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="233"/>
         <source>Password</source>
-        <translation type="unfinished">Jelszó</translation>
+        <translation>Jelszó</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
         <source>Set password</source>
-        <translation type="unfinished"></translation>
+        <translation>Jelszó megdása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="234"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Jelszó megerősítése</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="178"/>
@@ -398,12 +398,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="258"/>
         <source>Comment</source>
-        <translation type="unfinished">Megjegyzés</translation>
+        <translation>Megjegyzés</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="260"/>
         <source>Set comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Megjegyzés megadása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="341"/>
@@ -1502,43 +1502,43 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
         <source>Accept</source>
-        <translation type="unfinished">Elfogad</translation>
+        <translation>Elfogad</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation type="unfinished">Mégsem</translation>
+        <translation>Mégsem</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation type="unfinished"></translation>
+        <translation>Generált jelszó</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Nincs karakter-csoport kiválasztva</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Hossz</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Hasonló kinézetű karakterek kihagyása</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"></translation>
+        <translation>Bizonyosodj meg róla, hogy a jelszó minden csoportból tartalmaz karaktereket</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>Generál</translation>
     </message>
 </context>
 <context>

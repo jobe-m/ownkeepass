@@ -16,7 +16,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="66"/>
         <source>ownKeepass is a Keepass 1 and 2 compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass er en Passordsafe kompatibel med Keepass 1 og 2.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="74"/>
@@ -52,33 +52,33 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="214"/>
         <source>My best appreciations go to:</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeg retter en stor takk til:</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="215"/>
         <source>Jolla (for continuing where Nokia stopped)</source>
-        <translation type="unfinished"></translation>
+        <translation>Jolla (for å fortsette der Nokia stoppet)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="216"/>
         <source>The KeepassX project (for a Qt implementation of Keepass)</source>
-        <translation type="unfinished"></translation>
+        <translation>KeepassX-prosjektet (for Qt-implementasjon av Keepass)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="218"/>
         <source>And finally many thanks to all translators on %1 and contributors on %2 (for keeping me motivated to work on ownKeepass)</source>
         <extracomment>%1 and %2 are placeholders for links to the project on transifex and github</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Og til slutt, mange takk til alle oversettere på %1 og bidragsytere på %2 (for motivasjon til å arbeide med ownKeepass)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="221"/>
         <source>Alphabetical list of all translators:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alfabetisk liste av alle oversettere:</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="266"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeg håper du har like mye glede av å bruke programmet som jeg har av å lage det.</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="147"/>
@@ -88,7 +88,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="155"/>
         <source>If you like my work feel free to show me your gratitude. Work on a translation, issue a bug report or improvement idea, send me a café or just like my app and talk about it in the Jolla store :)</source>
-        <translation>Hvis du liker det jeg har laget, vis gjerne din takknemlighet. Bidra med oversettelse, meld inn feil eller forslag til forbedringer, send meg en kaffe eller bare lik programmet og snakk om det på Jolla Store :-)</translation>
+        <translation>Hvis du liker det jeg har laget, vis gjerne din takknemlighet. Bidra med oversettelse, meld inn feil eller forslag til forbedringer, send meg en kaffe eller bare lik programmet og skriv om det i Jolla Store :-)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="193"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="40"/>
         <source>Add Additional Attribute</source>
-        <translation type="unfinished"></translation>
+        <translation>Legg til egenskap</translation>
     </message>
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="45"/>
@@ -327,89 +327,89 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="67"/>
         <source>Save</source>
-        <translation type="unfinished">Lagre</translation>
+        <translation>Lagre</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="68"/>
         <source>Discard</source>
-        <translation type="unfinished">Forkast</translation>
+        <translation>Forkast</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="74"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Endre ikon</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="121"/>
         <source>Change password entry details</source>
-        <translation type="unfinished"></translation>
+        <translation>Endre detaljer for passordoppføring</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Tittel</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set title (mandatory)</source>
-        <translation type="unfinished"></translation>
+        <translation>Angi tittel (obligatorisk)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="149"/>
         <source>Set URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Angi URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="163"/>
         <source>Username</source>
-        <translation type="unfinished">Brukernavn</translation>
+        <translation>Brukernavn</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="165"/>
         <source>Set username</source>
-        <translation type="unfinished"></translation>
+        <translation>Angi brukernavn</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="202"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="233"/>
         <source>Password</source>
-        <translation type="unfinished">Passord</translation>
+        <translation>Passord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
         <source>Set password</source>
-        <translation type="unfinished"></translation>
+        <translation>Angi passord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="234"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekreft passord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="178"/>
         <source>Generate password</source>
-        <translation type="unfinished"></translation>
+        <translation>Generer passord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="258"/>
         <source>Comment</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="260"/>
         <source>Set comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Angi kommentar</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="341"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="428"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Sett</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="344"/>
@@ -418,31 +418,31 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="446"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="448"/>
         <source>Edit Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger tagg</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="343"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="387"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="403"/>
         <source>Delete</source>
-        <translation type="unfinished">Slett</translation>
+        <translation>Slett</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="272"/>
         <source>Change additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Endre tilleggsegenskaper</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="374"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="393"/>
         <source>Cancel</source>
-        <translation type="unfinished">Avbryt</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="394"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="403"/>
         <source>Accept</source>
-        <translation type="unfinished">Godkjenn</translation>
+        <translation>Godta</translation>
     </message>
 </context>
 <context>
@@ -460,12 +460,12 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Endre ikon</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
         <source>Change group details</source>
-        <translation type="unfinished"></translation>
+        <translation>Endre detaljer for gruppe</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
@@ -480,12 +480,12 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Notater for gruppe</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="175"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Skriv inn notater for gruppa</translation>
     </message>
 </context>
 <context>
@@ -493,37 +493,37 @@
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">Velg</translation>
+        <translation>Velg</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">Avbryt</translation>
+        <translation>Avbryt</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg et ikon for passordgruppa:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
         <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velg et ikon for passordoppføringen:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Keepass-ikoner</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasespesifikke ikoner</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass ikonpakke</translation>
     </message>
 </context>
 <context>
@@ -673,12 +673,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tid før innhold slettes fra utklippstavle</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Aldri</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -1212,42 +1212,42 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
     <message>
         <location filename="../qml/content/MainPage.qml" line="102"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lasting av database feilet med følgende melding:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Oppføring ikke funnet</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="114"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feil under søk etter passordoppføring i databasen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppe ikke funnet</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="120"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feil under søk etter passordgruppe i databasen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>No database opened</source>
-        <translation type="unfinished">Ingen databaser åpnet</translation>
+        <translation>Ingen database åpnet</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="126"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunne ikke koble til lastet database. Dette ser ut til å være en programfeil.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="148"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Under oppretting av databasenøkkelen oppsto følgende feil:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="182"/>
@@ -1295,22 +1295,22 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern feil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="224"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Noe gikk galt når databasen skulle slettes fra lista av sist brukte databaser. Det skulle ikke skjedd. Vennligst meld fra til meg (utvikleren) om dette via epost eller på github. Takk!</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="230"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Noe gikk galt når databasefila skulle slettes. Feilmelding:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="240"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Konvertering av QString &quot;%1&quot; til Uuid feilet</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="741"/>
@@ -1504,43 +1504,43 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
         <source>Accept</source>
-        <translation type="unfinished">Godkjenn</translation>
+        <translation>Godta</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation type="unfinished">Forkast</translation>
+        <translation>Forkast</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
         <source>Generated password</source>
-        <translation type="unfinished"></translation>
+        <translation>Generert passord</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen tegngrupper er valgt</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengde</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Fjern tegn som ligner hverandre</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"></translation>
+        <translation>Sikre at passordet inneholder tegn fra alle grupper.</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>Generer</translation>
     </message>
 </context>
 <context>
@@ -1643,7 +1643,7 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="148"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="166"/>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopier til utklippstavle</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="130"/>
@@ -1664,25 +1664,25 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="169"/>
         <source>password</source>
         <extracomment>Translate &quot;password&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>passord</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="171"/>
         <source>pin</source>
         <extracomment>&quot;pin&quot; like a pin number of your credit card or sim card. Translate &quot;pin&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>pin-kode</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="173"/>
         <source>tan</source>
         <extracomment>&quot;tan&quot; like a tan list from your bank account. Translate &quot;tan&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>transaksjonsnummer</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="175"/>
         <source>puk</source>
         <extracomment>&quot;puk&quot; like the (emergency) puk number of your sim card. Translate &quot;puk&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>puk-kode</translation>
     </message>
 </context>
 </TS>

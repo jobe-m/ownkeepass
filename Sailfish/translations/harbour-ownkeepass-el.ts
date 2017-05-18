@@ -327,12 +327,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="67"/>
         <source>Save</source>
-        <translation type="unfinished">Αποθήκευση</translation>
+        <translation>Αποθήκευση</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="68"/>
         <source>Discard</source>
-        <translation type="unfinished">Απόρριψη</translation>
+        <translation>Απόρριψη</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="74"/>
@@ -347,48 +347,48 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="128"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Τίτλος</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="130"/>
         <source>Set title (mandatory)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός τίτλου (προαιρετικό)</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="147"/>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="149"/>
         <source>Set URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός URL</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="163"/>
         <source>Username</source>
-        <translation type="unfinished">Όνομα χρήστη</translation>
+        <translation>Όνομα χρήστη</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="165"/>
         <source>Set username</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός ονόματος χρήστη</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="202"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="233"/>
         <source>Password</source>
-        <translation type="unfinished">Κωδικός πρόσβασης</translation>
+        <translation>Κωδικός πρόσβασης</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="203"/>
         <source>Set password</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός του κωδικού πρόσβασης</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="234"/>
         <source>Verify password</source>
-        <translation type="unfinished"></translation>
+        <translation>Επαλήθευση του κωδικού πρόσβασης</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="178"/>
@@ -398,12 +398,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="258"/>
         <source>Comment</source>
-        <translation type="unfinished">Σχόλιο</translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="260"/>
         <source>Set comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός σχολίου</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="341"/>
@@ -1502,12 +1502,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="74"/>
         <source>Accept</source>
-        <translation type="unfinished">Αποδοχή</translation>
+        <translation>Αποδοχή</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation type="unfinished">Απόρριψη</translation>
+        <translation>Απόρριψη</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
@@ -1538,7 +1538,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="193"/>
         <source>Generate</source>
-        <translation type="unfinished"></translation>
+        <translation>Δημιουργία</translation>
     </message>
 </context>
 <context>

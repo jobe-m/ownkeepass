@@ -41,7 +41,7 @@ isEmpty(VERSION) {
 DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 
 # Following define is a trick to load the appropriate libraries of libgcrypt and libgpg-error depending
-#   if compiled for emulator/jolla tablet (i486) or jolla phone (armv7hl)
+# if compiled for emulator/jolla tablet (i486) or jolla phone (armv7hl)
 #
 # BE AWARE this only works on (Ubuntu) Linux, on Mac OS X and Windows you might need to specify ARCH_LIBS directly
 # Loading wrong architecture of libs into the rpm package will result in a not working app!
@@ -182,7 +182,7 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-de_DE.ts \
     translations/harbour-ownkeepass-it.ts \
     translations/harbour-ownkeepass-nb_NO.ts \
-    #translations/harbour-ownkeepass-pl_PL.ts \
+    translations/harbour-ownkeepass-pl_PL.ts \
     translations/harbour-ownkeepass-ru.ts \
     translations/harbour-ownkeepass-es.ts \
     translations/harbour-ownkeepass-sv_SE.ts \
@@ -190,7 +190,8 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-el.ts \
     translations/harbour-ownkeepass-ja_JP.ts \
     translations/harbour-ownkeepass-hu_HU.ts \
-    translations/harbour-ownkeepass-gl.ts
+    translations/harbour-ownkeepass-gl.ts \
+    translations/harbour-ownkeepass-sr_RS.ts
 
 DISTFILES += \
     qml/content/EditItemIconDialog.qml \
