@@ -203,63 +203,68 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
             // i.e. save model list id for master group page and don't do it for list models used in dialogs
             m_groups_modelId.insertMulti((const Uuid &)rootGroupId, (const Uuid &)masterGroupId);
         }
-        if (m_setting_sortAlphabeticallyInListView) {
-            emit addItemToListModelSorted(masterGroup->name(),                         // group name
-                                          getGroupIcon(masterGroup->iconNumber(),
-                                                       masterGroup->iconUuid()),       // icon uuid
-                                          QString("Subgroups: %1 | Entries: %2")
-                                          .arg(numberOfSubgroups)
-                                          .arg(numberOfEntries),                       // subtitle
-                                          masterGroupId.toHex(),                       // item id
-                                          (int)DatabaseItemType::GROUP,                // item type
-                                          0,                                           // item level (0 = root, 1 = first level, etc.
-                                          rootGroupId.toHex());                        // list model of root group
-        } else {
-            emit appendItemToListModel(masterGroup->name(),                            // group name
-                                       getGroupIcon(masterGroup->iconNumber(),
-                                                    masterGroup->iconUuid()),          // icon uuid
-                                       QString("Subgroups: %1 | Entries: %2")
-                                       .arg(numberOfSubgroups)
-                                       .arg(numberOfEntries),                          // subtitle
-                                       masterGroupId.toHex(),                          // item id
-                                       (int)DatabaseItemType::GROUP,                   // item type
-                                       0,                                              // item level (0 = root, 1 = first level, etc.
-                                       rootGroupId.toHex());                           // list model of root group
+        if (masterGroup->uuid() != m_Database->metadata()->recycleBin()->uuid()) {
+            if (m_setting_sortAlphabeticallyInListView) {
+                emit addItemToListModelSorted(masterGroup->name(),                         // group name
+                                              getGroupIcon(masterGroup->iconNumber(),
+                                                           masterGroup->iconUuid()),       // icon uuid
+                                              QString("Subgroups: %1 | Entries: %2")
+                                              .arg(numberOfSubgroups)
+                                              .arg(numberOfEntries),                       // subtitle
+                                              masterGroupId.toHex(),                       // item id
+                                              (int)DatabaseItemType::GROUP,                // item type
+                                              0,                                           // item level (0 = root, 1 = first level, etc.
+                                              rootGroupId.toHex());                        // list model of root group
+            } else {
+                emit appendItemToListModel(masterGroup->name(),                            // group name
+                                           getGroupIcon(masterGroup->iconNumber(),
+                                                        masterGroup->iconUuid()),          // icon uuid
+                                           QString("Subgroups: %1 | Entries: %2")
+                                           .arg(numberOfSubgroups)
+                                           .arg(numberOfEntries),                          // subtitle
+                                           masterGroupId.toHex(),                          // item id
+                                           (int)DatabaseItemType::GROUP,                   // item type
+                                           0,                                              // item level (0 = root, 1 = first level, etc.
+                                           rootGroupId.toHex());                           // list model of root group
+            }
         }
     }
 
-    QList<Entry*> masterEntries = m_Database->rootGroup()->entries();
-    for (int i = 0; i < masterEntries.count(); i++) {
-        Entry* entry = masterEntries.at(i);
-        Q_ASSERT(entry);
-        if (Q_NULLPTR == entry) {
-            qDebug() << "ERROR: Could not find entry for UUID: " << entry;
-            emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
-            return;
+    // Add Entries only when needed
+    if (registerListModel) {
+        QList<Entry*> masterEntries = m_Database->rootGroup()->entries();
+        for (int i = 0; i < masterEntries.count(); i++) {
+            Entry* entry = masterEntries.at(i);
+            Q_ASSERT(entry);
+            if (Q_NULLPTR == entry) {
+                qDebug() << "ERROR: Could not find entry for UUID: " << entry;
+                emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
+                return;
+            }
+            Uuid itemId = entry->uuid();
+            // only append to list model if item ID is valid
+            if (m_setting_sortAlphabeticallyInListView) {
+                emit addItemToListModelSorted(entry->title(),                              // group name
+                                              getEntryIcon(entry->iconNumber(),
+                                                           entry->iconUuid()),             // icon uuid
+                                              getUserAndPassword(entry),                   // subtitle
+                                              itemId.toHex(),                              // item id
+                                              (int)DatabaseItemType::ENTRY,                // item type
+                                              0,                                           // item level (not used here)
+                                              rootGroupId.toHex());                        // list model gets groupId as its unique ID (here 0 because of root group)
+            } else {
+                emit appendItemToListModel(entry->title(),                                 // group name
+                                           getEntryIcon(entry->iconNumber(),
+                                                        entry->iconUuid()),                // icon uuid
+                                           getUserAndPassword(entry),                      // subtitle
+                                           itemId.toHex(),                                 // item id
+                                           (int)DatabaseItemType::ENTRY,                   // item type
+                                           0,                                              // item level (not used here)
+                                           rootGroupId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
+            }
+            // save modelId and entry
+            m_entries_modelId.insertMulti(rootGroupId, itemId);
         }
-        Uuid itemId = entry->uuid();
-        // only append to list model if item ID is valid
-        if (m_setting_sortAlphabeticallyInListView) {
-            emit addItemToListModelSorted(entry->title(),                              // group name
-                                          getEntryIcon(entry->iconNumber(),
-                                                       entry->iconUuid()),             // icon uuid
-                                          getUserAndPassword(entry),                   // subtitle
-                                          itemId.toHex(),                              // item id
-                                          (int)DatabaseItemType::ENTRY,                // item type
-                                          0,                                           // item level (not used here)
-                                          rootGroupId.toHex());                        // list model gets groupId as its unique ID (here 0 because of root group)
-        } else {
-            emit appendItemToListModel(entry->title(),                                 // group name
-                                       getEntryIcon(entry->iconNumber(),
-                                                    entry->iconUuid()),                // icon uuid
-                                       getUserAndPassword(entry),                      // subtitle
-                                       itemId.toHex(),                                 // item id
-                                       (int)DatabaseItemType::ENTRY,                   // item type
-                                       0,                                              // item level (not used here)
-                                       rootGroupId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
-        }
-        // save modelId and entry
-        m_entries_modelId.insertMulti(rootGroupId, itemId);
     }
     emit masterGroupsLoaded(DatabaseAccessResult::RE_OK, "");
 }
@@ -696,20 +701,20 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
         emit addItemToListModelSorted(values[KeepassDefault::TITLE],            // entry name
                                       getEntryIcon(newEntry->iconNumber(),
                                                    newEntry->iconUuid()),       // icon uuid
-                                      getUserAndPassword(newEntry),                // subtitle
+                                      getUserAndPassword(newEntry),             // subtitle
                                       newEntryId,                               // identifier for entry item in list model
                                       DatabaseItemType::ENTRY,                  // item type
                                       0,                                        // item level (not used here)
-                                      parentGroupId);                           // identifier for list model
+                                      parentGroupUuid.toHex());                 // identifier for list model
     } else {
         emit appendItemToListModel(values[KeepassDefault::TITLE],               // entry name
                                    getEntryIcon(newEntry->iconNumber(),
                                                 newEntry->iconUuid()),          // icon uuid
-                                   getUserAndPassword(newEntry),                   // subtitle
+                                   getUserAndPassword(newEntry),                // subtitle
                                    newEntryId,                                  // identifier for entry item in list model
                                    DatabaseItemType::ENTRY,                     // item type
                                    0,                                           // item level (not used here)
-                                   parentGroupId);                              // identifier for list model
+                                   parentGroupUuid.toHex());                    // identifier for list model
     }
     // save modelid and group
     m_entries_modelId.insertMulti(parentGroupUuid, newEntry->uuid());
@@ -766,7 +771,9 @@ void Keepass2DatabaseInterface::slot_deleteEntry(QString entryId)
     // remove entry from all active list models where it might be added
     emit deleteItemInListModel(entryId);
     // update all grandparent groups subtitle, ie. entries counter has to be updated in UI
-    updateGrandParentGroupInListModel(parentGroup);
+    if (parentGroup != m_Database->rootGroup()) { // if parent group is root group we don't need to do anything
+        updateGrandParentGroupInListModel(parentGroup);
+    }
     // signal to QML
     emit entryDeleted(DatabaseAccessResult::RE_OK, "", entryId);
 }
@@ -799,7 +806,7 @@ void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
     emit deleteItemInListModel(groupId);
 
     // update all grandparent groups subtitle, ie. subgroup counter has to be updated in UI
-    if (parentGroup != NULL) { // if parent group is root group we don't need to do anything
+    if (parentGroup != m_Database->rootGroup()) { // if parent group is root group we don't need to do anything
         updateGrandParentGroupInListModel(parentGroup);
     }
     // signal to QML

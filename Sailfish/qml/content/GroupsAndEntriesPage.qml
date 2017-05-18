@@ -309,7 +309,7 @@ Page {
             name: "SEARCH_BAR_HIDDEN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== "0"
+                enableNewPasswordEntryMenuItem: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2 || groupId !== "0"
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: false }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
@@ -329,7 +329,7 @@ Page {
             name: "SEARCH_BAR_SHOWN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== "0"
+                enableNewPasswordEntryMenuItem: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2 || groupId !== "0"
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
@@ -350,7 +350,7 @@ Page {
             name: "SEARCHING"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: groupId !== "0"
+                enableNewPasswordEntryMenuItem: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2 || groupId !== "0"
                 enableSearchMenuItem: true/*searchField.text.length === 0*/; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: kdbListModel.isEmpty }
