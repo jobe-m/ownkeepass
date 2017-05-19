@@ -79,7 +79,10 @@ Page {
 <li>Open URL in web browser by just one click on the URL text</li>\
 <li>Reworked password entry editing page for Keepass 2 support</li>\
 <li>Fixed scaling of icons on password generator page with higher resolution displays</li>\
-<li>Updated about page</li>\
+<li>Updated and reordered text sections on about page</li>\
+<li>Bugfix: Specifying the wrong Keepass version results in an endless decryption display without proper notification</li>\
+<li>Bugfix: It is not possible to delete more than one keepass entry or group in a row</li>\
+<li>Bugfix: When deleting the last password item from a group the placeholder text was not shown</li>\
 <li>Added new translations for Polish and Serbian (Not yet fully done, please help on transifex if you can)</li>\
 <li>Updated all other translations from transifex</li>\
 </ul>\
