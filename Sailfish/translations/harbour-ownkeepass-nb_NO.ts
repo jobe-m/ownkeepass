@@ -880,12 +880,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="318"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="322"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="338"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="343"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="388"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="393"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="335"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="339"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="355"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="405"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
         <source>Password groups</source>
         <translation>Passordgrupper</translation>
     </message>
@@ -920,21 +920,21 @@
         <translation>Dra ned for å legge til passordgrupper eller -oppføringer</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="302"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="319"/>
         <source>Loading</source>
         <translation>Laster</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="358"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="362"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="398"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="375"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="379"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Search in all groups</source>
         <translation>Søk i alle grupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
         <source>Search in</source>
         <translation>Søk i</translation>
     </message>
@@ -1031,17 +1031,29 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="158"/>
+        <location filename="../qml/content/KdbListItem.qml" line="46"/>
+        <source>Deleting group</source>
+        <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="53"/>
+        <source>Deleting entry</source>
+        <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
         <source>Edit</source>
         <translation>Rediger</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <location filename="../qml/content/KdbListItem.qml" line="182"/>
         <source>Delete</source>
         <translation>Slett</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="193"/>
+        <location filename="../qml/content/KdbListItem.qml" line="199"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Flytt</translation>
@@ -1096,86 +1108,86 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="264"/>
+        <location filename="../qml/content/MainPage.qml" line="276"/>
         <source>Problem with SD card</source>
         <translation>Problem med SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="265"/>
+        <location filename="../qml/content/MainPage.qml" line="277"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>SD-kort med flere partisjoner støttes ikke.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="305"/>
+        <location filename="../qml/content/MainPage.qml" line="317"/>
         <source>Create new database</source>
         <translation>Lag ny database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="321"/>
+        <location filename="../qml/content/MainPage.qml" line="333"/>
         <source>Open database</source>
         <translation>Åpne database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="348"/>
+        <location filename="../qml/content/MainPage.qml" line="360"/>
         <source>Password Safe</source>
         <translation>Passordsafe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="450"/>
+        <location filename="../qml/content/MainPage.qml" line="462"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Skriv hovedpassord for den nye passordsafen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="457"/>
+        <location filename="../qml/content/MainPage.qml" line="469"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>Filsti og -navn for ny database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="470"/>
+        <location filename="../qml/content/MainPage.qml" line="482"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>Sti til og navn på database</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="646"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Permission error</source>
         <translation>Adgangsfeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="646"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Kan ikke opprette sti for database. Du må kanskje endre filsystemtilganger for brukeren &apos;nemo&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="651"/>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
+        <location filename="../qml/content/MainPage.qml" line="663"/>
+        <location filename="../qml/content/MainPage.qml" line="680"/>
         <source>Key file error</source>
         <translation>Nøkkelfilfeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="651"/>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
+        <location filename="../qml/content/MainPage.qml" line="663"/>
+        <location filename="../qml/content/MainPage.qml" line="680"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Filsti til database er OK, men nøkkelfil mangler. Kontroller sti til nøkkelfil:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Database file already exists</source>
         <translation>Databasen (fila) finnes fra før</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Angi en annen sti og/eller annet filnavn for databasen eller slett den eksisterende fila.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="673"/>
+        <location filename="../qml/content/MainPage.qml" line="685"/>
         <source>Database file error</source>
         <translation>Databasefeil</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="673"/>
+        <location filename="../qml/content/MainPage.qml" line="685"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Database eksisterer ikke. Kontroller sti til fila:</translation>
     </message>
@@ -1191,6 +1203,7 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="174"/>
+        <location filename="../qml/content/MainPage.qml" line="244"/>
         <source>Database version</source>
         <translation>Databaseversjon</translation>
     </message>
@@ -1313,12 +1326,22 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <translation>Konvertering av QString &quot;%1&quot; til Uuid feilet</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="741"/>
+        <location filename="../qml/content/MainPage.qml" line="245"/>
+        <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="250"/>
+        <source>Unknown error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="753"/>
         <source>Password changed</source>
         <translation>Passord endret</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="741"/>
+        <location filename="../qml/content/MainPage.qml" line="753"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Hovedpassordet for databasen ble endret.</translation>
     </message>
@@ -1378,42 +1401,42 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <translation>Konvertering av QString &quot;%1&quot; til heltall feilet.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1102"/>
+        <location filename="../qml/content/MainPage.qml" line="1114"/>
         <source>Drop from List</source>
         <translation>Fjern fra liste</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1180"/>
+        <location filename="../qml/content/MainPage.qml" line="1192"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1181"/>
+        <location filename="../qml/content/MainPage.qml" line="1193"/>
         <source>No</source>
         <translation>Nei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1182"/>
+        <location filename="../qml/content/MainPage.qml" line="1194"/>
         <source>Unsaved changes</source>
         <translation>Ulagrede endringer</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1227"/>
+        <location filename="../qml/content/MainPage.qml" line="1239"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Vil du lagre endringene i passordoppføringen?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1232"/>
+        <location filename="../qml/content/MainPage.qml" line="1244"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Vil du lagre passordgruppeendringene?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1237"/>
+        <location filename="../qml/content/MainPage.qml" line="1249"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Vil du lagre endringene i databaseinnstillingene?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1242"/>
+        <location filename="../qml/content/MainPage.qml" line="1254"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Vil du lagre de endrede innstillingene?</translation>
     </message>

@@ -880,12 +880,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="318"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="322"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="338"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="343"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="388"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="393"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="335"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="339"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="355"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="405"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
         <source>Password groups</source>
         <translation>Salasana ryhmät</translation>
     </message>
@@ -920,21 +920,21 @@
         <translation>Vedä alas lisätäksesi salasana-ryhmiä tai -tiedostoja</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="302"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="319"/>
         <source>Loading</source>
         <translation>Lataan</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="358"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="362"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="398"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="375"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="379"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Search in all groups</source>
         <translation>Etsi kaikista ryhmistä</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="359"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="399"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
         <source>Search in</source>
         <translation>Etsi ryhmästä</translation>
     </message>
@@ -1032,17 +1032,29 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>KdbListItem</name>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="158"/>
+        <location filename="../qml/content/KdbListItem.qml" line="46"/>
+        <source>Deleting group</source>
+        <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="53"/>
+        <source>Deleting entry</source>
+        <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/KdbListItem.qml" line="164"/>
         <source>Edit</source>
         <translation>Muokkaa</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="176"/>
+        <location filename="../qml/content/KdbListItem.qml" line="182"/>
         <source>Delete</source>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="193"/>
+        <location filename="../qml/content/KdbListItem.qml" line="199"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Siirrä</translation>
@@ -1097,86 +1109,86 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="264"/>
+        <location filename="../qml/content/MainPage.qml" line="276"/>
         <source>Problem with SD card</source>
         <translation>Ongelma SD-kortin kanssa</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="265"/>
+        <location filename="../qml/content/MainPage.qml" line="277"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>SD-kortteja, joissa on useampi kuin yksi osio, ei tueta</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="305"/>
+        <location filename="../qml/content/MainPage.qml" line="317"/>
         <source>Create new database</source>
         <translation>Luo uusi tietokanta</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="321"/>
+        <location filename="../qml/content/MainPage.qml" line="333"/>
         <source>Open database</source>
         <translation>Avaa tietokanta</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="348"/>
+        <location filename="../qml/content/MainPage.qml" line="360"/>
         <source>Password Safe</source>
         <translation>Salasanasovellus</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="450"/>
+        <location filename="../qml/content/MainPage.qml" line="462"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Anna pääsalasana jolla uusi Keepass tietokanta lukitaan:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="457"/>
+        <location filename="../qml/content/MainPage.qml" line="469"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>Polku ja uuden tietokannan nimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="470"/>
+        <location filename="../qml/content/MainPage.qml" line="482"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>Polku ja tietokannan nimi</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="646"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Permission error</source>
         <translation>Käyttöoikeusvirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="646"/>
+        <location filename="../qml/content/MainPage.qml" line="658"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Polun luominen Keepass tietokantatiedostoosi epäonnistui. Sinun on ehkä asetettava hakemiston käyttöoikeudet käyttäjälle &apos;nemo&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="651"/>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
+        <location filename="../qml/content/MainPage.qml" line="663"/>
+        <location filename="../qml/content/MainPage.qml" line="680"/>
         <source>Key file error</source>
         <translation>Avaintiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="651"/>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
+        <location filename="../qml/content/MainPage.qml" line="663"/>
+        <location filename="../qml/content/MainPage.qml" line="680"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Tietokantapolku on O.K., mutta avaintiedostoa ei löydy. Tarkista sen polku:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Database file already exists</source>
         <translation>Tietokantatiedosto on jo olemassa</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="656"/>
+        <location filename="../qml/content/MainPage.qml" line="668"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Ole hyvä ja valitse toinen polku tai nimi Keepass tietokannallesi tai poista vanha tietokanta käyttäen File Browser sovellusta.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="673"/>
+        <location filename="../qml/content/MainPage.qml" line="685"/>
         <source>Database file error</source>
         <translation>Tietokantatiedostovirhe</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="673"/>
+        <location filename="../qml/content/MainPage.qml" line="685"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Tietokantatiedostoa ei löydy. Tarkista sen polku:</translation>
     </message>
@@ -1192,6 +1204,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="174"/>
+        <location filename="../qml/content/MainPage.qml" line="244"/>
         <source>Database version</source>
         <translation>Tietokantaversio</translation>
     </message>
@@ -1314,12 +1327,22 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>QString &quot;%1&quot; muuttaminen UUid-arvoksi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="741"/>
+        <location filename="../qml/content/MainPage.qml" line="245"/>
+        <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="250"/>
+        <source>Unknown error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="753"/>
         <source>Password changed</source>
         <translation>Salasana muutettu</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="741"/>
+        <location filename="../qml/content/MainPage.qml" line="753"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Tietokantasi pääsalasana on vaihdettu onnistuneesti.</translation>
     </message>
@@ -1379,42 +1402,42 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <translation>Qstring &quot;%1&quot;:n muuntaminen kokonaisluvuksi epäonnistui</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1102"/>
+        <location filename="../qml/content/MainPage.qml" line="1114"/>
         <source>Drop from List</source>
         <translation>Poista listalta</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1180"/>
+        <location filename="../qml/content/MainPage.qml" line="1192"/>
         <source>Yes</source>
         <translation>Kyllä</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1181"/>
+        <location filename="../qml/content/MainPage.qml" line="1193"/>
         <source>No</source>
         <translation>Ei</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1182"/>
+        <location filename="../qml/content/MainPage.qml" line="1194"/>
         <source>Unsaved changes</source>
         <translation>Tallentamattomia muutoksia</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1227"/>
+        <location filename="../qml/content/MainPage.qml" line="1239"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Haluatko tallettaa muutokset salasanatiedostoon?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1232"/>
+        <location filename="../qml/content/MainPage.qml" line="1244"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Haluatko tallettaa muutokset salasanaryhmään?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1237"/>
+        <location filename="../qml/content/MainPage.qml" line="1249"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Haluatko tallettaa muutokset tietokannan asetuksiin?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1242"/>
+        <location filename="../qml/content/MainPage.qml" line="1254"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Haluatko tallettaa muutokset asetusarvoihin?</translation>
     </message>
