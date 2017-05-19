@@ -239,6 +239,18 @@ Page {
                                              qsTr("Internal database error"),
                                              qsTr("Conversion of QString \"%1\" to Uuid failed").arg(errorMsg))
             break
+        case DatabaseAccessResult.RE_OLD_KEEPASS_1_DB:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Database version"),
+                                             qsTr("You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database."))
+            internal.masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_UNKNOWN_ERROR:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Unknown error"),
+                                             qsTr("The following error occured: " + errorMsg))
+            internal.masterGroupsPage.closeOnError()
+            break
         default:
             // This should not happen therefore english error text is enough
             applicationWindow.infoPopup.show(Global.error,

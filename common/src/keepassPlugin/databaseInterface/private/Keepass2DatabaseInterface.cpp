@@ -132,6 +132,10 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
             }
         } else if (!errorString.compare("Head doesn't match hash", Qt::CaseInsensitive)) {
             emit databaseOpened(DatabaseAccessResult::RE_HEAD_HASH_MISMATCH, "");
+        } else if (errorString.contains("The selected file is an old KeePass 1 database", Qt::CaseInsensitive)) {
+            emit databaseOpened(DatabaseAccessResult::RE_OLD_KEEPASS_1_DB, "");
+        } else {
+            emit databaseOpened(DatabaseAccessResult::RE_UNKNOWN_ERROR, errorString);
         }
         return;
     }

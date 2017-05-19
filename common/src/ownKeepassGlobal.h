@@ -61,6 +61,8 @@ public:
         RE_KEYFILE_OPEN_ERROR,                         // Cannot open key file, more detailed error message available as attached string in signal
         RE_ERR_REMOVE_RECENT_DATABASE,                 // Could not remove database from recent database list in the settings
         RE_ERR_DELETE_DATABASE,                        // Could not delete the database file from the file system
+        RE_OLD_KEEPASS_1_DB,                           // When trying to open a Keepass 1 as a Keepass2 database this error occurs
+        RE_UNKNOWN_ERROR,                              // An error occured which is not specified further
 
         // Keepass 1 specific
         RE_ERR_QSTRING_TO_INT,                         // conversion of QString to int failed
