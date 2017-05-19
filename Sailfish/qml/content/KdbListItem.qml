@@ -42,12 +42,18 @@ ListItem {
     visible: enabled
 
     function listItemRemoveGroup() {
-        kdbGroupForDeletion.groupId = model.id
-        remorseAction("Deleting group", function() { kdbGroupForDeletion.deleteGroup() })
+        //: This is used in the remorseAction when attempting to delete a password group
+        remorseAction(qsTr("Deleting group"), function() {
+            kdbGroupForDeletion.groupId = model.id
+            kdbGroupForDeletion.deleteGroup()
+        })
     }
     function listItemRemoveEntry() {
-        kdbEntryForDeletion.entryId = model.id
-        remorseAction("Deleting entry", function() { kdbEntryForDeletion.deleteEntry() })
+        //: This is used in the remorseAction when attempting to delete a password entry
+        remorseAction(qsTr("Deleting entry"), function() {
+            kdbEntryForDeletion.entryId = model.id
+            kdbEntryForDeletion.deleteEntry()
+        })
     }
 
     ListView.onAdd: AddAnimation {
