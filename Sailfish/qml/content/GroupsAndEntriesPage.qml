@@ -270,15 +270,32 @@ Page {
 
     KdbListModel {
         id: kdbListModel
-        onGroupsAndEntriesLoaded: Global.env.mainPage.errorHandler(result, errorMsg)
+        onGroupsAndEntriesLoaded: {
+            Global.env.mainPage.errorHandler(result, errorMsg)
+            // Close search bar if the list view is empty
+            if (isEmpty) {
+                groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
+            }
+        }
         onMasterGroupsLoaded: {
             Global.env.mainPage.errorHandler(result, errorMsg)
             // automatically focus search bar on master group page but not on sub-group pages
             if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true
+            } else {
+                // Close search bar if the list view is empty
+                groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
             }
         }
         onSearchEntriesCompleted: Global.env.mainPage.errorHandler(result, errorMsg)
+        onLastItemDeleted: {
+            // If the last entry or group is deleted from the list view make the placeholder appear again
+            // In searching mode it needs to be checked if the search bar is actually not used (empty)
+            if (groupsAndEntriesPage.state !== "SEARCHING" ||
+                    searchField.text.length === 0) {
+                groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
+            }
+        }
     }
 
     Timer {

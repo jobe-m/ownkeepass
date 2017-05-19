@@ -403,6 +403,7 @@ void KdbListModel::slot_deleteItem(QString itemId)
             // emit isEmptyChanged signal if last item was deleted
             if (m_items.isEmpty()) {
                 emit isEmptyChanged();
+                emit lastItemDeleted();
             }
         }
     }

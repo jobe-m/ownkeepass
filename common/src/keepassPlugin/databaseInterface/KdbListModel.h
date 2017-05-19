@@ -102,6 +102,7 @@ signals:
 
     // signals for properties
     void isEmptyChanged();
+    void lastItemDeleted();
 
 public slots:
     // signal from database client
