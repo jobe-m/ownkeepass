@@ -853,8 +853,8 @@ Page {
         function checkForUnsavedKdbEntryChanges() {
             // check if the user has changed any entry details
             if (kdbEntry.edited) {
-                pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "state": "QUERY_FOR_ENTRY" })
+                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_ENTRY"
+                delayQueryDialogForUnsavedChanges.restart()
             } else {
                 kdbEntry.clearData()
             }
@@ -864,8 +864,8 @@ Page {
             if (originalGroupName !== groupName ||
                     originalGroupNotes !== groupNotes ||
                     originalGroupIconUuid !== groupIconUuid) {
-                pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "state": "QUERY_FOR_GROUP" })
+                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_GROUP"
+                delayQueryDialogForUnsavedChanges.restart()
             }
         }
 
@@ -899,8 +899,8 @@ Page {
             if (databaseMasterPassword !== "" ||
                     databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm ||
                     databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
-                pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "state": "QUERY_FOR_DATABASE_SETTINGS" })
+                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_DATABASE_SETTINGS"
+                delayQueryDialogForUnsavedChanges.restart()
             }
         }
 
@@ -962,8 +962,8 @@ Page {
                     ownKeepassSettings.fastUnlock !== fastUnlock ||
                     ownKeepassSettings.fastUnlockRetryCount !== fastUnlockRetryCount ||
                     ownKeepassSettings.uiOrientation !== uiOrientation) {
-                pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "state": "QUERY_FOR_APP_SETTINGS"})
+                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_APP_SETTINGS"
+                delayQueryDialogForUnsavedChanges.restart()
             }
         }
 
@@ -1254,6 +1254,20 @@ Page {
                         message: qsTr("Do you want to save changed settings values?") }
                 }
             ]
+        }
+    }
+
+    Timer {
+        id: delayQueryDialogForUnsavedChanges
+        property string dialogState: ""
+        interval: 50
+        repeat: true
+        onTriggered: {
+            if (!pageStack.busy) {
+                stop()
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "state": dialogState})
+            }
         }
     }
 

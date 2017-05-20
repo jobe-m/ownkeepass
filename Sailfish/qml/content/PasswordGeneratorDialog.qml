@@ -188,6 +188,11 @@ Dialog {
                 }
             }
 
+            Item {
+                width: parent.width
+                height: Theme.paddingLarge
+            }
+
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Generate")

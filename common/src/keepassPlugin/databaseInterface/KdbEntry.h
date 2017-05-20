@@ -31,10 +31,11 @@
 #define ROLE_KEY             baseRole
 #define ROLE_VALUE           baseRole + 1
 #define ROLE_EDIT_KEY_MODE   baseRole + 2
-#define ROLE_INDEX           baseRole + 3
+#define ROLE_DUMMY_ITEM      baseRole + 3
 #define ROLE_TO_BE_DELETED   baseRole + 4
 #define ROLE_MODIFIED        baseRole + 5
 #define ROLE_ERROR_HIGHLIGHT baseRole + 6
+#define ROLE_TO_BE_CREATED   baseRole + 7
 
 using namespace ownKeepassPublic; // for using baseRole
 
@@ -43,19 +44,18 @@ namespace kpxPublic {
 class AdditionalAttributeItem
 {
 public:
-    AdditionalAttributeItem(QString key, QString value, bool editKeyMode = false, bool errorHighlight = false)
+    AdditionalAttributeItem(QString key, QString value, bool editKeyMode = false, bool errorHighlight = false, bool dummyItem = false, bool toBeCreated = false)
         : m_key(key),
           m_value(value),
           m_edit_key_mode(editKeyMode),
           m_original_key(key),
           m_original_value(value),
           m_to_be_deleted(false),
-          m_error_highlight(errorHighlight)
-    {
-        static int itemCount = 0;
-        m_index = itemCount;
-        itemCount++;
-    }
+          m_error_highlight(errorHighlight),
+          m_dummy_item(dummyItem),
+          m_to_be_created(toBeCreated),
+          m_modified(false)
+    {}
     virtual ~AdditionalAttributeItem() {}
 
     QVariant get(const int role) const;
@@ -65,13 +65,14 @@ public:
     QString m_key;
     QString m_value;
     bool m_edit_key_mode;
-    int m_index;
 
     QString m_original_key;
     QString m_original_value;
     bool m_to_be_deleted;
+    bool m_to_be_created;
     bool m_modified;
     bool m_error_highlight;
+    bool m_dummy_item;
 };
 
 class KdbEntry : public QAbstractListModel
@@ -241,14 +242,16 @@ inline QVariant AdditionalAttributeItem::get(const int role) const
         return QVariant(m_value);
     case ROLE_EDIT_KEY_MODE:
         return QVariant(m_edit_key_mode);
-    case ROLE_INDEX:
-        return QVariant(m_index);
+    case ROLE_DUMMY_ITEM:
+        return QVariant(m_dummy_item);
     case ROLE_TO_BE_DELETED:
         return QVariant(m_to_be_deleted);
     case ROLE_MODIFIED:
         return QVariant(m_modified);
     case ROLE_ERROR_HIGHLIGHT:
         return QVariant(m_error_highlight);
+    case ROLE_TO_BE_CREATED:
+        return QVariant(m_to_be_created);
     }
     return QVariant();
 }
@@ -275,8 +278,8 @@ inline bool AdditionalAttributeItem::set(const QVariant & value, const int role)
     case ROLE_EDIT_KEY_MODE:
         m_edit_key_mode = value.toBool();
         return true;
-    case ROLE_INDEX:
-        // m_index is not editable
+    case ROLE_DUMMY_ITEM:
+        // m_dummy_item is not editable
         return false;
     case ROLE_TO_BE_DELETED:
         m_to_be_deleted = value.toBool();
@@ -286,6 +289,9 @@ inline bool AdditionalAttributeItem::set(const QVariant & value, const int role)
         return false;
     case ROLE_ERROR_HIGHLIGHT:
         m_error_highlight = value.toBool();
+        return true;
+    case ROLE_TO_BE_CREATED:
+        m_to_be_created = value.toBool();
         return true;
     }
     return false;
@@ -297,10 +303,11 @@ inline QHash<int, QByteArray> AdditionalAttributeItem::createRoles()
     roles[ROLE_KEY]             = "key";
     roles[ROLE_VALUE]           = "value";
     roles[ROLE_EDIT_KEY_MODE]   = "editKeyMode";
-    roles[ROLE_INDEX]           = "index";
+    roles[ROLE_DUMMY_ITEM]      = "dummyItem";
     roles[ROLE_TO_BE_DELETED]   = "toBeDeleted";
     roles[ROLE_MODIFIED]        = "modified";
     roles[ROLE_ERROR_HIGHLIGHT] = "errorHighlight";
+    roles[ROLE_TO_BE_CREATED]   = "toBeCreated";
     return roles;
 }
 

@@ -55,237 +55,245 @@ Dialog {
     property TextField entryTitleTextFieldRef: null
     property PasswordField entryVerifyPasswordTextFieldRef: null
 
-    Component {
-        id: headerComp
-
-        Column {
-            width: parent.width
-            spacing: Theme.paddingMedium
-
-            DialogHeader {
-                id: header
-                acceptText: qsTr("Save")
-                cancelText: qsTr("Discard")
-                spacing: 0
-                Component.onCompleted: headerRef = header
-            }
-
-            SectionHeader {
-                text: qsTr("Change icon")
-            }
-
-            Item {
-                width: parent.width
-                height: entryIconBackground.height
-
-                Image {
-                    id: entryIconBackground
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: Theme.itemSizeMedium
-                    height: Theme.itemSizeMedium
-                    source: "image://IconBackground"
-                    fillMode: Image.PreserveAspectFit
-                    asynchronous: true
-
-                    MouseArea {
-                        id: entryIconMouseArea
-                        anchors.fill: parent
-                        onClicked: {
-                            // open new dialog with grid of all icons
-                            pageStack.push( editItemIconDialog, { "newIconUuid": kdbEntry.iconUuid })
-                        }
-                    }
-                }
-
-                Image {
-                    id: entryIcon
-                    anchors.centerIn: parent
-                    width: Theme.iconSizeMedium
-                    height: Theme.iconSizeMedium
-                    fillMode: Image.PreserveAspectFit
-                    asynchronous: true
-                    opacity: entryIconMouseArea.pressed ? 0.5 : 1.0
-                    source: "image://KeepassIcon/" + kdbEntry.iconUuid
-                    Component.onCompleted: entryIconRef = entryIcon
-                }
-
-                Rectangle {
-                    anchors.fill: entryIconBackground
-                    color: entryIconMouseArea.pressed ?
-                               Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
-                             : "transparent"
-                }
-            }
-
-            SectionHeader {
-                text: qsTr("Change password entry details")
-            }
-
-            TextField {
-                id: entryTitleTextField
-                width: parent.width
-                inputMethodHints: Qt.ImhSensitiveData
-                label: qsTr("Title")
-                text: kdbEntry.title
-                placeholderText: qsTr("Set title (mandatory)")
-                errorHighlight: text.length === 0
-                EnterKey.enabled: !errorHighlight
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: entryUrlTextField.focus = true
-                onTextChanged: {
-                    kdbEntry.title = text
-                    updateCoverState(kdbEntry.edited)
-                }
-                Component.onCompleted: entryTitleTextFieldRef = entryTitleTextField
-                focusOutBehavior: -1  // prevent the "abc" password mode button to steal focus
-            }
-
-            TextField {
-                id: entryUrlTextField
-                width: parent.width
-                inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhSensitiveData
-                label: qsTr("URL")
-                text: kdbEntry.url
-                placeholderText: qsTr("Set URL")
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: entryUsernameTextField.focus = true
-                onTextChanged: {
-                    kdbEntry.url = text
-                    updateCoverState(kdbEntry.edited)
-                }
-                focusOutBehavior: -1
-            }
-
-            TextField {
-                id: entryUsernameTextField
-                width: parent.width
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData
-                label: qsTr("Username")
-                text: kdbEntry.userName
-                placeholderText: qsTr("Set username")
-                EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                EnterKey.onClicked: entryPasswordTextField.focus = true
-                onTextChanged: {
-                    kdbEntry.userName = text
-                    updateCoverState(kdbEntry.edited)
-                }
-                focusOutBehavior: -1
-            }
-
-            Button {
-                width: parent.width * 0.65
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Generate password")
-                onClicked: {
-                    var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
-                    pwGenDialog.accepted.connect(function() {
-                        entryPasswordTextField.text =
-                                entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
-                    })
-                }
-            }
-
-            Column {
-                width: parent.width
-                height: entryPasswordTextField.echoMode === TextInput.Password
-                        ? entryPasswordTextField.height + entryVerifyPasswordTextField.height + spacing
-                        : entryPasswordTextField.height
-
-                Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
-
-                PasswordField {
-                    id: entryPasswordTextField
-                    width: parent.width
-                    showEchoModeToggle: true
-                    horizontalAlignment: TextInput.AlignLeft
-                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                    label: qsTr("Password")
-                    placeholderText: qsTr("Set password")
-                    font.family: 'monospace'
-                    text: kdbEntry.password
-                    onTextChanged: {
-                        kdbEntry.password = text
-                        updateCoverState(kdbEntry.edited)
-                        if (echoMode !== TextInput.Password) {
-                            entryVerifyPasswordTextField.text = text
-                        }
-                    }
-                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                    EnterKey.onClicked: {
-                        // Check which field gets focus when pressing EnterKey
-                        if (entryVerifyPasswordTextField.enabled) {
-                            entryVerifyPasswordTextField.focus = true
-                        } else {
-                            entryCommentTextField.focus = true
-                        }
-                    }
-                    focusOutBehavior: -1
-                }
-
-                PasswordField {
-                    id: entryVerifyPasswordTextField
-                    width: parent.width
-                    horizontalAlignment: TextInput.AlignLeft
-                    enabled: entryPasswordTextField.echoMode === TextInput.Password
-                    opacity: enabled ? 1.0 : 0.0
-                    showEchoModeToggle: false
-                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                    label: qsTr("Password")
-                    placeholderText: qsTr("Verify password")
-                    font.family: 'monospace'
-                    text: kdbEntry.password
-                    errorHighlight: entryPasswordTextField.text !== text
-                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
-                    EnterKey.onClicked: {
-                        // if password not yet verified go back to password field
-                        if (entryPasswordTextField.text !== text) {
-                            entryPasswordTextField.focus = true
-                        } else {
-                            entryCommentTextField.focus = true
-                        }
-                    }
-
-                    Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
-
-                    Component.onCompleted: entryVerifyPasswordTextFieldRef = entryVerifyPasswordTextField
-                    focusOutBehavior: -1
-                }
-            }
-
-            TextArea {
-                id: entryCommentTextField
-                width: parent.width
-                label: qsTr("Comment")
-                text: kdbEntry.notes
-                placeholderText: qsTr("Set comment")
-                onTextChanged: {
-                    kdbEntry.notes = text
-                    updateCoverState(kdbEntry.edited)
-                }
-                focusOutBehavior: -1
-            }
-
-            SectionHeader {
-                id: additionalAttributesSection
-                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
-                visible: enabled
-                text: qsTr("Change additional attributes")
-            }
-
-            // dummy for last padding space
-            Item {
-                height: 1
-                width: parent.width
-            }
-        }
-    }
-
     SilicaListView {
         id: listView
         model: kdbEntry
+//        currentIndex: -1
         anchors.fill: parent
-        clip: true
         spacing: Theme.paddingMedium
+
+        header: Item {
+            width: parent.width
+            height: headerCol.height
+            Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad }}
+
+            Column {
+                id: headerCol
+                width: parent.width
+                spacing: Theme.paddingMedium
+
+                DialogHeader {
+                    id: header
+                    acceptText: qsTr("Save")
+                    cancelText: qsTr("Discard")
+                    spacing: 0
+                    Component.onCompleted: headerRef = header
+                }
+
+                SectionHeader {
+                    text: qsTr("Change icon")
+                }
+
+                Item {
+                    width: parent.width
+                    height: entryIconBackground.height
+
+                    Image {
+                        id: entryIconBackground
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        width: Theme.itemSizeMedium
+                        height: Theme.itemSizeMedium
+                        source: "image://IconBackground"
+                        fillMode: Image.PreserveAspectFit
+                        asynchronous: true
+
+                        MouseArea {
+                            id: entryIconMouseArea
+                            anchors.fill: parent
+                            onClicked: {
+                                // open new dialog with grid of all icons
+                                pageStack.push( editItemIconDialog, { "newIconUuid": kdbEntry.iconUuid })
+                            }
+                        }
+                    }
+
+                    Image {
+                        id: entryIcon
+                        anchors.centerIn: parent
+                        width: Theme.iconSizeMedium
+                        height: Theme.iconSizeMedium
+                        fillMode: Image.PreserveAspectFit
+                        asynchronous: true
+                        opacity: entryIconMouseArea.pressed ? 0.5 : 1.0
+                        source: "image://KeepassIcon/" + kdbEntry.iconUuid
+                        Component.onCompleted: entryIconRef = entryIcon
+                    }
+
+                    Rectangle {
+                        anchors.fill: entryIconBackground
+                        color: entryIconMouseArea.pressed ?
+                                   Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
+                                 : "transparent"
+                    }
+                }
+
+                SectionHeader {
+                    text: qsTr("Change password entry details")
+                }
+
+                TextField {
+                    id: entryTitleTextField
+                    width: parent.width
+                    inputMethodHints: Qt.ImhSensitiveData
+                    label: qsTr("Title")
+                    text: kdbEntry.title
+                    placeholderText: qsTr("Set title (mandatory)")
+                    errorHighlight: text.length === 0
+                    EnterKey.enabled: !errorHighlight
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: entryUrlTextField.focus = true
+                    onTextChanged: {
+                        kdbEntry.title = text
+                        updateCoverState(kdbEntry.edited)
+                    }
+                    Component.onCompleted: entryTitleTextFieldRef = entryTitleTextField
+                    focusOutBehavior: -1  // prevent the "abc" password mode button to steal focus
+                }
+
+                TextField {
+                    id: entryUrlTextField
+                    width: parent.width
+                    inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhSensitiveData
+                    label: qsTr("URL")
+                    text: kdbEntry.url
+                    placeholderText: qsTr("Set URL")
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: entryUsernameTextField.focus = true
+                    onTextChanged: {
+                        kdbEntry.url = text
+                        updateCoverState(kdbEntry.edited)
+                    }
+                    focusOutBehavior: -1
+                }
+
+                TextField {
+                    id: entryUsernameTextField
+                    width: parent.width
+                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData
+                    label: qsTr("Username")
+                    text: kdbEntry.userName
+                    placeholderText: qsTr("Set username")
+                    EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                    EnterKey.onClicked: entryPasswordTextField.focus = true
+                    onTextChanged: {
+                        kdbEntry.userName = text
+                        updateCoverState(kdbEntry.edited)
+                    }
+                    focusOutBehavior: -1
+                }
+
+                Button {
+                    width: parent.width * 0.65
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: qsTr("Generate password")
+                    onClicked: {
+                        var pwGenDialog = pageStack.push("PasswordGeneratorDialog.qml")
+                        pwGenDialog.accepted.connect(function() {
+                            entryPasswordTextField.text =
+                                    entryVerifyPasswordTextField.text = pwGenDialog.generatedPassword
+                        })
+                    }
+                }
+
+                Column {
+                    width: parent.width
+                    height: entryPasswordTextField.echoMode === TextInput.Password
+                            ? entryPasswordTextField.height + entryVerifyPasswordTextField.height + spacing
+                            : entryPasswordTextField.height
+
+                    Behavior on height { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+                    PasswordField {
+                        id: entryPasswordTextField
+                        width: parent.width
+                        showEchoModeToggle: true
+                        horizontalAlignment: TextInput.AlignLeft
+                        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                        label: qsTr("Password")
+                        placeholderText: qsTr("Set password")
+                        font.family: 'monospace'
+                        text: kdbEntry.password
+                        onTextChanged: {
+                            kdbEntry.password = text
+                            updateCoverState(kdbEntry.edited)
+                            if (echoMode !== TextInput.Password) {
+                                entryVerifyPasswordTextField.text = text
+                            }
+                        }
+                        EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                        EnterKey.onClicked: {
+                            // Check which field gets focus when pressing EnterKey
+                            if (entryVerifyPasswordTextField.enabled) {
+                                entryVerifyPasswordTextField.focus = true
+                            } else {
+                                entryCommentTextField.focus = true
+                            }
+                        }
+                        focusOutBehavior: -1
+                    }
+
+                    PasswordField {
+                        id: entryVerifyPasswordTextField
+                        width: parent.width
+                        horizontalAlignment: TextInput.AlignLeft
+                        enabled: entryPasswordTextField.echoMode === TextInput.Password
+                        opacity: enabled ? 1.0 : 0.0
+                        showEchoModeToggle: false
+                        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                        label: qsTr("Password")
+                        placeholderText: qsTr("Verify password")
+                        font.family: 'monospace'
+                        text: kdbEntry.password
+                        errorHighlight: entryPasswordTextField.text !== text
+                        EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                        EnterKey.onClicked: {
+                            // if password not yet verified go back to password field
+                            if (entryPasswordTextField.text !== text) {
+                                entryPasswordTextField.focus = true
+                            } else {
+                                entryCommentTextField.focus = true
+                            }
+                        }
+
+                        Behavior on opacity { FadeAnimation { duration: 200; easing.type: Easing.OutQuad } }
+
+                        Component.onCompleted: entryVerifyPasswordTextFieldRef = entryVerifyPasswordTextField
+                        focusOutBehavior: -1
+                    }
+                }
+
+                TextArea {
+                    id: entryCommentTextField
+                    width: parent.width
+                    label: qsTr("Comment")
+                    text: kdbEntry.notes
+                    placeholderText: qsTr("Set comment")
+                    onTextChanged: {
+                        kdbEntry.notes = text
+                        updateCoverState(kdbEntry.edited)
+                    }
+                    focusOutBehavior: -1
+                }
+
+                SectionHeader {
+                    id: additionalAttributesSection
+                    enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
+                    visible: enabled
+                    text: qsTr("Change additional attributes")
+                }
+
+                // dummy for last padding space
+                Item {
+                    height: 1
+                    width: parent.width
+                }
+            }
+        }
+
+        footer: Item { // give the last item in the list some space to the bottom
+            height: listView.spacing // Theme.paddingMedium
+            width: parent.width
+        }
 
         PullDownMenu {
             SilicaMenuLabel {
@@ -302,16 +310,9 @@ Dialog {
             }
         }
 
-        header: headerComp
-
-        footer: Item { // give the last item in the list some space to the bottom
-            height: listView.spacing // Theme.paddingMedium
-            width: parent.width
-        }
-
         delegate: Item {
             id: additionalAttributesDelegate
-            enabled: !model.toBeDeleted
+            enabled: !model.toBeDeleted && !model.dummyItem
             visible: enabled
             width: parent.width
 

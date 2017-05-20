@@ -32,6 +32,11 @@ using namespace kpxPublic;
 using namespace kpxPrivate;
 using namespace ownKeepassPublic;
 
+// Special handling for list model array: An "empty" list model contains exactly one (dummy) item and nothing else
+// Workaround for: The list model must not be empty in order for fixing a jumping list view
+// when using TextArea for editing text. If a new line is added the list view jumps to the beginning of the page... weird...
+#define FIRST_ITEM_POSITION 1
+
 KdbEntry::KdbEntry(QObject *parent)
     : QAbstractListModel(parent),
       m_entryId(""),
@@ -57,7 +62,9 @@ KdbEntry::KdbEntry(QObject *parent)
       m_new_entry_triggered(false),
       m_edited(false),
       m_invalid_key(false)
-{}
+{
+    clearListModel();
+}
 
 bool KdbEntry::connectToDatabaseClient()
 {
@@ -166,7 +173,7 @@ void KdbEntry::saveEntryData()
         values << m_title << m_url << m_userName << m_password << m_notes;
 
         // Add additional attributes key and values to Stringlists
-        for (int i = 0; i < m_additional_attribute_items.count(); ++i) {
+        for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
             // Check for changed attribute key or value
             if (!m_additional_attribute_items[i].m_to_be_deleted &&
                     ((m_additional_attribute_items[i].m_original_key !=
@@ -214,7 +221,7 @@ void KdbEntry::createNewEntry()
              << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
         values << m_title << m_url << m_userName << m_password << m_notes;
 
-        for (int i = 0; i < m_additional_attribute_items.count(); ++i) {
+        for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
             // Add additional attributes key and values to Stringlists
             if (m_additional_attribute_items[i].m_modified &&
                 !m_additional_attribute_items[i].m_to_be_deleted) {
@@ -262,14 +269,14 @@ void KdbEntry::slot_entryDataLoaded(int result,
     Q_UNUSED(keys)
     // forward signal to QML only if the signal is for us
     if (entryId.compare(m_entryId) == 0) {
+        clearData();
+        m_entryId = entryId;
         m_original_title    = m_title    = values[KeepassDefault::TITLE];
         m_original_url      = m_url      = values[KeepassDefault::URL];
         m_original_userName = m_userName = values[KeepassDefault::USERNAME];
         m_original_password = m_password = values[KeepassDefault::PASSWORD];
         m_original_notes    = m_notes    = values[KeepassDefault::NOTES];
         m_original_iconUuid = m_iconUuid = iconUuid;
-        m_edited = false;
-        clearListModel();
         for (int i = KeepassDefault::ADDITIONAL_ATTRIBUTES; i < keys.length(); i++) {
             AdditionalAttributeItem item(keys[i], values[i]);
             beginInsertRows(QModelIndex(), rowCount(), rowCount());
@@ -277,7 +284,7 @@ void KdbEntry::slot_entryDataLoaded(int result,
             endInsertRows();
         }
         // emit isEmptyChanged signal if list view was empty before
-        if (m_additional_attribute_items.length() != 0) {
+        if (m_additional_attribute_items.length() != FIRST_ITEM_POSITION) {
             emit isEmptyChanged();
             // signal to property to update itself in QML
             emit modelDataChanged();
@@ -375,8 +382,10 @@ void KdbEntry::checkIfEdited()
 
 bool KdbEntry::checkIfAdditionalAttibuteItemsModified()
 {
-    Q_FOREACH(AdditionalAttributeItem item, m_additional_attribute_items) {
-        if (item.m_modified) {
+    for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
+        if (m_additional_attribute_items[i].m_modified &&
+                !(m_additional_attribute_items[i].m_to_be_created &&
+                  m_additional_attribute_items[i].m_to_be_deleted)) {
             return true;
         }
     }
@@ -462,7 +471,11 @@ int KdbEntry::rowCount(const QModelIndex& parent) const
 
 bool KdbEntry::isEmpty()
 {
-    return m_additional_attribute_items.isEmpty();
+    if (m_additional_attribute_items.count() == FIRST_ITEM_POSITION) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 QVariant KdbEntry::data(const QModelIndex &index, int role) const
@@ -479,6 +492,11 @@ void KdbEntry::clearListModel()
     beginResetModel();
     m_additional_attribute_items.clear();
     endResetModel();
+    // Now adding dummy item
+    AdditionalAttributeItem item("", "", false, false, true);
+    beginInsertRows(QModelIndex(), rowCount(), rowCount());
+    m_additional_attribute_items.append(item);
+    endInsertRows();
 
     // signal to QML and for property update
     emit modelDataChanged();
@@ -518,7 +536,7 @@ bool KdbEntry::setData(const QModelIndex & index, const QVariant & value, int ro
                 invalidKey = true;
             }
             // Check if new key name is a duplicate of another additional attribute key
-            for (int i = 0; i < m_additional_attribute_items.count(); ++i) {
+            for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
                 if (index.row() != i) {
                     if (m_additional_attribute_items[i].m_key == newKey) {
 //                        qDebug() << "key duplicate: error highlight to true";
@@ -540,12 +558,12 @@ bool KdbEntry::setData(const QModelIndex & index, const QVariant & value, int ro
 void KdbEntry::addAdditionalAttribute()
 {
     // Add item with editKeyMode enabled and activated errorHighlight because new item is per default empty
-    AdditionalAttributeItem item("", "", true, true);
+    AdditionalAttributeItem item("", "", true, true, false, true);
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_additional_attribute_items.append(item);
     endInsertRows();
     // emit isEmptyChanged signal if list view was empty before
-    if (m_additional_attribute_items.count() == 1) {
+    if (m_additional_attribute_items.count() == 2) {
         emit isEmptyChanged();
     }
     // signal to property to update itself in QML
