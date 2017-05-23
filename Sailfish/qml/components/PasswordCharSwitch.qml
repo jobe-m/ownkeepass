@@ -35,12 +35,6 @@ Column {
     width: (Screen.width/4) - Theme.paddingLarge
     spacing: -Theme.paddingLarge
 
-    Switch {
-        id: charSwitch
-        anchors.horizontalCenter: parent.horizontalCenter
-        checked: passwordCharSwitch.checked
-    }
-
     Row {
         width: children.width
         anchors.horizontalCenter: parent.horizontalCenter
@@ -86,5 +80,11 @@ Column {
                 font.pixelSize: Theme.fontSizeLarge
             }
         }
+    }
+
+    Switch {
+        id: charSwitch
+        anchors.horizontalCenter: parent.horizontalCenter
+        checked: passwordCharSwitch.checked
     }
 }

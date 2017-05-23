@@ -880,12 +880,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="335"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="339"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="355"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="405"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="361"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="411"/>
         <source>Password groups</source>
         <translation>Lösenordsgrupper</translation>
     </message>
@@ -920,21 +920,21 @@
         <translation>Dra neråt för att lägga till lösenordsgrupper eller nya lösenordsposter</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="319"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="320"/>
         <source>Loading</source>
         <translation>Läser in</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="375"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="379"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
-        <source>Search in all groups</source>
-        <translation>Sök i alla grupper</translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
+        <source>Search in all groups</source>
+        <translation>Sök i alla grupper</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="377"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="417"/>
         <source>Search in</source>
         <translation>Sök i</translation>
     </message>
@@ -1033,13 +1033,13 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort grupp</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort post</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="164"/>
@@ -1149,44 +1149,44 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
         <translation>Sökväg och namn för databasen</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="658"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
         <source>Permission error</source>
         <translation>Behörighetsfel</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="658"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>Kan inte öppna sökvägen till din databasfil. Du kanske måste ändra behörighetsinställningarna för användare &apos;nemo&apos;.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="663"/>
-        <location filename="../qml/content/MainPage.qml" line="680"/>
+        <location filename="../qml/content/MainPage.qml" line="655"/>
+        <location filename="../qml/content/MainPage.qml" line="672"/>
         <source>Key file error</source>
         <translation>Nyckelfilsfel</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="663"/>
-        <location filename="../qml/content/MainPage.qml" line="680"/>
+        <location filename="../qml/content/MainPage.qml" line="655"/>
+        <location filename="../qml/content/MainPage.qml" line="672"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>Sökvägen till databasen är ok, men filen saknas. Kontrollera sökvägen till nyckelfilen:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
+        <location filename="../qml/content/MainPage.qml" line="660"/>
         <source>Database file already exists</source>
         <translation>Databasfilen finns redan</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="668"/>
+        <location filename="../qml/content/MainPage.qml" line="660"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Ange en annan sökväg och namn för din Keepass-databas, ellerta bort den befintliga databasen med hjälp av filhanterare.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="685"/>
+        <location filename="../qml/content/MainPage.qml" line="677"/>
         <source>Database file error</source>
         <translation>Databasfel</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="685"/>
+        <location filename="../qml/content/MainPage.qml" line="677"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>Databasfilen finns inte. Kontrollera sökvägen till filen:</translation>
     </message>
@@ -1327,20 +1327,20 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du försökte öppna en Keepass 2-databas men den angivna databasen använder version 1. Välj korrekt databasversion när du öppnar din databas.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="250"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänt fel</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="753"/>
+        <location filename="../qml/content/MainPage.qml" line="745"/>
         <source>Password changed</source>
         <translation>Lösenordet ändrat</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="753"/>
+        <location filename="../qml/content/MainPage.qml" line="745"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Huvudlösenordet för din databas har ändrats.</translation>
     </message>
@@ -1400,42 +1400,42 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
         <translation>Konvertering av of QString &quot;%1&quot; till Int misslyckades</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1114"/>
+        <location filename="../qml/content/MainPage.qml" line="1110"/>
         <source>Drop from List</source>
         <translation>Ta bort från listan</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1192"/>
+        <location filename="../qml/content/MainPage.qml" line="1188"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1193"/>
+        <location filename="../qml/content/MainPage.qml" line="1189"/>
         <source>No</source>
         <translation>Nej</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1194"/>
+        <location filename="../qml/content/MainPage.qml" line="1190"/>
         <source>Unsaved changes</source>
         <translation>Osparade ändringar</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1239"/>
+        <location filename="../qml/content/MainPage.qml" line="1235"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>Vill du spara ändringarna i lösenordsposten?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1244"/>
+        <location filename="../qml/content/MainPage.qml" line="1240"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>Vill du spara ändringarna i lösenordsgruppen?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1249"/>
+        <location filename="../qml/content/MainPage.qml" line="1245"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>Vill du spara ändringarna i databasinställningarna?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1254"/>
+        <location filename="../qml/content/MainPage.qml" line="1250"/>
         <source>Do you want to save changed settings values?</source>
         <translation>Vill du spara ändrade inställningsvärden?</translation>
     </message>
@@ -1646,7 +1646,7 @@ Notera att för närvarande kan ownKeepass endast läsa databaser från Keepass 
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Dra neråt för att lägga till URL, användarnamn, lösenord, kommentarer och tilläggsattribut.</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>

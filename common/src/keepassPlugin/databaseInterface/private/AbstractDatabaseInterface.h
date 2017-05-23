@@ -100,7 +100,7 @@ protected: // signals
     // signals to KdbListModel object
     virtual void appendItemToListModel(QString title,
                                        QString iconUuid,
-                                       QString subtitle,
+                                       QString subTitle,
 //                                       int numberOfSubGroups,
 //                                       int numberOfEntries,
                                        QString itemId,
@@ -109,7 +109,7 @@ protected: // signals
                                        QString modelId) = 0;
     virtual void addItemToListModelSorted(QString title,
                                           QString iconUuid,
-                                          QString subtitle,
+                                          QString subTitle,
 //                                          int numberOfSubGroups,
 //                                          int numberOfEntries,
                                           QString itemId,

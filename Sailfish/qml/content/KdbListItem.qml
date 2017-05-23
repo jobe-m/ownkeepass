@@ -30,7 +30,7 @@ ListItem {
     id: kdbListItem
 
     property string text: model.name
-    property string subText: model.subtitle
+    property string subText: model.subTitle
     property bool selected: false
     property bool groupItem: model.itemType === DatabaseItemType.GROUP
     property int showLevel: 0

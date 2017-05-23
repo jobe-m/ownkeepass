@@ -152,7 +152,7 @@ Dialog {
                         anchors.top: itemTitle.bottom
                         anchors.topMargin: Theme.paddingSmall / 2
                         width: parent.width
-                        text: model.subtitle
+                        text: model.subTitle
                         horizontalAlignment: Text.AlignLeft
                         font.pixelSize: Theme.fontSizeExtraSmall
                         color: movePasswordEntryListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor

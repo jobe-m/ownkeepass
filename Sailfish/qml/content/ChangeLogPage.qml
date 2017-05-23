@@ -85,7 +85,6 @@ Page {
 <li>Bugfix: Specifying the wrong Keepass version on opening a database does not give a proper error notification; the display just kept showing the loading databasee message</li>\
 <li>Bugfix: It was not possible to delete more than one keepass entry or group in a row</li>\
 <li>Bugfix: When deleting the last password item from a group the placeholder text was not shown again</li>\
-<li>Bugfix: Fixed UI glitches which occure when opening the \"Unsaved changes\" dialog</li>\
 </ul>\
 <br>\
 <b>v1.2.1 Language bugfix</b>\

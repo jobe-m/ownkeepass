@@ -633,14 +633,6 @@ Page {
                 completeKeyFilePath = ""
             }
 
-            console.log("Open Kdb Database")
-//            console.log(tbo_dbFileLocation)
-//            console.log(tbo_dbFilePath)
-//            console.log(tbo_useKeyFile)
-//            console.log(tbo_keyFileLocation)
-//            console.log(tbo_keyFilePath)
-//            console.log(tbo_databaseType)
-
             if (createNewDatabase) {
                 // Check if database file already exists and if key file is present if it should be used
                 if (!ownKeepassHelper.fileExists(completeDbFilePath)) {
@@ -853,8 +845,9 @@ Page {
         function checkForUnsavedKdbEntryChanges() {
             // check if the user has changed any entry details
             if (kdbEntry.edited) {
-                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_ENTRY"
-                delayQueryDialogForUnsavedChanges.restart()
+                pageStack.completeAnimation()
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "state": "QUERY_FOR_ENTRY"})
             } else {
                 kdbEntry.clearData()
             }
@@ -864,8 +857,9 @@ Page {
             if (originalGroupName !== groupName ||
                     originalGroupNotes !== groupNotes ||
                     originalGroupIconUuid !== groupIconUuid) {
-                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_GROUP"
-                delayQueryDialogForUnsavedChanges.restart()
+                pageStack.completeAnimation()
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "state": "QUERY_FOR_GROUP"})
             }
         }
 
@@ -899,8 +893,9 @@ Page {
             if (databaseMasterPassword !== "" ||
                     databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm ||
                     databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
-                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_DATABASE_SETTINGS"
-                delayQueryDialogForUnsavedChanges.restart()
+                pageStack.completeAnimation()
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "state": "QUERY_FOR_DATABASE_SETTINGS"})
             }
         }
 
@@ -962,8 +957,9 @@ Page {
                     ownKeepassSettings.fastUnlock !== fastUnlock ||
                     ownKeepassSettings.fastUnlockRetryCount !== fastUnlockRetryCount ||
                     ownKeepassSettings.uiOrientation !== uiOrientation) {
-                delayQueryDialogForUnsavedChanges.dialogState = "QUERY_FOR_APP_SETTINGS"
-                delayQueryDialogForUnsavedChanges.restart()
+                pageStack.completeAnimation()
+                pageStack.replace(queryDialogForUnsavedChangesComponent,
+                                  { "state": "QUERY_FOR_APP_SETTINGS"})
             }
         }
 
@@ -1047,7 +1043,7 @@ Page {
 
             contentHeight: Theme.itemSizeMedium // two line delegate
             menu: contextMenuComponent
-            width: Screen.width
+            width: mainPage.orientation & Orientation.PortraitMask ? Screen.width : Screen.height
 
             function dropFromList() {
                 remorseAction("Drop Database from List",
@@ -1256,19 +1252,4 @@ Page {
             ]
         }
     }
-
-    Timer {
-        id: delayQueryDialogForUnsavedChanges
-        property string dialogState: ""
-        interval: 50
-        repeat: true
-        onTriggered: {
-            if (!pageStack.busy) {
-                stop()
-                pageStack.replace(queryDialogForUnsavedChangesComponent,
-                                  { "state": dialogState})
-            }
-        }
-    }
-
 }

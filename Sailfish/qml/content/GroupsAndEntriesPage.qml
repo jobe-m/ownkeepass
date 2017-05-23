@@ -282,7 +282,8 @@ Page {
             // automatically focus search bar on master group page but not on sub-group pages
             if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
                 searchField.focus = true
-            } else {
+            }
+            if (isEmpty) {
                 // Close search bar if the list view is empty
                 groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
             }

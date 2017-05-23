@@ -34,10 +34,10 @@ namespace kpxPublic {
 class KdbItem
 {
 public:
-    KdbItem(QString name, QString iconUuid, QString subtitle, QString id, int itemType, int itemLevel)
+    KdbItem(QString name, QString iconUuid, QString subTitle, QString id, int itemType, int itemLevel)
         : m_name(name),
           m_iconUuid(iconUuid),
-          m_subtitle(subtitle),
+          m_subTitle(subTitle),
           m_id(id),
           m_itemType(itemType),
           m_itemLevel(itemLevel)
@@ -49,7 +49,7 @@ public:
 
     QString m_name;
     QString m_iconUuid;
-    QString m_subtitle;
+    QString m_subTitle;
     QString m_id;
     int m_itemType;
     int m_itemLevel;
@@ -108,14 +108,14 @@ public slots:
     // signal from database client
     void slot_appendItemToListModel(QString title,
                                     QString iconUuid,
-                                    QString subtitle,
+                                    QString subTitle,
                                     QString itemId,
                                     int itemType,
                                     int itemLevel,
                                     QString modelId);
     void slot_addItemToListModelSorted(QString title,
                                        QString iconUuid,
-                                       QString subtitle,
+                                       QString subTitle,
                                        QString itemId,
                                        int itemType,
                                        int itemLevel,
@@ -150,6 +150,8 @@ private:
     QString m_searchRootGroupId;
     // identifies if this object is conntected to a loaded keepass database
     bool m_connected;
+    // Counter for list items with level 0
+    int m_level_0_count;
 };
 
 // inline implementations
@@ -161,7 +163,7 @@ inline QVariant KdbItem::get(const int role) const
     case baseRole + 1:
         return m_iconUuid;
     case baseRole + 2:
-        return m_subtitle;
+        return m_subTitle;
     case baseRole + 3:
         return m_id;
     case baseRole + 4:
@@ -177,7 +179,7 @@ inline QHash<int, QByteArray> KdbItem::createRoles()
     QHash<int, QByteArray> roles;
     roles[baseRole]     = "name";
     roles[baseRole + 1] = "iconUuid";
-    roles[baseRole + 2] = "subtitle";
+    roles[baseRole + 2] = "subTitle";
     roles[baseRole + 3] = "id";
     roles[baseRole + 4] = "itemType";
     roles[baseRole + 5] = "itemLevel";

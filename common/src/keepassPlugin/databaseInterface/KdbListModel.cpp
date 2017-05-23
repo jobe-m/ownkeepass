@@ -36,7 +36,8 @@ KdbListModel::KdbListModel(QObject *parent)
       m_numEntries(0),
       m_registered(false),
       m_searchRootGroupId(""),
-      m_connected(false)
+      m_connected(false),
+      m_level_0_count(0)
 {}
 
 bool KdbListModel::connectToDatabaseClient()
@@ -256,7 +257,7 @@ void KdbListModel::clearListModel()
     clear();
 }
 
-void KdbListModel::slot_appendItemToListModel(QString title, QString iconUuid, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
+void KdbListModel::slot_appendItemToListModel(QString title, QString iconUuid, QString subTitle, QString itemId, int itemType, int itemLevel, QString modelId)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -264,7 +265,11 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString iconUuid, Q
     }
     // only append if this item is for us
     if (m_modelId.compare(modelId) == 0) {
-        KdbItem item(title, iconUuid, subtitle, itemId, itemType, itemLevel);
+        // Increase level 0 count if item has level 0
+        if (0 == itemLevel) {
+            ++m_level_0_count;
+        }
+        KdbItem item(title, iconUuid, subTitle, itemId, itemType, itemLevel);
         if (itemType == DatabaseItemType::ENTRY) {
             // append new entry to end of list
             beginInsertRows(QModelIndex(), rowCount(), rowCount());
@@ -289,7 +294,7 @@ void KdbListModel::slot_appendItemToListModel(QString title, QString iconUuid, Q
     }
 }
 
-void KdbListModel::slot_addItemToListModelSorted(QString title, QString iconUuid, QString subtitle, QString itemId, int itemType, int itemLevel, QString modelId)
+void KdbListModel::slot_addItemToListModelSorted(QString title, QString iconUuid, QString subTitle, QString itemId, int itemType, int itemLevel, QString modelId)
 {
     if (!m_registered) {
         m_modelId = modelId;
@@ -297,7 +302,11 @@ void KdbListModel::slot_addItemToListModelSorted(QString title, QString iconUuid
     }
     // only append if this item is for us
     if (m_modelId.compare(modelId) == 0) {
-        KdbItem item(title, iconUuid, subtitle, itemId, itemType, itemLevel);
+        // Increase level 0 count if item has level 0
+        if (0 == itemLevel) {
+            ++m_level_0_count;
+        }
+        KdbItem item(title, iconUuid, subTitle, itemId, itemType, itemLevel);
         // compare and insert alphabetically into list model depending if it is an password entry or group
         // groups are put at the beginning of the list view before entries
         int i = 0;
@@ -353,7 +362,7 @@ void KdbListModel::slot_updateItemInListModel(QString title, QString iconUuid, Q
                 // set new title name, icon uuid and sub title
                 m_items[i].m_name = title;
                 m_items[i].m_iconUuid = iconUuid;
-                m_items[i].m_subtitle = subTitle;
+                m_items[i].m_subTitle = subTitle;
                 endResetModel();
             }
         }
@@ -367,16 +376,42 @@ void KdbListModel::slot_updateItemInListModelSorted(QString title, QString iconU
     // check if we need to do anything
     if (m_modelId.compare(modelId) == 0) {
         // look at each item in list model
-        for (int i = 0; i < m_items.count(); i++) {
+        for (int i = 0; i < m_items.count(); ++i) {
             if (m_items[i].m_id == itemId) {
                 // list view is sorted alphabetically so a new title might change the position of the item
                 // remove and insert item again, this makes sure that the new item will appear
                 // in the correct position in the alphabetically sorted list view
-//                qDebug() << "adding in sorted mode: " << title;
                 int itemType = m_items[i].m_itemType;
                 int itemLevel = m_items[i].m_itemLevel;
-                slot_deleteItem(itemId);
-                slot_addItemToListModelSorted(title, iconUuid, subTitle, itemId, itemType, itemLevel, modelId);
+                beginResetModel();
+                // check item type and decrease appropriate item number counter
+                if (DatabaseItemType::ENTRY == itemType) {
+                    m_numEntries--;
+                } else {
+                    m_numGroups--;
+                }
+                m_items.removeAt(i);
+                KdbItem item(title, iconUuid, subTitle, itemId, itemType, itemLevel);
+                // compare and insert alphabetically into list model depending if it is an password entry or group
+                // groups are put at the beginning of the list view before entries
+                int i = 0;
+                int max = 0;
+                if (DatabaseItemType::ENTRY == itemType) {
+                    i = m_numGroups;
+                    max = m_items.length();
+                    ++m_numEntries;
+                } else {
+                    i = 0;
+                    max = m_numGroups;
+                    ++m_numGroups;
+                }
+                // now find the position in the list model to insert the item sorted by name
+                // take itemLevel into account so that group names are only compared within the same level
+                while (i < max && (itemLevel != m_items[i].m_itemLevel || m_items[i].m_name.toLower().compare(title.toLower()) < 0)) {
+                    ++i;
+                }
+                m_items.insert(i, item);
+                endResetModel();
             }
         }
     }
@@ -387,12 +422,15 @@ void KdbListModel::slot_deleteItem(QString itemId)
     // look at each item in list model
     for (int i = 0; i < m_items.count(); i++) {
         if (m_items[i].m_id == itemId) {
-//            qDebug() << "delete item: " << m_items[i].m_name;
             // check item type and decrease appropriate item number counter
             if (m_items[i].m_itemType == DatabaseItemType::ENTRY) {
                 m_numEntries--;
             } else {
                 m_numGroups--;
+            }
+            // Decrease level 0 count if level of item is 0
+            if (0 == m_items[i].m_itemLevel) {
+                --m_level_0_count;
             }
             // now delete it from list model
             beginRemoveRows(QModelIndex(), i, i);
@@ -401,7 +439,8 @@ void KdbListModel::slot_deleteItem(QString itemId)
             // signal to property to update itself in QML
             emit modelDataChanged();
             // emit isEmptyChanged signal if last item was deleted
-            if (m_items.isEmpty()) {
+            // of if there is no level 0 item in the list view any more
+            if (m_items.isEmpty() || 0 == m_level_0_count) {
                 emit isEmptyChanged();
                 emit lastItemDeleted();
             }
