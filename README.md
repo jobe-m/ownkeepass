@@ -4,19 +4,21 @@
 
 ## Status
 
-Bugfix release 1.2.1 is available on [openrepos.net]
-* If one of the following languages where selected directly another language was actually shown: galician, italian, hungarian, dutch, russian, finnish, swedish, chinese, greek, japanese
-* Setting language to system default was not affected by the bug
+Release 1.2.2 is available on [openrepos.net]
+* Password entries in Keepass 2 databases can be created, edited and deleted
+* Password groups in Keepass 2 databases can be created, edited and deleted
+* Additional attributes of password entries in Keepass 2 databases can be added, changed and deleted
+* Added possibility to copy into clipboard every item of a password entry by long-press on it
+* Open URL in web browser by just one click on the URL text
+* Reworked password entry editing page for Keepass 2 support
+* Fixed scaling of icons on password generator page with higher resolution displays
+* Updated and reordered text sections on about page
+* Added new translations for Polish and Serbian (Not yet fully done, please help on transifex to finish them)
+* Updated all other translations from transifex
+* Bugfix: Specifying the wrong Keepass version on opening a database does not give a proper error notification; the display just kept showing the loading databasee message
+* Bugfix: It was not possible to delete more than one keepass entry or group in a row
+* Bugfix: When deleting the last password item from a group the placeholder text was not shown again
 
-Release 1.2.0
-* Implemented changing of icons for password group and entries for Keepass 1 and 2 databases
-* Standard Keepass icons and custom database icons of Keepass 1 and 2 databases are supported
-* Implemented "create new" and "edit" password group for Keepass 2 database
-* Reworked error handling mechanism and added a lot of database error checks
-* Updated source base of Keepass 2 database code to KeepassX release 2.0.2
-* Code cleanup done, password generator code refactored
-* Fixed some UI and layout glitches
-* Updated all translations from transifex
 
 Bugfix release 1.1.15 is available in Jolla store
 * Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to "disabled"
@@ -27,7 +29,7 @@ Release 1.1.14
 * Parent group of password entries is shown in search list view
 * Copy-Paste cover action now skips empty username or password entries
 * Implemented alphabetical sorting of Keepass 2 database entries
-* Added new translation for Galician language 
+* Added new translation for Galician language
 * Updated all other translations from Transifex
 
 ## Roadmap
@@ -35,7 +37,7 @@ Release 1.1.14
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Write support for Keepass 2 databases
+*   Finishing write support for Keepass 2 databases
 *   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
 
 
@@ -46,7 +48,7 @@ protect sensible data like passwords for web pages, credit card numbers,
 PINs, TANs and other bits of information which should be kept secret. All that information
 is saved in a database file which is encrypted and stored locally on your phone. To open
 the database you need to know the master password of the database. ownKeepass can use Keepass
-version 1 and 2 databases. That means you can use [Keepass] or [KeepassX] on your desktop 
+version 1 and 2 databases. That means you can use [Keepass] or [KeepassX] on your desktop
 system to decrypt and open that database file, too.
 
 ## Why?
