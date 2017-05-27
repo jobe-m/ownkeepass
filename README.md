@@ -40,6 +40,10 @@ in descending order.
 *   Finishing write support for Keepass 2 databases
 *   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
 
+## Building
+
+After cloning this repository you need to checkout also the submodule for KeepassX 2 at `common/src/keepassPlugin/keepass2_database/keepassx` (e.g. use `git clone --recursive` to clone the submodule right away). Please note that currently you need to apply a small patch to a header file of the keepassX 2 submodule to build the application successfully:
+Add `#include <QObject>` to the Keepass 2 database header file `common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.h`.
 
 ## What is this?
 
