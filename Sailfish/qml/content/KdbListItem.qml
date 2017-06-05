@@ -121,7 +121,8 @@ ListItem {
         anchors.left: itemIcon.right
         anchors.leftMargin: Theme.paddingSmall
         anchors.verticalCenter: parent.verticalCenter
-        width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
+        anchors.right: parent.right
+//        width: parent.width - Theme.paddingLarge * 2 - Theme.paddingSmall - itemIcon.width
         height: model.itemType === DatabaseItemType.ENTRY && kdbListItem.subText.length === 0 ?
                     itemTitle.height :
                     itemTitle.height + (Theme.paddingSmall / 2) + itemDescription.height
@@ -151,6 +152,7 @@ ListItem {
             font.pixelSize: Theme.fontSizeExtraSmall
             color: kdbListItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
             font.family: Theme.fontFamily
+            truncationMode: TruncationMode.Fade
         }
     }
 
@@ -193,8 +195,8 @@ ListItem {
             }
 
             MenuItem {
-                enabled: (model.itemType === DatabaseItemType.ENTRY) && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
-                visible: model.itemType === DatabaseItemType.ENTRY
+                enabled: model.itemType === DatabaseItemType.ENTRY
+                visible: enabled
                 //: used in menu to move the password entry into another group
                 text: qsTr("Move")
                 onClicked: {
