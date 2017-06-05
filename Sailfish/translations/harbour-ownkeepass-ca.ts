@@ -880,12 +880,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="361"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="411"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Password groups</source>
         <translation>Grups de contrasenyes</translation>
     </message>
@@ -920,21 +920,21 @@
         <translation>Arrossegueu cap avall per afegir grups o registres</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="320"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
         <source>Loading</source>
         <translation>S&apos;està carregant</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="420"/>
         <source>Search in all groups</source>
         <translation>Cerca a tots els grups</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="377"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="417"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="385"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="421"/>
         <source>Search in</source>
         <translation>Cerca a</translation>
     </message>
@@ -1042,17 +1042,17 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Edit</source>
         <translation>Edita</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="184"/>
         <source>Delete</source>
         <translation>Elimina</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="199"/>
+        <location filename="../qml/content/KdbListItem.qml" line="201"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Mou</translation>
@@ -1488,7 +1488,7 @@ Avís: encara que ownKeepass pot llegir i escriure a bases de dades Keepass 1, a
         <translation>Cancel·la</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="80"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation>Mou el registre de contrasenya &quot;%1&quot; a aquest grup:</translation>
     </message>

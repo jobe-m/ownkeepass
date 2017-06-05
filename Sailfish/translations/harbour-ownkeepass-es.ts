@@ -881,12 +881,12 @@ Añadir notas al grupo</translation>
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="361"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="411"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Password groups</source>
         <translation>Grupos de contraseñas</translation>
     </message>
@@ -921,21 +921,21 @@ Añadir notas al grupo</translation>
         <translation>Desliza hacia abajo para añadir grupos de contraseñas o registros</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="320"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
         <source>Loading</source>
         <translation>Cargando</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="420"/>
         <source>Search in all groups</source>
         <translation>Buscar en todos los grupos</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="377"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="417"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="385"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="421"/>
         <source>Search in</source>
         <translation>Buscar en</translation>
     </message>
@@ -1043,17 +1043,17 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="184"/>
         <source>Delete</source>
         <translation>Borrar</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="199"/>
+        <location filename="../qml/content/KdbListItem.qml" line="201"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Mover</translation>
@@ -1489,7 +1489,7 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="80"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation>Mover el registro de contraseña &quot;%1&quot; al siguiente grupo:</translation>
     </message>

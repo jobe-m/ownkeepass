@@ -11,12 +11,12 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
         <source>Password Safe</source>
-        <translation>Jelszó Széf</translation>
+        <translation>Biztonságos jelszó</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="66"/>
         <source>ownKeepass is a Keepass 1 and 2 compatible password safe application</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass egy Keepass 1 és 2 kompatibilis biztonságos jelszó alkalmazás</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="74"/>
@@ -52,33 +52,33 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="214"/>
         <source>My best appreciations go to:</source>
-        <translation type="unfinished"></translation>
+        <translation>A legnagyobb elismerésem:</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="215"/>
         <source>Jolla (for continuing where Nokia stopped)</source>
-        <translation type="unfinished"></translation>
+        <translation>Jolla (folytatva ahol a Nokia abbahagyta)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="216"/>
         <source>The KeepassX project (for a Qt implementation of Keepass)</source>
-        <translation type="unfinished"></translation>
+        <translation>A KeepassX projekt (a Keepass Qt átültetéséhez)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="218"/>
         <source>And finally many thanks to all translators on %1 and contributors on %2 (for keeping me motivated to work on ownKeepass)</source>
         <extracomment>%1 and %2 are placeholders for links to the project on transifex and github</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Végül rengeteg köszönet minden fordítónak itt: %1 és minden közreműködőnek itt: %2 (hogy motiváltak, hogy tovább dolgozzak az ownKeepass-on)</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="221"/>
         <source>Alphabetical list of all translators:</source>
-        <translation type="unfinished"></translation>
+        <translation>A fordítók abc sorrendben:</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="266"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation type="unfinished"></translation>
+        <translation>Remélem, nektek legalább annyi élvezetet okoz az ownKeepass alkalmazása, mint amennyit nekem okozott a megalkotása!</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="147"/>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="40"/>
         <source>Add Additional Attribute</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyéb tulajdonság hozzáadása</translation>
     </message>
     <message>
         <location filename="../qml/content/ApplicationMenu.qml" line="45"/>
@@ -139,7 +139,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="57"/>
         <source>Password Safe</source>
-        <translation>Jelszó Széf</translation>
+        <translation>Biztonságos jelszó</translation>
     </message>
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="65"/>
@@ -337,12 +337,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="84"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon megváltoztatása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="131"/>
         <source>Change password entry details</source>
-        <translation type="unfinished"></translation>
+        <translation>Jelszó megadás részleteinek megváltoztatása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="138"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="188"/>
         <source>Generate password</source>
-        <translation type="unfinished"></translation>
+        <translation>Jelszó generálása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="268"/>
@@ -409,7 +409,7 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="342"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="429"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Beállítás</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="345"/>
@@ -418,31 +418,31 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="447"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="449"/>
         <source>Edit Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Címke szerkesztése</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="344"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="388"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
         <source>Delete</source>
-        <translation type="unfinished">Töröl</translation>
+        <translation>Törlés</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="282"/>
         <source>Change additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyéb tulajdonság megváltoztatása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="375"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="394"/>
         <source>Cancel</source>
-        <translation type="unfinished">Mégsem</translation>
+        <translation>Mégsem</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="395"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
         <source>Accept</source>
-        <translation type="unfinished">Elfogad</translation>
+        <translation>Elfogadás</translation>
     </message>
 </context>
 <context>
@@ -460,12 +460,12 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon megváltoztatása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
         <source>Change group details</source>
-        <translation type="unfinished"></translation>
+        <translation>Csoport részleteinek megváltoztatása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="148"/>
@@ -480,12 +480,12 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
         <source>Notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Jegyzetek a csoporthoz</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="175"/>
         <source>Set notes for the group</source>
-        <translation type="unfinished"></translation>
+        <translation>Jegyzetek beállítása a csoporthoz</translation>
     </message>
 </context>
 <context>
@@ -493,37 +493,37 @@
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished">Kiválasztás</translation>
+        <translation>Kiválasztás</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished">Mégsem</translation>
+        <translation>Mégsem</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
         <source>Choose an icon for the password group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Válassz ikont a jelszócsoporthoz:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="78"/>
         <source>Choose an icon for the password entry:</source>
-        <translation type="unfinished"></translation>
+        <translation>Válassz ikont a jelszó megadásához:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="82"/>
         <source>Keepass Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Keepass ikonok</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Tetszőleges adatbázis ikonok</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
         <source>ownKeepass Icon Pack</source>
-        <translation type="unfinished"></translation>
+        <translation>ownKeepass ikonok</translation>
     </message>
 </context>
 <context>
@@ -673,12 +673,12 @@
         <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ideje kitörölni a vágólapot</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Soha</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -880,12 +880,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="361"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="411"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Password groups</source>
         <translation>Jelszó csoportok</translation>
     </message>
@@ -920,21 +920,21 @@
         <translation>Jelszó csoportok vagy bejegyzések hozzáadásához húzd lefelé</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="320"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
         <source>Loading</source>
         <translation>Betöltés folyamatban</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="420"/>
         <source>Search in all groups</source>
         <translation>Keresés az összes csoportban</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="377"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="417"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="385"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="421"/>
         <source>Search in</source>
         <translation>Keresés ebben:</translation>
     </message>
@@ -962,22 +962,23 @@
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
         <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
 Please note the following. While ownKeepass can read and write to Keepass 1 databases it can currently only read from Keepass 2 databases. It cannot yet change and save Keepass 2 databases. This is planned for a future release of ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>Az ownKeepass egy biztonságos jelszó-tároló alkalmazás Jolla okostelefonok számára azzal a céllal, hogy megvédje az olyan érzékeny adatokat, mint a honlapokon alkalmazott jelszavak, hitelkártya számok, PIN vagy TAN kódok és egyéb információdarabkák, amiket titokban kell tartani. Minden információ, ami az adatbázisba bekerül, titkosított lesz és helyben, a telefonodon fog tárolódni. Az adatbázis megnyitásához ismerned kell a mesterjelszót. Az ownKeepass használni tudja a Keepass 1 és 2 verzió adatbázisait. Ez azt jelenti, hogy a Keepass [1] vagy a KeepassX [2] segítségével is dekódolhatod és megnyithatod ugyanazt az adatbázist. &lt;br&gt;&lt;br&gt;
+Kérlek, vedd figyelembe a következőt. Amíg az ownKeepass tudja írni és olvasni a Keepass 1 adatbázisokat, a Keepass 2 adatbázisaiból jelenleg csak olvasni tud. Arra azonban nem képes, hogy változtatásokat vigyen végbe és elmentse azokat a Keepass 2 adatbázisában. Ez egy tervezett fejlesztése az ownKeepassnak.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="41"/>
         <source>&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt; A súgó oldalak használata &lt;/b&gt;&lt;br&gt;&lt;br&gt; Minden oldalnak az ownKeepass-on belül megvan a saját súgó tartalma. Így kérlek, vedd hasznát, hogy többet tudj meg az ownKeepass által felajánlott lehetőségekről.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="46"/>
         <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES / Rijndael (supported by Keepass 1 and 2) or Twofish (Supported only by Keepass 1) with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords (in-memory encryption currently only Keepass 1). Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Néhány szó a Keepass adatbázis biztonságáról&lt;/b&gt;&lt;br&gt;&lt;br&gt;Az ownKeepassban lévő adatbázis kód a KeepassX projekten [2] alapul és ezért sok biztonsággal kapcsolatos lehetőséget tartalmaz. Olyan tanúsított titkosítási algoritmust használ, mint pl. az AES / Rijndael (Keepass 1 és 2 által támogatott) vagy Twofish (csak a Keepass 1 által támogatott) 128 bites blokkmérettel és 256 bites kulcsmérettel, SHA-256 titkosítással és memórián belüli kódolással minden jelszóra vonatkozóan (memóriabeli kódolás jelenleg csak a Keepass 1-ben van). Továbbá megvédi a mester jelszót a nyers erővel való próbálkozástól és a szótáras módszertől azáltal, hogy még azelőtt kódolja, mielőtt a Keepass adatbázis dekódolására használnák. Ez a módszer a kulcstranszformációs kör és az adatbázis beállításainál szabályozható. Mindenesetre ez mind további biztonságot a következő két ponthoz, amire figyelni kell:&lt;br&gt;&lt;br&gt;(1) Mindig hosszú és nehezen megjegyezhető jelszót használj mester jelszónak.&lt;br&gt;&lt;br&gt;(2) Védd meg a rendszeredet a kémprogramoktól, amik az ownKeepass támadására lehetnek specializálódva. A második pont az #1 számú törvény a Biztonság 10 Alapvető Törvénye közül [3]: &quot;Ha egy rosszfiú rá tud venni arra, hogy az ő programját futtasd a számítógépeden, akkor az többé nem a te számítógéped&quot;.</translation>
     </message>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="65"/>
         <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Keepass adatbázis megosztása a Jolla Okostelefonod / Tableted és a PC-d között&lt;/b&gt;&lt;br&gt;&lt;br&gt;A Keepass adatbázis fileformátuma tökéletes arra, hogy biztonságosan megoszd a jelszavadat olyan különböző rendszerek között, mint az okostelefonok, tabletek, asztali számítógépek, stb. Ez azért van, mert sok Keepass változat elérhető ezekre a platformokra. Vess egy pillantást a Keepass letöltő oldalra [4], hogy letölthesd a Keepass 1 vagy 2 verzióját az asztali számítógépedre. Egy lista is található azon az oldalon az alternatív Keepass változatokra. Szeretném felhívni a figyelmedet a KeepassX 0.4.3 [2] verziójára is, ami szintén kompatibilis a Keepass 1 verzióval. A KeepassX 2 alfa verziója is megtalálható ugyanott, ami tudja kezelni a Keepass 2 adatbázisokat.&lt;br&gt;A Keepass adatbázis file-odat SD kártya vagy felhő alkalmzás (ownCloud vagy Dropbox) segítségével is megoszthatod. Ha felhőszervert használsz, akkor javasolom a mester jelszó mellett kulcsfile használatát. Az ownKeepass a kiegészítő kulcsfile-t fogja az adatbázis dekódolásához használni. Ezt a kulcsfile-t csak  lokálisan az okostelefonodon vagy az asztali számítógépeden tárold. Ne töltsd fel a felhőbe! Így ha egy támadó feltöri a felhődet, a kulcsfile-od nélkül távozhat. Így megnehezítheted egy támadónak a Keepass adatbázisod feltörését, mert a kulcsfile tartalmát általában lehetetlen kitalálni.</translation>
     </message>
 </context>
 <context>
@@ -985,7 +986,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMasterGroupsPage.qml" line="27"/>
         <source>This page is showing main password groups of your Keepass database. A password group is a container for password entries. Thus in order to store a password entry you need to create at least one group first.&lt;br&gt;&lt;br&gt;You can use main password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ez az oldal a Keepass adatbázisod fő jelszócsoportjait mutatja. Egy jelszócsoport több jelszó bejegyzést tartalmaz. Azért, hogy egy jelszót tárolhass, mindig legalább egy csoportot kell előbb létrehoznod.&lt;br&gt;&lt;br&gt;A fő jelszócsoportokat használhatod arra, hogy a jelszó bejegyzéseidet rendszerezd. Például alkothatsz csoportot &quot;Online vásárlás&quot;, &quot;Email kliensek&quot;, &quot;Közösségi oldalak&quot;, stb. célokkal.&lt;br&gt;&lt;br&gt;A lehúzós menüben lehet a keresősort aktiválni, ami a jelszócsoport tetején fog megjelenni. Ezzel jelszóbejegyzéseket kereshetsz az egész Keepass adatbázisban. Ha azt szeretnéd, hogy a keresősor automatikusan megjelenjen, amikor megnyitod a Keepass adatbázist, úgy azt a beállításoknál a megfelelő kapcsolóval tudod beállítani.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -994,7 +995,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/help/HelpOpenNewDatabase.qml" line="28"/>
         <source>Here you can open an existing Keepass database file.&lt;br&gt;&lt;br&gt;Use the file browser to search for your Keepass database file. You will be able to look into the following locations: Device Memory, SD card and Android storage. If you have trouble with ownKeepass not finding the file please make sure to place it in below mentioned paths. &quot;Device Memory&quot; is located at &quot;%1&quot;. If a SD card is inserted in your phone it is located at &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Please note that SD cards with more than one partition are not supported.) &quot;Android storage&quot; is located at &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you need a key file for opening your Keepass database please check this option.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Type in here the password for your Keepass database.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Removed one sentence in section &quot;Use key file&quot;, Changed &quot;Home&quot; to &quot;Device Memory&quot;, Removed section for &quot;Open automatically&quot;, changed &lt;UUID&gt; to &amp;lt;UUID&amp;gt; so that it will be actually shown ;)</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Itt egy már létező Keepass adatbázis file-t nyithatsz meg. &lt;br&gt;&lt;br&gt;Használd a filekezelőt a Keepass adatbázis file-od kereséséhez. A következő helyeken találhatod meg: Készülék memóriája, SD kártya vagy Android tárhely. Ha problémád akadt és az ownKeepass nem találja a file-t, ellenőrizd, hogy a fent említett helyeken van. &quot;Készülék memőria&quot; az &quot;%1&quot; helyen van. Ha SD kártya van a telefonodban, az a következő helyen van: &quot;/media/sdcard/&amp;lt;UUID&amp;gt;&quot;. (Egynél több partícióval rendelkező SD kártyák nem támogatottak!) Az &quot;Android tárhely&quot; a következő helyen van: &quot;%2&quot;.&lt;br&gt;&lt;br&gt;Jótanács: ha feltöltöd felhőbe a Keepass adatbázisodat, akkor legyél biztos benne, hogy egy helyben (a telefonodon) tárolt kulcsfile-t is használsz a mester jelszó mellett! Ezt a kulcsfile-t nem szabad feltölteni a felhőbe.&lt;br&gt;&lt;br&gt;&lt;b&gt;Kulcsfile használata&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ha kulcsfile-ra van szükséged a Keepass adatbázisod megnyitásához, jelöld be ezt az opciót.&lt;br&gt;&lt;br&gt;&lt;b&gt;Mester jelszó&lt;/b&gt;&lt;br&gt;&lt;br&gt;Írd ide a Keepass adatbázis jelszavadat.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1002,7 +1003,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpOpenRecentDatabase.qml" line="27"/>
         <source>Type in here the password for opening the database. If you chose a key file it will be automatically loaded from the path you specified earlier. If you get an error on opening the database and you are sure that your provided password is correct check if the key file is still in the same place when you opened the database the last time successfully.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens the password query dialog again for this database when you start the application the next time.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Írd ide a jelszót az adatbázis megnyitásához. Ha kulcsfile-t választottál, akkor az automatikusan betöltődik a korábban megadott útvonalon keresztül. Ha az adatbázis megnyitása közben hibaüzenetet kapsz és biztos vagy benne, hogy jó jelszót adtál meg, akkor ellenőrizd le, hogy a kulcsfile még mindig ugyanazon a helyen van, mint amikor utoljára sikeresen megnyitottad az adatbázist. &lt;br&gt;&lt;br&gt;&lt;b&gt; Automatikus megnyitás &lt;/b&gt;&lt;br&gt;&lt;br&gt; Jelöld be ezt a lehetőséget, ha azt szeretnéd, hogy az ownKeepass automatikusan megnyissa a jelszó bekérési felületet ehhez az adatbázishoz, amikor legközelebb megnyitod az alkalmazást. &lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1032,26 +1033,26 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Csoport törlése</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Bejegyzés törlése</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Edit</source>
         <translation>Szerkeszt</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="184"/>
         <source>Delete</source>
         <translation>Töröl</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="199"/>
+        <location filename="../qml/content/KdbListItem.qml" line="201"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Áthelyez</translation>
@@ -1090,7 +1091,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/LockPage.qml" line="235"/>
         <source>You have %1 tries left</source>
-        <translation type="unfinished"></translation>
+        <translation>1 lehetőséged maradt</translation>
     </message>
     <message>
         <location filename="../qml/content/LockPage.qml" line="237"/>
@@ -1223,42 +1224,42 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="102"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Az adatbázist a következő hiba miatt nem lehet betölteni:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Bejegyzés nem található:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="114"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>A jelszó bejegyzés keresése közben hiba adódott.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
         <source>Group not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Csoport nem található.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="120"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>A jelszócsoport keresése közben hiba adódott.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
         <source>No database opened</source>
-        <translation type="unfinished">Nincs nyitott adatbázis</translation>
+        <translation>Nincs nyitott adatbázis</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="126"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nem lehet betöltött adatbázishoz csatlakozni. Ez programhibának tűnik.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="148"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Az adatbázis kulcsának generálásakor a következő hiba lépett fel:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="182"/>
@@ -1306,32 +1307,32 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="223"/>
         <location filename="../qml/content/MainPage.qml" line="229"/>
         <source>Internal Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Belső hiba</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="224"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Valami félresikerült az adatbázis aktuális listából való kiejtése közben. Ez nem kellett volna, hogy megtörténjen. Kérlek, értesíts (engem, a fejlesztőt) erről e-mailen vagy github-on. Köszönöm!</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="230"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Valami félresikerült az adatbázis törlése közben. Hibaüzenet:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="240"/>
         <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation type="unfinished"></translation>
+        <translation>A &quot;%1&quot; karakterlánc Uuid-vé való konverziója sikertelen</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Egy Keepass 2 adatbázist próbáltál megnyitni, de ez az adatbázis az 1. verziót használja. Kérlek, az adatbázis megnyitásához a helyes Keepass verziót válaszd ki.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="250"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>ismeretlen hiba</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="745"/>
@@ -1401,7 +1402,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="1110"/>
         <source>Drop from List</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiejtés a listából</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1188"/>
@@ -1487,7 +1488,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Mégsem</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="80"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation>&quot;%1&quot; jelszó-bejegyzés áthelyezése a következő csoportba:</translation>
     </message>
@@ -1645,7 +1646,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Húzd le a következők hozzáadásához: URL, felhasználói név, jelszó, megjegyzés vagy egyéb tulajdonság</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
@@ -1669,7 +1670,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="151"/>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="169"/>
         <source>Copy to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Másolás vágólapra</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="133"/>
@@ -1690,25 +1691,25 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="172"/>
         <source>password</source>
         <extracomment>Translate &quot;password&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>jelszó</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>
         <source>pin</source>
         <extracomment>&quot;pin&quot; like a pin number of your credit card or sim card. Translate &quot;pin&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>pin-kód</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
         <source>tan</source>
         <extracomment>&quot;tan&quot; like a tan list from your bank account. Translate &quot;tan&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>tan-kód</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="178"/>
         <source>puk</source>
         <extracomment>&quot;puk&quot; like the (emergency) puk number of your sim card. Translate &quot;puk&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>puk-kód</translation>
     </message>
 </context>
 </TS>

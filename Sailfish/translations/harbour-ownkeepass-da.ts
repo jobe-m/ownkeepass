@@ -73,7 +73,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="221"/>
         <source>Alphabetical list of all translators:</source>
-        <translation type="unfinished"></translation>
+        <translation>Oversættere i alfabetisk rækkefølge:</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="266"/>
@@ -337,7 +337,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="84"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Skift ikon</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="131"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="188"/>
         <source>Generate password</source>
-        <translation type="unfinished"></translation>
+        <translation>Generér kodeord</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="268"/>
@@ -425,7 +425,7 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="388"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
         <source>Delete</source>
-        <translation type="unfinished">Slet</translation>
+        <translation>Slet</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="282"/>
@@ -436,13 +436,13 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="375"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="394"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuller</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="395"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Acceptér</translation>
     </message>
 </context>
 <context>
@@ -460,7 +460,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
         <source>Change icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Skift ikon</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="142"/>
@@ -880,12 +880,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="361"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="411"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Password groups</source>
         <translation>Kodeordsgrupper</translation>
     </message>
@@ -920,21 +920,21 @@
         <translation>Træk ned for at tilføje kodeordsgruppe eller post</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="320"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
         <source>Loading</source>
         <translation>Indlæser</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="420"/>
         <source>Search in all groups</source>
         <translation>Søg i alle grupper</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="377"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="417"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="385"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="421"/>
         <source>Search in</source>
         <translation>Søg i</translation>
     </message>
@@ -1032,26 +1032,26 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Slet gruppe</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Slet post</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Edit</source>
         <translation>Rediger</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="184"/>
         <source>Delete</source>
         <translation>Slet</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="199"/>
+        <location filename="../qml/content/KdbListItem.qml" line="201"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Flyt</translation>
@@ -1331,7 +1331,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="250"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukendt fejl</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="745"/>
@@ -1487,7 +1487,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>Annuller</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="80"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation>Flyt kodeordspost &quot;%1&quot; til følgende gruppe:</translation>
     </message>
@@ -1690,7 +1690,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="172"/>
         <source>password</source>
         <extracomment>Translate &quot;password&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>kodeord</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>

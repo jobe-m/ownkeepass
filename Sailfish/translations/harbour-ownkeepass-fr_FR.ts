@@ -880,12 +880,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="336"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="356"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="361"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="411"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
         <source>Password groups</source>
         <translation>Groupes de mot de passe</translation>
     </message>
@@ -920,21 +920,21 @@
         <translation>Tirez vers le bas pour ajouter un groupe de mots de passe ou des saisies</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="320"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
         <source>Loading</source>
         <translation>Chargement</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="376"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="416"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="420"/>
         <source>Search in all groups</source>
         <translation>Rechercher dans tous les groupes</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="377"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="417"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="385"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="421"/>
         <source>Search in</source>
         <translation>Rechercher dans</translation>
     </message>
@@ -1035,26 +1035,26 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Suppression du groupe</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Suppression de l&apos;entrée</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="164"/>
+        <location filename="../qml/content/KdbListItem.qml" line="166"/>
         <source>Edit</source>
         <translation>Modifier</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="182"/>
+        <location filename="../qml/content/KdbListItem.qml" line="184"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/content/KdbListItem.qml" line="199"/>
+        <location filename="../qml/content/KdbListItem.qml" line="201"/>
         <source>Move</source>
         <extracomment>used in menu to move the password entry into another group</extracomment>
         <translation>Déplacer</translation>
@@ -1329,12 +1329,12 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez essayé d&apos;ouvrir une base de données Keepass 2 mais la base de données sélectionnée utilise la version 1. Veuillez choisir la bonne version de Keepass pour ouvrir votre base de données.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="250"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur inconnue</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="745"/>
@@ -1490,7 +1490,7 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="80"/>
+        <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
         <translation>Déplacer le mot de passe &quot;%1&quot; dans le groupe suivant :</translation>
     </message>
@@ -1648,7 +1648,7 @@ Consultez-les et prenez connaissance des fonctions offertes par ownkeepass.
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tirez vers le bas pour ajouter une URL, un nom d&apos;utilisateur, un mot de passe, un commentaire et des attributs additionels</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
