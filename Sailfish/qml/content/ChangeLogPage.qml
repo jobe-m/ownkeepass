@@ -70,6 +70,14 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.2.3 (pre-release)</b>\
+<ul>\
+<li>Implemented moving of password entries between groups (Keepass 2 database)</li>\
+<li>Show comment of password groups in list view (Keepass 2 database)</li>\
+<li>Fixed truncation mode of subtitle in list views</li>\
+<li>Updated translations from transifex</li>\
+</ul>\
+<br>\
 <b>v1.2.2 Keepass 2 write support</b>\
 <ul>\
 <li>Password entries in Keepass 2 databases can be created, edited and deleted</li>\
