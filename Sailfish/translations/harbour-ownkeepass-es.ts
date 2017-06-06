@@ -6,7 +6,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="47"/>
         <source>About ownKeepass</source>
-        <translation>Acerca de ownKeepass</translation>
+        <translation>ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="48"/>
@@ -230,7 +230,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="46"/>
         <source>Read only mode</source>
-        <translation>Modo de sólo lectura</translation>
+        <translation>Modo de sólo leer</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="52"/>
@@ -245,7 +245,7 @@
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="61"/>
         <source>Database settings</source>
-        <translation>Ajustes de la base de datos</translation>
+        <translation>Ajustes de base de datos</translation>
     </message>
     <message>
         <location filename="../qml/content/DatabaseMenu.qml" line="70"/>
@@ -263,7 +263,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="86"/>
         <source>Database Settings</source>
-        <translation>Ajustes de la base de datos</translation>
+        <translation>Ajustes de base de datos</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="84"/>
@@ -273,7 +273,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="85"/>
         <source>Discard</source>
-        <translation>Descartar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
@@ -283,7 +283,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="98"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
-        <translation>Nota: ¡Si cambias la contraseña maestra aquí, deberás recordarla la próxima vez que accedas a la base de datos de Keepass!</translation>
+        <translation>Nota: ¡Si cambias la contraseña maestra aquí, deberás recordarla la próxima vez que accedas a base de datos de Keepass!</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="108"/>
@@ -319,7 +319,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="190"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
-        <translation>Al aumentar este valor se incrementa el tiempo de apertura de la base de datos de Keepass pero hace que la clave sea robusta contra ataques de fuerza bruta</translation>
+        <translation>Ajustando este valor se incrementa el tiempo de apertura de base de la datos de Keepass pero la clave es mas robusta contra ataques de fuerza bruta</translation>
     </message>
 </context>
 <context>
@@ -332,7 +332,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="78"/>
         <source>Discard</source>
-        <translation>Descartar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="84"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="175"/>
         <source>Set username</source>
-        <translation>Introduce el nombre de usuario</translation>
+        <translation>Establecer nombre de usuario</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="213"/>
         <source>Set password</source>
-        <translation>Introduce la contraseña</translation>
+        <translation>Establecer contraseña</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="244"/>
@@ -403,7 +403,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="270"/>
         <source>Set comment</source>
-        <translation>Introduce un comentario</translation>
+        <translation>Establecer comentario</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="342"/>
@@ -455,7 +455,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="92"/>
         <source>Discard</source>
-        <translation>Descartar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="96"/>
@@ -475,7 +475,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="150"/>
         <source>Set name of group</source>
-        <translation>Introduce el nombre del grupo</translation>
+        <translation>Establecer nombre del grupo</translation>
     </message>
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
@@ -485,8 +485,7 @@
     <message>
         <location filename="../qml/content/EditGroupDetailsDialog.qml" line="175"/>
         <source>Set notes for the group</source>
-        <translation>
-Añadir notas al grupo</translation>
+        <translation>Establecer notas al grupo</translation>
     </message>
 </context>
 <context>
@@ -519,7 +518,7 @@ Añadir notas al grupo</translation>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="104"/>
         <source>Custom Database Icons</source>
-        <translation>Iconos personalizados de la base de datos</translation>
+        <translation>Iconos personalizados de base de datos</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="126"/>
@@ -537,7 +536,7 @@ Añadir notas al grupo</translation>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
         <source>Discard</source>
-        <translation>Descartar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="94"/>
@@ -547,7 +546,7 @@ Añadir notas al grupo</translation>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="98"/>
         <source>Change default settings of your ownKeepass application here</source>
-        <translation>Cambiar aquí los ajustes por defecto de tu aplicación ownKeepass</translation>
+        <translation>Cambiar aquí ajustes por defecto de tu aplicación ownKeepass</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="102"/>
@@ -602,12 +601,12 @@ Añadir notas al grupo</translation>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="333"/>
         <source>Language</source>
-        <translation>Idioma</translation>
+        <translation>Lenguaje</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="334"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
-        <translation>El cambio de idioma se activará en ownKeepass después de reiniciar la aplicación</translation>
+        <translation>El cambio de lenguaje se activará después de reiniciar la aplicación</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="338"/>
@@ -705,7 +704,7 @@ Añadir notas al grupo</translation>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="320"/>
         <source>Landscape</source>
-        <translation>Apaisado</translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
@@ -768,12 +767,12 @@ Añadir notas al grupo</translation>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="74"/>
         <source>Problem with SD card</source>
-        <translation>Problema con la tarjeta SD</translation>
+        <translation>Problema con tarjeta SD</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="75"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation>Las tarjetas SD con varias particiones no están soportadas.</translation>
+        <translation>Tarjetas SD con varias particiones no están soportadas.</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
@@ -1034,13 +1033,13 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Borrando grupo</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Borrando entrada</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="166"/>
@@ -1110,12 +1109,12 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/content/MainPage.qml" line="276"/>
         <source>Problem with SD card</source>
-        <translation>Problema con la tarjeta SD</translation>
+        <translation>Problema con tarjeta SD</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="277"/>
         <source>SD cards with multiple partitions are not supported.</source>
-        <translation>Las tarjetas SD con varias particiones no están soportadas.</translation>
+        <translation>Tarjetas SD con varias particiones no están soportadas.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="317"/>
@@ -1220,7 +1219,7 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <location filename="../qml/content/MainPage.qml" line="234"/>
         <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Internal database error</source>
-        <translation>Error interno en la base de datos</translation>
+        <translation>Error interno en base de datos</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="102"/>
@@ -1328,12 +1327,12 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Haz intentado abrir una base de datos Keepass 2 pero la base de datos dada utiliza la versión 1. Elije la versión correcta de la base de datos Keepass.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="250"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error desconocido</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="745"/>
@@ -1461,7 +1460,7 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="104"/>
         <source>Database type:</source>
-        <translation>Tipo de base de datos</translation>
+        <translation>Tipo de base de datos:</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="121"/>
@@ -1532,7 +1531,7 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="75"/>
         <source>Discard</source>
-        <translation>Descartar</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="83"/>
@@ -1647,17 +1646,17 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Deslizar hacia abajo para agregar URL, nombre de usuario, contraseña, comentario y atributos adicionales</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
         <source>Read only mode</source>
-        <translation>Modo de sólo lectura</translation>
+        <translation>Modo sólo leer</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="82"/>
         <source>Edit password entry</source>
-        <translation>Editar registro de contraseña</translation>
+        <translation>Editar entrada de contraseña</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="117"/>
