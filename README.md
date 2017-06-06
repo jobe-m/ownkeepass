@@ -4,7 +4,13 @@
 
 ## Status
 
-Release 1.2.2 is available on [openrepos.net]
+Pre-Release 1.2.3 is available on [openrepos.net]
+* Implemented moving of password entries between groups (Keepass 2 database)
+* Show comment of password groups in list view (Keepass 2 database)
+* Fixed truncation mode of subtitle in list views
+* Updated translations from transifex
+
+Release 1.2.2 is available in Jolla store
 * Password entries in Keepass 2 databases can be created, edited and deleted
 * Password groups in Keepass 2 databases can be created, edited and deleted
 * Additional attributes of password entries in Keepass 2 databases can be added, changed and deleted
@@ -18,19 +24,6 @@ Release 1.2.2 is available on [openrepos.net]
 * Bugfix: Specifying the wrong Keepass version on opening a database does not give a proper error notification; the display just kept showing the loading databasee message
 * Bugfix: It was not possible to delete more than one keepass entry or group in a row
 * Bugfix: When deleting the last password item from a group the placeholder text was not shown again
-
-
-Bugfix release 1.1.15 is available in Jolla store
-* Fixed mapping of settings value for time to clear clipboard: In release 1.1.14 the time for clearing clipboard silently changed to 5 seconds if it was before set to "disabled"
-
-Release 1.1.14
-* Added individual icons for password entries and groups
-* Time to clear clipboard can be adjusted between 5 seconds and 10 minutes
-* Parent group of password entries is shown in search list view
-* Copy-Paste cover action now skips empty username or password entries
-* Implemented alphabetical sorting of Keepass 2 database entries
-* Added new translation for Galician language
-* Updated all other translations from Transifex
 
 ## Roadmap
 
