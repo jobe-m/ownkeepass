@@ -76,7 +76,6 @@ Dialog {
         SilicaLabel {
             id: dialogLabel
             y: header.y + header.height
-            width: parent.width
             text: qsTr("Move password entry \"%1\" into following group:").arg(movePasswordEntryDialog.nameOfPasswordEntry)
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }

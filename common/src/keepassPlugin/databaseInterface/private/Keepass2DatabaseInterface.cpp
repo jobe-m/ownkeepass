@@ -35,6 +35,7 @@
 #include "core/EntrySearcher.h"
 #include "core/Metadata.h"
 
+#define GROUP_SUBTITLE_FORMAT "| %1 | %2 | %3"
 
 using namespace kpxPrivate;
 using namespace kpxPublic;
@@ -45,8 +46,7 @@ Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
       m_Database(NULL),
       m_filePath(""),
       m_setting_showUserNamePasswordsInListView(false),
-      m_setting_sortAlphabeticallyInListView(true),
-      m_rootGroupId(0)
+      m_setting_sortAlphabeticallyInListView(true)
 {
     initDatabase();
 }
@@ -185,103 +185,85 @@ void Keepass2DatabaseInterface::slot_changePassKey(QString password, QString key
 
 void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 {
+    // TODO will be used only to get all groups recusively in a list model
     Q_ASSERT(m_Database);
-
-//    Uuid rootGroupId = Uuid(); // root group has list model ID 0
-    Uuid rootGroupId = m_Database->rootGroup()->uuid();
-
-    QList<Group*> masterGroups = m_Database->rootGroup()->children();
-    for (int i = 0; i < masterGroups.count(); i++) {
-        Group* masterGroup = masterGroups.at(i);
-//        qDebug() << "Mastergroup " << i << ": " << masterGroup->name();
-//        qDebug() << "Expanded: " << masterGroup->isExpanded();
-
-        int numberOfSubgroups = masterGroup->children().count();
-        int numberOfEntries = masterGroup->entries().count();
-
-        Uuid masterGroupId = masterGroup->uuid();
-//        qDebug() << "Uuid: " << masterGroupId.toByteArray();
-//        qDebug() << "toHex: " << masterGroupId.toHex();
-        if (registerListModel) {
-            // save modelId and master group only if needed
-            // i.e. save model list id for master group page and don't do it for list models used in dialogs
-            m_groups_modelId.insertMulti((const Uuid &)rootGroupId, (const Uuid &)masterGroupId);
-        }
-        // If recycle bin is existing do not show it in the list view
-        if (NULL == m_Database->metadata()->recycleBin() ||
-                masterGroup->uuid() != m_Database->metadata()->recycleBin()->uuid()) {
-            if (m_setting_sortAlphabeticallyInListView) {
-                emit addItemToListModelSorted(masterGroup->name(),                         // group name
-                                              getGroupIcon(masterGroup->iconNumber(),
-                                                           masterGroup->iconUuid()),       // icon uuid
-                                              QString("Subgroups: %1 | Entries: %2")
-                                              .arg(numberOfSubgroups)
-                                              .arg(numberOfEntries),                       // subTitle
-                                              masterGroupId.toHex(),                       // item id
-                                              (int)DatabaseItemType::GROUP,                // item type
-                                              0,                                           // item level (0 = root, 1 = first level, etc.
-                                              rootGroupId.toHex());                        // list model of root group
-            } else {
-                emit appendItemToListModel(masterGroup->name(),                            // group name
-                                           getGroupIcon(masterGroup->iconNumber(),
-                                                        masterGroup->iconUuid()),          // icon uuid
-                                           QString("Subgroups: %1 | Entries: %2")
-                                           .arg(numberOfSubgroups)
-                                           .arg(numberOfEntries),                          // subTitle
-                                           masterGroupId.toHex(),                          // item id
-                                           (int)DatabaseItemType::GROUP,                   // item type
-                                           0,                                              // item level (0 = root, 1 = first level, etc.
-                                           rootGroupId.toHex());                           // list model of root group
-            }
-        }
-    }
-
-    // Add Entries only when needed
+    Uuid rootGroupUuid;
+    QString rootGroupId;
     if (registerListModel) {
-        QList<Entry*> masterEntries = m_Database->rootGroup()->entries();
-        for (int i = 0; i < masterEntries.count(); i++) {
-            Entry* entry = masterEntries.at(i);
-            Q_ASSERT(entry);
-            if (Q_NULLPTR == entry) {
-                qDebug() << "ERROR: Could not find entry for UUID: " << entry;
-                emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
-                return;
-            }
-            Uuid itemId = entry->uuid();
-            // only append to list model if item ID is valid
-            if (m_setting_sortAlphabeticallyInListView) {
-                emit addItemToListModelSorted(entry->title(),                              // group name
-                                              getEntryIcon(entry->iconNumber(),
-                                                           entry->iconUuid()),             // icon uuid
-                                              getUserAndPassword(entry),                   // subTitle
-                                              itemId.toHex(),                              // item id
-                                              (int)DatabaseItemType::ENTRY,                // item type
-                                              0,                                           // item level (not used here)
-                                              rootGroupId.toHex());                        // list model gets groupId as its unique ID (here 0 because of root group)
-            } else {
-                emit appendItemToListModel(entry->title(),                                 // group name
-                                           getEntryIcon(entry->iconNumber(),
-                                                        entry->iconUuid()),                // icon uuid
-                                           getUserAndPassword(entry),                      // subTitle
-                                           itemId.toHex(),                                 // item id
-                                           (int)DatabaseItemType::ENTRY,                   // item type
-                                           0,                                              // item level (not used here)
-                                           rootGroupId.toHex());                           // list model gets groupId as its unique ID (here 0 because of root group)
-            }
-            // save modelId and entry
-            m_entries_modelId.insertMulti(rootGroupId, itemId);
-        }
+        rootGroupUuid = m_Database->rootGroup()->uuid();
+        rootGroupId = rootGroupUuid.toHex();
+    } else {
+        // Set default Id for list of groups
+        rootGroupId = uInt2QString(0xffffffff);
     }
+
+    // Add root group to list model
+    Group* rootGroup = m_Database->rootGroup();
+    int numberOfSubgroups = rootGroup->children().count();
+    int numberOfEntries = rootGroup->entries().count();
+    if (registerListModel) {
+        // save modelId and master group only if needed
+        // i.e. save model list id for master group page and don't do it for list models used in dialogs
+        m_groups_modelId.insertMulti((const Uuid &)rootGroupUuid, Uuid("0"));
+    }
+    appendItemToListModel(rootGroup->name(),                         // group name
+                          getGroupIcon(rootGroup->iconNumber(),
+                                       rootGroup->iconUuid()),       // icon uuid
+                          QString(GROUP_SUBTITLE_FORMAT)
+                          .arg(numberOfSubgroups).arg(numberOfEntries)
+                          .arg(rootGroup->notes()),                  // subTitle
+                          "0",                                       // item id (root group = 0)
+                          (int)DatabaseItemType::GROUP,              // item type
+                          0,                                         // item level (0 = root, 1 = first level, etc.
+                          rootGroupId);                              // list model of root group
+
+    // Finally go through all groups starting from root group and build up group structure
+    QList<Group *> recurGroups = rootGroup->children();
+    int groupLevel = 1;
+    loadMasterGroupsRecursive(recurGroups, groupLevel, rootGroupId, registerListModel);
     emit masterGroupsLoaded(DatabaseAccessResult::RE_OK, "");
 }
+
+void Keepass2DatabaseInterface::loadMasterGroupsRecursive(QList<Group *> recurGroups, int level, QString rootGroupId, bool registerListModel)
+{
+    Uuid rootGroupUuid = qString2Uuid(rootGroupId);
+    for (int i = 0; i < recurGroups.count(); ++i) {
+        Group* recurGroup = recurGroups[i];
+        // If recycle bin is existing do not show it in the list view
+        if (NULL == m_Database->metadata()->recycleBin() || recurGroup->uuid() != m_Database->metadata()->recycleBin()->uuid()) {
+            int numberOfSubgroups = recurGroup->children().count();
+            int numberOfEntries = recurGroup->entries().count();
+            Uuid recurGroupUuid = recurGroup->uuid();
+            if (registerListModel) {
+                // save modelId and master group only if needed
+                // i.e. save model list id for master group page and don't do it for list models used in dialogs
+                m_groups_modelId.insertMulti((const Uuid &)rootGroupUuid, (const Uuid &)recurGroupUuid);
+            }
+            appendItemToListModel(recurGroup->name(),                         // group name
+                                  getGroupIcon(recurGroup->iconNumber(),
+                                               recurGroup->iconUuid()),       // icon uuid
+                                  QString(GROUP_SUBTITLE_FORMAT)
+                                  .arg(numberOfSubgroups).arg(numberOfEntries)
+                                  .arg(recurGroup->notes()),                  // subTitle
+                                  recurGroupUuid.toHex(),                     // item id
+                                  (int)DatabaseItemType::GROUP,               // item type
+                                  level,                                      // item level (0 = root, 1 = first level, etc.
+                                  rootGroupId);                               // list model of root group
+            // go recursive through all children if existing
+            if (recurGroup->children().count() != 0) {
+                loadMasterGroupsRecursive(recurGroup->children(), level + 1, rootGroupId, registerListModel);
+            }
+        }
+    }
+}
+
 
 void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 {
     Q_ASSERT(m_Database);
+    Uuid groupUuid = getGroupUuidFromDatabase(groupId);
+    Group* group = getGroupFromDatabase(groupId);
     // load sub groups and entries
-    Uuid groupUuid = qString2Uuid(groupId);
-    Group* group = m_Database->resolveGroup(groupUuid);
-    Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
         emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "");
@@ -289,70 +271,45 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     }
 
     QList<Group*> subGroups = group->children();
-
-//    qDebug() << "group uuid: " << groupUuid.toByteArray();
-//    qDebug() << "group toHex: " << groupUuid.toHex();
-
     for (int i = 0; i < subGroups.count(); i++) {
         Group* subGroup = subGroups.at(i);
         int numberOfSubgroups = subGroup->children().count();
         int numberOfEntries = subGroup->entries().count();
         Uuid itemId = subGroup->uuid();
-        if (m_setting_sortAlphabeticallyInListView) {
-            emit addItemToListModelSorted(subGroup->name(),                               // group name
-                                          getGroupIcon(subGroup->iconNumber(),
-                                                       subGroup->iconUuid()),             // icon uuid
-                                          QString("Subgroups: %1 | Entries: %2")
-                                          .arg(numberOfSubgroups).arg(numberOfEntries),   // subTitle
-                                          itemId.toHex(),                                 // item id
-                                          (int)DatabaseItemType::GROUP,                   // item type
-                                          0,                                              // item level (not used here)
-                                          groupId);                                       // list model gets groupId as its unique ID
-        } else {
-            emit appendItemToListModel(subGroup->name(),                                  // group name
-                                       getGroupIcon(subGroup->iconNumber(),
-                                                    subGroup->iconUuid()),                // icon uuid
-                                       QString("Subgroups: %1 | Entries: %2")
-                                       .arg(numberOfSubgroups).arg(numberOfEntries),      // subTitle
-                                       itemId.toHex(),                                    // item id
-                                       (int)DatabaseItemType::GROUP,                      // item type
-                                       0,                                                 // item level (not used here)
-                                       groupId);                                          // list model gets groupId as its unique ID
+        // If recycle bin is existing do not show it in the list view
+        if (NULL == m_Database->metadata()->recycleBin() || itemId != m_Database->metadata()->recycleBin()->uuid()) {
+            addToListModel(subGroup->name(),                               // group name
+                           getGroupIcon(subGroup->iconNumber(),
+                                        subGroup->iconUuid()),             // icon uuid
+                           QString(GROUP_SUBTITLE_FORMAT)
+                           .arg(numberOfSubgroups).arg(numberOfEntries)
+                           .arg(subGroup->notes()),                        // subTitle
+                           itemId.toHex(),                                 // item id
+                           (int)DatabaseItemType::GROUP,                   // item type
+                           0,                                              // item level (not used here)
+                           groupUuid.toHex());                             // list model gets groupId as its unique ID
+            // save modelId and group
+            m_groups_modelId.insertMulti(groupUuid, itemId);
         }
-        // save modelId and group
-        m_groups_modelId.insertMulti(groupUuid, itemId);
     }
 
     QList<Entry*> entries = group->entries();
-
     for (int i = 0; i < entries.count(); i++) {
         Entry* entry = entries.at(i);
-        Q_ASSERT(entry);
         if (Q_NULLPTR == entry) {
             qDebug() << "ERROR: Could not find entry for UUID: " << entry;
             emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
             return;
         }
         Uuid itemId = entry->uuid();
-        if (m_setting_sortAlphabeticallyInListView) {
-            emit addItemToListModelSorted(entry->title(),                                 // group name
-                                          getEntryIcon(entry->iconNumber(),
-                                                       entry->iconUuid()),                // icon uuid
-                                          getUserAndPassword(entry),                      // subTitle
-                                          itemId.toHex(),                                 // item id
-                                          (int)DatabaseItemType::ENTRY,                   // item type
-                                          0,                                              // item level (not used here)
-                                          groupId);                                       // list model gets groupId as its unique ID
-        } else {
-            emit appendItemToListModel(entry->title(),                                    // group name
-                                       getEntryIcon(entry->iconNumber(),
-                                                    entry->iconUuid()),                   // icon uuid
-                                       getUserAndPassword(entry),                         // subTitle
-                                       itemId.toHex(),                                    // item id
-                                       (int)DatabaseItemType::ENTRY,                      // item type
-                                       0,                                                 // item level (not used here)
-                                       groupId);                                          // list model gets groupId as its unique ID
-        }
+        addToListModel(entry->title(),                                 // group name
+                       getEntryIcon(entry->iconNumber(),
+                                    entry->iconUuid()),                // icon uuid
+                       getUserAndPassword(entry),                      // subTitle
+                       itemId.toHex(),                                 // item id
+                       (int)DatabaseItemType::ENTRY,                   // item type
+                       0,                                              // item level (not used here)
+                       groupUuid.toHex());                             // list model gets groupId as its unique ID
         // save modelId and entry
         m_entries_modelId.insertMulti(groupUuid, itemId);
     }
@@ -366,7 +323,6 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
 
     // get entry handler for entryId
     Entry* entry = m_Database->resolveEntry(qString2Uuid(entryId));
-    Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
         emit entryLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId, keys, values, "");
@@ -408,7 +364,6 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
     // get group handle and load group details
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
-    Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
         emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND,
@@ -440,7 +395,6 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     // get group handle and load group details
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
-    Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
@@ -469,21 +423,13 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     int numberOfSubgroups = group->children().count();
     int numberOfEntries   = group->entries().count();
     for (int i = 0; i < modelIds.count(); i++) {
-        if (m_setting_sortAlphabeticallyInListView) {
-            emit updateItemInListModelSorted(title,                                        // update group name
-                                             iconUuid,                                     // update icon uuid
-                                             QString("Subgroups: %1 | Entries: %2")
-                                             .arg(numberOfSubgroups).arg(numberOfEntries), // subTitle
-                                             groupId,                                      // identifier for group item in list model
-                                             modelIds[i].toHex());                         // identifier for list model
-        } else {
-            emit updateItemInListModel(title,                                              // update group name
-                                       iconUuid,                                           // update icon uuid
-                                       QString("Subgroups: %1 | Entries: %2")
-                                       .arg(numberOfSubgroups).arg(numberOfEntries),       // subTitle
-                                       groupId,                                            // identifier for group item in list model
-                                       modelIds[i].toHex());                               // identifier for list model
-        }
+        updateInListModel(title,                                        // update group name
+                          iconUuid,                                     // update icon uuid
+                          QString(GROUP_SUBTITLE_FORMAT)
+                          .arg(numberOfSubgroups).arg(numberOfEntries)
+                          .arg(notes),                                  // subTitle
+                          groupId,                                      // identifier for group item in list model
+                          modelIds[i].toHex());                         // identifier for list model
     }
 
     // send signal to QML
@@ -499,9 +445,8 @@ void Keepass2DatabaseInterface::slot_unregisterListModel(QString modelId)
 
 void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes, QString parentGroupId, QString iconUuid)
 {
-    Uuid parentGroupUuid = getGroupFromDatabase(parentGroupId);
-    Group* parentGroup = m_Database->resolveGroup(parentGroupUuid);
-    Q_ASSERT(parentGroup);
+    Uuid parentGroupUuid = getGroupUuidFromDatabase(parentGroupId);
+    Group* parentGroup = getGroupFromDatabase(parentGroupId);
     if (Q_NULLPTR == parentGroup) {
         qDebug() << "ERROR: Could not find group for UUID: " << parentGroupId;
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", parentGroupId);
@@ -535,25 +480,15 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
     }
 
     // update all list model of parent groups where new group was added
-    if (m_setting_sortAlphabeticallyInListView) {
-        emit addItemToListModelSorted(title,                                    // group name
-                                      getGroupIcon(newGroup->iconNumber(),
-                                                   newGroup->iconUuid()),       // icon uuid
-                                      "Subgroups: 0 | Entries: 0",              // subTitle
-                                      newGroupId,                               // identifier for group item in list model
-                                      DatabaseItemType::GROUP,                  // item type
-                                      0,                                        // item level (not used here)
-                                      parentGroupUuid.toHex());                 // identifier for list model
-    } else {
-        emit appendItemToListModel(title,                                       // group name
-                                   getGroupIcon(newGroup->iconNumber(),
-                                                newGroup->iconUuid()),          // icon uuid
-                                   "Subgroups: 0 | Entries: 0",                 // subTitle
-                                   newGroupId,                                  // identifier for group in list model
-                                   DatabaseItemType::GROUP,                     // item type
-                                   0,                                           // item level (not used here)
-                                   parentGroupUuid.toHex());                    // identifier for list model
-    }
+    addToListModel(title,                                    // group name
+                   getGroupIcon(newGroup->iconNumber(),
+                                newGroup->iconUuid()),       // icon uuid
+                   QString(GROUP_SUBTITLE_FORMAT)
+                   .arg(0).arg(0).arg(notes),                // subTitle
+                   newGroupId,                               // identifier for group item in list model
+                   DatabaseItemType::GROUP,                  // item type
+                   0,                                        // item level (not used here)
+                   parentGroupUuid.toHex());                 // identifier for list model
     // save modelid and group
     m_groups_modelId.insertMulti(parentGroupUuid, newGroup->uuid());
 
@@ -578,7 +513,6 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
     // get group handle and load group details
     Uuid entryUuid = qString2Uuid(entryId);
     Entry* entry = m_Database->resolveEntry(entryUuid);
-    Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
         emit entrySaved(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
@@ -630,21 +564,12 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
     // Update all list models which contain the changed entry
     QList<Uuid> modelIds = m_entries_modelId.keys(entryUuid);
     for (int i = 0; i < modelIds.count(); i++) {
-        if (m_setting_sortAlphabeticallyInListView) {
-            emit updateItemInListModelSorted(values[KeepassDefault::TITLE],         // entry name
-                                             getEntryIcon(entry->iconNumber(),
-                                                          entry->iconUuid()),       // icon uuid
-                                             getUserAndPassword(entry),             // subTitle
-                                             entryId,                               // identifier for item in list model
-                                             modelIds[i].toHex());                  // identifier for list model of master group
-        } else {
-            emit updateItemInListModel(values[KeepassDefault::TITLE],               // entry name
-                                       getEntryIcon(entry->iconNumber(),
-                                                    entry->iconUuid()),             // icon uuid
-                                       getUserAndPassword(entry),                   // subTitle
-                                       entryId,                                     // identifier for item in list model
-                                       modelIds[i].toHex());                        // identifier for list model of master group
-        }
+        updateInListModel(values[KeepassDefault::TITLE],         // entry name
+                getEntryIcon(entry->iconNumber(),
+                             entry->iconUuid()),       // icon uuid
+                getUserAndPassword(entry),             // subTitle
+                entryId,                               // identifier for item in list model
+                modelIds[i].toHex());                  // identifier for list model of master group
     }
     // Signal to QML
     emit entrySaved(DatabaseAccessResult::RE_OK, "", entryId);
@@ -658,10 +583,8 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
                                                     QString parentGroupId,
                                                     QString iconUuid)
 {
-    Uuid parentGroupUuid = getGroupFromDatabase(parentGroupId);
-    Group* parentGroup = m_Database->resolveGroup(parentGroupUuid);
-
-    Q_ASSERT(parentGroup);
+    Uuid parentGroupUuid = getGroupUuidFromDatabase(parentGroupId);
+    Group* parentGroup = getGroupFromDatabase(parentGroupId);
     if (Q_NULLPTR == parentGroup) {
         qDebug() << "ERROR: Could not find group for UUID: " << parentGroupId;
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", parentGroupId);
@@ -738,16 +661,19 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
 void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentGroup)
 {
     Q_ASSERT(m_Database);
-    Group* grandParentGroup = parentGroup->parentGroup();
-    int numberOfSubgroups = parentGroup->children().count();
-    int numberOfEntries   = parentGroup->entries().count();
-    emit updateItemInListModel(parentGroup->name(),                                   // group name
-                               getGroupIcon(parentGroup->iconNumber(),
-                                            parentGroup->iconUuid()),                 // icon uuid
-                               QString("Subgroups: %1 | Entries: %2")
-                               .arg(numberOfSubgroups).arg(numberOfEntries),          // subTitle
-                               parentGroup->uuid().toHex(),                           // identifier for group item in list model
-                               grandParentGroup->uuid().toHex());                     // identifier for list model
+    if (parentGroup != m_Database->rootGroup()) {
+        Group* grandParentGroup = parentGroup->parentGroup();
+        int numberOfSubgroups = parentGroup->children().count();
+        int numberOfEntries   = parentGroup->entries().count();
+        emit updateItemInListModel(parentGroup->name(),                                   // group name
+                                   getGroupIcon(parentGroup->iconNumber(),
+                                                parentGroup->iconUuid()),                 // icon uuid
+                                   QString(GROUP_SUBTITLE_FORMAT)
+                                   .arg(numberOfSubgroups).arg(numberOfEntries)
+                                   .arg(parentGroup->notes()),                            // subTitle
+                                   parentGroup->uuid().toHex(),                           // identifier for group item in list model
+                                   grandParentGroup->uuid().toHex());                     // identifier for list model
+    }
 }
 
 void Keepass2DatabaseInterface::slot_deleteEntry(QString entryId)
@@ -755,14 +681,12 @@ void Keepass2DatabaseInterface::slot_deleteEntry(QString entryId)
     Q_ASSERT(m_Database);
     Uuid entryUuid = qString2Uuid(entryId);
     Entry* entry = m_Database->resolveEntry(entryUuid);
-    Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
         emit entryDeleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
         return;
     }
     Group* parentGroup = entry->group();
-    Q_ASSERT(parentGroup);
     // This puts entry into recycle bin or deletes it directy if recycle bin is not enabled
     m_Database->recycleEntry(entry);
 
@@ -789,14 +713,12 @@ void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
     Q_ASSERT(m_Database);
     Uuid groupUuid = qString2Uuid(groupId);
     Group* group = m_Database->resolveGroup(groupUuid);
-    Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
         emit groupDeleted(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
         return;
     }
     Group* parentGroup = group->parentGroup();
-    Q_ASSERT(parentGroup);
     // This puts entry into recycle bin or deletes it directy if recycle bin is not enabled
     m_Database->recycleGroup(group);
 
@@ -821,6 +743,67 @@ void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
 
 void Keepass2DatabaseInterface::slot_moveEntry(QString entryId, QString newGroupId)
 {
+    Q_ASSERT(m_Database);
+    Uuid entryUuid = qString2Uuid(entryId);
+    Entry* entry = m_Database->resolveEntry(entryUuid);
+    if (Q_NULLPTR == entry) {
+        qDebug() << "ERROR: Could not find entry for UInt: " << entryId;
+        emit entryMoved(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
+        return;
+    }
+
+    Uuid newGroupUuid = qString2Uuid(newGroupId);
+    Group* newGroup = m_Database->resolveGroup(newGroupUuid);
+    if (Q_NULLPTR == newGroup) {
+        qDebug() << "ERROR: Could not find group for UInt: " << newGroup;
+        emit entryMoved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", newGroupId);
+        return;
+    }
+
+    Group* oldGroup = entry->group();
+    entry->setGroup(newGroup);
+    // Save database
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // Send signal to QML
+        emit entryMoved(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg, entryId);
+        return;
+    }
+
+    // remove entry from all active list models where it might be added
+    emit deleteItemInListModel(entryId);
+    // update all grandparent groups subTitle, ie. entries counter has to be updated in UI
+    updateGrandParentGroupInListModel(oldGroup);
+
+    // add entry item in list model of new group if this group is actually visible in UI
+    if (m_groups_modelId.contains(newGroupUuid)) {
+        // register entry to list model of parent group
+        m_entries_modelId.insertMulti(newGroupUuid, entryUuid);
+        // now update list model with moved entry
+        if (m_setting_sortAlphabeticallyInListView) {
+            emit addItemToListModelSorted(entry->title(),                          // entry name
+                                          getEntryIcon(entry->iconNumber(),
+                                                       entry->iconUuid()),         // icon uuid
+                                          getUserAndPassword(entry),               // subTitle
+                                          entryId,                                 // identifier for entry item in list model
+                                          DatabaseItemType::ENTRY,                 // item type
+                                          0,                                       // item level (not used here)
+                                          newGroupId);                             // identifier for list model where this item should be inserted
+        } else {
+            emit appendItemToListModel(entry->title(),                             // entry name
+                                       getEntryIcon(entry->iconNumber(),
+                                                    entry->iconUuid()),            // icon uuid
+                                       getUserAndPassword(entry),                  // subTitle
+                                       entryId,                                    // identifier for entry item in list model
+                                       DatabaseItemType::ENTRY,                    // item type
+                                       0,                                          // item level (not used here)
+                                       newGroupId);                                // identifier for list model where this item should be inserted
+        }
+    }
+    // update subTitle of parent list model where password entry was moved to
+    updateGrandParentGroupInListModel(newGroup);
+    // signal to QML
+    emit entryMoved(DatabaseAccessResult::RE_OK, "", entryId);
 }
 
 void Keepass2DatabaseInterface::slot_moveGroup(QString groupId, QString newParentGroupId)
@@ -829,19 +812,12 @@ void Keepass2DatabaseInterface::slot_moveGroup(QString groupId, QString newParen
 
 void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString rootGroupId)
 {
-    Group* searchGroup;
-    if (rootGroupId.compare("0") == 0) {
-        searchGroup = m_Database->rootGroup();
-    } else {
-        searchGroup = m_Database->resolveGroup(qString2Uuid(rootGroupId));
-    }
-    Q_ASSERT(searchGroup);
+    Group* searchGroup = getGroupFromDatabase(rootGroupId);
     if (searchGroup != Q_NULLPTR) {
         EntrySearcher searcher;
         QString searchId = uInt2QString(0xfffffffe);
         Uuid searchUuid = qString2Uuid(searchId);
         Q_FOREACH (Entry* entry, searcher.search(searchString, searchGroup, Qt::CaseInsensitive)) {
-            Q_ASSERT(entry);
             if (Q_NULLPTR == entry) {
                 qDebug() << "ERROR: Could not find entry for UUID: " << entry;
                 emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
@@ -906,17 +882,24 @@ characters long.
 */
 inline Uuid Keepass2DatabaseInterface::qString2Uuid(QString value)
 {
-    if (value.compare("fffffffe") == 0) {
-        // special handle for search (group) list model
-        return Uuid("fffffffe");
-    } else {
-        QByteArray baValue = QByteArray::fromHex(value.toLatin1());
-        if (baValue.size() == Uuid::Length) {
-            return Uuid(baValue);
+    QByteArray baValue = QByteArray::fromHex(value.toLatin1());
+    if (baValue.size() == Uuid::Length) {
+        return Uuid(baValue);
+    } else if (value.compare("0") == 0) {
+        if (m_Database && m_Database->rootGroup()) {
+            return m_Database->rootGroup()->uuid();
         } else {
-            emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_UUID, value);
             return Uuid();
         }
+    } else if (value.compare("fffffffe") == 0) {
+        // special handle for search (group) list model
+        return Uuid("fffffffe");
+    } else if (value.compare("ffffffff") == 0) {
+        // special handle for not registered list models
+        return Uuid("ffffffff");
+    } else {
+        emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_UUID, value);
+        return Uuid();
     }
 }
 
@@ -931,11 +914,14 @@ The integer number is converted into a 4 byte long hexadecimal QString.
 */
 inline QString Keepass2DatabaseInterface::uInt2QString(uint value)
 {
-    if (value == 0) {
+    switch (value) {
+    case 0:
         return "0";
-    } else if (value == 0xfffffffe) {
+    case 0xfffffffe:
         return "fffffffe";
-    } else {
+    case 0xffffffff:
+        return "ffffffff";
+    default:
         return QString(QByteArray::number(value, 16));
     }
 }
@@ -1005,7 +991,7 @@ QString Keepass2DatabaseInterface::getGroupIcon(int standardIcon, Uuid customIco
     }
 }
 
-Uuid Keepass2DatabaseInterface::getGroupFromDatabase(QString groupId)
+Uuid Keepass2DatabaseInterface::getGroupUuidFromDatabase(QString groupId)
 {
     Q_ASSERT(m_Database);
     Uuid groupUuid;
@@ -1016,4 +1002,35 @@ Uuid Keepass2DatabaseInterface::getGroupFromDatabase(QString groupId)
         groupUuid = qString2Uuid(groupId);
     }
     return groupUuid;
+}
+
+Group* Keepass2DatabaseInterface::getGroupFromDatabase(QString groupId)
+{
+    Q_ASSERT(m_Database);
+    Group* group;
+    // Id for root group is "0" otherwise it is uuid for of parent group
+    if (groupId.compare("0") == 0) {
+        group = m_Database->rootGroup();
+    } else {
+        group = m_Database->resolveGroup(qString2Uuid(groupId));
+    }
+    return group;
+}
+
+void Keepass2DatabaseInterface::addToListModel(QString title, QString iconUuid, QString subTitle,
+                                               QString itemId, int itemType, int itemLevel, QString modelId) {
+    if (m_setting_sortAlphabeticallyInListView) {
+        emit addItemToListModelSorted(title, iconUuid, subTitle, itemId, itemType, itemLevel, modelId);
+    } else {
+        emit appendItemToListModel(title, iconUuid, subTitle, itemId, itemType, itemLevel, modelId);
+    }
+}
+
+void Keepass2DatabaseInterface::updateInListModel(QString title, QString iconUuid, QString subTitle, QString itemId, QString modelId)
+{
+    if (m_setting_sortAlphabeticallyInListView) {
+        emit updateItemInListModelSorted(title, iconUuid, subTitle, itemId, modelId);
+    } else {
+        emit updateItemInListModel(title, iconUuid, subTitle, itemId, modelId);
+    }
 }

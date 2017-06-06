@@ -256,6 +256,7 @@ void Keepass1DatabaseInterface::slot_changePassKey(QString password, QString key
 
 void Keepass1DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 {
+    // TODO will be used only to get all groups recusively in a list model
     Q_ASSERT(m_kdb3Database);
     QList<IGroupHandle*> masterGroups;
     if (m_setting_sortAlphabeticallyInListView) {
@@ -295,61 +296,84 @@ void Keepass1DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
 {
 
     Q_ASSERT(m_kdb3Database);
-    // load sub groups and entries
-    IGroupHandle* group = (IGroupHandle*)qString2UInt(groupId);
-    Q_ASSERT(group);
-    if (Q_NULLPTR == group) {
-        qDebug() << "ERROR: Could not find group for UInt: " << groupId;
-        emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "");
-    }
-    QList<IGroupHandle*> subGroups;
+    QList<IGroupHandle*> groups;
     if (m_setting_sortAlphabeticallyInListView) {
-        subGroups = m_kdb3Database->sortedGroups();
+        groups = m_kdb3Database->sortedGroups();
     } else {
-        subGroups = m_kdb3Database->groups();
+        groups = m_kdb3Database->groups();
     }
-    for (int i = 0; i < subGroups.count(); i++) {
-        IGroupHandle* subGroup = subGroups.at(i);
-        if (subGroup->isValid() && subGroup->parent() == group) {
-            int numberOfSubgroups = subGroup->children().count();
-            int numberOfEntries = m_kdb3Database->entries(subGroup).count();
-            emit appendItemToListModel(subGroup->title(),                              // group name
-                                       getGroupIcon(subGroup->image()),                // icon uuid
-                                       QString("Subgroups: %1 | Entries: %2")
-                                       .arg(numberOfSubgroups).arg(numberOfEntries),   // subTitle
-                                       uInt2QString(uint(subGroup)),                   // item id
-                                       DatabaseItemType::GROUP,                        // item type
-                                       0,                                              // item level (not used here)
-                                       groupId);                                       // list model gets groupId as its unique ID
-            // save modelId and group
-            m_groups_modelId.insertMulti(uint(group), uint(subGroup));
+    if (groupId.compare("0") == 0) {
+        // Load master groups (root level)
+        for (int i = 0; i < groups.count(); i++) {
+            IGroupHandle* group = groups.at(i);
+            if (group->isValid()) {
+                int item_level = group->level();
+                if (group->title() != "Backup") {
+                    int numberOfSubgroups = group->children().count();
+                    int numberOfEntries = m_kdb3Database->entries(group).count();
+                    int listModelId = 0;
+                    m_groups_modelId.insertMulti(listModelId, uint(group));
+                    emit appendItemToListModel(group->title(),                           // group name
+                                               getGroupIcon(group->image()),             // icon uuid
+                                               QString("Subgroups: %1 | Entries: %2")
+                                               .arg(numberOfSubgroups).arg(numberOfEntries),   // subTitle
+                                               uInt2QString(uint(group)),                // item id
+                                               DatabaseItemType::GROUP,                        // item type
+                                               item_level,                                     // item level (0 = root, 1 = first level, etc.
+                                               uInt2QString(uint(listModelId)));               // list model of root group
+                }
+            }
         }
-    }
+    } else {
+        // load sub groups and entries
+        IGroupHandle* parentGroup = (IGroupHandle*)qString2UInt(groupId);
+        if (Q_NULLPTR == parentGroup) {
+            qDebug() << "ERROR: Could not find group for UInt: " << groupId;
+            emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "");
+        }
+        for (int i = 0; i < groups.count(); i++) {
+            IGroupHandle* group = groups.at(i);
+            if (group->isValid() && group->parent() == parentGroup) {
+                int numberOfSubgroups = group->children().count();
+                int numberOfEntries = m_kdb3Database->entries(group).count();
+                emit appendItemToListModel(group->title(),                              // group name
+                                           getGroupIcon(group->image()),                // icon uuid
+                                           QString("groups: %1 | Entries: %2")
+                                           .arg(numberOfSubgroups).arg(numberOfEntries),   // subTitle
+                                           uInt2QString(uint(group)),                   // item id
+                                           DatabaseItemType::GROUP,                        // item type
+                                           0,                                              // item level (not used here)
+                                           groupId);                                       // list model gets groupId as its unique ID
+                // save modelId and group
+                m_groups_modelId.insertMulti(uint(parentGroup), uint(group));
+            }
+        }
 
-    QList<IEntryHandle*> entries;
-    if (m_setting_sortAlphabeticallyInListView) {
-        entries = m_kdb3Database->entriesSortedStd(group);
-    } else {
-        entries = m_kdb3Database->entries(group);
-    }
-    for (int i = 0; i < entries.count(); i++) {
-        IEntryHandle* entry = entries.at(i);
-        Q_ASSERT(entry);
-        if (Q_NULLPTR == entry) {
-            qDebug() << "ERROR: Could not find entry for UUID: " << entry;
-            emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
-            return;
+        QList<IEntryHandle*> entries;
+        if (m_setting_sortAlphabeticallyInListView) {
+            entries = m_kdb3Database->entriesSortedStd(parentGroup);
+        } else {
+            entries = m_kdb3Database->entries(parentGroup);
         }
-        if (entry->isValid()) {
-            emit appendItemToListModel(entry->title(),                                 // group name
-                                       getEntryIcon(entry->image()),                   // icon uuid
-                                       getUserAndPassword(entry),                      // subTitle
-                                       uInt2QString(uint(entry)),                      // item id
-                                       DatabaseItemType::ENTRY,                        // item type
-                                       0,                                              // item level (not used here)
-                                       groupId);                                       // list model gets groupId as its unique ID
-            // save modelId and entry
-            m_entries_modelId.insertMulti(uint(group), uint(entry));
+        for (int i = 0; i < entries.count(); i++) {
+            IEntryHandle* entry = entries.at(i);
+            Q_ASSERT(entry);
+            if (Q_NULLPTR == entry) {
+                qDebug() << "ERROR: Could not find entry for UUID: " << entry;
+                emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
+                return;
+            }
+            if (entry->isValid()) {
+                emit appendItemToListModel(entry->title(),                                 // group name
+                                           getEntryIcon(entry->image()),                   // icon uuid
+                                           getUserAndPassword(entry),                      // subTitle
+                                           uInt2QString(uint(entry)),                      // item id
+                                           DatabaseItemType::ENTRY,                        // item type
+                                           0,                                              // item level (not used here)
+                                           groupId);                                       // list model gets groupId as its unique ID
+                // save modelId and entry
+                m_entries_modelId.insertMulti(uint(parentGroup), uint(entry));
+            }
         }
     }
     emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_OK, "");

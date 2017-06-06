@@ -64,7 +64,6 @@ public:
     Q_PROPERTY(QString searchRootGroupId READ getSearchRootGroupId WRITE setSearchRootGroupId STORED true SCRIPTABLE true)
 
 public:
-    Q_INVOKABLE void loadMasterGroupsFromDatabase();
     Q_INVOKABLE void loadGroupListFromDatabase();
     Q_INVOKABLE void loadGroupsAndEntriesFromDatabase(QString groupId);
     Q_INVOKABLE void searchEntriesInKdbDatabase(QString searchString);

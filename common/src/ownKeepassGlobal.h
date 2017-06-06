@@ -68,7 +68,7 @@ public:
         RE_ERR_QSTRING_TO_INT,                         // conversion of QString to int failed
 
         // Keepass 2 specific
-        RE_ERR_QSTRING_TO_UUID,                        // conversion of uuid to QString failed (for passing a reference to QML)
+        RE_ERR_QSTRING_TO_UUID,                        // conversion of QString to uuid failed
 
         RE_LAST
     };

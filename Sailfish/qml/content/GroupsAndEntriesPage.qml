@@ -54,14 +54,7 @@ Page {
     }
 
     function loadGroups() {
-        // "Loading" state is initially active when database is currently opening from QueryPasswordDialog.
-        // Depending how long it takes to calculate the master key by doing keyTransfomationRounds the init
-        // function is called with a significant delay. During that time the busy indicator is shown.
-        if (groupId === "0") {
-            kdbListModel.loadMasterGroupsFromDatabase()
-        } else {
             kdbListModel.loadGroupsAndEntriesFromDatabase(groupId)
-        }
     }
 
     function closeOnError() {
@@ -272,21 +265,18 @@ Page {
         id: kdbListModel
         onGroupsAndEntriesLoaded: {
             Global.env.mainPage.errorHandler(result, errorMsg)
+            // automatically focus search bar on master group page but not on sub-group pages
+            if (groupId === 0 && ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
+                    searchField.focus = true
+            }
             // Close search bar if the list view is empty
             if (isEmpty) {
                 groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
             }
         }
+// TODO cleanup masterGroupsLoaded, it is not needed anymore...
         onMasterGroupsLoaded: {
             Global.env.mainPage.errorHandler(result, errorMsg)
-            // automatically focus search bar on master group page but not on sub-group pages
-            if (ownKeepassSettings.showSearchBar && ownKeepassSettings.focusSearchBarOnStartup && !isEmpty) {
-                searchField.focus = true
-            }
-            if (isEmpty) {
-                // Close search bar if the list view is empty
-                groupsAndEntriesPage.state = "SEARCH_BAR_HIDDEN"
-            }
         }
         onSearchEntriesCompleted: Global.env.mainPage.errorHandler(result, errorMsg)
         onLastItemDeleted: {

@@ -136,25 +136,6 @@ KdbListModel::~KdbListModel()
     }
 }
 
-void KdbListModel::loadMasterGroupsFromDatabase()
-{
-    // make list view empty and unregister if necessary
-    if (!isEmpty()) {
-        clear();
-    }
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
-        if (m_registered) {
-            emit unregisterFromDatabaseClient(m_modelId);
-            m_registered = false;
-        }
-        // send signal to global interface of keepass database to get master groups
-        emit loadMasterGroups(true);
-    }
-}
-
 void KdbListModel::loadGroupListFromDatabase()
 {
     // make list view empty and unregister if necessary
@@ -174,6 +155,7 @@ void KdbListModel::loadGroupListFromDatabase()
         m_registered = true;
         m_modelId = "ffffffff";
         // send signal to global interface of keepass database to get master groups
+// TODO clanup loadMasterGroups... registerListModel is not needed anymore...
         emit loadMasterGroups(false);
     }
 }

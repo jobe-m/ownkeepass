@@ -206,7 +206,12 @@ private:
     inline QString uInt2QString(uint value);
     QString getEntryIcon(int standardIcon, Uuid customIcon);
     QString getGroupIcon(int standardIcon, Uuid customIcon);
-    Uuid getGroupFromDatabase(QString groupId);
+    Uuid getGroupUuidFromDatabase(QString groupId);
+    Group* getGroupFromDatabase(QString groupId);
+    void loadMasterGroupsRecursive(QList<Group *> recurGroups, int level, QString rootGroupId, bool registerListModel);
+
+    void addToListModel(QString title, QString iconUuid, QString subTitle, QString itemId, int itemType, int itemLevel, QString modelId);
+    void updateInListModel(QString title, QString iconUuid, QString subTitle, QString itemId, QString modelId);
 
 private:
     // Keepass database handler
@@ -221,7 +226,6 @@ private:
     // The following two hash tables store information about which list models are showing a dedicated entry or group in the UI
     QHash<Uuid, Uuid> m_entries_modelId;
     QHash<Uuid, Uuid> m_groups_modelId;
-    int m_rootGroupId;
 };
 
 }
