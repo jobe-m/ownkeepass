@@ -168,7 +168,7 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                     anchors.bottom: parent.bottom
                     width: (parent.width / 2) * 0.95
                     text: "Flattr"
-                    onClicked: Qt.openUrlExternally("https://flattr.com/profile/jobe")
+                    onClicked: Qt.openUrlExternally("https://flattr.com/@jobe")
                 }
 
                 Button {

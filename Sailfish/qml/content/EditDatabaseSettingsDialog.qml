@@ -22,6 +22,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.ownkeepass 1.0
 import "../common"
 import "../scripts/Global.js" as Global
 
@@ -149,6 +150,8 @@ Dialog {
 
             ComboBox {
                 id: databaseCryptAlgorithm
+                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
+                visible: enabled
                 width: parent.width
                 label: qsTr("Encryption currently in use:")
                 currentIndex: ownKeepassDatabase.cryptAlgorithm

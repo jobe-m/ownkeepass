@@ -261,63 +261,63 @@
 <context>
     <name>EditDatabaseSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="86"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="87"/>
         <source>Database Settings</source>
         <translation>Ρυθμίσεις της βάσης δεδομένων</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="84"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="85"/>
         <source>Save</source>
         <translation>Αποθήκευση</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="85"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="86"/>
         <source>Discard</source>
         <translation>Απόρριψη</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="90"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="91"/>
         <source>Change settings of your currently opened Keepass database here</source>
         <translation>Αλλάξτε εδώ τις ρυθμίσεις της ανοιγμένης βάσης δεδομένων του Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="98"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
         <translation>Σημείωση: Αλλάζοντας εδώ τον κύριο κωδικό πρόσβασης, θα πρέπει να τον απομνημονεύσετε για την επόμενη φορά που θα ανοίξετε την βάση δεδομένων Keepass!</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="108"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="109"/>
         <source>Master password</source>
         <translation>Κύριος κωδικός πρόσβασης</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="111"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="112"/>
         <source>Change master password</source>
         <translation>Αλλαγή του κύριου κωδικού πρόσβασης</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
         <source>Master password confirmed</source>
         <translation>Ο κύριος κωδικός πρόσβασης επικυρώθηκε</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="136"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="139"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="140"/>
         <source>Confirm master password</source>
         <translation>Επικύρωση του κύριου κωδικού πρόσβασης</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="153"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="156"/>
         <source>Encryption currently in use:</source>
         <translation>Τρέχουσα κρυπτογράφηση:</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="176"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Key transformation rounds</source>
         <translation>Γύροι μετασχηματισμού κλειδιού</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="190"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="193"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Ο ορισμός μιας υψηλότερης τιμής αυξάνει τον χρόνο ανοίγματος της βάσης δεδομένων του Keepass αλλά το κάνει πιο ισχυρό απέναντι σε βίαιες επιθέσεις</translation>
     </message>
@@ -880,61 +880,61 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="340"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="344"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="360"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="365"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="410"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="415"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="326"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="330"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="346"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="351"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="396"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="401"/>
         <source>Password groups</source>
         <translation>Ομάδες κωδικών πρόσβασης</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="100"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="93"/>
         <source>Search</source>
         <translation>Αναζήτηση</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="159"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="152"/>
         <source>No entries found</source>
         <translation>Δεν βρέθηκαν καταχωρήσεις</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="178"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="171"/>
         <source>Decrypting Keepass database</source>
         <translation>Αποκρυπτογράφηση της βάσης δεδομένων Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="200"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="193"/>
         <source>Group is empty</source>
         <translation>Η ομάδα είναι κενή</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="203"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="196"/>
         <source>Pull down to add password groups</source>
         <translation>Τραβήξτε προς τα κάτω για την προσθήκη ομάδων κωδικών πρόσβασης</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="204"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="197"/>
         <source>Pull down to add password groups or entries</source>
         <translation>Τραβήξτε προς τα κάτω για την προσθήκη ομάδων κωδικών πρόσβασης ή καταχωρήσεων</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="324"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="310"/>
         <source>Loading</source>
         <translation>Φόρτωση</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="380"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="384"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="420"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="366"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
         <source>Search in all groups</source>
         <translation>Αναζήτηση σε όλες τις ομάδες</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="381"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="385"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="421"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
         <source>Search in</source>
         <translation>Αναζήτηση σε</translation>
     </message>

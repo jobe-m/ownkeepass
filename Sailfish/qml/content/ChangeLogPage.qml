@@ -70,7 +70,12 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
-<b>v1.2.3 (pre-release)</b>\
+<b>v1.2.4 SD card</b>\
+<ul>\
+<li>Get SD card working again with Sailfish OS 2.2.0.29 Mouhijoki</li>\
+</ul>\
+<br>\
+<b>v1.2.3 KDBX enhancements</b>\
 <ul>\
 <li>Implemented moving of password entries between groups (Keepass 2 database)</li>\
 <li>Show comment of password groups in list view (Keepass 2 database)</li>\

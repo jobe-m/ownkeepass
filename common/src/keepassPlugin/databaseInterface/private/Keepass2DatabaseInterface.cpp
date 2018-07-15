@@ -181,6 +181,28 @@ void Keepass2DatabaseInterface::slot_createNewDatabase(QString filePath, QString
 
 void Keepass2DatabaseInterface::slot_changePassKey(QString password, QString keyFile)
 {
+    Q_ASSERT(m_Database);
+    CompositeKey masterKey;
+    masterKey.addKey(PasswordKey(password));
+    if (!keyFile.isEmpty()) {
+        FileKey key;
+        QString errorMsg;
+        if (!key.load(keyFile, &errorMsg)) {
+            emit databaseOpened(DatabaseAccessResult::RE_KEYFILE_OPEN_ERROR, errorMsg);
+            return;
+        }
+        masterKey.addKey(key);
+    }
+    m_Database->setKey(masterKey);
+
+    // save database
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // send signal to QML
+        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg);
+        return;
+    }
+    emit passwordChanged();
 }
 
 void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
@@ -928,10 +950,21 @@ inline QString Keepass2DatabaseInterface::uInt2QString(uint value)
 
 void Keepass2DatabaseInterface::slot_changeKeyTransfRounds(int value)
 {
+    Q_ASSERT(m_Database);
+    m_Database->setTransformRounds((quint64) value);
+    // Save database
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg);
+        return;
+    }
+    emit databaseKeyTransfRoundsChanged(value);
 }
 
 void Keepass2DatabaseInterface::slot_changeCryptAlgorithm(int value)
 {
+    Q_UNUSED(value);
+    // Not available in Keepass 2 database
 }
 
 void Keepass2DatabaseInterface::slot_loadCustomIcons()

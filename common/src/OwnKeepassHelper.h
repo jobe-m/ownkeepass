@@ -51,8 +51,6 @@ signals:
 private:
     QStringList mountPoints() const;
     QStringList sdCardPartitions();
-
-    QDir m_dir;
 };
 
 #endif // OWNKEEPASSHELPER_H

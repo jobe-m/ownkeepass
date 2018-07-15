@@ -116,7 +116,8 @@ HEADERS += \
     ../common/src/settings/RecentDatabaseListModel.h \
     ../common/src/settings/OwnKeepassSettings.h \
     ../common/src/OwnKeepassHelper.h \
-    ../common/src/ownKeepassGlobal.h
+    ../common/src/ownKeepassGlobal.h \
+    ../common/src/SdCardHelper.h
 
 OTHER_FILES += \
     ../common/images/icons.qrc \

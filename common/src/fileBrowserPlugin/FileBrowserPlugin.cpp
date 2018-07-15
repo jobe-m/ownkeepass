@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2015 - 2018 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -24,7 +24,7 @@
 #include <QStandardPaths>
 #include <QTranslator>
 #include "FileBrowserPlugin.h"
-
+#include "SdCardHelper.h"
 
 FileBrowserListModel::FileBrowserListModel(QObject *parent)
     : QAbstractListModel(parent),
@@ -226,79 +226,24 @@ void FileBrowserListModel::clear()
 
 bool FileBrowserListModel::sdCardExists()
 {
-    QStringList sdCards(sdCardPartitions());
-    // multi-partition SD cards (count > 1) are not supported
-    return (sdCards.count() == 1);
+    return SdCardHelper::sdCardExists();
 }
 
 QString FileBrowserListModel::getSdCardPath()
 {
-    QStringList sdCards(sdCardPartitions());
-    if (sdCards.isEmpty()) {
-        return QString("error");
-    }
-    if (sdCards.count() > 1) {
-        // tell user that multi-partition SD cards are not supported
+    QString sdCardPath = SdCardHelper::getSdCardPath();
+    if (sdCardPath.compare("error-multi-partition") == 0) {
         emit showErrorBanner();
-        return QString("error");
     }
-
-    // return always first partition, multi-partition SD cards are not supported
-    QDir dir("/media/sdcard");
-    QString sdCard(dir.absoluteFilePath(sdCards.first()));
-    return sdCard;
+    return sdCardPath;
 }
 
 QStringList FileBrowserListModel::sdCardPartitions()
 {
-    QDir dir("/media/sdcard");
-    if (!dir.exists()){
-        return QStringList();
-    }
-    dir.setFilter(QDir::AllDirs | QDir::NoDotAndDotDot);
-    QStringList sdCardPartitions = dir.entryList();
-    if (sdCardPartitions.isEmpty()) {
-        return QStringList();
-    }
-
-    // remove all directories which are not mount points
-    QStringList mounts = mountPoints();
-    QMutableStringListIterator i(sdCardPartitions);
-    while (i.hasNext()) {
-        QString dirname = i.next();
-        QString abspath = dir.absoluteFilePath(dirname);
-        if (!mounts.contains(abspath)) {
-            i.remove();
-        }
-    }
-
-    return sdCardPartitions;
+    return SdCardHelper::sdCardPartitions();
 }
 
 QStringList FileBrowserListModel::mountPoints() const
 {
-    // read /proc/mounts and return all mount points for the filesystem
-    QFile file("/proc/mounts");
-    if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        return QStringList();
-    }
-    QTextStream in(&file);
-    QString result = in.readAll();
-
-    // split result to lines
-    QStringList lines = result.split(QRegExp("[\n\r]"));
-
-    // get columns
-    QStringList dirs;
-    foreach (QString line, lines) {
-        QStringList columns = line.split(QRegExp("\\s+"), QString::SkipEmptyParts);
-        if (columns.count() < 6) { // skip broken mount points
-            continue;
-        }
-
-        QString dir = columns.at(1);
-        dirs.append(dir);
-    }
-
-    return dirs;
+    return SdCardHelper::mountPoints();
 }

@@ -56,8 +56,8 @@ PullDownMenu {
     }
 
     MenuItem {
-        enabled: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly && (ownKeepassDatabase.type !== DatabaseType.DB_TYPE_KEEPASS_2)
-        visible: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
+        enabled: enableDatabaseSettingsMenuItem && !ownKeepassDatabase.readOnly
+        visible: enabled
         text: qsTr("Database settings")
         onClicked: {
             pageStack.push(Global.env.mainPage.editDatabaseSettingsDialogComponent)
