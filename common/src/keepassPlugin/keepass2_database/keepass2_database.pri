@@ -31,7 +31,7 @@ DEPENDPATH  += $$PWD/../keepass2_database/keepassx/src
 
 SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.cpp \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Entry.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Group.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Tools.cpp \
@@ -42,7 +42,7 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/TimeInfo.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/DatabaseIcons.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/FilePath.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.cpp \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/PasswordGenerator.cpp \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey.cpp \
@@ -51,12 +51,12 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/CryptoHash.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipher.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/salsa20.c \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.cpp \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/salsa20.c \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Crypto.cpp \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2Reader.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.cpp \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2RandomStream.cpp \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/StoreDataStream.cpp \
@@ -67,15 +67,15 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.cpp \
-    $$PWD/keepassx/src/format/KeePass2Writer.cpp \
-    $$PWD/keepassx/src/format/KeePass2XmlWriter.cpp
+    $$PWD/keepassx/src/format/KeePass2Writer.cpp #\
+    #$$PWD/keepassx/src/format/KeePass2XmlWriter.cpp
 
 
 HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/inc/config-keepassx.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Group.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Entry.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Tools.h \
@@ -87,27 +87,27 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/TimeInfo.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/DatabaseIcons.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/FilePath.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/PasswordGenerator.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey_p.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey_p.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/Key.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Random.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/CryptoHash.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipher.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-config.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-machine.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-portable.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-sync.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-config.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-machine.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-portable.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-sync.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Crypto.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2Reader.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2RandomStream.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/StoreDataStream.h \
@@ -120,4 +120,4 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.h \
     $$PWD/keepassx/src/format/KeePass2Writer.h \
-    $$PWD/keepassx/src/format/KeePass2XmlWriter.h
+    #$$PWD/keepassx/src/format/KeePass2XmlWriter.h
