@@ -26,7 +26,7 @@ QT += gui concurrent core
 LIBS += -lgcrypt -lz
 
 # enable preprocessor to find include paths
-INCLUDEPATH += $$PWD/../keepass2_database/keepassx/src $$PWD/inc
+INCLUDEPATH += $$PWD/../keepass2_database/keepassx/src $$PWD/../keepass2_database/keepassx/src/zxcvbn $$PWD/inc
 DEPENDPATH  += $$PWD/../keepass2_database/keepassx/src
 
 SOURCES += \
@@ -50,13 +50,15 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Random.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/CryptoHash.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipher.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.cpp \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.cpp \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.cpp \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/salsa20.c \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Crypto.cpp \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Crypto.cpp \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2Reader.cpp \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.cpp \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KdbxXmlReader.cpp \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/Kdbx4Reader.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2RandomStream.cpp \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/StoreDataStream.cpp \
@@ -65,10 +67,13 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/HashedBlockStream.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/qtiocompressor.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.cpp \
+    #TODO find a way to include sodium.h (cmake?)
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.cpp \
-    $$PWD/keepassx/src/format/KeePass2Writer.cpp #\
+    $$PWD/keepassx/src/format/KeePass2Writer.cpp \
     #$$PWD/keepassx/src/format/KeePass2XmlWriter.cpp
+    $$PWD/keepassx/src/format/KdbxXmlWriter.cpp \
+    $$PWD/keepassx/src/format/Kdbx4Writer.cpp
 
 
 HEADERS += \
@@ -97,7 +102,7 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Random.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/CryptoHash.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipher.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.h \
+    #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.h \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.h \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-config.h \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-machine.h \
@@ -108,6 +113,8 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2Reader.h \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.h \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KdbxXmlReader.h \
+    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/Kdbx4Reader.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2RandomStream.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/StoreDataStream.h \
@@ -121,3 +128,5 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.h \
     $$PWD/keepassx/src/format/KeePass2Writer.h \
     #$$PWD/keepassx/src/format/KeePass2XmlWriter.h
+    $$PWD/keepassx/src/format/KdbxXmlWriter.h \
+    $$PWD/keepassx/src/format/Kdbx4Writer.h

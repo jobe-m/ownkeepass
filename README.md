@@ -2,6 +2,13 @@
 
 [Bug reports go here] - [Translations here]
 
+## The road to KDBX4
+* Usage of KeepassXC (master) as submodule (instead of the old KeepassX).. OK
+* Usage of QUuid ..
+* Compile a very first time with new submodule ..
+* Find a way to include sodium.h ??
+* Find a way to include libgcrypt 1.6+ ??
+
 ## Status
 
 Pre-Release 1.2.3 is available on [openrepos.net]
