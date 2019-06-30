@@ -1,4 +1,7 @@
 
+#define KEEPASSXC_VERSION ""
+#define KEEPASSXC_BUILD_TYPE ""
+
 // This file with some defines is needed for KeepassX 2 database sources to get it compiling
 // Anyway nothing used either from here
 

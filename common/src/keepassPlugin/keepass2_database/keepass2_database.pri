@@ -78,6 +78,7 @@ SOURCES += \
 
 HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/inc/config-keepassx.h \
+    ../common/src/keepassPlugin/keepass2_database/inc/git-info.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.h \
     #../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.h \
