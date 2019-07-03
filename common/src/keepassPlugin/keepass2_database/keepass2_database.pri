@@ -31,7 +31,6 @@ DEPENDPATH  += $$PWD/../keepass2_database/keepassx/src
 
 SOURCES += \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.cpp \
-    #../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Entry.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Group.cpp \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Tools.cpp \
@@ -81,7 +80,6 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/inc/git-info.h \
 \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.h \
-    #../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Group.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Entry.h \
     ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Tools.h \
