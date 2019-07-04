@@ -29,8 +29,8 @@ SOURCES += \
     ../common/src/keepassPlugin/keepass1_database/config/KpxConfig.cpp \
     ../common/src/keepassPlugin/keepass1_database/database/Kdb3Database.cpp \
     ../common/src/keepassPlugin/keepass1_database/utils/SecString.cpp \
-    ../common/src/keepassPlugin/keepass1_database/utils/tools.cpp \
-    ../common/src/keepassPlugin/keepass1_database/utils/random.cpp \
+    ../common/src/keepassPlugin/keepass1_database/utils/tools1.cpp \
+    ../common/src/keepassPlugin/keepass1_database/utils/random1.cpp \
     ../common/src/keepassPlugin/keepass1_database/crypto/aescrypt.c \
     ../common/src/keepassPlugin/keepass1_database/crypto/aeskey.c \
     ../common/src/keepassPlugin/keepass1_database/crypto/aes_modes.c \
@@ -48,8 +48,8 @@ HEADERS += \
     ../common/src/keepassPlugin/keepass1_database/config/keepassx.h \
     ../common/src/keepassPlugin/keepass1_database/database/Kdb3Database.h \
     ../common/src/keepassPlugin/keepass1_database/utils/SecString.h \
-    ../common/src/keepassPlugin/keepass1_database/utils/tools.h \
-    ../common/src/keepassPlugin/keepass1_database/utils/random.h \
+    ../common/src/keepassPlugin/keepass1_database/utils/tools1.h \
+    ../common/src/keepassPlugin/keepass1_database/utils/random1.h \
     ../common/src/keepassPlugin/keepass1_database/crypto/aes.h \
     ../common/src/keepassPlugin/keepass1_database/crypto/aescpp.h \
     ../common/src/keepassPlugin/keepass1_database/crypto/aes_endian.h \

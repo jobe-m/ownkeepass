@@ -27,7 +27,7 @@
 #include <QColor>
 #include <QSettings>
 
-#include "utils/tools.h"
+#include "utils/tools1.h"
 //#include "lib/AutoType.h"
 
 //#if defined(Q_WS_MAC)
