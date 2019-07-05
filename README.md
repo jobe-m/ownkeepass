@@ -4,10 +4,11 @@
 
 ## The road to KDBX4
 * Usage of KeepassXC (master) as submodule (instead of the old KeepassX).. OK
-* Usage of QUuid ..
-* Compile a very first time with new submodule ..
-* Find a way to include sodium.h ??
+* Libs not available on Build Engine ..
+  * find_package(Argon2 REQUIRED)
+  * find_package(sodium 1.0.12 REQUIRED)
 * Find a way to include libgcrypt 1.6+ ??
+See: https://sailfishos.org/wiki/Tutorial_-_Building_packages_manually
 
 ## Status
 
