@@ -1,4 +1,4 @@
-[submodule "common/src/keepassPlugin/keepass2_database/keepassx"]
-	path = common/src/keepassPlugin/keepass2_database/keepassx
+[submodule "common/src/keepassPlugin/keepass2_database/keepassxc"]
+	path = common/src/keepassPlugin/keepass2_database/keepassxc
 	url = https://github.com/keepassxreboot/keepassxc.git
 	branch = master

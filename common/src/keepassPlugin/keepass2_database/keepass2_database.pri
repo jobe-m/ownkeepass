@@ -25,7 +25,7 @@ QT += gui concurrent core
 # KeepassXC 2 uses libgcrypt and libz
 LIBS += -lgcrypt -lz
 
-SRC_DIR += $$PWD/keepassx/src
+SRC_DIR += $$PWD/keepassxc/src
 
 # enable preprocessor to find include paths
 INCLUDEPATH += $$SRC_DIR $$SRC_DIR/zxcvbn $$PWD/inc
@@ -54,7 +54,7 @@ SOURCES += \
 \
     $$SRC_DIR/crypto/kdf/Kdf.cpp \
     $$SRC_DIR/crypto/kdf/AesKdf.cpp \
-    #$$SRC_DIR/crypto/kdf/Argon2Kdf.cpp \
+    $$SRC_DIR/crypto/kdf/Argon2Kdf.cpp \
     $$SRC_DIR/crypto/Random.cpp \
     $$SRC_DIR/crypto/Crypto.cpp \
     $$SRC_DIR/crypto/CryptoHash.cpp \
@@ -78,7 +78,7 @@ SOURCES += \
     $$SRC_DIR/streams/qtiocompressor.cpp \
     $$SRC_DIR/keys/PasswordKey.cpp \
     #TODO find a way to include sodium.h (cmake?)
-    $$SRC_DIR/keys/FileKey.cpp \
+    #$$SRC_DIR/keys/FileKey.cpp \
     $$SRC_DIR/core/EntrySearcher.cpp \
 \
     $$SRC_DIR/format/KeePass2Writer.cpp \
@@ -118,7 +118,7 @@ HEADERS += \
     $$SRC_DIR/crypto/kdf/Kdf_p.h \
     $$SRC_DIR/crypto/kdf/AesKdf.h \
     $$SRC_DIR/crypto/kdf/Argon2Kdf.h \
-    #$$SRC_DIR/crypto/argon2/argon2.h \
+    $$SRC_DIR/crypto/argon2/argon2.h \
     $$SRC_DIR/crypto/Random.h \
     $$SRC_DIR/crypto/Crypto.h \
     $$SRC_DIR/crypto/CryptoHash.h \
@@ -145,8 +145,8 @@ HEADERS += \
     $$SRC_DIR/keys/FileKey.h \
     $$SRC_DIR/core/EntrySearcher.h \
 \
-    $$PWD/keepassx/src/format/KeePass2Writer.h \
-    $$PWD/keepassx/src/format/KdbxWriter.h \
-    $$PWD/keepassx/src/format/Kdbx3Writer.h \
-    $$PWD/keepassx/src/format/Kdbx4Writer.h \
-    $$PWD/keepassx/src/format/KdbxXmlWriter.h \
+    $$SRC_DIR/format/KeePass2Writer.h \
+    $$SRC_DIR/format/KdbxWriter.h \
+    $$SRC_DIR/format/Kdbx3Writer.h \
+    $$SRC_DIR/format/Kdbx4Writer.h \
+    $$SRC_DIR/format/KdbxXmlWriter.h \
