@@ -26,7 +26,7 @@
 #include "private/DatabaseClient.h"
 
 // the next is for using defined keys from Keepass 2
-#include "../../keepass2_database/keepassx/src/core/EntryAttributes.h"
+#include "../../keepass2_database/keepassxc/src/core/EntryAttributes.h"
 
 using namespace kpxPublic;
 using namespace kpxPrivate;

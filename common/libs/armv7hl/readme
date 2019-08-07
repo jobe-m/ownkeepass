@@ -1,3 +1,4 @@
 ownKeepass includes system libraries which are not allowed to be required in Jolla harbour:
 - libgcrypt.so.11 extracted from package libgcrypt-1.5.0-1.1.1.armv7hl.rpm which is taken from build.merproject.org > mer-core:armv7hl:release > Packages > libgcrypt
 - libgpg-error.so.0 extracted from package libpgp-error-1.10-1.1.1.armv7hl.rpm which is taken from build.merproject.org > mer-core:armv7hl:release > Packages > libgpg-error
+- libargon2.so.0 extracted from package libargon2-20161029-1.2.6.jolla.armv7hl.rpm which is taken from build.merproject.org >  home:yeoldegrove:crypt > Package > argon2

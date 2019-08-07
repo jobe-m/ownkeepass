@@ -32,7 +32,7 @@
 #include "crypto/yarrow.h"
 
 // the next is for using defined keys from Keepass2 in loadEntry function
-#include "../../keepass2_database/keepassx/src/core/EntryAttributes.h"
+#include "../../keepass2_database/keepassxc/src/core/EntryAttributes.h"
 
 using namespace kpxPrivate;
 using namespace kpxPublic;

@@ -73,6 +73,7 @@ common_files.files += \
 password_generator_lib.path   = /usr/share/$${TARGET}/lib
 password_generator_lib.files += \
     ../common/libs/$$ARCH_LIBS/libgcrypt.so.11 \
+    ../common/libs/$$ARCH_LIBS/libargon2.so.0 \
     ../common/libs/$$ARCH_LIBS/libgpg-error.so.0
 
 # process all application icon sizes
