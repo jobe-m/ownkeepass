@@ -60,6 +60,8 @@ In order to use a 3rd-party repository, you need to add it to the _Build Engine_
 - You can now use the tool available on _Qt Creator_ to install the package; otherwise you can still use the command, e.g.:
   `sb2 -t SailfishOS-3.1.0.12-arm7hl -m sdk-install -R zypper in libargon2-devel`
 
+See also: https://gist.github.com/skvark/49a2f1904192b6db311a
+
 ## What is this?
 
 ownKeepass is a password safe application for the Jolla Smartphone with the purpose to
