@@ -54,11 +54,11 @@ In order to succesfully build this application, you need the following steps:
 
 In order to use a 3rd-party repository, you need to add it to the _Build Engine_:
 - Add the repository to any applicable Kit, e.g.:
-  `sb2 -t SailfishOS-3.1.0.12-arm7hl -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_armv7hl crypt`
+  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_armv7hl crypt`
 - Refresh the list of packages for that Kit, e.g.:
-  `sb2 -t SailfishOS-3.1.0.12-arm7hl -m sdk-install -R zypper ref`
+  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ref`
 - You can now use the tool available on _Qt Creator_ to install the package; otherwise you can still use the command, e.g.:
-  `sb2 -t SailfishOS-3.1.0.12-arm7hl -m sdk-install -R zypper in libargon2-devel`
+  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper in libargon2-devel`
 
 See also: https://gist.github.com/skvark/49a2f1904192b6db311a
 
