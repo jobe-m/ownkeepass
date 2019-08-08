@@ -23,9 +23,10 @@ PkgConfigBR:
 - Qt5Core
 - Qt5Qml
 - Qt5Quick
+- libargon2
 - libgcrypt
-PkgBR:
-- libargon2-devel
+- libsodium
+PkgBR: []
 Files:
 - '%defattr(644,root,root,-)'
 - '%{_datadir}/icons/hicolor/86x86/apps'

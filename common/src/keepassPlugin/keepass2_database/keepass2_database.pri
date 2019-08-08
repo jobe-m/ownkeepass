@@ -22,8 +22,8 @@
 
 QT += gui concurrent core
 
-# KeepassXC 2 uses libgcrypt and libz
-LIBS += -lgcrypt -lz
+# KeepassXC uses libargon2, libgcrypt, lsodium and libz
+LIBS += -largon2 -lgcrypt -lsodium -lz
 
 SRC_DIR += $$PWD/keepassxc/src
 
@@ -48,6 +48,7 @@ SOURCES += \
     $$SRC_DIR/core/TimeInfo.cpp \
     $$SRC_DIR/core/DatabaseIcons.cpp \
     $$SRC_DIR/core/FilePath.cpp \
+    $$SRC_DIR/zxcvbn/zxcvbn.c \
     $$SRC_DIR/core/PasswordGenerator.cpp \
 \
     $$SRC_DIR/keys/CompositeKey.cpp \
@@ -77,8 +78,7 @@ SOURCES += \
     $$SRC_DIR/streams/HmacBlockStream.cpp \
     $$SRC_DIR/streams/qtiocompressor.cpp \
     $$SRC_DIR/keys/PasswordKey.cpp \
-    #TODO find a way to include sodium.h (cmake?)
-    #$$SRC_DIR/keys/FileKey.cpp \
+    $$SRC_DIR/keys/FileKey.cpp \
     $$SRC_DIR/core/EntrySearcher.cpp \
 \
     $$SRC_DIR/format/KeePass2Writer.cpp \
@@ -109,6 +109,7 @@ HEADERS += \
     $$SRC_DIR/core/TimeInfo.h \
     $$SRC_DIR/core/DatabaseIcons.h \
     $$SRC_DIR/core/FilePath.h \
+    $$SRC_DIR/zxcvbn/zxcvbn.h \
     $$SRC_DIR/core/PasswordGenerator.h \
 \
     $$SRC_DIR/keys/CompositeKey.h \
