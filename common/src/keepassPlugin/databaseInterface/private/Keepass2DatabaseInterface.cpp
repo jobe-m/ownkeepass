@@ -25,6 +25,7 @@
 
 #include "ownKeepassGlobal.h"
 #include "Keepass2DatabaseInterface.h"
+#include "../KeepassIcon.h"
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
 #include "crypto/Crypto.h"
@@ -435,7 +436,7 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     }
     group->setName(title);
     group->setNotes(notes);
-    if (iconUuid.size() != 32) {
+    if (KeepassIcon::StandardLength) {
         // Remove icf from icon name, e.g. "icf12" so that 12 is the icon number
         QString iconNumber = iconUuid;
         group->setIcon(iconNumber.remove(0, 3).toInt());
@@ -493,7 +494,7 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
     newGroup->setNotes(notes);
     int iconNumber = 0;
     // Check lenth and determine if the icon is a stardart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
-    if (iconUuid.size() != 32) {
+    if (KeepassIcon::StandardLength) {
         QString standardIcon = iconUuid;
         iconNumber = standardIcon.remove(0, 3).toInt();
         newGroup->setIcon(iconNumber);
@@ -578,7 +579,7 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
 //        qDebug() << "delete: " << keysToDelete[i];
     }
 
-    if (iconUuid.size() != 32) {
+    if (KeepassIcon::StandardLength) {
         // Remove ic from icon name, e.g. "ic12" so that 12 is the icon number
         QString iconNumber = iconUuid;
         entry->setIcon(iconNumber.remove(0, 2).toInt());
@@ -641,7 +642,7 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
     // Add this new entry to a group in the database
     newEntry->setGroup(parentGroup);
 
-    if (iconUuid.size() != 32) {
+    if (KeepassIcon::StandardLength) {
         // Remove ic from icon name, e.g. "ic12" so that 12 is the icon number
         QString iconNumber = iconUuid;
         newEntry->setIcon(iconNumber.remove(0, 2).toInt());

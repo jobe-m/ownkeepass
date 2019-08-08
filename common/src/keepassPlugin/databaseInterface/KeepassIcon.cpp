@@ -36,7 +36,7 @@ QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &
     Q_UNUSED(requestedSize);
     QImage icon;
     // Check lenth and determine if the icon is a standart keepass icon (e.g. icf12) otherwise the icon is a custom one (uuid length is 32 chars)
-    if (uuid.size() != 32) {
+    if (KeepassIcon::StandardLength) {
         // Load standard image from resources
         icon = QImage(":/entryicons/" + uuid + ".png", "PNG");
         // If loading of the image failed than try load custom database icon from Keepass 1 database which starts with "ic69" or "icf69"
@@ -53,6 +53,8 @@ QImage KeepassIcon::requestImage(const QString &uuid, QSize *size, const QSize &
     }
     return icon;
 }
+
+const int KeepassIcon::StandardLength = 32;
 
 QImage IconBackground::requestImage(const QString &uuid, QSize *size, const QSize &requestedSize)
 {
