@@ -117,6 +117,7 @@ Syncthing does not require a sync over the internet but it can sync locally betw
 
 Copyright 2014 - 2017 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
+
 [openrepos.net]: https://openrepos.net/content/jobe/ownkeepass                             "Beta and testing releases"
 [Keepass]: http://www.keepass.info/help/v1/setup.html                                      "Official Keepass homepage for version 1"
 [KeepassX]: http://www.keepassx.org                                                        "KeepassX project homepage"
