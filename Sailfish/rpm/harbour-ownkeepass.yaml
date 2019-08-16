@@ -24,8 +24,11 @@ PkgConfigBR:
 - Qt5Qml
 - Qt5Quick
 - libargon2
-- libgcrypt
 - libsodium
+# - libgcrypt
+# Need to remove libgcrypt here since it clashes when trying to install devel package for version 1.5 (jolla repos) and 1.8 (mer.repos)
+# Make sure to install libgcrypt-devel from mer.repo manually into the build engine
+
 PkgBR: []
 Files:
 - '%defattr(644,root,root,-)'

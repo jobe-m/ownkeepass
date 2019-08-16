@@ -29,8 +29,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(libargon2)
-#BuildRequires:  pkgconfig(libgcrypt) # Need to remove it here since it clashes when trying to install devel package for version 1.5 (jolla repos) and 1.8 (mer.repos)
-                                      # Make sure to install libgcrypt-devel from mer.repo manually into the build engine
 BuildRequires:  pkgconfig(libsodium)
 
 %description
