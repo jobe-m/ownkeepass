@@ -26,7 +26,7 @@
 #include "config/KpxConfig.h"
 #include "config/keepassx.h"
 #include "crypto/twoclass.h"
-#include "utils/tools.h"
+#include "utils/tools1.h"
 #include "crypto/yarrow.h"
 #include "crypto/sha256.h"
 #include "crypto/aescpp.h"

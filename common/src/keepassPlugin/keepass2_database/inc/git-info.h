@@ -1,0 +1,6 @@
+#ifndef KEEPASSXC_GIT_INFO_H
+#define KEEPASSXC_GIT_INFO_H
+
+#define GIT_HEAD "@GIT_HEAD@"
+
+#endif // KEEPASSXC_GIT_INFO_H

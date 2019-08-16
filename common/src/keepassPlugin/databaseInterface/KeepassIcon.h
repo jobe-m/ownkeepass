@@ -40,6 +40,8 @@ public:
     {}
 
     QImage requestImage(const QString &uuid, QSize *size, const QSize &requestedSize);
+
+    static const int StandardLength;
 };
 
 class IconBackground : public QQuickImageProvider

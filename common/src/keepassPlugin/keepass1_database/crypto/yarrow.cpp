@@ -26,7 +26,7 @@
 #include <ctime>
 
 #include "yarrow.h"
-#include "utils/random.h"
+#include "utils/random1.h"
 
 #ifndef YARROW_DEBUG
 #define YARROW_DEBUG 0

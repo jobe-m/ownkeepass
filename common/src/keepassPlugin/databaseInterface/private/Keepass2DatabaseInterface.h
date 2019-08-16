@@ -24,12 +24,12 @@
 #define KEEPASS2DATABASEINTERFACE_H
 
 #include <QObject>
+#include <QUuid>
 
 #include "AbstractDatabaseInterface.h"
 #include "../KdbDatabase.h"
 #include "../KdbListModel.h"
 #include "core/Database.h"
-#include "core/Uuid.h"
 #include "format/KeePass2Writer.h"
 
 using namespace kpxPublic;
@@ -202,11 +202,11 @@ private:
     QString saveDatabase();
     void updateGrandParentGroupInListModel(Group* parentGroup);
     inline QString getUserAndPassword(Entry* entry);
-    inline Uuid qString2Uuid(QString value);
+    inline QUuid qString2Uuid(QString value);
     inline QString uInt2QString(uint value);
-    QString getEntryIcon(int standardIcon, Uuid customIcon);
-    QString getGroupIcon(int standardIcon, Uuid customIcon);
-    Uuid getGroupUuidFromDatabase(QString groupId);
+    QString getEntryIcon(int standardIcon, QUuid customIcon);
+    QString getGroupIcon(int standardIcon, QUuid customIcon);
+    QUuid getGroupUuidFromDatabase(QString groupId);
     Group* getGroupFromDatabase(QString groupId);
     void loadMasterGroupsRecursive(QList<Group *> recurGroups, int level, QString rootGroupId, bool registerListModel);
 
@@ -215,7 +215,7 @@ private:
 
 private:
     // Keepass database handler
-    Database* m_Database;
+    QSharedPointer<Database> m_Database;
     KeePass2Writer m_writer;
     QString m_filePath;
 
@@ -224,8 +224,8 @@ private:
     bool m_setting_sortAlphabeticallyInListView;
 
     // The following two hash tables store information about which list models are showing a dedicated entry or group in the UI
-    QHash<Uuid, Uuid> m_entries_modelId;
-    QHash<Uuid, Uuid> m_groups_modelId;
+    QHash<QUuid, QUuid> m_entries_modelId;
+    QHash<QUuid, QUuid> m_groups_modelId;
 };
 
 }

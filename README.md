@@ -4,6 +4,9 @@
 
 ## Status
 
+Pre-Release 1.2.5
+* Support for KDBX4 file format, by using [KeepassXC] with new deps (libargon2 & libsodium)
+
 Pre-Release 1.2.3 is available on [openrepos.net]
 * Implemented moving of password entries between groups (Keepass 2 database)
 * Show comment of password groups in list view (Keepass 2 database)
@@ -35,8 +38,25 @@ in descending order.
 
 ## Building
 
-After cloning this repository you need to checkout also the submodule for KeepassX 2 at `common/src/keepassPlugin/keepass2_database/keepassx` (e.g. use `git clone --recursive` to clone the submodule right away). Please note that currently you need to apply a small patch to a header file of the keepassX 2 submodule to build the application successfully:
-Add `#include <QObject>` to the Keepass 2 database header file `common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.h`.
+In order to succesfully build this application, you need the following steps:
+- Clone this repository including the [KeepassXC] submodule (`git clone --recursive`)
+- Make sure the _Sailfish OS Build Engine_ has the following packages:
+  - libgcrypt-devel
+  - libargon2-devel (**3rd-party repository**)
+  - libsodium & libsodium-devel (**3rd-party repository**)
+- Build the project using _Qt Creator_
+
+### How to use a _3rd-party repository_ on Sailfish OS Build Engine
+
+In order to use a 3rd-party repository, you need to add it to the _Build Engine_:
+- Add the repository to any applicable Kit, e.g.:
+  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_armv7hl crypt`
+- Refresh the list of packages for that Kit, e.g.:
+  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ref`
+- You can now use the tool available on _Qt Creator_ to install the package; otherwise you can still use the command, e.g.:
+  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper in libargon2-devel`
+
+See also: https://gist.github.com/skvark/49a2f1904192b6db311a
 
 ## What is this?
 
@@ -97,9 +117,11 @@ Syncthing does not require a sync over the internet but it can sync locally betw
 
 Copyright 2014 - 2017 Marko Koschak. Licensed under GPLv2. See LICENSE for more info.
 
+
 [openrepos.net]: https://openrepos.net/content/jobe/ownkeepass                             "Beta and testing releases"
 [Keepass]: http://www.keepass.info/help/v1/setup.html                                      "Official Keepass homepage for version 1"
 [KeepassX]: http://www.keepassx.org                                                        "KeepassX project homepage"
+[KeepassXC]: http://www.keepassxc.org                                                      "KeepassXC project homepage"
 [10 Immutable Laws of Security]: http://technet.microsoft.com/en-us/library/cc722487.aspx  "10 Immutable Laws of Security"
 [Keepass download page]: http://www.keepass.info/download.html                             "Download classic Keepass"
 [Bug reports go here]: https://github.com/jobe-m/ownkeepass/issues
@@ -107,3 +129,5 @@ Copyright 2014 - 2017 Marko Koschak. Licensed under GPLv2. See LICENSE for more 
 [Syncthing]: https://syncthing.net/                                                        "Syncthing homepage"
 [core]: https://openrepos.net/content/fooxl/syncthing-inotify-bin                          "Syncthing core for SFOS"
 [GUI]: https://openrepos.net/content/fooxl/syncthing-sf                                    "Syncthing GUI for SFOS"
+[SFOS manual building]: https://sailfishos.org/wiki/Tutorial_-_Building_packages_manually  "Tutorial - Building packages manually"
+[libsodium]: https://openrepos.net/content/birdzhang/libsodium                             "Libsodium on OpenRepos.net"

@@ -22,102 +22,132 @@
 
 QT += gui concurrent core
 
-# KeepassX 2 uses libgcrypt and libz
-LIBS += -lgcrypt -lz
+# KeepassXC uses libargon2, libgcrypt, lsodium and libz
+LIBS += -largon2 -lgcrypt -lsodium -lz
+
+SRC_DIR += $$PWD/keepassxc/src
 
 # enable preprocessor to find include paths
-INCLUDEPATH += $$PWD/../keepass2_database/keepassx/src $$PWD/inc
-DEPENDPATH  += $$PWD/../keepass2_database/keepassx/src
+INCLUDEPATH += $$SRC_DIR $$SRC_DIR/zxcvbn $$PWD/inc
+DEPENDPATH  += $$SRC_DIR
 
 SOURCES += \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Entry.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Group.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Tools.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Metadata.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/AutoTypeAssociations.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntryAttachments.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntryAttributes.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/TimeInfo.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/DatabaseIcons.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/FilePath.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/PasswordGenerator.cpp \
+    $$SRC_DIR/core/Base32.cpp \
+    $$SRC_DIR/core/Config.cpp \
+    $$SRC_DIR/core/Compare.cpp \
+    $$SRC_DIR/core/Clock.cpp \
+    $$SRC_DIR/core/Tools.cpp \
+    $$SRC_DIR/core/CustomData.cpp \
+    $$SRC_DIR/core/Database.cpp \
+    $$SRC_DIR/core/Entry.cpp \
+    $$SRC_DIR/core/Group.cpp \
+    $$SRC_DIR/core/Metadata.cpp \
+    $$SRC_DIR/core/AutoTypeAssociations.cpp \
+    $$SRC_DIR/core/EntryAttachments.cpp \
+    $$SRC_DIR/core/EntryAttributes.cpp \
+    $$SRC_DIR/core/TimeInfo.cpp \
+    $$SRC_DIR/core/DatabaseIcons.cpp \
+    $$SRC_DIR/core/FilePath.cpp \
+    $$SRC_DIR/zxcvbn/zxcvbn.c \
+    $$SRC_DIR/core/PasswordGenerator.cpp \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey.cpp \
+    $$SRC_DIR/keys/CompositeKey.cpp \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Random.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/CryptoHash.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipher.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/salsa20.c \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Crypto.cpp \
+    $$SRC_DIR/crypto/kdf/Kdf.cpp \
+    $$SRC_DIR/crypto/kdf/AesKdf.cpp \
+    $$SRC_DIR/crypto/kdf/Argon2Kdf.cpp \
+    $$SRC_DIR/crypto/Random.cpp \
+    $$SRC_DIR/crypto/Crypto.cpp \
+    $$SRC_DIR/crypto/CryptoHash.cpp \
+    $$SRC_DIR/crypto/SymmetricCipher.cpp \
+    $$SRC_DIR/crypto/SymmetricCipherGcrypt.cpp \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2Reader.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2RandomStream.cpp \
+    $$SRC_DIR/format/KeePass2.cpp \
+    $$SRC_DIR/format/KeePass2Reader.cpp \
+    $$SRC_DIR/format/KeePass2RandomStream.cpp \
+    $$SRC_DIR/format/KdbxReader.cpp \
+    $$SRC_DIR/format/Kdbx3Reader.cpp \
+    $$SRC_DIR/format/Kdbx4Reader.cpp \
+    $$SRC_DIR/format/KdbxXmlReader.cpp \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/StoreDataStream.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/SymmetricCipherStream.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/LayeredStream.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/HashedBlockStream.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/qtiocompressor.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.cpp \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.cpp \
-    $$PWD/keepassx/src/format/KeePass2Writer.cpp \
-    $$PWD/keepassx/src/format/KeePass2XmlWriter.cpp
+    $$SRC_DIR/totp/totp.cpp \
+    $$SRC_DIR/streams/StoreDataStream.cpp \
+    $$SRC_DIR/streams/SymmetricCipherStream.cpp \
+    $$SRC_DIR/streams/LayeredStream.cpp \
+    $$SRC_DIR/streams/HashedBlockStream.cpp \
+    $$SRC_DIR/streams/HmacBlockStream.cpp \
+    $$SRC_DIR/streams/qtiocompressor.cpp \
+    $$SRC_DIR/keys/PasswordKey.cpp \
+    $$SRC_DIR/keys/FileKey.cpp \
+    $$SRC_DIR/core/EntrySearcher.cpp \
+\
+    $$SRC_DIR/format/KeePass2Writer.cpp \
+    $$SRC_DIR/format/KdbxWriter.cpp \
+    $$SRC_DIR/format/Kdbx3Writer.cpp \
+    $$SRC_DIR/format/Kdbx4Writer.cpp \
+    $$SRC_DIR/format/KdbxXmlWriter.cpp \
 
 
 HEADERS += \
     ../common/src/keepassPlugin/keepass2_database/inc/config-keepassx.h \
+    ../common/src/keepassPlugin/keepass2_database/inc/git-info.h \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Database.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Uuid.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Group.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Entry.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Tools.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Metadata.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/AutoTypeAssociations.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntryAttachments.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntryAttributes.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Global.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/TimeInfo.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/DatabaseIcons.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/FilePath.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/Endian.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/PasswordGenerator.h \
+    $$SRC_DIR/core/Base32.h \
+    $$SRC_DIR/core/Config.h \
+    $$SRC_DIR/core/Compare.h \
+    $$SRC_DIR/core/Clock.h \
+    $$SRC_DIR/core/Tools.h \
+    $$SRC_DIR/core/CustomData.h \
+    $$SRC_DIR/core/Database.h \
+    $$SRC_DIR/core/Group.h \
+    $$SRC_DIR/core/Entry.h \
+    $$SRC_DIR/core/Metadata.h \
+    $$SRC_DIR/core/AutoTypeAssociations.h \
+    $$SRC_DIR/core/EntryAttachments.h \
+    $$SRC_DIR/core/EntryAttributes.h \
+    $$SRC_DIR/core/Global.h \
+    $$SRC_DIR/core/TimeInfo.h \
+    $$SRC_DIR/core/DatabaseIcons.h \
+    $$SRC_DIR/core/FilePath.h \
+    $$SRC_DIR/zxcvbn/zxcvbn.h \
+    $$SRC_DIR/core/PasswordGenerator.h \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/CompositeKey_p.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/Key.h \
+    $$SRC_DIR/keys/CompositeKey.h \
+    $$SRC_DIR/keys/Key.h \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Random.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/CryptoHash.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipher.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherGcrypt.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/SymmetricCipherSalsa20.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-config.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-machine.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-portable.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/salsa20/ecrypt-sync.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/crypto/Crypto.h \
+    $$SRC_DIR/crypto/kdf/Kdf.h \
+    $$SRC_DIR/crypto/kdf/Kdf_p.h \
+    $$SRC_DIR/crypto/kdf/AesKdf.h \
+    $$SRC_DIR/crypto/kdf/Argon2Kdf.h \
+    $$SRC_DIR/crypto/argon2/argon2.h \
+    $$SRC_DIR/crypto/Random.h \
+    $$SRC_DIR/crypto/Crypto.h \
+    $$SRC_DIR/crypto/CryptoHash.h \
+    $$SRC_DIR/crypto/SymmetricCipher.h \
+    $$SRC_DIR/crypto/SymmetricCipherGcrypt.h \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2Reader.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2XmlReader.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/format/KeePass2RandomStream.h \
+    $$SRC_DIR/format/KeePass2.h \
+    $$SRC_DIR/format/KeePass2Reader.h \
+    $$SRC_DIR/format/KeePass2RandomStream.h \
+    $$SRC_DIR/format/KdbxReader.h \
+    $$SRC_DIR/format/Kdbx3Reader.h \
+    $$SRC_DIR/format/Kdbx4Reader.h \
+    $$SRC_DIR/format/KdbxXmlReader.h \
 \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/StoreDataStream.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/SymmetricCipherStream.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/LayeredStream.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/HashedBlockStream.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/qtiocompressor.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/streams/QtIOCompressor \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/PasswordKey.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/keys/FileKey.h \
-    ../common/src/keepassPlugin/keepass2_database/keepassx/src/core/EntrySearcher.h \
-    $$PWD/keepassx/src/format/KeePass2Writer.h \
-    $$PWD/keepassx/src/format/KeePass2XmlWriter.h
+    $$SRC_DIR/totp/totp.cpp \
+    $$SRC_DIR/streams/StoreDataStream.h \
+    $$SRC_DIR/streams/SymmetricCipherStream.h \
+    $$SRC_DIR/streams/LayeredStream.h \
+    $$SRC_DIR/streams/HashedBlockStream.h \
+    $$SRC_DIR/streams/HmacBlockStream.h \
+    $$SRC_DIR/streams/qtiocompressor.h \
+    $$SRC_DIR/streams/QtIOCompressor \
+    $$SRC_DIR/keys/PasswordKey.h \
+    $$SRC_DIR/keys/FileKey.h \
+    $$SRC_DIR/core/EntrySearcher.h \
+\
+    $$SRC_DIR/format/KeePass2Writer.h \
+    $$SRC_DIR/format/KdbxWriter.h \
+    $$SRC_DIR/format/Kdbx3Writer.h \
+    $$SRC_DIR/format/Kdbx4Writer.h \
+    $$SRC_DIR/format/KdbxXmlWriter.h \

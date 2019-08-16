@@ -21,7 +21,7 @@
 #include "crypto/arcfour.h"
 #include "crypto/yarrow.h"
 #include "utils/SecString.h"
-#include "utils/tools.h"
+#include "utils/tools1.h"
 
 CArcFour SecString::RC4;
 quint8* SecString::sessionkey;
