@@ -158,6 +158,7 @@ Dialog {
                 menu: ContextMenu {
                     MenuItem { text: "AES/Rijndael" }
                     MenuItem { text: "Twofish" }
+//                    MenuItem { text: "ChaCha20" }
                 }
                 onCurrentIndexChanged: {
                     editDatabaseSettingsDialog.cryptAlgorithmChanged =

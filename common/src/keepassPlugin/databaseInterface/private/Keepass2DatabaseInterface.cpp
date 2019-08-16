@@ -29,7 +29,7 @@
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
 #include "crypto/Crypto.h"
-#include "format/KdbxXmlReader.h"
+#include "format/KeePass2Reader.h"
 #include "keys/PasswordKey.h"
 #include "keys/FileKey.h"
 #include "core/Group.h"
@@ -45,7 +45,7 @@ using namespace ownKeepassPublic;
 
 Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
     : QObject(parent),
-      m_Database(NULL),
+      m_Database(nullptr),
       m_filePath(""),
       m_setting_showUserNamePasswordsInListView(false),
       m_setting_sortAlphabeticallyInListView(true)
@@ -56,8 +56,7 @@ Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
 Keepass2DatabaseInterface::~Keepass2DatabaseInterface()
 {
     qDebug("Destructor Keepass2DatabaseInterface");
-    m_Database.clear();
-    //delete m_Database;
+    delete m_Database;
 }
 
 void Keepass2DatabaseInterface::initDatabase()
@@ -66,8 +65,7 @@ void Keepass2DatabaseInterface::initDatabase()
     if (!Crypto::init()) {
         // Fatal error while testing the cryptographic functions
         emit errorOccured(DatabaseAccessResult::RE_CRYPTO_INIT_ERROR, "");
-        m_Database.clear();
-        //delete m_Database;
+        delete m_Database;
     }
 
 }
@@ -99,10 +97,10 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
         }
     }
 
-    CompositeKey masterKey;
+    auto masterKey = QSharedPointer<CompositeKey>::create();
     auto passwordKey = QSharedPointer<PasswordKey>::create();
     passwordKey->setPassword(password);
-    masterKey.addKey(passwordKey);
+    masterKey->addKey(passwordKey);
     if (!keyfile.isEmpty()) {
         auto key = QSharedPointer<FileKey>::create();
         QString errorMsg;
@@ -110,19 +108,15 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
             emit databaseOpened(DatabaseAccessResult::RE_KEYFILE_OPEN_ERROR, errorMsg);
             return;
         }
-        masterKey.addKey(key);
+        masterKey->addKey(key);
     }
 
     if (m_Database) {
-        m_Database.clear();
-        //delete m_Database;
+        delete m_Database;
     }
 
-    KdbxXmlReader reader(KeePass2::FILE_VERSION_4);
-    //reader.setStrictMode(strictMode);
-    m_Database = reader.readDatabase(&file);
-
-    if (m_Database == Q_NULLPTR) {
+    KeePass2Reader reader;
+    if (reader.readDatabase(&file, masterKey, m_Database)) {
         // an error occured during opening of the database
         QString errorString = reader.errorString();
         qDebug() << "Error occured: " << errorString;
@@ -158,7 +152,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     emit databaseCryptAlgorithmChanged(0); // Keepass2 only supports Rijndael_Cipher = 0
-    //emit databaseKeyTransfRoundsChanged(m_Database->transformRounds());
+    emit databaseKeyTransfRoundsChanged(0); // TODO check were to get this m_Database->transformRounds());
 }
 
 void Keepass2DatabaseInterface::slot_closeDatabase()
@@ -169,9 +163,7 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
         return;
     }
 
-    //delete m_Database;
-    m_Database.clear();
-    m_Database = QSharedPointer<Database>::create();
+    delete m_Database;
     m_filePath = "";
 
 // TODO delete .lock file
@@ -1004,7 +996,7 @@ QString Keepass2DatabaseInterface::saveDatabase()
 {
     QSaveFile saveFile(m_filePath);
     if (saveFile.open(QIODevice::WriteOnly)) {
-        m_writer.writeDatabase(&saveFile, m_Database.data());
+        m_writer.writeDatabase(&saveFile, m_Database);
         if (m_writer.hasError()) {
             // error occured in the Keepass 2 writer
             return m_writer.errorString();
