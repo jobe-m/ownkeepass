@@ -114,9 +114,10 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     if (m_Database) {
         delete m_Database;
     }
+    m_Database = new Database();
 
     KeePass2Reader reader;
-    if (reader.readDatabase(&file, masterKey, m_Database)) {
+    if (!reader.readDatabase(&file, masterKey, m_Database)) {
         // an error occured during opening of the database
         QString errorString = reader.errorString();
         qDebug() << "Error occured: " << errorString;
