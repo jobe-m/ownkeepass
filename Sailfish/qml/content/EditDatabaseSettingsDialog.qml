@@ -168,6 +168,8 @@ Dialog {
             }
 
             Column {
+                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
+                visible: enabled
                 width: parent.width
                 spacing: 0
 
