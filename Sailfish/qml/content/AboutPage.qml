@@ -179,20 +179,11 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                 }
             }
 
-            Row {
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
-                spacing: (width / 2) * 0.1
-                height: Theme.itemSizeMedium + Theme.paddingMedium
-
-                Button {
-                    anchors.centerIn: parent
-                    width: (parent.width / 2) * 0.95
-                    text: "Paypal"
-                    onClicked: Qt.openUrlExternally("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5KR2WTZ8FMRQQ")
-                }
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: (parent.width / 2) * 0.95
+                text: "Paypal"
+                onClicked: Qt.openUrlExternally("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5KR2WTZ8FMRQQ")
             }
 
             SectionHeader {
