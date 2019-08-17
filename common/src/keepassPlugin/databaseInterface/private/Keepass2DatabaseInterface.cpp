@@ -153,7 +153,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     emit databaseCryptAlgorithmChanged(0); // Keepass2 only supports Rijndael_Cipher = 0
-    emit databaseKeyTransfRoundsChanged(0); // TODO check were to get this m_Database->transformRounds());
+    emit databaseKeyTransfRoundsChanged(1); // TODO check were to get this m_Database->transformRounds());
 }
 
 void Keepass2DatabaseInterface::slot_closeDatabase()
