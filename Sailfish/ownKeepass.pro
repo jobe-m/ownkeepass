@@ -72,9 +72,10 @@ common_files.files += \
     ../common/images/wallicons
 password_generator_lib.path   = /usr/share/$${TARGET}/lib
 password_generator_lib.files += \
-    ../common/libs/$$ARCH_LIBS/libgcrypt.so.11 \
+    ../common/libs/$$ARCH_LIBS/libgcrypt.so.20 \
     ../common/libs/$$ARCH_LIBS/libargon2.so.0 \
-    ../common/libs/$$ARCH_LIBS/libgpg-error.so.0
+    ../common/libs/$$ARCH_LIBS/libgpg-error.so.0 \
+    ../common/libs/$$ARCH_LIBS/libsodium.so.23
 
 # process all application icon sizes
 icon_file_86x86.path    = /usr/share/icons/hicolor/86x86/apps

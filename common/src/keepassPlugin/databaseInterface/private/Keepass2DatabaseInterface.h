@@ -215,7 +215,7 @@ private:
 
 private:
     // Keepass database handler
-    QSharedPointer<Database> m_Database;
+    Database* m_Database;
     KeePass2Writer m_writer;
     QString m_filePath;
 

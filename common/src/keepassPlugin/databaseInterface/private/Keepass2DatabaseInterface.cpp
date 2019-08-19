@@ -29,7 +29,7 @@
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
 #include "crypto/Crypto.h"
-#include "format/KdbxXmlReader.h"
+#include "format/KeePass2Reader.h"
 #include "keys/PasswordKey.h"
 #include "keys/FileKey.h"
 #include "core/Group.h"
@@ -45,7 +45,7 @@ using namespace ownKeepassPublic;
 
 Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
     : QObject(parent),
-      m_Database(NULL),
+      m_Database(nullptr),
       m_filePath(""),
       m_setting_showUserNamePasswordsInListView(false),
       m_setting_sortAlphabeticallyInListView(true)
@@ -56,8 +56,9 @@ Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
 Keepass2DatabaseInterface::~Keepass2DatabaseInterface()
 {
     qDebug("Destructor Keepass2DatabaseInterface");
-    m_Database.clear();
-    //delete m_Database;
+    if (m_Database) {
+        delete m_Database;
+    }
 }
 
 void Keepass2DatabaseInterface::initDatabase()
@@ -66,10 +67,7 @@ void Keepass2DatabaseInterface::initDatabase()
     if (!Crypto::init()) {
         // Fatal error while testing the cryptographic functions
         emit errorOccured(DatabaseAccessResult::RE_CRYPTO_INIT_ERROR, "");
-        m_Database.clear();
-        //delete m_Database;
     }
-
 }
 
 void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
@@ -99,10 +97,10 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
         }
     }
 
-    CompositeKey masterKey;
+    auto masterKey = QSharedPointer<CompositeKey>::create();
     auto passwordKey = QSharedPointer<PasswordKey>::create();
     passwordKey->setPassword(password);
-    masterKey.addKey(passwordKey);
+    masterKey->addKey(passwordKey);
     if (!keyfile.isEmpty()) {
         auto key = QSharedPointer<FileKey>::create();
         QString errorMsg;
@@ -110,19 +108,16 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
             emit databaseOpened(DatabaseAccessResult::RE_KEYFILE_OPEN_ERROR, errorMsg);
             return;
         }
-        masterKey.addKey(key);
+        masterKey->addKey(key);
     }
 
     if (m_Database) {
-        m_Database.clear();
-        //delete m_Database;
+        delete m_Database;
     }
+    m_Database = new Database();
 
-    KdbxXmlReader reader(KeePass2::FILE_VERSION_4);
-    //reader.setStrictMode(strictMode);
-    m_Database = reader.readDatabase(&file);
-
-    if (m_Database == Q_NULLPTR) {
+    KeePass2Reader reader;
+    if (!reader.readDatabase(&file, masterKey, m_Database)) {
         // an error occured during opening of the database
         QString errorString = reader.errorString();
         qDebug() << "Error occured: " << errorString;
@@ -158,7 +153,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     emit databaseCryptAlgorithmChanged(0); // Keepass2 only supports Rijndael_Cipher = 0
-    //emit databaseKeyTransfRoundsChanged(m_Database->transformRounds());
+    emit databaseKeyTransfRoundsChanged(1); // TODO check were to get this m_Database->transformRounds());
 }
 
 void Keepass2DatabaseInterface::slot_closeDatabase()
@@ -169,9 +164,7 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
         return;
     }
 
-    //delete m_Database;
-    m_Database.clear();
-    m_Database = QSharedPointer<Database>::create();
+    delete m_Database;
     m_filePath = "";
 
 // TODO delete .lock file
@@ -232,6 +225,7 @@ void Keepass2DatabaseInterface::slot_loadMasterGroups(bool registerListModel)
 
     // Add root group to list model
     Group* rootGroup = m_Database->rootGroup();
+    Q_ASSERT(rootGroup);
     int numberOfSubgroups = rootGroup->children().count();
     int numberOfEntries = rootGroup->entries().count();
     if (registerListModel) {
@@ -262,6 +256,7 @@ void Keepass2DatabaseInterface::loadMasterGroupsRecursive(QList<Group *> recurGr
     QUuid rootGroupUuid = Tools::hexToUuid(rootGroupId);
     for (int i = 0; i < recurGroups.count(); ++i) {
         Group* recurGroup = recurGroups[i];
+        Q_ASSERT(recurGroup);
         // If recycle bin is existing do not show it in the list view
         if (NULL == m_Database->metadata()->recycleBin() || recurGroup->uuid() != m_Database->metadata()->recycleBin()->uuid()) {
             int numberOfSubgroups = recurGroup->children().count();
@@ -296,6 +291,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     Q_ASSERT(m_Database);
     QUuid groupUuid = getGroupUuidFromDatabase(groupId);
     Group* group = getGroupFromDatabase(groupId);
+    Q_ASSERT(group);
     // load sub groups and entries
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
@@ -329,6 +325,7 @@ void Keepass2DatabaseInterface::slot_loadGroupsAndEntries(QString groupId)
     QList<Entry*> entries = group->entries();
     for (int i = 0; i < entries.count(); i++) {
         Entry* entry = entries.at(i);
+        Q_ASSERT(entry);
         if (Q_NULLPTR == entry) {
             qDebug() << "ERROR: Could not find entry for UUID: " << entry;
             emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
@@ -355,7 +352,7 @@ void Keepass2DatabaseInterface::slot_loadEntry(QString entryId)
     QStringList values;
 
     // get entry handler for entryId
-    Entry* entry = m_Database->rootGroup()->findEntryByUuid(entryId);
+    Entry* entry = m_Database->rootGroup()->findEntryByUuid(Tools::hexToUuid(entryId));
 
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
@@ -396,8 +393,8 @@ void Keepass2DatabaseInterface::slot_loadGroup(QString groupId)
 {
     Q_ASSERT(m_Database);
     // get group handle and load group details
-    QUuid groupUuid = Tools::hexToUuid(groupId);
-    Group* group = m_Database->rootGroup()->findGroupByUuid(groupUuid);
+    Group* group = m_Database->rootGroup()->findGroupByUuid(Tools::hexToUuid(groupId));
+    Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
         emit groupLoaded(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND,
@@ -429,6 +426,7 @@ void Keepass2DatabaseInterface::slot_saveGroup(QString groupId, QString title, Q
     // get group handle and load group details
     QUuid groupUuid = Tools::hexToUuid(groupId);
     Group* group = m_Database->rootGroup()->findGroupByUuid(groupUuid);
+    Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
@@ -481,6 +479,7 @@ void Keepass2DatabaseInterface::slot_createNewGroup(QString title, QString notes
 {
     QUuid parentGroupUuid = getGroupUuidFromDatabase(parentGroupId);
     Group* parentGroup = getGroupFromDatabase(parentGroupId);
+    Q_ASSERT(parentGroup);
     if (Q_NULLPTR == parentGroup) {
         qDebug() << "ERROR: Could not find group for UUID: " << parentGroupId;
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", parentGroupId);
@@ -547,6 +546,7 @@ void Keepass2DatabaseInterface::slot_saveEntry(QString entryId,
     // get group handle and load group details
     QUuid entryUuid = Tools::hexToUuid(entryId);
     Entry* entry = m_Database->rootGroup()->findEntryByUuid(entryUuid);
+    Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
         emit entrySaved(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
@@ -619,6 +619,7 @@ void Keepass2DatabaseInterface::slot_createNewEntry(QStringList keys,
 {
     QUuid parentGroupUuid = getGroupUuidFromDatabase(parentGroupId);
     Group* parentGroup = getGroupFromDatabase(parentGroupId);
+    Q_ASSERT(parentGroup);
     if (Q_NULLPTR == parentGroup) {
         qDebug() << "ERROR: Could not find group for UUID: " << parentGroupId;
         emit groupSaved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", parentGroupId);
@@ -697,6 +698,7 @@ void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentG
     Q_ASSERT(m_Database);
     if (parentGroup != m_Database->rootGroup()) {
         Group* grandParentGroup = parentGroup->parentGroup();
+        Q_ASSERT(grandParentGroup);
         int numberOfSubgroups = parentGroup->children().count();
         int numberOfEntries   = parentGroup->entries().count();
         emit updateItemInListModel(parentGroup->name(),                                   // group name
@@ -713,14 +715,15 @@ void Keepass2DatabaseInterface::updateGrandParentGroupInListModel(Group* parentG
 void Keepass2DatabaseInterface::slot_deleteEntry(QString entryId)
 {
     Q_ASSERT(m_Database);
-    QUuid entryUuid = Tools::hexToUuid(entryId);
-    Entry* entry = m_Database->rootGroup()->findEntryByUuid(entryUuid);
+    Entry* entry = m_Database->rootGroup()->findEntryByUuid(Tools::hexToUuid(entryId));
+    Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UUID: " << entryId;
         emit entryDeleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
         return;
     }
     Group* parentGroup = entry->group();
+    Q_ASSERT(parentGroup);
     // This puts entry into recycle bin or deletes it directy if recycle bin is not enabled
     m_Database->recycleEntry(entry);
 
@@ -745,14 +748,15 @@ void Keepass2DatabaseInterface::slot_deleteEntry(QString entryId)
 void Keepass2DatabaseInterface::slot_deleteGroup(QString groupId)
 {
     Q_ASSERT(m_Database);
-    QUuid groupUuid = Tools::hexToUuid(groupId);
-    Group* group = m_Database->rootGroup()->findGroupByUuid(groupUuid);
+    Group* group = m_Database->rootGroup()->findGroupByUuid(Tools::hexToUuid(groupId));
+    Q_ASSERT(group);
     if (Q_NULLPTR == group) {
         qDebug() << "ERROR: Could not find group for UUID: " << groupId;
         emit groupDeleted(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", groupId);
         return;
     }
     Group* parentGroup = group->parentGroup();
+    Q_ASSERT(parentGroup);
     // This puts entry into recycle bin or deletes it directy if recycle bin is not enabled
     m_Database->recycleGroup(group);
 
@@ -780,6 +784,7 @@ void Keepass2DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
     Q_ASSERT(m_Database);
     QUuid entryUuid = Tools::hexToUuid(entryId);
     Entry* entry = m_Database->rootGroup()->findEntryByUuid(entryUuid);
+    Q_ASSERT(entry);
     if (Q_NULLPTR == entry) {
         qDebug() << "ERROR: Could not find entry for UInt: " << entryId;
         emit entryMoved(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "", entryId);
@@ -788,6 +793,7 @@ void Keepass2DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
 
     QUuid newGroupUuid = Tools::hexToUuid(newGroupId);
     Group* newGroup = m_Database->rootGroup()->findGroupByUuid(newGroupUuid);
+    Q_ASSERT(newGroup);
     if (Q_NULLPTR == newGroup) {
         qDebug() << "ERROR: Could not find group for UInt: " << newGroup;
         emit entryMoved(DatabaseAccessResult::RE_DB_GROUP_NOT_FOUND, "", newGroupId);
@@ -795,6 +801,7 @@ void Keepass2DatabaseInterface::slot_moveEntry(QString entryId, QString newGroup
     }
 
     Group* oldGroup = entry->group();
+    Q_ASSERT(oldGroup);
     entry->setGroup(newGroup);
     // Save database
     QString errorMsg = saveDatabase();
@@ -847,11 +854,13 @@ void Keepass2DatabaseInterface::slot_moveGroup(QString groupId, QString newParen
 void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString rootGroupId)
 {
     Group* searchGroup = getGroupFromDatabase(rootGroupId);
+    Q_ASSERT(searchGroup);
     if (searchGroup != Q_NULLPTR) {
         EntrySearcher searcher;
         QString searchId = uInt2QString(0xfffffffe);
         QUuid searchUuid = Tools::hexToUuid(searchId);
         Q_FOREACH (Entry* entry, searcher.search(searchString, searchGroup, Qt::CaseInsensitive)) {
+            Q_ASSERT(entry);
             if (Q_NULLPTR == entry) {
                 qDebug() << "ERROR: Could not find entry for UUID: " << entry;
                 emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_ENTRY_NOT_FOUND, "");
@@ -889,6 +898,7 @@ void Keepass2DatabaseInterface::slot_searchEntries(QString searchString, QString
 
 inline QString Keepass2DatabaseInterface::getUserAndPassword(Entry* entry)
 {
+    Q_ASSERT(entry);
     if (m_setting_showUserNamePasswordsInListView) {
         QString username = entry->username();
         QString password = entry->password();
@@ -903,46 +913,9 @@ inline QString Keepass2DatabaseInterface::getUserAndPassword(Entry* entry)
 }
 
 /*!
-\brief Convert QString to QUuid
-
-This function converts a 16 character long QString into a QUuid. If the
-conversion is not successful it emits signal errorOccured with parameter
-RE_ERR_QSTRING_TO_UUID. That happens if the QString value is not exactly 16
-characters long.
-
-\param QString value to be converted to QUuid
-\return QUuid representation of the QString content or
-        an empty QUuid if an error occured during conversion
-*/
-/*
-inline QUuid Keepass2DatabaseInterface::qString2Uuid(QString value)
-{
-    QByteArray baValue = QByteArray::fromHex(value.toLatin1());
-    if (baValue.size() == QUuid::Length) {
-        return QUuid(baValue);
-    } else if (value.compare("0") == 0) {
-        if (m_Database && m_Database->rootGroup()) {
-            return m_Database->rootGroup()->uuid();
-        } else {
-            return QUuid();
-        }
-    } else if (value.compare("fffffffe") == 0) {
-        // special handle for search (group) list model
-        return QUuid("fffffffe");
-    } else if (value.compare("ffffffff") == 0) {
-        // special handle for not registered list models
-        return QUuid("ffffffff");
-    } else {
-        emit errorOccured(DatabaseAccessResult::RE_ERR_QSTRING_TO_UUID, value);
-        return QUuid();
-    }
-}
-*/
-
-/*!
 \brief Convert integer number to QString
 
-The integer number is converted into a 4 byte long hexadecimal QString.
+The integer number is converted into a 8 byte long hexadecimal QString.
 
 \param value This is the integer value which shall be converted to QString
 
@@ -965,7 +938,8 @@ inline QString Keepass2DatabaseInterface::uInt2QString(uint value)
 void Keepass2DatabaseInterface::slot_changeKeyTransfRounds(int value)
 {
     Q_ASSERT(m_Database);
-    /*
+/*
+TODO Adapt to KeepassXC database backend
     m_Database->setTransformRounds((quint64) value);
     // Save database
     QString errorMsg = saveDatabase();
@@ -973,7 +947,7 @@ void Keepass2DatabaseInterface::slot_changeKeyTransfRounds(int value)
         emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg);
         return;
     }
-    */
+*/
     emit databaseKeyTransfRoundsChanged(value);
 }
 
@@ -992,6 +966,7 @@ void Keepass2DatabaseInterface::slot_loadCustomIcons()
 
 const QImage Keepass2DatabaseInterface::getCustomIcon(const QString value)
 {
+    Q_ASSERT(m_Database);
     const QUuid iconUuid = Tools::hexToUuid(value);
     if (m_Database->metadata()->containsCustomIcon(iconUuid)) {
         return m_Database->metadata()->customIcon(iconUuid);
@@ -1002,9 +977,10 @@ const QImage Keepass2DatabaseInterface::getCustomIcon(const QString value)
 
 QString Keepass2DatabaseInterface::saveDatabase()
 {
+    Q_ASSERT(m_Database);
     QSaveFile saveFile(m_filePath);
     if (saveFile.open(QIODevice::WriteOnly)) {
-        m_writer.writeDatabase(&saveFile, m_Database.data());
+        m_writer.writeDatabase(&saveFile, m_Database);
         if (m_writer.hasError()) {
             // error occured in the Keepass 2 writer
             return m_writer.errorString();

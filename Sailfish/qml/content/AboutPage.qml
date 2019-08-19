@@ -72,7 +72,7 @@ Page {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: qsTr("Version") + " " + ownKeepassSettings.version + "<br>\
-Copyright &#169; 2013-2017 Marko Koschak"
+Copyright &#169; 2013-2019 Marko Koschak"
             }
 
             Row {
@@ -167,29 +167,6 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                 Button {
                     anchors.bottom: parent.bottom
                     width: (parent.width / 2) * 0.95
-                    text: "Flattr"
-                    onClicked: Qt.openUrlExternally("https://flattr.com/@jobe")
-                }
-
-                Button {
-                    anchors.bottom: parent.bottom
-                    width: (parent.width / 2) * 0.95
-                    text: "Paypal"
-                    onClicked: Qt.openUrlExternally("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5KR2WTZ8FMRQQ")
-                }
-            }
-
-            Row {
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.horizontalPageMargin
-                spacing: (width / 2) * 0.1
-                height: Theme.itemSizeMedium + Theme.paddingMedium
-
-                Button {
-                    anchors.bottom: parent.bottom
-                    width: (parent.width / 2) * 0.95
                     text: qsTr("Translate")
                     onClicked: Qt.openUrlExternally("https://www.transifex.com/projects/p/jobe_m-ownKeepass/")
                 }
@@ -200,6 +177,13 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                     text: qsTr("Report bugs")
                     onClicked: Qt.openUrlExternally("https://github.com/jobe-m/ownkeepass/issues")
                 }
+            }
+
+            Button {
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: (parent.width / 2) * 0.95
+                text: "Paypal"
+                onClicked: Qt.openUrlExternally("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5KR2WTZ8FMRQQ")
             }
 
             SectionHeader {
