@@ -52,8 +52,7 @@ signals:
     void newDatabaseCreated();
     void databaseClosed();
     void passwordChanged();
-    void databaseKeyTransfRoundsChanged(int value);
-    void databaseCryptAlgorithmChanged(int value);
+    void databaseSettingsChanged(int cryptAlgo, int kdf, int rounds);
     void errorOccured(int result,
                       QString errorMsg);
 
@@ -147,8 +146,7 @@ public slots:
     void slot_closeDatabase();
     void slot_changePassKey(QString password,
                             QString keyFile);
-    void slot_changeKeyTransfRounds(int value);
-    void slot_changeCryptAlgorithm(int value);
+    void slot_changeDatabaseSettings(int cryptAlgo, int kdf, int rounds);
     void slot_setting_showUserNamePasswordsInListView(bool value) { m_setting_showUserNamePasswordsInListView = value; }
     void slot_setting_sortAlphabeticallyInListView(bool value) { m_setting_sortAlphabeticallyInListView = value; }
 

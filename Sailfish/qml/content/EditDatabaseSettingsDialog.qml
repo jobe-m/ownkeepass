@@ -36,6 +36,7 @@ Dialog {
     property bool masterPasswordChanged: false
     property bool cryptAlgorithmChanged: false
     property bool keyTransfRoundsChanged: false
+    property bool keyDeviationFunctionChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
@@ -151,15 +152,18 @@ Dialog {
             ComboBox {
                 id: databaseCryptAlgorithm
                 enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
-                visible: enabled
                 width: parent.width
                 label: qsTr("Encryption currently in use:")
                 currentIndex: ownKeepassDatabase.cryptAlgorithm
                 menu: ContextMenu {
-                    MenuItem { text: "AES/Rijndael" }
-                    MenuItem { text: "Twofish" }
-//                    MenuItem { text: "ChaCha20" }
-                }
+                    // Do not change order of menu items below - it needs to be consistent to Cipher::eCipherAlgos
+                    MenuItem { text: "AES (256-bit)" }
+                    MenuItem { text: "Twofish (256-bit)" }
+                    MenuItem {
+                        text: "ChaCha20 (256-bit)"
+                        enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
+                    }
+               }
                 onCurrentIndexChanged: {
                     editDatabaseSettingsDialog.cryptAlgorithmChanged =
                             databaseCryptAlgorithm.currentIndex !== ownKeepassDatabase.cryptAlgorithm
@@ -167,9 +171,28 @@ Dialog {
                 }
             }
 
+            ComboBox {
+                id: keyDeviationFunction
+                enabled: false
+                visible: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
+                width: parent.width
+                label: qsTr("Key deviation function in use:")
+                currentIndex: ownKeepassDatabase.keyDeviationFunction
+                menu: ContextMenu {
+                    // Do not change order of menu items below - it needs to be consistent to Cipher::eKdf
+                    MenuItem { text: "Argon2 (KDBX 4) - recommended!" }
+                    MenuItem { text: "AES-KDF (KDBX 4)" }
+                    MenuItem { text: "AES-KDF (KDBX 3.1)" }
+                }
+                onCurrentIndexChanged: {
+                    editDatabaseSettingsDialog.keyDeviationFunctionChanged =
+                            currentIndex !== ownKeepassDatabase.keyDeviationFunction
+                    editDatabaseSettingsDialog.updateCoverState()
+                }
+            }
+
             Column {
                 enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
-                visible: enabled
                 width: parent.width
                 spacing: 0
 
@@ -205,8 +228,9 @@ Dialog {
     onAccepted: {
         // first save locally database settings then trigger saving
         kdbListItemInternal.setDatabaseSettings(databaseMasterPassword.text,
-                                     databaseCryptAlgorithm.currentIndex,
-                                     Number(databaseKeyTransfRounds.text))
+                                                databaseCryptAlgorithm.currentIndex,
+                                                keyDeviationFunction.currentIndex,
+                                                Number(databaseKeyTransfRounds.text))
         kdbListItemInternal.saveDatabaseSettings()
     }
     // user has rejected changing database settings, check if there are unsaved details
@@ -215,8 +239,9 @@ Dialog {
         if (canNavigateForward) {
             // first save locally database settings then trigger check for unsaved changes
             kdbListItemInternal.setDatabaseSettings(databaseMasterPassword.text,
-                                         databaseCryptAlgorithm.currentIndex,
-                                         Number(databaseKeyTransfRounds.text))
+                                                    databaseCryptAlgorithm.currentIndex,
+                                                    keyDeviationFunction.currentIndex,
+                                                    Number(databaseKeyTransfRounds.text))
             kdbListItemInternal.checkForUnsavedDatabaseSettingsChanges()
         }
     }

@@ -37,10 +37,9 @@ public:
     Q_ENUMS(eDatabaseAccessResult)
 
     enum eDatabaseAccessResult {
-        // new and reviewed error codes
         RE_OK = 0,                                     // no error
+        // to be reviewed error codes
         RE_DB_READ_ONLY,                               // database file is read-only
-        RE_DB_LOAD_ERROR,                              // error loading data from database
         RE_DB_SAVE_ERROR,                              // error saving data into database
         RE_DB_ENTRY_NOT_FOUND,                         // Entry could not be found in database (uuid or pointer is corrupt?)
         RE_DB_GROUP_NOT_FOUND,                         // Group could not be found in database (Uuid or pointer is corrupt?)
@@ -51,24 +50,26 @@ public:
         RE_DB_SETKEY_ERROR,                            // error setting key (consisting of password and/or keyfile)
         RE_DB_CREATE_BACKUPGROUP_ERROR,                // error creating backup group
         RE_CRYPTO_INIT_ERROR,                          // cryptographic algorithms could not be initialized successfully, abort opening of any Keepass database for safety
-        RE_NOT_A_KEEPASS_DB,                           // Not a KeePass database
-        RE_NOT_SUPPORTED_DB_VERSION,                   // Unsupported KeePass database version
         RE_MISSING_DB_HEADERS,                         // missing database headers
-        RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT,            // Wrong password or database file is corrupt
-        RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, // Wrong password or wrong keyfile or either keyfile or database file is corrupt
         RE_HEAD_HASH_MISMATCH,                         // Database head doesn't match hash
         RE_DBFILE_OPEN_ERROR,                          // Cannot open database file, more detailed error message available as attached string in signal
-        RE_KEYFILE_OPEN_ERROR,                         // Cannot open key file, more detailed error message available as attached string in signal
         RE_ERR_REMOVE_RECENT_DATABASE,                 // Could not remove database from recent database list in the settings
         RE_ERR_DELETE_DATABASE,                        // Could not delete the database file from the file system
-        RE_OLD_KEEPASS_1_DB,                           // When trying to open a Keepass 1 as a Keepass2 database this error occurs
         RE_UNKNOWN_ERROR,                              // An error occured which is not specified further
 
         // Keepass 1 specific
         RE_ERR_QSTRING_TO_INT,                         // conversion of QString to int failed
 
-        // Keepass 2 specific
-        RE_ERR_QSTRING_TO_UUID,                        // conversion of QString to uuid failed
+        // Used in KeepassXC
+        RE_DB_FILE_NOT_EXISTS,                         // File %1 does not exist
+        RE_DB_OPEN_FILE_ERROR,                         // Unable to open file %1
+        RE_OLD_KEEPASS_1_DB,                           // When trying to open a Keepass 1 as a Keepass2 database this error occurs
+        RE_NOT_SUPPORTED_DB_VERSION,                   // Unsupported KeePass database version
+        RE_NOT_A_KEEPASS_DB,                           // Not a KeePass database
+        RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT,            // Wrong password or database file is corrupt
+        RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, // Wrong password or wrong keyfile or either keyfile or database file is corrupt
+        RE_KEYFILE_OPEN_ERROR,                         // Cannot open key file, more detailed error message available as attached string in signal
+        RE_DB_LOAD_ERROR,                              // error loading data from database
 
         RE_LAST
     };
@@ -147,12 +148,36 @@ public:
 
     // This is the default order of Keepass standard entry keys which is used for loading and saving password entries
     enum eKeepassDefaultEntryKeys {
-        TITLE    = 0,
+        TITLE = 0,
         URL,
         USERNAME,
         PASSWORD,
         NOTES,
         ADDITIONAL_ATTRIBUTES
+    };
+};
+
+class Cipher : public QObject
+{
+    Q_OBJECT
+
+public:
+    Q_ENUMS(eKeepassDefaultEntryKeys)
+
+    // Used database encryption algorithms
+    enum eCipherAlgos {
+        CIPHER_AES_256 = 0,
+        CIPHER_TWOFISH_256,
+        CIPHER_CHACHA20_256,
+        CIPHER_UNKNOWN
+    };
+
+    // Key transformation methods
+    enum eKdf {
+        KDF_ARGON2 = 0,
+        KDF_AES_KDBX4,
+        KDF_AES_KDBX3,
+        KDF_UNKNOWN
     };
 };
 

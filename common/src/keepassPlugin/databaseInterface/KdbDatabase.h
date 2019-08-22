@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2012 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2012 - 2019 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -36,25 +36,29 @@ class KdbDatabase : public QObject
 public:
     Q_PROPERTY(int keyTransfRounds READ keyTransfRounds WRITE setKeyTransfRounds NOTIFY keyTransfRoundsChanged)
     Q_PROPERTY(int cryptAlgorithm READ cryptAlgorithm WRITE setCryptAlgorithm NOTIFY cryptAlgorithmChanged)
+    Q_PROPERTY(int keyDeviationFunction READ keyDeviationFunction WRITE setKeyDeviationFunction NOTIFY keyDeviationFunctionChanged)
     Q_PROPERTY(bool showUserNamePasswordsInListView READ showUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool readOnly READ readOnly NOTIFY readOnlyChanged)
     Q_PROPERTY(int type READ type NOTIFY typeChanged)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
-    Q_INVOKABLE void open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readonly);
+    Q_INVOKABLE void open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readOnly);
     Q_INVOKABLE void create(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password);
     Q_INVOKABLE void close();
     Q_INVOKABLE void changePassword(const QString& password, const QString &keyFile);
+    Q_INVOKABLE void saveSettings();
 
 public:
     KdbDatabase(QObject* parent=0);
     virtual ~KdbDatabase() {}
 
     int keyTransfRounds() const { return m_keyTransfRounds; }
-    void setKeyTransfRounds(const int value) { emit changeDatabaseKeyTransfRounds(value); }
+    void setKeyTransfRounds(const int value) { m_keyTransfRounds = value; }
     int cryptAlgorithm() const { return m_cryptAlgorithm; }
-    void setCryptAlgorithm(const int value) { emit changeDatabaseCryptAlgorithm(value); }
+    void setCryptAlgorithm(const int value) { m_cryptAlgorithm = value; }
+    int keyDeviationFunction() const { return m_keyDeviationFunction; }
+    void setKeyDeviationFunction(const int value) { m_keyDeviationFunction = value; }
     bool showUserNamePasswordsInListView() const { return m_showUserNamePasswordsInListView; }
     void setShowUserNamePasswordsInListView(bool value) { m_showUserNamePasswordsInListView = value; emit setting_showUserNamePasswordsInListView(value); }
     bool sortAlphabeticallyInListView() const { return m_sortAlphabeticallyInListView; }
@@ -64,12 +68,11 @@ public:
 
 signals:
     // signals to DatabaseClient backend thread
-    void openDatabase(QString filePath, QString password, QString keyfile, bool readonly);
+    void openDatabase(QString filePath, QString password, QString keyfile, bool readOnly);
     void createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds);
     void closeDatabase();
     void changeDatabasePassword(QString password, QString keyFile);
-    void changeDatabaseKeyTransfRounds(int value);
-    void changeDatabaseCryptAlgorithm(int value);
+    void changeDatabaseSettings(int cryptAlgo, int kdf, int rounds);
     void setting_showUserNamePasswordsInListView(bool value);
     void setting_sortAlphabeticallyInListView(bool value);
 
@@ -80,24 +83,14 @@ signals:
     void databasePasswordChanged();
     void keyTransfRoundsChanged();
     void cryptAlgorithmChanged();
+    void keyDeviationFunctionChanged();
     void errorOccured(int result, QString errorMsg);
     void readOnlyChanged();
     void typeChanged();
 
 private slots:
     // signals from DatabaseClient backend thread
-    void slot_databaseKeyTransfRoundsChanged(int value) {
-        if (value != m_keyTransfRounds) {
-            m_keyTransfRounds = value;
-            emit keyTransfRoundsChanged();
-        }
-    }
-    void slot_databaseCryptAlgorithmChanged(int value) {
-        if (value != m_cryptAlgorithm) {
-            m_cryptAlgorithm = value;
-            emit cryptAlgorithmChanged();
-        }
-    }
+    void slot_databaseSettingsChanged(int cryptAlgo, int kdf, int rounds);
     void slot_databaseClosed();
     void slot_databaseOpened(int result, QString errorMsg);
 
@@ -109,6 +102,7 @@ private:
     // The following properties are read from backend and therefore there are slots for it
     int m_keyTransfRounds;
     int m_cryptAlgorithm;
+    int m_keyDeviationFunction;
     // Settings are simply passed over to the backend thread
     bool m_showUserNamePasswordsInListView;
     bool m_sortAlphabeticallyInListView;

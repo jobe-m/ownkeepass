@@ -142,8 +142,8 @@ void Keepass1DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     emit databaseOpened(DatabaseAccessResult::RE_OK, "");
 
     // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
-    emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
-    emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
+    int unused = 0;
+    emit databaseSettingsChanged(m_kdb3Database->cryptAlgorithm(), unused, m_kdb3Database->keyTransfRounds());
 }
 
 void Keepass1DatabaseInterface::slot_closeDatabase()
@@ -844,30 +844,19 @@ inline QString Keepass1DatabaseInterface::getUserAndPassword(IEntryHandle* entry
     }
 }
 
-void Keepass1DatabaseInterface::slot_changeKeyTransfRounds(int value)
+void Keepass1DatabaseInterface::slot_changeDatabaseSettings(int cryptAlgo, int kdf, int rounds)
 {
-    // do nothing if no database is opened database
-    if (!m_kdb3Database) return;
-
-    // set key transformation rounds in database and emit changed signal
-    m_kdb3Database->setKeyTransfRounds(value);
-    m_kdb3Database->generateMasterKey();
-    emit databaseKeyTransfRoundsChanged(m_kdb3Database->keyTransfRounds());
-    // save changes to database
-    if (!m_kdb3Database->save()) {
-        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError());
-        return;
-    }
-}
-
-void Keepass1DatabaseInterface::slot_changeCryptAlgorithm(int value)
-{
+    Q_UNUSED(kdf);
     // do nothing if no database is opened database
     if (!m_kdb3Database) return;
 
     // set crypto algorithm in database and emit changed signal
-    m_kdb3Database->setCryptAlgorithm(CryptAlgorithm(value));
-    emit databaseCryptAlgorithmChanged(m_kdb3Database->cryptAlgorithm());
+    m_kdb3Database->setCryptAlgorithm(CryptAlgorithm(cryptAlgo));
+    // set key transformation rounds in database and emit changed signal
+    m_kdb3Database->setKeyTransfRounds(rounds);
+    m_kdb3Database->generateMasterKey();
+    int unused = 0;
+    emit databaseSettingsChanged(m_kdb3Database->cryptAlgorithm(), unused, m_kdb3Database->keyTransfRounds());
     // save changes to database
     if (!m_kdb3Database->save()) {
         emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, m_kdb3Database->getError());

@@ -234,11 +234,6 @@ Page {
                                              qsTr("Internal database error"),
                                              qsTr("Conversion of QString \"%1\" to Int failed").arg(errorMsg))
             break
-        case DatabaseAccessResult.RE_ERR_QSTRING_TO_UUID:
-            applicationWindow.infoPopup.show(Global.error,
-                                             qsTr("Internal database error"),
-                                             qsTr("Conversion of QString \"%1\" to Uuid failed").arg(errorMsg))
-            break
         case DatabaseAccessResult.RE_OLD_KEEPASS_1_DB:
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Database version"),
@@ -251,6 +246,18 @@ Page {
                                              qsTr("The following error occured: " + errorMsg))
             internal.masterGroupsPage.closeOnError()
             break
+        case DatabaseAccessResult.RE_DB_FILE_NOT_EXISTS:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Error loading database"),
+                                             qsTr("File %1 does not exist").arg(errorMsg))
+            internal.masterGroupsPage.closeOnError()
+            break
+        case DatabaseAccessResult.RE_DB_OPEN_FILE_ERROR:
+            applicationWindow.infoPopup.show(Global.error,
+                                             qsTr("Error loading database"),
+                                             qsTr("Unable to open file %1").arg(errorMsg))
+            internal.masterGroupsPage.closeOnError()
+            break
         default:
             // This should not happen therefore english error text is enough
             applicationWindow.infoPopup.show(Global.error,
@@ -258,9 +265,7 @@ Page {
                                              "The following unknown error code appeared: " + result + " (Error message: \"" + errorMsg + "\")")
             internal.masterGroupsPage.closeOnError()
             break
-
         }
-
     }
 
     allowedOrientations: applicationWindow.orientationSetting
@@ -788,6 +793,7 @@ Page {
         property string databaseKeyFile: ""
         property string databaseMasterPassword: ""
         property int    databaseCryptAlgorithm: 0
+        property int    databaseKdf: 0
         property int    databaseKeyTransfRounds: 0
 
         /*
@@ -882,9 +888,10 @@ Page {
             groupIconUuid       = iconUuid
         }
 
-        function setDatabaseSettings(masterPassword, cryptAlgorithm, keyTransfRounds) {
+        function setDatabaseSettings(masterPassword, cryptAlgorithm, kdf, keyTransfRounds) {
             databaseMasterPassword  = masterPassword
             databaseCryptAlgorithm  = cryptAlgorithm
+            databaseKdf             = kdf
             databaseKeyTransfRounds = keyTransfRounds
         }
 
@@ -892,6 +899,7 @@ Page {
             // check if user gave a new master password or if encryption type or key transformation rounds have changed
             if (databaseMasterPassword !== "" ||
                     databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm ||
+                    databaseKdf !== ownKeepassDatabase.keyDeviationFunction ||
                     databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
                 pageStack.completeAnimation()
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
@@ -912,11 +920,21 @@ Page {
                 }
                 databaseMasterPassword = ""
             }
+            var changed = false
             if (databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm) {
                 ownKeepassDatabase.cryptAlgorithm = databaseCryptAlgorithm
+                changed = true
+            }
+            if (databaseKdf !== ownKeepassDatabase.keyDeviationFunction) {
+                ownKeepassDatabase.keyDeviationFunction = databaseKdf
+                changed = true
             }
             if (databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
                 ownKeepassDatabase.keyTransfRounds = databaseKeyTransfRounds
+                changed = true
+            }
+            if (changed) {
+                ownKeepassDatabase.saveSettings()
             }
         }
 

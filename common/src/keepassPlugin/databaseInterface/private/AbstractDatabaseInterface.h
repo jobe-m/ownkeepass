@@ -38,7 +38,7 @@ protected: // signals
     // signals to all objects
     virtual void disconnectAllClients() = 0;
 
-    // signals to KdbDatabase object
+    // signals to KdbDatabase object (QML)
 
     /// \brief The databaseOpened() signal is emmitted after calling
     /// slot_openDatabase(). It signals that opening of the Keepass database is finished.
@@ -75,17 +75,13 @@ protected: // signals
     virtual void newDatabaseCreated() = 0;
     virtual void databaseClosed() = 0;
     virtual void passwordChanged() = 0;
-    virtual void databaseKeyTransfRoundsChanged(int value) = 0;
-    virtual void databaseCryptAlgorithmChanged(int value) = 0;
+    virtual void databaseSettingsChanged(int cryptAlgo, int kdf, int rounds) = 0;
 
     /// \brief The errorOccured() signal is emitted whenever an internal error
     /// occured. Refer to the result list for the severity of the error and if
     /// accessing the database is still possible.
     ///
     /// \param result is one from the folloing list:
-    ///        RE_ERR_QSTRING_TO_UUID QString value is not exactly 16 characters
-    ///          long and cannot be converted successfully (Keepass 2 only)
-    ///          Access to database is still possible. Severity low.
     ///        RE_ERR_QSTRING_TO_INT Conversion from QString to integer number
     ///          failed (Keepass 1 only)
     ///          Access to database is still possible. Severity low.
@@ -97,7 +93,7 @@ protected: // signals
     virtual void errorOccured(int result,
                               QString errorMsg) = 0;
 
-    // signals to KdbListModel object
+    // signals to KdbListModel object (QML)
     virtual void appendItemToListModel(QString title,
                                        QString iconUuid,
                                        QString subTitle,
@@ -138,7 +134,7 @@ protected: // signals
     virtual void searchEntriesCompleted(int result,
                                         QString errorMsg) = 0;
 
-    // signal to KdbEntry object
+    // signal to KdbEntry object (QML)
     virtual void entryLoaded(int result,
                              QString errorMsg,
                              QString entryId,
@@ -158,7 +154,7 @@ protected: // signals
                             QString errorMsg,
                             QString entryId) = 0;
 
-    // signal to KdbGroup object
+    // signal to KdbGroup object (QML)
     virtual void groupLoaded(int result,
                              QString errorMsg,
                              QString groupId,
@@ -178,7 +174,7 @@ protected: // signals
                             QString errorMsg,
                             QString groupId) = 0;
 
-    // signal to KeepassIcon
+    // signal to KeepassIcon (QML)
     virtual void appendCustomIconToListModel(QString uuid) = 0;
 
 public: // slots
@@ -195,8 +191,7 @@ public: // slots
     virtual void slot_closeDatabase() = 0;
     virtual void slot_changePassKey(QString password,
                                     QString keyFile) = 0;
-    virtual void slot_changeKeyTransfRounds(int value) = 0;
-    virtual void slot_changeCryptAlgorithm(int value) = 0;
+    virtual void slot_changeDatabaseSettings(int cryptAlgo, int kdf, int rounds) = 0;
     virtual void slot_setting_showUserNamePasswordsInListView(bool value) = 0;
     virtual void slot_setting_sortAlphabeticallyInListView(bool value) = 0;
 

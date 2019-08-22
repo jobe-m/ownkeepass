@@ -36,6 +36,7 @@
 #include "core/EntrySearcher.h"
 #include "core/Metadata.h"
 #include "core/Tools.h"
+#include "format/KeePass2.h"
 
 #define GROUP_SUBTITLE_FORMAT "| %1 | %2 | %3"
 
@@ -46,7 +47,6 @@ using namespace ownKeepassPublic;
 Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
     : QObject(parent),
       m_Database(nullptr),
-      m_filePath(""),
       m_setting_showUserNamePasswordsInListView(false),
       m_setting_sortAlphabeticallyInListView(true)
 {
@@ -56,9 +56,7 @@ Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
 Keepass2DatabaseInterface::~Keepass2DatabaseInterface()
 {
     qDebug("Destructor Keepass2DatabaseInterface");
-    if (m_Database) {
-        delete m_Database;
-    }
+    delete m_Database;
 }
 
 void Keepass2DatabaseInterface::initDatabase()
@@ -70,33 +68,8 @@ void Keepass2DatabaseInterface::initDatabase()
     }
 }
 
-void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readonly)
+void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString password, QString keyfile, bool readOnly)
 {
-    bool db_read_only = false;
-
-    // TODO check if .lock file exists and ask user if he wants to open the database in read only mode or discard and open in read/write mode
-    // TODO create .lock file if it does not exist yet
-
-    // check if file path of database is readable or read-writable
-    QFile file(filePath);
-    if (readonly) {
-        if (!file.open(QIODevice::ReadOnly)) {
-            emit databaseOpened(DatabaseAccessResult::RE_DBFILE_OPEN_ERROR, file.errorString());
-            return;
-        }
-        db_read_only = true;
-    } else {
-        if (!file.open(QIODevice::ReadWrite)) {
-            if (file.open(QIODevice::ReadOnly)) {
-                // Database can only be read so tell this to UI
-                db_read_only = true;
-            } else {
-            emit databaseOpened(DatabaseAccessResult::RE_DBFILE_OPEN_ERROR, file.errorString());
-            return;
-            }
-        }
-    }
-
     auto masterKey = QSharedPointer<CompositeKey>::create();
     auto passwordKey = QSharedPointer<PasswordKey>::create();
     passwordKey->setPassword(password);
@@ -116,44 +89,76 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     }
     m_Database = new Database();
 
-    KeePass2Reader reader;
-    if (!reader.readDatabase(&file, masterKey, m_Database)) {
+    QString errorString;
+    if (!m_Database->open(filePath, masterKey, &errorString, readOnly)) {
         // an error occured during opening of the database
-        QString errorString = reader.errorString();
         qDebug() << "Error occured: " << errorString;
-        if (!errorString.compare("Not a KeePass database.", Qt::CaseInsensitive)) {
-            emit databaseOpened(DatabaseAccessResult::RE_NOT_A_KEEPASS_DB, "");
-        } else if (!errorString.compare("Unsupported KeePass database version.", Qt::CaseInsensitive)) {
-            emit databaseOpened(DatabaseAccessResult::RE_NOT_SUPPORTED_DB_VERSION, "");
-        } else if (!errorString.compare("missing database headers", Qt::CaseInsensitive)) {
-            emit databaseOpened(DatabaseAccessResult::RE_MISSING_DB_HEADERS, "");
-        } else if (!errorString.compare("Wrong key or database file is corrupt.", Qt::CaseInsensitive)) {
-            if (keyfile.isEmpty()) {
-                emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT, "");
+        // TODO adapt error msg compare
+        if (errorString.startsWith("F")) {
+            // full error message: "File %1 does not exist."
+            emit databaseOpened(DatabaseAccessResult::RE_DB_FILE_NOT_EXISTS, filePath);
+        } else if (errorString.startsWith("U")) {
+            // full error message: "Unable to open file %1."
+            emit databaseOpened(DatabaseAccessResult::RE_DB_OPEN_FILE_ERROR, filePath);
+        } else if (errorString.startsWith("E")) {
+            // full error message: "Error while reading the database: %1"
+            if (errorString.contains("The selected file is an old KeePass 1 database (.kdb)", Qt::CaseInsensitive)) {
+                // error message 2nd part: "The selected file is an old KeePass 1 database (.kdb).\n\n"
+                //                         "You can import it by clicking on Database > 'Import KeePass 1 database...'.\n"
+                //                         "This is a one-way migration. You won't be able to open the imported "
+                //                         "database with the old KeePassX 0.4 version."));
+                emit databaseOpened(DatabaseAccessResult::RE_OLD_KEEPASS_1_DB, "");
+            } else if (errorString.contains("Not a KeePass database", Qt::CaseInsensitive)) {
+                // error message 2nd part: "Not a KeePass database."));
+                emit databaseOpened(DatabaseAccessResult::RE_NOT_A_KEEPASS_DB, "");
+            } else if (errorString.contains("Unsupported KeePass 2 database version", Qt::CaseInsensitive)) {
+                // error message 2nd part: "Unsupported KeePass 2 database version."));
+                emit databaseOpened(DatabaseAccessResult::RE_NOT_SUPPORTED_DB_VERSION, "");
+            } else if (errorString.contains("Invalid credentials were provided, please try again", Qt::CaseInsensitive)) {
+                // error message 2nd part: "Invalid credentials were provided, please try again.\n"
+                //                         "If this reoccurs, then your database file may be corrupt. (HMAC mismatch)"
+                if (keyfile.isEmpty()) {
+                    emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_DB_IS_CORRUPT, "");
+                } else {
+                    emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, "");
+                }
             } else {
-                emit databaseOpened(DatabaseAccessResult::RE_WRONG_PASSWORD_OR_KEYFILE_OR_DB_IS_CORRUPT, "");
+                // Other error messages will be trunkated and passed as common error message to QML (untranslated)
+                emit databaseOpened(DatabaseAccessResult::RE_DB_LOAD_ERROR, errorString.remove(0, 33));
             }
-        } else if (!errorString.compare("Head doesn't match hash", Qt::CaseInsensitive)) {
-            emit databaseOpened(DatabaseAccessResult::RE_HEAD_HASH_MISMATCH, "");
-        } else if (errorString.contains("The selected file is an old KeePass 1 database", Qt::CaseInsensitive)) {
-            emit databaseOpened(DatabaseAccessResult::RE_OLD_KEEPASS_1_DB, "");
-        } else {
-            emit databaseOpened(DatabaseAccessResult::RE_UNKNOWN_ERROR, errorString);
         }
         return;
     }
 
     // database was opened successfully
-    m_filePath = filePath;
-    if (db_read_only) {
+    if (readOnly) {
         emit databaseOpened(DatabaseAccessResult::RE_DB_READ_ONLY, "");
     } else {
         emit databaseOpened(DatabaseAccessResult::RE_OK, "");
     }
 
-    // load used encryption and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
-    emit databaseCryptAlgorithmChanged(0); // Keepass2 only supports Rijndael_Cipher = 0
-    emit databaseKeyTransfRoundsChanged(1); // TODO check were to get this m_Database->transformRounds());
+    // load used encryption, keyDeviationFunction and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
+    int cipher;
+    if (m_Database->cipher() == KeePass2::CIPHER_AES256) {
+        cipher = ownKeepassPublic::Cipher::CIPHER_AES_256;
+    } else if (m_Database->cipher() == KeePass2::CIPHER_TWOFISH) {
+        cipher = ownKeepassPublic::Cipher::CIPHER_TWOFISH_256;
+    } else if (m_Database->cipher() == KeePass2::CIPHER_CHACHA20) {
+        cipher = ownKeepassPublic::Cipher::CIPHER_CHACHA20_256;
+    } else {
+        cipher = ownKeepassPublic::Cipher::CIPHER_UNKNOWN;
+    }
+    int kdf;
+    if (m_Database->kdf()->uuid() == KeePass2::KDF_ARGON2) {
+        kdf = ownKeepassPublic::Cipher::KDF_ARGON2;
+    } else if (m_Database->kdf()->uuid() == KeePass2::KDF_AES_KDBX4) {
+        kdf = ownKeepassPublic::Cipher::KDF_AES_KDBX4;
+    } else if (m_Database->kdf()->uuid() == KeePass2::KDF_AES_KDBX3) {
+        kdf = ownKeepassPublic::Cipher::KDF_AES_KDBX3;
+    } else {
+        kdf = ownKeepassPublic::Cipher::KDF_UNKNOWN;
+    }
+    emit databaseSettingsChanged(cipher, kdf, m_Database->kdf()->rounds());
 }
 
 void Keepass2DatabaseInterface::slot_closeDatabase()
@@ -163,9 +168,6 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
         emit errorOccured(DatabaseAccessResult::RE_DB_ALREADY_CLOSED, "");
         return;
     }
-
-    delete m_Database;
-    m_filePath = "";
 
 // TODO delete .lock file
 
@@ -178,7 +180,6 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
 
 void Keepass2DatabaseInterface::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
 {
-    m_filePath = filePath;
 }
 
 void Keepass2DatabaseInterface::slot_changePassKey(QString password, QString keyFile)
@@ -935,26 +936,10 @@ inline QString Keepass2DatabaseInterface::uInt2QString(uint value)
     }
 }
 
-void Keepass2DatabaseInterface::slot_changeKeyTransfRounds(int value)
+void Keepass2DatabaseInterface::slot_changeDatabaseSettings(int cryptAlgo, int kdf, int rounds)
 {
     Q_ASSERT(m_Database);
-/*
-TODO Adapt to KeepassXC database backend
-    m_Database->setTransformRounds((quint64) value);
-    // Save database
-    QString errorMsg = saveDatabase();
-    if (errorMsg.length() != 0) {
-        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg);
-        return;
-    }
-*/
-    emit databaseKeyTransfRoundsChanged(value);
-}
-
-void Keepass2DatabaseInterface::slot_changeCryptAlgorithm(int value)
-{
-    Q_UNUSED(value);
-    // Not available in Keepass 2 database
+    // TODO adapt to Keepass 2 database
 }
 
 void Keepass2DatabaseInterface::slot_loadCustomIcons()
@@ -978,22 +963,12 @@ const QImage Keepass2DatabaseInterface::getCustomIcon(const QString value)
 QString Keepass2DatabaseInterface::saveDatabase()
 {
     Q_ASSERT(m_Database);
-    QSaveFile saveFile(m_filePath);
-    if (saveFile.open(QIODevice::WriteOnly)) {
-        m_writer.writeDatabase(&saveFile, m_Database);
-        if (m_writer.hasError()) {
-            // error occured in the Keepass 2 writer
-            return m_writer.errorString();
-        }
-        if (!saveFile.commit()) {
-            // could not save to file
-            return saveFile.errorString();
-        }
+    QString errorString;
+    if (m_Database->save(&errorString, true, false)) {
+        return "";
     } else {
-        // could not open file
-        return saveFile.errorString();
+        return errorString;
     }
-    return "";
 }
 
 QString Keepass2DatabaseInterface::getEntryIcon(int standardIcon, QUuid customIcon)
