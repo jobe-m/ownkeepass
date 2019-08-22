@@ -36,7 +36,7 @@ Dialog {
     property bool masterPasswordChanged: false
     property bool cryptAlgorithmChanged: false
     property bool keyTransfRoundsChanged: false
-    property bool keyDeviationFunctionChanged: false
+    property bool keyDerivationFunctionChanged: false
 
     function updateCoverState() {
         if (saveCoverState === "") // save initial state
@@ -172,21 +172,21 @@ Dialog {
             }
 
             ComboBox {
-                id: keyDeviationFunction
+                id: keyDerivationFunction
                 enabled: false
                 visible: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
                 width: parent.width
-                label: qsTr("Key deviation function in use:")
-                currentIndex: ownKeepassDatabase.keyDeviationFunction
+                label: qsTr("Key derivation function in use:")
+                currentIndex: ownKeepassDatabase.keyDerivationFunction
                 menu: ContextMenu {
                     // Do not change order of menu items below - it needs to be consistent to Cipher::eKdf
-                    MenuItem { text: "Argon2 (KDBX 4) - recommended!" }
+                    MenuItem { text: "Argon2 (KDBX 4) - recommended" }
                     MenuItem { text: "AES-KDF (KDBX 4)" }
                     MenuItem { text: "AES-KDF (KDBX 3.1)" }
                 }
                 onCurrentIndexChanged: {
-                    editDatabaseSettingsDialog.keyDeviationFunctionChanged =
-                            currentIndex !== ownKeepassDatabase.keyDeviationFunction
+                    editDatabaseSettingsDialog.keyDerivationFunctionChanged =
+                            currentIndex !== ownKeepassDatabase.keyDerivationFunction
                     editDatabaseSettingsDialog.updateCoverState()
                 }
             }
@@ -229,7 +229,7 @@ Dialog {
         // first save locally database settings then trigger saving
         kdbListItemInternal.setDatabaseSettings(databaseMasterPassword.text,
                                                 databaseCryptAlgorithm.currentIndex,
-                                                keyDeviationFunction.currentIndex,
+                                                keyDerivationFunction.currentIndex,
                                                 Number(databaseKeyTransfRounds.text))
         kdbListItemInternal.saveDatabaseSettings()
     }
@@ -240,7 +240,7 @@ Dialog {
             // first save locally database settings then trigger check for unsaved changes
             kdbListItemInternal.setDatabaseSettings(databaseMasterPassword.text,
                                                     databaseCryptAlgorithm.currentIndex,
-                                                    keyDeviationFunction.currentIndex,
+                                                    keyDerivationFunction.currentIndex,
                                                     Number(databaseKeyTransfRounds.text))
             kdbListItemInternal.checkForUnsavedDatabaseSettingsChanges()
         }

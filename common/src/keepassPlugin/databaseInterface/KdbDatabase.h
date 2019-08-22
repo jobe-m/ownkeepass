@@ -36,7 +36,7 @@ class KdbDatabase : public QObject
 public:
     Q_PROPERTY(int keyTransfRounds READ keyTransfRounds WRITE setKeyTransfRounds NOTIFY keyTransfRoundsChanged)
     Q_PROPERTY(int cryptAlgorithm READ cryptAlgorithm WRITE setCryptAlgorithm NOTIFY cryptAlgorithmChanged)
-    Q_PROPERTY(int keyDeviationFunction READ keyDeviationFunction WRITE setKeyDeviationFunction NOTIFY keyDeviationFunctionChanged)
+    Q_PROPERTY(int keyDerivationFunction READ keyDerivationFunction WRITE setKeyDerivationFunction NOTIFY keyDerivationFunctionChanged)
     Q_PROPERTY(bool showUserNamePasswordsInListView READ showUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool readOnly READ readOnly NOTIFY readOnlyChanged)
@@ -57,8 +57,8 @@ public:
     void setKeyTransfRounds(const int value) { m_keyTransfRounds = value; }
     int cryptAlgorithm() const { return m_cryptAlgorithm; }
     void setCryptAlgorithm(const int value) { m_cryptAlgorithm = value; }
-    int keyDeviationFunction() const { return m_keyDeviationFunction; }
-    void setKeyDeviationFunction(const int value) { m_keyDeviationFunction = value; }
+    int keyDerivationFunction() const { return m_keyDerivationFunction; }
+    void setKeyDerivationFunction(const int value) { m_keyDerivationFunction = value; }
     bool showUserNamePasswordsInListView() const { return m_showUserNamePasswordsInListView; }
     void setShowUserNamePasswordsInListView(bool value) { m_showUserNamePasswordsInListView = value; emit setting_showUserNamePasswordsInListView(value); }
     bool sortAlphabeticallyInListView() const { return m_sortAlphabeticallyInListView; }
@@ -83,7 +83,7 @@ signals:
     void databasePasswordChanged();
     void keyTransfRoundsChanged();
     void cryptAlgorithmChanged();
-    void keyDeviationFunctionChanged();
+    void keyDerivationFunctionChanged();
     void errorOccured(int result, QString errorMsg);
     void readOnlyChanged();
     void typeChanged();
@@ -102,7 +102,7 @@ private:
     // The following properties are read from backend and therefore there are slots for it
     int m_keyTransfRounds;
     int m_cryptAlgorithm;
-    int m_keyDeviationFunction;
+    int m_keyDerivationFunction;
     // Settings are simply passed over to the backend thread
     bool m_showUserNamePasswordsInListView;
     bool m_sortAlphabeticallyInListView;

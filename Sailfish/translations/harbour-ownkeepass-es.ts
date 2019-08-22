@@ -45,38 +45,38 @@
         <translation>Registro de cambios</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="206"/>
+        <location filename="../qml/content/AboutPage.qml" line="190"/>
         <source>Credits</source>
         <translation>Créditos</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="214"/>
+        <location filename="../qml/content/AboutPage.qml" line="198"/>
         <source>My best appreciations go to:</source>
         <translation>Mis mejores agradecimientos para:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="215"/>
+        <location filename="../qml/content/AboutPage.qml" line="199"/>
         <source>Jolla (for continuing where Nokia stopped)</source>
         <translation>Jolla (por continuar donde Nokia lo dejó)</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="216"/>
+        <location filename="../qml/content/AboutPage.qml" line="200"/>
         <source>The KeepassX project (for a Qt implementation of Keepass)</source>
         <translation>El proyecto KeepassX (por la implementación de Keepass en Qt)</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="218"/>
+        <location filename="../qml/content/AboutPage.qml" line="202"/>
         <source>And finally many thanks to all translators on %1 and contributors on %2 (for keeping me motivated to work on ownKeepass)</source>
         <extracomment>%1 and %2 are placeholders for links to the project on transifex and github</extracomment>
         <translation>Y por último, muchas gracias a todos los traductores en %1 y colaboradores en %2 (por mantenerme motivado para trabajar en ownKeepass)</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="221"/>
+        <location filename="../qml/content/AboutPage.qml" line="205"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Listado alfabético de todos los traductores:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="266"/>
+        <location filename="../qml/content/AboutPage.qml" line="250"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>¡Espero que te diviertas usando ownKeepass, tanto como yo en crearla! </translation>
     </message>
@@ -91,12 +91,12 @@
         <translation>Si te gusta mi trabajo siéntete libre para mostrarme tu agradecimiento. Colabora en la traducción, informa de errores o envía ideas sobre mejoras de la aplicación, envíame un café o sólo dale a &apos;me gusta&apos; y habla de mi aplicación en la tienda de Jolla :)</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="193"/>
+        <location filename="../qml/content/AboutPage.qml" line="170"/>
         <source>Translate</source>
         <translation>Traducir</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="200"/>
+        <location filename="../qml/content/AboutPage.qml" line="177"/>
         <source>Report bugs</source>
         <translation>Informar de fallos</translation>
     </message>
@@ -261,48 +261,48 @@
 <context>
     <name>EditDatabaseSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="87"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="88"/>
         <source>Database Settings</source>
         <translation>Ajustes de base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="85"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="86"/>
         <source>Save</source>
         <translation>Guardar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="86"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="87"/>
         <source>Discard</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="91"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="92"/>
         <source>Change settings of your currently opened Keepass database here</source>
         <translation>Cambiar aquí los ajustes de tu base de datos de Keepass que está abierta</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="99"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
         <translation>Nota: ¡Si cambias la contraseña maestra aquí, deberás recordarla la próxima vez que accedas a base de datos de Keepass!</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="109"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="110"/>
         <source>Master password</source>
         <translation>Contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="112"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="113"/>
         <source>Change master password</source>
         <translation>Cambiar la contraseña maestra</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="138"/>
         <source>Master password confirmed</source>
         <translation>Contraseña maestra confirmada</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="137"/>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="140"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="138"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="141"/>
         <source>Confirm master password</source>
         <translation>Confirmar la contraseña maestra</translation>
     </message>
@@ -313,11 +313,16 @@
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
+        <source>Key derivation function in use:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="205"/>
         <source>Key transformation rounds</source>
         <translation>Rondas de cifrado de la clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="193"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="219"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>Ajustando este valor se incrementa el tiempo de apertura de base de la datos de Keepass pero la clave es mas robusta contra ataques de fuerza bruta</translation>
     </message>
@@ -1107,86 +1112,86 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="276"/>
+        <location filename="../qml/content/MainPage.qml" line="281"/>
         <source>Problem with SD card</source>
         <translation>Problema con tarjeta SD</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="277"/>
+        <location filename="../qml/content/MainPage.qml" line="282"/>
         <source>SD cards with multiple partitions are not supported.</source>
         <translation>Tarjetas SD con varias particiones no están soportadas.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="317"/>
+        <location filename="../qml/content/MainPage.qml" line="322"/>
         <source>Create new database</source>
         <translation>Crear nueva base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="333"/>
+        <location filename="../qml/content/MainPage.qml" line="338"/>
         <source>Open database</source>
         <translation>Abrir base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="360"/>
+        <location filename="../qml/content/MainPage.qml" line="365"/>
         <source>Password Safe</source>
         <translation>Protección de Contraseñas</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="462"/>
+        <location filename="../qml/content/MainPage.qml" line="467"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>Introduce una contraseña maestra para bloquear tu nueva Protección de Contraseñas Keepass:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="469"/>
+        <location filename="../qml/content/MainPage.qml" line="474"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>Ruta y nombre para nuevas bases de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="482"/>
+        <location filename="../qml/content/MainPage.qml" line="487"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>Ruta y nombre de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="650"/>
+        <location filename="../qml/content/MainPage.qml" line="655"/>
         <source>Permission error</source>
         <translation>Error en permisos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="650"/>
+        <location filename="../qml/content/MainPage.qml" line="655"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>No se ha podido crear la ruta para el fichero de la base de datos de Keepass. Debes revisar los permisos del usuario &apos;nemo&apos; sobre el directorio seleccionado.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="655"/>
-        <location filename="../qml/content/MainPage.qml" line="672"/>
+        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="677"/>
         <source>Key file error</source>
         <translation>Error en fichero de clave</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="655"/>
-        <location filename="../qml/content/MainPage.qml" line="672"/>
+        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="677"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>La ruta de la base de datos es correcta, pero no se encuentra el fichero de clave. Por favor, comprueba la ruta del fichero de clave:</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="665"/>
         <source>Database file already exists</source>
         <translation>Ya existe el fichero de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
+        <location filename="../qml/content/MainPage.qml" line="665"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>Por favor, especifica otra ruta y nombre para tu base de datos de Keepass o borra la anterior base de datos con un explorador de archivos.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="677"/>
+        <location filename="../qml/content/MainPage.qml" line="682"/>
         <source>Database file error</source>
         <translation>Error en el fichero de la base de datos</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="677"/>
+        <location filename="../qml/content/MainPage.qml" line="682"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>El fichero de la base de datos no existe. Por favor, comprueba la ruta del fichero:</translation>
     </message>
@@ -1202,7 +1207,7 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="174"/>
-        <location filename="../qml/content/MainPage.qml" line="244"/>
+        <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Database version</source>
         <translation>Versión de la base de datos</translation>
     </message>
@@ -1217,7 +1222,6 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <location filename="../qml/content/MainPage.qml" line="181"/>
         <location filename="../qml/content/MainPage.qml" line="202"/>
         <location filename="../qml/content/MainPage.qml" line="234"/>
-        <location filename="../qml/content/MainPage.qml" line="239"/>
         <source>Internal database error</source>
         <translation>Error interno en base de datos</translation>
     </message>
@@ -1321,26 +1325,21 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="240"/>
-        <source>Conversion of QString &quot;%1&quot; to Uuid failed</source>
-        <translation>Ha fallado la conversión del QString &quot;%1&quot; al Uuid</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
         <translation>Haz intentado abrir una base de datos Keepass 2 pero la base de datos dada utiliza la versión 1. Elije la versión correcta de la base de datos Keepass.</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="250"/>
+        <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>Unknown error</source>
         <translation>Error desconocido</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="745"/>
+        <location filename="../qml/content/MainPage.qml" line="750"/>
         <source>Password changed</source>
         <translation>Contraseña cambiada</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="745"/>
+        <location filename="../qml/content/MainPage.qml" line="750"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>Se ha cambiado correctamente la contraseña maestra de tu base de datos.</translation>
     </message>
@@ -1351,6 +1350,8 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="101"/>
+        <location filename="../qml/content/MainPage.qml" line="251"/>
+        <location filename="../qml/content/MainPage.qml" line="257"/>
         <source>Error loading database</source>
         <translation>Error en la carga de la base de datos</translation>
     </message>
@@ -1400,42 +1401,52 @@ Por favor, ten en cuenta lo siguiente. Aunque ownKeepass pueda leer y escribir e
         <translation>La conversión de QString &quot;%1&quot; a Int ha fallado</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1110"/>
+        <location filename="../qml/content/MainPage.qml" line="252"/>
+        <source>File %1 does not exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="258"/>
+        <source>Unable to open file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/MainPage.qml" line="1128"/>
         <source>Drop from List</source>
         <translation>Quitar de la lista</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1188"/>
+        <location filename="../qml/content/MainPage.qml" line="1206"/>
         <source>Yes</source>
         <translation>Sí</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1189"/>
+        <location filename="../qml/content/MainPage.qml" line="1207"/>
         <source>No</source>
         <translation>No</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1190"/>
+        <location filename="../qml/content/MainPage.qml" line="1208"/>
         <source>Unsaved changes</source>
         <translation>Cambios no guardados</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1235"/>
+        <location filename="../qml/content/MainPage.qml" line="1253"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>¿Quieres guardar los cambios en el regitro de contraseña?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1240"/>
+        <location filename="../qml/content/MainPage.qml" line="1258"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>¿Quieres guardar los cambios en el grupo de contraseñas?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1245"/>
+        <location filename="../qml/content/MainPage.qml" line="1263"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>¿Quieres guardar los cambios en los ajustes de la base de datos?</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1250"/>
+        <location filename="../qml/content/MainPage.qml" line="1268"/>
         <source>Do you want to save changed settings values?</source>
         <translation>¿Quieres guardar los cambios en los ajustes?</translation>
     </message>

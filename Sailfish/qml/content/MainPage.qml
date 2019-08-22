@@ -899,7 +899,7 @@ Page {
             // check if user gave a new master password or if encryption type or key transformation rounds have changed
             if (databaseMasterPassword !== "" ||
                     databaseCryptAlgorithm !== ownKeepassDatabase.cryptAlgorithm ||
-                    databaseKdf !== ownKeepassDatabase.keyDeviationFunction ||
+                    databaseKdf !== ownKeepassDatabase.keyDerivationFunction ||
                     databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {
                 pageStack.completeAnimation()
                 pageStack.replace(queryDialogForUnsavedChangesComponent,
@@ -925,8 +925,8 @@ Page {
                 ownKeepassDatabase.cryptAlgorithm = databaseCryptAlgorithm
                 changed = true
             }
-            if (databaseKdf !== ownKeepassDatabase.keyDeviationFunction) {
-                ownKeepassDatabase.keyDeviationFunction = databaseKdf
+            if (databaseKdf !== ownKeepassDatabase.keyDerivationFunction) {
+                ownKeepassDatabase.keyDerivationFunction = databaseKdf
                 changed = true
             }
             if (databaseKeyTransfRounds !== ownKeepassDatabase.keyTransfRounds) {

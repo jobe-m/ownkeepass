@@ -137,7 +137,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
         emit databaseOpened(DatabaseAccessResult::RE_OK, "");
     }
 
-    // load used encryption, keyDeviationFunction and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
+    // load used encryption, keyDerivationFunction and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     int cipher;
     if (m_Database->cipher() == KeePass2::CIPHER_AES256) {
         cipher = ownKeepassPublic::Cipher::CIPHER_AES_256;

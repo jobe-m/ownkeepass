@@ -37,7 +37,7 @@ KdbDatabase::KdbDatabase(QObject *parent):
     // set default values
     m_keyTransfRounds(15),
     m_cryptAlgorithm(0),
-    m_keyDeviationFunction(0),
+    m_keyDerivationFunction(0),
     m_showUserNamePasswordsInListView(false),
     m_readOnly(false),
     m_connected(false),
@@ -224,9 +224,9 @@ void KdbDatabase::slot_databaseSettingsChanged(int cryptAlgo, int kdf, int round
         m_cryptAlgorithm = cryptAlgo;
         emit cryptAlgorithmChanged();
     }
-    if (kdf != m_keyDeviationFunction) {
-        m_keyDeviationFunction = kdf;
-        emit keyDeviationFunctionChanged();
+    if (kdf != m_keyDerivationFunction) {
+        m_keyDerivationFunction = kdf;
+        emit keyDerivationFunctionChanged();
     }
     if (rounds != m_keyTransfRounds) {
         m_keyTransfRounds = rounds;
@@ -244,6 +244,6 @@ void KdbDatabase::changePassword(const QString &password, const QString &keyFile
 void KdbDatabase::saveSettings()
 {
     if (m_connected) {
-        emit changeDatabaseSettings(m_cryptAlgorithm, m_keyDeviationFunction, m_keyTransfRounds);
+        emit changeDatabaseSettings(m_cryptAlgorithm, m_keyDerivationFunction, m_keyTransfRounds);
     }
 }
