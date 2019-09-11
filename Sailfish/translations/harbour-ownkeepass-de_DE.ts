@@ -72,11 +72,16 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Alle Übersetzer in alphabetischer Reihenfolge:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Ich hoffe ihr habt mit ownKeepass mindestens so viel Spass wie ich während der Entwicklung!</translation>
     </message>
@@ -314,7 +319,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Key derivation function in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuell benutzte Schlüsselableitungsfunktion:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="205"/>
@@ -1402,12 +1407,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="252"/>
         <source>File %1 does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei %1 existiert nicht</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="258"/>
         <source>Unable to open file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kann Datei %1 nicht öffnen</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1128"/>

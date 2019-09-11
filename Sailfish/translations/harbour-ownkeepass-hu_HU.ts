@@ -42,7 +42,7 @@
     <message>
         <location filename="../qml/content/AboutPage.qml" line="141"/>
         <source>Change log</source>
-        <translation>Változás napló</translation>
+        <translation>Változásnapló</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="190"/>
@@ -72,11 +72,16 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>A fordítók abc sorrendben:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Remélem, nektek legalább annyi élvezetet okoz az ownKeepass alkalmazása, mint amennyit nekem okozott a megalkotása!</translation>
     </message>
@@ -144,7 +149,7 @@
     <message>
         <location filename="../qml/content/ChangeLogPage.qml" line="65"/>
         <source>Change log</source>
-        <translation>Változás napló</translation>
+        <translation>Változásnapló</translation>
     </message>
 </context>
 <context>
@@ -167,7 +172,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="187"/>
         <source>Username</source>
-        <translation>Felhasználó név</translation>
+        <translation>Felhasználónév</translation>
     </message>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="187"/>
@@ -288,23 +293,23 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="110"/>
         <source>Master password</source>
-        <translation>Mester jelszó</translation>
+        <translation>Mesterjelszó</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="113"/>
         <source>Change master password</source>
-        <translation>Mester jelszó megváltoztatása</translation>
+        <translation>Mesterjelszó megváltoztatása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="138"/>
         <source>Master password confirmed</source>
-        <translation>Mester jelszó megerősítve</translation>
+        <translation>Mesterjelszó megerősítve</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="138"/>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="141"/>
         <source>Confirm master password</source>
-        <translation>Mester jelszó megerősítése</translation>
+        <translation>Mesterjelszó megerősítése</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="156"/>
@@ -372,12 +377,12 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="173"/>
         <source>Username</source>
-        <translation>Felhasználó név</translation>
+        <translation>Felhasználónév</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="175"/>
         <source>Set username</source>
-        <translation>Felhasználó név megadása</translation>
+        <translation>Felhasználónév megadása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="212"/>
@@ -398,7 +403,7 @@
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="188"/>
         <source>Generate password</source>
-        <translation>Jelszó generálása</translation>
+        <translation>Jelszó létrehozása</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="268"/>
@@ -601,7 +606,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
-        <translation>Ezt engedélyezve a lista nézetekben minden bejegyzés neve alatt megjelenik az ahhoz tartozó felhasználó név és jelszó (újra meg kell nyitni az adatbázist az aktiválásához).</translation>
+        <translation>Ezt engedélyezve a lista nézetekben minden bejegyzés neve alatt megjelenik az ahhoz tartozó felhasználónév és jelszó (újra meg kell nyitni az adatbázist az aktiválásához).</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="333"/>
@@ -783,13 +788,13 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="118"/>
         <source>Hide system files</source>
         <extracomment>Used in file browser to hide the system files</extracomment>
-        <translation>Rendszer fájlok elrejtése</translation>
+        <translation>Rendszerfájlok elrejtése</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="120"/>
         <source>Show system files</source>
         <extracomment>Used in file browser to show the hidden system files</extracomment>
-        <translation>Rendszer fájlok megjelenítése</translation>
+        <translation>Rendszerfájlok megjelenítése</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="131"/>
@@ -1652,12 +1657,12 @@ Kérlek, vedd figyelembe a következőt. Amíg az ownKeepass tudja írni és olv
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
         <source>Pull down to add URL, username, password and comment</source>
-        <translation>URL, felhasználó név, jelszó, vagy megjegyzés hozzáadásához húzd lefelé</translation>
+        <translation>URL, felhasználónév, jelszó, vagy megjegyzés hozzáadásához húzd lefelé</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation>Húzd le a következők hozzáadásához: URL, felhasználói név, jelszó, megjegyzés vagy egyéb tulajdonság</translation>
+        <translation>Húzd le a következők hozzáadásához: URL, felhasználónév, jelszó, megjegyzés vagy egyéb tulajdonság</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
@@ -1686,7 +1691,7 @@ Kérlek, vedd figyelembe a következőt. Amíg az ownKeepass tudja írni és olv
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="133"/>
         <source>Username</source>
-        <translation>Felhasználó név</translation>
+        <translation>Felhasználónév</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="141"/>

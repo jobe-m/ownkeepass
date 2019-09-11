@@ -72,11 +72,16 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Alphabetical list of all translators:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>I hope you have as much fun using ownKeepass as I have creating it!</translation>
     </message>
@@ -314,7 +319,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Key derivation function in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Key derivation function in use:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="205"/>
@@ -1403,12 +1408,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="252"/>
         <source>File %1 does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>File %1 does not exist</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="258"/>
         <source>Unable to open file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to open file %1</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1128"/>

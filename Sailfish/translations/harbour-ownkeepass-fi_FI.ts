@@ -72,11 +72,16 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Aakkosellinen luettelo kääntäjistä:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Toivon, että teillä on yhtä hauskaa ownKeepass-sovelluksen parissa, kun minulla on sen tekemisessä!</translation>
     </message>
@@ -314,7 +319,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Key derivation function in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytetty avaimen derivointi-funktio:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="205"/>
@@ -1040,13 +1045,13 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Poistetaan ryhmää</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Poistetaan salasanaa</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="166"/>
@@ -1328,12 +1333,12 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/MainPage.qml" line="240"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yritit avata tietokantaa Keepass 2 -versiolla, vaikka kyseinen tietokanta käyttää versiota 1. Valitse oikea Keepass-versio, kun avaat tietokantaa.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon virhe</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="750"/>
@@ -1405,12 +1410,12 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/MainPage.qml" line="252"/>
         <source>File %1 does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostoa %1 ei löydy</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="258"/>
         <source>Unable to open file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedoston %1 avaaminen epäonnistui</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1128"/>
@@ -1659,7 +1664,7 @@ Salasanatiedosto on se yksikkö, joka lopullisesti tallettaa valitut tiedot sala
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vedä alas lisätäksesi URL, salasana, kommentti tai muita tietueita</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>

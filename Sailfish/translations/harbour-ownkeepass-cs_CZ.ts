@@ -72,11 +72,16 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Abecední seznam překladatelů:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Mým přáním je, abyste si ownKeepass užili tak, jako já, když jsem je tvořil!</translation>
     </message>
@@ -314,7 +319,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Key derivation function in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Používaná funkce odvození klíče:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="205"/>
@@ -950,7 +955,7 @@
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changed &quot;home drive on the phone&quot; to &quot;Device Memory&quot;, removed section for &quot;Open automatically&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Na této stránce můžete vytvořit novou databázi, ve které bude ownKeepass uchovávat vaše soukromé údaje. &lt;br&gt;Otevřete průzkumníka souborů a vyberte adresář a jméno souboru. Pro úložiště databáze můžete vybrat paměť telefonu, SD kartu nebo úložiště dat Android aplikací. Pokud je SD karta zašedlá, žádná karta není vložena nebo nebyla správně rozpoznána systémem. Na paměťové kartě může být pouze jeden oddíl, karty s více oddíly nejsou v současné chvíli v ownKeepass podporovány. Android úložiště umožňuje sdílet databázi s Android aplikacemi, mohou se ale vyskytnout problémy způsobené rozdílným nastavení přístupových práv a vlastnictví. Buďte s touto volbou opatrní.&lt;br&gt;&lt;br&gt;Bezpečnostní doporučení: Pokud budete sdílet databázi hesel na serverové úložiště, ujistěte se, že databáze je krom hesla chráněna navíc lokálně uloženým klíčem v souboru. Tento klíč byste neměli na serverové (cloud) úložiště nahrávat.&lt;br&gt;&lt;br&gt;&lt;b&gt;Používejte soubor s klíčem&lt;/b&gt;&lt;br&gt;&lt;br&gt;Soubor s klíčem může být používán současně s hlavním heslem k ochraně Keepass databáze. Jsou používány společně k vygenerování klíče, který odemkne databázi. Takže použití klíče v souboru zvyšuje bezpečnost proti útokům. Můžete použít například náhodný obrázek jako soubor s klíčem. &lt;br&gt;&lt;br&gt;&lt;b&gt;Hlavní heslo&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jedná se o heslo k vaší nové Keepass databázi. Používejte, prosím, heslo dlouhé přibližně 10 až 15 znaků, pospojujte malá a velká písmena, číslice a zvláštní znaky. Zopakujte heslo v poli &quot;Potvrzení hesla&quot;.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1007,7 +1012,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpOpenRecentDatabase.qml" line="27"/>
         <source>Type in here the password for opening the database. If you chose a key file it will be automatically loaded from the path you specified earlier. If you get an error on opening the database and you are sure that your provided password is correct check if the key file is still in the same place when you opened the database the last time successfully.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens the password query dialog again for this database when you start the application the next time.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Napište heslo pro otevírání databáze. Pokud zadáte soubor s klíčem, bude automaticky nahráván z této cesty. Pokud při otevírání databáze došlo k chybě a jste si jisti, že zadané heslo je správné, zkontrolujte, že je použit stejný soubor s klíčem jako při posledním úspěšném otevření. &lt;br&gt;&lt;br&gt;&lt;b&gt;Automatické otevírání&lt;/b&gt;&lt;br&gt;&lt;br&gt;Vyberte tuto možnost, pokud chcete, aby ownKeepass automaticky zobrazil dialog pro zadání hesla při příštím spuštění aplikace.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1037,13 +1042,13 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Smazání skupiny</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Smazání záznamu</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="166"/>
@@ -1315,7 +1320,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="224"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Něco se pokazilo při odebírání databáze ze seznamu nedávných databází. To by se nemělo stávat. Spojte se, prosím, s vývojáři aplikace přes e-mail nebo na Githubu. Děkujeme!</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="230"/>
@@ -1325,12 +1330,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="240"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokoušíte se otevřít Keepass databázi ve verzi 2, ale poskytnutá databáze používá verzi 1. Při otevírání, prosím, vyberte správnou verzi Keepass databáze.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznámá chyba</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="750"/>
@@ -1402,12 +1407,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="252"/>
         <source>File %1 does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor %1 neexistuje</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="258"/>
         <source>Unable to open file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze otevřít soubor %1</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1128"/>
@@ -1656,7 +1661,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tažením dolů přidáte adresu, jméno, heslo, komentář a další atributy</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>

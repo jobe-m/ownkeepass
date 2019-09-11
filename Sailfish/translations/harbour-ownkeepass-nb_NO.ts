@@ -72,11 +72,16 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Alfabetisk liste av alle oversettere:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Jeg håper du har like mye glede av å bruke programmet som jeg har av å lage det.</translation>
     </message>
@@ -1039,13 +1044,13 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sletter gruppe</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Sletter punkt</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="166"/>
@@ -1327,12 +1332,12 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
     <message>
         <location filename="../qml/content/MainPage.qml" line="240"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du prøvde å åpne en Keepass 2 database med nåværende database benytter versjon 1. Vennligst velg korrekt Keepass database versjon når du åpner databasen.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>Unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukjent feil</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="750"/>
@@ -1658,7 +1663,7 @@ Databasedelen av programmet er basert på KeepassX-prosjektet [2], og inneholder
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Trekk ned for å legge til URL, brukernavn, passord, kommentar og andre verdier</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>

@@ -1,6 +1,6 @@
 ownKeepass includes system libraries which are not allowed to be required in Jolla harbour:
 
-- libgcrypt.so.20 extracted from package libgcrypt18-1.8.1-1.2.8.jolla.i486.rpm which is taken from build.merproject.org > home:yeoldegrove:crypt > Packages > libgcrypt (libgcrpt in jolla repos is too old)
-- libgpg-error.so.0 extracted from package libgpg-error-1.27-1.1.8.jolla.i486.rpm which is taken from build.merproject.org > home:yeoldegrove:crypt > Packages > libgpg-error
-- libargon2.so.0 extracted from package libargon2-20161029-1.2.6.jolla.i486.rpm which is taken from build.merproject.org >  home:yeoldegrove:crypt > Package > argon2
-- libsodium.so.23 extracted from package libsodium-1.0.17-1.2.3.jolla.i486.rpm which was taken from build.merproject.org > home:nielnielsen > Packages > libsodium
+- libgcrypt.so.20 extracted from package libgcrypt18-1.8.1-1.2.8.jolla.i486.rpm which is taken from build.merproject.org > home:yeoldegrove:crypt > Packages > libgcrypt (http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_i486/i486/) (libgcrpt in jolla repos is too old)
+- libgpg-error.so.0 extracted from package libgpg-error-1.27-1.1.8.jolla.i486.rpm which is taken from build.merproject.org > home:yeoldegrove:crypt > Packages > libgpg-error (http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_i486/i486/)
+- libargon2.so.0 extracted from package libargon2-20161029-1.2.6.jolla.i486.rpm which is taken from build.merproject.org >  home:yeoldegrove:crypt > Package > argon2 (http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_i486/i486/)
+- libsodium.so.23 extracted from package libsodium-1.0.17-1.2.3.jolla.i486.rpm which was taken from build.merproject.org > home:nielnielsen > Packages > libsodium (http://repo.merproject.org/obs/home:/nielnielsen/latest_i486/i486/)

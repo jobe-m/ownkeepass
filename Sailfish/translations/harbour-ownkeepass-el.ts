@@ -72,18 +72,23 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Οι μεταφραστές αλφαβητικά:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Εύχομαι χρησιμοποιώντας το να έχετε την ίδια απόλαυση που με κατείχε κατά την δημιουργία του!</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="147"/>
         <source>Donate or Contribute</source>
-        <translation>Κάντε μια δωρεά ή μια συνεισφορά!</translation>
+        <translation>Κάντε μια δωρεά ή μια συνεισφορά</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="155"/>
@@ -414,7 +419,7 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="342"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="429"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="345"/>
@@ -430,7 +435,7 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="388"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
         <source>Delete</source>
-        <translation type="unfinished">Διαγραφή</translation>
+        <translation>Διαγραφή</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="282"/>
@@ -441,13 +446,13 @@
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="375"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="394"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="395"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
         <source>Accept</source>
-        <translation type="unfinished">Αποδοχή</translation>
+        <translation>Αποδοχή</translation>
     </message>
 </context>
 <context>
@@ -498,12 +503,12 @@
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="66"/>
         <source>Select</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="67"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../qml/content/EditItemIconDialog.qml" line="77"/>
@@ -566,7 +571,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="109"/>
         <source>This is the encryption which will be used as default when creating a new Keepass 1 database.</source>
-        <translation>Αυτή είναι η κρυπτογράφηση η οποία θα χρησιμοποιηθεί εξ ορισμού κατά την δημιουργία μιας νέας βάσης δεδομένων Keepass 1</translation>
+        <translation>Αυτή είναι η κρυπτογράφηση η οποία θα χρησιμοποιηθεί εξ ορισμού κατά την δημιουργία μιας νέας βάσης δεδομένων Keepass 1.</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="132"/>
@@ -662,7 +667,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="202"/>
         <source>Unlimited</source>
-        <translation type="unfinished"></translation>
+        <translation>Απεριόριστο</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="221"/>
@@ -683,7 +688,7 @@
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Ποτέ</translation>
     </message>
     <message>
         <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
@@ -807,12 +812,12 @@
         <location filename="../qml/common/FileSystemDialog.qml" line="143"/>
         <source>Select</source>
         <extracomment>As in select file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="144"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../qml/common/FileSystemDialog.qml" line="159"/>
@@ -991,7 +996,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpMasterGroupsPage.qml" line="27"/>
         <source>This page is showing main password groups of your Keepass database. A password group is a container for password entries. Thus in order to store a password entry you need to create at least one group first.&lt;br&gt;&lt;br&gt;You can use main password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η σελίδα εμφανίζει τις ομάδες του κύριου κωδικού πρόσβασης της βάσης δεδομένων Keepass. Μια ομάδα κωδικού πρόσβασης είναι ένας υποδοχέας καταχωρήσεων κωδικών πρόσβασης. Τοιουτοτρόπως για την αποθήκευση μια καταχώρηση κωδικού πρόσβασης χρειάζεστε να δημιουργήσετε τουλάχιστον μια ομάδα πρώτα.&lt;br&gt;&lt;br&gt;Μπορείτε να χρησιμοποιείτε ομάδες κύριου κωδικού πρόσβασης για την οργάνωση των καταχωρήσεων του κωδικού πρόσβασης. Για παράδειγμα ομάδες για &quot;Διαδικτυακές αγορές&quot;, &quot;Λογαριασμών ηλ. ταχυδρομείου&quot;, &quot;Σελίδων κοινωνικών μέσων&quot;, κλπ.&lt;br&gt;&lt;br&gt;Μπορείτε να εμφανίσετε την γραμμή αναζήτησης από το μενού-τροχαλία στην κορυφή της λίστας των ομάδων κωδικού. Με αυτήν μπορείτε να αναζητήσετε καταχωρήσεις κωδικών πρόσβασης σε ολόκληρη την βάση δεδομένων Keepass. Αν θέλετε να εστιάζετε στην γραμμή αναζήτησης κατά τοπ άνοιγμα της βάσης δεδομένων του Keepass, παρακαλώ ανοίξτε την σελίδα ρυθμίσεων και ενεργοποιήστε τον ανάλογο διακόπτη.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1029,7 +1034,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/help/HelpSubGroupsPage.qml" line="27"/>
         <source>This page is showing password entries and sub-groups of your Keepass database. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;It is possible to show username and password for each password entry already in the list view. To enable that feature open the ownKeepass settings and check the &quot;Extended list view&quot; switch.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search only in the specific password group and all its sub-groups.&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η σελίδα εμφανίζει τις καταχωρήσεις κωδικών πρόσβασης και υπο-ομάδες της βάσης δεδομένων Keepass. Μια καταχώρηση κωδικού πρόσβασης αποθηκεύει τις πληροφορίες δυφίων με ασφάλεια στην βάση δεδομένων.&lt;br&gt;&lt;br&gt;Μπορείτε να εμφανίσετε το όνομα χρήστη και τον κωδικό πρόσβασης για κάθε καταχώρηση κωδικού πρόσβασης στην λίστα. Για να ενεργοποιήσετε αυτό το χαρακτηριστικό, μεταβείτε στις ρυθμίσεις του ownKeepass και ενεργοποιήστε τον διακόπτη «Εκτεταμένη προβολή λίστας».&lt;br&gt;&lt;br&gt;Μπορείτε να ενεργοποιήσετε την γραμμή αναζήτησης από το μενού-τροχαλία η οποία εμφανίζεται στην κορυφή της λίστας κωδικών πρόσβασης. Μέσω αυτής θα μπορείτε να αναζητήσετε στην συγκεκριμένη ομάδα κωδικών πρόσβασης μόνο και σε όλες τις υπο-ομάδες της.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1038,13 +1043,13 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/KdbListItem.qml" line="46"/>
         <source>Deleting group</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password group</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή ομάδας</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="53"/>
         <source>Deleting entry</source>
         <extracomment>This is used in the remorseAction when attempting to delete a password entry</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή καταχώρησης</translation>
     </message>
     <message>
         <location filename="../qml/content/KdbListItem.qml" line="166"/>
@@ -1139,7 +1144,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="467"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation>Πληκτρολογήστε τον κύριο κωδικό πρόσβασης για να κλειδώσετε την ασφάλεια του κωδικού πρόσβασης Keepass</translation>
+        <translation>Πληκτρολογήστε τον κύριο κωδικό πρόσβασης για να κλειδώσετε την ασφάλεια του κωδικού πρόσβασης Keepass:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="474"/>
@@ -1151,7 +1156,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="487"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Η διαδρομή και το όνομα της βάσης δεδομένων</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="655"/>
@@ -1161,7 +1166,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="655"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατη η δημιουργία της διαδρομής για το αρχείο της βάσης δεδομένων Keepass. Ίσως χρειάζεται να ορίσετε τις άδειες του καταλόγου για τον χρήστη «nemo».</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="660"/>
@@ -1173,17 +1178,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="660"/>
         <location filename="../qml/content/MainPage.qml" line="677"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Η διαδρομή της βάσης δεδομένων είναι σωστή, αλλά το αρχείο κλειδιού δεν είναι διαθέσιμο. Παρακαλώ ελέγξτε την διαδρομή του αρχείου κλειδιού:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="665"/>
         <source>Database file already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο της βάσης δεδομένων υπάρχει ήδη</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="665"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρακαλώ ορίστε μια άλλη διαδρομή και όνομα για την βάση δεδομένων Keepass ή διαγράψτε την παλαιά βάση δεδομένων μέσω ενός διαχειριστή αρχείων.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="682"/>
@@ -1193,7 +1198,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="682"/>
         <source>Database file does not exist. Please check path to database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο της βάσης δεδομένων δεν υπάρχει. Παρακαλώ ελέγξτε την διαδρομή του αρχείου της βάσης δεδομένων:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="167"/>
@@ -1203,7 +1208,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="168"/>
         <source>The specified file is not a Keepass database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το καθορισμένο αρχείο δεν είναι μια βάση δεδομένων Keepass.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="174"/>
@@ -1214,7 +1219,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="175"/>
         <source>The specified file has an unsupported Keepass database version.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το καθορισμένο αρχείο έχει μια μη υποστηριζόμενη έκδοση βάσης δεδομένων Keepass.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="135"/>
@@ -1228,17 +1233,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="102"/>
         <source>Could not load database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Η φόρτωση της βάσης δεδομένων δεν ήταν δυνατή λόγω του παρακάτω σφάλματος:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="113"/>
         <source>Entry not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Η καταχώρηση δεν βρέθηκε</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="114"/>
         <source>Error while searching for password entry in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα κατά την αναζήτηση της καταχώρησης του κωδικού πρόσβασης στην βάση δεδομένων.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="119"/>
@@ -1248,7 +1253,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="120"/>
         <source>Error while searching for password group in database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα κατά την αναζήτηση της ομάδος του κωδικού πρόσβασης στην βάση δεδομένων.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="125"/>
@@ -1258,38 +1263,38 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="126"/>
         <source>Could not connect to a loaded database. This seems to be a bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατη η σύνδεση σε μια φορτωμένη βάση δεδομένων. Φαίνεται ότι πρόκειται για σφάλμα.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="148"/>
         <source>The following error occured during creation of the key for the database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Το παρακάτω σφάλμα παρουσιάστηκε κατά την δημιουργία κλειδιού της βάσης δεδομένων:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="182"/>
         <source>Database headers are missing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Λείπουν οι επικεφαλίδες της βάσης δεδομένων.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="188"/>
         <location filename="../qml/content/MainPage.qml" line="195"/>
         <source>Wrong password</source>
-        <translation type="unfinished"></translation>
+        <translation>Λανθασμένος κωδικός πρόσβασης</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="189"/>
         <source>Either your master password is wrong or the database file is corrupt. Please try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Είτε ο κύριος κωδικός πρόσβασης είναι λανθασμένος ή το αρχείο της βάσης δεδομένων είναι κατεστραμμένο. Παρακαλούμε δοκιμάστε αργότερα.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="196"/>
         <source>Either your master password is wrong or your key file is wrong. Please try again. If the error persists then either key file or database file is corrupt.</source>
-        <translation type="unfinished"></translation>
+        <translation>Είτε ο κύριος κωδικός πρόσβασης ή το αρχείο κλειδιού είναι λανθασμένα. Παρακαλούμε δοκιμάστε αργότερα. Αν το σφάλμα παραμένει τότε το αρχείο κλειδιού ή η βάση δεδομένων είναι κατεστραμμένα.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="203"/>
         <source>Database head doesn&apos;t match corresponding hash value.</source>
-        <translation type="unfinished"></translation>
+        <translation>Η κεφαλίδα της βάσης δεδομένων δεν ταιριάζει με την τιμή κατατεμαχισμού. </translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="209"/>
@@ -1300,12 +1305,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="210"/>
         <source>Cannot open database file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατο το άνοιγμα του αρχείου της βάσης δεδομένων. Λεπτομέρειες του σφάλματος:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="217"/>
         <source>Cannot open key file. Error details:</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατο το άνοιγμα του αρχείου κλειδιού. Λεπτομέρειες του σφάλματος:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="223"/>
@@ -1316,17 +1321,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="224"/>
         <source>Something went wrong with dropping the database from the recent database list. That shouldn&apos;t happen. Please let me (the developer) know about that via email or at github. Thanks!</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάτι πήγε στραβά κατά την απόρριψη της βάσης δεδομένων από την λίστα με τις πρόσφατες βάσεις δεδομένων. Αυτό δεν έπρεπε να συμβεί. Παρακαλώ ενημερώστε με (τον δημιουργό) για το γεγονός, μέσω αλληλογραφίας ή το github. Ευχαριστώ! </translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="230"/>
         <source>Something went wrong while trying to delete the database file. Error message:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάτι πήγε στραβά κατά την προσπάθεια διαγραφής του αρχείου της βάσης δεδομένων. Μήνυμα σφάλματος:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="240"/>
         <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσπαθήσατε να ανοίξετε μια βάση δεδομένων Keepass 2 αλλά η δοθείσα βάση δεδομένων χρησιμοποιεί την έκδοση 1. Παρακαλώ επιλέξτε την σωστή έκδοση της βάσης δεδομένων Keepass.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
@@ -1341,7 +1346,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="750"/>
         <source>The master password of your database was changed successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ο κύριος κωδικός πρόσβασης της βάσης δεδομένων άλλαξε επιτυχώς.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="147"/>
@@ -1353,7 +1358,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/MainPage.qml" line="251"/>
         <location filename="../qml/content/MainPage.qml" line="257"/>
         <source>Error loading database</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα κατά την φόρτωση της βάσης δεδομένων</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="141"/>
@@ -1363,12 +1368,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="142"/>
         <source>The following error occured during creation of database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Το παρακάτω σφάλμα παρουσιάστηκε κατά την δημιουργία της βάσης δεδομένων:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="154"/>
         <source>Creation of backup group failed with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Η δημιουργία της ομάδος εφεδρικών αντιγράφων απέτυχε με το κατωτέρω σφάλμα:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="107"/>
@@ -1378,27 +1383,27 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="108"/>
         <source>Could not save database with following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Η αποθήκευση της βάσης δεδομένων δεν ήταν δυνατή λόγω του παρακάτω σφάλματος:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="136"/>
         <source>An error occured on closing your database:</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρουσιάστηκε ένα σφάλμα κατά το κλείσιμο της βάσης δεδομένων:</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="160"/>
         <source>Crypto init error</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα αρχικοποίησης της κρυπτογράφησης</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="161"/>
         <source>Cryptographic algorithms could not be initialized successfully. The database is closed again to prevent any attack. Please try to reopen the app. If the error persists please contact the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Οι αλγόριθμοι κρυπτογράφησης δεν μπόρεσαν να αρχικοποιηθούν επιτυχώς. Η βάση δεδομένων έκλεισε ξανά για την αποτροπή επιθέσεων. Παρακαλώ προσπαθήστε να επανεκτελέσετε την εφαρμογή. Αν το πρόβλημα παραμένει παρακαλώ όπως επικοινωνήσετε με τον προγραμματιστή.</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="235"/>
         <source>Conversion of QString &quot;%1&quot; to Int failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Η μετατροπή του QString &quot;%1&quot; σε Int απέτυχε</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="252"/>
@@ -1413,17 +1418,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="1128"/>
         <source>Drop from List</source>
-        <translation type="unfinished"></translation>
+        <translation>Απόρριψη από την λίστα</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1206"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ναι</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1207"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Όχι</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1208"/>
@@ -1433,22 +1438,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="1253"/>
         <source>Do you want to save changes to the password entry?</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιθυμείτε την αποθήκευση των αλλαγών της καταχώρησης του κωδικού πρόσβασης;</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1258"/>
         <source>Do you want to save changes to the password group?</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιθυμείτε την αποθήκευση των αλλαγών της ομάδος του κωδικού πρόσβασης;</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1263"/>
         <source>Do you want to save changes to database settings?</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιθυμείτε την αποθήκευση των αλλαγών των ρυθμίσεων της βάσης δεδομένων;</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1268"/>
         <source>Do you want to save changed settings values?</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιθυμείτε την αποθήκευση των αλλαγών των ρυθμίσεων;</translation>
     </message>
 </context>
 <context>
@@ -1461,12 +1466,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="77"/>
         <source>Key file path and name</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαδρομή και όνομα του αρχείου κλειδιού</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="77"/>
         <source>No key file used</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν χρησιμοποιείται κλειδί</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="104"/>
@@ -1477,7 +1482,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/components/MainPageMoreDetails.qml" line="121"/>
         <source>Unknown</source>
         <extracomment>Here unknown is used for unknown database type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Άγνωστο</translation>
     </message>
     <message>
         <location filename="../qml/components/MainPageMoreDetails.qml" line="129"/>
@@ -1496,12 +1501,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="73"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../qml/content/MovePasswordEntryDialog.qml" line="79"/>
         <source>Move password entry &quot;%1&quot; into following group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση της καταχώρησης του κωδικού πρόσβασης «%1» στην παρακάτω ομάδα:</translation>
     </message>
 </context>
 <context>
@@ -1509,7 +1514,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="32"/>
         <source>Enter master password</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγάγετε τον κύριο κωδικό πρόσβασης</translation>
     </message>
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="33"/>
@@ -1529,7 +1534,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/common/PasswordFieldCombo.qml" line="36"/>
         <source>Confirm password</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιβεβαίωση του κωδικού πρόσβασης</translation>
     </message>
 </context>
 <context>
@@ -1553,22 +1558,22 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="84"/>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="89"/>
         <source>No char group selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν επιλέχθη ομάδα χαρακτήρων</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="113"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="172"/>
         <source>Exclude look-alike characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποκλεισμός των συμφραζομένων χαρακτήρων</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="183"/>
         <source>Ensure that the password contains characters from every group</source>
-        <translation type="unfinished"></translation>
+        <translation>Σιγουρευτείτε ότι ο κωδικός πρόσβασης περιέχει χαρακτήρες από κάθε ομάδα</translation>
     </message>
     <message>
         <location filename="../qml/content/PasswordGeneratorDialog.qml" line="198"/>
@@ -1581,12 +1586,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="172"/>
         <source>Please specify a new Keepass database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρακαλώ ορίστε ένα αρχείο για τη νέα βάση δεδομένων Keepass:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="201"/>
         <source>Please choose an existing Keepass database file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Παρακαλώ επιλέξτε ένα υπάρχον αρχείο για τη βάση δεδομένων Keepass:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="120"/>
@@ -1596,12 +1601,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="88"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακύρωση</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="121"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενεργοποιήστε τον διακόπτη για την χρήση ενός αρχείου κλειδιού με τον κύριο κωδικό πρόσβασης της νέας βάσης δεδομένων Keepass</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="138"/>
@@ -1621,7 +1626,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="177"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
-        <translation>Πληκτρολογήστε τον κύριο κωδικό πρόσβασης για να κλειδώσετε την ασφάλεια του κωδικού πρόσβασης Keepass</translation>
+        <translation>Πληκτρολογήστε τον κύριο κωδικό πρόσβασης για να κλειδώσετε την ασφάλεια του κωδικού πρόσβασης Keepass:</translation>
     </message>
     <message>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="199"/>
@@ -1639,7 +1644,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/QueryPasswordDialog.qml" line="206"/>
         <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
-        <translation>Πληκτρολογήστε τον κύριο κωδικό πρόσβασης για να ξεκλειδώσετε την ασφάλεια του κωδικού πρόσβασης Keepass</translation>
+        <translation>Πληκτρολογήστε τον κύριο κωδικό πρόσβασης για να ξεκλειδώσετε την ασφάλεια του κωδικού πρόσβασης Keepass:</translation>
     </message>
 </context>
 <context>
@@ -1647,7 +1652,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="55"/>
         <source>No content</source>
-        <translation>Το περιεχόμενο θα εμφανιστεί εδώ άπαξ και είναι διαθέσιμο.</translation>
+        <translation>Κανένα περιεχόμενο</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
@@ -1657,7 +1662,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>Τραβήξτε προς τα κάτω για την προσθήκη του URL, του ονόματος χρήστη, του κωδικού πρόσβασης του σχολίου και λοιπών ιδιοχαρακτηριστικών</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
@@ -1702,7 +1707,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="172"/>
         <source>password</source>
         <extracomment>Translate &quot;password&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>κωδικός πρόσβασης</translation>
     </message>
     <message>
         <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>

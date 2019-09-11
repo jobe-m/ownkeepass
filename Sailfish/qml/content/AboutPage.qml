@@ -182,8 +182,8 @@ issue a bug report or improvement idea, send me a café or just like my app and 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: (parent.width / 2) * 0.95
-                text: "Paypal"
-                onClicked: Qt.openUrlExternally("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5KR2WTZ8FMRQQ")
+                text: "Paypal friends"
+                onClicked: Qt.openUrlExternally("https://www.paypal.com/paypalme2/Koschak")
             }
 
             SectionHeader {
@@ -202,6 +202,10 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                       qsTr("And finally many thanks to all translators on %1 and contributors on %2 (for keeping me motivated to work on ownKeepass)")
                 .arg("<a href=\"https://www.transifex.com/projects/p/jobe_m-ownKeepass/\">transifex</a>")
                 .arg("<a href=\"https://github.com/jobe-m/ownkeepass/graphs/contributors\">GitHub</a>") + "<br><br>" +
+                qsTr("Alphabetical list of all contributors:") + "<br><br>" +
+                "24mu13 (Samuel)<br>" +
+                "olpeh (Olavi Haapala)<br>" +
+                "<br>" +
                 qsTr("Alphabetical list of all translators:") + "<br><br>" +
                 "_panta_ (Panayiotis Tembriotis)<br>" +
                 "akalmykov (Anton Kalmykov)<br>" +
@@ -235,7 +239,6 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                 "olebr (Ole Jakob Brustad)<br>" +
                 "pakoR<br>" +
                 "PawelSpoon<br>" +
-                "pljmn (Nathan Follens)<br>" +
                 "reviewjolla (Simo Ruoho)<br>" +
                 "rgsidler (R.G. Sidler)<br>" +
                 "rla88 (Riku Lahtinen)<br>" +
@@ -246,7 +249,8 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                 "TylerTemp (Tyler Temp)<br>" +
                 "umglurf<br>" +
                 "Vistaus (Heimen Stoffels)<br>" +
-                "xmlich02 (Jozef Mlích)<br><br>" +
+                "xmlich02 (Jozef Mlích)<br>" +
+                "<br>" +
                 qsTr("I hope you have as much fun using ownKeepass as I have creating it!")
                 onLinkActivated: {
                     Qt.openUrlExternally(link)

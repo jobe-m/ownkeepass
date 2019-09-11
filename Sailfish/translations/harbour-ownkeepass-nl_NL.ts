@@ -72,13 +72,18 @@
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="205"/>
+        <source>Alphabetical list of all contributors:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="209"/>
         <source>Alphabetical list of all translators:</source>
         <translation>Alle vertalers in alfabetische volgorde:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="250"/>
+        <location filename="../qml/content/AboutPage.qml" line="254"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
-        <translation>Ik hoop dat u evenveel plezier beleeft aan het gebruiken van ownKeepass als ik bij het ontwikkelen ervan!</translation>
+        <translation>Ik hoop dat je evenveel plezier beleeft aan het gebruiken van ownKeepass als ik bij het ontwikkelen ervan!</translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="147"/>
