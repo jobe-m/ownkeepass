@@ -4,59 +4,58 @@
 
 ## Status
 
-Pre-Release 1.2.5
-* Support for KDBX4 file format, by using [KeepassXC] with new deps (libargon2 & libsodium)
-
-Pre-Release 1.2.3 is available on [openrepos.net]
-* Implemented moving of password entries between groups (Keepass 2 database)
-* Show comment of password groups in list view (Keepass 2 database)
-* Fixed truncation mode of subtitle in list views
+Release 1.2.5
+* Add support for KDBX 4 database format by changing database code from KeepassX to [KeepassXC] (many thanks to [24mu13](https://github.com/24mu13))
+* Add support for new database cipher algorithms and key derivation functions like Twofish, Chacha20 and Argon2 for Keepass 2 databases
+* Show used database cipher, key derivation function and key transformation rounds for a Keepass 2 database in database settings dialog
 * Updated translations from transifex
-
-Release 1.2.2 is available in Jolla store
-* Password entries in Keepass 2 databases can be created, edited and deleted
-* Password groups in Keepass 2 databases can be created, edited and deleted
-* Additional attributes of password entries in Keepass 2 databases can be added, changed and deleted
-* Added possibility to copy into clipboard every item of a password entry by long-press on it
-* Open URL in web browser by just one click on the URL text
-* Reworked password entry editing page for Keepass 2 support
-* Fixed scaling of icons on password generator page with higher resolution displays
-* Updated and reordered text sections on about page
-* Added new translations for Polish and Serbian (Not yet fully done, please help on transifex to finish them)
-* Updated all other translations from transifex
-* Bugfix: Specifying the wrong Keepass version on opening a database does not give a proper error notification; the display just kept showing the loading databasee message
-* Bugfix: It was not possible to delete more than one keepass entry or group in a row
-* Bugfix: When deleting the last password item from a group the placeholder text was not shown again
 
 ## Roadmap
 
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   Finishing write support for Keepass 2 databases
+*   (Get some time for SFOS dev work)
 *   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
 
 ## Building
 
 In order to succesfully build this application, you need the following steps:
 - Clone this repository including the [KeepassXC] submodule (`git clone --recursive`)
-- Make sure the _Sailfish OS Build Engine_ has the following packages:
-  - libgcrypt-devel
-  - libargon2-devel (**3rd-party repository**)
-  - libsodium & libsodium-devel (**3rd-party repository**)
+- Make sure the _Sailfish OS Build Engine_ has the following packages. Currently these packages are only available from **3rd-party repositories**.
+  - libgcrypt18-devel (**special handling needed, see below**)
+  - libargon2-devel 
+  - libsodium-devel 
 - Build the project using _Qt Creator_
 
 ### How to use a _3rd-party repository_ on Sailfish OS Build Engine
 
-In order to use a 3rd-party repository, you need to add it to the _Build Engine_:
-- Add the repository to any applicable Kit, e.g.:
-  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_armv7hl crypt`
-- Refresh the list of packages for that Kit, e.g.:
-  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ref`
-- You can now use the tool available on _Qt Creator_ to install the package; otherwise you can still use the command, e.g.:
-  `sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper in libargon2-devel`
+In order to use a 3rd-party repository, you need to add it to the _Build Engine_.
+First ssh into Sailfish OS build engine:
+
+    $ ssh -p 2222 -i ~/SailfishOS/vmshare/ssh/private_keys/engine/mersdk mersdk@localhost
+    
+Add the repository to all applicable Kits, e.g.:
+
+    $ sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_armv7hl crypt
+    $ sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/nielnielsen/sailfish_latest_armv7hl sodium
+    $ sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper ref
+    $ sb2 -t SailfishOS-3.1.0.12-i486 -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/yeoldegrove:/crypt/sailfish_latest_i486 crypt
+    $ sb2 -t SailfishOS-3.1.0.12-i486 -m sdk-install -R zypper ar -f http://repo.merproject.org/obs/home:/nielnielsen/latest_i486 sodium
+    $ sb2 -t SailfishOS-3.1.0.12-i486 -m sdk-install -R zypper ref
 
 See also: https://gist.github.com/skvark/49a2f1904192b6db311a
+
+Now with these repositories added the build engine can automatically install libargon2-devel and libsodium-devel as they are listed under PkgConfigBR in the harbour-ownkeepass.yaml config file.
+
+However the libgcrypt18-devel package needs special handling. The build engine will refuse to install it automatically because it clashes with version 1.5 of libgcrypt-devel package from jolla official repo.
+
+Thus it needs to be installed manually in the Sailfish OS Manage Targets tool or from command line:
+
+    $ sb2 -t SailfishOS-3.1.0.12-i486 -m sdk-install -R zypper in libgcrypt18-devel
+    $ sb2 -t SailfishOS-3.1.0.12-armv7hl -m sdk-install -R zypper in libgcrypt18-devel
+
+Now building ownKeepass in Qt Creator should proceed succesfully.
 
 ## What is this?
 
