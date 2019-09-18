@@ -4,10 +4,11 @@
 
 ## Status
 
-Release 1.2.5
-* Add support for KDBX 4 database format by changing database code from KeepassX to [KeepassXC] (many thanks to [24mu13](https://github.com/24mu13))
-* Add support for new database cipher algorithms and key derivation functions like Twofish, Chacha20 and Argon2 for Keepass 2 databases
+Release 1.2.6
+* Added support for KDBX 4 database format by changing database code from KeepassX to [KeepassXC] (many thanks to [24mu13](https://github.com/24mu13))
+* Added support for new database cipher algorithms and key derivation functions like Twofish, Chacha20 and Argon2 for Keepass 2 databases
 * Show used database cipher, key derivation function and key transformation rounds for a Keepass 2 database in database settings dialog
+* Added new translation for Belgisch-Nederlands</li>\
 * Updated translations from transifex
 
 ## Roadmap
@@ -16,7 +17,9 @@ List of planned features for ownKeepass to happen somewhere the next time. Prior
 in descending order.
 
 *   (Get some time for SFOS dev work)
-*   Integrating WebDav and Dropbox support for loading and saving your Keepass database to a server like ownCloud.
+*   Remove Keepass 1 legacy code and implement importing old database format instead (for App release 2.0)
+*   Do some art work: new icons, wall paper, better support for light ambiances
+*   Integrate WebDav support for loading and saving Keepass database to a server
 
 ## Building
 
