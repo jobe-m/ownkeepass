@@ -178,6 +178,7 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-zh_CN.ts \
     translations/harbour-ownkeepass-cs_CZ.ts \
     translations/harbour-ownkeepass-da.ts \
+    translations/harbour-ownkeepass-nl_BE.ts \
     translations/harbour-ownkeepass-nl_NL.ts \
     translations/harbour-ownkeepass-en.ts \
     translations/harbour-ownkeepass-fi_FI.ts \

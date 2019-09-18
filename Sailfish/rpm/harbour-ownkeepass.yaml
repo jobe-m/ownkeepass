@@ -1,6 +1,6 @@
 Name: harbour-ownkeepass
 Summary: A password safe application
-Version: 1.2.5
+Version: 1.2.6
 Release: 1
 Group: Qt/Qt
 URL: https://github.com/jobe-m/ownkeepass
@@ -38,4 +38,4 @@ Files:
 - '%{_datadir}/icons/hicolor/256x256/apps'
 - '%{_datadir}/applications'
 - '%{_datadir}/harbour-ownkeepass'
-- '%attr(655,-,-) %{_bindir}'
+- '%attr(755,-,-) %{_bindir}'

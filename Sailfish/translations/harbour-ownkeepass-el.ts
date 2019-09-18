@@ -81,7 +81,7 @@
         <translation>Οι μεταφραστές αλφαβητικά:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="254"/>
+        <location filename="../qml/content/AboutPage.qml" line="256"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Εύχομαι χρησιμοποιώντας το να έχετε την ίδια απόλαυση που με κατείχε κατά την δημιουργία του!</translation>
     </message>
@@ -599,12 +599,12 @@
         <translation>Προσανατολισμός</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="487"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="492"/>
         <source>Extended list view</source>
         <translation>Εκτεταμένη προβολή λίστας</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>Αν το εναλλάξετε το όνομα χρήστη και ο κωδικός πρόσβασης θα εμφανίζονται στην παρακάτω καταχώρηση της προβολής λίστας (άνοιγμα ξανά της βάσης δεδομένων για την ενεργοποίηση της ρύθμισης)</translation>
     </message>
@@ -717,57 +717,57 @@
         <translation>Τοπίο</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="480"/>
         <source>Sort in alphabetical order</source>
         <translation>Ταξινόμηση αλφαβητικά</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>Αν το ενεργοποιήσετε θα ταξινομηθούν όλες οι καταχωρήσεις στην προβολή λίστας σε αλφαβητική σειρά· διαφορετικά χρησιμοποιείται η εσωτερική ταξινόμηση της βάσης δεδομένων (ξανανοίξτε την βάση δεδομένων για να ενεργοποιήσετε αυτήν την ρύθμιση)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="499"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="504"/>
         <source>Focus search bar</source>
         <translation>Εστίαση γραμμής αναζήτησης</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="500"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Αν είναι ενεργοποιημένο η γραμμή αναζήτησης θα εστιάζεται κατά την εκκίνηση της εφαρμογής</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="514"/>
         <source>Cover settings</source>
         <translation>Ρυθμίσεις εξώφυλλου</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="515"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="520"/>
         <source>Show username and password</source>
         <translation>Εμφάνιση του ονόματος χρήστη και του κωδικού πρόσβασης</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Αν είναι ενεργοποιημένο θα εμφανίζεται στο εξώφυλλο το όνομα χρήστη και ο κωδικός πρόσβασης της τρέχουσας ανοιχτής καταχώρησης του Keepass</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="527"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="532"/>
         <source>Lock database from cover</source>
         <translation>Κλείδωμα της βάσης δεδομένων από το εξώφυλλο</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Σας επιτρέπει το κλείδωμα της βάσης δεδομένων από την αριστερή ενέργεια του εξωφύλλου</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="544"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Αντιγραφή και επικόλληση από το εξώφυλλο</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="540"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="545"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Ενεργοποιήστε το για να αντιγράφετε το όνομα χρήστη και τον κωδικό πρόσβασης από το εξώφυλλο στο Πρόχειρο</translation>
     </message>
@@ -864,24 +864,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="126"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Τίποτα δεν έχει επιλεγεί προς στιγμήν</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="129"/>
+        <location filename="../qml/scripts/Global.js" line="130"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Συσκευή μνήμης</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="131"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>SD Card</source>
         <translation>Κάρτα SD</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="133"/>
+        <location filename="../qml/scripts/Global.js" line="134"/>
         <source>Android Storage</source>
         <translation>Αποθήκευση Android</translation>
     </message>

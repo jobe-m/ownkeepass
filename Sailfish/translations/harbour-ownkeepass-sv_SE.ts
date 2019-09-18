@@ -81,7 +81,7 @@
         <translation>Alfabetisk lista över alla översättare:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="254"/>
+        <location filename="../qml/content/AboutPage.qml" line="256"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Jag hoppas att ni har lika stort nöje av att använda ownKeepass, som jag har av att skapa det.</translation>
     </message>
@@ -599,12 +599,12 @@
         <translation>Orientering</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="487"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="492"/>
         <source>Extended list view</source>
         <translation>Utökad listvy</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>Vid aktivering visas användarnamn och lösenord under postens namn i listvyer (öppna databasen igen, för att aktivera inställningen)</translation>
     </message>
@@ -717,57 +717,57 @@
         <translation>Liggande</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="480"/>
         <source>Sort in alphabetical order</source>
         <translation>Sortera i alfabetisk ordning</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>Vid aktivering sorteras listvyn i alfabetisk ordning. Annars används intern ordning (öppna databasen igen, för att aktivera inställningen)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="499"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="504"/>
         <source>Focus search bar</source>
         <translation>Fokusera sökfältet</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="500"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Vid aktivering kommer sökfältet att fokuseras vid programstart.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="514"/>
         <source>Cover settings</source>
         <translation>Minitayrinställningar</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="515"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="520"/>
         <source>Show username and password</source>
         <translation>Visa användarnamn och lösenord</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Vid aktivering kommer användarnamn och lösenord för öppnad Keepass-post att visas på programminiatyren.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="527"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="532"/>
         <source>Lock database from cover</source>
         <translation>Lås databas från programminiatyren</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Låter dig låsa databasen med vänster miniatyrfunktion.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="544"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopiera och klistra in från miniatyren</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="540"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="545"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Aktiveras för att kunna kopiera användarnamn och lösenord direkt från programminiatyren.</translation>
     </message>
@@ -864,24 +864,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="126"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Inget valt än</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="129"/>
+        <location filename="../qml/scripts/Global.js" line="130"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Enhetslagring</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="131"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>SD Card</source>
         <translation>SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="133"/>
+        <location filename="../qml/scripts/Global.js" line="134"/>
         <source>Android Storage</source>
         <translation>Android-lagring</translation>
     </message>

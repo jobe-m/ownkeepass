@@ -81,7 +81,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="254"/>
+        <location filename="../qml/content/AboutPage.qml" line="256"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -599,12 +599,12 @@
         <translation>Ориентация</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="487"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="492"/>
         <source>Extended list view</source>
         <translation>Расширенный вид списков</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>Показывать имя пользователя и пароль в списке записей (для применения требуется открыть базу заново)</translation>
     </message>
@@ -717,57 +717,57 @@
         <translation>Альбомная</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="480"/>
         <source>Sort in alphabetical order</source>
         <translation>Сортировать в алфавитном порядке</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>Позволяет сортировать записи в списках в алфавитном порядке. Иначе будет использован внутренний порядок базы паролей.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="499"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="504"/>
         <source>Focus search bar</source>
         <translation>Активировать строку поиска</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="500"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Позволяет активировать строку поиска после открытия базы. Выключите если мешает клавиатура.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="514"/>
         <source>Cover settings</source>
         <translation>Настройки обложки</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="515"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="520"/>
         <source>Show username and password</source>
         <translation>Имя пользователя и пароль на обложке</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Позволяет показывать имя пользователя и пароль на обложке приложения из открытой в данный момент записи</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="527"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="532"/>
         <source>Lock database from cover</source>
         <translation>Блокировка базы с обложки</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Позволяет блокировать базу паролей с обложки по левому действию.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="544"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Копирование с обложки</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="540"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="545"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Позволяет копировать имя пользователя и пароль в буфер обмена с обложки</translation>
     </message>
@@ -864,24 +864,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="126"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Ничего не выбрано</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="129"/>
+        <location filename="../qml/scripts/Global.js" line="130"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Память устройства</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="131"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>SD Card</source>
         <translation>SD-карта</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="133"/>
+        <location filename="../qml/scripts/Global.js" line="134"/>
         <source>Android Storage</source>
         <translation>Память Android</translation>
     </message>

@@ -70,9 +70,15 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v1.2.6 Translation update</b>\
+<ul>\
+<li>Added new translation for Belgisch-Nederlands</li>\
+<li>Updated all translations from transifex</li>\
+</ul>\
+<br>\
 <b>v1.2.5 KDBX 4 format support</b>\
 <ul>\
-<li>Add support for KDBX 4 database format by changing database code from KeepassX to KeepssXC (many thanks to 24mu13)</li>\
+<li>Add support for KDBX 4 database format by changing database code from KeepassX to KeepassXC (many thanks to 24mu13)</li>\
 <li>Add support for new database cipher algorithms and key derivation functions like Twofish, Chacha20 and Argon2 for Keepass 2 databases</li>\
 <li>Show used database cipher, key derivation function and key transformation rounds for a Keepass 2 database in database settings dialog</li>\
 <li>Updated translations from transifex</li>\

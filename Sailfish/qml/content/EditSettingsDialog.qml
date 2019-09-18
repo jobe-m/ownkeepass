@@ -336,6 +336,7 @@ Dialog {
                 menu: ContextMenu {
                     // The order of languages below must be the same as in Global.js
                     MenuItem { text: qsTr("System default") } // 0
+                    MenuItem { text: "Belgisch-Nederlands" } // 1 Dutch Belgium
                     MenuItem { text: "Bokmål" }       // 1 (Norwegian Bokmål)
                     MenuItem { text: "Català" }       // 2 (Catalan)
                     MenuItem { text: "Čeština" }      // 3 (Czech)
@@ -376,6 +377,8 @@ Dialog {
                         return Global.czech
                     case Language.CA: // Catalan
                         return Global.catalan
+                    case Language.NL_BE: // Dutch
+                        return Global.dutch_belgium
                     case Language.NL_NL: // Dutch
                         return Global.dutch
                     case Language.ES: // Spanish
@@ -427,8 +430,10 @@ Dialog {
                         return Language.CS_CZ // Czech
                     case Global.catalan:
                         return Language.CA // Catalan
+                    case Global.dutch_belgium:
+                        return Language.NL_BE // Dutch Belgium
                     case Global.dutch:
-                        return Language.NL_NL // Dutch
+                        return Language.NL_NL // Dutch Netherland
                     case Global.spanish:
                         return Language.ES // Spanish
                     case Global.french:

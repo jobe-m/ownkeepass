@@ -124,6 +124,10 @@ int main(int argc, char *argv[])
         case ownKeepassPublic::Language::DA:
             translator.load("harbour-ownkeepass-da.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
             break;
+        // Dutch Belgium
+        case ownKeepassPublic::Language::NL_BE:
+            translator.load("harbour-ownkeepass-nl_BE.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());
+            break;
         // Dutch
         case ownKeepassPublic::Language::NL_NL:
             translator.load("harbour-ownkeepass-nl_NL.qm", SailfishApp::pathTo(QString("translations")).toLocalFile());

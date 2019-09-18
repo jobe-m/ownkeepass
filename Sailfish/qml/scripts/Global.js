@@ -33,26 +33,27 @@ var error = 3
 
 // The index list below must be the same as the order of language menu items in settings dialog
 var system_default = 0
-var norwegian_bokmal = 1
-var catalan = 2
-var czech = 3
-var serbian = 4
-var danish = 5
-var german = 6
-var english = 7
-var spanish = 8
-var french = 9
-var galician = 10
-var italian = 11
-var polish = 12
-var hungarian = 13
-var dutch = 14
-var russian = 15
-var finnish = 16
-var swedish = 17
-var chinese = 18
-var greek = 19
-var japanese = 20
+var dutch_belgium = 1
+var norwegian_bokmal = 2
+var catalan = 3
+var czech = 4
+var serbian = 5
+var danish = 6
+var german = 7
+var english = 8
+var spanish = 9
+var french = 10
+var galician = 11
+var italian = 12
+var polish = 13
+var hungarian = 14
+var dutch = 15
+var russian = 16
+var finnish = 17
+var swedish = 18
+var chinese = 19
+var greek = 20
+var japanese = 21
 var ukrainian = -1 // not yet started, but already defined in ownKeepassGlobal.h
 
 // Contants used to scale UI components

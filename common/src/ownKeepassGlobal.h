@@ -120,6 +120,7 @@ public:
         DE_DE, // German
         CS_CZ, // Czech
         CA,    // Catalan
+        NL_BE, // Dutch Belgium
         NL_NL, // Dutch
         ES,    // Spanish
         FR_FR, // French

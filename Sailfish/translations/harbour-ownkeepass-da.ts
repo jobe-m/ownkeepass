@@ -81,7 +81,7 @@
         <translation>Oversættere i alfabetisk rækkefølge:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="254"/>
+        <location filename="../qml/content/AboutPage.qml" line="256"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Jeg håber du har lige så stor glæde ved at bruge ownKeepass, som jeg har haft under udviklingen!</translation>
     </message>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="100"/>
         <source>Note: By changing the master password here, you will need to remember it next time when opening the Keepass database!</source>
-        <translation>Bemærk: Ved at ændre den primære adgangskode her, skal du huske det den næste gang du åbner KeePass databasen!</translation>
+        <translation>Bemærk: Ved at ændre den primære adgangskode her, skal du benytte den nye adgangskode næste gang du åbner KeePass databasen!</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="110"/>
@@ -599,12 +599,12 @@
         <translation>Orientering</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="487"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="492"/>
         <source>Extended list view</source>
         <translation>Udvidet listevisning</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>Hvis du slår dette til, vil brugernavn og adgangskode blive vist under titlen i listevisning (genåben database for at aktivere denne indstilling)</translation>
     </message>
@@ -717,57 +717,57 @@
         <translation>Landskab</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="480"/>
         <source>Sort in alphabetical order</source>
         <translation>Sortér i alfabetisk orden</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>Hvis du slår dette til, vil alle poster i listevisningen blive sorteret i alfabetisk orden, ellers vil databasens interne orden blive brugt (genåben databasen for at aktivere denne indstilling)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="499"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="504"/>
         <source>Focus search bar</source>
         <translation>Fokusér på søgefeltet</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="500"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Når aktiveret vil søgefeltet være aktivt ved programopstart.</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="514"/>
         <source>Cover settings</source>
         <translation>Miniatureindstillinger</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="515"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="520"/>
         <source>Show username and password</source>
         <translation>Vis brugernavn og adgangskode</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Ved aktivering af denne vil  brugernavn og adgangskode på den aktuelt åbnede KeePass post, blive vist på miniaturen </translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="527"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="532"/>
         <source>Lock database from cover</source>
         <translation>Lås database fra miniature</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Dette lader dig låse databasen med venstre miniature handling</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="544"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopiér fra miniature</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="540"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="545"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Aktivér dette for at kopiere brugernavn og adgangskode til udklipsholderen fra miniature</translation>
     </message>
@@ -864,24 +864,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="126"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Intet udvalgt endnu</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="129"/>
+        <location filename="../qml/scripts/Global.js" line="130"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Enhedshukommelse</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="131"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>SD Card</source>
         <translation>SD-kort</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="133"/>
+        <location filename="../qml/scripts/Global.js" line="134"/>
         <source>Android Storage</source>
         <translation>Androidlager</translation>
     </message>
@@ -1407,12 +1407,12 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <message>
         <location filename="../qml/content/MainPage.qml" line="252"/>
         <source>File %1 does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen %1 eksisterer ikke</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="258"/>
         <source>Unable to open file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan ikke åbne filen %1</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1128"/>

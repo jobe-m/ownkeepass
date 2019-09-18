@@ -8,7 +8,6 @@ Name:       harbour-ownkeepass
 # >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
 %define __requires_exclude ^libgcrypt|libgpg-error|libargon2|libsodium|libc.*$
-%define debug_package %{nil}
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
@@ -16,7 +15,7 @@ Name:       harbour-ownkeepass
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    A password safe application
-Version:    1.2.5
+Version:    1.2.6
 Release:    1
 Group:      Qt/Qt
 License:    GPL v2
@@ -73,6 +72,6 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/256x256/apps
 %{_datadir}/applications
 %{_datadir}/harbour-ownkeepass
-%attr(655,-,-) %{_bindir}
+%attr(755,-,-) %{_bindir}
 # >> files
 # << files

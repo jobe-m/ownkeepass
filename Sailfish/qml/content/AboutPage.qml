@@ -239,9 +239,11 @@ issue a bug report or improvement idea, send me a café or just like my app and 
                 "olebr (Ole Jakob Brustad)<br>" +
                 "pakoR<br>" +
                 "PawelSpoon<br>" +
+                "pljmn (Nathan Follens)<br>" +
                 "reviewjolla (Simo Ruoho)<br>" +
                 "rgsidler (R.G. Sidler)<br>" +
                 "rla88 (Riku Lahtinen)<br>" +
+                "rui kon (Historyscholar)<br>" +
                 "Savvoritias (Marinus Savoritias)<br>" +
                 "Sthocs<br>" +
                 "tichy (Tichy)<br>" +

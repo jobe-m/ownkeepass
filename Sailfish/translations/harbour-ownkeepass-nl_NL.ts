@@ -81,7 +81,7 @@
         <translation>Alle vertalers in alfabetische volgorde:</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="254"/>
+        <location filename="../qml/content/AboutPage.qml" line="256"/>
         <source>I hope you have as much fun using ownKeepass as I have creating it!</source>
         <translation>Ik hoop dat je evenveel plezier beleeft aan het gebruiken van ownKeepass als ik bij het ontwikkelen ervan!</translation>
     </message>
@@ -319,7 +319,7 @@
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
         <source>Key derivation function in use:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sleutelafleidingsfunctie in gebruik:</translation>
     </message>
     <message>
         <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="205"/>
@@ -599,12 +599,12 @@
         <translation>Oriëntatie</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="487"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="492"/>
         <source>Extended list view</source>
         <translation>Uitgebreide lijstweergave</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="488"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>Als je dit inschakelt zullen de gebruikersnaam en het wachtwoord worden weergegeven onder de invoertitel in lijstweergaven (heropen de database om deze instelling te activeren)</translation>
     </message>
@@ -717,57 +717,57 @@
         <translation>Landschap</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="475"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="480"/>
         <source>Sort in alphabetical order</source>
         <translation>Sorteren op alfabetische volgorde</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="476"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>Als je dit inschakelt zullen alle invoeren op alfabetische volgorde worden weergegeven in lijstweergaven ipv de interne sortering (heropen de database om deze instelling te activeren)</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="499"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="504"/>
         <source>Focus search bar</source>
         <translation>Zoekbalk focussen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="500"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>Als dit wordt ingeschakeld zal de zoekbalk direct worden gefocust na opstarten van de applicatie</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="509"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="514"/>
         <source>Cover settings</source>
         <translation>Omslaginstellingen</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="515"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="520"/>
         <source>Show username and password</source>
         <translation>Gebruikersnaam en wachtwoord weergeven</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="516"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>Als dit wordt ingeschakeld zullen gebruikersnaam en wachtwoord van de huidige Keepass-vermelding zichtbaar zijn op de omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="527"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="532"/>
         <source>Lock database from cover</source>
         <translation>Database vergrendelen vanaf omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="528"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>Als dit wordt ingeschakeld zal het mogelijk zijn om de database te vergrendelen met de linker-omslagactie</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="544"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>Kopiëren-en-plakken vanaf omslag</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="540"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="545"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>Als dit wordt ingeschakeld zal kopiëren van gebruikersnaam en wachtwoord mogelijk zijn vanaf de omslag</translation>
     </message>
@@ -864,24 +864,24 @@
 <context>
     <name>Global</name>
     <message>
-        <location filename="../qml/scripts/Global.js" line="126"/>
+        <location filename="../qml/scripts/Global.js" line="127"/>
         <source>Nothing selected yet</source>
         <extracomment>This is used in the file browser when the user has not yet selected any file.</extracomment>
         <translation>Nog niets geselecteerd</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="129"/>
+        <location filename="../qml/scripts/Global.js" line="130"/>
         <source>Device Memory</source>
         <extracomment>Like the user home folder in linux/unix</extracomment>
         <translation>Apparaatgeheugen</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="131"/>
+        <location filename="../qml/scripts/Global.js" line="132"/>
         <source>SD Card</source>
         <translation>SD-kaart</translation>
     </message>
     <message>
-        <location filename="../qml/scripts/Global.js" line="133"/>
+        <location filename="../qml/scripts/Global.js" line="134"/>
         <source>Android Storage</source>
         <translation>Android-opslag</translation>
     </message>
@@ -955,7 +955,7 @@
         <location filename="../qml/help/HelpCreateNewDatabase.qml" line="28"/>
         <source>On this page you can create a new database where ownKeepass will store your sensitive data.&lt;br&gt;&lt;br&gt;Open the file browser and choose a file name and a directory. You can choose to locate your database in device memory, on the SD card or in the Android Storage. If the SD card entry is grey then no SD card is inserted or the card is not correctly detected by the System. There should be only one formatted partition on the SD card. Currently multi-partition SD cards are not supported by ownKeepass. &quot;Android storage&quot; is there to share the database with Android Apps. However sharing files with the Android world can be annoying due to different file ownership and permissions. Please be aware of that.&lt;br&gt;&lt;br&gt;Advice: If you upload your Keepass database into the cloud please make sure you use a locally stored key file in addition to the master password. This key file should not be uploaded to the cloud service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Use key file&lt;/b&gt;&lt;br&gt;&lt;br&gt;A key file can be used additionally to a master password to protect the Keepass database. Both are used together to generate a pass key which will open the database. So by using a file with lots of data inside the generated pass key becomes in principle stronger against attacks. You can use for example a random picture as key file.&lt;br&gt;&lt;br&gt;&lt;b&gt;Master password&lt;/b&gt;&lt;br&gt;&lt;br&gt;Here goes the password for your new Keepass database. Please make sure you choose a long password of around 10 - 15 characters and use a mixture of small and big letters, numbers and special characters. Repeat the password in the &quot;Confirm Password&quot; field.&lt;br&gt;&lt;br&gt;</source>
         <extracomment>Changed &quot;home drive on the phone&quot; to &quot;Device Memory&quot;, removed section for &quot;Open automatically&quot;</extracomment>
-        <translation>Op deze pagina kan je een nieuwe database aanmaken waarin ownKeepass je gevoelige gegevens zal opslaan.&lt;br&gt;&lt;br&gt;Open de bestandsverkenner en kies een bestandsnaam en -map. Je kan ervoor kiezen de database te plaatsen in je persoonlijke map, op de SD-kaart of in de Android-opslagruimte. Als de SD-kaartoptie grijs is, dan is de SD-kaart niet aanwezig of herkent het systeem hem niet. Er dient slechts één geformatteerde partitie aanwezig te zijn op de SD-kaart; SD-kaarten met meerdere partities worden momenteel niet ondersteund door ownKeepass. &quot;Android-opslag&quot; is aanwezig zodat je de database kunt delen met Android-applicaties. Het kan dan alleen wel lastig worden voor sommige Android-applicaties door verschillend bestandseigenaarschap en -toestemmingen. Wees je daarvan bewust.&lt;br&gt;&lt;br&gt;Advies: als je je Keepass-database uploadt naar een clouddienst, zorg er dan voor dat je een lokaal opgeslagen sleutel gebruikt naast het hoofdwachtwoord. Dit sleutelbestand mag niet worden geüpload naar de clouddienst.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sleutelbestand gebruiken&lt;/b&gt;&lt;br&gt;&lt;br&gt;Je kan een sleutelbestand gebruiken naast het hoofdwachtwoord om de Keepass-database te beschermen. Zij zullen beiden gebruikt worden om een toegangssleutel aan te maken die de database kan openen. Een bestand met veel gegevens maakt de gegenereerde toegangssleutel sterker tegen aanvallen van buitenaf. Je kan bv. een willekeurige afbeelding gebruiken als sleutelbestand.&lt;br&gt;&lt;br&gt;&lt;b&gt;Hoofdwachtwoord&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dit is het wachtwoord voor je nieuwe Keepass-database. Gebruik een lang wachtwoord met 10 - 15 tekens en gebruik een combinatie van letters, nummers en speciale tekens. Herhaal het wachtwoord in het veld &quot;Wachtwoord bevestigen&quot;.&lt;br&gt;&lt;br&gt;</translation>
+        <translation>Op deze pagina kan je een nieuwe database aanmaken waarin ownKeepass je gevoelige gegevens zal opslaan.&lt;br&gt;&lt;br&gt;Open de bestandsverkenner en kies een bestandsnaam en -map. Je kan ervoor kiezen de database te plaatsen in je persoonlijke map, op de SD-kaart of in de Android-opslagruimte. Als de SD-kaartoptie grijs is, dan is de SD-kaart niet aanwezig of herkent het systeem hem niet. Er dient slechts één geformatteerde partitie aanwezig te zijn op de SD-kaart; SD-kaarten met meerdere partities worden momenteel niet ondersteund door ownKeepass. &quot;Android-opslag&quot; is aanwezig zodat je de database kunt delen met Android-applicaties. Het kan dan alleen wel lastig worden voor sommige Android-applicaties door verschillend bestandseigenaarschap en -toestemmingen. Wees je daarvan bewust.&lt;br&gt;&lt;br&gt;Advies: als je je Keepass-database uploadt naar een clouddienst, zorg er dan voor dat je een lokaal opgeslagen sleutel gebruikt naast het hoofdwachtwoord. Dit sleutelbestand mag niet worden geüpload naar de clouddienst.&lt;br&gt;&lt;br&gt;&lt;b&gt;Sleutelbestand gebruiken&lt;/b&gt;&lt;br&gt;&lt;br&gt;Je kan een sleutelbestand gebruiken naast het hoofdwachtwoord om de Keepass-database te beschermen. Zij zullen beide gebruikt worden om een toegangssleutel aan te maken die de database kan openen. Een bestand met veel gegevens maakt de gegenereerde toegangssleutel sterker tegen aanvallen van buitenaf. Je kan bv. een willekeurige afbeelding gebruiken als sleutelbestand.&lt;br&gt;&lt;br&gt;&lt;b&gt;Hoofdwachtwoord&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dit is het wachtwoord voor je nieuwe Keepass-database. Gebruik een lang wachtwoord met 10 - 15 tekens en gebruik een combinatie van letters, nummers en speciale tekens. Herhaal het wachtwoord in het veld &quot;Wachtwoord bevestigen&quot;.&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1410,12 +1410,12 @@ ownKeepass is een wachtwoordkluis voor de Jolla-smartphone met het doel gevoelig
     <message>
         <location filename="../qml/content/MainPage.qml" line="252"/>
         <source>File %1 does not exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand %1 bestaat niet</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="258"/>
         <source>Unable to open file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan bestand %1 niet openen</translation>
     </message>
     <message>
         <location filename="../qml/content/MainPage.qml" line="1128"/>
