@@ -8,7 +8,7 @@ Release 1.2.6
 * Added support for KDBX 4 database format by changing database code from KeepassX to [KeepassXC] (many thanks to [24mu13](https://github.com/24mu13))
 * Added support for new database cipher algorithms and key derivation functions like Twofish, Chacha20 and Argon2 for Keepass 2 databases
 * Show used database cipher, key derivation function and key transformation rounds for a Keepass 2 database in database settings dialog
-* Added new translation for Belgisch-Nederlands</li>\
+* Added new translation for Belgisch-Nederlands
 * Updated translations from transifex
 
 ## Roadmap
