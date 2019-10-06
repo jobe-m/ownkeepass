@@ -237,7 +237,7 @@ Page {
         case DatabaseAccessResult.RE_OLD_KEEPASS_1_DB:
             applicationWindow.infoPopup.show(Global.error,
                                              qsTr("Database version"),
-                                             qsTr("You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database."))
+                                             "Your database file is a Keepass 1 database. You can now import it into a new Keepass 2 database. A backup of the old database will be stored.")
             internal.masterGroupsPage.closeOnError()
             break
         case DatabaseAccessResult.RE_UNKNOWN_ERROR:
@@ -422,13 +422,12 @@ Page {
                         var masterGroupsPage = pageStack.push(Qt.resolvedUrl("GroupsAndEntriesPage.qml").toString(),
                                                               { "initOnPageConstruction": false, "groupId": "0" })
                         var createNewDatabase =  false
-                        // copy password data over to to-be-opened-databae-details
+                        // copy password data over to to-be-opened-database-details
                         internal.setToBeOpenedDatabaseInfo(internal.dbFileLocation,
                                                            internal.dbFilePath,
                                                            internal.useKeyFile,
                                                            internal.keyFileLocation,
-                                                           internal.keyFilePath,
-                                                           internal.databaseType)
+                                                           internal.keyFilePath)
                         internal.openKeepassDatabase(password, createNewDatabase, masterGroupsPage)
                     }
 
@@ -442,8 +441,7 @@ Page {
                                                            internal.dbFilePath,
                                                            internal.useKeyFile,
                                                            internal.keyFileLocation,
-                                                           internal.keyFilePath,
-                                                           internal.databaseType)
+                                                           internal.keyFilePath)
                         internal.openKeepassDatabase(password, createNewDatabase, masterGroupsPage)
                     }
                 }
@@ -511,18 +509,16 @@ Page {
                                          dbFilePath,
                                          useKeyFile,
                                          keyFileLocation,
-                                         keyFilePath,
-                                         databaseType)
+                                         keyFilePath)
             } else {
-                Global.activeDatabase = Global.getLocationName(1) + " Documents/ownkeepass/notes.kdb"
+                Global.activeDatabase = Global.getLocationName(1) + " Documents/ownkeepass/notes.kdbx"
                 mainPageFlickable.state = "CREATE_NEW_DATABASE"
-                // set default db location, path, no keyfile and Keepass 1 as database type
+                // set default db location, path and no keyfile
                 internal.setDatabaseInfo(1,
                                          "Documents/ownkeepass/notes.kdb",
                                          false,
                                          "",
-                                         "",
-                                         DatabaseType.DB_TYPE_KEEPASS_1)
+                                         "")
             }
         }
 
@@ -562,14 +558,12 @@ Page {
         property bool   useKeyFile: false
         property int    keyFileLocation: 0
         property string keyFilePath: ""
-        property int    databaseType: DatabaseType.DB_TYPE_UNKNOWN
         // Details for the to be opened database (in case the opening failed above data will not be overwritten)
         property int    tbo_dbFileLocation: 0
         property string tbo_dbFilePath: ""
         property bool   tbo_useKeyFile: false
         property int    tbo_keyFileLocation: 0
         property string tbo_keyFilePath: ""
-        property int    tbo_databaseType: DatabaseType.DB_TYPE_UNKNOWN
         property Page masterGroupsPage
 
         function init() {
@@ -586,28 +580,24 @@ Page {
                                  dbFilePath,
                                  useKeyFile,
                                  keyFileLocation,
-                                 keyFilePath,
-                                 databaseType) {
+                                 keyFilePath) {
             internal.dbFileLocation = dbFileLocation
             internal.dbFilePath =  dbFilePath
             internal.useKeyFile = useKeyFile
             internal.keyFileLocation = keyFileLocation
             internal.keyFilePath = keyFilePath
-            internal.databaseType = databaseType
         }
 
         function setToBeOpenedDatabaseInfo(dbFileLocation,
                                            dbFilePath,
                                            useKeyFile,
                                            keyFileLocation,
-                                           keyFilePath,
-                                           databaseType) {
+                                           keyFilePath) {
                       internal.tbo_dbFileLocation = dbFileLocation
                       internal.tbo_dbFilePath =  dbFilePath
                       internal.tbo_useKeyFile = useKeyFile
                       internal.tbo_keyFileLocation = keyFileLocation
                       internal.tbo_keyFilePath = keyFilePath
-                      internal.tbo_databaseType = databaseType
                   }
 
         function openKeepassDatabase(password,
@@ -648,7 +638,7 @@ Page {
                             ownKeepassDatabase.keyTransfRounds = ownKeepassSettings.defaultKeyTransfRounds
                             ownKeepassDatabase.cryptAlgorithm = ownKeepassSettings.defaultCryptAlgorithm
                             // create new Keepass database
-                            ownKeepassDatabase.create(tbo_databaseType, completeDbFilePath, completeKeyFilePath, password, true)
+                            ownKeepassDatabase.create(completeDbFilePath, completeKeyFilePath, password, true)
                             kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                         } else {
                             // Path to new database file could not be created
@@ -670,7 +660,7 @@ Page {
                 if (ownKeepassHelper.fileExists(completeDbFilePath)) {
                     if (!tbo_useKeyFile || ownKeepassHelper.fileExists(completeKeyFilePath)) {
                         // open existing Keepass database
-                        ownKeepassDatabase.open(internal.tbo_databaseType, completeDbFilePath, completeKeyFilePath, password, false)
+                        ownKeepassDatabase.open(completeDbFilePath, completeKeyFilePath, password, false)
                         kdbListItemInternal.databaseKeyFile = completeKeyFilePath
                     } else {
                         // Key file should be used but does not exist
@@ -695,8 +685,7 @@ Page {
                                                  internal.dbFilePath,
                                                  internal.useKeyFile,
                                                  internal.keyFileLocation,
-                                                 internal.keyFilePath,
-                                                 internal.databaseType)
+                                                 internal.keyFilePath)
             // Set database name in global object for pulley menu on groups and entries pages
             Global.activeDatabase = Global.getLocationName(dbFileLocation) + " " + dbFilePath
             // Get database name and set on cover page for create new and open database states
@@ -714,8 +703,7 @@ Page {
                                 tbo_dbFilePath,
                                 tbo_useKeyFile,
                                 tbo_keyFileLocation,
-                                tbo_keyFilePath,
-                                tbo_databaseType)
+                                tbo_keyFilePath)
                 masterGroupsPage.init()
                 updateRecentDatabaseListModel()
             } else {
@@ -731,8 +719,7 @@ Page {
                             tbo_dbFilePath,
                             tbo_useKeyFile,
                             tbo_keyFileLocation,
-                            tbo_keyFilePath,
-                            tbo_databaseType)
+                            tbo_keyFilePath)
             masterGroupsPage.init()
             updateRecentDatabaseListModel()
         }
@@ -800,6 +787,7 @@ Page {
           Data used to save ownKeepass default setting values
           */
         property int  defaultCryptAlgorithm
+        property int  defaultKeyDerivationFunction
         property int  defaultKeyTransfRounds
         property int  inactivityLockTime
         property bool sortAlphabeticallyInListView
@@ -938,12 +926,13 @@ Page {
             }
         }
 
-        function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyTransfRounds, aInactivityLockTime,
-                                    aSortAlphabeticallyInListView,
+        function setKeepassSettings(aDefaultCryptAlgorithm, aDefaultKeyDerivationFunction, aDefaultKeyTransfRounds,
+                                    aInactivityLockTime, aSortAlphabeticallyInListView,
                                     aShowUserNamePasswordInListView, aFocusSearchBarOnStartup, aShowUserNamePasswordOnCover,
                                     aLockDatabaseFromCover, aCopyNpasteFromCover, aClearClipboard, aLanguage,
                                     aFastUnlock, aFastUnlockRetryCount, aOrientation) {
             defaultCryptAlgorithm = aDefaultCryptAlgorithm
+            defaultKeyDerivationFunction = aDefaultKeyDerivationFunction
             defaultKeyTransfRounds = aDefaultKeyTransfRounds
             inactivityLockTime = aInactivityLockTime
             sortAlphabeticallyInListView = aSortAlphabeticallyInListView
@@ -962,6 +951,7 @@ Page {
         function checkForUnsavedKeepassSettingsChanges() {
             if (
                     ownKeepassSettings.defaultCryptAlgorithm !== defaultCryptAlgorithm ||
+                    ownKeepassSettings.defaultKeyDerivationFunction !== defaultKeyDerivationFunction ||
                     ownKeepassSettings.defaultKeyTransfRounds !== defaultKeyTransfRounds ||
                     ownKeepassSettings.locktime !== inactivityLockTime ||
                     ownKeepassSettings.sortAlphabeticallyInListView !== sortAlphabeticallyInListView ||
@@ -983,6 +973,7 @@ Page {
 
         function saveKeepassSettings() {
             ownKeepassSettings.defaultCryptAlgorithm = defaultCryptAlgorithm
+            ownKeepassSettings.defaultKeyDerivationFunction = defaultKeyDerivationFunction
             ownKeepassSettings.defaultKeyTransfRounds = defaultKeyTransfRounds
             ownKeepassSettings.locktime = inactivityLockTime
             ownKeepassSettings.sortAlphabeticallyInListView = sortAlphabeticallyInListView
@@ -1045,8 +1036,7 @@ Page {
                                                    dbFilePath,
                                                    useKeyFile,
                                                    keyFileLocation,
-                                                   keyFilePath,
-                                                   databaseType)
+                                                   keyFilePath)
                 internal.openKeepassDatabase(password,
                                              state === "CreateNewDatabase",
                                              acceptDestinationInstance)
@@ -1114,7 +1104,6 @@ Page {
                                  "useKeyFile": model.useKeyFile,
                                  "keyFileLocation": model.keyFileLocation,
                                  "keyFilePath": model.keyFilePath,
-                                 "databaseType": model.databaseType,
                                  "password": "" })
             }
 

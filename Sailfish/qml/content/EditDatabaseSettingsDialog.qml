@@ -151,7 +151,7 @@ Dialog {
 
             ComboBox {
                 id: databaseCryptAlgorithm
-                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
+                enabled: false
                 width: parent.width
                 label: qsTr("Encryption currently in use:")
                 currentIndex: ownKeepassDatabase.cryptAlgorithm
@@ -159,10 +159,7 @@ Dialog {
                     // Do not change order of menu items below - it needs to be consistent to Cipher::eCipherAlgos
                     MenuItem { text: "AES (256-bit)" }
                     MenuItem { text: "Twofish (256-bit)" }
-                    MenuItem {
-                        text: "ChaCha20 (256-bit)"
-                        enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
-                    }
+                    MenuItem { text: "ChaCha20 (256-bit)" }
                }
                 onCurrentIndexChanged: {
                     editDatabaseSettingsDialog.cryptAlgorithmChanged =
@@ -174,13 +171,12 @@ Dialog {
             ComboBox {
                 id: keyDerivationFunction
                 enabled: false
-                visible: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
                 width: parent.width
                 label: qsTr("Key derivation function in use:")
                 currentIndex: ownKeepassDatabase.keyDerivationFunction
                 menu: ContextMenu {
                     // Do not change order of menu items below - it needs to be consistent to Cipher::eKdf
-                    MenuItem { text: "Argon2 (KDBX 4) - recommended" }
+                    MenuItem { text: "Argon2 (KDBX 4) - " + qsTr("recommended") }
                     MenuItem { text: "AES-KDF (KDBX 4)" }
                     MenuItem { text: "AES-KDF (KDBX 3.1)" }
                 }
@@ -192,7 +188,7 @@ Dialog {
             }
 
             Column {
-                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
+                enabled: false
                 width: parent.width
                 spacing: 0
 

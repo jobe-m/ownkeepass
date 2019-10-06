@@ -35,7 +35,7 @@ PushUpMenu {
     signal addAdditionalAttribute
 
     MenuItem {
-        enabled: !disableNewEntryAttribute && ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
+        enabled: !disableNewEntryAttribute
         visible: enabled
         text: qsTr("Add Additional Attribute")
         onClicked: addAdditionalAttribute()

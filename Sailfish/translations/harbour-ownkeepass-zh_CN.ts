@@ -14,11 +14,6 @@
         <translation>密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/AboutPage.qml" line="66"/>
-        <source>ownKeepass is a Keepass 1 and 2 compatible password safe application</source>
-        <translation>ownKeepass 是一个兼容 keepass 1和2的密码安全软件</translation>
-    </message>
-    <message>
         <location filename="../qml/content/AboutPage.qml" line="74"/>
         <source>Version</source>
         <translation>版本</translation>
@@ -89,6 +84,11 @@
         <location filename="../qml/content/AboutPage.qml" line="147"/>
         <source>Donate or Contribute</source>
         <translation>捐赠或贡献</translation>
+    </message>
+    <message>
+        <location filename="../qml/content/AboutPage.qml" line="66"/>
+        <source>ownKeepass is a Keepass 2 compatible password safe application</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/AboutPage.qml" line="155"/>
@@ -317,17 +317,22 @@
         <translation>当前使用的加密方式</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="175"/>
         <source>Key derivation function in use:</source>
         <translation>正在使用密钥导出功能</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="205"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="179"/>
+        <source>recommended</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="201"/>
         <source>Key transformation rounds</source>
         <translation>关键字转换算法</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="219"/>
+        <location filename="../qml/content/EditDatabaseSettingsDialog.qml" line="215"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>增加这个值将延长打开Keepass数据库的时间，但可以更好地防范暴力破解</translation>
     </message>
@@ -416,41 +421,41 @@
         <translation>设置注释</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="342"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="429"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="340"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="427"/>
         <source>Set</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="345"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="375"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="387"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="343"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="373"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="385"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="445"/>
         <location filename="../qml/content/EditEntryDetailsDialog.qml" line="447"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="449"/>
         <source>Edit Label</source>
         <translation>编辑标签</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="344"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="388"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="342"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="386"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="402"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="282"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="280"/>
         <source>Change additional attributes</source>
         <translation>更改附加属性</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="375"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="394"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="373"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="392"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="395"/>
-        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="404"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="393"/>
+        <location filename="../qml/content/EditEntryDetailsDialog.qml" line="402"/>
         <source>Accept</source>
         <translation>接受</translation>
     </message>
@@ -488,12 +493,12 @@
         <translation>设置组名</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="171"/>
         <source>Notes for the group</source>
         <translation>组记录</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="175"/>
+        <location filename="../qml/content/EditGroupDetailsDialog.qml" line="173"/>
         <source>Set notes for the group</source>
         <translation>设置组记录</translation>
     </message>
@@ -539,235 +544,250 @@
 <context>
     <name>EditSettingsDialog</name>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="92"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="93"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="94"/>
         <source>Discard</source>
         <translation>放弃</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="94"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="95"/>
         <source>ownKeepass Settings</source>
         <translation>ownKeepass 设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="98"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="99"/>
         <source>Change default settings of your ownKeepass application here</source>
         <translation>在此处修改 ownKeepass 的默认设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="102"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="103"/>
         <source>Database</source>
         <translation>数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="108"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="109"/>
         <source>Default encryption</source>
         <translation>默认加密方式</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="109"/>
-        <source>This is the encryption which will be used as default when creating a new Keepass 1 database.</source>
-        <translation>这是创建新Keepass数据库1的默认加密方式。</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="132"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="157"/>
         <source>Default key transformation rounds</source>
         <translation>默认关键字转换算法</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="146"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="171"/>
         <source>Setting this value higher increases opening time of the Keepass database but makes it more robust against brute force attacks</source>
         <translation>增加这个值将延长打开Keepass数据库的时间，但可以更好地防范暴力破解</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="153"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="178"/>
         <source>Security</source>
         <translation>安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="222"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="247"/>
         <source>Enable this to unlock your database quickly with just the first 3 characters of your master password.</source>
         <translation>开启后，只需输入主密码前三位即可快速解锁数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="313"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="338"/>
         <source>Orientation</source>
         <translation>方向</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="492"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="517"/>
         <source>Extended list view</source>
         <translation>扩展的列表视图</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="493"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="518"/>
         <source>If you switch this on username and password are shown below entry title in list views (reopen database to activate this setting)</source>
         <translation>开启此项将在列表视图的词条下显示用户名和密码（重新打开数据库以激活该设置）</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="333"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="358"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="334"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="359"/>
         <source>Change of language will be active in ownKeepass after restarting the application</source>
         <translation>修改语言将在重启 ownKeepass 后生效</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="338"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="363"/>
         <source>System default</source>
         <translation>系统默认</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="165"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="190"/>
         <source>Inactivity lock time</source>
         <translation>无动作锁定时间</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="182"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="129"/>
+        <source>This is the key derivation function which will be used as default when creating a new Keepass database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="128"/>
+        <source>Default key derivation function</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="110"/>
+        <source>This is the encryption which will be used as default when creating a new Keepass database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="133"/>
+        <source>recommended</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="207"/>
         <source>Immediately</source>
         <translation>立刻</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="184"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="186"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="188"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="277"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="279"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="281"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="283"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="285"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="209"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="211"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="213"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="302"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="304"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="306"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="308"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="310"/>
         <source>seconds</source>
         <translation>秒</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="190"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="287"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="215"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="312"/>
         <source>minute</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="192"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="194"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="196"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="198"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="200"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="289"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="291"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="293"/>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="295"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="217"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="219"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="221"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="223"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="225"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="314"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="316"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="320"/>
         <source>minutes</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="202"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="227"/>
         <source>Unlimited</source>
         <translation>无限</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="221"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="246"/>
         <source>Fast unlock</source>
         <translation>快速解锁</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="240"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="265"/>
         <source>Number of fast unlock retries</source>
         <translation>快速解锁剩余尝试次数</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="260"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="285"/>
         <source>Time to clear clipboard</source>
         <extracomment>This string will be used on the settings page under the slider to select the time period until when the clipboard will be emptied</extracomment>
         <translation>此字符串将在滑块下的设置页面上使用以选择时间段，直到清空剪贴板</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="297"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="322"/>
         <source>Never</source>
         <translation>绝不</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="307"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="332"/>
         <source>UI settings</source>
         <translation>界面设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="314"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="339"/>
         <source>Change here orientation of the display</source>
         <translation>在这里修改显示方向</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="318"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="343"/>
         <source>Dynamic</source>
         <extracomment>Dynamic means that the display orientation is changed according how the device is hold by the user</extracomment>
         <translation>动态意味着根据用户握持设备的方式改变显示方向</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="319"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="344"/>
         <source>Portrait</source>
         <translation>竖屏</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="320"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="345"/>
         <source>Landscape</source>
         <translation>横屏</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="480"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
         <source>Sort in alphabetical order</source>
         <translation>按字母排序</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="481"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="506"/>
         <source>Switching this on will sort all entries in the list view in alphabetical order otherwise database internal order is used (reopen database to activate this setting)</source>
         <translation>开启此项以使词条在列表视图中按照字母顺序排列，否则将按照数据库内部顺序排列（重新打开数据库以激活该设置）</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="504"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="529"/>
         <source>Focus search bar</source>
         <translation>聚焦搜索框</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="505"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="530"/>
         <source>If enabled the search bar will be focused on application startup</source>
         <translation>如果开启将在应用启动时自动聚焦在搜索栏上</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="514"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="539"/>
         <source>Cover settings</source>
         <translation>封面设置</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="520"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="545"/>
         <source>Show username and password</source>
         <translation>显示用户名和密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="521"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="546"/>
         <source>Switching this on will show username and password of the currently opened Keepass entry on the cover</source>
         <translation>开启此项将在封面上显示当前 Keepass 词条的用户名和密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="532"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="557"/>
         <source>Lock database from cover</source>
         <translation>从封面锁定数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="533"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="558"/>
         <source>This lets you lock the database with the left cover action</source>
         <translation>允许你通过封面向左扫来锁定数据库</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="544"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="569"/>
         <source>Copy&apos;n&apos;paste from cover</source>
         <translation>从封面复制粘贴</translation>
     </message>
     <message>
-        <location filename="../qml/content/EditSettingsDialog.qml" line="545"/>
+        <location filename="../qml/content/EditSettingsDialog.qml" line="570"/>
         <source>Enable this to copy username and password into clipboard from cover</source>
         <translation>开启此项以从封面复制用户名和密码到剪贴板</translation>
     </message>
@@ -890,12 +910,12 @@
     <name>GroupsAndEntriesPage</name>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="40"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="326"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="330"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="346"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="351"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="323"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="327"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="343"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="348"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="391"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="396"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="401"/>
         <source>Password groups</source>
         <translation>密码组</translation>
     </message>
@@ -920,31 +940,26 @@
         <translation>组为空</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="196"/>
-        <source>Pull down to add password groups</source>
-        <translation>下拉添加密码组</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="197"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="194"/>
         <source>Pull down to add password groups or entries</source>
         <translation>下拉添加密码组或词条</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="310"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="307"/>
         <source>Loading</source>
         <translation>载入中</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="366"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="370"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="406"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="363"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="401"/>
         <source>Search in all groups</source>
         <translation>在所有组中搜索</translation>
     </message>
     <message>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="367"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="371"/>
-        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="407"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="364"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="368"/>
+        <location filename="../qml/content/GroupsAndEntriesPage.qml" line="402"/>
         <source>Search in</source>
         <translation>搜索这里</translation>
     </message>
@@ -967,36 +982,34 @@
     </message>
 </context>
 <context>
+    <name>HelpGroupsAndEntriesPage</name>
+    <message>
+        <location filename="../qml/help/HelpGroupsAndEntriesPage.qml" line="27"/>
+        <source>This page is showing password groups and entries of your Keepass database. A password group is a container for password entries. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;You can use password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database or in a specific password group. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HelpMainPage</name>
     <message>
         <location filename="../qml/help/HelpMainPage.qml" line="27"/>
-        <source>ownKeepass is a password safe application for the Jolla Smartphone with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass can use Keepass version 1 and 2 databases. That means you can use Keepass [1] or KeepassX [2] on your desktop system to decrypt and open that database file, too.&lt;br&gt;&lt;br&gt;
-Please note the following. While ownKeepass can read and write to Keepass 1 databases it can currently only read from Keepass 2 databases. It cannot yet change and save Keepass 2 databases. This is planned for a future release of ownKeepass.</source>
-        <translation>ownKeepass是Jolla智能手机的密码安全应用程序，旨在保护敏感数据，如网页密码，信用卡号，PIN，TAN和其他应保密的信息。 所有这些信息都保存在数据库文件中，该文件已加密并存储在手机本地。 要打开数据库，您需要知道数据库的主密码。 ownKeepass可以使用Keepass版本1和2数据库。 这意味着您可以在桌面系统上使用Keepass [1]或KeepassX [2]来解密和打开该数据库文件。＆lt; br＆gt;＆lt; br＆gt;
-请注意以下事项。 虽然ownKeepass可以读取和写入Keepass 1数据库，但它目前只能从Keepass 2数据库中读取。 它还无法更改和保存Keepass 2数据库。 计划在将来发布ownKeepass中支持。</translation>
+        <source>ownKeepass is a password safe application for Sailfish devices with the purpose to protect sensible data like passwords for web pages, credit card numbers, PINs, TANs and other bits of information which should be kept secret. All that information is saved in a database file which is encrypted and stored locally on your phone. To open the database you need to know the master password of the database. ownKeepass uses a Keepass version 2 database. That means you can use Keepass [1] or KeepassXC [2] on your desktop system to decrypt and open that database file, too.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/help/HelpMainPage.qml" line="41"/>
+        <location filename="../qml/help/HelpMainPage.qml" line="36"/>
         <source>&lt;b&gt;Usage of help pages&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each page inside of ownKeepass has its own Help content. So please make use of it and learn about the features offered by ownKeepass.</source>
         <translation>帮助页面的使用。ownKeepass内的每个页面都有自己的帮助内容。 因此，请使用它并了解ownKeepass提供的功能。</translation>
     </message>
     <message>
-        <location filename="../qml/help/HelpMainPage.qml" line="46"/>
-        <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassX project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES / Rijndael (supported by Keepass 1 and 2) or Twofish (Supported only by Keepass 1) with 128 bits block size and 256 bits key size, SHA-256 as hashing algorithm and in-memory encryption of all passwords (in-memory encryption currently only Keepass 1). Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security [3]: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
-        <translation>&lt;b&gt;关于 Keepass 数据库安全性的一些说法&lt;/b&gt;&lt;br&gt;&lt;br&gt; ownKeepass 中的数据库代码基于 KeepassX 项目[2]，因此包含许多与安全相关的功能。 它使用经过认证的加密算法，例如 AES / Rijndael（由Keepass 1和2支持）或 Twofish （仅由 Keepass 1支持），具有128位块大小和256位密钥大小，SHA-256 使用散列算法和内存加密所以密码（内存加密目前只用于 Keepass 1）。 此外，它通过在使用它来解密 Keepass 数据库之前对其进行散列和加密来保护主密码免受 Brute-Force 和 Dictonary 攻击。 此功能称为密钥转换轮次，可以在数据库设置中进行调整。 总之你需要注意以下两点以提高安全性：&lt;br&gt;&lt;br&gt;（1）总是使用足够长且难以猜测的主密码。&lt;br&gt;&lt;br&gt;（2）保护你的系统免受可能专门攻击 ownKeepass 的间谍软件的攻击。 其次，十条不可变的安全规则中的第一条就是[3]：“如果一个坏人可以说服你在你的计算机上运行他的程序，那就不再是你的计算机了”。</translation>
+        <location filename="../qml/help/HelpMainPage.qml" line="41"/>
+        <source>&lt;b&gt;Some words about Keepass database security&lt;/b&gt;&lt;br&gt;&lt;br&gt;The database code in ownKeepass is based on the KeepassXC project [2] and as such contains a lot of security related features. It uses proven encryption algorithms like AES, Twofish or ChaCha20 and SHA-256 and Argon2 as hashing algorithms. Furthermore it protects the master password against Brute-Force and Dictonary Attacks by hashing and encrypting it before using it to decrypt the Keepass database. This feature is called key transformation rounds and can be adjusted in database settings. Anyway that all just adds additional security to two points which you should be aware of:&lt;br&gt;&lt;br&gt;(1) Always use a long enough and difficult to guess master password.&lt;br&gt;&lt;br&gt;(2) Protect your system from spyware which might be specialized to attack ownKeepass. The second is law #1 of the 10 Immutable Laws of Security: &quot;If a bad guy can persuade you to run his program on your computer, it&apos;s not your computer anymore&quot;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/help/HelpMainPage.qml" line="65"/>
-        <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the Keepass download page [4] to get the classic Keepass 1 or Keepass 2 version for the desktop PC. There is also a list of alternative Keepass implementations on that page. I would also like to point you to KeepassX version 0.4.3 [2] which is also compatible with Keepass version 1. You can also find an Alpha version of KeepassX 2 on the same page which can handle Keepass 2 databases.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
-        <translation>&lt;b&gt;在你的 Jolla 智能手机/平板电脑和桌面电脑之间共享 Keepass 数据库。Keepass 数据库文件格式非常适合在智能手机、平板电脑及台式电脑等不同系统之间共享你的密码。&lt;/b&gt;&lt;br&gt;&lt;br&gt; 这是因为有很多 Keepass 工具适用于这些平台。 看看 Keepass下载页面[4]，获得桌面电脑的经典 Keepass 1 或 Keepass 2 版本。 该页面上还有一个备用Keepass实现列表。 我还想向你介绍KeepassX 版本0.4.3 [2]，它也与 Keepass 版本1兼容。你还可以在同一页面上找到可以处理 Keepass 2 数据库的 Alpha 版本 KeepassX2 。你可以通过SD卡或 ownCloud 及 Dropbox等云服务分享 Keepass 数据库文件。&lt;br&gt; 使用云服务器时，我建议你除主密码外还应使用密钥文件。 ownKeepass 将使用附加密钥文件来解密数据库。 仅将此密钥文件存储在智能手机和台式PC上。 请勿将其上传到云服务。 如果攻击者攻击你的云服务，他将不会使用密钥文件。 如果你这样做，攻击者将会更难破解你的 Keepass 数据库，因为密钥文件内容通常无法猜测。</translation>
-    </message>
-</context>
-<context>
-    <name>HelpMasterGroupsPage</name>
-    <message>
-        <location filename="../qml/help/HelpMasterGroupsPage.qml" line="27"/>
-        <source>This page is showing main password groups of your Keepass database. A password group is a container for password entries. Thus in order to store a password entry you need to create at least one group first.&lt;br&gt;&lt;br&gt;You can use main password groups to organize your password entries. For example create groups for &quot;Online shops&quot;, &quot;Email Accounts&quot;, &quot;Social media pages&quot;, etc.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search for password entries throughout the whole Keepass database. If you want that the search bar automatically gets focus when you open the Keepass database please open the setting page and check the corresponding switch.&lt;br&gt;&lt;br&gt;</source>
-        <translation>这个页面展示了你Keepass数据库的主要密码组。密码组是密码词条的容器。因此你需要先创建至少一个组来存储密码词条。&lt;br&gt;&lt;br&gt;你可以使用主密码组来管理你的密码词条。例如创建“在线商店”组、“电邮账户”组、“社交媒体”组等。&lt;br&gt;&lt;br&gt;可以在下拉菜单中启用搜索栏，它将显示在密码组列表顶上。你可以通过它在整个Keepass数据库中搜索密码词条。如果你希望搜索栏在打开Keepass数据库时自动获取焦点，请打开设置页面并开启相应选项。&lt;br&gt;&lt;br&gt;</translation>
+        <location filename="../qml/help/HelpMainPage.qml" line="58"/>
+        <source>&lt;b&gt;Sharing Keepass database between your Jolla Smartphone / Tablet and your desktop PC&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Keepass database file format is perfect to share your password safe between different systems like smartphones, tablets, desktop PC and so on. That is because there are a lot of Keepass implementations available for those platforms. Have a look at the KeepassXC download page [3] to get a community developed Keepass version for the desktop PC.&lt;br&gt;You can share your Keepass database file via SD card or via a cloud service like ownCloud or Dropbox. When using a cloud server I would recommend to use a key file in addition to the master password. The additional key file will be used by ownKeepass to decrypt the database. Store this key file only locally on your smartphone and on your desktop PC. Do not upload it to the cloud service. If an attacker hacks your cloud service he will be left without the key file. By doing so you make it even harder for an attacker to crack your Keepass database because the key file content is usually impossible to guess.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1012,9 +1025,8 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
     <name>HelpOpenRecentDatabase</name>
     <message>
         <location filename="../qml/help/HelpOpenRecentDatabase.qml" line="27"/>
-        <source>Type in here the password for opening the database. If you chose a key file it will be automatically loaded from the path you specified earlier. If you get an error on opening the database and you are sure that your provided password is correct check if the key file is still in the same place when you opened the database the last time successfully.&lt;br&gt;&lt;br&gt;&lt;b&gt;Open automatically&lt;/b&gt;&lt;br&gt;&lt;br&gt;Check this option if you want that ownKeepass automatically opens the password query dialog again for this database when you start the application the next time.&lt;br&gt;&lt;br&gt;</source>
-        <translation>在这里输入密码以打开数据库。如果你选择了关键字文件，它将从你指定的路径中自动载入。如果打开数据库错误，而你确定你提供的密码是正确的，请检查自上次成功打开数据库时，关键字文件是否还在原来的位置。
-&lt;br&gt;&lt;br&gt;&lt;b&gt;自动打开&lt;/b&gt;&lt;br&gt;&lt;br&gt;启用这个选项如果你希望ownKeepass在下次启动时自动打开密码查询对话框。&lt;br&gt;&lt;br&gt;</translation>
+        <source>Type in here the password for opening the Keepass database. If you chose a key file it will be automatically loaded from the path you specified earlier.&lt;br&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1028,14 +1040,6 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <location filename="../qml/help/HelpPage.qml" line="57"/>
         <source>Help</source>
         <translation>帮助</translation>
-    </message>
-</context>
-<context>
-    <name>HelpSubGroupsPage</name>
-    <message>
-        <location filename="../qml/help/HelpSubGroupsPage.qml" line="27"/>
-        <source>This page is showing password entries and sub-groups of your Keepass database. A password entry finally stores the bits of information secretly in the database.&lt;br&gt;&lt;br&gt;It is possible to show username and password for each password entry already in the list view. To enable that feature open the ownKeepass settings and check the &quot;Extended list view&quot; switch.&lt;br&gt;&lt;br&gt;A search bar can be enabled from pulley menu which is shown on top of the password group list. With it you can search only in the specific password group and all its sub-groups.&lt;br&gt;&lt;br&gt;</source>
-        <translation>这个页面展示了你Keepass数据库的密码词条和子组。密码词条最终将安全地在数据库中存储字节信息。&lt;br&gt;&lt;br&gt;可以让各个密码词条在列表中直接显示用户名和密码。开启这个特性请打开wonKeepass设置页面并开启“扩展列表视图”开关。&lt;br&gt;&lt;br&gt;搜索栏可以在下拉菜单中开启，它将显示在密码组列表顶端。通过它你可以仅在指定的密码组和其子组中搜索。&lt;br&gt;&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -1143,61 +1147,61 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="467"/>
+        <location filename="../qml/content/MainPage.qml" line="465"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>输入主密码来锁定新的 Keepass “密码安全”：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="474"/>
+        <location filename="../qml/content/MainPage.qml" line="472"/>
         <source>Path and name for new database</source>
         <extracomment>This is on the first page. The user has not yet created any Keepass databases. It gives the info where the new default database will be created.</extracomment>
         <translation>新数据库路径和名称</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="487"/>
+        <location filename="../qml/content/MainPage.qml" line="485"/>
         <source>Path and name of database</source>
         <extracomment>This is on the first page where the user inputs the master password of his Keepass database.</extracomment>
         <translation>数据库路径和名称</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="655"/>
+        <location filename="../qml/content/MainPage.qml" line="645"/>
         <source>Permission error</source>
         <translation>权限错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="655"/>
+        <location filename="../qml/content/MainPage.qml" line="645"/>
         <source>Cannot create path for your Keepass database file. You may need to set directory permissions for user &apos;nemo&apos;.</source>
         <translation>无法创建 Keepass 数据库文件路径。你也许需要将这个目录权限设置为用户“nemo”。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
-        <location filename="../qml/content/MainPage.qml" line="677"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
+        <location filename="../qml/content/MainPage.qml" line="667"/>
         <source>Key file error</source>
         <translation>关键字文件错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="660"/>
-        <location filename="../qml/content/MainPage.qml" line="677"/>
+        <location filename="../qml/content/MainPage.qml" line="650"/>
+        <location filename="../qml/content/MainPage.qml" line="667"/>
         <source>Database path is ok, but your key file is not present. Please check path to key file:</source>
         <translation>数据库路径正常，但未找到你的关键字文件。请检查关键字文件路径：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="665"/>
+        <location filename="../qml/content/MainPage.qml" line="655"/>
         <source>Database file already exists</source>
         <translation>数据库文件已存在</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="665"/>
+        <location filename="../qml/content/MainPage.qml" line="655"/>
         <source>Please specify another path and name for your Keepass database or delete the old database within a file browser.</source>
         <translation>请为Keepass数据库设定另外一个路径和名字，或者在文件管理器中删除旧的数据库。</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="682"/>
+        <location filename="../qml/content/MainPage.qml" line="672"/>
         <source>Database file error</source>
         <translation>数据库文件错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="682"/>
+        <location filename="../qml/content/MainPage.qml" line="672"/>
         <source>Database file does not exist. Please check path to database file:</source>
         <translation>数据库文件不存在。请检查数据库文件路径：</translation>
     </message>
@@ -1330,22 +1334,17 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>尝试删除数据库文件时出错。 错误信息：</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="240"/>
-        <source>You tried to open a Keepass 2 database but the given database is using version 1. Please choose the correct Keepass database version when opening the database.</source>
-        <translation>你尝试打开 Keepass 2 数据库，但给定的数据库使用版本1。请在打开数据库时选择正确的 Keepass 数据库版本。</translation>
-    </message>
-    <message>
         <location filename="../qml/content/MainPage.qml" line="245"/>
         <source>Unknown error</source>
         <translation>未知错误</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="750"/>
+        <location filename="../qml/content/MainPage.qml" line="737"/>
         <source>Password changed</source>
         <translation>密码已修改</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="750"/>
+        <location filename="../qml/content/MainPage.qml" line="737"/>
         <source>The master password of your database was changed successfully.</source>
         <translation>数据库主密码修改成功。</translation>
     </message>
@@ -1417,42 +1416,42 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>无法打开文件 %1</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1128"/>
+        <location filename="../qml/content/MainPage.qml" line="1117"/>
         <source>Drop from List</source>
         <translation>从列表中删除</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1206"/>
+        <location filename="../qml/content/MainPage.qml" line="1195"/>
         <source>Yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1207"/>
+        <location filename="../qml/content/MainPage.qml" line="1196"/>
         <source>No</source>
         <translation>否</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1208"/>
+        <location filename="../qml/content/MainPage.qml" line="1197"/>
         <source>Unsaved changes</source>
         <translation>未保存的更改</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1253"/>
+        <location filename="../qml/content/MainPage.qml" line="1242"/>
         <source>Do you want to save changes to the password entry?</source>
         <translation>你想保存修改的密码词条吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1258"/>
+        <location filename="../qml/content/MainPage.qml" line="1247"/>
         <source>Do you want to save changes to the password group?</source>
         <translation>你想保存修改的密码组吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1263"/>
+        <location filename="../qml/content/MainPage.qml" line="1252"/>
         <source>Do you want to save changes to database settings?</source>
         <translation>你想保存修改的数据库设置吗？</translation>
     </message>
     <message>
-        <location filename="../qml/content/MainPage.qml" line="1268"/>
+        <location filename="../qml/content/MainPage.qml" line="1257"/>
         <source>Do you want to save changed settings values?</source>
         <translation>你想保存修改的设置吗？</translation>
     </message>
@@ -1475,18 +1474,7 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>没有使用的密钥文件</translation>
     </message>
     <message>
-        <location filename="../qml/components/MainPageMoreDetails.qml" line="104"/>
-        <source>Database type:</source>
-        <translation>数据库类型：</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/MainPageMoreDetails.qml" line="121"/>
-        <source>Unknown</source>
-        <extracomment>Here unknown is used for unknown database type</extracomment>
-        <translation>未知数据库类型</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/MainPageMoreDetails.qml" line="129"/>
+        <location filename="../qml/components/MainPageMoreDetails.qml" line="94"/>
         <source>Recent databases</source>
         <translation>最近数据库据</translation>
     </message>
@@ -1585,65 +1573,60 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
 <context>
     <name>QueryPasswordDialog</name>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="172"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="158"/>
         <source>Please specify a new Keepass database file:</source>
         <translation>请指定新的 Keepass 数据库文件：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="201"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="185"/>
         <source>Please choose an existing Keepass database file:</source>
         <translation>请选择一个已存在的 Keepass 数据库文件：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="120"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="119"/>
         <source>Use key file</source>
         <translation>使用关键字文件</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="88"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="87"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="121"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="120"/>
         <source>Switch this on to use a key file together with a master password for your new Keepass database</source>
         <translation>开启此项以对你的新 Keepass 数据库同时使用关键字文件和主密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="138"/>
-        <source>Database type:</source>
-        <translation>数据库类型：</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="170"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="156"/>
         <source>Create</source>
         <translation>创建</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="171"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="157"/>
         <source>New Password Safe</source>
         <translation>新的密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="177"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="163"/>
         <source>Type in a master password for locking your new Keepass Password Safe:</source>
         <translation>输入主密码来锁定新的 Keepass “密码安全”：</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="199"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="224"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="183"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="208"/>
         <source>Open</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="200"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="225"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="184"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="209"/>
         <source>Password Safe</source>
         <translation>密码安全</translation>
     </message>
     <message>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="206"/>
-        <location filename="../qml/content/QueryPasswordDialog.qml" line="229"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="190"/>
+        <location filename="../qml/content/QueryPasswordDialog.qml" line="213"/>
         <source>Type in master password for unlocking your Keepass Password Safe:</source>
         <translation>输入主密码来解锁你的Keepass“密码安全”：</translation>
     </message>
@@ -1656,74 +1639,69 @@ Please note the following. While ownKeepass can read and write to Keepass 1 data
         <translation>没有内容</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="58"/>
-        <source>Pull down to add URL, username, password and comment</source>
-        <translation>下拉以添加网址，用户名，密码和注释</translation>
-    </message>
-    <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="59"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="57"/>
         <source>Pull down to add URL, username, password, comment and additional attributes</source>
         <translation>下拉以添加网址，用户名，密码，注释及附加属性</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="76"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="74"/>
         <source>Read only mode</source>
         <translation>只读模式</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="82"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="80"/>
         <source>Edit password entry</source>
         <translation>编辑密码词条</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="117"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="115"/>
         <source>URL</source>
         <translation>网址</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="118"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="134"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="142"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="151"/>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="169"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="116"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="132"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="140"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="149"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="167"/>
         <source>Copy to clipboard</source>
         <translation>复制到剪贴板</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="133"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="131"/>
         <source>Username</source>
         <translation>用户名</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="141"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="139"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="150"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="148"/>
         <source>Comment</source>
         <translation>注释</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="172"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="170"/>
         <source>password</source>
         <extracomment>Translate &quot;password&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
         <translation>密码</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="172"/>
         <source>pin</source>
         <extracomment>&quot;pin&quot; like a pin number of your credit card or sim card. Translate &quot;pin&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
         <translation>pin</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="174"/>
         <source>tan</source>
         <extracomment>&quot;tan&quot; like a tan list from your bank account. Translate &quot;tan&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
         <translation>tan</translation>
     </message>
     <message>
-        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="178"/>
+        <location filename="../qml/content/ShowEntryDetailsPage.qml" line="176"/>
         <source>puk</source>
         <extracomment>&quot;puk&quot; like the (emergency) puk number of your sim card. Translate &quot;puk&quot; with all low letters. It is used in pattern matching to deside to hide additional attributes of Keepass 2 database.</extracomment>
         <translation>puk</translation>

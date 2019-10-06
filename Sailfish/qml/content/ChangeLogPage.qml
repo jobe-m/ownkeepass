@@ -70,6 +70,15 @@ Page {
                 linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 text: "\
+<b>v2.0.0 Refactor towards Keepass 2</b>\
+<ul>\
+<li>Removed legacy code for Keepass 1 support</li>\
+<li>New created databases have now Keepass 2 file format</li>\
+<li>Default encryption algorithm, key derivation function and key transformation rounds for a new Keepass 2 database can be adjusted in application settings</li>\
+<li></li>\
+<li></li>\
+</ul>\
+<br>\
 <b>v1.2.6 Translation update</b>\
 <ul>\
 <li>Added new translation for Belgisch-Nederlands</li>\

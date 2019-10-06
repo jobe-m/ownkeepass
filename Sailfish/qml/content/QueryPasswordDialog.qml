@@ -41,7 +41,6 @@ Dialog {
     property alias useKeyFile: useKeyFileSwitch.checked
     property alias keyFileLocation: keyLoading.locationIndex
     property alias keyFilePath: keyLoading.relativePath
-    property alias databaseType: databaseTypeChooser.currentIndex
 
     // Password is only going out and will be passed to ownKeepass database interface to open the database
     property string password: ""
@@ -132,19 +131,6 @@ Dialog {
                 }
             }
 
-            ComboBox {
-                id: databaseTypeChooser
-                width: parent.width
-                label: qsTr("Database type:")
-                currentIndex: DatabaseType.DB_TYPE_KEEPASS_1
-                menu: ContextMenu {
-                    MenuItem { text: "Keepass 1" }
-                    MenuItem { text: "Keepass 2" }
-                }
-                onCurrentIndexChanged: {
-                }
-            }
-
             PasswordFieldCombo {
                 id: passwordFieldCombo
                 width: parent.width
@@ -191,8 +177,6 @@ Dialog {
             PropertyChanges { target: queryPasswordMenu; enabled: false; visible: false }
             PropertyChanges { target: queryPasswordDialogAppMenu; helpContent: "CreateNewDatabase" }
             PropertyChanges { target: applicationWindow.cover; state: "CREATE_NEW_DATABASE" }
-// TODO Remove following line when Keepass 2 database can be created and saved
-            PropertyChanges { target: databaseTypeChooser; enabled: false }
         },
         State {
             name: "OpenNewDatabase"
@@ -240,7 +224,6 @@ Dialog {
                 title: queryPasswordDialog.dbFilePath.substring(
                                   queryPasswordDialog.dbFilePath.lastIndexOf("/") + 1, queryPasswordDialog.dbFilePath.length)
             }
-            PropertyChanges { target: databaseTypeChooser; enabled: false; visible: false }
         }
     ]
 }

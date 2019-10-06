@@ -34,6 +34,7 @@ Dialog {
     property string saveCoverState: ""
     property string saveCoverTitle: ""
     property bool defaultCryptAlgorithmChanged: false
+    property bool defaultKeyDerivationFunctionChanged: false
     property bool defaultKeyTransfRoundsChanged: false
     property bool inactivityLockTimeChanged: false
     property bool fastUnlockChanged: false
@@ -54,9 +55,9 @@ Dialog {
             saveCoverState = applicationWindow.cover.state
         if (saveCoverTitle === "") // save initial state
             saveCoverTitle = applicationWindow.cover.title
-        if (expertModeChanged || defaultCryptAlgorithmChanged || defaultKeyTransfRoundsChanged ||
-                inactivityLockTimeChanged || fastUnlockChanged || fastUnlockRetryCountChanged ||
-                sortAlphabeticallyInListViewChanged ||
+        if (expertModeChanged || defaultCryptAlgorithmChanged || defaultKeyDerivationFunctionChanged ||
+                defaultKeyTransfRoundsChanged || inactivityLockTimeChanged || fastUnlockChanged ||
+                fastUnlockRetryCountChanged || sortAlphabeticallyInListViewChanged ||
                 showUserNamePasswordInListViewChanged || focusSearchBarOnStartupChanged ||
                 showUserNamePasswordOnCoverChanged || lockDatabaseFromCoverChanged ||
                 copyNpasteFromCoverChanged || clearClipboardChanged || languageChanged ||
@@ -106,11 +107,13 @@ Dialog {
                 id: defaultCryptAlgorithm
                 width: editSettingsDialog.width
                 label: qsTr("Default encryption")
-                description: qsTr("This is the encryption which will be used as default when creating a new Keepass 1 database.")
+                description: qsTr("This is the encryption which will be used as default when creating a new Keepass database.")
                 currentIndex: ownKeepassSettings.defaultCryptAlgorithm
                 menu: ContextMenu {
-                    MenuItem { text: "AES/Rijndael" }
-                    MenuItem { text: "Twofish" }
+                    // Do not change order of menu items below - it needs to be consistent to Cipher::eCipherAlgos
+                    MenuItem { text: "AES (256-bit)" }
+                    MenuItem { text: "Twofish (256-bit)" }
+                    MenuItem { text: "ChaCha20 (256-bit)" }
                 }
                 onCurrentIndexChanged: {
                     editSettingsDialog.defaultCryptAlgorithmChanged =
@@ -118,6 +121,28 @@ Dialog {
                     editSettingsDialog.updateCoverState()
                 }
             }
+
+            ComboBox {
+                id: defaultKeyDerivationFunction
+                width: parent.width
+                label: qsTr("Default key derivation function")
+                description: qsTr("This is the key derivation function which will be used as default when creating a new Keepass database.")
+                currentIndex: ownKeepassSettings.defaultKeyDerivationFunction
+                menu: ContextMenu {
+                    // Do not change order of menu items below - it needs to be consistent to Cipher::eKdf
+                    MenuItem { text: "Argon2 (KDBX 4) - " + qsTr("recommended") }
+                    MenuItem { text: "AES-KDF (KDBX 4)" }
+                    MenuItem { text: "AES-KDF (KDBX 3.1)" }
+                }
+                onCurrentIndexChanged: {
+                    editSettingsDialog.defaultKeyDerivationFunctionChanged =
+                            defaultKeyDerivationFunction.currentIndex !== ownKeepassSettings.defaultKeyDerivationFunction
+                    editSettingsDialog.updateCoverState()
+                }
+            }
+
+            // TODO Change key transformation rounds when changing key derivation function
+            // Best is to calculate value according to 1-second-delay on opening database
 
             Column {
                 width: parent.width
@@ -572,6 +597,7 @@ Dialog {
         // First save locally ownKeepass settings then trigger saving
         kdbListItemInternal.setKeepassSettings(
                     defaultCryptAlgorithm.currentIndex,
+                    defaultKeyDerivationFunction.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
                     sortAlphabeticallyInListView.checked,
@@ -592,6 +618,7 @@ Dialog {
         // Save ownKeepass settings to check for unsaved changes
         kdbListItemInternal.setKeepassSettings(
                     defaultCryptAlgorithm.currentIndex,
+                    defaultKeyDerivationFunction.currentIndex,
                     Number(defaultKeyTransfRounds.text),
                     inactivityLockTime.value,
                     sortAlphabeticallyInListView.checked,

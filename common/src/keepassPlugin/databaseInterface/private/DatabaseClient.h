@@ -26,7 +26,6 @@
 #include <QObject>
 #include <QThread>
 #include "AbstractDatabaseInterface.h"
-#include "AbstractDatabaseFactory.h"
 
 
 namespace kpxPrivate {
@@ -42,7 +41,7 @@ public:
     static DatabaseClient* getInstance();
 
     // init interface for specific database type
-    int initDatabaseInterface(const int type);
+    int initDatabaseInterface();
 
     // close interface so that it can be initalized again
     void closeDatabaseInterface();
@@ -62,7 +61,6 @@ private:
     DatabaseClient(QObject* parent = 0);
     Q_DISABLE_COPY(DatabaseClient)
 
-    AbstractDatabaseFactory* m_factory;
     AbstractDatabaseInterface* m_interface;
 
     QThread m_workerThread;

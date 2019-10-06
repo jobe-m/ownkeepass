@@ -1,6 +1,6 @@
 ############################################################################
 #
-# Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
+# Copyright (C) 2013 - 2019 Marko Koschak (marko.koschak@tisno.de)
 # All rights reserved.
 #
 # This file is part of ownKeepass.
@@ -21,7 +21,6 @@
 ############################################################################
 
 # Sources of the keepass QML plugins
-include(../common/src/keepassPlugin/keepass1_database/keepass1_database.pri)
 include(../common/src/keepassPlugin/keepass2_database/keepass2_database.pri)
 include(../common/src/keepassPlugin/databaseInterface/databaseInterface.pri)
 include(../common/src/fileBrowserPlugin/fileBrowserPlugin.pri)
@@ -29,15 +28,17 @@ include(../common/src/passwordGeneratorAdapter/passwordGeneratorAdapter.pri)
 
 # Get release version from .spec file and paste it further to c++ through a define
 isEmpty(VERSION) {
+    warning(Version string is empty, taking git tag as version instead...)
     GIT_TAG = $$system(git describe --tags --abbrev=0)
     GIT_VERSION = $$find(GIT_TAG, ^\\d+(\\.\\d+)?(\\.\\d+)?$)
     isEmpty(GIT_VERSION) {
         # Taking git tag as fallback but this shouldn't really happen
-        warning("Can't find a valid git tag version, got: $$GIT_TAG")
+        warning(Cannot find a valid git tag version, got: $$GIT_TAG)
         GIT_VERSION = 0.0.0
     }
     !isEmpty(GIT_VERSION): VERSION = $$GIT_VERSION
 }
+message(Version in project config: $$VERSION)
 DEFINES += PROGRAMVERSION=\\\"$$VERSION\\\"
 
 # Following define is a trick to load the appropriate libraries of libgcrypt and libgpg-error depending
@@ -157,8 +158,6 @@ OTHER_FILES += \
     qml/help/HelpOpenNewDatabase.qml \
     qml/help/HelpOpenRecentDatabase.qml \
     qml/help/HelpDatabaseSettings.qml \
-    qml/help/HelpMasterGroupsPage.qml \
-    qml/help/HelpSubGroupsPage.qml \
     qml/content/PasswordGeneratorDialog.qml \
     qml/content/LicensePage.qml \
     qml/content/ChangeLogPage.qml \
@@ -190,7 +189,6 @@ TRANSLATIONS += \
     translations/harbour-ownkeepass-ru.ts \
     translations/harbour-ownkeepass-es.ts \
     translations/harbour-ownkeepass-sv_SE.ts \
-    #translations/harbour-ownkeepass-uk_UA.ts \
     translations/harbour-ownkeepass-el.ts \
     translations/harbour-ownkeepass-ja_JP.ts \
     translations/harbour-ownkeepass-hu_HU.ts \
@@ -201,4 +199,5 @@ DISTFILES += \
     qml/content/EditItemIconDialog.qml \
     qml/common/EntryTextArea.qml \
     qml/components/PasswordCharSwitch.qml \
-    qml/common/FileQueryListItem.qml
+    qml/common/FileQueryListItem.qml \
+    qml/help/HelpGroupsAndEntriesPage.qml

@@ -40,6 +40,7 @@ class OwnKeepassSettings : public QObject
 public:
     Q_PROPERTY(QString version READ version NOTIFY versionChanged)
     Q_PROPERTY(int defaultCryptAlgorithm READ defaultCryptAlgorithm WRITE setDefaultCryptAlgorithm NOTIFY defaultCryptAlgorithmChanged)
+    Q_PROPERTY(int defaultKeyDerivationFunction READ defaultKeyDerivationFunction WRITE setDefaultKeyDerivationFunction NOTIFY defaultKeyDerivationFunctionChanged)
     Q_PROPERTY(int defaultKeyTransfRounds READ defaultKeyTransfRounds WRITE setDefaultKeyTransfRounds NOTIFY defaultKeyTransfRoundsChanged)
     Q_PROPERTY(int locktime READ locktime WRITE setLocktime NOTIFY locktimeChanged)
     Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView NOTIFY sortAlphabeticallyInListViewChanged)
@@ -68,8 +69,7 @@ public:
                                        QString dbFilePath,
                                        bool useKeyFile,
                                        int keyFileLocation,
-                                       QString keyFilePath,
-                                       int databaseType);
+                                       QString keyFilePath);
     Q_INVOKABLE void removeRecentDatabase(QString uiName,
                                           int dbLocation,
                                           QString dbFilePath);
@@ -83,6 +83,8 @@ public:
     QString version() const { return m_version; }
     int defaultCryptAlgorithm() const { return m_defaultCryptAlgorithm; }
     void setDefaultCryptAlgorithm(const int value);
+    int defaultKeyDerivationFunction() const { return m_defaultKeyDerivationFunction; }
+    void setDefaultKeyDerivationFunction(const int value);
     int defaultKeyTransfRounds() const { return m_defaultKeyTransfRounds; }
     void setDefaultKeyTransfRounds(const int value);
     int locktime() const { return m_locktime; }
@@ -136,14 +138,14 @@ signals:
                                QString dbFilePath,
                                bool useKeyFile,
                                int keyFileLocation,
-                               QString keyFilePath,
-                               int databaseType);
+                               QString keyFilePath);
     void recentDatabaseRemoved(int result, QString name);
 
     // Signals for property
     void recentDatabaseModelChanged();
     void versionChanged();
     void defaultCryptAlgorithmChanged();
+    void defaultKeyDerivationFunctionChanged();
     void defaultKeyTransfRoundsChanged();
     void locktimeChanged();
     void sortAlphabeticallyInListViewChanged();
@@ -178,8 +180,10 @@ private:
     // If yes they might need to be merged into new version
     QString m_previousVersion; // this is to internally detect if the settings.ini file has an older version than the application
     QString m_version;
-    // Default encryption: AES/Rijndael = 0, Twofish = 1
+    // Default encryption: AES = 0, Twofish = 1, ChaCha20 = 2
     int m_defaultCryptAlgorithm;
+    // Default key derivation function: Argon2 = 0, AES-KDF KDBX4 = 1, AES-KDF KDBX3.1 = 2
+    int m_defaultKeyDerivationFunction;
     int m_defaultKeyTransfRounds;
     int m_locktime;  // min = 0, max = 10, default = 3
     bool m_sortAlphabeticallyInListView;

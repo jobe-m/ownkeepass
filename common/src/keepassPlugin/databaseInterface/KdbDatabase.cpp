@@ -40,10 +40,8 @@ KdbDatabase::KdbDatabase(QObject *parent):
     m_keyDerivationFunction(0),
     m_showUserNamePasswordsInListView(false),
     m_readOnly(false),
-    m_connected(false),
-    m_database_type(DatabaseType::DB_TYPE_UNKNOWN)
-{
-}
+    m_connected(false)
+{}
 
 void KdbDatabase::connectToDatabaseClient()
 {
@@ -124,11 +122,10 @@ void KdbDatabase::disconnectFromDatabaseClient()
     Q_ASSERT(ret);
 
     m_connected = false;
-    m_database_type = DatabaseType::DB_TYPE_UNKNOWN;
     emit typeChanged();
 }
 
-void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readOnly)
+void KdbDatabase::open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readOnly)
 {
     // check if a database is already open
     if (m_connected) {
@@ -138,11 +135,8 @@ void KdbDatabase::open(const int databaseType, const QString& dbFilePath, const 
         m_connected = false;
     }
 
-    // first set up interface to database client
-    Q_ASSERT((databaseType > DatabaseType::DB_TYPE_UNKNOWN) && (databaseType <= DatabaseType::DB_TYPE_KEEPASS_2));
-    DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
+    DatabaseClient::getInstance()->initDatabaseInterface();
     connectToDatabaseClient();
-    m_database_type = databaseType;
     emit typeChanged();
 
     // send settings to new created database client interface
@@ -173,7 +167,7 @@ void KdbDatabase::slot_databaseOpened(int result, QString errorMsg)
     emit databaseOpened(result, errorMsg);
 }
 
-void KdbDatabase::create(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password)
+void KdbDatabase::create(const QString& dbFilePath, const QString &keyFilePath, const QString& password)
 {
     // check if a database is already open
     if (m_connected) {
@@ -183,11 +177,8 @@ void KdbDatabase::create(const int databaseType, const QString& dbFilePath, cons
         m_connected = false;
     }
 
-    // first set up interface to database client
-    Q_ASSERT((databaseType > DatabaseType::DB_TYPE_UNKNOWN) && (databaseType <= DatabaseType::DB_TYPE_KEEPASS_2));
-    DatabaseClient::getInstance()->initDatabaseInterface(databaseType);
+    DatabaseClient::getInstance()->initDatabaseInterface();
     connectToDatabaseClient();
-    m_database_type = databaseType;
     emit typeChanged();
 
     // send settings to new created database client interface

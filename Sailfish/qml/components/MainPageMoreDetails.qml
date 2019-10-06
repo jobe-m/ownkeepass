@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2013 - 2015 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2013 - 2019 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -79,7 +79,6 @@ Column {
 
         Label {
             x: Theme.horizontalPageMargin
-//                        enabled: internal.keyFilePath.length !== 0
             visible: internal.keyFilePath.length !== 0
             width: parent.width - Theme.horizontalPageMargin * 2
             font.pixelSize: Theme.fontSizeExtraSmall
@@ -89,43 +88,9 @@ Column {
             text: Global.getLocationName(internal.keyFileLocation) + " " + internal.keyFilePath
         }
 
-        Item {
-            x: Theme.horizontalPageMargin
-            width: parent.width - Theme.horizontalPageMargin * 2
-            height: databaseTypeLabel.height
-
-            Label {
-                id: databaseTypeLabel
-                anchors.top: parent.top
-                anchors.left: parent.left
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.secondaryColor
-                horizontalAlignment: Text.AlignLeft
-                text: qsTr("Database type:")
-            }
-
-            Label {
-                anchors.top: parent.top
-                anchors.left: databaseTypeLabel.right
-                anchors.leftMargin: Theme.paddingMedium
-                anchors.right: parent.right
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.primaryColor
-                horizontalAlignment: Text.AlignLeft
-                elide: Qt.ElideMiddle
-                text: internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_1 ?
-                          "Keepass 1" :
-                          internal.databaseType === DatabaseType.DB_TYPE_KEEPASS_2 ?
-                              "Keepass 2" :
-                              //: Here unknown is used for unknown database type
-                              qsTr("Unknown")
-            }
-        }
-
         SectionHeader {
             enabled: !recentDatabaseModel.isEmpty
             opacity: enabled ? 1.0 : 0.0
-//                        visible: enabled
             text: qsTr("Recent databases")
 
             Behavior on opacity { FadeAnimation { duration: 400 } }

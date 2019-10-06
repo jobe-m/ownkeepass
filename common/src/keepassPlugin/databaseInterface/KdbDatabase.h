@@ -25,7 +25,6 @@
 
 #include <QObject>
 #include <QFile>
-#include "private/AbstractDatabaseFactory.h"
 
 namespace kpxPublic {
 
@@ -40,11 +39,10 @@ public:
     Q_PROPERTY(bool showUserNamePasswordsInListView READ showUserNamePasswordsInListView WRITE setShowUserNamePasswordsInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool sortAlphabeticallyInListView READ sortAlphabeticallyInListView WRITE setSortAlphabeticallyInListView STORED true SCRIPTABLE true)
     Q_PROPERTY(bool readOnly READ readOnly NOTIFY readOnlyChanged)
-    Q_PROPERTY(int type READ type NOTIFY typeChanged)
 
 public: // QtQuick 1.1 needs here a public keyword otherwise if does not find the next function ???
-    Q_INVOKABLE void open(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readOnly);
-    Q_INVOKABLE void create(const int databaseType, const QString& dbFilePath, const QString &keyFilePath, const QString& password);
+    Q_INVOKABLE void open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readOnly);
+    Q_INVOKABLE void create(const QString& dbFilePath, const QString &keyFilePath, const QString& password);
     Q_INVOKABLE void close();
     Q_INVOKABLE void changePassword(const QString& password, const QString &keyFile);
     Q_INVOKABLE void saveSettings();
@@ -64,7 +62,6 @@ public:
     bool sortAlphabeticallyInListView() const { return m_sortAlphabeticallyInListView; }
     void setSortAlphabeticallyInListView(const bool value) { m_sortAlphabeticallyInListView = value; emit setting_sortAlphabeticallyInListView(value); }
     bool readOnly() const { return m_readOnly; }
-    int type() const { return m_database_type; }
 
 signals:
     // signals to DatabaseClient backend thread
@@ -108,9 +105,8 @@ private:
     bool m_sortAlphabeticallyInListView;
 
     bool m_readOnly;
-
     bool m_connected;
-    int m_database_type;
+
     Q_DISABLE_COPY(KdbDatabase)
 };
 

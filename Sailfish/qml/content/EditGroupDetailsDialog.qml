@@ -167,8 +167,6 @@ Dialog {
 
             TextArea {
                 id: groupNotesTextField
-                enabled: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2
-                visible: enabled
                 width: parent.width
                 label: qsTr("Notes for the group")
                 text: ""

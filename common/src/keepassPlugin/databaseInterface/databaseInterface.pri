@@ -1,6 +1,6 @@
 #***************************************************************************
 #**
-#** Copyright (C) 2013 Marko Koschak (marko.koschak@tisno.de)
+#** Copyright (C) 2013-2019 Marko Koschak (marko.koschak@tisno.de)
 #** All rights reserved.
 #**
 #** This file is part of ownKeepass.
@@ -32,9 +32,6 @@ SOURCES += \
     ../common/src/keepassPlugin/databaseInterface/KdbEntry.cpp \
     ../common/src/keepassPlugin/databaseInterface/KdbGroup.cpp \
     ../common/src/keepassPlugin/databaseInterface/private/DatabaseClient.cpp \
-    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseFactory.cpp \
-    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.cpp \
-    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.cpp \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.cpp \
     $$PWD/KeepassIcon.cpp
 
@@ -44,11 +41,7 @@ HEADERS += \
     ../common/src/keepassPlugin/databaseInterface/KdbEntry.h \
     ../common/src/keepassPlugin/databaseInterface/KdbGroup.h \
     ../common/src/keepassPlugin/databaseInterface/private/DatabaseClient.h \
-    ../common/src/keepassPlugin/databaseInterface/private/AbstractDatabaseFactory.h \
-    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseFactory.h \
-    ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseFactory.h \
     ../common/src/keepassPlugin/databaseInterface/private/AbstractDatabaseInterface.h \
-    ../common/src/keepassPlugin/databaseInterface/private/Keepass1DatabaseInterface.h \
     ../common/src/keepassPlugin/databaseInterface/private/Keepass2DatabaseInterface.h \
     $$PWD/KeepassIcon.h
 

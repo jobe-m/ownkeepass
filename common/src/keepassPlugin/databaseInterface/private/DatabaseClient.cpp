@@ -1,6 +1,6 @@
 /***************************************************************************
 **
-** Copyright (C) 2015 Marko Koschak (marko.koschak@tisno.de)
+** Copyright (C) 2015-2019 Marko Koschak (marko.koschak@tisno.de)
 ** All rights reserved.
 **
 ** This file is part of ownKeepass.
@@ -21,8 +21,7 @@
 ***************************************************************************/
 
 #include "DatabaseClient.h"
-#include "Keepass1DatabaseFactory.h"
-#include "Keepass2DatabaseFactory.h"
+#include "Keepass2DatabaseInterface.h"
 #include "ownKeepassGlobal.h"
 
 using namespace kpxPrivate;
@@ -34,38 +33,19 @@ DatabaseClient* DatabaseClient::m_Instance = new DatabaseClient;
 
 DatabaseClient::DatabaseClient(QObject *parent)
     : QObject(parent),
-      m_factory(NULL),
       m_interface(NULL),
       m_workerThread(),
       m_initialized(false)
 {}
 
-int DatabaseClient::initDatabaseInterface(const int type)
+int DatabaseClient::initDatabaseInterface()
 {
     if (m_initialized) {
         closeDatabaseInterface();
     }
 
-    // Here an interface will be instantiated which operates on a specific Keepass database version
-    // To enable other database formats just load here another interface
-
-    switch(type) {
-    case DatabaseType::DB_TYPE_KEEPASS_1:
-        m_factory = new Keepass1DatabaseFactory();
-        m_interface = m_factory->factoryMethod();
-        m_initialized = true;
-        break;
-    case DatabaseType::DB_TYPE_KEEPASS_2:
-        m_factory = new Keepass2DatabaseFactory();
-        m_interface = m_factory->factoryMethod();
-        m_initialized = true;
-        break;
-    default:
-        m_factory = NULL;
-        m_interface = NULL;
-        m_initialized = false;
-        return 1;
-    }
+    m_interface = new Keepass2DatabaseInterface();
+    m_initialized = true;
 
     // DatabaseInterface object m_worker is also a QObject, so in order to use functions from it cast it before
     dynamic_cast<QObject*>(m_interface)->moveToThread(&m_workerThread);
@@ -86,10 +66,6 @@ void DatabaseClient::closeDatabaseInterface()
     if (m_interface) {
         delete m_interface;
         m_interface = NULL;
-    }
-    if (m_factory) {
-        delete m_factory;
-        m_factory = NULL;
     }
     // now indicate that interface can be initialized again
     m_initialized = false;

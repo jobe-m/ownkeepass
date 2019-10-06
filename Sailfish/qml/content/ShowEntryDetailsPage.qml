@@ -53,10 +53,8 @@ Page {
             verticalOffset: wallImage.height / 2
 
             text: qsTr("No content")
-            hintText: !ownKeepassDatabase.readOnly
-                      ? (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1
-                         ? qsTr("Pull down to add URL, username, password and comment")
-                         : qsTr("Pull down to add URL, username, password, comment and additional attributes"))
+            hintText: !ownKeepassDatabase.readOnly ?
+                      qsTr("Pull down to add URL, username, password, comment and additional attributes")
                       : ""
 
             Image {

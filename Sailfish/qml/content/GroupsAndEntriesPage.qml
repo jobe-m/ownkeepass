@@ -191,10 +191,7 @@ Page {
             verticalOffset: wallImage.height / 2
 
             text: qsTr("Group is empty")
-            hintText: !ownKeepassDatabase.readOnly ?
-                          (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
-                          groupId === "0" ? qsTr("Pull down to add password groups") :
-                                          qsTr("Pull down to add password groups or entries")) : ""
+            hintText: !ownKeepassDatabase.readOnly ? qsTr("Pull down to add password groups or entries") : ""
 
             Image {
                 id: wallImage
@@ -253,7 +250,7 @@ Page {
         }
 
         ApplicationMenu {
-            helpContent: groupId === "0" ? "MasterGroupsPage" : "SubGroupsPage"
+            helpContent: "GroupsAndEntriesPage"
         }
 
         VerticalScrollDecorator {}
@@ -317,7 +314,7 @@ Page {
             name: "SEARCH_BAR_HIDDEN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2 || groupId !== "0"
+                enableNewPasswordEntryMenuItem: true
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: false }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
@@ -337,7 +334,7 @@ Page {
             name: "SEARCH_BAR_SHOWN"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2 || groupId !== "0"
+                enableNewPasswordEntryMenuItem: true
                 enableSearchMenuItem: !kdbListModel.isEmpty; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: kdbListModel.isEmpty }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
@@ -358,7 +355,7 @@ Page {
             name: "SEARCHING"
             PropertyChanges { target: databaseMenu; enableDatabaseSettingsMenuItem: true
                 enableNewPasswordGroupsMenuItem: true
-                enableNewPasswordEntryMenuItem: ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_2 || groupId !== "0"
+                enableNewPasswordEntryMenuItem: true
                 enableSearchMenuItem: true/*searchField.text.length === 0*/; isTextHideSearch: true }
             PropertyChanges { target: viewPlaceholder; enabled: false }
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: kdbListModel.isEmpty }
@@ -381,9 +378,7 @@ Page {
         } else if (status === PageStatus.Active) {
 
             // check if page state needs to change because search bar state was changed on a sub-page
-            if (ownKeepassDatabase.type === DatabaseType.DB_TYPE_KEEPASS_1 &&
-                    ownKeepassSettings.showSearchBar &&
-                    state === "SEARCH_BAR_HIDDEN") {
+            if (ownKeepassSettings.showSearchBar && state === "SEARCH_BAR_HIDDEN") {
                 state = "SEARCH_BAR_SHOWN"
             } else if (!ownKeepassSettings.showSearchBar && state !== "SEARCH_BAR_HIDDEN") {
                 // steal focus from search bar

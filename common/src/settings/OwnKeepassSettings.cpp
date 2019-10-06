@@ -36,7 +36,8 @@ OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper 
     m_previousVersion(INITIAL_VERSION),
     m_version(OWN_KEEPASS_VERSION),
     m_defaultCryptAlgorithm(0),
-    m_defaultKeyTransfRounds(50000),
+    m_defaultKeyDerivationFunction(0),
+    m_defaultKeyTransfRounds(15),
     m_locktime(3),
     m_sortAlphabeticallyInListView(true),
     m_showUserNamePasswordInListView(false),
@@ -106,7 +107,6 @@ void OwnKeepassSettings::checkSettingsVersion()
             // save changed recent Database list
             m_settings->removeArray("main/recentDatabases");
             for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
-//                qDebug() << "changed: " << i << " - " << m_recentDatabaseList[i]["uiPath"];
                 m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
             }
         }
@@ -115,7 +115,7 @@ void OwnKeepassSettings::checkSettingsVersion()
         if ((major == 1) && (minor <= 1) && (patch <= 6)) {
             m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
             for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-                m_recentDatabaseList[i]["databaseType"] = QVariant(DatabaseType::DB_TYPE_KEEPASS_1);
+                m_recentDatabaseList[i]["databaseType"] = QVariant(0);
             }
             // save changed recent Database list
             m_settings->removeArray("main/recentDatabases");
@@ -124,7 +124,8 @@ void OwnKeepassSettings::checkSettingsVersion()
             }
         }
 
-        // Version 1.1.15 fixes mapping of "disabled clearing clipboard" to the new value (>10 minutes) which was introduced with release 1.1.14
+        // Version 1.1.15 fixes mapping of "disabled clearing clipboard" to the new value (>10 minutes) which
+        // was introduced with release 1.1.14
         if ((major == 1) && (minor <= 1) && (patch <= 14)) {
             m_clearClipboard = (m_settings->getValue("settings/clearClipboard", QVariant(m_clearClipboard))).toInt();
             if (m_clearClipboard == 0) {
@@ -136,6 +137,25 @@ void OwnKeepassSettings::checkSettingsVersion()
                 m_clearClipboard = 1;
                 m_settings->setValue("settings/clearClipboard", QVariant(m_clearClipboard));
             }
+        }
+
+        // Version 2.0.0 removed database type again
+        if (major < 2) {
+            m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
+            // Delete recent database list
+            m_settings->removeArray("main/recentDatabases");
+            // Remove database type from hash map in array
+            for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
+                m_recentDatabaseList[i].remove("databaseType");
+            }
+            // save changed recent Database list
+            m_settings->removeArray("main/recentDatabases");
+            for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
+                m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
+            }
+            // Change default key transformation rounds to 15 because of default key derivation function "Argon2"
+            m_defaultKeyTransfRounds = 15;
+            m_settings->setValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds));
         }
 
         // check if ownKeepass was updated and trigger to show info banner in QML
@@ -156,8 +176,7 @@ void OwnKeepassSettings::checkSettingsVersion()
                                          m_recentDatabaseList[i]["dbFilePath"].toString(),
                                          m_recentDatabaseList[i]["useKeyFile"].toBool(),
                                          m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                                         m_recentDatabaseList[i]["keyFilePath"].toString(),
-                                         m_recentDatabaseList[i]["databaseType"].toInt());
+                                         m_recentDatabaseList[i]["keyFilePath"].toString());
     }
 
     // Update database details on main page in QML UI after version check
@@ -166,6 +185,7 @@ void OwnKeepassSettings::checkSettingsVersion()
 
 void OwnKeepassSettings::loadSettings() {
     m_defaultCryptAlgorithm          = (m_settings->getValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm))).toInt();
+    m_defaultKeyDerivationFunction   = (m_settings->getValue("settings/defaultKeyDerivationFunction", QVariant(m_defaultKeyDerivationFunction))).toInt();
     m_defaultKeyTransfRounds         = (m_settings->getValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds))).toInt();
     m_locktime                       = (m_settings->getValue("settings/locktime", QVariant(m_locktime))).toInt();
     m_sortAlphabeticallyInListView   = (m_settings->getValue("settings/sortAlphabeticallyInListView", QVariant(m_sortAlphabeticallyInListView))).toBool();
@@ -190,6 +210,7 @@ void OwnKeepassSettings::loadSettings() {
 
     // emit signals for property changes
     emit defaultCryptAlgorithmChanged();
+    emit defaultKeyDerivationFunctionChanged();
     emit defaultKeyTransfRoundsChanged();
     emit locktimeChanged();
     emit sortAlphabeticallyInListViewChanged();
@@ -217,8 +238,7 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
                                            QString dbFilePath,
                                            bool useKeyFile,
                                            int keyFileLocation,
-                                           QString keyFilePath,
-                                           int databaseType)
+                                           QString keyFilePath)
 {
     // Add first item, it is not in the list because it shall not be visible in the UI
     m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
@@ -229,8 +249,7 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
                                          m_recentDatabaseList[0]["dbFilePath"].toString(),
                                          m_recentDatabaseList[0]["useKeyFile"].toBool(),
                                          m_recentDatabaseList[0]["keyFileLocation"].toInt(),
-                                         m_recentDatabaseList[0]["keyFilePath"].toString(),
-                                         m_recentDatabaseList[0]["databaseType"].toInt());
+                                         m_recentDatabaseList[0]["keyFilePath"].toString());
     }
 
     bool alreadyOnFirstPosition = false;
@@ -256,9 +275,8 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     recentDatabase["useKeyFile"] = QVariant(useKeyFile);
     recentDatabase["keyFileLocation"] = QVariant(keyFileLocation);
     recentDatabase["keyFilePath"] = QVariant(keyFilePath);
-    recentDatabase["databaseType"] = QVariant(databaseType);
     m_recentDatabaseList.insert(0, recentDatabase);
-    m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath, databaseType);
+    m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
 
     // Check if list is longer than predefined value in settings
     if (m_recentDatabaseList.length() > m_recentDatabaseListLength) {
@@ -318,6 +336,15 @@ void OwnKeepassSettings::setDefaultCryptAlgorithm(const int value)
         m_defaultCryptAlgorithm = value;
         m_settings->setValue("settings/defaultCryptAlgorithm", QVariant(m_defaultCryptAlgorithm));
         emit defaultCryptAlgorithmChanged();
+    }
+}
+
+void OwnKeepassSettings::setDefaultKeyDerivationFunction(const int value)
+{
+    if (value != m_defaultKeyDerivationFunction) {
+        m_defaultKeyDerivationFunction = value;
+        m_settings->setValue("settings/defaultKeyDerivationFunction", QVariant(m_defaultKeyDerivationFunction));
+        emit defaultKeyDerivationFunctionChanged();
     }
 }
 
@@ -521,23 +548,23 @@ void OwnKeepassSettings::loadDatabaseDetails()
             emit databaseDetailsLoaded(true, dbLocationInt, dbFilePath,
                     m_recentDatabaseList[0]["useKeyFile"].toBool(),
                     m_recentDatabaseList[0]["keyFileLocation"].toInt(),
-                    m_recentDatabaseList[0]["keyFilePath"].toString(),
-                    m_recentDatabaseList[0]["databaseType"].toInt());
+                    m_recentDatabaseList[0]["keyFilePath"].toString());
             return;
         }
     } else {
         // check if default database exists
         QString dbLocation(m_helper->getLocationRootPath(1));
-        // first look for Keepass 2 default database as this will be default when this database type is supported
         if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdbx")) {
-            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdbx", false, 0, "", DatabaseType::DB_TYPE_KEEPASS_2);
+            // first look for Keepass 2 default database
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdbx", false, 0, "");
             return;
         } else if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
-            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "", DatabaseType::DB_TYPE_KEEPASS_1);
+            // then look for old keepass 1 default database
+            emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "");
             return;
         } else {
             // no database found
-            emit databaseDetailsLoaded(false, 0, "", false, 0, "", DatabaseType::DB_TYPE_UNKNOWN);
+            emit databaseDetailsLoaded(false, 0, "", false, 0, "");
         }
     }
 }

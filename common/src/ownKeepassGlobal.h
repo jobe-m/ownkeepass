@@ -89,21 +89,6 @@ public:
     };
 };
 
-class DatabaseType : public QObject
-{
-    Q_OBJECT
-
-public:
-    Q_ENUMS(eDatabaseType)
-
-    // to be used as type in initDatabaseInterface()
-    enum eDatabaseType {
-        DB_TYPE_UNKNOWN = -1,
-        DB_TYPE_KEEPASS_1 = 0,
-        DB_TYPE_KEEPASS_2 = 1,
-    };
-};
-
 class Language : public QObject
 {
     Q_OBJECT
