@@ -4,6 +4,11 @@
 
 ## Status
 
+Development towards 2.0.0
+* Removed legacy code for Keepass 1 support
+* New created databases have now Keepass 2 file format
+* Default encryption algorithm, key derivation function (kdf) and key transformation rounds for a new Keepass 2 database can be adjusted in application settings
+
 Release 1.2.6
 * Added support for KDBX 4 database format by changing database code from KeepassX to [KeepassXC] (many thanks to [24mu13](https://github.com/24mu13))
 * Added support for new database cipher algorithms and key derivation functions like Twofish, Chacha20 and Argon2 for Keepass 2 databases
@@ -16,10 +21,10 @@ Release 1.2.6
 List of planned features for ownKeepass to happen somewhere the next time. Priority
 in descending order.
 
-*   (Get some time for SFOS dev work)
-*   Remove Keepass 1 legacy code and implement importing old database format instead (for App release 2.0)
+*   Implement importing old Keepass 1 database into a new Keepass 2 database
 *   Do some art work: new icons, wall paper, better support for light ambiances
-*   Integrate WebDav support for loading and saving Keepass database to a server
+*   Merge databases (local and remote copy) which have diverged e.g. when using Syncthing for syncing databases across devices
+*   Integrate WebDav support for loading and saving Keepass database to a server (Has low prio since Syncthing works flawlessly here)
 
 ## Building
 
