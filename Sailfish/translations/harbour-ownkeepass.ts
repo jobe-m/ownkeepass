@@ -916,7 +916,7 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="348"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="391"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="396"/>
-        <source>Password groups</source>
+        <source>Password groups and entries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

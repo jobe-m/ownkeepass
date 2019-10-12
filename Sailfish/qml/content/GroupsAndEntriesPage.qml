@@ -37,7 +37,7 @@ Page {
     // ID of the keepass group which should be shown ("0" for master groups)
     property string groupId: "0"
     property string parentIconUuid: "icf0"
-    property string pageTitle: qsTr("Password groups")
+    property string pageTitle: qsTr("Password groups and entries")
 
     // private properties and funtions
     property bool __closeOnError: false
@@ -320,11 +320,11 @@ Page {
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === "0" ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups and entries") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField; enabled: false }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === "0" ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups and entries") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -340,12 +340,12 @@ Page {
             PropertyChanges { target: searchNoEntriesFoundPlaceholder; enabled: false }
             PropertyChanges { target: busyIndicator; running: false }
             PropertyChanges { target: pageHeader
-                title: groupId === "0" ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups and entries") :
                                        groupsAndEntriesPage.pageTitle }
             PropertyChanges { target: searchField
                 enabled: !kdbListModel.isEmpty }
             PropertyChanges { target: applicationWindow.cover
-                title: groupId === "0" ? qsTr("Password groups") :
+                title: groupId === "0" ? qsTr("Password groups and entries") :
                                        groupsAndEntriesPage.pageTitle
                 state: "GROUPS_VIEW" }
 
@@ -388,12 +388,12 @@ Page {
                 // restore group title and state in cover page
                 switch (state) {
                 case "SEARCH_BAR_HIDDEN":
-                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups and entries") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break
                 case "SEARCH_BAR_SHOWN":
-                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups") :
+                    applicationWindow.cover.title = groupId === "0" ? qsTr("Password groups and entries") :
                                                                     groupsAndEntriesPage.pageTitle
                     applicationWindow.cover.state = "GROUPS_VIEW"
                     break

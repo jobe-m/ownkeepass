@@ -916,8 +916,8 @@
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="348"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="391"/>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="396"/>
-        <source>Password groups</source>
-        <translation>Passordgrupper</translation>
+        <source>Password groups and entries</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/content/GroupsAndEntriesPage.qml" line="93"/>
