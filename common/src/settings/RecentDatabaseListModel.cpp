@@ -40,11 +40,10 @@ void RecentDatabaseListModel::addRecent(QString uiName,
                                         QString dbFilePath,
                                         bool useKeyFile,
                                         int keyFileLocation,
-                                        QString keyFilePath)
+                                        QString keyFilePath,
+                                        int databaseType)
 {
-//    qDebug() << "addRecent - added: " << uiName;
-
-    DatabaseItem item(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
+    DatabaseItem item(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath, databaseType);
     beginInsertRows(QModelIndex(), 0, 0);
     m_items.insert(0, item);
     endInsertRows();
@@ -84,8 +83,6 @@ void RecentDatabaseListModel::clear()
 
 void RecentDatabaseListModel::deleteItem(int index)
 {
-//    qDebug() << "RecentDatabaseListModel::deleteItem (index: " << index << ")";
-
     if (index < m_items.count()) {
         // found it, delete it from list model
         beginRemoveRows(QModelIndex(), index, index);

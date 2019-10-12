@@ -29,6 +29,10 @@ using namespace settingsPublic;
 using namespace ownKeepassPublic;
 
 #define INITIAL_VERSION "1.0.0"
+// Following defines are for legacy reasons to keep the recent database list consistent
+// and usable with ownKeepass versions 1.2.x if the user downgrades ownKeepass app from v2.x to v1.2.x
+#define DB_TYPE_KEEPASS_1 0
+#define DB_TYPE_KEEPASS_2 1
 
 OwnKeepassSettings::OwnKeepassSettings(const QString filePath, OwnKeepassHelper *helper, QObject *parent):
     QObject(parent),
@@ -115,7 +119,7 @@ void OwnKeepassSettings::checkSettingsVersion()
         if ((major == 1) && (minor <= 1) && (patch <= 6)) {
             m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
             for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-                m_recentDatabaseList[i]["databaseType"] = QVariant(0);
+                m_recentDatabaseList[i]["databaseType"] = QVariant(DB_TYPE_KEEPASS_1);
             }
             // save changed recent Database list
             m_settings->removeArray("main/recentDatabases");
@@ -139,25 +143,6 @@ void OwnKeepassSettings::checkSettingsVersion()
             }
         }
 
-        // Version 2.0.0 removed database type again
-        if (major < 2) {
-            m_recentDatabaseList = m_settings->getArray("main/recentDatabases");
-            // Delete recent database list
-            m_settings->removeArray("main/recentDatabases");
-            // Remove database type from hash map in array
-            for (int i = m_recentDatabaseList.length()-1; i >= 0 ; --i) {
-                m_recentDatabaseList[i].remove("databaseType");
-            }
-            // save changed recent Database list
-            m_settings->removeArray("main/recentDatabases");
-            for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
-                m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
-            }
-            // Change default key transformation rounds to 15 because of default key derivation function "Argon2"
-            m_defaultKeyTransfRounds = 15;
-            m_settings->setValue("settings/defaultKeyTransfRounds", QVariant(m_defaultKeyTransfRounds));
-        }
-
         // check if ownKeepass was updated and trigger to show info banner in QML
         if (m_previousVersion != INITIAL_VERSION) {
             emit showChangeLogBanner();
@@ -176,7 +161,8 @@ void OwnKeepassSettings::checkSettingsVersion()
                                          m_recentDatabaseList[i]["dbFilePath"].toString(),
                                          m_recentDatabaseList[i]["useKeyFile"].toBool(),
                                          m_recentDatabaseList[i]["keyFileLocation"].toInt(),
-                                         m_recentDatabaseList[i]["keyFilePath"].toString());
+                                         m_recentDatabaseList[i]["keyFilePath"].toString(),
+                                         m_recentDatabaseList[i]["databaseType"].toInt());
     }
 
     // Update database details on main page in QML UI after version check
@@ -249,7 +235,8 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
                                          m_recentDatabaseList[0]["dbFilePath"].toString(),
                                          m_recentDatabaseList[0]["useKeyFile"].toBool(),
                                          m_recentDatabaseList[0]["keyFileLocation"].toInt(),
-                                         m_recentDatabaseList[0]["keyFilePath"].toString());
+                                         m_recentDatabaseList[0]["keyFilePath"].toString(),
+                                         m_recentDatabaseList[0]["databaseType"].toInt());
     }
 
     bool alreadyOnFirstPosition = false;
@@ -275,8 +262,12 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     recentDatabase["useKeyFile"] = QVariant(useKeyFile);
     recentDatabase["keyFileLocation"] = QVariant(keyFileLocation);
     recentDatabase["keyFilePath"] = QVariant(keyFilePath);
+    // Hard code to Keepass database version 2 because from ownKeepass v2.0.0 onwards it does
+    // only create keepass 2 databases. Storing here for legacy reasons to be compatible with ownKeepass
+    // v1.2.x in case user downgrades the app.
+    recentDatabase["databaseType"] = QVariant(DB_TYPE_KEEPASS_2);
     m_recentDatabaseList.insert(0, recentDatabase);
-    m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath);
+    m_recentDatabaseModel->addRecent(uiName, uiPath, dbLocation, dbFilePath, useKeyFile, keyFileLocation, keyFilePath, DB_TYPE_KEEPASS_2);
 
     // Check if list is longer than predefined value in settings
     if (m_recentDatabaseList.length() > m_recentDatabaseListLength) {
@@ -288,7 +279,6 @@ void OwnKeepassSettings::addRecentDatabase(QString uiName,
     if (!alreadyOnFirstPosition) {
         m_settings->removeArray("main/recentDatabases");
         for (int i = 0; i < m_recentDatabaseList.length(); ++i) {
-//            qDebug() << "save into settings: " << i << " - " << m_recentDatabaseList[i]["uiName"];
             m_settings->appendToArray("main/recentDatabases", m_recentDatabaseList[i]);
         }
     }
@@ -552,14 +542,14 @@ void OwnKeepassSettings::loadDatabaseDetails()
             return;
         }
     } else {
-        // check if default database exists
+        // Check if default database exists
         QString dbLocation(m_helper->getLocationRootPath(1));
+        // First look for Keepass 2 default database as this is now default with ownKeepass v2.0.0 onwards
         if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdbx")) {
-            // first look for Keepass 2 default database
             emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdbx", false, 0, "");
             return;
         } else if (QFile::exists(dbLocation + "/Documents/ownkeepass/notes.kdb")) {
-            // then look for old keepass 1 default database
+            // Fall back to an old default Keepass 1 database
             emit databaseDetailsLoaded(true, 1, "Documents/ownkeepass/notes.kdb", false, 0, "");
             return;
         } else {
