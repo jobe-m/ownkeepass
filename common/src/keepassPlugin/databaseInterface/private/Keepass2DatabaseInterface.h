@@ -207,6 +207,7 @@ private:
     QUuid getGroupUuidFromDatabase(QString groupId);
     Group* getGroupFromDatabase(QString groupId);
     void loadMasterGroupsRecursive(QList<Group *> recurGroups, int level, QString rootGroupId, bool registerListModel);
+    void sendDatabaseSettingsToQml();
 
     void addToListModel(QString title, QString iconUuid, QString subTitle, QString itemId, int itemType, int itemLevel, QString modelId);
     void updateInListModel(QString title, QString iconUuid, QString subTitle, QString itemId, QString modelId);

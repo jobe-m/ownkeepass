@@ -29,6 +29,7 @@
 #include "../KdbListModel.h"
 #include "../KdbGroup.h"
 #include "crypto/Crypto.h"
+#include "crypto/kdf/Argon2Kdf.h"
 #include "format/KeePass2Reader.h"
 #include "keys/PasswordKey.h"
 #include "keys/FileKey.h"
@@ -89,8 +90,10 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
     }
     m_Database = new Database();
 
+    m_Database->setFilePath(filePath);
+
     QString errorString;
-    if (!m_Database->open(filePath, masterKey, &errorString, readOnly)) {
+    if (!m_Database->open(masterKey, &errorString, readOnly)) {
         // an error occured during opening of the database
         qDebug() << "Error occured: " << errorString;
         // TODO adapt error msg compare
@@ -137,6 +140,10 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
         emit databaseOpened(DatabaseAccessResult::RE_OK, "");
     }
 
+    sendDatabaseSettingsToQml();
+}
+
+void Keepass2DatabaseInterface::sendDatabaseSettingsToQml() {
     // load used encryption, keyDerivationFunction and KeyTransfRounds and sent to KdbDatabase object so that it is shown in UI database settings page
     int cipher;
     if (m_Database->cipher() == KeePass2::CIPHER_AES256) {
@@ -180,6 +187,42 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
 
 void Keepass2DatabaseInterface::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)
 {
+    auto masterKey = QSharedPointer<CompositeKey>::create();
+    auto passwordKey = QSharedPointer<PasswordKey>::create();
+    passwordKey->setPassword(password);
+    masterKey->addKey(passwordKey);
+    if (!keyfile.isEmpty()) {
+        auto key = QSharedPointer<FileKey>::create();
+        QString errorMsg;
+        if (!key->load(keyfile, &errorMsg)) {
+            emit errorOccured(DatabaseAccessResult::RE_KEYFILE_OPEN_ERROR, errorMsg);
+            return;
+        }
+        masterKey->addKey(key);
+    }
+
+    if (m_Database) {
+        delete m_Database;
+    }
+    m_Database = new Database();
+
+    m_Database->rootGroup()->setName("Root group");
+    m_Database->setKdf(QSharedPointer<Argon2Kdf>::create());
+    if (!m_Database->setKey(masterKey)) {
+        qDebug() << "ERROR: Could not set key in new created database!";
+    }
+    m_Database->setFilePath(filePath);
+
+    // save database
+    QString errorMsg = saveDatabase();
+    if (errorMsg.length() != 0) {
+        // send signal to QML
+        emit errorOccured(DatabaseAccessResult::RE_DB_SAVE_ERROR, errorMsg);
+        return;
+    }
+
+    emit newDatabaseCreated();
+    sendDatabaseSettingsToQml();
 }
 
 void Keepass2DatabaseInterface::slot_changePassKey(QString password, QString keyFile)
