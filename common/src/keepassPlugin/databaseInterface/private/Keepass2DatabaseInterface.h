@@ -46,9 +46,6 @@ public:
     virtual ~Keepass2DatabaseInterface();
 
 signals:
-    // signals to all objects
-    void disconnectAllClients();
-
     // signals to KdbDatabase object
     void databaseOpened(int result, QString errorMsg);
     void newDatabaseCreated();

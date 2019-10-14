@@ -92,7 +92,6 @@ public slots:
     void slot_groupMoved(int result,
                          QString errorMsg,
                          QString groupId);
-    void slot_disconnectFromDatabaseClient();
 
 public:
     KdbGroup(QObject *parent = 0);
@@ -102,12 +101,7 @@ public:
     void setGroupId(const QString value) { m_groupId = value; }
 
 private:
-    bool connectToDatabaseClient();
-    void disconnectFromDatabaseClient();
-
-private:
     QString m_groupId;
-    bool m_connected;
     bool m_new_group_triggered;
 };
 

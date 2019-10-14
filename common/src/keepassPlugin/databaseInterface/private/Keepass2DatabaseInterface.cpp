@@ -170,19 +170,12 @@ void Keepass2DatabaseInterface::sendDatabaseSettingsToQml() {
 
 void Keepass2DatabaseInterface::slot_closeDatabase()
 {
-    // check if database is already closed
-    if (!m_Database) {
-        emit errorOccured(DatabaseAccessResult::RE_DB_ALREADY_CLOSED, "");
-        return;
+    if (m_Database) {
+        delete m_Database;
     }
-
-// TODO delete .lock file
 
     // database was closed successfully
     emit databaseClosed();
-    // trigger disconnect from database client, because reopening will reinitalize the whole interface
-    // this makes it possible to load keepass 1 or 2 databases
-    emit disconnectAllClients();
 }
 
 void Keepass2DatabaseInterface::slot_createNewDatabase(QString filePath, QString password, QString keyfile, int cryptAlgorithm, int keyTransfRounds)

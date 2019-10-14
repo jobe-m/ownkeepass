@@ -39,11 +39,7 @@ KdbDatabase::KdbDatabase(QObject *parent):
     m_cryptAlgorithm(0),
     m_keyDerivationFunction(0),
     m_showUserNamePasswordsInListView(false),
-    m_readOnly(false),
-    m_connected(false)
-{}
-
-void KdbDatabase::connectToDatabaseClient()
+    m_readOnly(false)
 {
     // connect signals and slots to global DatabaseClient class
     bool ret = connect(this,
@@ -111,34 +107,10 @@ void KdbDatabase::connectToDatabaseClient()
                   this,
                   SIGNAL(errorOccured(int,QString)));
     Q_ASSERT(ret);
-
-    m_connected = true;
-}
-
-void KdbDatabase::disconnectFromDatabaseClient()
-{
-    // disconnect all signals to backend
-    bool ret = disconnect(this, 0, 0, 0);
-    Q_ASSERT(ret);
-
-    m_connected = false;
-    emit typeChanged();
 }
 
 void KdbDatabase::open(const QString& dbFilePath, const QString &keyFilePath, const QString& password, bool readOnly)
 {
-    // check if a database is already open
-    if (m_connected) {
-// TODO add check for opened database
-// TODO return error to QML saying that database is already open
-        DatabaseClient::getInstance()->closeDatabaseInterface();
-        m_connected = false;
-    }
-
-    DatabaseClient::getInstance()->initDatabaseInterface();
-    connectToDatabaseClient();
-    emit typeChanged();
-
     // send settings to new created database client interface
     emit setting_showUserNamePasswordsInListView(m_showUserNamePasswordsInListView);
     emit setting_sortAlphabeticallyInListView(m_sortAlphabeticallyInListView);
@@ -169,18 +141,6 @@ void KdbDatabase::slot_databaseOpened(int result, QString errorMsg)
 
 void KdbDatabase::create(const QString& dbFilePath, const QString &keyFilePath, const QString& password)
 {
-    // check if a database is already open
-    if (m_connected) {
-// TODO add check for opened database
-// TODO return error to QML saying that database is already open
-        DatabaseClient::getInstance()->closeDatabaseInterface();
-        m_connected = false;
-    }
-
-    DatabaseClient::getInstance()->initDatabaseInterface();
-    connectToDatabaseClient();
-    emit typeChanged();
-
     // send settings to new created database client interface
     emit setting_showUserNamePasswordsInListView(m_showUserNamePasswordsInListView);
     emit setting_sortAlphabeticallyInListView(m_sortAlphabeticallyInListView);
@@ -192,20 +152,12 @@ void KdbDatabase::create(const QString& dbFilePath, const QString &keyFilePath, 
 
 void KdbDatabase::close()
 {
-    if (m_connected) {
-        // if a database is opened forward to database client interface
-        emit closeDatabase();
-    } else {
-        DatabaseClient::getInstance()->closeDatabaseInterface();
-        // signal to QML
-        emit databaseClosed();
-    }
+    // if a database is opened forward to database client interface
+    emit closeDatabase();
 }
 
 void KdbDatabase::slot_databaseClosed()
 {
-    disconnectFromDatabaseClient();
-    DatabaseClient::getInstance()->closeDatabaseInterface();
     // signal to QML
     emit databaseClosed();
 }
@@ -227,14 +179,10 @@ void KdbDatabase::slot_databaseSettingsChanged(int cryptAlgo, int kdf, int round
 
 void KdbDatabase::changePassword(const QString &password, const QString &keyFile)
 {
-    if (m_connected) {
-        emit changeDatabasePassword(password, keyFile);
-    }
+    emit changeDatabasePassword(password, keyFile);
 }
 
 void KdbDatabase::saveSettings()
 {
-    if (m_connected) {
-        emit changeDatabaseSettings(m_cryptAlgorithm, m_keyDerivationFunction, m_keyTransfRounds);
-    }
+    emit changeDatabaseSettings(m_cryptAlgorithm, m_keyDerivationFunction, m_keyTransfRounds);
 }

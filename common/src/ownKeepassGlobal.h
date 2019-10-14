@@ -44,7 +44,6 @@ public:
         RE_DB_ENTRY_NOT_FOUND,                         // Entry could not be found in database (uuid or pointer is corrupt?)
         RE_DB_GROUP_NOT_FOUND,                         // Group could not be found in database (Uuid or pointer is corrupt?)
         RE_DB_NOT_OPENED,                              // database is not opened
-        RE_DB_ALREADY_CLOSED,                          // database already closed, no harm
         RE_DB_CLOSE_FAILED,                            // database closing failed
         RE_DB_FILE_ERROR,                              // file path error for new database
         RE_DB_SETKEY_ERROR,                            // error setting key (consisting of password and/or keyfile)

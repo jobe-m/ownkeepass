@@ -126,9 +126,6 @@ Page {
                                              qsTr("Could not connect to a loaded database. This seems to be a bug."))
             internal.masterGroupsPage.closeOnError()
             break
-        case DatabaseAccessResult.RE_DB_ALREADY_CLOSED:
-            console.log("Database was already closed. Nothing serious.")
-            break
         case DatabaseAccessResult.RE_DB_CLOSE_FAILED:
             // Keepass 1 only
             applicationWindow.infoPopup.show(Global.error,

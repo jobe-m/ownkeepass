@@ -33,28 +33,16 @@ DatabaseClient* DatabaseClient::m_Instance = new DatabaseClient;
 
 DatabaseClient::DatabaseClient(QObject *parent)
     : QObject(parent),
-      m_interface(NULL),
-      m_workerThread(),
-      m_initialized(false)
-{}
-
-int DatabaseClient::initDatabaseInterface()
+      m_workerThread()
 {
-    if (m_initialized) {
-        closeDatabaseInterface();
-    }
-
     m_interface = new Keepass2DatabaseInterface();
-    m_initialized = true;
 
     // DatabaseInterface object m_worker is also a QObject, so in order to use functions from it cast it before
     dynamic_cast<QObject*>(m_interface)->moveToThread(&m_workerThread);
     m_workerThread.start();
-
-    return 0;
 }
 
-void DatabaseClient::closeDatabaseInterface()
+DatabaseClient::~DatabaseClient()
 {
     // first terminate background thread
     if (m_workerThread.isRunning()) {
@@ -65,15 +53,7 @@ void DatabaseClient::closeDatabaseInterface()
     // then delete interface and factory objects
     if (m_interface) {
         delete m_interface;
-        m_interface = NULL;
     }
-    // now indicate that interface can be initialized again
-    m_initialized = false;
-}
-
-DatabaseClient::~DatabaseClient()
-{
-    closeDatabaseInterface();
 }
 
 DatabaseClient* DatabaseClient::getInstance()

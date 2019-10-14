@@ -161,7 +161,6 @@ public slots:
     void slot_newEntryCreated(int result,
                               QString errorMsg,
                               QString entryId);
-    void slot_disconnectFromDatabaseClient();
 
 public:
     KdbEntry(QObject *parent = 0);
@@ -197,8 +196,6 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
     bool setData(const QModelIndex & index, const QVariant & value, int role = Qt::EditRole);
 private:
-    bool connectToDatabaseClient();
-    void disconnectFromDatabaseClient();
     void checkIfEdited();
     bool checkIfAdditionalAttibuteItemsModified();
 
@@ -226,7 +223,6 @@ private:
     bool m_notes_modified;
     bool m_iconUuid_modified;
 
-    bool m_connected;
     bool m_new_entry_triggered;
     bool m_edited;
     bool m_invalid_key;

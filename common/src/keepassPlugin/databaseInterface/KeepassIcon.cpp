@@ -69,22 +69,11 @@ QImage IconBackground::requestImage(const QString &uuid, QSize *size, const QSiz
 
 IconListModel::IconListModel(QObject *parent)
     : QAbstractListModel(parent),
-      m_group_icons(false),
-      m_connected(false)
+      m_group_icons(false)
 {
     // Just to be sure: empty m_icons list
     clear();
-}
 
-IconListModel::~IconListModel()
-{}
-
-bool IconListModel::connectToDatabaseClient()
-{
-    // check if database backend is already initialized and available
-    if (DatabaseClient::getInstance()->getInterface() == NULL) {
-        return false;
-    }
     // connect signals to backend
     bool ret = connect(this,
                        SIGNAL(loadCustomIcons()),
@@ -96,32 +85,10 @@ bool IconListModel::connectToDatabaseClient()
                   this,
                   SLOT(slot_appendCustomIconToListModel(QString)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(disconnectAllClients()),
-                  this,
-                  SLOT(slot_disconnectFromDatabaseClient()));
-    Q_ASSERT(ret);
-
-    m_connected = true;
-    return true;
 }
 
-void IconListModel::slot_disconnectFromDatabaseClient()
-{
-    if (m_connected) {
-        disconnectFromDatabaseClient();
-    }
-}
-
-void IconListModel::disconnectFromDatabaseClient()
-{
-    // disconnect all signals to backend
-    // this is not needed ?
-//    bool ret = disconnect(this, 0, 0, 0);
-//    Q_ASSERT(ret);
-
-    m_connected = false;
-}
+IconListModel::~IconListModel()
+{}
 
 int IconListModel::rowCount(const QModelIndex& parent) const
 {
@@ -183,12 +150,7 @@ void IconListModel::initListModel(int keepassIconType)
         }
         break;
     case LOAD_CUSTOM_DATABASE_ICONS:
-        if (!m_connected && !connectToDatabaseClient()) {
-            // if not successfully connected just return an error
-            emit iconListModelLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-        } else {
-            emit loadCustomIcons();
-        }
+        emit loadCustomIcons();
         break;
     case LOAD_OWNKEEPASS_ICON_PACK_ICONS:
 // TODO

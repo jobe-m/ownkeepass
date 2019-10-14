@@ -58,21 +58,13 @@ KdbEntry::KdbEntry(QObject *parent)
       m_password_modified(false),
       m_notes_modified(false),
       m_iconUuid_modified(false),
-      m_connected(false),
       m_new_entry_triggered(false),
       m_edited(false),
       m_invalid_key(false)
 {
     clearListModel();
-}
 
-bool KdbEntry::connectToDatabaseClient()
-{
-    // check if database backend is already initialized and available
-    if (DatabaseClient::getInstance()->getInterface() == NULL) {
-        return false;
-    }
-    // if OK then connect signals to backend
+    // connect signals to backend
     bool ret = connect(this,
                        SIGNAL(loadEntryFromKdbDatabase(QString)),
                        DatabaseClient::getInstance()->getInterface(),
@@ -124,21 +116,6 @@ bool KdbEntry::connectToDatabaseClient()
                   this,
                   SLOT(slot_entryMoved(int,QString,QString)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(disconnectAllClients()),
-                  this,
-                  SLOT(slot_disconnectFromDatabaseClient()));
-    Q_ASSERT(ret);
-
-    m_connected = true;
-    return true;
-}
-
-void KdbEntry::disconnectFromDatabaseClient()
-{
-    clearData();
-    m_connected = false;
-    m_new_entry_triggered = false;
 }
 
 KdbEntry::~KdbEntry()
@@ -147,116 +124,91 @@ KdbEntry::~KdbEntry()
 void KdbEntry::loadEntryData()
 {
     Q_ASSERT(m_entryId != "");
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit entryDataLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
         // trigger loading from database client
-        emit loadEntryFromKdbDatabase(m_entryId);
-    }
+    emit loadEntryFromKdbDatabase(m_entryId);
 }
 
 void KdbEntry::saveEntryData()
 {
     Q_ASSERT(m_entryId != "");
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit entryDataSaved(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
-        // trigger saving to database client
-        QStringList keys;
-        QStringList values;
-        QStringList keysToDelete;
-        QStringList keysToRename;
-        keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
-             << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
-        values << m_title << m_url << m_userName << m_password << m_notes;
+    // trigger saving to database client
+    QStringList keys;
+    QStringList values;
+    QStringList keysToDelete;
+    QStringList keysToRename;
+    keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
+         << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
+    values << m_title << m_url << m_userName << m_password << m_notes;
 
-        // Add additional attributes key and values to Stringlists
-        for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
-            // Check for changed attribute key or value
-            if (!m_additional_attribute_items[i].m_to_be_deleted &&
-                    ((m_additional_attribute_items[i].m_original_key !=
-                      m_additional_attribute_items[i].m_key) ||
-                     (m_additional_attribute_items[i].m_original_value !=
-                      m_additional_attribute_items[i].m_value)))
-            {
-                // Add original key because the key might got renamed
-                if (m_additional_attribute_items[i].m_original_key.length() != 0) {
-                    keys << m_additional_attribute_items[i].m_original_key;
-                } else {
-                    keys << m_additional_attribute_items[i].m_key;
-                }
-                values << m_additional_attribute_items[i].m_value;
+    // Add additional attributes key and values to Stringlists
+    for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
+        // Check for changed attribute key or value
+        if (!m_additional_attribute_items[i].m_to_be_deleted &&
+                ((m_additional_attribute_items[i].m_original_key !=
+                  m_additional_attribute_items[i].m_key) ||
+                 (m_additional_attribute_items[i].m_original_value !=
+                  m_additional_attribute_items[i].m_value)))
+        {
+            // Add original key because the key might got renamed
+            if (m_additional_attribute_items[i].m_original_key.length() != 0) {
+                keys << m_additional_attribute_items[i].m_original_key;
+            } else {
+                keys << m_additional_attribute_items[i].m_key;
             }
-            // Check which keys can be deleted
-            if (m_additional_attribute_items[i].m_to_be_deleted) {
-                keysToDelete << m_additional_attribute_items[i].m_key;
-            }
-            // Check for renamed keys
-            if (!m_additional_attribute_items[i].m_to_be_deleted &&
+            values << m_additional_attribute_items[i].m_value;
+        }
+        // Check which keys can be deleted
+        if (m_additional_attribute_items[i].m_to_be_deleted) {
+            keysToDelete << m_additional_attribute_items[i].m_key;
+        }
+        // Check for renamed keys
+        if (!m_additional_attribute_items[i].m_to_be_deleted &&
                 m_additional_attribute_items[i].m_original_key.length() != 0 &&
                 (m_additional_attribute_items[i].m_original_key !=
                  m_additional_attribute_items[i].m_key)) {
-                keysToRename << m_additional_attribute_items[i].m_original_key << m_additional_attribute_items[i].m_key;
-            }
+            keysToRename << m_additional_attribute_items[i].m_original_key << m_additional_attribute_items[i].m_key;
         }
-
-        emit saveEntryToKdbDatabase(m_entryId, keys, values, keysToDelete, keysToRename, m_iconUuid);
     }
+
+    emit saveEntryToKdbDatabase(m_entryId, keys, values, keysToDelete, keysToRename, m_iconUuid);
 }
 
 void KdbEntry::createNewEntry()
 {
     Q_ASSERT(m_groupId != "");
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit newEntryCreated(DatabaseAccessResult::RE_DB_NOT_OPENED, "", 0);
-    } else {
-        // trigger creation of new entry in database client
-        m_new_entry_triggered = true;
-        QStringList keys;
-        QStringList values;
-        keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
-             << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
-        values << m_title << m_url << m_userName << m_password << m_notes;
+    // trigger creation of new entry in database client
+    m_new_entry_triggered = true;
+    QStringList keys;
+    QStringList values;
+    keys << EntryAttributes::TitleKey << EntryAttributes::URLKey << EntryAttributes::UserNameKey
+         << EntryAttributes::PasswordKey << EntryAttributes::NotesKey;
+    values << m_title << m_url << m_userName << m_password << m_notes;
 
-        for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
-            // Add additional attributes key and values to Stringlists
-            if (m_additional_attribute_items[i].m_modified &&
+    for (int i = FIRST_ITEM_POSITION; i < m_additional_attribute_items.count(); ++i) {
+        // Add additional attributes key and values to Stringlists
+        if (m_additional_attribute_items[i].m_modified &&
                 !m_additional_attribute_items[i].m_to_be_deleted) {
-                keys << m_additional_attribute_items[i].m_key;
-                values << m_additional_attribute_items[i].m_value;
-            }
+            keys << m_additional_attribute_items[i].m_key;
+            values << m_additional_attribute_items[i].m_value;
         }
-
-        emit createNewEntryInKdbDatabase(keys, values, m_groupId, m_iconUuid);
     }
+
+    emit createNewEntryInKdbDatabase(keys, values, m_groupId, m_iconUuid);
 }
 
 void KdbEntry::deleteEntry()
 {
     Q_ASSERT(m_entryId != "");
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit entryDeleted(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
-        // trigger deletion of entry in database client
-        emit deleteEntryFromKdbDatabase(m_entryId);
-    }
+    // trigger deletion of entry in database client
+    emit deleteEntryFromKdbDatabase(m_entryId);
 }
 
 void KdbEntry::moveEntry(QString newGroupId)
 {
     Q_ASSERT(m_entryId != "");
     Q_ASSERT(newGroupId != "");
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit entryMoved(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
-        // trigger moving of entry in database client
-        emit moveEntryInKdbDatabase(m_entryId, newGroupId);
-    }
+    // trigger moving of entry in database client
+    emit moveEntryInKdbDatabase(m_entryId, newGroupId);
 }
 
 void KdbEntry::slot_entryDataLoaded(int result,
@@ -327,14 +279,6 @@ void KdbEntry::slot_entryMoved(int result, QString errorMsg, QString entryId)
     // forward signal to QML only if the signal is for us
     if (entryId.compare(m_entryId) == 0) {
         emit entryMoved(result, errorMsg);
-    }
-}
-
-void KdbEntry::slot_disconnectFromDatabaseClient()
-{
-    // database client has requested to disconnect so do accordingly if we have connected at all
-    if (m_connected) {
-        disconnectFromDatabaseClient();
     }
 }
 

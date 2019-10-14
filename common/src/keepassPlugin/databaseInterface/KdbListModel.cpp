@@ -36,16 +36,8 @@ KdbListModel::KdbListModel(QObject *parent)
       m_numEntries(0),
       m_registered(false),
       m_searchRootGroupId(""),
-      m_connected(false),
       m_level_0_count(0)
-{}
-
-bool KdbListModel::connectToDatabaseClient()
 {
-    // check if database backend is already initialized and available
-    if (DatabaseClient::getInstance()->getInterface() == NULL) {
-        return false;
-    }
     // connect signals to backend
     bool ret = connect(this,
                        SIGNAL(loadMasterGroups(bool)),
@@ -107,26 +99,6 @@ bool KdbListModel::connectToDatabaseClient()
                   this,
                   SLOT(slot_deleteItem(QString)));
     Q_ASSERT(ret);
-    ret = connect(DatabaseClient::getInstance()->getInterface(),
-                  SIGNAL(disconnectAllClients()),
-                  this,
-                  SLOT(slot_disconnectFromDatabaseClient()));
-    Q_ASSERT(ret);
-
-    m_connected = true;
-    return true;
-}
-
-void KdbListModel::disconnectFromDatabaseClient()
-{
-    // disconnect all signals to backend
-    // this is not needed ?
-//    bool ret = disconnect(this, 0, 0, 0);
-//    Q_ASSERT(ret);
-
-    m_connected = false;
-    m_registered = false;
-    m_modelId = "";
 }
 
 KdbListModel::~KdbListModel()
@@ -142,22 +114,17 @@ void KdbListModel::loadGroupListFromDatabase()
     if (!isEmpty()) {
         clear();
     }
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit masterGroupsLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
-        if (m_registered) {
-            emit unregisterFromDatabaseClient(m_modelId);
-            m_registered = false;
-        }
-        // this list model is only used in a dialog and is thrown away afterwards, so it does not need to be registered
-        // i.e. changes on the database which are normally reflected to list models are not needed here
-        m_registered = true;
-        m_modelId = "ffffffff";
-        // send signal to global interface of keepass database to get master groups
-// TODO clanup loadMasterGroups... registerListModel is not needed anymore...
-        emit loadMasterGroups(false);
+    if (m_registered) {
+        emit unregisterFromDatabaseClient(m_modelId);
+        m_registered = false;
     }
+    // this list model is only used in a dialog and is thrown away afterwards, so it does not need to be registered
+    // i.e. changes on the database which are normally reflected to list models are not needed here
+    m_registered = true;
+    m_modelId = "ffffffff";
+    // send signal to global interface of keepass database to get master groups
+// TODO cleanup loadMasterGroups... registerListModel is not needed anymore...
+    emit loadMasterGroups(false);
 }
 
 void KdbListModel::loadGroupsAndEntriesFromDatabase(QString groupId)
@@ -166,17 +133,12 @@ void KdbListModel::loadGroupsAndEntriesFromDatabase(QString groupId)
     if (!isEmpty()) {
         clear();
     }
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit groupsAndEntriesLoaded(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
-        if (m_registered) {
-            emit unregisterFromDatabaseClient(m_modelId);
-            m_registered = false;
-        }
-        // send signal to global interface of keepass database to get entries and subgroups
-        emit loadGroupsAndEntries(groupId);
+    if (m_registered) {
+        emit unregisterFromDatabaseClient(m_modelId);
+        m_registered = false;
     }
+    // send signal to global interface of keepass database to get entries and subgroups
+    emit loadGroupsAndEntries(groupId);
 }
 
 void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
@@ -185,21 +147,16 @@ void KdbListModel::searchEntriesInKdbDatabase(QString searchString)
     if (!isEmpty()) {
         clear();
     }
-    if (!m_connected && !connectToDatabaseClient()) {
-        // if not successfully connected just return an error
-        emit searchEntriesCompleted(DatabaseAccessResult::RE_DB_NOT_OPENED, "");
-    } else {
-        if (m_registered) {
-            emit unregisterFromDatabaseClient(m_modelId);
-            m_registered = false;
-        }
-        // list model for searching is 0xfffffffe per default, so set it here already
-        m_modelId = "fffffffe";
-        m_registered = true;
-
-        // send signal to backend to start search in database
-        emit searchEntries(searchString, m_searchRootGroupId);
+    if (m_registered) {
+        emit unregisterFromDatabaseClient(m_modelId);
+        m_registered = false;
     }
+    // list model for searching is 0xfffffffe per default, so set it here already
+    m_modelId = "fffffffe";
+    m_registered = true;
+
+    // send signal to backend to start search in database
+    emit searchEntries(searchString, m_searchRootGroupId);
 }
 
 int KdbListModel::rowCount(const QModelIndex& parent) const
@@ -427,12 +384,5 @@ void KdbListModel::slot_deleteItem(QString itemId)
                 emit lastItemDeleted();
             }
         }
-    }
-}
-
-void KdbListModel::slot_disconnectFromDatabaseClient()
-{
-    if (m_connected) {
-        disconnectFromDatabaseClient();
     }
 }

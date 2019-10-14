@@ -130,11 +130,6 @@ public slots:
                                           QString itemId,
                                           QString modelId);
     void slot_deleteItem(QString itemId);
-    void slot_disconnectFromDatabaseClient();
-
-private:
-    bool connectToDatabaseClient();
-    void disconnectFromDatabaseClient();
 
 private:
     QList<KdbItem> m_items;
@@ -147,8 +142,6 @@ private:
     bool m_registered;
     // identifier of the group from which a search for entries should be performed
     QString m_searchRootGroupId;
-    // identifies if this object is conntected to a loaded keepass database
-    bool m_connected;
     // Counter for list items with level 0
     int m_level_0_count;
 };

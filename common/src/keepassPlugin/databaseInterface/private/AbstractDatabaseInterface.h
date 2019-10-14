@@ -35,9 +35,6 @@ public:
     virtual ~AbstractDatabaseInterface(){}
 
 protected: // signals
-    // signals to all objects
-    virtual void disconnectAllClients() = 0;
-
     // signals to KdbDatabase object (QML)
 
     /// \brief The databaseOpened() signal is emmitted after calling
@@ -97,8 +94,6 @@ protected: // signals
     virtual void appendItemToListModel(QString title,
                                        QString iconUuid,
                                        QString subTitle,
-//                                       int numberOfSubGroups,
-//                                       int numberOfEntries,
                                        QString itemId,
                                        int itemType,
                                        int itemLevel,
@@ -106,8 +101,6 @@ protected: // signals
     virtual void addItemToListModelSorted(QString title,
                                           QString iconUuid,
                                           QString subTitle,
-//                                          int numberOfSubGroups,
-//                                          int numberOfEntries,
                                           QString itemId,
                                           int itemType,
                                           int itemLevel,
@@ -115,15 +108,11 @@ protected: // signals
     virtual void updateItemInListModel(QString title,
                                        QString iconUuid,
                                        QString subTitle,
-//                                       int numberOfSubGroups,
-//                                       int numberOfEntries,
                                        QString itemId,
                                        QString modelId) = 0;
     virtual void updateItemInListModelSorted(QString title,
                                              QString iconUuid,
                                              QString subTitle,
-//                                             int numberOfSubGroups,
-//                                             int numberOfEntries,
                                              QString itemId,
                                              QString modelId) = 0;
     virtual void masterGroupsLoaded(int result,

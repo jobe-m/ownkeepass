@@ -92,10 +92,6 @@ private slots:
     void slot_databaseOpened(int result, QString errorMsg);
 
 private:
-    void connectToDatabaseClient();
-    void disconnectFromDatabaseClient();
-
-private:
     // The following properties are read from backend and therefore there are slots for it
     int m_keyTransfRounds;
     int m_cryptAlgorithm;
@@ -105,7 +101,6 @@ private:
     bool m_sortAlphabeticallyInListView;
 
     bool m_readOnly;
-    bool m_connected;
 
     Q_DISABLE_COPY(KdbDatabase)
 };
