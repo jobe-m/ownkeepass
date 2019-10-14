@@ -51,6 +51,7 @@ Keepass2DatabaseInterface::Keepass2DatabaseInterface(QObject *parent)
       m_setting_showUserNamePasswordsInListView(false),
       m_setting_sortAlphabeticallyInListView(true)
 {
+    qDebug("Constructor Keepass2DatabaseInterface");
     initDatabase();
 }
 
@@ -87,6 +88,7 @@ void Keepass2DatabaseInterface::slot_openDatabase(QString filePath, QString pass
 
     if (m_Database) {
         delete m_Database;
+        m_Database = nullptr;
     }
     m_Database = new Database();
 
@@ -172,6 +174,7 @@ void Keepass2DatabaseInterface::slot_closeDatabase()
 {
     if (m_Database) {
         delete m_Database;
+        m_Database = nullptr;
     }
 
     // database was closed successfully
@@ -196,6 +199,7 @@ void Keepass2DatabaseInterface::slot_createNewDatabase(QString filePath, QString
 
     if (m_Database) {
         delete m_Database;
+        m_Database = nullptr;
     }
     m_Database = new Database();
 
