@@ -1,5 +1,7 @@
 # ownKeepass
 
+__I am sorry to say but I don't have the time to continue working on ownKeepass. That might change but currenlty I am too exhausted by private issues and duties.__
+
 [Bug reports go here] - [Translations here]
 
 ## Status
